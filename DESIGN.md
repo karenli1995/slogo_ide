@@ -3,7 +3,7 @@
 ###User Interface
 Our user interface will be composed of several parts: a console for the user to enter commands, a prompt that displays error messages when the user inputs bad data, a Turtle Scene that displays the movements of the turtle, an area to set turtle properties, a menu panel to save and open SLogo files and create new SLogo files, an area displaying history of commands executed, and an area for displaying available variables and commands. The latter two components will be interactive, clickable text areas to easily input into the console. Below is a model of how we will design our user interface:
 
-![This is cool, too bad you can't see it](/D:/COLLEGE/Junior_Year_HW/CS308/SlogoUI.JPG "Main Screen")
+![This is cool, too bad you can't see it](SlogoUI.JPG "Main Screen")
 
 
 ###Design Considerations
