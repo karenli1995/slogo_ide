@@ -1,32 +1,30 @@
 #View
-
-###GUIManager
-###Console
-###History
-###Prompt
-###TurtleBackground
-###Menu Panel
-###Run Button
-###Clear Button
-###AbstractDesign
+* GUIManager
+* Console
+* History
+* Prompt
+* TurtleBackground
+* Menu Panel
+* Run Button
+* Clear Button
+* AbstractDesign
 
 
 #Controller
-###ConsoleController
-###Parser
-###ExceptionClasses
+* ConsoleController
+* Parser
+* ExceptionClasses
 
 
 #Model
+* AbstractCommands
+  1. BasicCommands
+  2. TurtleCommands
+  3. MathCommands
+  4. BooleanCommands
+  5. VariableCommands
 
-###AbstractCommands
-*BasicCommands
-*TurtleCommands
-*MathCommands
-*BooleanCommands
-*VariableCommands
-
-###Turtle
+* Turtle
 
 
 --> maybe more than one turtle
