@@ -1,5 +1,59 @@
 #SLogo Team 8 Design
 
+###Overview
+
+####Description of the four APIs are 
+
+External frontend API:  this interface is used to make the program easy to extend in the future. The main purpose of this API is to make the GUI modifiable without affecting the internal states of the program. The methods stored in this API have the ability to display, and render changes to the user. The methods stored in this interface have this following general functionality: creating the GUI the first time the user opens the program, showing all the buttons and text boxes to the user, showing the menu to the user, showing the history of different commands used, showing error messages to the user, displaying the console to the user, and sending string typed by the user to the controller.  The methods in this API are also responsible for showing the result of different commands applied to the turtle object(s), and whether or not a trail is shown.  Background rendering is also set in this interface. There will also be methods in API that send notifications to the model to create and reset the different object shown on the screen at any time.  Similarly there will be methods that notify the controller to reset the console. 
+
+Classes:
+
+-background.java
+
+-menu.java
+
+-rightSidePanel.java
+
+-consle.java
+
+-buttons.java
+
+External backend API: This interface provides the ability to extend the model in the future without having to change, or inadvertently break the view. The methods in this API specialize in changing states of different data structures. The methods in this interface will be responsible for getting the error messages but not doing input validation themselves. There will also be methods to get commands. Those methods do not return all possible commands; instead commands are packaged into Math, Boolean, Turtle, and User Defined commands. There will also be methods in this API for the turtle object. Instead of returning every possible method pertaining to the turtle object, this API will have the ability to get a copy of the turtle object definition to increase flexibility, and eliminate the need to pass different parameters for different methods that all depend on the turtle object. 
+
+Furthermore, the methods in this interface will be responsible for sending back results of commands, strings parsed, errors, and turtle states back to the controller to be sent to the view. This API includes methods responsible for parsing user input, and validating it. Exception handling is processed in this API. Exceptions are processed in the controller, but the error messages are saved in the model to separate date from the program logic. 
+
+Classes:
+
+- Object.java- superclass for turtle and turtle like objects
+
+- Turtle.java- holds all turtle information and turtle modification commands
+
+- Command.java- super class responsible for abstract commands
+
+- TurtleQuery.java: class that holds all methods responsible for setting and getting the turtle object and its attributes.
+
+- MathOperations.java: super class for all math command and results
+
+- BooleanCommand.java: super class for all Boolean command and results
+
+- ParserException.java- takes care of parser errors and modifies the model to add an error message
+
+- Command Exception.java- errors in the command, modifies the model to add an error message
+
+Internal frontend API: This interface is not going to be used by future programmer; it functions mainly to facilitate communication from the view to the model. This interface ensures communication from the view to the model without jeopardizing the security of the view.  Methods in this API will request updated through the controller to the model about any changes to display on the UI. The methods in this API will not show how different buttons, menus, or the console work though. The methods in this interface will be responsible for setting the asking the model for a list of methods previously called by the user to display in the history section of the GUI. This API is also responsible for checking with the model if any of the turtle object attributes has changed. 
+
+Classes:
+
+-view/model.java
+
+Internal backend API: this interface is responsible for facilitating the communication from the model to the view. The methods in this API do not directly modify any methods or attributes in the GUI; they send notifications that something has changed in the model.   Methods in this interface notify the GUI when specific turtle's attribute has changed, when a command returns a value, and when an error has occurred due to invalid input. This API will not reveal to GUI the turtle object, how the commands do their calculations, or how the parser and the controller detect input error though. 
+
+Classes:
+
+-controller.java
+
+
+
 ###User Interface
 Our user interface will be composed of several parts: a console for the user to enter commands, a prompt that displays error messages when the user inputs bad data, a Turtle Scene that displays the movements of the turtle, an area to set turtle properties, a menu panel to save and open SLogo files and create new SLogo files, an area displaying history of commands executed, and an area for displaying available variables and commands. The latter two components will be interactive, clickable text areas to easily input into the console. Below is a model of how we will design our user interface:
 
