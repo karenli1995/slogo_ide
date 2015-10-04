@@ -1,5 +1,14 @@
 #SLogo Team 8 Design
 
+###Introduction:
+
+In this project, we are creating a simplified computer programming language that lets the users interact with an object on the screen through a command line on a per expression basis. The users will have the ability to use predefined commands as part of the program library, or create their own commands by combining different program commands and variables. The program will aid the users by giving them the option to resue commands from a history panel instead of having to define them agin through out the program life.
+
+
+To make the program flexible, we use the Model-Controller-Interface. We separate the GUI from the backend logic where all the computation is done. The controller accepts the input from the user and parses it into the attributes and rules that are going to be used by the model or the interface. The model manages the data, logic and rules of the program. The Interface component contains the user interface, the grid, and the output. It is also where the user specifies the rules and attributes to the program either by uploading fillies or by selecting them from options on the GUI.
+
+We also ensure flexibility of the program by making classes express behavior to the user but in reality they delegate the implementation of methods to other classes.
+
 ###Overview
 
 ####Description of the four APIs are 
@@ -52,6 +61,8 @@ Classes:
 
 -controller.java
 
+
+![This is cool, too bad you can't see it](slogo-crc.jpg "Main Screen")
 
 
 ###User Interface
