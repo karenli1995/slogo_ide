@@ -7,7 +7,9 @@ Our user interface will be composed of several parts: a console for the user to 
 
 
 ## Design Details##
+
 **Backend Overview**
+
 We plan to have four main APIs for the back end, A model external API, model internal API, command internal API and a command external API. These APIs represent the two major sections of the back end: the controller and the model. The hub will call the Command API external and use that information to call the valid model API command. The event handler in the GUI will track when modifications have been made via the Model API and update the GUI when that occurs. 
 
  - Model API: The main purpose of the model APIs is to allow the view and the controller to access and modify the simulation data respectively. We’re unsure what internal commands the model API will need at this point but will leave its existence intact due to future extensions. 
@@ -15,26 +17,53 @@ We plan to have four main APIs for the back end, A model external API, model int
  - Internal Command API: Conducts parsing and internal logic of the Slogo language. 
 
 There are a few major design points necessary for this portion of the project to be successful. 
+
 1.	There needs to be a good way to add new commands, turtle functions and data modifications. We want to use a strategy design pattern or a reflection design pattern to map strings to commands and map commands to functionalities 
+
 2.	There needs to be a flexible way of accounting for extensions in the number of objects being modified. In the data object, instead of having one instance of turtle we will have an array list of objects that can hold the ids of many things. 
+
 3.	There needs to be a good way of storing variables and referencing variables via commands. There will probably be an arraylist of variables inside the controller class as well as necessary inputs for each of the command classes. 
 
 
 **Classes**
 
- - Controller.java: responsible for holding the instance of the parser class and conducting logic	
+ - Controller.java: responsible for holding the instance of the parser class and conducting logic
+	 - controller.parse()- modifies all the info
+	 - getModel() - passes the model class to hub
  - Parser.java: responsible for parsing commands. Will return, lines of slogo code
+	 - parseSpaces()- parses using regex and puts it into an array
+	 - getNextLine()- returns the next line of the array
+	 - getLine(int)- returns the index in the array
  - Command.java- super class responsible for abstract commands
+	 - doCommand()- does the actual modification of the model class
+	 - sub methods- called by changeModel()
  - Turtle Commands- return a turtle modification
+	 - doCommand()- changes the turtle and returns it
  - Turtle Query Command- return an integer about turtle status
+	 - changeModel()- returns a turtle status
  - Math Operation Command- return the result
  - Boolean Command- returns a Boolean
  - Display command- returns a display modification
  - Object.java- superclass for turtle and turtle like objects 
- - Turtle.java- holds all turtle information and turtle modification commands 
- - Model.java- holds turtle information, movement points etc… At this point we believe that the model.java will hold an arraylist of objects, a path data point set and an error Boolean and message. This should give us enough flexibility to modify all future extensions and objects. 
+ - Turtle.java- holds all turtle information and turtle modification commands
+	 - setX()
+	 - setY()
+	 - getX()
+	 - getY()
+	 - setOrientation()
+	 - getOrientation()
+	 - showTurtle()
+	 - hideTurtle()
+	 - setPenColor()
+	 - getShape()
+	 - stamp()
+ - Model.java- holds turtle information, movement points etc… At this point we believe that the model.java will hold an arraylist of objects, a path data point set and an error Boolean and message. This should give us enough flexibility to modify all future extensions and objects. All classes inside model will have setters and getters like the turtle example above 
+	 - setPenSize()
+	 - setPen()
+	 - getPen()
  - ParserException.java- takes care of parser errors and modifies the model to add an error message
  - Command Exception.java- errors in the command, modifies the model to add an error message
+
 
 ## Example Code ##
 
