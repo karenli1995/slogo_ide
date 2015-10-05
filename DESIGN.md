@@ -23,7 +23,7 @@ Classes:
 
 -rightSidePanel.java
 
--consle.java
+-console.java
 
 -buttons.java
 
@@ -129,6 +129,15 @@ There are a few major design points necessary for this portion of the project to
  - ParserException.java- takes care of parser errors and modifies the model to add an error message
  - Command Exception.java- errors in the command, modifies the model to add an error message
 
+**Front End Overview**
+We plan to have two APIs for the front end: internal front end and external front end APIs. Obviously, these follow the norms of referring to API for interaction among classes within the GUI package (internal) and for interaction between the GUI package and the controller and model segments of our program (external). The external API for the GUI is mostly concerned with retrieving, saving, or resetting the information held in model. The one exception to this is the interaction between the GUI and the controller when the "Run" button is hit, sending code from the console to be parsed (this connection is also needed for exception catching). The internal API for the GUI is concerned with displaying updated information in a manner that is readable and accessible. To discuss more concretely the APIs and their association with assignment specifications, look at the list of front-end classes with descriptions below:
+
+**Classes**
+- background.java - The canvas upon which the turtle and its drawings lie. This class will be responsible for communicating with the backend by obtaining the turtle object saved in the model (getTurtle() method), drawing the trail which is stored in model (.drawTrail()), and setting the background for a new or saved turtle (setBackgroundForTurtle()). This class does not need to communicate with the rest of the classes in the front end
+- menu.java - The toolbar containing useful functions like New Slogo, Save Slogo, Open Slogo, and Quit. Save Slogo, Open Slogo, and New Slogo will all need to communicate with the backend to a degree by setting, resetting, or retrieving the state of the model for their respective purpose. Corresponding functions would be newSlogo(), openSlogo(), and saveSlogo(). Once again, this class has no real internal API, since it relays all information to the model, which the front end will subsequently retrieve. 
+- rightSidePanel.java - The section of the GUI where history, saved user-defined functions, and variables are displayed to the user. External API is not needed for this class, since it is directly connected to the console and the run button. It does not need to go to the model to retrieve its data since it can contain merely the text of whatever is required. This class does need internal API since it communicates so much with the Console. Functions like setHistory(), setConsole(), setVariable(), getVariable(), setFunction(), getFunction() would be good to use in conjunction with the console. 
+- console.java - The section of the GUI wherein the user types commands, functions, variables, and mathematicals to affect the turtle. This class would have an external API based on the fact that it needs to relay text to the controller. A function getConsoleText() should work when the run button is pressed to return the input text to the controller. As well, console.java should have an internal API to interact with the run and clear buttons, as well as the rightSideMenuPanel.java class. Functions like setConsoleFromHistory(), clearConsole(), and an event handling function should deal with these relationships accordingly. 
+- buttons.java - A superclass or interface that deals with creating and adding functionality to the run and clear buttons. These buttons do not need an external API, but do require an internal API to deal mainly with the console, functions for which have mostly been named above. 
 
 ## Example Code ##
 
@@ -153,6 +162,8 @@ In this example you can see that the only two commands that the HUB will ever ca
 One of our main design considerations includes communication between the front-end view and the back-end model. Ultimately, we decided that our Parser would act as part of our controller, since this is what we would need to parse commands in the console and translate into information for the Turtle movement and positions in the back-end. Then, we also considered how we would pass back information back from the model to the controller and then to update the view/GUI. We will have a separate class as part of the Controller package to handle this. Thus, when a user enters a command into the console, the controller package containing the Parser will parse the command, and instantiate a Command object. The Command instantiates a specific Model which will contain information of either Turtle commands or Math commands. The Model will return a value that will either modify the TurtleScene object in the GUI or the Prompt object in the GUI.
 
 We will also need to consider how we will design the back-end to execute user-inputted commands. We decided to include the abstract Commands class inside our controller package which will then be passed on to the turtle in the model. For user-created commands, we will have a separate object for this that will store a map of the user-created commacnd to the Command object. 
+
+For the front end, a perplexing design consideration is that of making the turtle just "jump" from point to point just leaving a trail if required to, or to make it actually move/slide across the screen leaving a trail. This consideration could not only change the structure of a few of our front end classes, but also of our main class. 
 
 ###Team Responsibilities
 Karen and Alex will work on the user interface and view APIs, while Sally and Kevin will work with the model APIs and parser classes.
