@@ -20,6 +20,8 @@ public class GUIManager {
 		stage.setScene(scene);
 		stage.setTitle(TITLE);
 		
+		ConsoleUI console = new ConsoleUI();
+		myRoot.getChildren().add(console);
 		stage.show();
 	}
 	
