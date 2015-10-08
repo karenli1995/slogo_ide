@@ -20,6 +20,6 @@ public class ParserTester {
 		Parser parser = new Parser();
 		String input = readFile("examples/loops/circle.logo", StandardCharsets.UTF_8);
 		String[] example = parser.splitInput(input);
-		parser.createCommandMap(example);
+		parser.getCommandMap();
 	}
 }
