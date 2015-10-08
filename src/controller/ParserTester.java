@@ -1,13 +1,25 @@
 package controller;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 public class ParserTester {
-	public static void main(String[] args) {
+	
+	
+	static String readFile(String path, Charset encoding) 
+			  throws IOException 
+			{
+			  byte[] encoded = Files.readAllBytes(Paths.get(path));
+			  return new String(encoded, encoding);
+			}
+	
+	public static void main(String[] args) throws IOException {
 		Parser parser = new Parser();
-		String input = "fd sum sum sum sum 10 20 30 5 5";
+		String input = readFile("examples/loops/circle.logo", StandardCharsets.UTF_8);
 		String[] example = parser.splitInput(input);
-		for(int i = 0; i<example.length;i++){
-			System.out.println(example[i]);
-		}
-		parser.testMatches(example, parser.getPatterns());
+		parser.createCommandMap(example);
 	}
 }
