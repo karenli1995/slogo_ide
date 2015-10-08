@@ -1,4 +1,5 @@
 ##API REVIEW
+Karen Li (kjl32) and Efe Aras (ea89)
 
 ###Part1
 1. By using an extensive inheritance hierarchy, we allow for easy integration of new components into our project.
