@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -11,7 +12,9 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class Patterner {
+	private static final String RESOURCES_PATH = "src/resources/languages/";
 	private static final String DEFAULT_RESOURCES = "resources.languages/";
+
 	private List<Entry<String, Pattern>> patterns;
 
 	public Patterner(){
@@ -22,16 +25,19 @@ public class Patterner {
 		// create a list of things to check
 		patterns = new ArrayList<>();
 		// these are more specific, so add them first to ensure they are checked first
-
-		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "English"));
-		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Syntax"));
-		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Chinese"));
-		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "French"));
-		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "German"));
-		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Italian"));
-		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Portuguese"));
-		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Russian"));
-		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Spanish"));
+		File[] folder = new File(RESOURCES_PATH).listFiles();
+		for(File f: folder){
+			patterns.addAll(makePatterns(DEFAULT_RESOURCES + f.getName().split("\\.")[0]));
+		}
+//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "English"));
+//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Syntax"));
+//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Chinese"));
+//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "French"));
+//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "German"));
+//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Italian"));
+//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Portuguese"));
+//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Russian"));
+//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Spanish"));
 
 	}
 
