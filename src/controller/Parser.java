@@ -1,20 +1,8 @@
 package controller;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.Enumeration;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.ResourceBundle;
-import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Parser {
-	public static final String DEFAULT_RESOURCES = "resources.languages/";
-    private List<Entry<String, Pattern>> patterns;
 	private String[] inputArray;
 	private Patterner pattern;
 	private Map<String, String> commandMap;
