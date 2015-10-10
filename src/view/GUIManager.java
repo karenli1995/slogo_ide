@@ -18,6 +18,8 @@ public class GUIManager {
 	private static final double BUTTON_HEIGHT = 40;
 	private static final double CONSOLE_X = 300;
 	private static final double CONSOLE_Y = 10;
+	private static final double TURTLE_PROPS_X = 300;
+	private static final double TURTLE_PROPS_Y = 10;
 
 	protected Stage myStage;
 	private Scene myScene;
@@ -27,7 +29,8 @@ public class GUIManager {
 	
 	private ConsoleUI myConsoleUI;
 	private Buttons myButtonsOnGUI;
-
+	private TurtleScene myTurtleScene;
+	private TurtleProps myTurtleProps;
 	
 	public GUIManager(Stage stage){
 		myStage = stage;
@@ -43,7 +46,15 @@ public class GUIManager {
 		myButtonsOnGUI.setTranslateX(CONSOLE_X);
 		myButtonsOnGUI.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + BUTTON_HEIGHT);
 		
-		myRoot.getChildren().addAll(myConsoleUI, myButtonsOnGUI);
+		myTurtleScene = new TurtleScene();
+		myTurtleScene.setTranslateX(CONSOLE_X + myConsoleUI.getWidth());
+		myTurtleScene.setTranslateY(CONSOLE_Y);
+		
+		myTurtleProps = new TurtleProps();
+		myTurtleProps.setTranslateX(CONSOLE_X + myConsoleUI.getWidth());
+		myTurtleProps.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + BUTTON_HEIGHT);
+		
+		myRoot.getChildren().addAll(myConsoleUI, myButtonsOnGUI, myTurtleScene, myTurtleProps);
 		stage.show();
 	}
 	

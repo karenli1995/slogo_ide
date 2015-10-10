@@ -29,7 +29,7 @@ public class Buttons extends HBox{
 		for (index = 0; index < events.length; index++) {
 			Button button = createAndPlaceButton(BUTTON_NAMES[index], events[index]);
 			myButtons.put(button.getText(), button);
-			button.setDisable(true);
+			button.setDisable(false);
 		}
 		//myButtons.get("LoadXML").setDisable(false);
 	}
