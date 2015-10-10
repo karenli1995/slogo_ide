@@ -1,27 +1,49 @@
 package view;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class GUIManager {
 	private static final String TITLE = "SLogo";
+	private static final int BUTTON_AREA_WIDTH = 400;
+	private static final double BUTTON_HEIGHT = 40;
+	private static final double CONSOLE_X = 300;
+	private static final double CONSOLE_Y = 10;
 
 	protected Stage myStage;
 	private Scene myScene;
 	private Group myRoot;
 	
 	private int myWindowWidth, myWindowHeight;
+	
+	private ConsoleUI myConsoleUI;
+	private Buttons myButtonsOnGUI;
 
+	
 	public GUIManager(Stage stage){
 		myStage = stage;
 		Scene scene = init((int)stage.getWidth(), (int)stage.getHeight());
 		stage.setScene(scene);
 		stage.setTitle(TITLE);
 		
-		ConsoleUI console = new ConsoleUI();
-		myRoot.getChildren().add(console);
+		myConsoleUI = new ConsoleUI();
+		myConsoleUI.setTranslateX(CONSOLE_X);
+		myConsoleUI.setTranslateY(CONSOLE_Y);
+		
+		myButtonsOnGUI = new Buttons();
+		myButtonsOnGUI.setTranslateX(CONSOLE_X);
+		myButtonsOnGUI.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + BUTTON_HEIGHT);
+		
+		myRoot.getChildren().addAll(myConsoleUI, myButtonsOnGUI);
 		stage.show();
 	}
 	
@@ -39,4 +61,5 @@ public class GUIManager {
 		myScene = new Scene(myRoot,width,height,Color.AZURE);
 		return myScene;
 	}
+	
 }
