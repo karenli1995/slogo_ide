@@ -18,7 +18,8 @@ public class Buttons extends HBox {
 	private Controller myController;
 	private Data myData;
 	
-	Buttons(){
+	Buttons(ConsoleUI console){
+		myConsole = console;
 		addButtons();
 	}
 	
@@ -50,10 +51,10 @@ public class Buttons extends HBox {
 		String label = property;// myResources.getString(property);
 		Button button = new Button(label);
 		
-		this.getChildren().add(button);
-		
 		button.applyCss();
 		button.setOnAction(handler);
+		
+		this.getChildren().add(button);
 		return button;
 	}
 	
@@ -63,6 +64,6 @@ public class Buttons extends HBox {
 	}
 	
 	private void clearConsole(){
-		
+		myConsole.clearTextFromConsole();
 	}
 }

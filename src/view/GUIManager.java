@@ -42,7 +42,7 @@ public class GUIManager {
 		myConsoleUI.setTranslateX(CONSOLE_X);
 		myConsoleUI.setTranslateY(CONSOLE_Y);
 		
-		myButtonsOnGUI = new Buttons();
+		myButtonsOnGUI = new Buttons(myConsoleUI);
 		myButtonsOnGUI.setTranslateX(CONSOLE_X);
 		myButtonsOnGUI.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + BUTTON_HEIGHT);
 		

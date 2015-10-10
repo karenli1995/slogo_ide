@@ -1,5 +1,6 @@
 package view;
 
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
@@ -39,6 +40,11 @@ public class ConsoleUI extends BorderPane{
 	public String getTextFromConsole(){
 		String currText = myTabPane.getSelectionModel().getSelectedItem().getText();
 		return currText;
+	}
+	
+	public void clearTextFromConsole(){
+		TextArea currTextArea = (TextArea) myTabPane.getSelectionModel().getSelectedItem().getContent();
+		currTextArea.clear();
 	}
 
 }
