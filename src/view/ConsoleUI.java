@@ -35,5 +35,10 @@ public class ConsoleUI extends BorderPane{
 		myTab.setContent(myTextArea);
 		myTabPane.getTabs().add(myTab);
 	}
+	
+	public String getTextFromConsole(){
+		String currText = myTabPane.getSelectionModel().getSelectedItem().getText();
+		return currText;
+	}
 
 }

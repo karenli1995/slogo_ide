@@ -6,7 +6,7 @@ public class History {
 	ScrollPane myHistory;
 	
 	private int myHistoryX = 600;
-	private int myHistoryY=10;
+	private int myHistoryY = 10;
 
 	History(){
 		myHistory = new ScrollPane();
@@ -15,8 +15,8 @@ public class History {
 	}
 	
 	
-	public getHistory(){
-		myHistory.getOnMouseClicked()
+	public void getHistory(){
+		
 	}
 	
 }

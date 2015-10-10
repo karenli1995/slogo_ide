@@ -3,15 +3,20 @@ package view;
 import java.util.HashMap;
 import java.util.Map;
 
+import controller.Controller;
+import data.Data;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
-public class Buttons extends HBox{
+public class Buttons extends HBox {
 	private static final String[] BUTTON_NAMES = { "Run", "Clear"};
 	
 	private Map<String, Button> myButtons;
+	private ConsoleUI myConsole;
+	private Controller myController;
+	private Data myData;
 	
 	Buttons(){
 		addButtons();
@@ -53,7 +58,8 @@ public class Buttons extends HBox{
 	}
 	
 	private void runConsole(){
-		
+		String consoleText = myConsole.getTextFromConsole();
+		myData = new Data(consoleText);
 	}
 	
 	private void clearConsole(){
