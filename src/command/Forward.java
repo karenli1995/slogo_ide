@@ -9,7 +9,6 @@ public class Forward extends Command{
 	@Override
 	public void returnValue() {
 		// TODO Auto-generated method stub
-		System.out.println("forward works");
 	}
 
 	@Override

@@ -1,15 +1,13 @@
 package command;
 
-public class Constant extends Command{
-	
-	
-	public Constant(){
-
+public class ListStart extends Command {
+	public ListStart(){
+		
 	}
 	@Override
 	public void returnValue() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
