@@ -1,8 +1,10 @@
 package command;
 
+import model.Data;
+
 public class ListEnd extends Command {
-	public ListEnd(){
-		
+	public ListEnd(Data allData){
+		super(allData);
 	}
 	@Override
 	public void returnValue() {
@@ -10,7 +12,6 @@ public class ListEnd extends Command {
 		
 	}
 
-	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
 		

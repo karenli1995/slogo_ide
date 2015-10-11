@@ -1,21 +1,24 @@
 package command;
 
-public class Constant extends Command{
-	
-	
-	public Constant(){
+import model.Data;
 
+public class Constant extends Command{
+
+
+
+	/**
+	 * @param allData
+	 */
+	public Constant(Data allData) {
+		super(allData);
+		// TODO Auto-generated constructor stub
 	}
+
 	@Override
 	public void returnValue() {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

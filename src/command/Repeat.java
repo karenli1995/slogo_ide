@@ -1,9 +1,11 @@
 package command;
 
+import model.Data;
+
 public class Repeat extends Command{
 	
-	public Repeat(){
-		
+	public Repeat(Data allData){
+		super(allData);
 	}
 	@Override
 	public void returnValue() {
@@ -11,7 +13,6 @@ public class Repeat extends Command{
 		
 	}
 
-	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
 		

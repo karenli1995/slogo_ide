@@ -1,12 +1,18 @@
 package model;
 
+import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 
-public abstract class Object {
+public abstract class SlogoObjects {
 	private int myX;
 	private int myY;
 	private int myHeight;
 	private int myWidth;
+
+
+public SlogoObjects(Group root){
+
+}
 
 	public int getMyX() {
 		return myX;

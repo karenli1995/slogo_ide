@@ -5,11 +5,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
+import model.Data;
+
 public class CommandFactory{
+	private Data allData;
 	private Map<String, Class<?>> reflectionMap = new HashMap<String, Class<?>>();
 
-	public CommandFactory(){
-
+	public CommandFactory(Data allData){
+this.allData= allData;
 	}
 
 	public void registerProduct(String commandName, Class<?> commandClass){

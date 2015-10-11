@@ -1,8 +1,10 @@
 package command;
 
+import model.Data;
+
 public class Right extends Command{
-	public Right(){
-		
+	public Right(Data allData){
+		super(allData);
 	}
 	@Override
 	public void returnValue() {
@@ -10,7 +12,6 @@ public class Right extends Command{
 		
 	}
 
-	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
 		
