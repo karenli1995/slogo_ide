@@ -37,13 +37,22 @@ public class ConsoleUI extends BorderPane{
 	}
 	
 	public String getTextFromConsole(){
-		String currText = myTabPane.getSelectionModel().getSelectedItem().getText();
+		String currText = myTabPane.getSelectionModel().getSelectedItem().getContent().getAccessibleText();
 		return currText;
 	}
 	
 	public void clearTextFromConsole(){
 		TextArea currTextArea = (TextArea) myTabPane.getSelectionModel().getSelectedItem().getContent();
 		currTextArea.clear();
+	}
+	
+	public void setConsoleText(String text){
+		String currText = myTabPane.getSelectionModel().getSelectedItem().getContent().getAccessibleText();
+		String newText = "";
+		if(currText == null){ newText = text;} else{ newText = currText + text; }
+		
+		TextArea currTextArea = (TextArea) myTabPane.getSelectionModel().getSelectedItem().getContent();
+		currTextArea.setText(newText);
 	}
 
 }
