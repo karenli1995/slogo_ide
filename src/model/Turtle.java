@@ -8,6 +8,7 @@ public class Turtle extends SlogoObjects {
 	private Group root;
 	private final Image myImage = new Image(getClass().getClassLoader().getResourceAsStream("Turtle.png"));
 	private ImageView myTurtle = new ImageView(myImage);
+
 	public Turtle(Group root) {
 		super(root);
 		this.root=root;
@@ -18,8 +19,9 @@ public class Turtle extends SlogoObjects {
 
 
 
+
 	@Override
-	public ImageView getmyImage() {
+	public ImageView getMyImage() {
 		return myTurtle;
 	}
 

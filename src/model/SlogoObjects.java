@@ -46,18 +46,18 @@ public SlogoObjects(Group root){
 		this.myWidth = myWidth;
 	}
 
-	public abstract ImageView getmyImage();
+	public abstract ImageView getMyImage();
 
 	public void setRotation(int angle) {
-		this.getmyImage().setRotate(angle);
+		this.getMyImage().setRotate(angle);
 	}
 
 	public void showSlogoObject() {
-		this.getmyImage().setVisible(true);
+		this.getMyImage().setVisible(true);
 	}
 
 	public void hideSlogoObject() {
-		this.getmyImage().setVisible(false);
+		this.getMyImage().setVisible(false);
 	}
 
 }
