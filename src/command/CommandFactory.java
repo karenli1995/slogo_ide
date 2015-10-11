@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CommandFactory{
-	private Map<String, Class<?>> reflectionMap = new HashMap();
-	
+	private Map<String, Class<?>> reflectionMap = new HashMap<String, Class<?>>();
+
 	public CommandFactory(){
-		
+
 	}
 
 	public void registerProduct(String commandName, Class<?> commandClass){
@@ -17,7 +17,7 @@ public class CommandFactory{
 	}
 
 	public Command createCommand(String commandName){
-		Class<?> commandClass = (Class<?>)reflectionMap.get(commandName);
+		Class<?> commandClass = reflectionMap.get(commandName);
 		Constructor<?> commandConstructor = null;
 		try {
 			commandConstructor = commandClass.getDeclaredConstructor();
