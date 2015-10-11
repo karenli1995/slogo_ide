@@ -22,23 +22,11 @@ public class Patterner {
 	}
 
 	private void initPattern(){
-		// create a list of things to check
 		patterns = new ArrayList<>();
-		// these are more specific, so add them first to ensure they are checked first
 		File[] folder = new File(RESOURCES_PATH).listFiles();
 		for(File f: folder){
 			patterns.addAll(makePatterns(DEFAULT_RESOURCES + f.getName().split("\\.")[0]));
 		}
-//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "English"));
-//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Syntax"));
-//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Chinese"));
-//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "French"));
-//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "German"));
-//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Italian"));
-//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Portuguese"));
-//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Russian"));
-//		patterns.addAll(makePatterns(DEFAULT_RESOURCES + "Spanish"));
-
 	}
 
 	public List<Entry<String, Pattern>> getPatterns() {
@@ -67,15 +55,16 @@ public class Patterner {
 		// return input.matches(regex);
 	}
 
-	public Map<String, String> matchSplitCommand (String[] tests, List<Entry<String, Pattern>> patterns) {
-		Map<String, String> tempMap = new HashMap<>();
+	public List<String[]> matchSplitCommand (String[] tests, List<Entry<String, Pattern>> patterns) {
+		List<String[]> tempList = new ArrayList<>();
 		for (String s : tests) {
 			boolean matched = false;
 			if (s.trim().length() > 0) {
 				for (Entry<String, Pattern> p : patterns) {
 					if (match(s, p.getValue())) {
-						System.out.println(String.format("%s matches %s", s, p.getKey()));
-						tempMap.put(s, p.getKey());
+						//System.out.println(String.format("%s matches %s", s, p.getKey()));
+						String[] tempArray = {s, p.getKey()};
+						tempList.add(tempArray);
 						matched = true;
 						break;
 					}
@@ -86,8 +75,7 @@ public class Patterner {
 				}
 			}
 		}
-		System.out.println();
-		return tempMap;
+		return tempList;
 	}
 
 }
