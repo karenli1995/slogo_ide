@@ -1,7 +1,6 @@
 package view;
 
 import model.Turtle;
-import controller.ModelController;
 import controller.ViewController;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -9,9 +8,7 @@ import javafx.scene.shape.Rectangle;
 public class TurtleScene extends Rectangle{
 	
 	private ViewController myViewController;
-	
-	private Turtle myTurtle;
-	
+		
 	private int myCanvasWidth = 900;
 	private int myCanvasHeight = 900;
 	
