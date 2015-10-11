@@ -1,23 +1,28 @@
 package view;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import controller.Controller;
+import controller.ModelController;
 import data.Data;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
 public class Buttons extends HBox {
+	private static final int OFFSET_SPACE = 10;
+    private Insets myInset = new Insets(OFFSET_SPACE);
 	private static final String[] BUTTON_NAMES = { "Run", "Clear"};
 	
 	private Map<String, Button> myButtons;
 	private ConsoleUI myConsole;
-	private Controller myController;
+	private ModelController myController;
 	
-	Buttons(ConsoleUI console, Controller controller){
+	Buttons(ConsoleUI console, ModelController controller){
 		myConsole = console;
 		myController = controller;
 		addButtons();
@@ -54,6 +59,7 @@ public class Buttons extends HBox {
 		button.applyCss();
 		button.setOnAction(handler);
 		
+		setAllMargins(button);
 		this.getChildren().add(button);
 		return button;
 	}
@@ -66,5 +72,9 @@ public class Buttons extends HBox {
 	
 	private void clearConsole(){
 		myConsole.clearTextFromConsole();
+	}
+	
+	private void setAllMargins(Node n){
+		HBox.setMargin(n, myInset);
 	}
 }

@@ -21,7 +21,7 @@ public class ParserTester {
 			}
 	
 	public static void main(String[] args) throws IOException {
-		Controller control = new Controller();
+		ModelController control = new ModelController();
 		String input = readFile("examples/procedures/dash.logo", StandardCharsets.UTF_8);
 		input = "fd 50";
 		control.parse(input);

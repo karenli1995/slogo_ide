@@ -2,12 +2,12 @@ package controller;
 
 import data.Data;
 
-public class Controller {
+public class ModelController {
 	private Data allData;
 	private Parser parser;
 
 
-	public Controller(){
+	public ModelController(){
 		this.initData();
 		parser = new Parser();
 	}

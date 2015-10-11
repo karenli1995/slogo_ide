@@ -1,8 +1,5 @@
 package view;
 
-import data.Data;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 

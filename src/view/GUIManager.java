@@ -1,6 +1,6 @@
 package view;
 
-import controller.Controller;
+import controller.ModelController;
 import view.props.Properties;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -12,7 +12,7 @@ public class GUIManager {
 	public static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
     public static final String STYLESHEET = "default.css";
 	private static final double OFFSET_SPACE = 40;
-	private static final double CONSOLE_X = 600;
+	private static final double CONSOLE_X = 800;
 	private static final double CONSOLE_Y = 50;
 
 	protected Stage myStage;
@@ -27,7 +27,7 @@ public class GUIManager {
 	private TurtleScene myTurtleScene;
 	private Properties myProps;
 	
-	public GUIManager(Stage stage, Controller controller){
+	public GUIManager(Stage stage, ModelController controller){
 		myStage = stage;
 		Scene scene = init((int)stage.getWidth(), (int)stage.getHeight());
 		stage.setScene(scene);
