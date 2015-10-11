@@ -47,11 +47,12 @@ public class ConsoleUI extends BorderPane{
 	}
 	
 	public void setConsoleText(String text){
-		String currText = myTabPane.getSelectionModel().getSelectedItem().getContent().getAccessibleText();
+		TextArea currTextArea = (TextArea) myTabPane.getSelectionModel().getSelectedItem().getContent();
+
+		String currText = currTextArea.getAccessibleText();
 		String newText = "";
 		if(currText == null){ newText = text;} else{ newText = currText + text; }
 		
-		TextArea currTextArea = (TextArea) myTabPane.getSelectionModel().getSelectedItem().getContent();
 		currTextArea.setText(newText);
 	}
 

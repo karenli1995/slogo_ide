@@ -23,6 +23,7 @@ public class History extends ScrollPane{
 		this.setPrefHeight(myHeight);
 		
 		addHistory("fd 50 rt 100");
+		addHistory("fd 70 rt 100");
 		
 		this.getChildren().add(myVbox);
 		this.setContent(myVbox);

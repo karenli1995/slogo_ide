@@ -3,6 +3,7 @@ package view;
 import java.util.HashMap;
 import java.util.Map;
 
+import view.props.Properties;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -15,12 +16,8 @@ import javafx.stage.Stage;
 public class GUIManager {
 	private static final String TITLE = "SLogo";
 	private static final double OFFSET_SPACE = 40;
-	private static final double BUTTON_AREA_WIDTH = 400;
-	private static final double BUTTON_HEIGHT = 40;
 	private static final double CONSOLE_X = 600;
-	private static final double CONSOLE_Y = 10;
-	private static final double TURTLE_PROPS_X = 300;
-	private static final double TURTLE_PROPS_Y = 10;
+	private static final double CONSOLE_Y = 50;
 
 	protected Stage myStage;
 	private Scene myScene;
@@ -32,7 +29,7 @@ public class GUIManager {
 	private ConsoleUI myConsoleUI;
 	private Buttons myButtonsOnGUI;
 	private TurtleScene myTurtleScene;
-	private TurtleProps myTurtleProps;
+	private Properties myProps;
 	
 	public GUIManager(Stage stage){
 		myStage = stage;
@@ -52,15 +49,15 @@ public class GUIManager {
 		myTurtleScene.setTranslateX(CONSOLE_X + myConsoleUI.getWidth() + OFFSET_SPACE);
 		myTurtleScene.setTranslateY(CONSOLE_Y);
 		
-		myTurtleProps = new TurtleProps();
-		myTurtleProps.setTranslateX(CONSOLE_X + myConsoleUI.getWidth() + OFFSET_SPACE);
-		myTurtleProps.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + OFFSET_SPACE);
+		myProps = new Properties();
+		myProps.setTranslateX(CONSOLE_X + myConsoleUI.getWidth() + OFFSET_SPACE);
+		myProps.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + OFFSET_SPACE);
 		
 		myHistory = new History(myConsoleUI);
 		myHistory.setTranslateX(CONSOLE_X - OFFSET_SPACE - myHistory.getPrefWidth());
 		myHistory.setTranslateY(CONSOLE_Y);
 		
-		myRoot.getChildren().addAll(myConsoleUI, myButtonsOnGUI, myTurtleScene, myTurtleProps, myHistory);
+		myRoot.getChildren().addAll(myConsoleUI, myButtonsOnGUI, myTurtleScene, myProps, myHistory);
 		stage.show();
 	}
 	
