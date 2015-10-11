@@ -1,6 +1,6 @@
 package controller;
 
-import data.Data;
+import model.Data;
 
 public class ModelController {
 	private Data allData;

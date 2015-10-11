@@ -3,10 +3,10 @@ package controller;
 import java.util.List;
 import java.util.Map;
 
+import model.Data;
 import command.CommandFactory;
 import command.Constant;
 import command.Forward;
-import data.Data;
 
 public class Parser {
 	private String[] inputArray;
