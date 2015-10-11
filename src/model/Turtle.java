@@ -6,9 +6,16 @@ import javafx.scene.image.ImageView;
 public class Turtle extends Object {
 	private final Image myImage = new Image(getClass().getClassLoader().getResourceAsStream("Turtle.png"));
 	private ImageView myTurtle = new ImageView(myImage);
+	
+	private Location myLoc;
+	
+	Turtle(){
+		myLoc = new Location();
+		getMyImage();
+	}
 
 	@Override
-	public ImageView getmyImage() {
+	public ImageView getMyImage() {
 		return myTurtle;
 	}
 

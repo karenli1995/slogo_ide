@@ -1,13 +1,18 @@
 package controller;
 
+import model.Model;
 import model.Turtle;
 
 public class ViewController {
 	
-	Turtle myTurtle;
+	Model myModel;
 	
-	ViewController(){
-		
+	public ViewController(Model model){
+		myModel = model;
+	}
+	
+	public Turtle getDefaultTurtle(){
+		return myModel.getTurtle(0);
 	}
 
 }

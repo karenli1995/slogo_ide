@@ -1,6 +1,7 @@
 package view;
 
 import controller.ModelController;
+import controller.ViewController;
 import view.props.Properties;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -27,7 +28,7 @@ public class GUIManager {
 	private TurtleScene myTurtleScene;
 	private Properties myProps;
 	
-	public GUIManager(Stage stage, ModelController controller){
+	public GUIManager(Stage stage, ModelController modelController, ViewController viewController){
 		myStage = stage;
 		Scene scene = init((int)stage.getWidth(), (int)stage.getHeight());
 		stage.setScene(scene);
@@ -37,11 +38,11 @@ public class GUIManager {
 		myConsoleUI.setTranslateX(CONSOLE_X);
 		myConsoleUI.setTranslateY(CONSOLE_Y);
 		
-		myButtonsOnGUI = new Buttons(myConsoleUI, controller);
+		myButtonsOnGUI = new Buttons(myConsoleUI, modelController);
 		myButtonsOnGUI.setTranslateX(CONSOLE_X);
 		myButtonsOnGUI.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + OFFSET_SPACE);
 		
-		myTurtleScene = new TurtleScene();
+		myTurtleScene = new TurtleScene(viewController);
 		myTurtleScene.setTranslateX(CONSOLE_X + myConsoleUI.getWidth() + OFFSET_SPACE);
 		myTurtleScene.setTranslateY(CONSOLE_Y);
 		
