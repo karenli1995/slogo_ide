@@ -3,21 +3,28 @@ package controller;
 import java.util.List;
 import java.util.Map;
 
+import command.CommandFactory;
+import command.Constant;
+import command.Forward;
 import data.Data;
 
 public class Parser {
 	private String[] inputArray;
 	private Patterner pattern;
 	private List<String[]> commandList;
+	private CommandFactory cf;
     
     public Parser(){
     	pattern = new Patterner();
+    	cf = new CommandFactory();
+    	this.commandRegistration();
     }
     
-	public Patterner getPattern() {
-		return pattern;
-	}
-	
+    private void commandRegistration(){
+    	cf.registerProduct("Forward", Forward.class);
+    	cf.registerProduct("Constant", Constant.class);
+    }
+    	
 	public Data parse(String input, Data allData){
 		Data newData = allData;
 		this.createCommandList(this.removeComments(input));
@@ -54,5 +61,12 @@ public class Parser {
 		return commandList;
 	}
 	
+	public Patterner getPattern() {
+		return pattern;
+	}
+	
+	public CommandFactory getCommandFactory(){
+		return cf;
+	}
 }
 
