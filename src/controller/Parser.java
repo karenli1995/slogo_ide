@@ -1,45 +1,46 @@
 package controller;
 
 import java.util.List;
-import java.util.Map;
 
-import model.Data;
 import command.CommandFactory;
 import command.Constant;
 import command.Forward;
+import model.Data;
 
 public class Parser {
 	private String[] inputArray;
 	private Patterner pattern;
 	private List<String[]> commandList;
 	private CommandFactory cf;
-    
-    public Parser(){
+	private Data allData;
+
+    public Parser(Data allData){
+    	this.allData= allData;
     	pattern = new Patterner();
-    	cf = new CommandFactory();
+    	cf = new CommandFactory(allData);
     	this.commandRegistration();
     }
-    
+
     private void commandRegistration(){
     	cf.registerProduct("Forward", Forward.class);
     	cf.registerProduct("Constant", Constant.class);
     }
-    	
+
 	public Data parse(String input, Data allData){
 		Data newData = allData;
 		this.createCommandList(this.removeComments(input));
 		return newData;
 	}
-	
+
     private void createCommandList(String[] input){
     	commandList = pattern.matchSplitCommand(input, pattern.getPatterns());
     }
-    
+
     private void createCommandList(String input){
 		String[] example = this.splitInput(input);
     	commandList = pattern.matchSplitCommand(example, pattern.getPatterns());
     }
-    
+
     private String removeComments(String input){
     	String[] lines = input.split(System.getProperty("line.separator"));
     	StringBuilder modifiedString = new StringBuilder();
@@ -51,20 +52,20 @@ public class Parser {
     	}
     	return modifiedString.toString();
     }
-    
+
 	public String[] splitInput(String input){
 		inputArray = input.split("\\p{Space}");
 		return inputArray;
 	}
-	
+
 	public List<String[]> getCommandList(){
 		return commandList;
 	}
-	
+
 	public Patterner getPattern() {
 		return pattern;
 	}
-	
+
 	public CommandFactory getCommandFactory(){
 		return cf;
 	}

@@ -1,13 +1,11 @@
 package controller;
 
-import model.Turtle;
-
 public class ViewController {
-	
-	Turtle myTurtle;
-	
+
+	//Object myTurtle = new Turtle();
+
 	ViewController(){
-		
+
 	}
 
 }

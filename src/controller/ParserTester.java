@@ -1,4 +1,4 @@
-package controller;
+/*package controller;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -6,20 +6,18 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Map;
 
 import command.Command;
-
 public class ParserTester {
-	
-	
-	static String readFile(String path, Charset encoding) 
-			  throws IOException 
+
+
+	static String readFile(String path, Charset encoding)
+			  throws IOException
 			{
 			  byte[] encoded = Files.readAllBytes(Paths.get(path));
 			  return new String(encoded, encoding);
 			}
-	
+
 	public static void main(String[] args) throws IOException {
 		ModelController control = new ModelController();
 		String input = readFile("examples/procedures/dash.logo", StandardCharsets.UTF_8);
@@ -33,3 +31,4 @@ public class ParserTester {
 		tempCommand.returnValue();
 	}
 }
+*/

@@ -2,15 +2,22 @@ package command;
 
 import java.util.List;
 
-public abstract class Command {
+import model.Data;
+
+public abstract class Command{
+	private Data allData;
+	public Command(Data allData){
+		this.allData=allData;
+	}
 	protected int value;
 	protected List<Command> children;
-	
+
 	public abstract void returnValue();
-	
-	public abstract void execute();
+
+	//public abstract void execute();
 
 	public int getValue() {
+
 		return value;
 	}
 
