@@ -1,17 +1,18 @@
 package view;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 
-public class History {
-	ScrollPane myHistory;
-	
-	private int myHistoryX = 600;
-	private int myHistoryY = 10;
+public class History extends ScrollPane{
 
+	
 	History(){
-		myHistory = new ScrollPane();
-		myHistory.setTranslateX(myHistoryX);
-		myHistory.setTranslateY(myHistoryY);
+
+	}
+	
+	public void addHistory(String history){
+		Button newHistoryButton = new Button(history);
+		this.getChildren().add(newHistoryButton);
 	}
 	
 	

@@ -1,7 +1,12 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -13,22 +18,25 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class TurtleProps extends BorderPane{
-	TabPane myTabPane;
+    private static final int OFFSET_SPACE = 20;
+    private Insets myInset = new Insets(OFFSET_SPACE);
 	
-	private int myTabPaneWidth = 600;
-	private int myTabPaneHeight = 600;
+	private TabPane myTabPane;
+	private List<Node> allElements;
+	
+	private int myTabPaneWidth = 400;
+	private int myTabPaneHeight = 400;
 	
 	private int myTextAreaWidth = 100;
 	private int myTextAreaHeight = 10;
 	
 	TurtleProps(){
+		allElements = new ArrayList<Node>();
 		myTabPane = new TabPane();
 		myTabPane.setMinSize(myTabPaneWidth, myTabPaneHeight);
 		
 		createTurtleTab();
 		
-//		this.setWidth(myTabPaneWidth);
-//		this.setHeight(myTabPaneHeight);
 		this.setCenter(myTabPane);
 	}
 	
@@ -62,10 +70,46 @@ public class TurtleProps extends BorderPane{
 		Button setPosY = new Button("Set");
 		hb3.getChildren().addAll(turtlePosY, inputPosY, setPosY);
 		
-		vb.getChildren().addAll(hb1, hb2, hb3);
+		HBox hb4 = new HBox();
+		Label turtleShape = new Label("Turtle Shape");
+		ObservableList<String> shapeOptions = 
+			    FXCollections.observableArrayList(
+			        "Turtle",
+			        "Dolphin",
+			        "Dog"
+			    );
+		final ComboBox cbTurtShapes = new ComboBox(shapeOptions);
+		hb4.getChildren().addAll(turtleShape, cbTurtShapes);
+		
+		
+		allElements.add((Node) numTurtles);
+		allElements.add((Node) cbNumTurtles);
+		allElements.add((Node) turtlePosX);
+		allElements.add((Node) turtlePosY);
+		allElements.add((Node) inputPosX);
+		allElements.add((Node) inputPosY);
+		allElements.add((Node) setPosX);
+		allElements.add((Node) setPosY);
+		allElements.add((Node) turtleShape);
+		allElements.add((Node) cbTurtShapes);
+		setAllMargins(allElements);
+		
+//		HBox.setMargin(numTurtles, myInset);
+//		HBox.setMargin(turtlePosX, myInset);
+//		HBox.setMargin(turtlePosY, myInset);
+//		HBox.setMargin(inputPosX, myInset);
+//		HBox.setMargin(inputPosY, myInset);
+
+		
+		vb.getChildren().addAll(hb1, hb2, hb3, hb4);
 		
 		turtleTab.setContent(vb);
 		myTabPane.getTabs().add(turtleTab);
+	}
+	
+	
+	private void setAllMargins(List<Node> nodes){
+		for (Node n : nodes) HBox.setMargin(n, myInset);
 	}
 	
 }

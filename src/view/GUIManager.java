@@ -14,7 +14,8 @@ import javafx.stage.Stage;
 
 public class GUIManager {
 	private static final String TITLE = "SLogo";
-	private static final int BUTTON_AREA_WIDTH = 400;
+	private static final double OFFSET_SPACE = 40;
+	private static final double BUTTON_AREA_WIDTH = 400;
 	private static final double BUTTON_HEIGHT = 40;
 	private static final double CONSOLE_X = 300;
 	private static final double CONSOLE_Y = 10;
@@ -44,15 +45,15 @@ public class GUIManager {
 		
 		myButtonsOnGUI = new Buttons(myConsoleUI);
 		myButtonsOnGUI.setTranslateX(CONSOLE_X);
-		myButtonsOnGUI.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + BUTTON_HEIGHT);
+		myButtonsOnGUI.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + OFFSET_SPACE);
 		
 		myTurtleScene = new TurtleScene();
-		myTurtleScene.setTranslateX(CONSOLE_X + myConsoleUI.getWidth());
+		myTurtleScene.setTranslateX(CONSOLE_X + myConsoleUI.getWidth() + OFFSET_SPACE);
 		myTurtleScene.setTranslateY(CONSOLE_Y);
 		
 		myTurtleProps = new TurtleProps();
 		myTurtleProps.setTranslateX(CONSOLE_X + myConsoleUI.getWidth());
-		myTurtleProps.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + BUTTON_HEIGHT);
+		myTurtleProps.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + OFFSET_SPACE);
 		
 		myRoot.getChildren().addAll(myConsoleUI, myButtonsOnGUI, myTurtleScene, myTurtleProps);
 		stage.show();

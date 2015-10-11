@@ -58,6 +58,7 @@ public class Buttons extends HBox {
 		return button;
 	}
 	
+	
 	private void runConsole(){
 		String consoleText = myConsole.getTextFromConsole();
 		myData = new Data(consoleText);
