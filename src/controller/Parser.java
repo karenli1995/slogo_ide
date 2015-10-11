@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Map;
 import java.util.ResourceBundle;
 
