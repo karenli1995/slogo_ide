@@ -37,10 +37,11 @@ public class TurtleProps extends Tab{
 		HBox hb3 = addTurtYLabel();
 		HBox hb4 = addTurtShapeLabel();
 		HBox hb5 = addTurtVisibleLable();
+		HBox hb6 = addPenColorLabel();
 		
 		setAllMargins(allElements);
 		
-		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5);
+		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5, hb6);
 		
 		this.setContent(vb);
 	}
@@ -128,6 +129,22 @@ public class TurtleProps extends Tab{
 		return hb5;
 	}
 	
+	private HBox addPenColorLabel(){
+		HBox hb6 = new HBox();
+		Label penColor = new Label("Pen Color");
+		ObservableList<String> colors = 
+			    FXCollections.observableArrayList(
+			        "Red",
+			        "Blue"
+			    );
+		final ComboBox cbColors = new ComboBox(colors);
+		hb6.getChildren().addAll(penColor, cbColors);
+		
+		allElements.add((Node) penColor);
+		allElements.add((Node) cbColors);
+		
+		return hb6;
+	}
 	
 	private void setAllMargins(List<Node> nodes){
 		for (Node n : nodes) HBox.setMargin(n, myInset);

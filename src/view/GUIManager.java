@@ -1,20 +1,15 @@
 package view;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import view.props.Properties;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class GUIManager {
 	private static final String TITLE = "SLogo";
+	public static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
+    public static final String STYLESHEET = "default.css";
 	private static final double OFFSET_SPACE = 40;
 	private static final double CONSOLE_X = 600;
 	private static final double CONSOLE_Y = 50;
@@ -73,6 +68,7 @@ public class GUIManager {
 		myWindowHeight = height;
 		myRoot = new Group();
 		myScene = new Scene(myRoot,width,height,Color.AZURE);
+        myScene.getStylesheets().add(DEFAULT_RESOURCE_PACKAGE + STYLESHEET);
 		return myScene;
 	}
 	

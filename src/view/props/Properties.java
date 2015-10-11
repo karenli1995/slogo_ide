@@ -19,6 +19,7 @@ public class Properties extends TabPane{
 		allTabs.add(mySceneProps);
 		this.getTabs().addAll(allTabs);	
 		this.setMinSize(myTabPaneWidth, myTabPaneHeight);
+		
 	}
 
 }
