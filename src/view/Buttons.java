@@ -16,10 +16,10 @@ public class Buttons extends HBox {
 	private Map<String, Button> myButtons;
 	private ConsoleUI myConsole;
 	private Controller myController;
-	private Data myData;
 	
-	Buttons(ConsoleUI console){
+	Buttons(ConsoleUI console, Controller controller){
 		myConsole = console;
+		myController = controller;
 		addButtons();
 	}
 	
@@ -61,7 +61,7 @@ public class Buttons extends HBox {
 	
 	private void runConsole(){
 		String consoleText = myConsole.getTextFromConsole();
-		myData = new Data(consoleText);
+		myController.parse(consoleText);
 	}
 	
 	private void clearConsole(){

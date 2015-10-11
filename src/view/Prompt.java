@@ -1,5 +1,13 @@
 package view;
 
-public class Prompt {
+import javafx.scene.control.TextArea;
 
+public class Prompt extends TextArea{
+
+	
+	
+	Prompt(){
+		
+	}
+	
 }
