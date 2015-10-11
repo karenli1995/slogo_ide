@@ -20,16 +20,15 @@ public class TurtleScene extends Rectangle{
 		this.setHeight(myCanvasHeight);
 		setColor(Color.ANTIQUEWHITE);
 		
-		myTurtle = myViewController.getDefaultTurtle();
-//		setInitTurtPos(myTurtle);
+		myViewController = viewController;
 	}
 	
 	private void setColor(Color color){
 		this.setFill(color);
 	}
 	
-	private void setInitTurtPos(Turtle turt){
-		
+	private void setInitTurtPos(){
+		myViewController.getDefaultTurtle();
 	}
 	
 }

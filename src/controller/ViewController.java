@@ -11,6 +11,10 @@ public class ViewController {
 		myModel = model;
 	}
 	
+	public Model getModel(){
+		return myModel;
+	}
+	
 	public Turtle getDefaultTurtle(){
 		return myModel.getTurtle(0);
 	}

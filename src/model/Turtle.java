@@ -9,10 +9,25 @@ public class Turtle extends Object {
 	
 	private Location myLoc;
 	
-	Turtle(){
-		myLoc = new Location();
-		getMyImage();
+	Turtle(Location loc){
+		myLoc = loc;
+		ImageView turtleImage = getMyImage();
+		ImageView turtle = setTurtLoc(turtleImage);
 	}
+	
+	private ImageView setTurtLoc(ImageView image) {
+		image.setLayoutX(myLoc.getX());
+		image.setLayoutY(myLoc.getY());
+		return image;
+	}
+
+//	public int getLocX(){
+//		return myLoc.getX();
+//	}
+//	
+//	public int getLocY(){
+//		return myLoc.getY();
+//	}
 
 	@Override
 	public ImageView getMyImage() {
