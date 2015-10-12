@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import command.Command;
+import model.Data;
 
 /**
  *
@@ -18,7 +19,7 @@ public class RandomNumber extends Command {
 	private Random random = new Random();
 
 	@Override
-	public double execute(List<Double> max) {
+	public double execute(List<Double> max, Data data) {
 
 		return random.nextInt(max.get(0).intValue());
 	}

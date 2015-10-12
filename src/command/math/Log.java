@@ -6,6 +6,7 @@ package command.math;
 import java.util.List;
 
 import command.Command;
+import model.Data;
 
 /**
  *
@@ -15,7 +16,7 @@ import command.Command;
 public class Log extends Command {
 
 	@Override
-	public double execute(List<Double> number) {
+	public double execute(List<Double> number, Data data) {
 		return Math.log10(number.get(0));
 
 	}

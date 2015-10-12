@@ -2,15 +2,18 @@ package model;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import view.TurtleScene;
 
 public class Turtle extends SlogoObjects {
+	private static TurtleScene turtleScene = new TurtleScene();
 	private final Image myImage = new Image(getClass().getClassLoader().getResourceAsStream("Turtle.png"));
 	private ImageView myTurtle = new ImageView(myImage);
 
 	public Turtle() {
 
-		myTurtle.setLayoutX(500);
-		myTurtle.setLayoutY(500);
+		myTurtle.setLayoutX(turtleScene.getCentrex());
+		myTurtle.setLayoutY(turtleScene.getCentrey());
+
 	}
 
 	@Override
