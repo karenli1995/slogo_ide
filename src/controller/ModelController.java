@@ -16,17 +16,18 @@ public class ModelController {
 	private commandTester commandtester;
 	private Command head;
 
-
-	public ModelController(Stage stage){
-		guiManager=new GUIManager(stage, this);
-		root=guiManager.getRoot();
+	public ModelController(Stage stage) {
+		guiManager = new GUIManager(stage, this);
+		root = guiManager.getRoot();
 		this.initData();
+		root.getChildren().add(this.getData().getTurtle(0).getMyImage());
 		parser = new Parser();
-		commandtester= new commandTester(root,parser,this);// for testing only
+		commandtester = new commandTester(root, this);// for testing
+																// only
 
 	}
 
-	public Data getData(){
+	public Data getData() {
 		return allData;
 	}
 
@@ -34,12 +35,12 @@ public class ModelController {
 		return parser;
 	}
 
-	private void initData(){
+	private void initData() {
 		// TODO: Initial Data
 		allData = new Data(root);
 	}
 
-	public void parse(String s){
+	public void parse(String s) {
 		head = parser.parse(s);
 	}
 
