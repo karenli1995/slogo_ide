@@ -5,8 +5,8 @@ import java.util.ResourceBundle;
 
 import command.Command;
 import command.CommandFactory;
+import command.turtleCommands.Forward;
 import command.CommandFactory;
-import command.Forward;
 
 public class Parser {
 	private String[] inputArray;
