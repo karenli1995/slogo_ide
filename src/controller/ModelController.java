@@ -1,5 +1,6 @@
 package controller;
 
+import command.Command;
 import javafx.scene.Group;
 import javafx.stage.Stage;
 import model.Data;
@@ -10,16 +11,17 @@ public class ModelController {
 
 	private Data allData;
 	private Parser parser;
-private GUIManager guiManager;
-private Group root;
-private commandTester commandtester;
+	private GUIManager guiManager;
+	private Group root;
+	private commandTester commandtester;
+	private Command head;
 
 
 	public ModelController(Stage stage){
 		guiManager=new GUIManager(stage, this);
 		root=guiManager.getRoot();
 		this.initData();
-		parser = new Parser(allData);
+		parser = new Parser();
 		commandtester= new commandTester(root,parser,this);// for testing only
 
 	}
@@ -38,7 +40,7 @@ private commandTester commandtester;
 	}
 
 	public void parse(String s){
-		allData = parser.parse(s, allData);
+		head = parser.parse(s);
 	}
 
 }

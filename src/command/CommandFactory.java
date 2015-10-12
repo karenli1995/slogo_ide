@@ -11,8 +11,8 @@ public class CommandFactory{
 	private Data allData;
 	private Map<String, Class<?>> reflectionMap = new HashMap<String, Class<?>>();
 
-	public CommandFactory(Data allData){
-this.allData= allData;
+	public CommandFactory(){
+
 	}
 
 	public void registerProduct(String commandName, Class<?> commandClass){

@@ -15,8 +15,7 @@ public abstract class TurtleCommands extends Command {
 	/**
 	 * @param allData
 	 */
-	public TurtleCommands(Data allData) {
-		super(allData);
+	public TurtleCommands() {
 		// TODO Auto-generated constructor stub
 	}
 

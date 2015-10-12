@@ -9,14 +9,13 @@ public class Forward extends Command{
 
 
 private ImageView myTurtle;
-	public Forward(Data allData) {
-		super(allData);
-		myTurtle= allData.getTurtle(0).getMyImage();
-		// TODO Auto-generated constructor stub
+	
+	public Forward() {
+		super();
 	}
+	
 	@Override
 	public void returnValue() {
-
 		execute( 50, 1) ;
 		System.out.println("forward works");
 	}
