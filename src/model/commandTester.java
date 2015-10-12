@@ -38,7 +38,7 @@ public class commandTester {
 
 		Command tempCommand = control.getParser().getCommandFactory().createCommand("Forward");
 		tempCommand.returnValue();*/
-		Forward forward = new Forward(control.getData());
+		Forward forward = new Forward();
 		forward.returnValue();
 
 	}

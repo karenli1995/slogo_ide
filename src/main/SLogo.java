@@ -1,10 +1,6 @@
 package main;
 
-import model.Model;
 import controller.ModelController;
-
-import controller.ViewController;
-import view.GUIManager;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
@@ -27,11 +23,8 @@ public class SLogo extends Application {
 		myController = new ModelController(stage);
 
 
-		
-		Model model = new Model();
-		ViewController myViewController = new ViewController(model);
-		ModelController myModelController = new ModelController();
-		new GUIManager(stage, myModelController, myViewController);
+
+
 	}
 
 	public static void main(String[] args) {
