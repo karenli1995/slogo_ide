@@ -23,7 +23,7 @@ public class ModelController {
 		root.getChildren().add(this.getData().getTurtle(0).getMyImage());
 		parser = new Parser();
 		commandtester = new commandTester(root, this);// for testing
-																// only
+		// only
 
 	}
 
@@ -44,6 +44,21 @@ public class ModelController {
 	public void parse(String s){
 		tree = parser.parse(s);
 	}
+
+	public void iterateTreeInOrder(){
+		this.iterateTreeInOrder(tree);
+	}
+	
+	private void iterateTreeInOrder(ParseTreeNode<Command> node){
+		if(node == null) return;
+
+		for(ParseTreeNode<Command> childNode: node.getChildren()){
+			this.iterateTreeInOrder(childNode);
+		}
+		
+		// TODO: Implement execute
+	}
+	
 	
 
 }
