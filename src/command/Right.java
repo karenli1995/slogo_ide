@@ -3,8 +3,7 @@ package command;
 import model.Data;
 
 public class Right extends Command{
-	public Right(Data allData){
-		super(allData);
+	public Right(){
 	}
 	@Override
 	public void returnValue() {

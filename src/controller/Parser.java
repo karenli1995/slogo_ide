@@ -30,12 +30,10 @@ public class Parser {
 	private Command nextNextNode;
 	private ResourceBundle resources;
 	private final String INPUT_RESOURCES = "resources/input";
-	private Data allData;
 
-    public Parser(Data allData){
-    	this.allData= allData;
+    public Parser(){
     	pattern = new Patterner();
-    	cf = new CommandFactory(allData);
+    	cf = new CommandFactory();
     	this.commandRegistration();
     	this.numInputs();
     }
@@ -50,11 +48,10 @@ public class Parser {
 
     }
 
-	public Data parse(String input, Data allData){
-		Data newData = allData;
+	public Command parse(String input){ 
 		this.createCommandList(this.removeComments(input));
 		this.createParseTree();
-		return newData;
+		return head;
 	}
 
 	
@@ -66,7 +63,7 @@ public class Parser {
 				String[] s = commandList.get(i);
 				cf.createCommand(s[1]);
 			}
-			int numInputs = Integer.parseInt(resources.getString(currentNode.getClass().getSimpleName()));
+			//int numInputs = Integer.parseInt(resources.getString(currentNode.getClass().getSimpleName()));
 			
 		}
 	}

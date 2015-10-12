@@ -5,10 +5,7 @@ import java.util.List;
 import model.Data;
 
 public abstract class Command{
-	private Data allData;
-	public Command(Data allData){
-		this.allData=allData;
-	}
+
 	protected int value;
 	protected List<Command> children;
 
@@ -16,6 +13,9 @@ public abstract class Command{
 
 	//public abstract void execute();
 
+	public Command(){
+	}
+	
 	public int getValue() {
 
 		return value;

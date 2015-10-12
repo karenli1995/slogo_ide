@@ -4,8 +4,8 @@ import model.Data;
 
 public class Repeat extends Command{
 	
-	public Repeat(Data allData){
-		super(allData);
+	public Repeat(){
+
 	}
 	@Override
 	public void returnValue() {

@@ -3,9 +3,11 @@ package command;
 import model.Data;
 
 public class ListEnd extends Command {
-	public ListEnd(Data allData){
-		super(allData);
+	
+	public ListEnd(){
+	
 	}
+	
 	@Override
 	public void returnValue() {
 		// TODO Auto-generated method stub

@@ -3,8 +3,8 @@ package command;
 import model.Data;
 
 public class ListStart extends Command {
-	public ListStart(Data allData){
-		super(allData);
+	public ListStart(){
+
 	}
 	@Override
 	public void returnValue() {
