@@ -22,12 +22,10 @@ public class ParserTester {
 
 	public static void main(String[] args) throws IOException {
 		Parser parser = new Parser();
-		String input = readFile("examples/loops/circle.logo", StandardCharsets.UTF_8);
+		String input = readFile("examples/simple/forward_complex2.logo", StandardCharsets.UTF_8);
 		parser.parse(input);
 		List<String[]> lol = parser.getCommandList();
-		for(String[] s: lol){
-			System.out.println(s[0]+", " + s[1]);
-		}
+
 		//Command tempCommand = control.getParser().getCommandFactory().createCommand("Constant");
 		//tempCommand.returnValue();
 	}

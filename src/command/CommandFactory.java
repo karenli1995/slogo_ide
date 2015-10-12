@@ -13,7 +13,7 @@ public class CommandFactory{
 
 	}
 
-	public void registerProduct(String commandName, Class<?> commandClass){
+	public void registerCommand(String commandName, Class<?> commandClass){
 		reflectionMap.put(commandName, commandClass);
 	}
 

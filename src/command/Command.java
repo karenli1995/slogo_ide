@@ -8,13 +8,10 @@ public abstract class Command{
 
 	public abstract int execute(List<Integer> distance);
 
-	//public abstract void execute();
-
 	public Command(){
 	}
 
 	public int getValue() {
-
 		return value;
 	}
 

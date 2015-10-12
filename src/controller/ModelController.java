@@ -43,7 +43,7 @@ public class ModelController {
 
 	public void parse(String s){
 		tree = parser.parse(s);
-
 	}
+	
 
 }
