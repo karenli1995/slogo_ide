@@ -40,6 +40,7 @@ public class ParseTreeNode<Command> {
 
 	public void addChild(ParseTreeNode<Command> child) {
 		children.add(child);
+		child.setParent(this);
 	}
 
 	public void addChildAt(int index, ParseTreeNode<Command> child) throws IndexOutOfBoundsException {
