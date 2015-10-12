@@ -7,7 +7,6 @@ import model.Data;
 public abstract class Command{
 
 	protected int value;
-	protected List<Command> children;
 
 	public abstract void returnValue();
 
@@ -25,11 +24,4 @@ public abstract class Command{
 		this.value = value;
 	}
 
-	public List<Command> getChildren() {
-		return children;
-	}
-
-	public void setChildren(List<Command> children) {
-		this.children = children;
-	}
 }

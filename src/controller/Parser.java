@@ -24,12 +24,9 @@ public class Parser {
 	private Patterner pattern;
 	private List<String[]> commandList;
 	private CommandFactory cf;
-	private Command head;
-	private Command currentNode;
-	private Command nextNode;
-	private Command nextNextNode;
 	private ResourceBundle resources;
 	private final String INPUT_RESOURCES = "resources/input";
+	private ParseTreeNode head;
 
     public Parser(){
     	pattern = new Patterner();
@@ -48,24 +45,15 @@ public class Parser {
 
     }
 
-	public Command parse(String input){ 
+	public ParseTreeNode parse(String input){ 
 		this.createCommandList(this.removeComments(input));
-		this.createParseTree();
+		this.createParseTree(1);
 		return head;
 	}
 
 	
-	private void createParseTree(){
-		for(int i = 0; i< commandList.size(); i++){
-			if(i == 0){
-				this.createHeadNode();
-			} else{
-				String[] s = commandList.get(i);
-				cf.createCommand(s[1]);
-			}
-			//int numInputs = Integer.parseInt(resources.getString(currentNode.getClass().getSimpleName()));
-			
-		}
+	private void createParseTree(int i){
+		
 	}
 	
 	private void numInputs(){
@@ -74,8 +62,7 @@ public class Parser {
 	}
 	
 	private void createHeadNode(){
-		head = cf.createCommand(commandList.get(0)[1]);
-		currentNode = head;
+		head = new ParseTreeNode<Command>(cf.createCommand(commandList.get(0)[1]));
 	}
 	
 

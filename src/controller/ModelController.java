@@ -14,7 +14,7 @@ public class ModelController {
 	private GUIManager guiManager;
 	private Group root;
 	private commandTester commandtester;
-	private Command head;
+	private ParseTreeNode tree;
 
 
 	public ModelController(Stage stage){
@@ -40,7 +40,7 @@ public class ModelController {
 	}
 
 	public void parse(String s){
-		head = parser.parse(s);
+		tree = parser.parse(s);
 	}
 
 }
