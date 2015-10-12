@@ -18,7 +18,7 @@ public class MoveTurtle {
 		return Double.valueOf(df2.format(val));
 	}
 
-	public void execute(int distance, int sign, ImageView myTurtle) {
+	public void execute(double distance, int sign, ImageView myTurtle) {
 		double tempXLocation;
 		double tempYLocation;
 

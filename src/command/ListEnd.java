@@ -21,7 +21,7 @@ public class ListEnd extends Command {
 	}
 
 	@Override
-	public int execute(List<Integer> distance) {
+	public double execute(List<Double> distance) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

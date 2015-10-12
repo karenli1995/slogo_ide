@@ -12,12 +12,12 @@ import command.Command;
  * @author Sally Al
  *
  */
-public class Product extends Command {
+public class Log extends Command {
 
 	@Override
-	public double execute(List<Double> argument) {
+	public double execute(List<Double> number) {
+		return Math.log10(number.get(0));
 
-		return argument.get(0) * argument.get(1);
 	}
 
 }

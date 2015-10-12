@@ -8,7 +8,7 @@ public class Sum extends Command {
 
 
 	@Override
-	public int execute(List<Integer> argument) {
+	public double execute(List<Double> argument) {
 
 		return argument.get(0) + argument.get(1);
 	}
