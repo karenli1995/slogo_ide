@@ -1,6 +1,5 @@
 package model;
 
-import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 
 public abstract class SlogoObjects {
@@ -10,7 +9,7 @@ public abstract class SlogoObjects {
 	private int myWidth;
 
 
-public SlogoObjects(Group root){
+public SlogoObjects(){
 
 }
 
@@ -30,27 +29,29 @@ public SlogoObjects(Group root){
 		this.myY = myY;
 	}
 
-	public int getMyHeight() {
+
+	public void setRotation(int angle) {
+		this.getMyImage().setRotate(angle);
+	}
+
+	private int getMyHeight() {
 		return myHeight;
 	}
 
-	public void setMyHeight(int myHeight) {
+	private void setMyHeight(int myHeight) {
 		this.myHeight = myHeight;
 	}
 
-	public int getMyWidth() {
+	private int getMyWidth() {
 		return myWidth;
 	}
 
-	public void setMyWidth(int myWidth) {
+	private void setMyWidth(int myWidth) {
 		this.myWidth = myWidth;
 	}
 
 	public abstract ImageView getMyImage();
 
-	public void setRotation(int angle) {
-		this.getMyImage().setRotate(angle);
-	}
 
 	public void showSlogoObject() {
 		this.getMyImage().setVisible(true);

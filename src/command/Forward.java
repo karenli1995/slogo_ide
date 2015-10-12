@@ -4,18 +4,20 @@ import java.text.DecimalFormat;
 
 import javafx.scene.image.ImageView;
 
-public class Forward extends TurtleCommands{
+public class Forward extends Command{
 
 
 private ImageView myTurtle;
 
 	public Forward() {
-		super();
+
 
 	}
 
+
 	@Override
 	public void returnValue() {
+
 		execute( 50, 1) ;
 		System.out.println("forward works");
 	}

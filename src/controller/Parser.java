@@ -1,23 +1,12 @@
 package controller;
 
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 
-import model.Data;
 import command.Command;
 import command.CommandFactory;
-import command.Constant;
-import command.Forward;
-import command.ListEnd;
-import command.ListStart;
-import command.Repeat;
-import command.Right;
-
 import command.CommandFactory;
-import command.Constant;
 import command.Forward;
-import model.Data;
 
 public class Parser {
 	private String[] inputArray;
@@ -40,21 +29,21 @@ public class Parser {
 
     private void commandRegistration(){
     	cf.registerProduct("Forward", Forward.class);
-    	cf.registerProduct("Constant", Constant.class);
+    	/*cf.registerProduct("Constant", Constant.class);
     	cf.registerProduct("ListEnd", ListEnd.class);
     	cf.registerProduct("ListStart", ListStart.class);
     	cf.registerProduct("Repeat", Repeat.class);
-    	cf.registerProduct("Right", Right.class);
+    	cf.registerProduct("Right", Right.class);*/
 
     }
 
-	public Command parse(String input){ 
+	public Command parse(String input){
 		this.createCommandList(this.removeComments(input));
 		this.createParseTree();
 		return head;
 	}
 
-	
+
 	private void createParseTree(){
 		for(int i = 0; i< commandList.size(); i++){
 			if(i == 0){
@@ -64,20 +53,20 @@ public class Parser {
 				cf.createCommand(s[1]);
 			}
 			//int numInputs = Integer.parseInt(resources.getString(currentNode.getClass().getSimpleName()));
-			
+
 		}
 	}
-	
+
 	private void numInputs(){
 		resources = ResourceBundle.getBundle(INPUT_RESOURCES);
 
 	}
-	
+
 	private void createHeadNode(){
 		head = cf.createCommand(commandList.get(0)[1]);
 		currentNode = head;
 	}
-	
+
 
 
     private void createCommandList(String[] input){

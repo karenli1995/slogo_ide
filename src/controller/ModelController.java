@@ -1,7 +1,6 @@
 package controller;
 
 import command.Command;
-import command.TurtleCommands;
 import javafx.scene.Group;
 import javafx.stage.Stage;
 import model.Data;
@@ -16,21 +15,19 @@ public class ModelController {
 	private Group root;
 	private commandTester commandtester;
 	private Command head;
-	TurtleCommands turtleCommands;
 
-
-	public ModelController(Stage stage){
-		guiManager=new GUIManager(stage, this);
-		root=guiManager.getRoot();
+	public ModelController(Stage stage) {
+		guiManager = new GUIManager(stage, this);
+		root = guiManager.getRoot();
 		this.initData();
+		root.getChildren().add(this.getData().getTurtle(0).getMyImage());
 		parser = new Parser();
-
-		//turtleCommands.setTurtle(allData.getTurtle(0).getMyImage());
-		commandtester= new commandTester(root,parser,this);// for testing only
+		commandtester = new commandTester(root, this);// for testing
+																// only
 
 	}
 
-	public Data getData(){
+	public Data getData() {
 		return allData;
 	}
 
@@ -38,12 +35,12 @@ public class ModelController {
 		return parser;
 	}
 
-	private void initData(){
+	private void initData() {
 		// TODO: Initial Data
 		allData = new Data(root);
 	}
 
-	public void parse(String s){
+	public void parse(String s) {
 		head = parser.parse(s);
 	}
 
