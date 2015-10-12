@@ -23,7 +23,6 @@ public class SLogo extends Application {
 		myController = new ModelController(stage);
 
 
-
 	}
 
 	public static void main(String[] args) {

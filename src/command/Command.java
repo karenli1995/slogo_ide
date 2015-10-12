@@ -6,7 +6,7 @@ public abstract class Command{
 
 	protected int value;
 
-	public abstract void returnValue();
+	public abstract int execute(List<Integer> distance);
 
 	//public abstract void execute();
 
