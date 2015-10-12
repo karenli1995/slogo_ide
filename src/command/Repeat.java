@@ -1,11 +1,12 @@
 package command;
 
+import java.util.List;
+
 public class Repeat extends Command{
 
 	public Repeat(){
 
 	}
-	@Override
 	public void returnValue() {
 		// TODO Auto-generated method stub
 
@@ -14,6 +15,11 @@ public class Repeat extends Command{
 	public void execute() {
 		// TODO Auto-generated method stub
 
+	}
+	@Override
+	public int execute(List<Integer> distance) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
