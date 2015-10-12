@@ -22,7 +22,7 @@ public class ParserTester {
 
 	public static void main(String[] args) throws IOException {
 		Parser parser = new Parser();
-		String input = readFile("examples/simple/forward_complex2.logo", StandardCharsets.UTF_8);
+		String input = readFile("examples/procedures/dash.logo", StandardCharsets.UTF_8);
 		parser.parse(input);
 		List<String[]> lol = parser.getCommandList();
 
