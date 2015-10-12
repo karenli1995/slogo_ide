@@ -9,7 +9,7 @@ import command.Constant;
 import command.ListEnd;
 import command.ListStart;
 import command.Repeat;
-import command.Sum;
+import command.math.Sum;
 import command.turtleCommands.Forward;
 import command.turtleCommands.Right;
 import command.CommandFactory;
