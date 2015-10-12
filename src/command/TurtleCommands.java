@@ -3,7 +3,7 @@
  */
 package command;
 
-import model.Data;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -11,12 +11,14 @@ import model.Data;
  *
  */
 public abstract class TurtleCommands extends Command {
-
-	/**
-	 * @param allData
-	 */
+ImageView turtle;
 	public TurtleCommands() {
-		// TODO Auto-generated constructor stub
+
 	}
+
+	public void setTurtle(ImageView turtle){
+		this.turtle=turtle;
+	};
+	public ImageView getTurtle(){return turtle;}
 
 }

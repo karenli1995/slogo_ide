@@ -3,17 +3,17 @@ package command;
 import java.text.DecimalFormat;
 
 import javafx.scene.image.ImageView;
-import model.Data;
 
-public class Forward extends Command{
+public class Forward extends TurtleCommands{
 
 
 private ImageView myTurtle;
-	
+
 	public Forward() {
 		super();
+
 	}
-	
+
 	@Override
 	public void returnValue() {
 		execute( 50, 1) ;
@@ -44,6 +44,11 @@ private ImageView myTurtle;
 		}
 		myTurtle.setLayoutX(tempXLocation);
 		myTurtle.setLayoutY(tempYLocation);
+	}
+
+	public void makeTurtle(ImageView myImage) {
+		myTurtle=myImage;
+
 	}
 
 

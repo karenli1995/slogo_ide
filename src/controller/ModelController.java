@@ -1,6 +1,7 @@
 package controller;
 
 import command.Command;
+import command.TurtleCommands;
 import javafx.scene.Group;
 import javafx.stage.Stage;
 import model.Data;
@@ -15,6 +16,7 @@ public class ModelController {
 	private Group root;
 	private commandTester commandtester;
 	private Command head;
+	TurtleCommands turtleCommands;
 
 
 	public ModelController(Stage stage){
@@ -22,6 +24,8 @@ public class ModelController {
 		root=guiManager.getRoot();
 		this.initData();
 		parser = new Parser();
+
+		//turtleCommands.setTurtle(allData.getTurtle(0).getMyImage());
 		commandtester= new commandTester(root,parser,this);// for testing only
 
 	}
