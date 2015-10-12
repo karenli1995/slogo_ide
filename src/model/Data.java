@@ -11,7 +11,7 @@ public class Data {
 	List<SlogoObjects> myTurtles = new ArrayList<SlogoObjects>();
 
 	public Data(Group root) {
-		Turtle defaultTurtle = new Turtle(root);
+		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
 	}
 

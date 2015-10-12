@@ -5,10 +5,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
-import model.Data;
-
 public class CommandFactory{
-	private Data allData;
+
 	private Map<String, Class<?>> reflectionMap = new HashMap<String, Class<?>>();
 
 	public CommandFactory(){
@@ -25,7 +23,6 @@ public class CommandFactory{
 		try {
 			commandConstructor = commandClass.getDeclaredConstructor();
 		} catch (NoSuchMethodException | SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Command command = null;
@@ -33,7 +30,6 @@ public class CommandFactory{
 			command = (Command)commandConstructor.newInstance(new Object[] { });
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return command;

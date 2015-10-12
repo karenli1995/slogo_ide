@@ -1,23 +1,12 @@
 package controller;
 
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 
-import model.Data;
 import command.Command;
 import command.CommandFactory;
-import command.Constant;
-import command.Forward;
-import command.ListEnd;
-import command.ListStart;
-import command.Repeat;
-import command.Right;
-
 import command.CommandFactory;
-import command.Constant;
 import command.Forward;
-import model.Data;
 
 public class Parser {
 	private String[] inputArray;
@@ -37,13 +26,14 @@ public class Parser {
 
     private void commandRegistration(){
     	cf.registerProduct("Forward", Forward.class);
-    	cf.registerProduct("Constant", Constant.class);
+    	/*cf.registerProduct("Constant", Constant.class);
     	cf.registerProduct("ListEnd", ListEnd.class);
     	cf.registerProduct("ListStart", ListStart.class);
     	cf.registerProduct("Repeat", Repeat.class);
-    	cf.registerProduct("Right", Right.class);
+    	cf.registerProduct("Right", Right.class);*/
 
     }
+
 
 	public ParseTreeNode parse(String input){ 
 		this.createCommandList(this.removeComments(input));
@@ -51,20 +41,22 @@ public class Parser {
 		return head;
 	}
 
+
 	
 	private void createParseTree(int i){
 		
+
 	}
-	
+
 	private void numInputs(){
 		resources = ResourceBundle.getBundle(INPUT_RESOURCES);
 
 	}
-	
+
 	private void createHeadNode(){
 		head = new ParseTreeNode<Command>(cf.createCommand(commandList.get(0)[1]));
 	}
-	
+
 
 
     private void createCommandList(String[] input){

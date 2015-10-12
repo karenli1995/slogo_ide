@@ -5,7 +5,6 @@ package model;
 
 import command.Forward;
 import controller.ModelController;
-import controller.Parser;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 
@@ -16,29 +15,20 @@ import javafx.scene.control.Button;
  */
 public class commandTester {
 
-	/**
-	 * @param root
-	 * @param parser
-	 * @param modelController
-	 */
-	public commandTester(Group root, Parser parser, ModelController modelController) {
+
+	public commandTester(Group root,  ModelController modelController) {
 		Button b1 = new Button("fd 50 test");
 		root.getChildren().add(b1);
-		b1.setOnAction(e -> fd50(parser, modelController));
+		b1.setOnAction(e -> fd50( modelController));
 
 	}
 
 
 
-	private void fd50(Parser parser, ModelController control) {
-	/*	String input;
+	private void fd50( ModelController control) {
 
-		input = "fd 50";
-		control.parse(input);
-
-		Command tempCommand = control.getParser().getCommandFactory().createCommand("Forward");
-		tempCommand.returnValue();*/
-		Forward forward = new Forward(control.getData());
+		Forward forward = new Forward();
+		forward.makeTurtle(control.getData().getTurtle(0).getMyImage());
 		forward.returnValue();
 
 	}
