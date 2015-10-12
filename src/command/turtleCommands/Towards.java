@@ -7,22 +7,20 @@ import java.util.List;
 
 import command.Command;
 import model.Data;
+import view.TurtleScene;
 
 /**
  *
  * @author Sally Al
  *
  */
-public class Backward extends Command{
+public class Towards extends Command {
+	TurtleScene turtleScene = new TurtleScene();
 
 	@Override
 	public double execute(List<Double> distance, Data data) {
 
-		MoveTurtle moveTurtle = new MoveTurtle();
-		moveTurtle.execute(distance.get(0), 1, data.getTurtle(0).getMyImage());
-		 return distance.get(0);
+		return 0;
 	}
-
-
 
 }

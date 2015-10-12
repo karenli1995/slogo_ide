@@ -6,7 +6,7 @@ package command.turtleCommands;
 import java.util.List;
 
 import command.Command;
-import javafx.scene.image.ImageView;
+import model.Data;
 
 /**
  *
@@ -15,17 +15,13 @@ import javafx.scene.image.ImageView;
  */
 public class Right extends Command {
 
-	private ImageView myTurtle;
 
-	public void makeTurtle(ImageView myImage) {
-		myTurtle = myImage;
-
-	}
 
 
 	@Override
-	public double execute(List<Double> angle) {
-		myTurtle.setRotate(myTurtle.getRotate()+angle.get(0));
+	public double execute(List<Double> angle, Data data) {
+		data.getTurtle(0).getMyImage().setRotate(data.getTurtle(0).getMyImage().getRotate()+angle.get(0));
+
 		return angle.get(0);
 	}
 

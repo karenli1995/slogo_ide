@@ -3,24 +3,16 @@ package command.turtleCommands;
 import java.util.List;
 
 import command.Command;
-import javafx.scene.image.ImageView;
+import model.Data;
 
 public class Forward extends Command {
 
-	private ImageView myTurtle;
-
-	public void makeTurtle(ImageView myImage) {
-		myTurtle = myImage;
-
-	}
-
-
 
 	@Override
-	public double execute(List<Double> distance) {
+	public double execute(List<Double> distance, Data data) {
 
 		MoveTurtle moveTurtle = new MoveTurtle();
-		 moveTurtle.execute(distance.get(0), -1, myTurtle);
+		 moveTurtle.execute(distance.get(0), -1, data.getTurtle(0).getMyImage());
 		 return distance.get(0);
 
 	}

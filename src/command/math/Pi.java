@@ -6,6 +6,7 @@ package command.math;
 import java.util.List;
 
 import command.Command;
+import model.Data;
 
 /**
  *
@@ -15,7 +16,7 @@ import command.Command;
 public class Pi extends Command {
 
 	@Override
-	public double execute(List<Double> argument) {
+	public double execute(List<Double> argument, Data data) {
 
 		return 3.1416;
 	}
