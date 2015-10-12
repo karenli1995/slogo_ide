@@ -24,7 +24,7 @@ import javafx.scene.control.Button;
 
 public class commandTester {
 
-	List<Integer> distance = new ArrayList<Integer>();
+	List<Double> distance = new ArrayList<Double>();
 
 	public commandTester(Group root, ModelController modelController) {
 
@@ -46,7 +46,7 @@ public class commandTester {
 		b4.setLayoutX(b3.getLayoutX() + 50);
 		root.getChildren().add(b4);
 		distance.clear();
-		distance.add(45);
+		distance.add((double) 45);
 		b4.setOnAction(e -> left(modelController));
 	}
 
@@ -73,7 +73,7 @@ public class commandTester {
 		Backward backward = new Backward();
 		backward.makeTurtle(control.getData().getTurtle(0).getMyImage());
 		distance.clear();
-		distance.add(50);
+		distance.add((double) 50);
 		backward.execute(distance);
 	}
 
@@ -82,7 +82,7 @@ public class commandTester {
 		Forward forward = new Forward();
 		forward.makeTurtle(control.getData().getTurtle(0).getMyImage());
 		distance.clear();
-		distance.add(50);
+		distance.add((double) 50);
 		forward.execute(distance);
 
 	}
