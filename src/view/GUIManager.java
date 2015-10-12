@@ -1,12 +1,11 @@
 package view;
 
 import controller.ModelController;
-import controller.ViewController;
-import view.props.Properties;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import view.props.Properties;
 
 public class GUIManager {
 	private static final String TITLE = "SLogo";
@@ -19,46 +18,46 @@ public class GUIManager {
 	protected Stage myStage;
 	private Scene myScene;
 	private Group myRoot;
-	
+
 	private int myWindowWidth, myWindowHeight;
-	
+
 	private History myHistory;
 	private ConsoleUI myConsoleUI;
 	private Buttons myButtonsOnGUI;
 	private TurtleScene myTurtleScene;
 	private Properties myProps;
-	
-	public GUIManager(Stage stage, ModelController modelController, ViewController viewController){
+
+	public GUIManager(Stage stage, ModelController controller){
 		myStage = stage;
 		Scene scene = init((int)stage.getWidth(), (int)stage.getHeight());
 		stage.setScene(scene);
 		stage.setTitle(TITLE);
-		
+
 		myConsoleUI = new ConsoleUI();
 		myConsoleUI.setTranslateX(CONSOLE_X);
 		myConsoleUI.setTranslateY(CONSOLE_Y);
-		
-		myButtonsOnGUI = new Buttons(myConsoleUI, modelController);
+
+		myButtonsOnGUI = new Buttons(myConsoleUI, controller);
 		myButtonsOnGUI.setTranslateX(CONSOLE_X);
 		myButtonsOnGUI.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + OFFSET_SPACE);
-		
-		myTurtleScene = new TurtleScene(viewController);
+
+		myTurtleScene = new TurtleScene();
 		myTurtleScene.setTranslateX(CONSOLE_X + myConsoleUI.getWidth() + OFFSET_SPACE);
 		myTurtleScene.setTranslateY(CONSOLE_Y);
-		
+
 		myProps = new Properties();
 		myProps.setTranslateX(CONSOLE_X + myConsoleUI.getWidth() + OFFSET_SPACE);
 		myProps.setTranslateY(CONSOLE_Y + myConsoleUI.getHeight() + OFFSET_SPACE);
-		
+
 		myHistory = new History(myConsoleUI);
 		myHistory.setTranslateX(CONSOLE_X - OFFSET_SPACE - myHistory.getPrefWidth());
 		myHistory.setTranslateY(CONSOLE_Y);
-		
+
 		myRoot.getChildren().addAll(myConsoleUI, myButtonsOnGUI, myTurtleScene, myProps, myHistory);
 		stage.show();
 	}
-	
-	
+	public Group getRoot(){return myRoot;}
+
 	/**
 	 * Initialize the window
 	 * @param width The width of the window
@@ -73,5 +72,5 @@ public class GUIManager {
 //        myScene.getStylesheets().add(DEFAULT_RESOURCE_PACKAGE + STYLESHEET);
 		return myScene;
 	}
-	
+
 }

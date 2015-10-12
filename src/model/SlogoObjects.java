@@ -2,11 +2,16 @@ package model;
 
 import javafx.scene.image.ImageView;
 
-public abstract class Object {
+public abstract class SlogoObjects {
 	private int myX;
 	private int myY;
 	private int myHeight;
 	private int myWidth;
+
+
+public SlogoObjects(){
+
+}
 
 	public int getMyX() {
 		return myX;
@@ -24,27 +29,29 @@ public abstract class Object {
 		this.myY = myY;
 	}
 
-	public int getMyHeight() {
+
+	public void setRotation(int angle) {
+		this.getMyImage().setRotate(angle);
+	}
+
+	private int getMyHeight() {
 		return myHeight;
 	}
 
-	public void setMyHeight(int myHeight) {
+	private void setMyHeight(int myHeight) {
 		this.myHeight = myHeight;
 	}
 
-	public int getMyWidth() {
+	private int getMyWidth() {
 		return myWidth;
 	}
 
-	public void setMyWidth(int myWidth) {
+	private void setMyWidth(int myWidth) {
 		this.myWidth = myWidth;
 	}
 
 	public abstract ImageView getMyImage();
 
-	public void setRotation(int angle) {
-		this.getMyImage().setRotate(angle);
-	}
 
 	public void showSlogoObject() {
 		this.getMyImage().setVisible(true);

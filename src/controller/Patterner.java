@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class Patterner {
 	private final String RESOURCES_PATH = "src/resources/languages/";
-	private final String DEFAULT_RESOURCES = "resources.languages/";
+	private final String DEFAULT_RESOURCES = "resources/languages/";
 
 	private List<Entry<String, Pattern>> patterns;
 
