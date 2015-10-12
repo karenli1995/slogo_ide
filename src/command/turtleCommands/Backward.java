@@ -17,7 +17,7 @@ public class Backward extends Command{
 
 	private ImageView myTurtle;
 	@Override
-	public int execute(List<Integer> distance) {
+	public double execute(List<Double> distance) {
 
 		MoveTurtle moveTurtle = new MoveTurtle();
 		moveTurtle.execute(distance.get(0), 1, myTurtle);

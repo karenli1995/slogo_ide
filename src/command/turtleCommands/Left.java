@@ -24,7 +24,7 @@ public class Left extends Command {
 
 
 	@Override
-	public int execute(List<Integer> angle) {
+	public double execute(List<Double> angle) {
 		myTurtle.setRotate(myTurtle.getRotate()-angle.get(0));
 		return angle.get(0);
 	}

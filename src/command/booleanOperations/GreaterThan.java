@@ -15,7 +15,7 @@ import command.Command;
 public class GreaterThan extends Command {
 
 	@Override
-	public int execute(List<Integer> argument) {
+	public double execute(List<Double> argument) {
 		if (argument.get(0) > argument.get(1)) {
 			return 1;
 		} else {

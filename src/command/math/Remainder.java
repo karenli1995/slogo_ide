@@ -1,7 +1,7 @@
 /**
  *
  */
-package command.booleanOperations;
+package command.math;
 
 import java.util.List;
 
@@ -12,14 +12,12 @@ import command.Command;
  * @author Sally Al
  *
  */
-public class Equal extends Command {
+public class Remainder extends Command {
 
 	@Override
 	public double execute(List<Double> argument) {
-		if (argument.get(0) == argument.get(1)) {
-			return 1;
-		} else {
-			return 0;
-		}
+
+		return argument.get(0) % argument.get(1);
 	}
+
 }
