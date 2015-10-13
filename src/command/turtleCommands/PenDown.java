@@ -13,15 +13,12 @@ import model.Data;
  * @author Sally Al
  *
  */
-public class Backward extends Command{
+public class PenDown extends Command {
 
 	@Override
 	public double execute(List<Double> distance, Data data) {
-		MoveTurtle moveTurtle = new MoveTurtle();
-		moveTurtle.moveFdorBK(distance.get(0), 1, data.getTurtle(0).getMyImage());
-		 return distance.get(0);
+		data.setPen(1);
+		return 1;
 	}
-
-
 
 }

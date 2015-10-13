@@ -12,7 +12,9 @@ import command.turtleCommands.Goto;
 import command.turtleCommands.HideTurtle;
 import command.turtleCommands.Left;
 import command.turtleCommands.Right;
+import command.turtleCommands.SetHeading;
 import command.turtleCommands.ShowTurtle;
+import command.turtleQueries.XCOR;
 import controller.ModelController;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -32,6 +34,7 @@ public class commandTester {
 	public commandTester(Group root, ModelController control) {
 
 		Button b1 = new Button("fd 50 test");
+		b1.setLayoutX(100);
 		root.getChildren().add(b1);
 		b1.setOnAction(e -> fd50(control));
 
@@ -66,6 +69,29 @@ public class commandTester {
 		b7.setLayoutX(b6.getLayoutX() + 50);
 		root.getChildren().add(b7);
 		b7.setOnAction(e -> hide(control));
+
+		Button b8 = new Button("SetH");
+		b8.setLayoutX(b7.getLayoutX() + 50);
+		root.getChildren().add(b8);
+		b8.setOnAction(e -> seth(control));
+
+		Button b9 = new Button("XCOR");
+		b9.setLayoutX(b8.getLayoutX() + 50);
+		root.getChildren().add(b9);
+		b9.setOnAction(e -> xcor(control));
+	}
+
+
+	private void xcor(ModelController control) {
+		XCOR xcor = new XCOR();
+		xcor.execute(null, control.getData());
+	}
+
+	private void seth(ModelController control) {
+		SetHeading seth = new SetHeading();
+		distance.clear();
+		distance.add(90.0);
+		seth.execute(distance, control.getData());
 	}
 
 	private void hide(ModelController control) {
@@ -98,10 +124,6 @@ public class commandTester {
 		right.execute(distance, control.getData());
 	}
 
-	/**
-	 * @param modelController
-	 * @return
-	 */
 	private void right(ModelController control) {
 		Right right = new Right();
 		right.execute(distance, control.getData());
