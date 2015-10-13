@@ -10,7 +10,8 @@ public class Turtle extends SlogoObjects {
 	private ImageView myTurtle = new ImageView(myImage);
 
 	public Turtle() {
-
+		myTurtle.setFitWidth(40);
+		myTurtle.setFitHeight(40);
 		myTurtle.setLayoutX(turtleScene.getCentrex());
 		myTurtle.setLayoutY(turtleScene.getCentrey());
 

@@ -10,7 +10,6 @@ public class SLogo extends Application {
 
 	ModelController myController;
 
-
 	@Override
 	public void start(Stage stage) {
 		Screen screen = Screen.getPrimary();
@@ -19,9 +18,7 @@ public class SLogo extends Application {
 		stage.setHeight(bounds.getHeight());
 		stage.setResizable(false);
 
-
 		myController = new ModelController(stage);
-
 
 	}
 

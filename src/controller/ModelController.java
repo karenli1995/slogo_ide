@@ -21,9 +21,9 @@ public class ModelController {
 		root = guiManager.getRoot();
 		this.initData();
 		root.getChildren().add(this.getData().getTurtle(0).getMyImage());
+		root.getChildren().add(this.allData.getLine());
 		parser = new Parser();
-		commandtester = new commandTester(root, this);// for testing
-		// only
+		commandtester = new commandTester(root, this);// for testing only
 
 	}
 
@@ -36,29 +36,25 @@ public class ModelController {
 	}
 
 	private void initData() {
-		// TODO: Initial Data
 		allData = new Data(root);
 	}
 
-
-	public void parse(String s){
+	public void parse(String s) {
 		tree = parser.parse(s);
 	}
 
-	public void iterateTreeInOrder(){
+	public void iterateTreeInOrder() {
 		this.iterateTreeInOrder(tree);
 	}
-	
-	private void iterateTreeInOrder(ParseTreeNode<Command> node){
-		if(node == null) return;
 
-		for(ParseTreeNode<Command> childNode: node.getChildren()){
+	private void iterateTreeInOrder(ParseTreeNode<Command> node) {
+		if (node == null)
+			return;
+
+		for (ParseTreeNode<Command> childNode : node.getChildren()) {
 			this.iterateTreeInOrder(childNode);
 		}
-		
-		// TODO: Implement execute
+
 	}
-	
-	
 
 }

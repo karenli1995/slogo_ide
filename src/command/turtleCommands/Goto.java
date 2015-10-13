@@ -14,7 +14,8 @@ import model.Data;
  *
  */
 public class Goto extends Command {
-	MoveTurtle moveTurtle= new MoveTurtle();
+	MoveTurtle moveTurtle = new MoveTurtle();
+
 	@Override
 	public double execute(List<Double> newLocation, Data data) {
 
