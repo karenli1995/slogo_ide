@@ -13,14 +13,14 @@ import model.Data;
  * @author Sally Al
  *
  */
-public class Left extends Command {
+public class ShowTurtle extends Command {
 
 
 	@Override
 	public double execute(List<Double> angle,Data data) {
-		data.getTurtle(0).getMyImage().setRotate(data.getTurtle(0).getMyImage().getRotate()-angle.get(0));
-		return angle.get(0);
-	}
+		data.getTurtle(0).getMyImage().setVisible(true);
+		return 1;
 
+	}
 
 }
