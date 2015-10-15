@@ -10,6 +10,7 @@ public class Turtle extends SlogoObjects {
 	public Turtle() {
 		myTurtle.setFitWidth(40);
 		myTurtle.setFitHeight(40);
+		//getMyImage();
 	}
 
 	@Override

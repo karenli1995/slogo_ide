@@ -1,7 +1,6 @@
 package view;
 
 import controller.ModelController;
-import controller.ViewController;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -15,8 +14,8 @@ public class GUIManager extends BorderPane {
 	private static final String TITLE = "SLogo";
 	private static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
     private static final String STYLESHEET = "default.css";
-    private static final double SCENE_WIDTH = Screen.getPrimary().getVisualBounds().getWidth()*3/7;
-	private static final double SCENE_HEIGHT = Screen.getPrimary().getVisualBounds().getWidth()*9/20;
+//    private static final double SCENE_WIDTH = Screen.getPrimary().getVisualBounds().getWidth()*3/7;
+//	private static final double SCENE_HEIGHT = Screen.getPrimary().getVisualBounds().getWidth()*9/20;
 
 	protected Stage myStage;
 	private static Scene myScene;
@@ -24,14 +23,12 @@ public class GUIManager extends BorderPane {
 
 	private int myWindowWidth, myWindowHeight;
 
-	private History myHistory;
 	private ConsoleUI myConsoleUI;
 	private Buttons myButtonsOnGUI;
 	private TurtleScene myTurtleScene;
 	private Properties myProps;
-	private AvailableUserCommands myAvailableUserCommands;
 
-	public GUIManager(Stage stage, ModelController modelController, ViewController viewController){
+	public GUIManager(Stage stage, ModelController modelController){
 		myStage = stage;
 		Scene scene = init((int)stage.getWidth(), (int)stage.getHeight());
 		stage.setScene(scene);
@@ -45,16 +42,15 @@ public class GUIManager extends BorderPane {
 		this.setBottom(myConsoleUI);
 		
 		GridPane histAndUser = new GridPane();
-		myHistory = new History(myConsoleUI, scene);
+		History myHistory = new History(myConsoleUI, scene);
 		histAndUser.add(myHistory, 1, 1);
-		
-		myAvailableUserCommands =  new AvailableUserCommands(myConsoleUI, scene);
+		AvailableUserCommands myAvailableUserCommands =  new AvailableUserCommands(myConsoleUI, scene);
 		histAndUser.add(myAvailableUserCommands, 2, 1);
 
 		this.setLeft(histAndUser);
 		
 
-		myTurtleScene = new TurtleScene(SCENE_WIDTH, SCENE_HEIGHT);
+		myTurtleScene = new TurtleScene(modelController);
 		this.setCenter(myTurtleScene);
 
 		myProps = new Properties(scene);
@@ -63,7 +59,10 @@ public class GUIManager extends BorderPane {
 		myRoot.getChildren().addAll(this);
 		stage.show();
 	}
-	public Group getRoot(){return myRoot;}
+	
+	public Group getRoot(){
+		return myRoot;
+	}
 
 	/**
 	 * Initialize the window
