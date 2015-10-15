@@ -4,28 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 public class History extends ScrollPane{
-	private int myWidth = 500;
-	private int myHeight = 900;
+	private int myWidth = 50;
+	private int myHeight = 9;
 
 	private ConsoleUI myConsole;
 	private List<Button> myHistoryButtons = new ArrayList<Button>();
 	private VBox myVbox = new VBox();
 
-	History(ConsoleUI console){
+	public History(ConsoleUI console, Scene scene){
 		myConsole = console;
 
-		this.setPrefWidth(myWidth);
-		this.setPrefHeight(myHeight);
-
+		this.setPrefWidth(scene.getWidth()/7);
+		
 		addHistory("fd 50 rt 100");
 		addHistory("fd 70 rt 100");
-
+		
 		this.getChildren().add(myVbox);
 		this.setContent(myVbox);
 

@@ -10,7 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -23,7 +25,10 @@ public class TurtleProps extends Tab{
 	private int myTextAreaWidth = 100;
 	private int myTextAreaHeight = 10;
 	
-	TurtleProps(){
+	TabPane myTabPane;
+	Tab myTab;
+	
+	public TurtleProps(){
 		allElements = new ArrayList<Node>();
 		createTurtleTab();
 	}

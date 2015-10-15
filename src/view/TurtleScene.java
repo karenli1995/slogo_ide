@@ -1,6 +1,7 @@
 package view;
 
 import controller.ViewController;
+import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.Turtle;
@@ -11,12 +12,12 @@ public class TurtleScene extends Rectangle {
 
 	private Turtle myTurtle;
 
-	private static final int myCanvasWidth = 900;
-	private static final int myCanvasHeight = 900;
-	private static final int myCanvasXPosition = 200;
-	private static final int myCanvasYPosition = 200;
-	private static final int centreX = (myCanvasWidth / 2) + myCanvasXPosition;
-	private static final int centreY = (myCanvasHeight / 2) + myCanvasYPosition;
+	private static double myCanvasWidth = SlogoProperties.SCENE_WIDTH*3/7;
+	private static double myCanvasHeight = SlogoProperties.SCENE_HEIGHT*9/20;
+	private static final int myCanvasXPosition = 350;
+	private static final int myCanvasYPosition = 0;
+	private static final int centreX = (int)((myCanvasWidth / 2) + myCanvasXPosition);
+	private static final int centreY = (int)((myCanvasHeight / 2) + myCanvasYPosition);
 
 	public TurtleScene() {
 		this.setWidth(myCanvasWidth);
