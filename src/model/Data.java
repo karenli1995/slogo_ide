@@ -12,6 +12,12 @@ public class Data {
 	private List<SlogoObjects> myTurtles = new ArrayList<SlogoObjects>();
 
 	private int pen = 0;
+	
+	public Data() {
+		Turtle defaultTurtle = new Turtle();
+		myTurtles.add(defaultTurtle);
+	}
+	
 
 	public void setPen(int option) {
 		pen = option;
@@ -19,11 +25,6 @@ public class Data {
 
 	public int getPen() {
 		return pen;
-	}
-
-	public Data(Group root) {
-		Turtle defaultTurtle = new Turtle();
-		myTurtles.add(defaultTurtle);
 	}
 
 	public SlogoObjects getTurtle(int turtleId) {

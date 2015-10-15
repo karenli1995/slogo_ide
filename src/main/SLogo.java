@@ -1,14 +1,15 @@
 package main;
 
+import view.GUIManager;
+import model.Data;
 import controller.ModelController;
+import controller.ViewController;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class SLogo extends Application {
-
-	ModelController myController;
 
 	@Override
 	public void start(Stage stage) {
@@ -18,7 +19,10 @@ public class SLogo extends Application {
 		stage.setHeight(bounds.getHeight());
 		stage.setResizable(false);
 
-		myController = new ModelController(stage);
+		Data model = new Data();
+		ViewController myViewController = new ViewController(model);
+		ModelController myModelController = new ModelController(stage);
+		new GUIManager(stage, myModelController, myViewController);
 
 	}
 

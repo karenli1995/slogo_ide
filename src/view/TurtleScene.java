@@ -1,43 +1,58 @@
 package view;
 
+import java.util.List;
+
 import controller.ViewController;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.Turtle;
 
-public class TurtleScene extends Rectangle {
+public class TurtleScene extends TabPane {
 
 	private ViewController myViewController;
 	
-	private Turtle myTurtle;
+	private List<Tab> myTabs;
 
-	private static double myCanvasWidth = SlogoProperties.SCENE_WIDTH*3/7;
-	private static double myCanvasHeight = SlogoProperties.SCENE_HEIGHT*9/20;
-	private static final int myCanvasXPosition = 350;
-	private static final int myCanvasYPosition = 0;
-	private static final int centreX = (int)((myCanvasWidth / 2) + myCanvasXPosition);
-	private static final int centreY = (int)((myCanvasHeight / 2) + myCanvasYPosition);
+	private double myCanvasWidth;
+	private double myCanvasHeight;
 
-	public TurtleScene() {
-		this.setWidth(myCanvasWidth);
-		this.setHeight(myCanvasHeight);
-		setColor(Color.ANTIQUEWHITE);
+	public TurtleScene(double width, double height) {
+		myCanvasWidth = width;
+		myCanvasHeight = height;
+		addNewTab();
 
 		//myTurtle = myViewController.getDefaultTurtle();
 		//		setInitTurtPos(myTurtle);
 	}
+	
+	private void addNewTab() {
+ 		Tab tab = new Tab();
+ 		tab.setText("New Tab");
+ 		Rectangle rect = new Rectangle();
+ 		rect.setWidth(myCanvasWidth);
+ 		rect.setHeight(myCanvasHeight);
+ 		setColor(rect, Color.ALICEBLUE);
+ 		tab.setContent(rect);
+ 		
+ 		myTabs.add(tab);
+ 	
+ 		this.getTabs().add(tab);
+ 	}
+ 	
 
-	private void setColor(Color color) {
-		this.setFill(color);
+	private void setColor(Rectangle rect, Color color) {
+		rect.setFill(color);
 	}
 
-	public  int getCentrex() {
-		return centreX;
-	}
-
-	public  int getCentrey() {
-		return centreY;
-	}
+//	public  int getCentrex() {
+//		return centreX;
+//	}
+//
+//	public  int getCentrey() {
+//		return centreY;
+//	}
 
 }

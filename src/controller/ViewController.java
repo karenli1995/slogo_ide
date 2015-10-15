@@ -1,11 +1,13 @@
 package controller;
 
+import model.Data;
+
 public class ViewController {
 
-	//Object myTurtle = new Turtle();
+	Data myData;
 
-	ViewController(){
-
+	public ViewController(Data model){
+		myData = model;
 	}
 
 }
