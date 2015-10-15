@@ -8,18 +8,16 @@ import javafx.scene.Group;
 import javafx.scene.shape.Line;
 
 public class Data {
-	private Group root;
 	
-	private List<SlogoObjects> myTurtles = new ArrayList<SlogoObjects>();
+	private List<SlogoObjects> myTurtles;
 	private List<Trail> myTrails = new ArrayList<Trail>();
 
 //	private int pen = 0;
 	
 	public Data() {
+		myTurtles = new ArrayList<SlogoObjects>();
 		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
-//		root.getChildren().add(this.getData().getTurtle(0).getMyImage());
-		System.out.println(myTurtles.size());
 	}
 	
 

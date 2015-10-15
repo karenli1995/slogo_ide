@@ -12,7 +12,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class TurtleScene extends TabPane {
 	
@@ -39,7 +38,7 @@ public class TurtleScene extends TabPane {
  		GraphicsContext gc = canvas.getGraphicsContext2D();
  		setColor(gc, canvas, Color.ALICEBLUE);
         
- 		//setTurtle(canvas);
+ 		setTurtle(gc);
  		tab.setContent(canvas);
  		
  		myTabs.add(tab);
@@ -49,8 +48,8 @@ public class TurtleScene extends TabPane {
  	
 	private void setTurtle(GraphicsContext gc) {
 //		myController.getData();
-		ImageView currTurt = myController.getData().getTurtle(0).getMyImage();
-		//gc.drawImage(currTurt,0,0);
+		Image currTurt = myController.getData().getTurtle(0).getImage();
+		gc.drawImage(currTurt,0,0);
 	}
 
 	private void setColor(GraphicsContext gc, Canvas canvas, Color color) {

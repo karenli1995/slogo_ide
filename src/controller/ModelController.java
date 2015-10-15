@@ -17,9 +17,9 @@ public class ModelController {
 	private ParseTreeNode tree;
 
 	public ModelController(Stage stage) {
+		this.initData();
 		guiManager = new GUIManager(stage, this);
 		root = guiManager.getRoot();
-		this.initData();
 //		root.getChildren().add(this.getData().getTurtle(0).getMyImage());
 //		root.getChildren().add(this.allData.getLine());
 		parser = new Parser();

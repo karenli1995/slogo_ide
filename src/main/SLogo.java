@@ -1,7 +1,5 @@
 package main;
 
-import view.GUIManager;
-import model.Data;
 import controller.ModelController;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
