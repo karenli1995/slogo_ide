@@ -1,11 +1,13 @@
 package model;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public abstract class SlogoObjects {
 
 	private double myHeadAngle;
 	private int isShowing = 1;
+	
 
 	public SlogoObjects() {
 
@@ -33,6 +35,8 @@ public abstract class SlogoObjects {
 
 	public abstract ImageView getMyImage();
 
+	public abstract Image getImage();
+	
 	public void showSlogoObject() {
 		this.getMyImage().setVisible(true);
 	}

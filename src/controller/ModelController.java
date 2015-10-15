@@ -17,13 +17,13 @@ public class ModelController {
 	private ParseTreeNode<Command> tree;
 
 	public ModelController(Stage stage) {
+		this.initData();
 		guiManager = new GUIManager(stage, this);
 		root = guiManager.getRoot();
-		this.initData();
-		root.getChildren().add(this.getData().getTurtle(0).getMyImage());
-		root.getChildren().add(this.allData.getLine());
+//		root.getChildren().add(this.getData().getTurtle(0).getMyImage());
+//		root.getChildren().add(this.allData.getLine());
 		parser = new Parser();
-		commandtester = new commandTester(root, this);// for testing only
+		//commandtester = new commandTester(root, this);// for testing only
 
 	}
 
@@ -36,7 +36,7 @@ public class ModelController {
 	}
 
 	private void initData() {
-		allData = new Data(root);
+		allData = new Data();
 	}
 
 	public void parse(String s) {
