@@ -8,23 +8,26 @@ import javafx.scene.Group;
 import javafx.scene.shape.Line;
 
 public class Data {
+	
+	private List<SlogoObjects> myTurtles;
+	private List<Trail> myTrails = new ArrayList<Trail>();
 
-	private List<SlogoObjects> myTurtles = new ArrayList<SlogoObjects>();
-
-	private int pen = 0;
-
-	public void setPen(int option) {
-		pen = option;
-	}
-
-	public int getPen() {
-		return pen;
-	}
-
-	public Data(Group root) {
+//	private int pen = 0;
+	
+	public Data() {
+		myTurtles = new ArrayList<SlogoObjects>();
 		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
 	}
+	
+
+//	public void setPen(int option) {
+//		pen = option;
+//	}
+//
+//	public int getPen() {
+//		return pen;
+//	}
 
 	public SlogoObjects getTurtle(int turtleId) {
 		return myTurtles.get(turtleId);
@@ -34,7 +37,7 @@ public class Data {
 	 * public void addTurtle() { myTurtles.add(new Turtle()); }
 	 */
 
-	public Collection<SlogoObjects> getAllTurtles() {
+	public List<SlogoObjects> getAllTurtles() {
 		return myTurtles;
 	}
 

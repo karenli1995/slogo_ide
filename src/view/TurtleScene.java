@@ -1,46 +1,68 @@
 package view;
 
-import controller.ViewController;
-import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.stage.Screen;
+import java.util.ArrayList;
+import java.util.List;
+
 import model.Turtle;
+import controller.ModelController;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
-public class TurtleScene extends Rectangle {
+public class TurtleScene extends TabPane {
+	
+	private List<Tab> myTabs;
+	private ModelController myController;
+	
+	private double myCanvasWidth = SlogoProperties.getSceneWidth()*3/7;
+	private double myCanvasHeight = SlogoProperties.getSceneHeight()*5/7;
 
-	private ViewController myViewController;
-
-	private Turtle myTurtle;
-
-	private static double myCanvasWidth = (Screen.getPrimary().getVisualBounds().getWidth())*3/7;
-	private static double myCanvasHeight = (Screen.getPrimary().getVisualBounds().getHeight())*4/5;	
-	private static final double myCanvasXPosition = 360/548.5714285714286*myCanvasWidth; //empirically found
-	private static final int centreX = (int)((myCanvasWidth / 2) + myCanvasXPosition-20);//subtracted value should be half width of turtle
-	private static final int centreY = (int)((myCanvasHeight / 2)-20); //subtracted value should be half the height of the turtle
-
-	public TurtleScene() {
-		this.setWidth(myCanvasWidth);
-		this.setHeight(myCanvasHeight);
-		setColor(Color.ANTIQUEWHITE);
-		System.out.println(myCanvasWidth);
-		System.out.println(centreY);
-
-
-		// myTurtle = myViewController.getDefaultTurtle();
-		// setInitTurtPos(myTurtle);
+	public TurtleScene(ModelController controller) {
+		myTabs = new ArrayList<Tab>();
+		myController = controller;
+		addNewTab();
+		//myTurtle = myViewController.getDefaultTurtle();
+		//		setInitTurtPos(myTurtle);
+	}
+	
+	private void addNewTab() {
+ 		Tab tab = new Tab();
+ 		tab.setText("New Tab");
+ 		Canvas canvas = new Canvas();
+ 		canvas.setWidth(myCanvasWidth);
+ 		canvas.setHeight(myCanvasHeight);
+ 		GraphicsContext gc = canvas.getGraphicsContext2D();
+ 		setColor(gc, canvas, Color.ALICEBLUE);
+        
+ 		setTurtle(gc);
+ 		tab.setContent(canvas);
+ 		
+ 		myTabs.add(tab);
+ 	
+ 		this.getTabs().add(tab);
+ 	}
+ 	
+	private void setTurtle(GraphicsContext gc) {
+//		myController.getData();
+		Image currTurt = myController.getData().getTurtle(0).getImage();
+		gc.drawImage(currTurt,0,0);
 	}
 
-	private void setColor(Color color) {
-		this.setFill(color);
+	private void setColor(GraphicsContext gc, Canvas canvas, Color color) {
+		gc.setFill(color);
+		gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
 	}
 
-	public  int getCentrex() {
-		return centreX;
-	}
-
-	public  int getCentrey() {
-		return centreY;
-	}
+//	public  int getCentrex() {
+//		return centreX;
+//	}
+//
+//	public  int getCentrey() {
+//		return centreY;
+//	}
 
 }

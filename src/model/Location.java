@@ -1,9 +1,9 @@
 package model;
 
-import java.awt.Point;
+import javafx.geometry.Point2D;
 
 public class Location {
-	private Point myPoint;
+	private Point2D myPoint;
 	private double myDirection;
 	
 	private static final int CIRCLE = 360;
@@ -16,28 +16,28 @@ public class Location {
 		this(oldBearing.getPoint(), oldBearing.getDirection());
 	}
 
-	public Location(Point point, double direction) {
-		myPoint = new Point(point);
+	public Location(Point2D point, double direction) {
+		myPoint = point;
 		myDirection = direction;
 	}
 
 	public Location() {
-		this(new Point(), NORTH);
+		this(new Point2D(0,0), NORTH);
 	}
 	
-	public void setX(int x) {
-		myPoint.x = x;
+	public void setX(double x) {
+		myPoint.add(x, myPoint.getY());
 	}
 
-	public void setY(int y) {
-		myPoint.y = y;
+	public void setY(double y) {
+		myPoint.add(myPoint.getX(), y);
 	}
 
-	public void setPoint(Point point) {
-		myPoint = new Point(point);
+	public void setPoint(Point2D point) {
+		myPoint = point;
 	}
 
-	public Point getPoint() {
+	public Point2D getPoint() {
 		return myPoint;
 	}
 
@@ -45,12 +45,12 @@ public class Location {
 		myDirection = direction;
 	}
 
-	public int getX() {
-		return myPoint.x;
+	public double getX() {
+		return myPoint.getX();
 	}
 
-	public int getY() {
-		return myPoint.y;
+	public double getY() {
+		return myPoint.getY();
 	}
 
 	public double getDirection() {
