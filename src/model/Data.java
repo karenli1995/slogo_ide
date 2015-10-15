@@ -46,4 +46,15 @@ public class Data {
 	public Line getLine() {
 		return myLine;
 	}
+
+	public void setPen(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public double getPen() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

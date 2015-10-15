@@ -6,6 +6,7 @@ package command.turtleCommands;
 import java.util.List;
 
 import command.Command;
+import controller.ParseTreeNode;
 import model.Data;
 
 /**
@@ -16,9 +17,10 @@ import model.Data;
 public class PenUp extends Command {
 
 	@Override
-	public double execute(List<Double> distance, Data data) {
+	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
 		data.setPen(0);
-		return 0;
+		this.setValue(0);
+		return data;
 	}
 
 }

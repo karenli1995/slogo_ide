@@ -6,6 +6,7 @@ package command.turtleCommands;
 import java.util.List;
 
 import command.Command;
+import controller.ParseTreeNode;
 import model.Data;
 import view.TurtleScene;
 
@@ -15,12 +16,13 @@ import view.TurtleScene;
  *
  */
 public class Towards extends Command {
-	TurtleScene turtleScene = new TurtleScene();
+//	TurtleScene turtleScene = new TurtleScene();
 
 	@Override
-	public double execute(List<Double> distance, Data data) {
+	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
 
-		return 0;
+		this.setValue(0);
+		return data;
 	}
 
 }

@@ -2,23 +2,24 @@ package command;
 
 import java.util.List;
 
+import controller.ParseTreeNode;
 import model.Data;
 
-public abstract class Command{
+public abstract class Command {
 
-	protected int value;
+	protected double value;
 
-	public abstract double execute(List<Double> distance, Data data);
+	public abstract Data execute(List<ParseTreeNode<Command>> distance, Data data);
 
-	public Command(){
+	public Command() {
 	}
 
-	public int getValue() {
+	public double getValue() {
 		return value;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void setValue(double d) {
+		this.value = d;
 	}
 
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import command.Command;
+import controller.ParseTreeNode;
 import model.Data;
 
 /**
@@ -19,9 +20,10 @@ public class RandomNumber extends Command {
 	private Random random = new Random();
 
 	@Override
-	public double execute(List<Double> max, Data data) {
+	public Data execute(List<ParseTreeNode<Command>> max, Data data) {
 
-		return random.nextInt(max.get(0).intValue());
+		this.setValue(random.nextInt((int) max.get(0).getCommand().getValue()));
+		return data;
 	}
 
 }

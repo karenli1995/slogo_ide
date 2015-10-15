@@ -55,6 +55,7 @@ public class ModelController {
 			this.iterateTreeInOrder(childNode);
 		}
 
+		allData = node.getCommand().execute(node.getChildren(), allData);
 	}
 
 }

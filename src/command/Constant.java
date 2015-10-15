@@ -2,14 +2,15 @@ package command;
 
 import java.util.List;
 
+import controller.ParseTreeNode;
 import model.Data;
 
 public class Constant extends Command {
 
 	@Override
-	public double execute(List<Double> distance, Data data) {
+	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
 		// TODO Auto-generated method stub
-		return 0;
+		return data;
 	}
 
 }
