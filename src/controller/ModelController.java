@@ -14,7 +14,7 @@ public class ModelController {
 	private GUIManager guiManager;
 	private Group root;
 	private commandTester commandtester;
-	private ParseTreeNode tree;
+	private ParseTreeNode<Command> tree;
 
 	public ModelController(Stage stage) {
 		guiManager = new GUIManager(stage, this);

@@ -24,14 +24,14 @@ public class Parser {
 	private ParseTreeNode<Command> head;
 	private ParseTreeNode<Command> currentNode;
 
-	public Parser(){
+	public Parser() {
 		pattern = new Patterner();
 		cf = new CommandFactory();
 		this.commandRegistration();
 		this.numInputs();
 	}
 
-	private void commandRegistration(){
+	private void commandRegistration() {
 		cf.registerCommand("Forward", Forward.class);
 		cf.registerCommand("Constant", Constant.class);
 		cf.registerCommand("ListEnd", ListEnd.class);
@@ -39,11 +39,9 @@ public class Parser {
 		cf.registerCommand("Repeat", Repeat.class);
 		cf.registerCommand("Right", Right.class);
 		cf.registerCommand("Sum", Sum.class);
-
 	}
 
-
-	public ParseTreeNode<Command> parse(String input){ 
+	public ParseTreeNode<Command> parse(String input) {
 		this.createCommandList(this.removeComments(input));
 
 		this.createHeadNode();
@@ -52,12 +50,13 @@ public class Parser {
 		return head;
 	}
 
-	private int createParseTree(){
+	private int createParseTree() {
 		int index = 0;
-		while(index<commandList.size()){
-			index = this.createParseTree(index+1, currentNode);
-			if(index<commandList.size()){
-				ParseTreeNode<Command> newNode = new ParseTreeNode<Command>(cf.createCommand(commandList.get(index)[1]));
+		while (index < commandList.size()) {
+			index = this.createParseTree(index + 1, currentNode);
+			if (index < commandList.size()) {
+				ParseTreeNode<Command> newNode = new ParseTreeNode<Command>(
+						cf.createCommand(commandList.get(index)[1]));
 				currentNode.addChild(newNode);
 				currentNode = newNode;
 			}
@@ -65,22 +64,24 @@ public class Parser {
 		return index;
 	}
 
-	private int createParseTree(int index, ParseTreeNode<Command> p){
+	private int createParseTree(int index, ParseTreeNode<Command> p) {
 		int numInputs = Integer.parseInt(resources.getString(p.getCommand().getClass().getSimpleName()));
-		if(numInputs == 0){
+		if (numInputs == 0) {
 			numInputs++;
 		}
-		//System.out.println(numInputs);
-		
-		if(p.getCommand().getClass().getSimpleName().equals("Constant")  || p.getCommand().getClass().getSimpleName().equals("ListEnd")){
+		// System.out.println(numInputs);
+
+		if (p.getCommand().getClass().getSimpleName().equals("Constant")
+				|| p.getCommand().getClass().getSimpleName().equals("ListEnd")) {
 			currentNode = p;
 			return index;
-		} else{
-			for(int j = 0; j<numInputs;j++){
-				ParseTreeNode<Command> newNode = new ParseTreeNode<Command>(cf.createCommand(commandList.get(index)[1]));
-				if(newNode.getCommand().getClass().getSimpleName().equals("Constant")){
+		} else {
+			for (int j = 0; j < numInputs; j++) {
+				ParseTreeNode<Command> newNode = new ParseTreeNode<Command>(
+						cf.createCommand(commandList.get(index)[1]));
+				if (newNode.getCommand().getClass().getSimpleName().equals("Constant")) {
 					((Command) newNode.getCommand()).setValue(Integer.parseInt(commandList.get(index)[0]));
-				} else{
+				} else {
 					((Command) newNode.getCommand()).setValue(index);
 				}
 				p.addChild(newNode);
@@ -91,42 +92,43 @@ public class Parser {
 		return index;
 	}
 
-	public void printTreeInOrder(ParseTreeNode<Command> head){
-		if(head == null) return;
+	public void printTreeInOrder(ParseTreeNode<Command> head) {
+		if (head == null)
+			return;
 
-		for(ParseTreeNode<Command> node: head.getChildren()){
+		for (ParseTreeNode<Command> node : head.getChildren()) {
 			printTreeInOrder(node);
 		}
 
-		System.out.println(head.getCommand().getClass().getSimpleName()+" "+ ((Command) head.getCommand()).getValue() + "->" + head.getParent().getCommand().getClass().getSimpleName() + " " +((Command) head.getParent().getCommand()).getValue());
+		System.out.println(head.getCommand().getClass().getSimpleName() + " " + ((Command) head.getCommand()).getValue()
+				+ "->" + head.getParent().getCommand().getClass().getSimpleName() + " "
+				+ ((Command) head.getParent().getCommand()).getValue());
 	}
 
-	private void numInputs(){
+	private void numInputs() {
 		resources = ResourceBundle.getBundle(INPUT_RESOURCES);
 
 	}
 
-	private void createHeadNode(){
+	private void createHeadNode() {
 		head = new ParseTreeNode<Command>(cf.createCommand(commandList.get(0)[1]));
 		currentNode = head;
 	}
 
-
-
-	private void createCommandList(String[] input){
+	private void createCommandList(String[] input) {
 		commandList = pattern.matchSplitCommand(input, pattern.getPatterns());
 	}
 
-	private void createCommandList(String input){
+	private void createCommandList(String input) {
 		String[] example = this.splitInput(input);
 		commandList = pattern.matchSplitCommand(example, pattern.getPatterns());
 	}
 
-	private String removeComments(String input){
+	private String removeComments(String input) {
 		String[] lines = input.split(System.getProperty("line.separator"));
 		StringBuilder modifiedString = new StringBuilder();
-		for(String s: lines){
-			if(!s.contains("#")){
+		for (String s : lines) {
+			if (!s.contains("#")) {
 				modifiedString.append(s);
 				modifiedString.append(System.getProperty("line.separator"));
 			}
@@ -134,12 +136,12 @@ public class Parser {
 		return modifiedString.toString();
 	}
 
-	public String[] splitInput(String input){
+	public String[] splitInput(String input) {
 		inputArray = input.split("\\p{Space}");
 		return inputArray;
 	}
 
-	public List<String[]> getCommandList(){
+	public List<String[]> getCommandList() {
 		return commandList;
 	}
 
@@ -147,8 +149,7 @@ public class Parser {
 		return pattern;
 	}
 
-	public CommandFactory getCommandFactory(){
+	public CommandFactory getCommandFactory() {
 		return cf;
 	}
 }
-
