@@ -5,9 +5,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 
 public class AvailableUserCommands extends ScrollPane{
-
-	private int myWidth = 500;
-	private int myHeight = 900;
 	
 	public AvailableUserCommands(ConsoleUI console, Scene scene){
 		this.setPrefWidth(scene.getWidth()/7);
