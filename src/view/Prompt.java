@@ -1,13 +1,12 @@
 package view;
 
-import javafx.scene.control.TextArea;
+import javafx.scene.Scene;
 
-public class Prompt extends TextArea{
-
+public class Prompt extends ConsoleTabPane {
 	
-	
-	Prompt(){
-		
+	public Prompt(Scene scene){
+		super(scene);
+		myFirstTab.setText("Prompt");
 	}
-	
+
 }
