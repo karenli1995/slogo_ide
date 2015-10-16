@@ -26,9 +26,11 @@ public class GUIManager extends BorderPane {
 	private ConsoleUI myConsoleUI;
 	private TurtleScene myTurtleScene;
 	private Properties myProps;
+	private MenuPanel myMenu;
 
 	public GUIManager(Stage stage, ModelController modelController){
 		myStage = stage;
+		myMenu = new MenuPanel(myStage, modelController);
 		Scene scene = init((int)stage.getWidth(), (int)stage.getHeight());
 		stage.setScene(scene);
 		stage.setTitle(TITLE);
@@ -40,6 +42,7 @@ public class GUIManager extends BorderPane {
 		addCenterPane(modelController);
 		addRightPane(scene);
 		addLeftPane(scene);
+		//this.setTop(myMenu);
 
 		myRoot.getChildren().addAll(this);
 		stage.show();
