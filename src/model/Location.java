@@ -17,17 +17,11 @@ public class Location {
 	public Location(Point2D point, double direction) {
 		myPoint = point;
 		myDirection = direction;
-//		pointToScreenX();
-//		pointToScreenY();
 	}
 
 	public Location() {
 		this(new Point2D(0,0), 90);
 	}
-	
-//	public double pointToScreenX(){
-//		SlogoProperties.getSceneWidth()/2;
-//	}
 	
 	public void setX(double x) {
 		myPoint.add(x, myPoint.getY());

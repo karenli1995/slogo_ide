@@ -2,9 +2,12 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+
 import javafx.scene.shape.Line;
 
-public class Data {
+public class Data implements Observer{
 	
 	private List<SlogoObjects> myTurtles;
 	private List<Trail> myTrails = new ArrayList<Trail>();
@@ -42,5 +45,19 @@ public class Data {
 
 	public Line getLine() {
 		return myLine;
+	}
+
+
+	@Override
+	public void update(Observable o, Object arg) {
+		for (SlogoObjects slogoObj : myTurtles){
+			slogoObj.addObserver(this);
+			if (slogoObj == o) {
+				System.out.println("karen " );
+			} else {
+				System.out.println("jenny ");
+			}
+		}
+		
 	}
 }

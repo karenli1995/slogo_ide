@@ -1,6 +1,8 @@
 package model;
 
-public abstract class SlogoObjects {
+import java.util.Observable;
+
+public abstract class SlogoObjects extends Observable{
 
 	private Location myLocation;
 	private double myHeadAngle;
@@ -13,6 +15,8 @@ public abstract class SlogoObjects {
 	
 	public void setLocation(Location loc) {
 		myLocation = loc;
+		setChanged();
+		notifyObservers();
 	}
 	
 	public Location getLocation() {
@@ -21,6 +25,8 @@ public abstract class SlogoObjects {
 
 	public void setIsShowing(boolean value) {
 		isShowing = value;
+		setChanged();
+		notifyObservers();
 	}
 
 	public boolean getIsShowing() {

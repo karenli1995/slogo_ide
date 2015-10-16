@@ -203,7 +203,7 @@ public class TurtleProps extends Tab{
 		    
 		    myTurtleScene.setColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
 		    System.out.println("ComboBox Action (selected: " + chosenColor.toString().toUpperCase() + ")");
-		});
+		}); 
 		 
 		
 		hb7.getChildren().addAll(background, cmbColors);
