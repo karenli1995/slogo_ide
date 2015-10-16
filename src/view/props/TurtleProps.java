@@ -165,6 +165,7 @@ public class TurtleProps extends Tab{
 		
 		return hb6;
 	}
+
 	private void setAllMargins(List<Node> nodes){
 		for (Node n : nodes) HBox.setMargin(n, myInset);
 	}
