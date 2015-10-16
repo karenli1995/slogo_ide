@@ -48,6 +48,8 @@ public class ModelController {
 	}
 
 	public Data traverse(){
-		return traverser.traverse(tree, allData);
+		allData = traverser.traverse(tree, allData);
+		return allData;
 	}
+	
 }

@@ -16,6 +16,7 @@ import command.math.Quotient;
 import command.math.Sine;
 import command.math.Sum;
 import command.turtleCommands.Forward;
+import command.turtleCommands.SetPosition;
 import command.turtleCommands.Right;
 import command.turtleQueries.IsPenDown;
 import command.CommandFactory;
@@ -52,7 +53,7 @@ public class Parser {
 		cf.registerCommand("Variable", Variable.class);
 		cf.registerCommand("Quotient", Quotient.class);
 		cf.registerCommand("Sine", Sine.class);
-
+		cf.registerCommand("SetPosition", SetPosition.class);
 	}
 
 	public List<ParseTreeNode<Command>> parse(String input) {
