@@ -27,13 +27,16 @@ public class Parser {
 	private List<String[]> commandList;
 	private CommandFactory cf;
 	private ResourceBundle resources;
+	private ResourceBundle errorResources;
 	private final String INPUT_RESOURCES = "resources/input";
+	private final String ERROR_RESOURCES = "resources/error";
 	private ParseTreeNode<Command> head;
 	private ParseTreeNode<Command> currentNode;
 	private List<ParseTreeNode<Command>> nodeList;
 	private int bracketCount;
 
 	public Parser() {
+		errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
 		pattern = new Patterner();
 		cf = new CommandFactory();
 		this.commandRegistration();
@@ -41,39 +44,40 @@ public class Parser {
 	}
 
 	private void commandRegistration() {
-		cf.registerCommand("Forward", Forward.class);
-		cf.registerCommand("Constant", Constant.class);
-		cf.registerCommand("ListEnd", ListEnd.class);
-		cf.registerCommand("ListStart", ListStart.class);
-		cf.registerCommand("Repeat", Repeat.class);
-		cf.registerCommand("Right", Right.class);
-		cf.registerCommand("Sum", Sum.class);
-		cf.registerCommand("IsPenDown", IsPenDown.class);
-		cf.registerCommand("DoTimes", DoTimes.class);
-		cf.registerCommand("Variable", Variable.class);
-		cf.registerCommand("Quotient", Quotient.class);
-		cf.registerCommand("Sine", Sine.class);
-		cf.registerCommand("SetPosition", SetPosition.class);
+		try {
+			cf.registerCommand("Forward", Forward.class);
+			cf.registerCommand("Constant", Constant.class);
+			cf.registerCommand("ListEnd", ListEnd.class);
+			cf.registerCommand("ListStart", ListStart.class);
+			cf.registerCommand("Repeat", Repeat.class);
+			cf.registerCommand("Right", Right.class);
+			cf.registerCommand("Sum", Sum.class);
+			cf.registerCommand("IsPenDown", IsPenDown.class);
+			cf.registerCommand("DoTimes", DoTimes.class);
+			cf.registerCommand("Variable", Variable.class);
+			cf.registerCommand("Quotient", Quotient.class);
+			cf.registerCommand("Sine", Sine.class);
+			cf.registerCommand("SetPosition", SetPosition.class);
+		} catch (Exception e) {
+			throw new ParserException(errorResources.getString("commandRegistration"));
+		}
+
 	}
 
 	public List<ParseTreeNode<Command>> parse(String input) {
 		this.createCommandList(this.removeComments(input));
-		for (String[] s : commandList) {
-			System.out.println(s[0] + ", " + s[1]);
+		nodeList = new ArrayList<ParseTreeNode<Command>>();
+		if(this.checkInput()){
+			this.createHeadNode();
+			this.createParseTree();
 		}
-		this.createHeadNode();
-		this.createParseTree();
-		for (ParseTreeNode<Command> node : nodeList) {
-			this.printTreeInOrder(node);
-			System.out.println("");
-		}
+
 		return nodeList;
 	}
 
 	private int createParseTree() {
 		int index = 0;
 		bracketCount = 0;
-		nodeList = new ArrayList<ParseTreeNode<Command>>();
 		nodeList.add(head);
 		while (index < commandList.size() - 1) {
 			index = this.createParseTree(index + 1, currentNode);
@@ -87,9 +91,22 @@ public class Parser {
 		return index;
 	}
 
+	public void printCommandList() {
+		for (String[] s : commandList) {
+			System.out.println(s[0] + ", " + s[1]);
+		}
+	}
+
+	public void printTree() {
+		for (ParseTreeNode<Command> node : nodeList) {
+			this.printTreeInOrder(node);
+			System.out.println("");
+		}
+	}
+
 	private int createParseTree(int index, ParseTreeNode<Command> p) {
 		int numInputs = Integer.parseInt(resources.getString(p.getCommand().getClass().getSimpleName()));
-		
+
 		if (numInputs == 0) {
 			return index;
 		} else {
@@ -124,7 +141,6 @@ public class Parser {
 
 	private void numInputs() {
 		resources = ResourceBundle.getBundle(INPUT_RESOURCES);
-
 	}
 
 	private void createHeadNode() {
@@ -142,6 +158,7 @@ public class Parser {
 	}
 
 	private String removeComments(String input) {
+
 		String[] lines = input.split(System.getProperty("line.separator"));
 		StringBuilder modifiedString = new StringBuilder();
 		for (String s : lines) {
@@ -168,5 +185,9 @@ public class Parser {
 
 	public CommandFactory getCommandFactory() {
 		return cf;
+	}
+	
+	public boolean checkInput(){
+		return !commandList.isEmpty();
 	}
 }
