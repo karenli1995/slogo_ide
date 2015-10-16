@@ -42,7 +42,7 @@ public class GUIManager extends BorderPane {
 		addCenterPane(modelController);
 		addRightPane(scene);
 		addLeftPane(scene);
-		//this.setTop(myMenu);
+		this.setTop(myMenu);
 
 		myRoot.getChildren().addAll(this);
 		stage.show();
