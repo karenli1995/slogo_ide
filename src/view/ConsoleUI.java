@@ -18,12 +18,12 @@ public class ConsoleUI extends GridPane{
 	private Buttons myButtonsOnGUI;
 
 	
-	public ConsoleUI(Scene scene, ModelController controller, GUIManager guimanager, ResourceBundle resource, History history){
+	public ConsoleUI(Scene scene, ModelController controller, GUIManager guimanager, ResourceBundle resource){
 		super();
 		this.setPrefHeight(scene.getHeight()/5);
 		myPrompt = new Prompt(scene, resource);
 		myConsole = new Console(scene, resource);
-		myButtonsOnGUI = new Buttons(this, controller,scene, guimanager, resource, history);
+		myButtonsOnGUI = new Buttons(this, controller,scene, guimanager, resource);
 		this.add(myConsole, 1, 1);
 		this.add(myPrompt, 3, 1);
 		this.add(myButtonsOnGUI, 2, 1);

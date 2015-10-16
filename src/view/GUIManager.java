@@ -64,7 +64,7 @@ public class GUIManager extends BorderPane {
 	}
 
 	private void addBottomPane(ModelController controller, Scene scene) {
-		myConsoleUI = new ConsoleUI(scene, controller, this, myResource, myHistory);
+		myConsoleUI = new ConsoleUI(scene, controller, this, myResource);
 		this.setBottom(myConsoleUI);
 	}
 
@@ -100,10 +100,10 @@ public class GUIManager extends BorderPane {
 	public TurtleScene getTurtScene(){
 		return myTurtleScene;
 	}
-//	
-//	public History getMyHistory(){
-//		return myHistory;
-//	}
+	
+	public History getMyHistory(){
+		return myHistory;
+	}
 
 	/**
 	 * Initialize the window

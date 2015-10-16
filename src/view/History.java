@@ -14,46 +14,40 @@ public class History extends ScrollPane{
 
 	private ConsoleUI myConsole;
 	private List<Button> myHistoryButtons = new ArrayList<Button>();
+	private List<String> myHistoryButtonString = new ArrayList<String>();
 	private VBox myVbox = new VBox();
 
 	public History(ConsoleUI console, Scene scene){
 		myConsole = console;
 	
 		this.setPrefWidth(scene.getWidth()/7);
-		
-		addHistory("fd 50 rt 100");
-		addHistory("fd 70 rt 100");
-		
 		this.getChildren().add(myVbox);
 		this.setContent(myVbox);
-
 		this.setVbarPolicy(ScrollBarPolicy.ALWAYS);
 		this.setHbarPolicy(ScrollBarPolicy.ALWAYS);
-
-		addButtonEvents();
 	}
 
 	public void addHistory(String history){
-		Button newHistoryButton = new Button(history);
-		System.out.println("orange");
-		myHistoryButtons.add(newHistoryButton);
-		System.out.println("apple");
-		myVbox.getChildren().add(newHistoryButton);
+		if(!myHistoryButtonString.contains(history)) {
+			Button newHistoryButton = new Button(history);
+			myHistoryButtons.add(newHistoryButton);
+			myHistoryButtonString.add(history);
+			myVbox.getChildren().add(newHistoryButton);
+			addButtonEvent(newHistoryButton);
+		}
 	}
 
 
-	public void addButtonEvents(){
-		for(Button b : myHistoryButtons){
-			b.setOnMouseClicked(new EventHandler<MouseEvent>() {
+	public void addButtonEvent(Button b){
+		b.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-				@Override
-				public void handle(MouseEvent event) {
-					String buttonText = b.getText();
-					myConsole.setConsoleText(buttonText);
-				}
+			@Override
+			public void handle(MouseEvent event) {
+				String buttonText = b.getText();
+				myConsole.setConsoleText(buttonText);
+			}
 
-			});
-		}
+		});
 	}
 
 }

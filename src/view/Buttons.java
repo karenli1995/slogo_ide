@@ -22,19 +22,17 @@ public class Buttons extends VBox {
     private Insets myInset = new Insets(OFFSET_SPACE);
 	private String[] BUTTON_NAMES = new String[2]; 
 	
-	private History myHistory;
 	private GUIManager myGUIManager;
 	private Map<String, Button> myButtons;
 	private ConsoleUI myConsole;
 	private ModelController myController;
 	
-	public Buttons(ConsoleUI console, ModelController controller,Scene scene,GUIManager guimanager, ResourceBundle resource, History history){
+	public Buttons(ConsoleUI console, ModelController controller,Scene scene,GUIManager guimanager, ResourceBundle resource){
 		BUTTON_NAMES[0] = resource.getString("RUN");
 		BUTTON_NAMES[1] = resource.getString("CLEAR");
 		myConsole = console;
 		myController = controller;
 		myGUIManager = guimanager;
-		myHistory = history;
 		addButtons();
 		this.setPrefWidth(scene.getWidth()/11);
 		this.setPadding(new Insets(scene.getWidth()/40,scene.getWidth()/40,scene.getWidth()/40,scene.getWidth()/40));
@@ -83,7 +81,7 @@ public class Buttons extends VBox {
 		String consoleText = myConsole.getTextFromConsole();
 		myController.parse(consoleText);
 		Data data = myController.traverse();
-		myHistory.addHistory(consoleText);
+		myGUIManager.getMyHistory().addHistory(consoleText);
 	}
 	
 	private void clearConsole(){
