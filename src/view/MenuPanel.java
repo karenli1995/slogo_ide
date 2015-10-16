@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ResourceBundle;
 
 import controller.ModelController;
 import javafx.animation.Animation.Status;
@@ -29,9 +30,11 @@ public class MenuPanel extends MenuBar{
 	private Stage myStage;
 	private FileChooser myFileChooser;
 	private ModelController myController;
+	private ResourceBundle myResource;
 	
-	public MenuPanel(Stage stage, ModelController controller){
+	public MenuPanel(Stage stage, ModelController controller, ResourceBundle resource){
         super();
+        myResource = resource;
         myController = controller;
 		myFileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
@@ -45,21 +48,21 @@ public class MenuPanel extends MenuBar{
 	 * @return menu
 	 */
 	private Menu fileMenu(Stage stage) {
-		Menu menu = new Menu("File");
+		Menu menu = new Menu(myResource.getString("FILE"));
 		
-		MenuItem open = new MenuItem("Open SLogo");
+		MenuItem open = new MenuItem(myResource.getString("OPEN"));
 		open.setAccelerator(KeyCombination.keyCombination("Ctrl+O"));
 		open.setOnAction(e->{openSlogo();});
 		
-		MenuItem save = new MenuItem("Save SLogo");
+		MenuItem save = new MenuItem(myResource.getString("SAVE"));
 		save.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
 		save.setOnAction(e->{saveSlogo();});
 		
-		MenuItem help = new MenuItem("Help");
+		MenuItem help = new MenuItem(myResource.getString("HELP"));
 		help.setAccelerator(KeyCombination.keyCombination("Ctrl+H"));
 		help.setOnAction(e->{openHelp();});
 		
-		MenuItem exit = new MenuItem("Exit");
+		MenuItem exit = new MenuItem(myResource.getString("EXIT"));
 		exit.setAccelerator(KeyCombination.keyCombination("Ctrl+Q"));
 		exit.setOnAction(e->{System.exit(0);});
 		
@@ -70,7 +73,7 @@ public class MenuPanel extends MenuBar{
 	
 	
 	private void openSlogo() {
-		myFileChooser.setTitle("Open Slogo File");
+		myFileChooser.setTitle(myResource.getString("OPEN"));
 		File userDirectory = getDataDirectory();
 		if(userDirectory.canRead()) {
 			myFileChooser.setInitialDirectory(userDirectory);
@@ -87,7 +90,7 @@ public class MenuPanel extends MenuBar{
 	}
 	
 	private void saveSlogo(){
-		myFileChooser.setTitle("Save Slogo File");
+		myFileChooser.setTitle(myResource.getString("SAVE"));
 		myFileChooser.showSaveDialog(myStage);
 		
 		try{

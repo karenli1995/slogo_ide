@@ -3,6 +3,7 @@ package view;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import model.Data;
 import model.Location;
@@ -19,14 +20,16 @@ import javafx.scene.layout.VBox;
 public class Buttons extends VBox {
 	private static final int OFFSET_SPACE = 10;
     private Insets myInset = new Insets(OFFSET_SPACE);
-	private static final String[] BUTTON_NAMES = { "Run", "Clear"};
+	private String[] BUTTON_NAMES = new String[2]; 
 	
 	private GUIManager myGUIManager;
 	private Map<String, Button> myButtons;
 	private ConsoleUI myConsole;
 	private ModelController myController;
 	
-	public Buttons(ConsoleUI console, ModelController controller,Scene scene, GUIManager guimanager){
+	public Buttons(ConsoleUI console, ModelController controller,Scene scene,GUIManager guimanager, ResourceBundle resource){
+		BUTTON_NAMES[0] = resource.getString("RUN");
+		BUTTON_NAMES[1] = resource.getString("CLEAR");
 		myConsole = console;
 		myController = controller;
 		myGUIManager = guimanager;

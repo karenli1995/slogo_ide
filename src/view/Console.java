@@ -1,13 +1,15 @@
 package view;
 
+import java.util.ResourceBundle;
+
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 
 public class Console extends ConsoleTabPane {
 	
-	public Console(Scene scene){
+	public Console(Scene scene, ResourceBundle resource){
 		super(scene);
-		myFirstTab.setText("Console");
+		myFirstTab.setText(resource.getString("CONSOLE"));
 	}
 	public String getTextFromConsole(){
 		TextArea currTextArea = (TextArea) this.getSelectionModel().getSelectedItem().getContent();

@@ -2,6 +2,8 @@ package view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
+
 import model.Turtle;
 import controller.ModelController;
 import javafx.scene.canvas.Canvas;
@@ -17,8 +19,13 @@ public class TurtleScene extends TabPane {
 	private TurtleSceneTab myDefaultSceneTab;
 	private List<TurtleSceneTab> myTabs = new ArrayList<TurtleSceneTab>();
 	private ModelController myController;
+	private ResourceBundle myResource;
+	
+	private double myCanvasWidth = SlogoProperties.getSceneWidth()*3/7;
+	private double myCanvasHeight = SlogoProperties.getSceneHeight()*5/7;
 
-	public TurtleScene(ModelController controller) {
+	public TurtleScene(ModelController controller, ResourceBundle resource) {
+		myResource = resource;
 		myController = controller;
 		myDefaultSceneTab = new TurtleSceneTab(this, myController);
 		myTabs.add(myDefaultSceneTab);
@@ -47,6 +54,7 @@ public class TurtleScene extends TabPane {
 		return this.getTranslateY();
 	}
 	
+
 //	private void setTurtle(int id) {
 //		Turtle currTurt = (Turtle) myController.getData().getTurtle(id);
 //		double currTurtLocX = currTurt.getLocation().getX();
@@ -57,6 +65,12 @@ public class TurtleScene extends TabPane {
 //		currTurtView.setScreenLoc(currTurtLocX, currTurtLocY);
 //		
 //		this.getChildren().add(currTurtImage);
-//	}
+
+	public double getMyCanvasWidth(){
+		return myCanvasWidth;
+	}
 	
+	public double getMyCanvasHeight(){
+		return myCanvasHeight;
+	}
 }

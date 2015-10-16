@@ -1,5 +1,8 @@
 package view;
 
+import java.util.Optional;
+import java.util.ResourceBundle;
+
 import controller.ModelController;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -28,8 +31,10 @@ public class GUIManager extends BorderPane {
 	private TurtleScene myTurtleScene;
 	private Properties myProps;
 	private MenuPanel myMenu;
+	public ResourceBundle myResource;
 
 	public GUIManager(Stage stage, ModelController modelController){
+		langInput();
 		myStage = stage;
 		myModelController = modelController;
 		Scene scene = init((int)stage.getWidth(), (int)stage.getHeight());
@@ -39,7 +44,7 @@ public class GUIManager extends BorderPane {
 		this.prefHeightProperty().bind(scene.heightProperty());
         this.prefWidthProperty().bind(scene.widthProperty());
 		
-        myMenu = new MenuPanel(myStage, myModelController);
+        myMenu = new MenuPanel(myStage, myModelController, myResource);
         this.setTop(myMenu);
         addBottomPane(myModelController, scene);
 		addCenterPane(myModelController);
@@ -57,18 +62,26 @@ public class GUIManager extends BorderPane {
 //		//myTurtleScene.setTurtle();
 //	}
 
+	private void langInput() {
+		LangDialog lang = new LangDialog();
+		Optional<ResourceBundle> resource = lang.showAndWait();
+		if(resource.isPresent()){
+			myResource = resource.get();
+		}
+	}
+
 	private void addBottomPane(ModelController controller, Scene scene) {
-		myConsoleUI = new ConsoleUI(scene, controller, this);
+		myConsoleUI = new ConsoleUI(scene, controller, this, myResource);
 		this.setBottom(myConsoleUI);
 	}
 
 	private void addCenterPane(ModelController controller) {
-		myTurtleScene = new TurtleScene(controller);
+		myTurtleScene = new TurtleScene(controller, myResource);
 		this.setCenter(myTurtleScene);
 	}
 
 	private void addRightPane(Scene scene) {
-		myProps = new Properties(scene, myTurtleScene);
+		myProps = new Properties(scene, myTurtleScene, this, myResource);
 		this.setRight(myProps);
 	}
 	
@@ -83,6 +96,12 @@ public class GUIManager extends BorderPane {
 	
 	public Group getRoot(){
 		return myRoot;
+	}
+	
+	public void setLanguage(String lang){
+		myResource = ResourceBundle.getBundle("resources.languages/" + lang);
+		System.out.print(myResource.getString("RUN"));
+		
 	}
 
 	/**
