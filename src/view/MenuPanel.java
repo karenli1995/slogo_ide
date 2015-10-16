@@ -1,7 +1,9 @@
 package view;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -53,11 +55,15 @@ public class MenuPanel extends MenuBar{
 		save.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
 		save.setOnAction(e->{saveSlogo();});
 		
+		MenuItem help = new MenuItem("Help");
+		help.setAccelerator(KeyCombination.keyCombination("Ctrl+H"));
+		help.setOnAction(e->{openHelp();});
+		
 		MenuItem exit = new MenuItem("Exit");
 		exit.setAccelerator(KeyCombination.keyCombination("Ctrl+Q"));
 		exit.setOnAction(e->{System.exit(0);});
 		
-		menu.getItems().addAll(open,save, new SeparatorMenuItem(), exit);
+		menu.getItems().addAll(open,save, help, new SeparatorMenuItem(), exit);
 		
 		return menu;
 	}
@@ -93,6 +99,15 @@ public class MenuPanel extends MenuBar{
 		}
 	}
 	
+	public void openHelp(){
+		File html = new File("HelpPage.html");
+		try {
+			Desktop.getDesktop().browse(html.toURI());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	private File getDataDirectory(){
 		File file = new File(System.getProperty("user.dir")+File.separator+"data");
 		if(!file.exists()){
