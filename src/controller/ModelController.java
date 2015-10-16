@@ -30,9 +30,13 @@ public class ModelController {
 	public GUIManager getGuiManager(){
 		return myGuiManager;
 	}
+	
+	public void setData(Data data) {
+		allData = data;
+	}
 
 	public Data getData() {
-		return allData;
+		return allData; 
 	}
 
 	public Parser getParser() {
