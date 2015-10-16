@@ -11,8 +11,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 public class History extends ScrollPane{
-	private int myWidth = 50;
-	private int myHeight = 9;
 
 	private ConsoleUI myConsole;
 	private List<Button> myHistoryButtons = new ArrayList<Button>();
