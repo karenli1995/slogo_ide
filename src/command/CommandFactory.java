@@ -5,19 +5,19 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CommandFactory{
+public class CommandFactory {
 
 	private Map<String, Class<?>> reflectionMap = new HashMap<String, Class<?>>();
 
-	public CommandFactory(){
+	public CommandFactory() {
 
 	}
 
-	public void registerCommand(String commandName, Class<?> commandClass){
+	public void registerCommand(String commandName, Class<?> commandClass) {
 		reflectionMap.put(commandName, commandClass);
 	}
 
-	public Command createCommand(String commandName){
+	public Command createCommand(String commandName) {
 		Class<?> commandClass = reflectionMap.get(commandName);
 		Constructor<?> commandConstructor = null;
 		try {
@@ -27,7 +27,7 @@ public class CommandFactory{
 		}
 		Command command = null;
 		try {
-			command = (Command)commandConstructor.newInstance(new Object[] { });
+			command = (Command) commandConstructor.newInstance(new Object[] {});
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) {
 			e.printStackTrace();

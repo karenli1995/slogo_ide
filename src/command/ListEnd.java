@@ -1,5 +1,4 @@
 
-
 package command;
 
 import java.util.List;
@@ -9,7 +8,7 @@ import model.Data;
 
 public class ListEnd extends Command {
 
-	public ListEnd(){
+	public ListEnd() {
 
 	}
 

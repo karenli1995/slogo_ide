@@ -14,7 +14,7 @@ import model.Data;
  * @author Sally Al
  *
  */
-public class Sin extends Command {
+public class Sine extends Command {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> argument, Data data) {

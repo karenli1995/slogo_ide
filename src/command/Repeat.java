@@ -5,9 +5,9 @@ import java.util.List;
 import controller.ParseTreeNode;
 import model.Data;
 
-public class Repeat extends Command{
+public class Repeat extends Command {
 
-	public Repeat(){
+	public Repeat() {
 
 	}
 

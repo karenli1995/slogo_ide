@@ -14,7 +14,7 @@ import model.Data;
  * @author Sally Al
  *
  */
-public class PenDownP extends Command {
+public class IsPenDown extends Command {
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
 		this.setValue(data.getPen());
