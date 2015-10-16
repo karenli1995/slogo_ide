@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import model.Data;
+import model.Location;
 import controller.ModelController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,13 +21,15 @@ public class Buttons extends VBox {
     private Insets myInset = new Insets(OFFSET_SPACE);
 	private static final String[] BUTTON_NAMES = { "Run", "Clear"};
 	
+	private GUIManager myGUIManager;
 	private Map<String, Button> myButtons;
 	private ConsoleUI myConsole;
 	private ModelController myController;
 	
-	public Buttons(ConsoleUI console, ModelController controller,Scene scene){
+	public Buttons(ConsoleUI console, ModelController controller,Scene scene, GUIManager guimanager){
 		myConsole = console;
 		myController = controller;
+		myGUIManager = guimanager;
 		addButtons();
 		this.setPrefWidth(scene.getWidth()/11);
 		this.setPadding(new Insets(scene.getWidth()/40,scene.getWidth()/40,scene.getWidth()/40,scene.getWidth()/40));
@@ -73,10 +76,12 @@ public class Buttons extends VBox {
 	
 	private void runConsole(){
 		String consoleText = myConsole.getTextFromConsole();
-		System.out.println(consoleText + "hi");
+		Location tempLoc = myController.getData().getTurtle(0).getLocation();
 		myController.parse(consoleText);
 		Data data = myController.traverse();
-		myController.setData(data);
+//		myController.setData(data);
+//		myGUIManager.updateControllerForView(myController);
+		
 	}
 	
 	private void clearConsole(){

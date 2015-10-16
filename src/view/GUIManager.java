@@ -21,6 +21,7 @@ public class GUIManager extends BorderPane {
 
 	private int myWindowWidth, myWindowHeight;
 	
+	private ModelController myModelController;
 	private AvailableUserCommands myAvailableUserCommands;
 	private History myHistory;
 	private ConsoleUI myConsoleUI;
@@ -30,7 +31,7 @@ public class GUIManager extends BorderPane {
 
 	public GUIManager(Stage stage, ModelController modelController){
 		myStage = stage;
-		myMenu = new MenuPanel(myStage, modelController);
+		myModelController = modelController;
 		Scene scene = init((int)stage.getWidth(), (int)stage.getHeight());
 		stage.setScene(scene);
 		stage.setTitle(TITLE);
@@ -38,18 +39,26 @@ public class GUIManager extends BorderPane {
 		this.prefHeightProperty().bind(scene.heightProperty());
         this.prefWidthProperty().bind(scene.widthProperty());
 		
-        addBottomPane(modelController, scene);
-		addCenterPane(modelController);
+        myMenu = new MenuPanel(myStage, myModelController);
+        this.setTop(myMenu);
+        addBottomPane(myModelController, scene);
+		addCenterPane(myModelController);
 		addRightPane(scene);
 		addLeftPane(scene);
-		this.setTop(myMenu);
 
 		myRoot.getChildren().addAll(this);
 		stage.show();
 	}
+	
+	//check this method
+//	public void updateControllerForView(ModelController controller){
+//		myModelController = controller;
+//		myTurtleScene.setController(myModelController);
+//		//myTurtleScene.setTurtle();
+//	}
 
 	private void addBottomPane(ModelController controller, Scene scene) {
-		myConsoleUI = new ConsoleUI(scene, controller);
+		myConsoleUI = new ConsoleUI(scene, controller, this);
 		this.setBottom(myConsoleUI);
 	}
 

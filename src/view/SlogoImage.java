@@ -49,8 +49,8 @@ public class SlogoImage{
 	 */
 	public void setScreenLoc(double x, double y) {
 		//should check for bounds as well
-		myImageView.setLayoutX(x + myTurtScene.getX() + myTurtScene.getMyCanvasWidth()/2);
-		myImageView.setLayoutY(y + myTurtScene.getY() + myTurtScene.getMyCanvasHeight()/2);
+		myImageView.setLayoutX(x + myTurtScene.getX() + myTurtScene.getCurrTab().getMyCanvasWidth()/2);
+		myImageView.setLayoutY(y + myTurtScene.getY() + myTurtScene.getCurrTab().getMyCanvasHeight()/2);
 	}
 	
 	
