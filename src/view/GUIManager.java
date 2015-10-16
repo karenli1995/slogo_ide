@@ -54,13 +54,6 @@ public class GUIManager extends BorderPane {
 		myRoot.getChildren().addAll(this);
 		stage.show();
 	}
-	
-	//check this method
-//	public void updateControllerForView(ModelController controller){
-//		myModelController = controller;
-//		myTurtleScene.setController(myModelController);
-//		//myTurtleScene.setTurtle();
-//	}
 
 	private void langInput() {
 		LangDialog lang = new LangDialog();
@@ -71,7 +64,7 @@ public class GUIManager extends BorderPane {
 	}
 
 	private void addBottomPane(ModelController controller, Scene scene) {
-		myConsoleUI = new ConsoleUI(scene, controller, this, myResource);
+		myConsoleUI = new ConsoleUI(scene, controller, this, myResource, myHistory);
 		this.setBottom(myConsoleUI);
 	}
 
@@ -107,6 +100,10 @@ public class GUIManager extends BorderPane {
 	public TurtleScene getTurtScene(){
 		return myTurtleScene;
 	}
+//	
+//	public History getMyHistory(){
+//		return myHistory;
+//	}
 
 	/**
 	 * Initialize the window

@@ -18,7 +18,7 @@ public class History extends ScrollPane{
 
 	public History(ConsoleUI console, Scene scene){
 		myConsole = console;
-
+	
 		this.setPrefWidth(scene.getWidth()/7);
 		
 		addHistory("fd 50 rt 100");
@@ -35,7 +35,9 @@ public class History extends ScrollPane{
 
 	public void addHistory(String history){
 		Button newHistoryButton = new Button(history);
+		System.out.println("orange");
 		myHistoryButtons.add(newHistoryButton);
+		System.out.println("apple");
 		myVbox.getChildren().add(newHistoryButton);
 	}
 
@@ -48,8 +50,6 @@ public class History extends ScrollPane{
 				public void handle(MouseEvent event) {
 					String buttonText = b.getText();
 					myConsole.setConsoleText(buttonText);
-
-
 				}
 
 			});

@@ -38,14 +38,6 @@ public class TurtleScene extends TabPane{
 		return (TurtleSceneTab) this.getSelectionModel().getSelectedItem();
 	}
 	
-//	public ModelController getController(){
-//		return myController;
-//	}
-//	
-//	public void setController(ModelController controller){
-//		myController = controller;
-//	}
-	
 	public double getX(){
 		return this.getTranslateX();
 	}
@@ -53,18 +45,6 @@ public class TurtleScene extends TabPane{
 	public double getY(){
 		return this.getTranslateY();
 	}
-	
-
-//	private void setTurtle(int id) {
-//		Turtle currTurt = (Turtle) myController.getData().getTurtle(id);
-//		double currTurtLocX = currTurt.getLocation().getX();
-//		double currTurtLocY = currTurt.getLocation().getY();
-//		
-//		SlogoImage currTurtView = new SlogoImage(this, myController, id);
-//		ImageView currTurtImage = currTurtView.getMyImage();
-//		currTurtView.setScreenLoc(currTurtLocX, currTurtLocY);
-//		
-//		this.getChildren().add(currTurtImage);
 
 	public double getMyCanvasWidth(){
 		return myCanvasWidth;

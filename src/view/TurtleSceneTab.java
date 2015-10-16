@@ -4,7 +4,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import controller.ModelController;
-import model.Location;
 import model.SlogoObjects;
 import model.Turtle;
 import javafx.scene.canvas.Canvas;
