@@ -6,15 +6,18 @@ import java.util.Queue;
 
 import command.Command;
 import model.Data;
+import model.Location;
 
 public class Traverser {
 	private Queue<ParseTreeNode<Command>> commandQueue;
 
 	public Data traverse(List<ParseTreeNode<Command>> node, Data allData) {
+
 		commandQueue = new LinkedList<ParseTreeNode<Command>>();
 		for (ParseTreeNode<Command> s : node) {
 			this.iterateTreeInOrder(s);
 		}
+		this.executeCommands(allData);
 
 		return allData;
 	}
