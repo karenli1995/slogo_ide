@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import model.Data;
+import model.Location;
 import controller.ModelController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -73,9 +74,13 @@ public class Buttons extends VBox {
 	
 	private void runConsole(){
 		String consoleText = myConsole.getTextFromConsole();
-		System.out.println(consoleText + "hi");
+		Location tempLoc = myController.getData().getTurtle(0).getLocation();
+		//System.out.println(tempLoc.getX()+ ", " + tempLoc.getY());
 		myController.parse(consoleText);
 		myController.traverse();
+		tempLoc = myController.getData().getTurtle(0).getLocation();
+		//System.out.println(tempLoc.getX()+ ", " + tempLoc.getY());
+
 	}
 	
 	private void clearConsole(){
