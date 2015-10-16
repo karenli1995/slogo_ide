@@ -12,52 +12,64 @@ import view.props.Properties;
 
 public class GUIManager extends BorderPane {
 	private static final String TITLE = "SLogo";
-	private static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
-    private static final String STYLESHEET = "default.css";
-//    private static final double SCENE_WIDTH = Screen.getPrimary().getVisualBounds().getWidth()*3/7;
-//	private static final double SCENE_HEIGHT = Screen.getPrimary().getVisualBounds().getWidth()*9/20;
+	public static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
+    public static final String STYLESHEET = "default.css";
 
 	protected Stage myStage;
 	private static Scene myScene;
 	private Group myRoot;
 
 	private int myWindowWidth, myWindowHeight;
-
+	
+	private AvailableUserCommands myAvailableUserCommands;
+	private History myHistory;
 	private ConsoleUI myConsoleUI;
-	private Buttons myButtonsOnGUI;
 	private TurtleScene myTurtleScene;
 	private Properties myProps;
+	private MenuPanel myMenu;
 
 	public GUIManager(Stage stage, ModelController modelController){
 		myStage = stage;
+		myMenu = new MenuPanel(myStage, modelController);
 		Scene scene = init((int)stage.getWidth(), (int)stage.getHeight());
 		stage.setScene(scene);
 		stage.setTitle(TITLE);
 		
 		this.prefHeightProperty().bind(scene.heightProperty());
         this.prefWidthProperty().bind(scene.widthProperty());
-
-
-		myConsoleUI = new ConsoleUI(scene, modelController);
-		this.setBottom(myConsoleUI);
 		
-		GridPane histAndUser = new GridPane();
-		History myHistory = new History(myConsoleUI, scene);
-		histAndUser.add(myHistory, 1, 1);
-		AvailableUserCommands myAvailableUserCommands =  new AvailableUserCommands(myConsoleUI, scene);
-		histAndUser.add(myAvailableUserCommands, 2, 1);
-
-		this.setLeft(histAndUser);
-		
-
-		myTurtleScene = new TurtleScene(modelController);
-		this.setCenter(myTurtleScene);
-
-		myProps = new Properties(scene);
-		this.setRight(myProps);
+        addBottomPane(modelController, scene);
+		addCenterPane(modelController);
+		addRightPane(scene);
+		addLeftPane(scene);
+		//this.setTop(myMenu);
 
 		myRoot.getChildren().addAll(this);
 		stage.show();
+	}
+
+	private void addBottomPane(ModelController controller, Scene scene) {
+		myConsoleUI = new ConsoleUI(scene, controller);
+		this.setBottom(myConsoleUI);
+	}
+
+	private void addCenterPane(ModelController controller) {
+		myTurtleScene = new TurtleScene(controller);
+		this.setCenter(myTurtleScene);
+	}
+
+	private void addRightPane(Scene scene) {
+		myProps = new Properties(scene, myTurtleScene);
+		this.setRight(myProps);
+	}
+	
+	private void addLeftPane(Scene scene) {
+		GridPane histAndUser = new GridPane();
+		myHistory = new History(myConsoleUI, scene);
+		histAndUser.add(myHistory, 1, 1);
+		myAvailableUserCommands =  new AvailableUserCommands(myConsoleUI, scene);
+		histAndUser.add(myAvailableUserCommands, 2, 1);
+		this.setLeft(histAndUser);
 	}
 	
 	public Group getRoot(){
@@ -71,8 +83,6 @@ public class GUIManager extends BorderPane {
 	 * @return the Scene that was initialized
 	 */
 	private Scene init(int width, int height) {
-		myWindowWidth = width;
-		myWindowHeight = height;
 		myRoot = new Group();
 		myScene = new Scene(myRoot,width,height,Color.AZURE);
 //        myScene.getStylesheets().add(DEFAULT_RESOURCE_PACKAGE + STYLESHEET);

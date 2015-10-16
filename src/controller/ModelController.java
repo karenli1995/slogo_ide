@@ -13,22 +13,22 @@ public class ModelController {
 
 	private Data allData;
 	private Parser parser;
-	private GUIManager guiManager;
-	private Group root;
+	private GUIManager myGuiManager;
 	private commandTester commandtester;
 	private Traverser traverser;
 	private List<ParseTreeNode<Command>> tree;
 
 	public ModelController(Stage stage) {
 		this.initData();
-		guiManager = new GUIManager(stage, this);
-		root = guiManager.getRoot();
-//		root.getChildren().add(this.getData().getTurtle(0).getMyImage());
-//		root.getChildren().add(this.allData.getLine());
+		myGuiManager = new GUIManager(stage, this);
 		parser = new Parser();
 		traverser = new Traverser();
 		//commandtester = new commandTester(root, this);// for testing only
 
+	}
+	
+	public GUIManager getGuiManager(){
+		return myGuiManager;
 	}
 
 	public Data getData() {

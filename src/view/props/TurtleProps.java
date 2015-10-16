@@ -2,19 +2,29 @@ package view.props;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import view.TurtleScene;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Callback;
 
 public class TurtleProps extends Tab{
     private static final int OFFSET_SPACE = 10;
@@ -25,10 +35,12 @@ public class TurtleProps extends Tab{
 	private int myTextAreaWidth = 100;
 	private int myTextAreaHeight = 10;
 	
+	TurtleScene myTurtleScene;
 	TabPane myTabPane;
 	Tab myTab;
 	
-	public TurtleProps(){
+	public TurtleProps(TurtleScene scene){
+		myTurtleScene = scene;
 		allElements = new ArrayList<Node>();
 		createTurtleTab();
 	}
@@ -43,10 +55,11 @@ public class TurtleProps extends Tab{
 		HBox hb4 = addTurtShapeLabel();
 		HBox hb5 = addTurtVisibleLable();
 		HBox hb6 = addPenColorLabel();
+		HBox hb7 = addBGColorLabel();
 		
 		setAllMargins(allElements);
 		
-		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5, hb6);
+		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5, hb6, hb7);
 		
 		this.setContent(vb);
 	}
@@ -149,6 +162,56 @@ public class TurtleProps extends Tab{
 		allElements.add((Node) cbColors);
 		
 		return hb6;
+	}
+	
+	private HBox addBGColorLabel(){
+		HBox hb7 = new HBox();
+		Label background = new Label("Background Color");
+		
+		ComboBox<Color> cmbColors = new ComboBox<Color>();
+		cmbColors.getItems().addAll(
+		     Color.AQUAMARINE,
+		     Color.CADETBLUE,
+		     Color.AZURE);
+
+		cmbColors.setCellFactory(new Callback<ListView<Color>, ListCell<Color>>() {
+		     @Override public ListCell<Color> call(ListView<Color> p) {
+		         return new ListCell<Color>() {
+		             private final Rectangle rectangle;
+		             { 
+		                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY); 
+		                 rectangle = new Rectangle(10, 10);
+		             }
+		             
+		             @Override protected void updateItem(Color item, boolean empty) {
+		                 super.updateItem(item, empty);
+		                 
+		                 if (item == null || empty) {
+		                     setGraphic(null);
+		                 } else {
+		                     rectangle.setFill(item);
+		                     setGraphic(rectangle);
+		                 }
+		            }
+		       };
+		   }
+		});
+		 
+		cmbColors.setOnAction((event) -> {
+		    Color chosenColor = (Color) cmbColors.getSelectionModel().getSelectedItem();
+		    Canvas currCanvas = (Canvas) myTurtleScene.getSelectionModel().getSelectedItem().getContent();
+		    
+		    myTurtleScene.setColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
+		    System.out.println("ComboBox Action (selected: " + chosenColor.toString().toUpperCase() + ")");
+		});
+		 
+		
+		hb7.getChildren().addAll(background, cmbColors);
+		
+		allElements.add((Node) background);
+		allElements.add((Node) cmbColors);
+		
+		return hb7;
 	}
 	
 	private void setAllMargins(List<Node> nodes){
