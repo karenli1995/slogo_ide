@@ -6,6 +6,7 @@ package command.turtleQueries;
 import java.util.List;
 
 import command.Command;
+import controller.ParseTreeNode;
 import model.Data;
 
 /**
@@ -15,8 +16,9 @@ import model.Data;
  */
 public class Heading extends Command {
 	@Override
-	public double execute(List<Double> distance, Data data) {
-		return data.getTurtle(0).getMyHeadAngle();
+	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
+		this.setValue(data.getTurtle(0).getMyHeadAngle());
+		return data;
 	}
 
 }

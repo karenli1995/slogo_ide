@@ -1,7 +1,7 @@
 /**
  *
  */
-package command.booleanOperations;
+package command.math;
 
 import java.util.List;
 
@@ -14,15 +14,12 @@ import model.Data;
  * @author Sally Al
  *
  */
-public class NotEqual extends Command {
+public class Sine extends Command {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> argument, Data data) {
-		if (argument.get(0) != argument.get(1)) {
-			this.setValue(1);
-		} else {
-			this.setValue(0);
-		}
+
+		this.setValue(Math.sin(Math.toRadians(argument.get(0).getCommand().getValue())));
 		return data;
 	}
 

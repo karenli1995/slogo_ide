@@ -60,4 +60,5 @@ public class Data implements Observer{
 		}
 		
 	}
+
 }

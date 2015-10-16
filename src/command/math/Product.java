@@ -6,6 +6,7 @@ package command.math;
 import java.util.List;
 
 import command.Command;
+import controller.ParseTreeNode;
 import model.Data;
 
 /**
@@ -16,9 +17,10 @@ import model.Data;
 public class Product extends Command {
 
 	@Override
-	public double execute(List<Double> argument, Data data) {
+	public Data execute(List<ParseTreeNode<Command>> argument, Data data) {
 
-		return argument.get(0) * argument.get(1);
+		this.setValue(argument.get(0).getCommand().getValue() * argument.get(1).getCommand().getValue());
+		return data;
 	}
 
 }
