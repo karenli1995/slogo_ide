@@ -12,7 +12,8 @@ public class Console extends ConsoleTabPane {
 		myFirstTab.setText("Console");
 	}
 	public String getTextFromConsole(){
-		String currText = this.getSelectionModel().getSelectedItem().getContent().getAccessibleText();
+		TextArea currTextArea = (TextArea) this.getSelectionModel().getSelectedItem().getContent();
+		String currText = currTextArea.getText();
 		return currText;
 	}
 	
