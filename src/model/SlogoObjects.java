@@ -1,23 +1,20 @@
 package model;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 public abstract class SlogoObjects {
 
 	private double myHeadAngle;
-	private int isShowing = 1;
+	private boolean isShowing = true;
 	
 
 	public SlogoObjects() {
 
 	}
 
-	public void setIsShowing(int value) {
+	public void setIsShowing(boolean value) {
 		isShowing = value;
 	}
 
-	public int getIsShowing() {
+	public boolean getIsShowing() {
 		return isShowing;
 	}
 
@@ -25,24 +22,7 @@ public abstract class SlogoObjects {
 		return myHeadAngle;
 	}
 
-	public void setMyHeadAngle(double myHeadAngle) {
-		this.myHeadAngle = myHeadAngle;
+	public void setMyHeadAngle(double headAngle) {
+		myHeadAngle = headAngle;
 	}
-
-	public void setRotation(int angle) {
-		this.getMyImage().setRotate(angle);
-	}
-
-	public abstract ImageView getMyImage();
-
-	public abstract Image getImage();
-	
-	public void showSlogoObject() {
-		this.getMyImage().setVisible(true);
-	}
-
-	public void hideSlogoObject() {
-		this.getMyImage().setVisible(false);
-	}
-
 }

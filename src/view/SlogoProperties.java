@@ -6,6 +6,8 @@ public class SlogoProperties {
 	private static final double SCENE_WIDTH = Screen.getPrimary().getVisualBounds().getWidth();
 	private static final double SCENE_HEIGHT = Screen.getPrimary().getVisualBounds().getHeight();
 	
+//	private static final double CONSOLE_WIDTH = 
+	
 	public static double getSceneWidth(){
 		return SCENE_WIDTH;
 	}

@@ -2,14 +2,12 @@ package view;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import model.Turtle;
 import controller.ModelController;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
@@ -25,8 +23,22 @@ public class TurtleScene extends TabPane {
 		myTabs = new ArrayList<Tab>();
 		myController = controller;
 		addNewTab();
-		//myTurtle = myViewController.getDefaultTurtle();
-		//		setInitTurtPos(myTurtle);
+	}
+	
+	public double getX(){
+		return this.getTranslateX();
+	}
+	
+	public double getY(){
+		return this.getTranslateY();
+	}
+	
+	public double getMyCanvasWidth(){
+		return myCanvasWidth;
+	}
+	
+	public double getMyCanvasHeight(){
+		return myCanvasHeight;
 	}
 	
 	private void addNewTab() {
@@ -38,7 +50,7 @@ public class TurtleScene extends TabPane {
  		GraphicsContext gc = canvas.getGraphicsContext2D();
  		setColor(gc, canvas, Color.ALICEBLUE);
         
- 		setTurtle(gc);
+ 		setTurtle();
  		tab.setContent(canvas);
  		
  		myTabs.add(tab);
@@ -46,23 +58,31 @@ public class TurtleScene extends TabPane {
  		this.getTabs().add(tab);
  	}
  	
-	private void setTurtle(GraphicsContext gc) {
-//		myController.getData();
-		Image currTurt = myController.getData().getTurtle(0).getImage();
-		gc.drawImage(currTurt,0,0);
+//	private void setTurtle(GraphicsContext gc) {
+//		int defaultTurtId = 0;
+//		Turtle currTurt = (Turtle) myController.getData().getTurtle(defaultTurtId);
+//		SlogoImage currTurtView = new SlogoImage(myController, defaultTurtId);
+//		Image currTurtImage = currTurtView.getImage();
+//		gc.drawImage(currTurtImage, currTurt.getLocation().getX(), currTurt.getLocation().getX());
+//	}
+	
+	private void setTurtle() {
+		int defaultTurtId = 0;
+		Turtle currTurt = (Turtle) myController.getData().getTurtle(defaultTurtId);
+		double currTurtLocX = currTurt.getLocation().getX();
+		double currTurtLocY = currTurt.getLocation().getY();
+		
+		SlogoImage currTurtView = new SlogoImage(this, myController, defaultTurtId);
+		ImageView currTurtImage = currTurtView.getMyImage();
+		currTurtView.setScreenLoc(currTurtLocX, currTurtLocY);
+		
+		this.getChildren().add(currTurtImage);
+		
 	}
 
 	private void setColor(GraphicsContext gc, Canvas canvas, Color color) {
 		gc.setFill(color);
 		gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
 	}
-
-//	public  int getCentrex() {
-//		return centreX;
-//	}
-//
-//	public  int getCentrey() {
-//		return centreY;
-//	}
 
 }
