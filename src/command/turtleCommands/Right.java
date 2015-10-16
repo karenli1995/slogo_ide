@@ -6,6 +6,7 @@ package command.turtleCommands;
 import java.util.List;
 
 import command.Command;
+import controller.ParseTreeNode;
 import model.Data;
 
 /**
@@ -16,11 +17,12 @@ import model.Data;
 public class Right extends Command {
 
 	@Override
-	public double execute(List<Double> angle, Data data) {
-		double newHeadAngle= data.getTurtle(0).getMyImage().getRotate()+angle.get(0);
+	public Data execute(List<ParseTreeNode<Command>> angle, Data data) {
+		double newHeadAngle= data.getTurtle(0).getMyImage().getRotate()+angle.get(0).getCommand().getValue();
 		data.getTurtle(0).getMyImage().setRotate(newHeadAngle);
 		data.getTurtle(0).setMyHeadAngle(newHeadAngle);
-		return angle.get(0);
+		this.setValue(angle.get(0).getCommand().getValue());
+		return data;
 	}
 
 

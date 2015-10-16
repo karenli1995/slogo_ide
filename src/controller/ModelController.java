@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import command.Command;
 import javafx.scene.Group;
 import javafx.stage.Stage;
@@ -13,12 +15,14 @@ public class ModelController {
 	private Parser parser;
 	private GUIManager myGuiManager;
 	private commandTester commandtester;
-	private ParseTreeNode tree;
+	private Traverser traverser;
+	private List<ParseTreeNode<Command>> tree;
 
 	public ModelController(Stage stage) {
 		this.initData();
 		myGuiManager = new GUIManager(stage, this);
 		parser = new Parser();
+		traverser = new Traverser();
 		//commandtester = new commandTester(root, this);// for testing only
 
 	}
@@ -43,18 +47,7 @@ public class ModelController {
 		tree = parser.parse(s);
 	}
 
-	public void iterateTreeInOrder() {
-		this.iterateTreeInOrder(tree);
+	public Data traverse(){
+		return traverser.traverse(tree, allData);
 	}
-
-	private void iterateTreeInOrder(ParseTreeNode<Command> node) {
-		if (node == null)
-			return;
-
-		for (ParseTreeNode<Command> childNode : node.getChildren()) {
-			this.iterateTreeInOrder(childNode);
-		}
-
-	}
-
 }
