@@ -1,5 +1,8 @@
 package view;
 
+import java.util.Optional;
+import java.util.ResourceBundle;
+
 import controller.ModelController;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -21,16 +24,19 @@ public class GUIManager extends BorderPane {
 
 	private int myWindowWidth, myWindowHeight;
 	
+	private ModelController myModelController;
 	private AvailableUserCommands myAvailableUserCommands;
 	private History myHistory;
 	private ConsoleUI myConsoleUI;
 	private TurtleScene myTurtleScene;
 	private Properties myProps;
 	private MenuPanel myMenu;
+	public ResourceBundle myResource;
 
 	public GUIManager(Stage stage, ModelController modelController){
+		langInput();
 		myStage = stage;
-		myMenu = new MenuPanel(myStage, modelController);
+		myModelController = modelController;
 		Scene scene = init((int)stage.getWidth(), (int)stage.getHeight());
 		stage.setScene(scene);
 		stage.setTitle(TITLE);
@@ -38,28 +44,44 @@ public class GUIManager extends BorderPane {
 		this.prefHeightProperty().bind(scene.heightProperty());
         this.prefWidthProperty().bind(scene.widthProperty());
 		
-        addBottomPane(modelController, scene);
-		addCenterPane(modelController);
+        myMenu = new MenuPanel(myStage, myModelController, myResource);
+        this.setTop(myMenu);
+        addBottomPane(myModelController, scene);
+		addCenterPane(myModelController);
 		addRightPane(scene);
 		addLeftPane(scene);
-		this.setTop(myMenu);
 
 		myRoot.getChildren().addAll(this);
 		stage.show();
 	}
+	
+	//check this method
+//	public void updateControllerForView(ModelController controller){
+//		myModelController = controller;
+//		myTurtleScene.setController(myModelController);
+//		//myTurtleScene.setTurtle();
+//	}
+
+	private void langInput() {
+		LangDialog lang = new LangDialog();
+		Optional<ResourceBundle> resource = lang.showAndWait();
+		if(resource.isPresent()){
+			myResource = resource.get();
+		}
+	}
 
 	private void addBottomPane(ModelController controller, Scene scene) {
-		myConsoleUI = new ConsoleUI(scene, controller);
+		myConsoleUI = new ConsoleUI(scene, controller, this, myResource);
 		this.setBottom(myConsoleUI);
 	}
 
 	private void addCenterPane(ModelController controller) {
-		myTurtleScene = new TurtleScene(controller);
+		myTurtleScene = new TurtleScene(controller, myResource);
 		this.setCenter(myTurtleScene);
 	}
 
 	private void addRightPane(Scene scene) {
-		myProps = new Properties(scene, myTurtleScene);
+		myProps = new Properties(scene, myTurtleScene, this, myResource);
 		this.setRight(myProps);
 	}
 	
@@ -74,6 +96,16 @@ public class GUIManager extends BorderPane {
 	
 	public Group getRoot(){
 		return myRoot;
+	}
+	
+	public void setLanguage(String lang){
+		myResource = ResourceBundle.getBundle("resources.languages/" + lang);
+		System.out.print(myResource.getString("RUN"));
+		
+	}
+	
+	public TurtleScene getTurtScene(){
+		return myTurtleScene;
 	}
 
 	/**

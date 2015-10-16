@@ -2,6 +2,7 @@ package view.props;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import view.TurtleScene;
 import javafx.collections.FXCollections;
@@ -34,19 +35,21 @@ public class TurtleProps extends Tab{
 	
 	private int myTextAreaWidth = 100;
 	private int myTextAreaHeight = 10;
+	private ResourceBundle myResource;
 	
 	TurtleScene myTurtleScene;
 	TabPane myTabPane;
 	Tab myTab;
 	
-	public TurtleProps(TurtleScene scene){
+	public TurtleProps(TurtleScene scene, ResourceBundle resource){
+		myResource = resource;
 		myTurtleScene = scene;
 		allElements = new ArrayList<Node>();
 		createTurtleTab();
 	}
 	
 	private void createTurtleTab() {
-		this.setText("Turtle");
+		this.setText(myResource.getString("TURTLE"));
 		VBox vb = new VBox();
 		
 		HBox hb1 = addNumTurtLabel();
@@ -55,18 +58,17 @@ public class TurtleProps extends Tab{
 		HBox hb4 = addTurtShapeLabel();
 		HBox hb5 = addTurtVisibleLable();
 		HBox hb6 = addPenColorLabel();
-		HBox hb7 = addBGColorLabel();
 		
 		setAllMargins(allElements);
 		
-		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5, hb6, hb7);
+		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5, hb6);
 		
 		this.setContent(vb);
 	}
 	
 	private HBox addNumTurtLabel(){
 		HBox hb1 = new HBox();
-		Label numTurtles = new Label("Number of Turtles");
+		Label numTurtles = new Label(myResource.getString("NUMTURT"));
 		ObservableList<String> numTurtlesOptions = 
 			    FXCollections.observableArrayList(
 			        "1",
@@ -84,7 +86,7 @@ public class TurtleProps extends Tab{
 	
 	private HBox addTurtXLabel(){
 		HBox hb2 = new HBox();
-		Label turtlePosX = new Label("Turtle X Position");
+		Label turtlePosX = new Label(myResource.getString("TURTX"));
 		TextArea inputPosX = new TextArea();
 		inputPosX.setPrefSize(myTextAreaWidth, myTextAreaHeight);
 		Button setPosX = new Button("Set");
@@ -99,7 +101,7 @@ public class TurtleProps extends Tab{
 	
 	private HBox addTurtYLabel(){
 		HBox hb3 = new HBox();
-		Label turtlePosY = new Label("Turtle Y Position");
+		Label turtlePosY = new Label(myResource.getString("TURTY"));
 		TextArea inputPosY = new TextArea();
 		inputPosY.setPrefSize(myTextAreaWidth, myTextAreaHeight);
 		Button setPosY = new Button("Set");
@@ -114,7 +116,7 @@ public class TurtleProps extends Tab{
 	
 	private HBox addTurtShapeLabel(){
 		HBox hb4 = new HBox();
-		Label turtleShape = new Label("Turtle Shape");
+		Label turtleShape = new Label(myResource.getString("TURTSHAPE"));
 		ObservableList<String> shapeOptions = 
 			    FXCollections.observableArrayList(
 			        "Turtle",
@@ -132,7 +134,7 @@ public class TurtleProps extends Tab{
 	
 	private HBox addTurtVisibleLable(){
 		HBox hb5 = new HBox();
-		Label turtVisible = new Label("Turtle Visibility");
+		Label turtVisible = new Label(myResource.getString("TURTVIS"));
 		ObservableList<String> visibleOptions = 
 			    FXCollections.observableArrayList(
 			        "Visible",
@@ -149,7 +151,7 @@ public class TurtleProps extends Tab{
 	
 	private HBox addPenColorLabel(){
 		HBox hb6 = new HBox();
-		Label penColor = new Label("Pen Color");
+		Label penColor = new Label(myResource.getString("PENC"));
 		ObservableList<String> colors = 
 			    FXCollections.observableArrayList(
 			        "Red",
@@ -162,56 +164,6 @@ public class TurtleProps extends Tab{
 		allElements.add((Node) cbColors);
 		
 		return hb6;
-	}
-	
-	private HBox addBGColorLabel(){
-		HBox hb7 = new HBox();
-		Label background = new Label("Background Color");
-		
-		ComboBox<Color> cmbColors = new ComboBox<Color>();
-		cmbColors.getItems().addAll(
-		     Color.AQUAMARINE,
-		     Color.CADETBLUE,
-		     Color.AZURE);
-
-		cmbColors.setCellFactory(new Callback<ListView<Color>, ListCell<Color>>() {
-		     @Override public ListCell<Color> call(ListView<Color> p) {
-		         return new ListCell<Color>() {
-		             private final Rectangle rectangle;
-		             { 
-		                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY); 
-		                 rectangle = new Rectangle(10, 10);
-		             }
-		             
-		             @Override protected void updateItem(Color item, boolean empty) {
-		                 super.updateItem(item, empty);
-		                 
-		                 if (item == null || empty) {
-		                     setGraphic(null);
-		                 } else {
-		                     rectangle.setFill(item);
-		                     setGraphic(rectangle);
-		                 }
-		            }
-		       };
-		   }
-		});
-		 
-		cmbColors.setOnAction((event) -> {
-		    Color chosenColor = (Color) cmbColors.getSelectionModel().getSelectedItem();
-		    Canvas currCanvas = (Canvas) myTurtleScene.getSelectionModel().getSelectedItem().getContent();
-		    
-		    myTurtleScene.setColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
-		    System.out.println("ComboBox Action (selected: " + chosenColor.toString().toUpperCase() + ")");
-		}); 
-		 
-		
-		hb7.getChildren().addAll(background, cmbColors);
-		
-		allElements.add((Node) background);
-		allElements.add((Node) cmbColors);
-		
-		return hb7;
 	}
 	
 	private void setAllMargins(List<Node> nodes){

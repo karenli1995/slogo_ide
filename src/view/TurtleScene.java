@@ -2,6 +2,8 @@ package view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
+
 import model.Turtle;
 import controller.ModelController;
 import javafx.scene.canvas.Canvas;
@@ -11,19 +13,38 @@ import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-public class TurtleScene extends TabPane {
+public class TurtleScene extends TabPane{
 	
-	private List<Tab> myTabs;
+	private ImageView myImage;
+	private TurtleSceneTab myDefaultSceneTab;
+	private List<TurtleSceneTab> myTabs = new ArrayList<TurtleSceneTab>();
 	private ModelController myController;
+	private ResourceBundle myResource;
 	
 	private double myCanvasWidth = SlogoProperties.getSceneWidth()*3/7;
 	private double myCanvasHeight = SlogoProperties.getSceneHeight()*5/7;
 
-	public TurtleScene(ModelController controller) {
-		myTabs = new ArrayList<Tab>();
+	public TurtleScene(ModelController controller, ResourceBundle resource) {
+		myResource = resource;
 		myController = controller;
-		addNewTab();
+		myDefaultSceneTab = new TurtleSceneTab(this, myController);
+		myTabs.add(myDefaultSceneTab);
+		myImage = getCurrTab().getTurtImage();
+		this.getChildren().add(myImage);
+
 	}
+	
+	public TurtleSceneTab getCurrTab(){
+		return (TurtleSceneTab) this.getSelectionModel().getSelectedItem();
+	}
+	
+//	public ModelController getController(){
+//		return myController;
+//	}
+//	
+//	public void setController(ModelController controller){
+//		myController = controller;
+//	}
 	
 	public double getX(){
 		return this.getTranslateX();
@@ -33,6 +54,18 @@ public class TurtleScene extends TabPane {
 		return this.getTranslateY();
 	}
 	
+
+//	private void setTurtle(int id) {
+//		Turtle currTurt = (Turtle) myController.getData().getTurtle(id);
+//		double currTurtLocX = currTurt.getLocation().getX();
+//		double currTurtLocY = currTurt.getLocation().getY();
+//		
+//		SlogoImage currTurtView = new SlogoImage(this, myController, id);
+//		ImageView currTurtImage = currTurtView.getMyImage();
+//		currTurtView.setScreenLoc(currTurtLocX, currTurtLocY);
+//		
+//		this.getChildren().add(currTurtImage);
+
 	public double getMyCanvasWidth(){
 		return myCanvasWidth;
 	}
@@ -40,48 +73,4 @@ public class TurtleScene extends TabPane {
 	public double getMyCanvasHeight(){
 		return myCanvasHeight;
 	}
-	
-	private void addNewTab() {
- 		Tab tab = new Tab();
- 		tab.setText("New Tab");
- 		Canvas canvas = new Canvas();
- 		canvas.setWidth(myCanvasWidth);
- 		canvas.setHeight(myCanvasHeight);
- 		GraphicsContext gc = canvas.getGraphicsContext2D();
- 		setColor(gc, canvas, Color.ALICEBLUE);
-        
- 		setTurtle();
- 		tab.setContent(canvas);
- 		
- 		myTabs.add(tab);
- 	
- 		this.getTabs().add(tab);
- 	}
- 	
-//	private void setTurtle(GraphicsContext gc) {
-//		int defaultTurtId = 0;
-//		Turtle currTurt = (Turtle) myController.getData().getTurtle(defaultTurtId);
-//		SlogoImage currTurtView = new SlogoImage(myController, defaultTurtId);
-//		Image currTurtImage = currTurtView.getImage();
-//		gc.drawImage(currTurtImage, currTurt.getLocation().getX(), currTurt.getLocation().getX());
-//	}
-	
-	private void setTurtle() {
-		int defaultTurtId = 0;
-		Turtle currTurt = (Turtle) myController.getData().getTurtle(defaultTurtId);
-		double currTurtLocX = currTurt.getLocation().getX();
-		double currTurtLocY = currTurt.getLocation().getY();
-		
-		SlogoImage currTurtView = new SlogoImage(this, myController, defaultTurtId);
-		ImageView currTurtImage = currTurtView.getMyImage();
-		currTurtView.setScreenLoc(currTurtLocX, currTurtLocY);
-		
-		this.getChildren().add(currTurtImage);
-	}
-
-	public void setColor(GraphicsContext gc, Canvas canvas, Color color) {
-		gc.setFill(color);
-		gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
-	}
-
 }
