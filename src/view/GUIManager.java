@@ -103,6 +103,10 @@ public class GUIManager extends BorderPane {
 		System.out.print(myResource.getString("RUN"));
 		
 	}
+	
+	public TurtleScene getTurtScene(){
+		return myTurtleScene;
+	}
 
 	/**
 	 * Initialize the window

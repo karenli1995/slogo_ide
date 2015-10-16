@@ -7,7 +7,7 @@ import java.util.Observer;
 
 import javafx.scene.shape.Line;
 
-public class Data implements Observer{
+public class Data{
 	
 	private List<SlogoObjects> myTurtles;
 	private List<Trail> myTrails = new ArrayList<Trail>();
@@ -48,17 +48,17 @@ public class Data implements Observer{
 	}
 
 
-	@Override
-	public void update(Observable o, Object arg) {
-		for (SlogoObjects slogoObj : myTurtles){
-			slogoObj.addObserver(this);
-			if (slogoObj == o) {
-				System.out.println("karen " );
-			} else {
-				System.out.println("jenny ");
-			}
-		}
-		
-	}
+//	@Override
+//	public void update(Observable o, Object arg) {
+//		for (SlogoObjects slogoObj : myTurtles){
+//			slogoObj.addObserver(this);
+//			if (slogoObj == o) {
+//				System.out.println("karen " );
+//			} else {
+//				System.out.println("jenny ");
+//			}
+//		}
+//		
+//	}
 
 }

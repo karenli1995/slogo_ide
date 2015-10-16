@@ -13,7 +13,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-public class TurtleScene extends TabPane {
+public class TurtleScene extends TabPane{
 	
 	private ImageView myImage;
 	private TurtleSceneTab myDefaultSceneTab;

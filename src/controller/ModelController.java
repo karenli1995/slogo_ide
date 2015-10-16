@@ -6,8 +6,10 @@ import command.Command;
 import javafx.scene.Group;
 import javafx.stage.Stage;
 import model.Data;
+import model.SlogoObjects;
 import model.commandTester;
 import view.GUIManager;
+import view.TurtleSceneTab;
 
 public class ModelController {
 
@@ -23,6 +25,12 @@ public class ModelController {
 		myGuiManager = new GUIManager(stage, this);
 		parser = new Parser();
 		traverser = new Traverser();
+		
+		//adding observer and observable
+		SlogoObjects turtObj = getData().getTurtle(0);
+		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
+		turtObj.addObserver(currSceneTab);
+		
 		//commandtester = new commandTester(root, this);// for testing only
 
 	}
