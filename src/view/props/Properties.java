@@ -11,8 +11,6 @@ import javafx.scene.control.TabPane;
 public class Properties extends TabPane{
 	
 	private List<Tab> allTabs = new ArrayList<Tab>();
-	private int myTabPaneWidth = 400;
-	private int myTabPaneHeight = 400;
 
 	public Properties(Scene scene, TurtleScene turtScene){
 		TurtleProps myTurtProps = new TurtleProps(turtScene);

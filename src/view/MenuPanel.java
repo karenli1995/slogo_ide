@@ -1,9 +1,11 @@
 package view;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
+import controller.ModelController;
 import javafx.animation.Animation.Status;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -17,18 +19,30 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import model.Data;
 
 public class MenuPanel extends MenuBar{
 	
-	MenuPanel(){
-        getMenus().addAll(fileMenu());
+	private Stage myStage;
+	private FileChooser myFileChooser;
+	private ModelController myController;
+	
+	public MenuPanel(Stage stage, ModelController controller){
+        super();
+        myController = controller;
+		myFileChooser = new FileChooser();
+		FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
+		myFileChooser.getExtensionFilters().add(extensionFilter);
+		myStage = stage;
+        this.getMenus().addAll(fileMenu(myStage));
 	}
 
 	/**
 	 * create file menu
 	 * @return menu
 	 */
-	private Menu fileMenu() {
+	private Menu fileMenu(Stage stage) {
 		Menu menu = new Menu("File");
 		
 		MenuItem open = new MenuItem("Open SLogo");
@@ -37,7 +51,6 @@ public class MenuPanel extends MenuBar{
 		
 		MenuItem save = new MenuItem("Save SLogo");
 		save.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
-		save.disableProperty().bind(myGui.getReadOnlyButtons().get("Step").disabledProperty());
 		save.setOnAction(e->{saveSlogo();});
 		
 		MenuItem exit = new MenuItem("Exit");
@@ -51,33 +64,32 @@ public class MenuPanel extends MenuBar{
 	
 	
 	private void openSlogo() {
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Open Resource File");
+		myFileChooser.setTitle("Open Slogo File");
 		File userDirectory = getDataDirectory();
 		if(userDirectory.canRead()) {
-			fileChooser.setInitialDirectory(userDirectory);
+			myFileChooser.setInitialDirectory(userDirectory);
 		}
-//		FileChooser.ExtensionFilter extentionFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
-//		fileChooser.getExtensionFilters().add(extentionFilter);
-		File file = fileChooser.showOpenDialog(myStage);
+		File file = myFileChooser.showOpenDialog(myStage);
 
-//		try {
-//			if (file != null && myManager.loadXML(file)) {
-//				myButtons.get("Start").setDisable(false);
-//				myButtons.get("Reset").setDisable(false);
-//				myButtons.get("Step").setDisable(false);
-//			}
-//		} catch (Exception e) {
-//			showError("Error!","Failed to load "+file.getName(),e);
-//		}
+		try {
+			if (file != null) {
+				
+			}
+		} catch (Exception e) {
+			//showError("Error!","Failed to load "+file.getName(),e);
+		}
 	}
 	
 	private void saveSlogo(){
+		myFileChooser.setTitle("Save Slogo File");
+		myFileChooser.showSaveDialog(myStage);
+		
 		try{
-			String fileName = myManager.save(getDataDirectory());
-			showInfo("File saved successfully","File name: "+fileName);
+			//myFileChooser.
+			//String fileName = myManager.save(getDataDirectory());
+			//showInfo("File saved successfully","File name: "+fileName);
 		}catch(Exception e){
-			showError("Save Exception","Failed to save current model as an XML",e);
+			//showError("Save Exception","Failed to save current model as an XML",e);
 		}
 	}
 	
