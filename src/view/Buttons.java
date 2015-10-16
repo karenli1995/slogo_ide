@@ -75,6 +75,7 @@ public class Buttons extends VBox {
 		String consoleText = myConsole.getTextFromConsole();
 		System.out.println(consoleText + "hi");
 		myController.parse(consoleText);
+		myController.traverse();
 	}
 	
 	private void clearConsole(){

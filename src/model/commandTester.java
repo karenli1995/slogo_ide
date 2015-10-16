@@ -8,7 +8,7 @@ import java.util.List;
 
 import command.turtleCommands.Backward;
 import command.turtleCommands.Forward;
-import command.turtleCommands.Goto;
+import command.turtleCommands.SetPosition;
 import command.turtleCommands.HideTurtle;
 import command.turtleCommands.Left;
 import command.turtleCommands.Right;
@@ -109,7 +109,7 @@ public class commandTester {
 	}
 
 	private void gotomathod(ModelController control) {
-		Goto gotoclass = new Goto();
+		SetPosition gotoclass = new SetPosition();
 		distance.clear();
 		distance.add((double) 20);
 		distance.add((double) 20);

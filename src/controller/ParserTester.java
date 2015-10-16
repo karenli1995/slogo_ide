@@ -25,6 +25,7 @@ public class ParserTester {
 		Parser parser = new Parser();
 		Traverser traverse = new Traverser();
 		String input = readFile("examples/loops/circle.logo", StandardCharsets.UTF_8);
+		input = "goto 50 50";
 		List<ParseTreeNode<Command>> head = parser.parse(input);
 		List<String[]> lol = parser.getCommandList();
 
