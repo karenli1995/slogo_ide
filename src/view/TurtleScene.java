@@ -77,10 +77,9 @@ public class TurtleScene extends TabPane {
 		currTurtView.setScreenLoc(currTurtLocX, currTurtLocY);
 		
 		this.getChildren().add(currTurtImage);
-		
 	}
 
-	private void setColor(GraphicsContext gc, Canvas canvas, Color color) {
+	public void setColor(GraphicsContext gc, Canvas canvas, Color color) {
 		gc.setFill(color);
 		gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
 	}

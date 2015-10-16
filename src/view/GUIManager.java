@@ -53,7 +53,7 @@ public class GUIManager extends BorderPane {
 		myTurtleScene = new TurtleScene(modelController);
 		this.setCenter(myTurtleScene);
 
-		myProps = new Properties(scene);
+		myProps = new Properties(scene, myTurtleScene);
 		this.setRight(myProps);
 
 		myRoot.getChildren().addAll(this);

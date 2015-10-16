@@ -19,7 +19,7 @@ public class ShowTurtle extends Command {
 	@Override
 	public double execute(List<Double> angle,Data data) {
 		data.getTurtle(0).getMyImage().setVisible(true);
-		data.getTurtle(0).setIsShowing(1);
+		data.getTurtle(0).setIsShowing(true);
 		return 1;
 
 	}

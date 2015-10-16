@@ -12,7 +12,7 @@ public class SlogoImage{
 	private ImageView myImageView = new ImageView(myImage);
 	
 	private TurtleScene myTurtScene;
-	private ModelController myController;
+	private ModelController myController; 
 	private List<SlogoObjects> allMyObjects;
 	private SlogoObjects myObject;
 	
