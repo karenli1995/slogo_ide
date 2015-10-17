@@ -31,6 +31,7 @@ public class SetPosition extends Command {
 		Trail loc = new Trail(point, 0);
 
 		data.getTurtle(0).setTrail(loc);
+		data.getTurtle(0).getTrail().addCoord(point);
 
 		return data;
 	}
