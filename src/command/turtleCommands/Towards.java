@@ -15,8 +15,6 @@ import model.Data;
  *
  */
 public class Towards extends Command {
-//	TurtleScene turtleScene = new TurtleScene();
-
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
 		this.setValue(0);
