@@ -21,6 +21,7 @@ public class HideTurtle extends Command {
 	public Data execute(List<ParseTreeNode<Command>> angle,Data data) {
 		data.getTurtle(0).setIsShowing(false);
 		this.setValue(0);
+		System.out.println("hide");
 		return data;
 
 	}

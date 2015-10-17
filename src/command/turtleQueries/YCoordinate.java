@@ -14,12 +14,12 @@ import model.Data;
  * @author Sally Al
  *
  */
-public class XCOR extends Command {
-
+public class YCoordinate extends Command {
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
-		double x = data.getTurtle(0).getLocation().getX();// - turtleScene.getCentrex();
-		this.setValue(x);
+		distance.clear();
+		double y = data.getTurtle(0).getLocation().getY();// - turtleScene.getCentrey();
+		this.setValue(y);
 		return data;
 	}
 

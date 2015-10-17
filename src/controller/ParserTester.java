@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import command.Command;
-import javafx.stage.Stage;
 import model.Data;
 public class ParserTester {
 
