@@ -29,23 +29,23 @@ public class Data{
 		setUserHistory(new ArrayList<String>());
 		setVariableMap(new HashMap<String, Integer>());
 		setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
+		defaultTurtle.getPen().getTrail().addCoord(defaultTurtle.getLocation().getPoint());
+		myTrails.add(defaultTurtle.getPen().getTrail());
 	}
-	
-
-//	public void setPen(int option) {
-//		pen = option;
-//	}
-//
-//	public int getPen() {
-//		return pen;
-//	}
 
 	public SlogoObjects getTurtle(int turtleId) {
 		return myTurtles.get(turtleId);
 	}
 
 	/*
-	 * public void addTurtle() { myTurtles.add(new Turtle()); }
+	 * public void addTurtle() { 
+	 * tempTurt = new Turtle();
+	 * myTurtles.add(tempTurt);
+	 * tempTurtle.getPen().getTrail().addCoord(tempTurtle.getLocation().getPoint());
+		myTrails.add(tempTurtle.getPen().getTrail());
+	 * 
+	 * 
+	 * }
 	 */
 
 	public List<SlogoObjects> getAllTurtles() {

@@ -7,11 +7,11 @@ public class Pen extends AbstractPen { // class with properties of the path
 
 
 	public Pen() {
-		super(Color.BLACK, 1, 0);
+		super(Color.BLACK, 1, 0, true);
 	}
 
 	public Pen(AbstractPen pen) {
-		super(pen.myColor, pen.myThickness, pen.myDashSparsity);
+		super(pen.myColor, pen.myThickness, pen.myDashSparsity, pen.myStatus);
 	}
 
 //	public void updateTrail(Point2D current) {
