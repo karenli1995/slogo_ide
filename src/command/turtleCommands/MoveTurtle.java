@@ -41,16 +41,17 @@ public class MoveTurtle {
 		double degrees = myTurtle.getRotationAngle();
 		double radians = Math.toRadians(degrees);
 
+
 		tempXLocation = RoundTo2Decimals(Math.sin(radians));
 		tempYLocation = RoundTo2Decimals(Math.cos(radians));
 
 		if (tempXLocation == 0.0 || tempXLocation == -0.0) {
 			tempXLocation = myTurtle.getLocation().getX();
 		} else {
-			tempXLocation = myTurtle.getLocation().getX() + (-(sign) * distance / Math.sin(radians));
+			tempXLocation = myTurtle.getLocation().getX() + ((sign) * distance / Math.sin(radians));
 		}
 		if (tempYLocation == 0.0 || tempYLocation == -0.0) {
-			tempYLocation = (myTurtle.getLocation().getX());
+			tempYLocation = (myTurtle.getLocation().getY());
 		} else {
 			tempYLocation = myTurtle.getLocation().getY() + (sign * (distance / Math.cos(radians)));
 		}
