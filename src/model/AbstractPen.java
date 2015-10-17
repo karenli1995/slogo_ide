@@ -11,18 +11,18 @@ public abstract class AbstractPen {
 
 	protected int myDashSparsity;
 
-	protected Trail myTrail;
+//	protected Trail myTrail;
 
 	public AbstractPen(Color color, int thickness, int dashSparsity) {
 		myColor = color;
 		myThickness = thickness;
 		myDashSparsity = dashSparsity;
-		myTrail = new Trail(this);
+//		myTrail = new Trail(this);
 	}
 
-	public Trail getTrail() {
-		return myTrail;
-	}
+//	public Trail getTrail() {
+//		return myTrail;
+//	}
 	
 	public int getThickness() {
 		return myThickness;
@@ -32,8 +32,8 @@ public abstract class AbstractPen {
 		this.myThickness = myThickness;
 	}
 
-	public void updateTrail(Point2D current) {
-		myTrail.addCoord(current);
-	}
+//	public void updateTrail(Point2D current) {
+//		myTrail.addCoord(current);
+//	}
 
 }

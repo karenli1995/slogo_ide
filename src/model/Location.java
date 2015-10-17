@@ -1,6 +1,5 @@
 package model;
 
-import view.SlogoProperties;
 import javafx.geometry.Point2D;
 
 public class Location {

@@ -14,8 +14,8 @@ public class Pen extends AbstractPen { // class with properties of the path
 		super(pen.myColor, pen.myThickness, pen.myDashSparsity);
 	}
 
-	public void updateTrail(Point2D current) {
-		super.updateTrail(current);
-	}
+//	public void updateTrail(Point2D current) {
+//		super.updateTrail(current);
+//	}
 
 }
