@@ -9,6 +9,7 @@ import java.util.Observer;
 
 import command.Command;
 import controller.ParseTreeNode;
+import javafx.geometry.Point2D;
 import javafx.scene.shape.Line;
 
 public class Data{
@@ -30,6 +31,8 @@ public class Data{
 		setVariableMap(new HashMap<String, Integer>());
 		setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
 		defaultTurtle.getPen().getTrail().addCoord(defaultTurtle.getLocation().getPoint());
+		defaultTurtle.getPen().getTrail().addCoord(new Point2D(100,100));
+		defaultTurtle.getPen().getTrail().addCoord(new Point2D(200,200));
 		myTrails.add(defaultTurtle.getPen().getTrail());
 	}
 

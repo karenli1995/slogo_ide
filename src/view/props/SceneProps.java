@@ -53,34 +53,7 @@ public class SceneProps extends Tab{
 		HBox hb7 = new HBox();
 		Label background = new Label(myResource.getString("BACKGROUNDC"));
 		
-		ComboBox<Color> cmbColors = new ComboBox<Color>();
-		cmbColors.getItems().addAll(
-		     Color.AQUAMARINE,
-		     Color.CADETBLUE,
-		     Color.AZURE);
-
-		cmbColors.setCellFactory(new Callback<ListView<Color>, ListCell<Color>>() {
-		     @Override public ListCell<Color> call(ListView<Color> p) {
-		         return new ListCell<Color>() {
-		             private final Rectangle rectangle;
-		             { 
-		                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY); 
-		                 rectangle = new Rectangle(10, 10);
-		             }
-		             
-		             @Override protected void updateItem(Color item, boolean empty) {
-		                 super.updateItem(item, empty);
-		                 
-		                 if (item == null || empty) {
-		                     setGraphic(null);
-		                 } else {
-		                     rectangle.setFill(item);
-		                     setGraphic(rectangle);
-		                 }
-		            }
-		       };
-		   }
-		});
+		ComboBox<Color> cmbColors = new ColorComboBox();
 		 
 		cmbColors.setOnAction((event) -> {
 		    Color chosenColor = (Color) cmbColors.getSelectionModel().getSelectedItem();
