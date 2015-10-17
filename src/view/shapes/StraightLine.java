@@ -1,6 +1,6 @@
 package view.shapes;
 
-public class StraightLine {
+public class StraightLine{
 	
 	StraightLine(){
 		
