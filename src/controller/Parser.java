@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import command.Command;
 import command.CommandFactory;
-import command.CommandFactory;
 import command.Constant;
 import command.DoTimes;
 import command.ListEnd;
@@ -19,6 +18,7 @@ import command.Variable;
 import command.math.Quotient;
 import command.math.Sine;
 import command.math.Sum;
+import command.turtleCommands.Backward;
 import command.turtleCommands.Forward;
 import command.turtleCommands.PenDown;
 import command.turtleCommands.PenUp;
@@ -51,6 +51,7 @@ public class Parser {
 	private void commandRegistration() {
 		try {
 			cf.registerCommand("Forward", Forward.class);
+			cf.registerCommand("Backward",Backward.class);
 			cf.registerCommand("Constant", Constant.class);
 			cf.registerCommand("ListEnd", ListEnd.class);
 			cf.registerCommand("ListStart", ListStart.class);

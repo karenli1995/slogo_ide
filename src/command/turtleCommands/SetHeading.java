@@ -22,7 +22,7 @@ public class SetHeading extends Command {
 		Double turtleCurrentHeading = data.getTurtle(0).getRotationAngle();
 		Double delta = headingAngle.get(0).getCommand().getValue() - turtleCurrentHeading;
 		data.getTurtle(0).setRotationAngle(turtleCurrentHeading + delta);
-		data.getTurtle(0).setMyHeadAngle(headingAngle.get(0).getCommand().getValue());
+		//data.getTurtle(0).setMyHeadAngle(headingAngle.get(0).getCommand().getValue());
 		this.setValue(delta);
 		return data;
 	}
