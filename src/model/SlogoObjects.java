@@ -7,13 +7,15 @@ public abstract class SlogoObjects extends Observable {
 	private Location myLocation;
 	private boolean isShowing = true;
 	private double myRotationAngle;
-
-	private Pen myPen = new Pen();
-
+	
 	public SlogoObjects() {
 
 	}
 
+	/**
+	 * Sets the next location of the turtle.
+	 * @param loc
+	 */
 	public void setLocation(Location loc) {
 		myLocation = loc;
 		setChanged();
@@ -44,12 +46,12 @@ public abstract class SlogoObjects extends Observable {
 		return myRotationAngle;
 	}
 
-	public Pen getPen(){
-		return myPen;
+	public Trail getTrail(){
+		return myTrail;
 	}
 
-	public void setPen(Pen pen){
-		myPen = pen;
+	public void setTrail(Trail trail){
+		myTrail = trail;
 		setChanged();
 		notifyObservers();
 	}

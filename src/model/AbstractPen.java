@@ -1,6 +1,5 @@
 package model;
 
-import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 
 public abstract class AbstractPen {
@@ -11,8 +10,6 @@ public abstract class AbstractPen {
 
 	protected int myDashSparsity;
 
-	protected Trail myTrail;
-
 	protected Double myStatus;
 
 	// pen down =1.0 , pen up =0.0
@@ -21,11 +18,6 @@ public abstract class AbstractPen {
 		myColor = color;
 		myThickness = thickness;
 		myDashSparsity = dashSparsity;
-		myTrail = new Trail();
-	}
-
-	public Trail getTrail() {
-		return myTrail;
 	}
 
 	public int getThickness() {
@@ -42,10 +34,6 @@ public abstract class AbstractPen {
 
 	public Color getColor() {
 		return myColor;
-	}
-
-	public void updateTrail(Point2D current) {
-		myTrail.addCoord(current);
 	}
 
 	public void setPen(Double bool) {

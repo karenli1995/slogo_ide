@@ -65,10 +65,19 @@ public class SlogoImage{
 		//should check for bounds as well
 		double newLocX = x + myTurtScene.getX() + myTurtScene.getCurrTab().getMyCanvasWidth()/2;
 		double newLocY = myTurtScene.getY() + myTurtScene.getCurrTab().getMyCanvasHeight()/2 - y;
-		System.out.println("hi " + newLocX);
-		System.out.println("yo " + newLocY);
-		myImageView.setLayoutX(newLocX);
-		myImageView.setLayoutY(newLocY);
+		if(checkBounds(newLocX, newLocY)){
+			myImageView.setLayoutX(newLocX);
+			myImageView.setLayoutY(newLocY);
+		}
+	}
+	
+	private boolean checkBounds(double x, double y){
+		if(x < myTurtScene.getX() || x > myTurtScene.getX()+myTurtScene.getCurrTab().getMyCanvasWidth() 
+				|| y < myTurtScene.getY() || y > myTurtScene.getY()+myTurtScene.getCurrTab().getMyCanvasHeight()){
+			return false;
+		}else{
+			return true;
+		}
 	}
 	
 	

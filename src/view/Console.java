@@ -20,6 +20,7 @@ public class Console extends ConsoleTabPane {
 	public void clearTextFromConsole(){
 		TextArea currTextArea = (TextArea) this.getSelectionModel().getSelectedItem().getContent();
 		currTextArea.clear();
+		currTextArea.requestFocus();
 	}
 	
 	public void setConsoleText(String text){

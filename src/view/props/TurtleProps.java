@@ -178,7 +178,7 @@ public class TurtleProps extends Tab {
 		cbColors.setOnAction((event)->
 		{
 		    Color chosenColor = (Color) cbColors.getSelectionModel().getSelectedItem();
-		    myTurtleScene.getController().getData().getTurtle(0).getPen().setColor(chosenColor);
+		    myTurtleScene.getController().getData().getTurtle(0).getLocation().getPen().setColor(chosenColor);
 
 		});
 
@@ -195,7 +195,7 @@ public class TurtleProps extends Tab {
 		ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
 		thicknesses.setOnAction((e) -> {
 			Integer thick = (Integer) thicknesses.getSelectionModel().getSelectedItem();
-			myTurtleScene.getController().getData().getTurtle(0).getPen().setThickness(thick);
+			myTurtleScene.getController().getData().getTurtle(0).getLocation().getPen().setThickness(thick);
 		});
 		hb8.getChildren().addAll(thickLabel, thicknesses);
 

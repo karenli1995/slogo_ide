@@ -1,9 +1,15 @@
 package model;
 
+import java.awt.Point;
+import java.util.Collection;
+import java.util.List;
+
 import javafx.geometry.Point2D;
 
 public class Location {
+	private AbstractPen myPen;
 	private Point2D myPoint;
+	private List<Point2D> myPath;
 	private double myDirection;
 	
 	public Location(Location oldBearing) {
@@ -11,12 +17,21 @@ public class Location {
 	}
 
 	public Location(Point2D point, double direction) {
+		myPen = new Pen();
 		myPoint = point;
 		myDirection = direction;
 	}
 
 	public Location() {
 		this(new Point2D(0,0), 0);
+	}
+	
+	public Pen getPen(){
+		return (Pen) myPen;
+	}
+	
+	public List<Point2D> getPathCoordinates(){
+		return myPath;
 	}
 	
 	public void setX(double x) {
@@ -51,4 +66,13 @@ public class Location {
 		return myDirection;
 	}
 
+//	public void addCoord(Point2D current) {
+//		myPath.add(current);
+//		
+//		System.out.println("Current trail");
+//		for(int i = 0; i < myPath.size(); i++){
+//			System.out.println("Point "+i+" = "+myPath.get(i).toString());
+//		}
+//		
+//	}
 }
