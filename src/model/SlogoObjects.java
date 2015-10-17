@@ -4,7 +4,7 @@ import java.util.Observable;
 
 public abstract class SlogoObjects extends Observable {
 
-	private Location myLocation;
+	private Trail myLocation;
 	private boolean isShowing = true;
 	private double myRotationAngle;
 	
@@ -16,13 +16,13 @@ public abstract class SlogoObjects extends Observable {
 	 * Sets the next location of the turtle.
 	 * @param loc
 	 */
-	public void setLocation(Location loc) {
+	public void setLocation(Trail loc) {
 		myLocation = loc;
 		setChanged();
 		notifyObservers();
 	}
 
-	public Location getLocation() {
+	public Trail getLocation() {
 		return myLocation;
 	}
 

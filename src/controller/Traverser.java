@@ -7,7 +7,7 @@ import java.util.Stack;
 
 import command.Command;
 import model.Data;
-import model.Location;
+import model.Trail;
 
 public class Traverser {
 	private Queue<ParseTreeNode<Command>> commandQueue;

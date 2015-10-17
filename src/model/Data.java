@@ -15,7 +15,7 @@ import javafx.scene.shape.Line;
 public class Data{
 	
 	private List<SlogoObjects> myTurtles;
-	private List<Location> myTrails = new ArrayList<Location>();
+	private List<Trail> myTrails = new ArrayList<Trail>();
 	private boolean error = false;
 	private String errorMessage;
 	private List<String> userHistory;

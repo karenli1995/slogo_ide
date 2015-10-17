@@ -10,7 +10,7 @@ import command.Command;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
 import model.Data;
-import model.Location;
+import model.Trail;
 
 /**
  *
@@ -26,7 +26,7 @@ public class Home extends Command {
 	defaultPosition.add(0.0);
 	defaultPosition.add(0.0);
 		this.setValue(moveTurtle.calculateDistanceBetweenTwoPoints(defaultPosition, data));
-		Location newLoc = new Location(new Point2D(0.0, 0.0), 0.0);
+		Trail newLoc = new Trail(new Point2D(0.0, 0.0), 0.0);
 		data.getTurtle(0).setLocation(newLoc);
 		data.getTurtle(0).setRotationAngle(0.0);
 		return data;
