@@ -19,8 +19,7 @@ public class HideTurtle extends Command {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> angle,Data data) {
-		data.getTurtle(0).getMyImage().setVisible(false);
-		data.getTurtle(0).setIsShowing(0);
+		data.getTurtle(0).setIsShowing(false);
 		this.setValue(0);
 		return data;
 

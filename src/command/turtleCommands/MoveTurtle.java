@@ -7,9 +7,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.image.ImageView;
 import model.Data;
-import view.TurtleScene;
+import model.SlogoObjects;
 
 /**
  *
@@ -18,7 +17,6 @@ import view.TurtleScene;
  */
 public class MoveTurtle {
 	private List<Double> linePoints = new ArrayList<Double>();
-	private static TurtleScene turtleScene = new TurtleScene();
 
 	private static final int lineStartX = 0;
 	private static final int lineEndX = 1;
@@ -30,45 +28,45 @@ public class MoveTurtle {
 		return Double.valueOf(df2.format(val));
 	}
 
-	public void moveFdorBK(double distance, int sign, ImageView myTurtle) {
+	public void moveFdorBK(double distance, int sign, SlogoObjects myTurtle) {
 
-		linePoints.add(lineStartX, myTurtle.getLayoutX());
-		linePoints.add(lineStartY, myTurtle.getLayoutY());
+		linePoints.add(lineStartX, myTurtle.getLocation().getX());
+		linePoints.add(lineStartY, myTurtle.getLocation().getY());
 
 		double tempXLocation;
 		double tempYLocation;
 
-		double degrees = myTurtle.getRotate();
+		double degrees = myTurtle.getRotationAngle();
 		double radians = Math.toRadians(degrees);
 
 		tempXLocation = RoundTo2Decimals(Math.sin(radians));
 		tempYLocation = RoundTo2Decimals(Math.cos(radians));
 
 		if (tempXLocation == 0.0 || tempXLocation == -0.0) {
-			tempXLocation = myTurtle.getLayoutX();
+			tempXLocation = myTurtle.getLocation().getX();
 		} else {
-			tempXLocation = myTurtle.getLayoutX() + (-(sign) * distance / Math.sin(radians));
+			tempXLocation = myTurtle.getLocation().getX() + (-(sign) * distance / Math.sin(radians));
 		}
 		if (tempYLocation == 0.0 || tempYLocation == -0.0) {
-			tempYLocation = (myTurtle.getLayoutY());
+			tempYLocation = (myTurtle.getLocation().getX());
 		} else {
-			tempYLocation = myTurtle.getLayoutY() + (sign * (distance / Math.cos(radians)));
+			tempYLocation = myTurtle.getLocation().getY() + (sign * (distance / Math.cos(radians)));
 		}
 
-		myTurtle.setLayoutX(tempXLocation);
-		myTurtle.setLayoutY(tempYLocation);
+		myTurtle.getLocation().setX(tempXLocation);
+		myTurtle.getLocation().setY(tempYLocation);
 
-		linePoints.add(lineEndX, myTurtle.getLayoutX());
-		linePoints.add(lineEndY, myTurtle.getLayoutY());
+		linePoints.add(lineEndX, myTurtle.getLocation().getX());
+		linePoints.add(lineEndY, myTurtle.getLocation().getY());
 
 	}
 
 	public double calculateDistanceBetweenTwoPoints(List<Double> newLocation, Data data) {
 
-		double x1 = data.getTurtle(0).getMyImage().getLayoutX();
-		double y1 = data.getTurtle(0).getMyImage().getLayoutY();
-		double x2 = newLocation.get(0) + turtleScene.getCentrex();
-		double y2 = newLocation.get(1) + turtleScene.getCentrey();
+		double x1 = data.getTurtle(0).getLocation().getX();
+		double y1 = data.getTurtle(0).getLocation().getY();
+		double x2 = newLocation.get(0);// + turtleScene.getCentrex();
+		double y2 = newLocation.get(1);// + turtleScene.getCentrey();
 
 		linePoints.add(lineStartX, x1);
 		linePoints.add(lineStartY, y1);
@@ -78,8 +76,8 @@ public class MoveTurtle {
 		double distance = ((y2 - y1) * (y2 - y1)) + ((x2 - x1) * (x2 - x1));
 		distance = Math.sqrt(distance);
 
-		data.getTurtle(0).getMyImage().setLayoutX(x2);
-		data.getTurtle(0).getMyImage().setLayoutY(y2);
+		data.getTurtle(0).getLocation().setX(x2);
+		data.getTurtle(0).getLocation().setY(y2);
 
 		return distance;
 	}

@@ -19,8 +19,8 @@ public class Left extends Command {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> angle,Data data) {
-		double newHeadAngle=data.getTurtle(0).getMyImage().getRotate()-angle.get(0).getCommand().getValue();
-		data.getTurtle(0).getMyImage().setRotate(newHeadAngle);
+		double newHeadAngle=data.getTurtle(0).getRotationAngle()-angle.get(0).getCommand().getValue();
+		data.getTurtle(0).setRotationAngle(newHeadAngle);
 		data.getTurtle(0).setMyHeadAngle(newHeadAngle);
 		this.setValue(angle.get(0).getCommand().getValue());
 		return data;

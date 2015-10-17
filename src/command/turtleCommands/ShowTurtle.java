@@ -19,8 +19,7 @@ public class ShowTurtle extends Command {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> angle,Data data) {
-		data.getTurtle(0).getMyImage().setVisible(true);
-		data.getTurtle(0).setIsShowing(1);
+		data.getTurtle(0).setIsShowing(true);
 		this.setValue(1);
 		return data;
 
