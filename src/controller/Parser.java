@@ -6,14 +6,15 @@ import java.util.ResourceBundle;
 
 import command.Command;
 import command.CommandFactory;
+import command.CommandFactory;
 import command.Constant;
 import command.DoTimes;
 import command.ListEnd;
 import command.ListStart;
 import command.MakeUserInstruction;
+import command.MakeVariable;
 import command.Repeat;
 import command.UserCommand;
-import command.MakeVariable;
 import command.Variable;
 import command.math.Quotient;
 import command.math.Sine;
@@ -21,10 +22,9 @@ import command.math.Sum;
 import command.turtleCommands.Forward;
 import command.turtleCommands.PenDown;
 import command.turtleCommands.PenUp;
-import command.turtleCommands.SetPosition;
 import command.turtleCommands.Right;
+import command.turtleCommands.SetPosition;
 import command.turtleQueries.IsPenDown;
-import command.CommandFactory;
 
 public class Parser {
 	private String[] inputArray;
@@ -105,7 +105,7 @@ public class Parser {
 
 	private int createParseTree(int index, ParseTreeNode<Command> p) {
 		int numInputs = Integer.parseInt(resources.getString(p.getCommand().getClass().getSimpleName()));
-		
+
 		if (numInputs == 0) {
 			currentNode = p;
 			return index;
@@ -114,9 +114,9 @@ public class Parser {
 				ParseTreeNode<Command> newNode = new ParseTreeNode<Command>(
 						cf.createCommand(commandList.get(index)[1]));
 				if (newNode.getCommand().getClass().getSimpleName().equals("Constant")) {
-					((Command) newNode.getCommand()).setValue(Double.parseDouble(commandList.get(index)[0]));
+					newNode.getCommand().setValue(Double.parseDouble(commandList.get(index)[0]));
 				} else {
-					((Command) newNode.getCommand()).setValue(index);
+					newNode.getCommand().setValue(index);
 				}
 				p.addChild(newNode);
 				index++;
@@ -126,13 +126,13 @@ public class Parser {
 		return index;
 	}
 
-	
+
 	public void printCommandList() {
 		for (String[] s : commandList) {
 			System.out.println(s[0] + ", " + s[1]);
 		}
 	}
-	
+
 	public void printTreeInOrder(ParseTreeNode<Command> head) {
 		if (head == null)
 			return;
@@ -141,9 +141,9 @@ public class Parser {
 			printTreeInOrder(node);
 		}
 
-		System.out.println(head.getCommand().getClass().getSimpleName() + " " + ((Command) head.getCommand()).getValue()
+		System.out.println(head.getCommand().getClass().getSimpleName() + " " + head.getCommand().getValue()
 				+ "->" + head.getParent().getCommand().getClass().getSimpleName() + " "
-				+ ((Command) head.getParent().getCommand()).getValue());
+				+ head.getParent().getCommand().getValue());
 	}
 
 	private void numInputs() {
@@ -193,7 +193,7 @@ public class Parser {
 	public CommandFactory getCommandFactory() {
 		return cf;
 	}
-	
+
 	public boolean checkInput(){
 		return !commandList.isEmpty();
 	}
