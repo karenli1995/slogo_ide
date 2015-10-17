@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.geometry.Point2D;
@@ -7,7 +8,7 @@ import javafx.geometry.Point2D;
 public class Trail {
 	private AbstractPen myPen;
 	private Point2D myPoint;
-	private List<Point2D> myPath;
+	private List<Point2D> myPath = new ArrayList<Point2D>();
 	private double myDirection;
 	
 	public Trail(Trail oldBearing) {
