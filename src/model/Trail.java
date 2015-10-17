@@ -21,14 +21,14 @@ public class Trail extends Observable{
 	private AbstractPen myPen; //defines visual aspects of path
 	private Location myPrevLoc;
 	private Location myNextLoc;
-//	public List<Point2D> myPath;
+	public List<Point2D> myPath;
 	private Data myModel; 
 
 //	private static ArrayList<Observer> observerList;
 	
 	public Trail(AbstractPen pen) {
 		myPen = pen;
-//		myPath = new ArrayList<Point2D>();
+		myPath = new ArrayList<Point2D>();
 	}
 	
 	public double getPrevLocX(){
@@ -71,14 +71,14 @@ public class Trail extends Observable{
 		myModel = model;
 	}
 
-//	public void addCoord(Point2D current) {
-//		myPath.add(current);
-//		
-//		System.out.println("Current trail");
-//		for(int i = 0; i < myPath.size(); i++){
-//			System.out.println("Point "+i+" = "+myPath.get(i).toString());
-//		}
-//		
-//	}
+	public void addCoord(Point2D current) {
+		myPath.add(current);
+		
+		System.out.println("Current trail");
+		for(int i = 0; i < myPath.size(); i++){
+			System.out.println("Point "+i+" = "+myPath.get(i).toString());
+		}
+		
+	}
 
 }
