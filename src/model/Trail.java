@@ -4,23 +4,23 @@ import java.util.List;
 
 import javafx.geometry.Point2D;
 
-public class Location {
+public class Trail {
 	private AbstractPen myPen;
 	private Point2D myPoint;
 	private List<Point2D> myPath;
 	private double myDirection;
 	
-	public Location(Location oldBearing) {
+	public Trail(Trail oldBearing) {
 		this(oldBearing.getPoint(), oldBearing.getDirection());
 	}
 
-	public Location(Point2D point, double direction) {
+	public Trail(Point2D point, double direction) {
 		myPen = new Pen();
 		myPoint = point;
 		myDirection = direction;
 	}
 
-	public Location() {
+	public Trail() {
 		this(new Point2D(0,0), 0);
 	}
 	
