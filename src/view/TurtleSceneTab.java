@@ -42,8 +42,8 @@ public class TurtleSceneTab extends Tab implements Observer{
 
 	public void setTurtle(int id, TurtleScene turtScene) {
 		Turtle currTurt = (Turtle) myModelController.getData().getTurtle(id);
-		double currTurtLocX = currTurt.getLocation().getX();
-		double currTurtLocY = currTurt.getLocation().getY();
+		double currTurtLocX = currTurt.getTrail().getX();
+		double currTurtLocY = currTurt.getTrail().getY();
 		System.out.println(currTurtLocX);
 		System.out.println(currTurtLocY);
 
@@ -54,8 +54,8 @@ public class TurtleSceneTab extends Tab implements Observer{
 
 	public void setTurtImage(ImageView image, int id){
 		Turtle currTurt = (Turtle) myModelController.getData().getTurtle(id);
-		double currTurtLocX = currTurt.getLocation().getX();
-		double currTurtLocY = currTurt.getLocation().getY();
+		double currTurtLocX = currTurt.getTrail().getX();
+		double currTurtLocY = currTurt.getTrail().getY();
 		mySlogoImage.setMyImage(image);
 		myImage = mySlogoImage.getMyImage();
 		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
@@ -84,12 +84,12 @@ public class TurtleSceneTab extends Tab implements Observer{
 	}
 
 	public void drawTrail(){
-		if(myModelController.getData().getTurtle(0).getLocation().getPen().isDown()==1){
-			Point2D point1 = translateForCanvas(myModelController.getData().getTurtle(0).getLocation().getPathCoordinates().get(trailIndex-1));
-			Point2D point2 = translateForCanvas(myModelController.getData().getTurtle(0).getLocation().getPathCoordinates().get(trailIndex));
+		if(myModelController.getData().getTurtle(0).getTrail().getPen().isDown()==1){
+			Point2D point1 = translateForCanvas(myModelController.getData().getTurtle(0).getTrail().getPathCoordinates().get(trailIndex-1));
+			Point2D point2 = translateForCanvas(myModelController.getData().getTurtle(0).getTrail().getPathCoordinates().get(trailIndex));
 	 		GraphicsContext gc = myCanvas.getGraphicsContext2D();
-	 		gc.setStroke(myModelController.getData().getTurtle(0).getLocation().getPen().getColor());
-	 		gc.setLineWidth(myModelController.getData().getTurtle(0).getLocation().getPen().getThickness());
+	 		gc.setStroke(myModelController.getData().getTurtle(0).getTrail().getPen().getColor());
+	 		gc.setLineWidth(myModelController.getData().getTurtle(0).getTrail().getPen().getThickness());
 	 		gc.strokeLine(point1.getX(), point1.getY(), point2.getX(), point2.getY());
 	 		trailIndex++;
 		}
@@ -108,8 +108,8 @@ public class TurtleSceneTab extends Tab implements Observer{
 		if (myModelController.getData().getTurtle(0) == o){
 			SlogoObjects otherSlogoObj = (SlogoObjects) o;
 			double newRotAngle = otherSlogoObj.getRotationAngle();
-			double newLocX = otherSlogoObj.getLocation().getX();
-			double newLocY = otherSlogoObj.getLocation().getY();
+			double newLocX = otherSlogoObj.getTrail().getX();
+			double newLocY = otherSlogoObj.getTrail().getY();
 
 			/*System.out.println(newLocX);
 			System.out.println(newLocY);*/
