@@ -5,7 +5,6 @@ import java.util.Observable;
 public abstract class SlogoObjects extends Observable {
 
 	private Location myLocation;
-	private double myHeadAngle;
 	private boolean isShowing = true;
 	private double myRotationAngle;
 
@@ -35,16 +34,10 @@ public abstract class SlogoObjects extends Observable {
 		return isShowing;
 	}
 
-	public double getMyHeadAngle() {
-		return myHeadAngle;
-	}
-
-	public void setMyHeadAngle(double headAngle) {
-		myHeadAngle = headAngle;
-	}
-
 	public void setRotationAngle(Double angle) {
 		myRotationAngle = angle;
+		setChanged();
+		notifyObservers();
 	}
 
 	public double getRotationAngle() {
@@ -57,5 +50,7 @@ public abstract class SlogoObjects extends Observable {
 	
 	public void setPen(Pen pen){
 		myPen = pen;
+		setChanged();
+		notifyObservers();
 	}
 }
