@@ -67,10 +67,12 @@ public class TurtleProps extends Tab {
 		HBox hb4 = addTurtShapeLabel();
 		HBox hb5 = addTurtVisibleLable();
 		HBox hb6 = addPenColorLabel();
+		HBox hb7 = addPenThicknessLabel();
+		HBox hb8 = drawTester();
 
 		setAllMargins(allElements);
 
-		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5, hb6);
+		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5, hb6, hb7, hb8);
 
 		this.setContent(vb);
 	}
@@ -152,7 +154,6 @@ public class TurtleProps extends Tab {
 			}
 		} catch (Exception e) {
 			//showError("Error!","Failed to load "+file.getName(),e);
-			System.out.print("fuck");
 		}
 	}
 
@@ -172,14 +173,55 @@ public class TurtleProps extends Tab {
 	private HBox addPenColorLabel() {
 		HBox hb6 = new HBox();
 		Label penColor = new Label(myResource.getString("PENC"));
-		ObservableList<String> colors = FXCollections.observableArrayList("Red", "Blue");
-		final ComboBox cbColors = new ComboBox(colors);
+		final ComboBox<Color> cbColors = new ColorComboBox();
 		hb6.getChildren().addAll(penColor, cbColors);
+		cbColors.setOnAction((event)->
+		{
+		    Color chosenColor = (Color) cbColors.getSelectionModel().getSelectedItem();
+		    myTurtleScene.getController().getData().getTurtle(0).getPen().setColor(chosenColor);
+
+		});
 
 		allElements.add((Node) penColor);
 		allElements.add((Node) cbColors);
 
 		return hb6;
+	}
+	
+	private HBox addPenThicknessLabel() {
+		HBox hb8 = new HBox();
+		Label thickLabel = new Label("Pen Thickness");
+		ObservableList<Integer> thicks = FXCollections.observableArrayList(1,2,3,4,5);
+		ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
+		thicknesses.setOnAction((e) -> {
+			Integer thick = (Integer) thicknesses.getSelectionModel().getSelectedItem();
+			myTurtleScene.getController().getData().getTurtle(0).getPen().setThickness(thick);
+		});
+		hb8.getChildren().addAll(thickLabel, thicknesses);
+
+		allElements.add((Node) thickLabel);
+		allElements.add((Node) thicknesses);
+
+		return hb8;
+	}
+	
+	private HBox drawTester() {
+		HBox hb7 = new HBox();
+		Label drawer = new Label("drawing test");
+		Button draw = new Button("Draw");
+		draw.setOnAction((e) -> {
+			drawTrail();
+		});
+		hb7.getChildren().addAll(drawer, draw);
+
+		allElements.add((Node) drawer);
+		allElements.add((Node) draw);
+
+		return hb7;
+	}
+	
+	private void drawTrail(){
+		myTurtleScene.getCurrTab().drawTrail();
 	}
 
 	private void setAllMargins(List<Node> nodes) {

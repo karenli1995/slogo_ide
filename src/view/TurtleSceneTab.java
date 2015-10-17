@@ -6,6 +6,7 @@ import java.util.Observer;
 import controller.ModelController;
 import model.SlogoObjects;
 import model.Turtle;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Tab;
@@ -18,6 +19,7 @@ public class TurtleSceneTab extends Tab implements Observer{
 	private Turtle myTurtle; //check this
 	private Canvas myCanvas;
 	private ModelController myModelController;
+	private int trailIndex = 1;
 	
 	private double myCanvasWidth = SlogoProperties.getSceneWidth()*3/7;
 	private double myCanvasHeight = SlogoProperties.getSceneHeight()*5/7;
@@ -80,6 +82,24 @@ public class TurtleSceneTab extends Tab implements Observer{
 	
 	public SlogoImage getSlogoImage(){
 		return mySlogoImage;
+	}
+	
+	public void drawTrail(){
+		if(myModelController.getData().getTurtle(0).getPen().isDown()==1){
+			Point2D point1 = translateForCanvas(myModelController.getData().getTurtle(0).getPen().getTrail().getPathCoordinates().get(trailIndex-1));
+			Point2D point2 = translateForCanvas(myModelController.getData().getTurtle(0).getPen().getTrail().getPathCoordinates().get(trailIndex));
+	 		GraphicsContext gc = myCanvas.getGraphicsContext2D();
+	 		gc.setStroke(myModelController.getData().getTurtle(0).getPen().getColor());
+	 		gc.setLineWidth(myModelController.getData().getTurtle(0).getPen().getThickness());
+	 		gc.strokeLine(point1.getX(), point1.getY(), point2.getX(), point2.getY());
+	 		trailIndex++;
+		}
+	}
+	
+	private Point2D translateForCanvas(Point2D point){
+		double X = point.getX() + myCanvasWidth/2;
+		double Y = point.getY() + myCanvasHeight/2;
+		return new Point2D(X,Y);
 	}
 
 
