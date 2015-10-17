@@ -2,14 +2,12 @@ package view;
 
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import controller.ModelController;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import view.props.Properties;
 
@@ -19,20 +17,23 @@ public class GUIManager extends BorderPane {
     public static final String STYLESHEET = "default.css";
 
 	protected Stage myStage;
-	private static Scene myScene;
+	private Scene myScene;
 	private Group myRoot;
-
-	private int myWindowWidth, myWindowHeight;
 	
 	private ModelController myModelController;
 	private AvailableUserCommands myAvailableUserCommands;
 	private History myHistory;
 	private ConsoleUI myConsoleUI;
 	private TurtleScene myTurtleScene;
-	private Properties myProps;
+	private Properties myProps; 
 	private MenuPanel myMenu;
 	public ResourceBundle myResource;
 
+	/**
+	 * Instantiates the entire view
+	 * @param stage
+	 * @param modelController
+	 */
 	public GUIManager(Stage stage, ModelController modelController){
 		langInput();
 		myStage = stage;
@@ -44,10 +45,9 @@ public class GUIManager extends BorderPane {
 		this.prefHeightProperty().bind(scene.heightProperty());
         this.prefWidthProperty().bind(scene.widthProperty());
 		
-        myMenu = new MenuPanel(myStage, myModelController, myResource);
-        this.setTop(myMenu);
-        addBottomPane(myModelController, scene);
-		addCenterPane(myModelController);
+        addTopPane();
+        addBottomPane(scene);
+		addCenterPane();
 		addRightPane(scene);
 		addLeftPane(scene);
 
@@ -55,6 +55,9 @@ public class GUIManager extends BorderPane {
 		stage.show();
 	}
 
+	/**
+	 * Prompts user to choose a language for the IDE platform
+	 */
 	private void langInput() {
 		LangDialog lang = new LangDialog();
 		Optional<ResourceBundle> resource = lang.showAndWait();
@@ -63,21 +66,30 @@ public class GUIManager extends BorderPane {
 		}
 	}
 
-	private void addBottomPane(ModelController controller, Scene scene) {
-		myConsoleUI = new ConsoleUI(scene, controller, this, myResource);
+	/**
+	 * The next 5 methods instantiate different parts of the view: 
+	 * Menu
+	 * Console
+	 * Scene
+	 * Properties
+	 * History/User Commands
+	 */
+	private void addTopPane(){
+		myMenu = new MenuPanel(myStage, myModelController, myResource);
+        this.setTop(myMenu);
+	}
+	private void addBottomPane(Scene scene) {
+		myConsoleUI = new ConsoleUI(scene, myModelController, this, myResource);
 		this.setBottom(myConsoleUI);
 	}
-
-	private void addCenterPane(ModelController controller) {
-		myTurtleScene = new TurtleScene(controller, myResource);
+	private void addCenterPane() {
+		myTurtleScene = new TurtleScene(myModelController, myResource);
 		this.setCenter(myTurtleScene);
 	}
-
 	private void addRightPane(Scene scene) {
 		myProps = new Properties(scene, myTurtleScene, this, myResource, myStage);
 		this.setRight(myProps);
 	}
-	
 	private void addLeftPane(Scene scene) {
 		GridPane histAndUser = new GridPane();
 		myHistory = new History(myConsoleUI, scene);
@@ -87,14 +99,21 @@ public class GUIManager extends BorderPane {
 		this.setLeft(histAndUser);
 	}
 	
+	/**
+	 * Gets the root of the scene.
+	 * @return
+	 */
 	public Group getRoot(){
 		return myRoot;
 	}
 	
+	/**
+	 * Sets the language of the IDE platform.
+	 * @param lang
+	 */
 	public void setLanguage(String lang){
 		myResource = ResourceBundle.getBundle("resources.languages/" + lang);
 		System.out.print(myResource.getString("RUN"));
-		
 	}
 	
 	public TurtleScene getTurtScene(){
