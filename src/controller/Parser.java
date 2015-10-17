@@ -20,11 +20,19 @@ import command.math.Sine;
 import command.math.Sum;
 import command.turtleCommands.Backward;
 import command.turtleCommands.Forward;
+import command.turtleCommands.HideTurtle;
+import command.turtleCommands.Home;
+import command.turtleCommands.Left;
 import command.turtleCommands.PenDown;
 import command.turtleCommands.PenUp;
 import command.turtleCommands.Right;
+import command.turtleCommands.SetHeading;
 import command.turtleCommands.SetPosition;
+import command.turtleCommands.ShowTurtle;
+import command.turtleQueries.Heading;
 import command.turtleQueries.IsPenDown;
+import command.turtleQueries.XCoordinate;
+import command.turtleQueries.YCoordinate;
 
 public class Parser {
 	private String[] inputArray;
@@ -58,6 +66,7 @@ public class Parser {
 			cf.registerCommand("ListStart", ListStart.class);
 			cf.registerCommand("Repeat", Repeat.class);
 			cf.registerCommand("Right", Right.class);
+			cf.registerCommand("Left", Left.class);
 			cf.registerCommand("Sum", Sum.class);
 			cf.registerCommand("IsPenDown", IsPenDown.class);
 			cf.registerCommand("DoTimes", DoTimes.class);
@@ -70,6 +79,21 @@ public class Parser {
 			cf.registerCommand("PenDown", PenDown.class);
 			cf.registerCommand("MakeVariable", MakeVariable.class);
 			cf.registerCommand("UserCommand", UserCommand.class);
+			cf.registerCommand("HideTurtle", HideTurtle.class);
+			cf.registerCommand("ShowTurtle", ShowTurtle.class);
+			cf.registerCommand("Home", Home.class);
+			cf.registerCommand("PenDown", PenDown.class);
+			cf.registerCommand("PenUp", PenUp.class);
+			cf.registerCommand("SetHeading", SetHeading.class);
+			cf.registerCommand("PenUp", PenUp.class);
+			cf.registerCommand("XCoordinate", XCoordinate.class);
+			cf.registerCommand("YCoordinate", YCoordinate.class);
+			cf.registerCommand("Heading", Heading.class);
+			//cf.registerCommand("IsShowing", IsShowing.class);
+			cf.registerCommand("IsPenDown", IsPenDown.class);
+
+
+
 
 		} catch (Exception e) {
 			throw new ParserException(errorResources.getString("commandRegistration"));
@@ -108,7 +132,7 @@ public class Parser {
 
 	private int createParseTree(int index, ParseTreeNode<Command> p) {
 		if (index < commandList.size()) {
-			
+
 			int numInputs = Integer.parseInt(resources.getString(p.getCommand().getClass().getSimpleName()));
 			if (p.getCommand().getClass().getSimpleName().equals("DoTimes")) {
 				//System.out.println("turn this to true");
@@ -128,13 +152,13 @@ public class Parser {
 				return index;
 			} else {
 				for (int j = 0; j < numInputs; j++) {
-				
+
 					ParseTreeNode<Command> newNode = new ParseTreeNode<Command>(
 							cf.createCommand(commandList.get(index)[1]));
 					if (newNode.getCommand().getClass().getSimpleName().equals("Constant")) {
-						((Command) newNode.getCommand()).setValue(Double.parseDouble(commandList.get(index)[0]));
+						newNode.getCommand().setValue(Double.parseDouble(commandList.get(index)[0]));
 					} else {
-						((Command) newNode.getCommand()).setValue(index);
+						newNode.getCommand().setValue(index);
 					}
 					p.addChild(newNode);
 					index++;
