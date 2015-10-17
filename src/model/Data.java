@@ -15,7 +15,7 @@ import javafx.scene.shape.Line;
 public class Data{
 	
 	private List<SlogoObjects> myTurtles;
-	private List<Trail> myTrails = new ArrayList<Trail>();
+	private List<Location> myTrails = new ArrayList<Location>();
 	private boolean error = false;
 	private String errorMessage;
 	private List<String> userHistory;
@@ -30,10 +30,10 @@ public class Data{
 		setUserHistory(new ArrayList<String>());
 		setVariableMap(new HashMap<String, Integer>());
 		setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
-		defaultTurtle.getPen().getTrail().addCoord(defaultTurtle.getLocation().getPoint());
-		defaultTurtle.getPen().getTrail().addCoord(new Point2D(100,100));
-		defaultTurtle.getPen().getTrail().addCoord(new Point2D(200,200));
-		myTrails.add(defaultTurtle.getPen().getTrail());
+		defaultTurtle.getLocation().addCoord(defaultTurtle.getLocation().getPoint());
+		defaultTurtle.getLocation().addCoord(new Point2D(100,100));
+		defaultTurtle.getLocation().addCoord(new Point2D(200,200));
+		myTrails.add(defaultTurtle.getLocation());
 	}
 
 	public SlogoObjects getTurtle(int turtleId) {

@@ -45,14 +45,4 @@ public abstract class SlogoObjects extends Observable {
 	public double getRotationAngle() {
 		return myRotationAngle;
 	}
-
-	public Trail getTrail(){
-		return myTrail;
-	}
-
-	public void setTrail(Trail trail){
-		myTrail = trail;
-		setChanged();
-		notifyObservers();
-	}
 }
