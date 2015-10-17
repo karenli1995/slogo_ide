@@ -7,20 +7,18 @@ public abstract class SlogoObjects extends Observable {
 	private Trail myTrail;
 	private boolean isShowing = true;
 	private double myRotationAngle;
-	
+
 	public SlogoObjects() {
 
 	}
 
-	/**
-	 * Sets the next location of the turtle.
-	 * @param loc
-	 */
+
 	public void setTrail(Trail loc) {
 		myTrail = loc;
 		setChanged();
 		notifyObservers();
 	}
+
 
 	public Trail getTrail() {
 		return myTrail;
