@@ -22,7 +22,7 @@ public class TurtleSceneTab extends Tab implements Observer{
 	private double myCanvasWidth = SlogoProperties.getSceneWidth()*3/7;
 	private double myCanvasHeight = SlogoProperties.getSceneHeight()*5/7;
 	
-	TurtleSceneTab(TurtleScene turtScene, ModelController controller){
+	public TurtleSceneTab(TurtleScene turtScene, ModelController controller){
 		myModelController = controller;
 		this.setText("New Text");
 		myCanvas = new Canvas();
@@ -51,6 +51,16 @@ public class TurtleSceneTab extends Tab implements Observer{
 		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
 	}
 	
+	public void setTurtImage(ImageView image, int id){
+		Turtle currTurt = (Turtle) myModelController.getData().getTurtle(id);
+		double currTurtLocX = currTurt.getLocation().getX();
+		double currTurtLocY = currTurt.getLocation().getY();
+		mySlogoImage.setMyImage(image);
+		myImage = mySlogoImage.getMyImage();
+		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
+	}
+	
+	
 	public ImageView getTurtImage(){
 		return myImage;
 	}
@@ -66,6 +76,10 @@ public class TurtleSceneTab extends Tab implements Observer{
 	public void setColor(GraphicsContext gc, Canvas canvas, Color color) {
 		gc.setFill(color);
 		gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
+	}
+	
+	public SlogoImage getSlogoImage(){
+		return mySlogoImage;
 	}
 
 

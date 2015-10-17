@@ -74,7 +74,7 @@ public class GUIManager extends BorderPane {
 	}
 
 	private void addRightPane(Scene scene) {
-		myProps = new Properties(scene, myTurtleScene, this, myResource);
+		myProps = new Properties(scene, myTurtleScene, this, myResource, myStage);
 		this.setRight(myProps);
 	}
 	
