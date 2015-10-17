@@ -9,8 +9,8 @@ import java.util.List;
 
 import javafx.geometry.Point2D;
 import model.Data;
-import model.Trail;
 import model.SlogoObjects;
+import model.Trail;
 
 /**
  *
@@ -57,7 +57,9 @@ public class MoveTurtle {
 		}
 
 		Trail newLoc = new Trail(new Point2D(tempXLocation, tempYLocation), degrees);
+
 		myTurtle.setTrail(newLoc);
+
 
 		linePoints.add(lineEndX, myTurtle.getTrail().getX());
 		linePoints.add(lineEndY, myTurtle.getTrail().getY());
