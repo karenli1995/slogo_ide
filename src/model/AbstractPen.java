@@ -43,7 +43,6 @@ public abstract class AbstractPen {
 		return myColor;
 	}
 
-
 	public void updateTrail(Point2D current) {
 		myTrail.addCoord(current);
 	}

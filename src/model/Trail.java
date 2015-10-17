@@ -67,6 +67,7 @@ public class Trail extends Observable{
 //		myModel.notifyObservers("trail");
 //	}
 
+
 	public void addModelObserver(Data model) {
 		myModel = model;
 	}

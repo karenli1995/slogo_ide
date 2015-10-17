@@ -8,6 +8,7 @@ public abstract class SlogoObjects extends Observable {
 	private double myHeadAngle;
 	private boolean isShowing = true;
 	private double myRotationAngle;
+
 	private Pen myPen = new Pen();
 	
 	public SlogoObjects() {
@@ -49,6 +50,7 @@ public abstract class SlogoObjects extends Observable {
 	public double getRotationAngle() {
 		return myRotationAngle;
 	}
+
 	public Pen getPen(){
 		return myPen;
 	}
