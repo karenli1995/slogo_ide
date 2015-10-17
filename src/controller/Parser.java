@@ -10,12 +10,17 @@ import command.Constant;
 import command.DoTimes;
 import command.ListEnd;
 import command.ListStart;
+import command.MakeUserInstruction;
 import command.Repeat;
+import command.UserCommand;
+import command.MakeVariable;
 import command.Variable;
 import command.math.Quotient;
 import command.math.Sine;
 import command.math.Sum;
 import command.turtleCommands.Forward;
+import command.turtleCommands.PenDown;
+import command.turtleCommands.PenUp;
 import command.turtleCommands.SetPosition;
 import command.turtleCommands.Right;
 import command.turtleQueries.IsPenDown;
@@ -58,6 +63,12 @@ public class Parser {
 			cf.registerCommand("Quotient", Quotient.class);
 			cf.registerCommand("Sine", Sine.class);
 			cf.registerCommand("SetPosition", SetPosition.class);
+			cf.registerCommand("MakeUserInstruction", MakeUserInstruction.class);
+			cf.registerCommand("PenUp", PenUp.class);
+			cf.registerCommand("PenDown", PenDown.class);
+			cf.registerCommand("MakeVariable", MakeVariable.class);
+			cf.registerCommand("UserCommand", UserCommand.class);
+
 		} catch (Exception e) {
 			throw new ParserException(errorResources.getString("commandRegistration"));
 		}
@@ -67,47 +78,35 @@ public class Parser {
 	public List<ParseTreeNode<Command>> parse(String input) {
 		this.createCommandList(this.removeComments(input));
 		nodeList = new ArrayList<ParseTreeNode<Command>>();
+		this.printCommandList();
+
 		if(this.checkInput()){
 			this.createHeadNode();
 			this.createParseTree();
 		}
-
+		this.printTreeInOrder(head);
 		return nodeList;
 	}
 
 	private int createParseTree() {
 		int index = 0;
-		bracketCount = 0;
-		nodeList.add(head);
 		while (index < commandList.size() - 1) {
 			index = this.createParseTree(index + 1, currentNode);
 			if (index < commandList.size()) {
 				ParseTreeNode<Command> newNode = new ParseTreeNode<Command>(
 						cf.createCommand(commandList.get(index)[1]));
-				nodeList.add(newNode);
+				currentNode.addChild(newNode);
 				currentNode = newNode;
 			}
 		}
 		return index;
 	}
 
-	public void printCommandList() {
-		for (String[] s : commandList) {
-			System.out.println(s[0] + ", " + s[1]);
-		}
-	}
-
-	public void printTree() {
-		for (ParseTreeNode<Command> node : nodeList) {
-			this.printTreeInOrder(node);
-			System.out.println("");
-		}
-	}
-
 	private int createParseTree(int index, ParseTreeNode<Command> p) {
 		int numInputs = Integer.parseInt(resources.getString(p.getCommand().getClass().getSimpleName()));
-
+		
 		if (numInputs == 0) {
+			currentNode = p;
 			return index;
 		} else {
 			for (int j = 0; j < numInputs; j++) {
@@ -126,6 +125,13 @@ public class Parser {
 		return index;
 	}
 
+	
+	public void printCommandList() {
+		for (String[] s : commandList) {
+			System.out.println(s[0] + ", " + s[1]);
+		}
+	}
+	
 	public void printTreeInOrder(ParseTreeNode<Command> head) {
 		if (head == null)
 			return;
