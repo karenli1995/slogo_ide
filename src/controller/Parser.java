@@ -61,19 +61,22 @@ public class Parser {
 		try {
 			cf.registerCommand("Forward", Forward.class);
 			cf.registerCommand("Backward",Backward.class);
+			cf.registerCommand("Right", Right.class);
+			cf.registerCommand("Left", Left.class);
+			cf.registerCommand("Home", Home.class);
+			cf.registerCommand("SetHeading",SetHeading.class);
+			cf.registerCommand("SetPosition", SetPosition.class);
+			cf.registerCommand("Heading", Heading.class);
 			cf.registerCommand("Constant", Constant.class);
 			cf.registerCommand("ListEnd", ListEnd.class);
 			cf.registerCommand("ListStart", ListStart.class);
 			cf.registerCommand("Repeat", Repeat.class);
-			cf.registerCommand("Right", Right.class);
-			cf.registerCommand("Left", Left.class);
 			cf.registerCommand("Sum", Sum.class);
 			cf.registerCommand("IsPenDown", IsPenDown.class);
 			cf.registerCommand("DoTimes", DoTimes.class);
 			cf.registerCommand("Variable", Variable.class);
 			cf.registerCommand("Quotient", Quotient.class);
 			cf.registerCommand("Sine", Sine.class);
-			cf.registerCommand("SetPosition", SetPosition.class);
 			cf.registerCommand("MakeUserInstruction", MakeUserInstruction.class);
 			cf.registerCommand("PenUp", PenUp.class);
 			cf.registerCommand("PenDown", PenDown.class);
@@ -81,14 +84,11 @@ public class Parser {
 			cf.registerCommand("UserCommand", UserCommand.class);
 			cf.registerCommand("HideTurtle", HideTurtle.class);
 			cf.registerCommand("ShowTurtle", ShowTurtle.class);
-			cf.registerCommand("Home", Home.class);
 			cf.registerCommand("PenDown", PenDown.class);
 			cf.registerCommand("PenUp", PenUp.class);
-			cf.registerCommand("SetHeading", SetHeading.class);
 			cf.registerCommand("PenUp", PenUp.class);
 			cf.registerCommand("XCoordinate", XCoordinate.class);
 			cf.registerCommand("YCoordinate", YCoordinate.class);
-			cf.registerCommand("Heading", Heading.class);
 			//cf.registerCommand("IsShowing", IsShowing.class);
 			cf.registerCommand("IsPenDown", IsPenDown.class);
 

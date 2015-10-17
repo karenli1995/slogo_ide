@@ -4,16 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
 
 import command.Command;
 import controller.ParseTreeNode;
-import javafx.geometry.Point2D;
 import javafx.scene.shape.Line;
 
 public class Data{
-	
+
 	private List<SlogoObjects> myTurtles;
 	private List<Trail> myTrails = new ArrayList<Trail>();
 	private boolean error = false;
@@ -22,7 +19,7 @@ public class Data{
 	private Map<String, Integer> variableMap;
 	private Map<String, ParseTreeNode<Command>> userCommandMap;
 //	private int pen = 0;
-	
+
 	public Data() {
 		myTurtles = new ArrayList<SlogoObjects>();
 		Turtle defaultTurtle = new Turtle();
@@ -30,9 +27,6 @@ public class Data{
 		setUserHistory(new ArrayList<String>());
 		setVariableMap(new HashMap<String, Integer>());
 		setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
-		defaultTurtle.getTrail().addCoord(defaultTurtle.getTrail().getPoint());
-		defaultTurtle.getTrail().addCoord(new Point2D(100,100));
-		defaultTurtle.getTrail().addCoord(new Point2D(200,200));
 		myTrails.add(defaultTurtle.getTrail());
 	}
 
@@ -41,13 +35,13 @@ public class Data{
 	}
 
 	/*
-	 * public void addTurtle() { 
+	 * public void addTurtle() {
 	 * tempTurt = new Turtle();
 	 * myTurtles.add(tempTurt);
 	 * tempTurtle.getPen().getTrail().addCoord(tempTurtle.getLocation().getPoint());
 		myTrails.add(tempTurtle.getPen().getTrail());
-	 * 
-	 * 
+	 *
+	 *
 	 * }
 	 */
 
@@ -90,7 +84,7 @@ public class Data{
 	public void setUserHistory(List<String> userHistory) {
 		this.userHistory = userHistory;
 	}
-	
+
 	public void addCommandToHistory(String s){
 		userHistory.add(s);
 	}
@@ -126,7 +120,7 @@ public class Data{
 //				System.out.println("jenny ");
 //			}
 //		}
-//		
+//
 //	}
 
 }
