@@ -11,13 +11,16 @@ public class Data{
 	
 	private List<SlogoObjects> myTurtles;
 	private List<Trail> myTrails = new ArrayList<Trail>();
-
+	private boolean error = false;
+	private String errorMessage;
+	private List<String> userHistory;
 //	private int pen = 0;
 	
 	public Data() {
 		myTurtles = new ArrayList<SlogoObjects>();
 		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
+		setUserHistory(new ArrayList<String>());
 	}
 	
 
@@ -45,6 +48,40 @@ public class Data{
 
 	public Line getLine() {
 		return myLine;
+	}
+
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+
+	public boolean isError() {
+		return error;
+	}
+
+
+	public void setError(boolean error) {
+		this.error = error;
+	}
+
+
+	public List<String> getUserHistory() {
+		return userHistory;
+	}
+
+
+	public void setUserHistory(List<String> userHistory) {
+		this.userHistory = userHistory;
+	}
+	
+	public void addCommandToHistory(String s){
+		userHistory.add(s);
 	}
 
 
