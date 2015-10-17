@@ -35,6 +35,8 @@ public class ModelController {
 		SlogoObjects turtObj = getData().getTurtle(0);
 		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
 		turtObj.addObserver(currSceneTab);
+		
+//		Trail currStraightLine = getData().getTrail(0);
 	}
 
 	/**

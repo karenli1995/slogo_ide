@@ -48,13 +48,10 @@ public class Data{
 	public List<SlogoObjects> getAllTurtles() {
 		return myTurtles;
 	}
-
-	Line myLine = new Line();
-
-	public Line getLine() {
-		return myLine;
+	
+	public Trail getTrail(int turtleId) {
+		return myTrails.get(turtleId);
 	}
-
 
 	public String getErrorMessage() {
 		return errorMessage;
