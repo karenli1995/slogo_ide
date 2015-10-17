@@ -9,7 +9,6 @@ public class Constant extends Command {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
-		// TODO Auto-generated method stub
 		return data;
 	}
 
