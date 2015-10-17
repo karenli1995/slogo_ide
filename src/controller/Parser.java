@@ -14,7 +14,6 @@ import command.MakeUserInstruction;
 import command.MakeVariable;
 import command.Repeat;
 import command.UserCommand;
-import command.Variable;
 import command.math.Quotient;
 import command.math.Sine;
 import command.math.Sum;
@@ -74,7 +73,6 @@ public class Parser {
 			cf.registerCommand("Sum", Sum.class);
 			cf.registerCommand("IsPenDown", IsPenDown.class);
 			cf.registerCommand("DoTimes", DoTimes.class);
-			cf.registerCommand("Variable", Variable.class);
 			cf.registerCommand("Quotient", Quotient.class);
 			cf.registerCommand("Sine", Sine.class);
 			cf.registerCommand("MakeUserInstruction", MakeUserInstruction.class);
