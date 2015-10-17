@@ -85,6 +85,7 @@ public class Parser {
 			this.createParseTree();
 		}
 		this.printTreeInOrder(head);
+		nodeList.add(head);
 		return nodeList;
 	}
 
