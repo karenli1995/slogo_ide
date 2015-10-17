@@ -9,8 +9,8 @@ import java.util.List;
 
 import javafx.geometry.Point2D;
 import model.Data;
-import model.Trail;
 import model.SlogoObjects;
+import model.Trail;
 
 /**
  *
@@ -32,8 +32,8 @@ public class MoveTurtle {
 
 	public void moveFdorBK(double distance, int sign, SlogoObjects myTurtle) {
 
-		linePoints.add(lineStartX, myTurtle.getLocation().getX());
-		linePoints.add(lineStartY, myTurtle.getLocation().getY());
+		linePoints.add(lineStartX, myTurtle.getTrail().getX());
+		linePoints.add(lineStartY, myTurtle.getTrail().getY());
 
 		double tempXLocation;
 		double tempYLocation;
@@ -46,28 +46,30 @@ public class MoveTurtle {
 		tempYLocation = RoundTo2Decimals(Math.cos(radians));
 
 		if (tempXLocation == 0.0 || tempXLocation == -0.0) {
-			tempXLocation = myTurtle.getLocation().getX();
+			tempXLocation = myTurtle.getTrail().getX();
 		} else {
-			tempXLocation = myTurtle.getLocation().getX() + ((sign) * distance / Math.sin(radians));
+			tempXLocation = myTurtle.getTrail().getX() + ((sign) * distance / Math.sin(radians));
 		}
 		if (tempYLocation == 0.0 || tempYLocation == -0.0) {
-			tempYLocation = (myTurtle.getLocation().getY());
+			tempYLocation = (myTurtle.getTrail().getY());
 		} else {
-			tempYLocation = myTurtle.getLocation().getY() + (sign * (distance / Math.cos(radians)));
+			tempYLocation = myTurtle.getTrail().getY() + (sign * (distance / Math.cos(radians)));
 		}
 
 		Trail newLoc = new Trail(new Point2D(tempXLocation, tempYLocation), degrees);
-		myTurtle.setLocation(newLoc);
 
-		linePoints.add(lineEndX, myTurtle.getLocation().getX());
-		linePoints.add(lineEndY, myTurtle.getLocation().getY());
+		myTurtle.setTrail(newLoc);
+
+
+		linePoints.add(lineEndX, myTurtle.getTrail().getX());
+		linePoints.add(lineEndY, myTurtle.getTrail().getY());
 
 	}
 
 	public double calculateDistanceBetweenTwoPoints(List<Double> newLocation, Data data) {
 
-		double x1 = data.getTurtle(0).getLocation().getX();
-		double y1 = data.getTurtle(0).getLocation().getY();
+		double x1 = data.getTurtle(0).getTrail().getX();
+		double y1 = data.getTurtle(0).getTrail().getY();
 		double x2 = newLocation.get(0);// + turtleScene.getCentrex();
 		double y2 = newLocation.get(1);// + turtleScene.getCentrey();
 
@@ -79,8 +81,8 @@ public class MoveTurtle {
 		double distance = ((y2 - y1) * (y2 - y1)) + ((x2 - x1) * (x2 - x1));
 		distance = Math.sqrt(distance);
 
-		data.getTurtle(0).getLocation().setX(x2);
-		data.getTurtle(0).getLocation().setY(y2);
+		data.getTurtle(0).getTrail().setX(x2);
+		data.getTurtle(0).getTrail().setY(y2);
 
 		return distance;
 	}

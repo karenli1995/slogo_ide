@@ -30,10 +30,10 @@ public class Data{
 		setUserHistory(new ArrayList<String>());
 		setVariableMap(new HashMap<String, Integer>());
 		setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
-		defaultTurtle.getLocation().addCoord(defaultTurtle.getLocation().getPoint());
-		defaultTurtle.getLocation().addCoord(new Point2D(100,100));
-		defaultTurtle.getLocation().addCoord(new Point2D(200,200));
-		myTrails.add(defaultTurtle.getLocation());
+		defaultTurtle.getTrail().addCoord(defaultTurtle.getTrail().getPoint());
+		defaultTurtle.getTrail().addCoord(new Point2D(100,100));
+		defaultTurtle.getTrail().addCoord(new Point2D(200,200));
+		myTrails.add(defaultTurtle.getTrail());
 	}
 
 	public SlogoObjects getTurtle(int turtleId) {

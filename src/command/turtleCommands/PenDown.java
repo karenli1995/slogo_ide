@@ -18,6 +18,9 @@ public class PenDown extends Command {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
+
+		data.getTurtle(0).getTrail().getPen().setPen(1.0);
+
 		this.setValue(1);
 		return data;
 	}
