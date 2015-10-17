@@ -32,9 +32,9 @@ public class Trail extends Observable{
 		return myPath;
 	}
 	
-	public void notifyObservers() {
+	/*public void notifyObservers() {
 		myModel.notifyObservers("trail");
-	}
+	}*/
 
 	public void addModelObserver(Data model) {
 		myModel = model;

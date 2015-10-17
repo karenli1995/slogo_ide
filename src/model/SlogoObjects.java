@@ -7,6 +7,7 @@ public abstract class SlogoObjects extends Observable{
 	private Location myLocation;
 	private double myHeadAngle;
 	private boolean isShowing = true;
+	private Pen myPen = new Pen();
 	
 
 	public SlogoObjects() {
@@ -39,5 +40,12 @@ public abstract class SlogoObjects extends Observable{
 
 	public void setMyHeadAngle(double headAngle) {
 		myHeadAngle = headAngle;
+	}
+	public Pen getPen(){
+		return myPen;
+	}
+	
+	public void setPen(Pen pen){
+		myPen = pen;
 	}
 }
