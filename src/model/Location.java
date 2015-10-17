@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.Point;
-import java.util.Collection;
 import java.util.List;
 
 import javafx.geometry.Point2D;
