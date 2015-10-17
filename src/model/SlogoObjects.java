@@ -10,7 +10,7 @@ public abstract class SlogoObjects extends Observable {
 	private double myRotationAngle;
 
 	private Pen myPen = new Pen();
-	
+
 	public SlogoObjects() {
 
 	}
@@ -45,6 +45,8 @@ public abstract class SlogoObjects extends Observable {
 
 	public void setRotationAngle(Double angle) {
 		myRotationAngle = angle;
+		setChanged();
+		notifyObservers();
 	}
 
 	public double getRotationAngle() {
@@ -54,7 +56,7 @@ public abstract class SlogoObjects extends Observable {
 	public Pen getPen(){
 		return myPen;
 	}
-	
+
 	public void setPen(Pen pen){
 		myPen = pen;
 	}
