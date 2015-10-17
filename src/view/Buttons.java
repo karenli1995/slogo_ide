@@ -1,12 +1,9 @@
 package view;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
 import model.Data;
-import model.Location;
 import controller.ModelController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

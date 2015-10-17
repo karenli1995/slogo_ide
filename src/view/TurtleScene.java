@@ -3,15 +3,9 @@ package view;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import model.Turtle;
 import controller.ModelController;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 
 public class TurtleScene extends TabPane{
 	
@@ -31,7 +25,6 @@ public class TurtleScene extends TabPane{
 		myTabs.add(myDefaultSceneTab);
 		myImage = getCurrTab().getTurtImage();
 		this.getChildren().add(myImage);
-
 	}
 	
 	public TurtleSceneTab getCurrTab(){

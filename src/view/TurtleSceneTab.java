@@ -108,6 +108,7 @@ public class TurtleSceneTab extends Tab implements Observer{
 		// TODO Auto-generated method stub
 		if (myModelController.getData().getTurtle(0) == o){
 			SlogoObjects otherSlogoObj = (SlogoObjects) o;
+			double newRotAngle = otherSlogoObj.getRotationAngle();
 			double newLocX = otherSlogoObj.getLocation().getX();
 			double newLocY = otherSlogoObj.getLocation().getY();
 			
@@ -118,6 +119,7 @@ public class TurtleSceneTab extends Tab implements Observer{
 //			double newLocX = newLoc.getX();
 //			double newLocY = newLoc.getY();
 			mySlogoImage.setScreenLoc(newLocX, newLocY);
+			mySlogoImage.setRotation(newRotAngle);
 			System.out.println("karen ");
 		}else{
 			System.out.println("jenny ");

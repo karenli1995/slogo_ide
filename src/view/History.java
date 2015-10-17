@@ -20,6 +20,7 @@ import javafx.scene.paint.Color;
 public class History extends VBox{
 
 	private ConsoleUI myConsole;
+	private Button myClearButton;
 	private ScrollPane myScroller = new ScrollPane();
 	private List<Button> myHistoryButtons = new ArrayList<Button>();
 	private List<String> myHistoryButtonString = new ArrayList<String>();
@@ -50,8 +51,7 @@ public class History extends VBox{
 		}
 	}
 
-
-	public void addButtonEvent(Button b){
+	private void addButtonEvent(Button b){
 		b.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -61,6 +61,20 @@ public class History extends VBox{
 			}
 
 		});
+	}
+	
+	private void addClearButton() {
+		myClearButton = new Button("Clear History");
+		myClearButton.setOnMouseClicked( new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+				
+			}
+
+		});
+		
+		
 	}
 
 }
