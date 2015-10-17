@@ -53,4 +53,12 @@ public class TurtleScene extends TabPane{
 	public double getMyCanvasHeight(){
 		return myCanvasHeight;
 	}
+	
+	public void changeTurtImage(ImageView image){
+		image.setFitHeight(40);
+		image.setFitWidth(40);
+		this.getChildren().remove(myImage);
+		myImage = image;
+		this.getChildren().add(myImage);
+	}
 }

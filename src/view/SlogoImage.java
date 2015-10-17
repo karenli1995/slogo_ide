@@ -21,7 +21,15 @@ public class SlogoImage{
 		myController = controller;
 		myObject = myController.getData().getTurtle(id);
 		//allMyObjects = myController.getData().getAllTurtles();
-		
+		myImageView.setFitWidth(40);
+		myImageView.setFitHeight(40);
+	}
+	public SlogoImage(TurtleScene turtlescene, ModelController controller, int id, ImageView image){
+		myTurtScene = turtlescene;
+		myController = controller;
+		myObject = myController.getData().getTurtle(id);
+		//allMyObjects = myController.getData().getAllTurtles();
+		myImageView = image;
 		myImageView.setFitWidth(40);
 		myImageView.setFitHeight(40);
 	}
@@ -36,6 +44,12 @@ public class SlogoImage{
 	
 	public ImageView getMyImage() {
 		return myImageView;
+	}
+	
+	public void setMyImage(ImageView image){
+		myImageView = image;
+		myImageView.setFitWidth(40);
+		myImageView.setFitHeight(40);
 	}
 	
 	public Image getImage(){
