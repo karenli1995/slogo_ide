@@ -1,10 +1,14 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import command.Command;
+import controller.ParseTreeNode;
 import javafx.scene.shape.Line;
 
 public class Data{
@@ -14,6 +18,8 @@ public class Data{
 	private boolean error = false;
 	private String errorMessage;
 	private List<String> userHistory;
+	private Map<String, Integer> variableMap;
+	private Map<String, ParseTreeNode<Command>> userCommandMap;
 //	private int pen = 0;
 	
 	public Data() {
@@ -21,6 +27,8 @@ public class Data{
 		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
 		setUserHistory(new ArrayList<String>());
+		setVariableMap(new HashMap<String, Integer>());
+		setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
 	}
 	
 
@@ -82,6 +90,26 @@ public class Data{
 	
 	public void addCommandToHistory(String s){
 		userHistory.add(s);
+	}
+
+
+	public Map<String, Integer> getVariableMap() {
+		return variableMap;
+	}
+
+
+	public void setVariableMap(Map<String, Integer> variableMap) {
+		this.variableMap = variableMap;
+	}
+
+
+	public Map<String, ParseTreeNode<Command>> getUserCommandMap() {
+		return userCommandMap;
+	}
+
+
+	public void setUserCommandMap(Map<String, ParseTreeNode<Command>> userCommandMap) {
+		this.userCommandMap = userCommandMap;
 	}
 
 
