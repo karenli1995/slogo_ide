@@ -7,7 +7,6 @@ import java.util.Map;
 
 import command.Command;
 import controller.ParseTreeNode;
-import javafx.scene.shape.Line;
 
 public class Data{
 
@@ -26,8 +25,14 @@ public class Data{
 		myTurtles.add(defaultTurtle);
 		setUserHistory(new ArrayList<String>());
 		setVariableMap(new HashMap<String, Integer>());
+
 		setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
 		myTrails.add(defaultTurtle.getTrail());
+
+		//setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
+		//defaultTurtle.getPen().getTrail().addCoord(defaultTurtle.getLocation().getPoint());
+		//myTrails.add(defaultTurtle.getPen().getTrail());
+
 	}
 
 	public SlogoObjects getTurtle(int turtleId) {
@@ -48,7 +53,7 @@ public class Data{
 	public List<SlogoObjects> getAllTurtles() {
 		return myTurtles;
 	}
-	
+
 	public Trail getTrail(int turtleId) {
 		return myTrails.get(turtleId);
 	}
