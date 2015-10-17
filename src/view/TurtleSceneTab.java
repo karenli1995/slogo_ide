@@ -2,6 +2,8 @@ package view;
 
 import java.util.Observable;
 import java.util.Observer;
+
+import view.shapes.StraightLine;
 import controller.ModelController;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
@@ -14,6 +16,7 @@ import model.Turtle;
 
 public class TurtleSceneTab extends Tab implements Observer{
 	private SlogoImage mySlogoImage;
+	private StraightLine myStraightLine;
 	private ImageView myImage;
 	private Turtle myTurtle; //check this
 	private Canvas myCanvas;
@@ -35,12 +38,12 @@ public class TurtleSceneTab extends Tab implements Observer{
  		turtScene.getTabs().add(this);
 
  		int defaultTurt = 0;
- 		setTurtle(defaultTurt, turtScene);
+ 		setTurtleAndTrail(defaultTurt, turtScene);
  		this.setContent(myCanvas);
 	}
 
 
-	public void setTurtle(int id, TurtleScene turtScene) {
+	public void setTurtleAndTrail(int id, TurtleScene turtScene) {
 		Turtle currTurt = (Turtle) myModelController.getData().getTurtle(id);
 		double currTurtLocX = currTurt.getTrail().getX();
 		double currTurtLocY = currTurt.getTrail().getY();
@@ -50,6 +53,8 @@ public class TurtleSceneTab extends Tab implements Observer{
 		mySlogoImage = new SlogoImage(turtScene, myModelController, id);
 		myImage = mySlogoImage.getMyImage();
 		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
+		
+		myStraightLine = new StraightLine(turtScene, myModelController);
 	}
 
 	public void setTurtImage(ImageView image, int id){
@@ -110,14 +115,8 @@ public class TurtleSceneTab extends Tab implements Observer{
 			double newRotAngle = otherSlogoObj.getRotationAngle();
 			double newLocX = otherSlogoObj.getTrail().getX();
 			double newLocY = otherSlogoObj.getTrail().getY();
-
-			/*System.out.println(newLocX);
-			System.out.println(newLocY);*/
-
-			
 			mySlogoImage.setScreenLoc(newLocX, newLocY);
 			mySlogoImage.setRotation(newRotAngle);
-			/*System.out.println("karen ");*/
 		}else{
 			/*System.out.println("jenny ");*/
 		}
