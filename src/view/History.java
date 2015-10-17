@@ -63,18 +63,8 @@ public class History extends VBox{
 		});
 	}
 	
-	private void addClearButton() {
-		myClearButton = new Button("Clear History");
-		myClearButton.setOnMouseClicked( new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				
-			}
-
-		});
-		
-		
+	public void clear(){
+		myVbox.getChildren().removeAll(myHistoryButtons);
 	}
 
 }
