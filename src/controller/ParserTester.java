@@ -24,9 +24,8 @@ public class ParserTester {
 		Data allData = new Data();
 		Parser parser = new Parser();
 		Traverser traverse = new Traverser();
-		String input = readFile("examples/procedures/dash.logo", StandardCharsets.UTF_8);
+		String input = readFile("examples/loops/circles.logo", StandardCharsets.UTF_8);
 		List<ParseTreeNode<Command>> head = parser.parse(input);
-		List<String[]> lol = parser.getCommandList();
 
 		//Command tempCommand = control.getParser().getCommandFactory().createCommand("Constant");
 		//tempCommand.returnValue();

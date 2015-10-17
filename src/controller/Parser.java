@@ -39,6 +39,7 @@ public class Parser {
 	private ParseTreeNode<Command> currentNode;
 	private List<ParseTreeNode<Command>> nodeList;
 	private int bracketCount;
+	private boolean doTimesBoolean = false;
 
 	public Parser() {
 		errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
@@ -79,9 +80,9 @@ public class Parser {
 	public List<ParseTreeNode<Command>> parse(String input) {
 		this.createCommandList(this.removeComments(input));
 		nodeList = new ArrayList<ParseTreeNode<Command>>();
-		this.printCommandList();
+		// this.printCommandList();
 
-		if(this.checkInput()){
+		if (this.checkInput()) {
 			this.createHeadNode();
 			this.createParseTree();
 		}
@@ -95,6 +96,7 @@ public class Parser {
 		while (index < commandList.size() - 1) {
 			index = this.createParseTree(index + 1, currentNode);
 			if (index < commandList.size()) {
+
 				ParseTreeNode<Command> newNode = new ParseTreeNode<Command>(
 						cf.createCommand(commandList.get(index)[1]));
 				currentNode.addChild(newNode);
@@ -105,25 +107,43 @@ public class Parser {
 	}
 
 	private int createParseTree(int index, ParseTreeNode<Command> p) {
-		int numInputs = Integer.parseInt(resources.getString(p.getCommand().getClass().getSimpleName()));
+		if (index < commandList.size()) {
+			
+			int numInputs = Integer.parseInt(resources.getString(p.getCommand().getClass().getSimpleName()));
+			if (p.getCommand().getClass().getSimpleName().equals("DoTimes")) {
+				//System.out.println("turn this to true");
+				doTimesBoolean = true;
+			}
+			if (p.getCommand().getClass().getSimpleName().equals("ListEnd")) {
+				//System.out.println("this happened");
+				doTimesBoolean = false;
+			}
+			if ((doTimesBoolean && p.getCommand().getClass().getSimpleName().equals("Variable"))
+					|| commandList.get(index)[1].equals("ListEnd")) {
+				//System.out.println("this also happened");
+				numInputs = 1;
+			}
+			if (numInputs == 0) {
+				currentNode = p;
+				return index;
+			} else {
+				for (int j = 0; j < numInputs; j++) {
+				
+					ParseTreeNode<Command> newNode = new ParseTreeNode<Command>(
+							cf.createCommand(commandList.get(index)[1]));
+					if (newNode.getCommand().getClass().getSimpleName().equals("Constant")) {
+						((Command) newNode.getCommand()).setValue(Double.parseDouble(commandList.get(index)[0]));
+					} else {
+						((Command) newNode.getCommand()).setValue(index);
+					}
+					p.addChild(newNode);
+					index++;
+					index = createParseTree(index, newNode);
 
-		if (numInputs == 0) {
-			currentNode = p;
-			return index;
-		} else {
-			for (int j = 0; j < numInputs; j++) {
-				ParseTreeNode<Command> newNode = new ParseTreeNode<Command>(
-						cf.createCommand(commandList.get(index)[1]));
-				if (newNode.getCommand().getClass().getSimpleName().equals("Constant")) {
-					newNode.getCommand().setValue(Double.parseDouble(commandList.get(index)[0]));
-				} else {
-					newNode.getCommand().setValue(index);
 				}
-				p.addChild(newNode);
-				index++;
-				index = createParseTree(index, newNode);
 			}
 		}
+
 		return index;
 	}
 
