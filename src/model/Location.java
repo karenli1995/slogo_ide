@@ -6,9 +6,6 @@ public class Location {
 	private Point2D myPoint;
 	private double myDirection;
 	
-	private double myScreenX;
-	private double myScreenY;
-	
 	public Location(Location oldBearing) {
 		this(oldBearing.getPoint(), oldBearing.getDirection());
 	}
@@ -19,7 +16,7 @@ public class Location {
 	}
 
 	public Location() {
-		this(new Point2D(0,0), 90);
+		this(new Point2D(0,0), 0);
 	}
 	
 	public void setX(double x) {

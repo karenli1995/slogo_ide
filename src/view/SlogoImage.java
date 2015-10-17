@@ -72,7 +72,7 @@ public class SlogoImage{
 	}
 	
 	
-	public void setRotation(int angle) {
+	public void setRotation(double angle) {
 		this.getMyImage().setRotate(angle);
 	}
 	

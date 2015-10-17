@@ -11,20 +11,20 @@ import command.DoTimes;
 import command.ListEnd;
 import command.ListStart;
 import command.MakeUserInstruction;
+import command.MakeVariable;
 import command.Repeat;
 import command.UserCommand;
-import command.MakeVariable;
 import command.Variable;
 import command.math.Quotient;
 import command.math.Sine;
 import command.math.Sum;
+import command.turtleCommands.Backward;
 import command.turtleCommands.Forward;
 import command.turtleCommands.PenDown;
 import command.turtleCommands.PenUp;
-import command.turtleCommands.SetPosition;
 import command.turtleCommands.Right;
+import command.turtleCommands.SetPosition;
 import command.turtleQueries.IsPenDown;
-import command.CommandFactory;
 
 public class Parser {
 	private String[] inputArray;
@@ -52,6 +52,7 @@ public class Parser {
 	private void commandRegistration() {
 		try {
 			cf.registerCommand("Forward", Forward.class);
+			cf.registerCommand("Backward",Backward.class);
 			cf.registerCommand("Constant", Constant.class);
 			cf.registerCommand("ListEnd", ListEnd.class);
 			cf.registerCommand("ListStart", ListStart.class);
@@ -138,12 +139,14 @@ public class Parser {
 					p.addChild(newNode);
 					index++;
 					index = createParseTree(index, newNode);
+
 				}
 			}
 		}
 
 		return index;
 	}
+
 
 	public void printCommandList() {
 		for (String[] s : commandList) {
@@ -159,9 +162,9 @@ public class Parser {
 			printTreeInOrder(node);
 		}
 
-		System.out.println(head.getCommand().getClass().getSimpleName() + " " + ((Command) head.getCommand()).getValue()
+		System.out.println(head.getCommand().getClass().getSimpleName() + " " + head.getCommand().getValue()
 				+ "->" + head.getParent().getCommand().getClass().getSimpleName() + " "
-				+ ((Command) head.getParent().getCommand()).getValue());
+				+ head.getParent().getCommand().getValue());
 	}
 
 	private void numInputs() {
@@ -212,7 +215,7 @@ public class Parser {
 		return cf;
 	}
 
-	public boolean checkInput() {
+	public boolean checkInput(){
 		return !commandList.isEmpty();
 	}
 }

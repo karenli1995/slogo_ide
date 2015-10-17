@@ -7,7 +7,9 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.geometry.Point2D;
 import model.Data;
+import model.Location;
 import model.SlogoObjects;
 
 /**
@@ -19,8 +21,8 @@ public class MoveTurtle {
 	private List<Double> linePoints = new ArrayList<Double>();
 
 	private static final int lineStartX = 0;
-	private static final int lineEndX = 1;
-	private static final int lineStartY = 2;
+	private static final int lineEndX = 2;
+	private static final int lineStartY = 1;
 	private static final int lineEndY = 3;
 
 	double RoundTo2Decimals(double val) {
@@ -53,8 +55,8 @@ public class MoveTurtle {
 			tempYLocation = myTurtle.getLocation().getY() + (sign * (distance / Math.cos(radians)));
 		}
 
-		myTurtle.getLocation().setX(tempXLocation);
-		myTurtle.getLocation().setY(tempYLocation);
+		Location newLoc = new Location(new Point2D(tempXLocation, tempYLocation), degrees);
+		myTurtle.setLocation(newLoc);
 
 		linePoints.add(lineEndX, myTurtle.getLocation().getX());
 		linePoints.add(lineEndY, myTurtle.getLocation().getY());
