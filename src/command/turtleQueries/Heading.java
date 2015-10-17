@@ -17,7 +17,8 @@ import model.Data;
 public class Heading extends Command {
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
-	//	this.setValue(data.getTurtle(0).getMyHeadAngle());
+		this.setValue(data.getTurtle(0).getRotationAngle());
+		System.out.println(data.getTurtle(0).getRotationAngle());
 		return data;
 	}
 

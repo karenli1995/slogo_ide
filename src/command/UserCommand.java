@@ -8,7 +8,7 @@ import model.Data;
 public class UserCommand extends Command{
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
+	public Data execute(List<ParseTreeNode<Command>> argument, Data data) {
 		return null;
 	}
 
