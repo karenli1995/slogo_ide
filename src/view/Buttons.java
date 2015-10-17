@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
 public class Buttons extends VBox {
 	private static final int OFFSET_SPACE = 10;
     private Insets myInset = new Insets(OFFSET_SPACE);
-	private String[] BUTTON_NAMES = new String[2]; 
+	private String[] BUTTON_NAMES = new String[3]; 
 	
 	private GUIManager myGUIManager;
 	private Map<String, Button> myButtons;
@@ -27,6 +27,7 @@ public class Buttons extends VBox {
 	public Buttons(ConsoleUI console, ModelController controller,Scene scene,GUIManager guimanager, ResourceBundle resource){
 		BUTTON_NAMES[0] = resource.getString("RUN");
 		BUTTON_NAMES[1] = resource.getString("CLEAR");
+		BUTTON_NAMES[2] = "Clear History";
 		myConsole = console;
 		myController = controller;
 		myGUIManager = guimanager;
@@ -42,9 +43,10 @@ public class Buttons extends VBox {
 	 */
 	private void addButtons() {
 		myButtons = new HashMap<>(BUTTON_NAMES.length);
-		EventHandler<ActionEvent>[] events = new EventHandler[2];
+		EventHandler<ActionEvent>[] events = new EventHandler[3];
 		events[0] = (e) -> runConsole();
 		events[1] = (e) -> clearConsole();
+		events[2] = (e) -> clearHistory();
 		int index;
 		for (index = 0; index < events.length; index++) {
 			Button button = createAndPlaceButton(BUTTON_NAMES[index], events[index]);
@@ -83,6 +85,10 @@ public class Buttons extends VBox {
 	
 	private void clearConsole(){
 		myConsole.clearTextFromConsole();
+	}
+	
+	private void clearHistory(){
+		myGUIManager.getMyHistory().clear();
 	}
 	
 	private void setAllMargins(Node n){
