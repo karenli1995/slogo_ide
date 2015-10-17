@@ -18,7 +18,7 @@ import javafx.geometry.Point2D;
  */
 public class Trail extends Observable{	
 
-	private AbstractPen myPen; //defines visual aspects of path
+	private AbstractPen myPen; //defines visual aspects of path <- is this necessary?
 	private Location myPrevLoc;
 	private Location myNextLoc;
 	public List<Point2D> myPath;
@@ -26,8 +26,8 @@ public class Trail extends Observable{
 
 //	private static ArrayList<Observer> observerList;
 	
-	public Trail(AbstractPen pen) {
-		myPen = pen;
+	public Trail() {
+		//myPen = pen;
 		myPath = new ArrayList<Point2D>();
 	}
 	
@@ -59,9 +59,9 @@ public class Trail extends Observable{
 		notifyObservers();
 	}
 	
-//	public List<Point2D> getPathCoordinates() {
-//		return myPath;
-//	}
+	public List<Point2D> getPathCoordinates() {
+		return myPath;
+	}
 	
 //	public void notifyObservers() {
 //		myModel.notifyObservers("trail");

@@ -20,7 +20,7 @@ public abstract class AbstractPen {
 		myColor = color;
 		myThickness = thickness;
 		myDashSparsity = dashSparsity;
-//		myTrail = new Trail(this);
+		myTrail = new Trail();
 	}
 
 	public Trail getTrail() {
@@ -49,6 +49,10 @@ public abstract class AbstractPen {
 	
 	public void setPen(boolean bool){
 		myStatus = bool;
+	}
+	
+	public boolean isUp(){
+		return myStatus;
 	}
 
 }
