@@ -8,9 +8,9 @@ import command.Command;
 
 public class ParseTreeNode<Command> {
 
-	public Command command;
-	public List<ParseTreeNode<Command>> children;
-	public ParseTreeNode parent = this;
+	private Command command;
+	private List<ParseTreeNode<Command>> children;
+	private ParseTreeNode parent = this;
 
 	public ParseTreeNode() {
 		super();

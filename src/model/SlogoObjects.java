@@ -1,21 +1,35 @@
 package model;
 
-import javafx.scene.image.ImageView;
+import java.util.Observable;
 
-public abstract class SlogoObjects {
+public abstract class SlogoObjects extends Observable{
 
+	private Location myLocation;
 	private double myHeadAngle;
-	private int isShowing = 1;
+	private boolean isShowing = true;
+	
 
 	public SlogoObjects() {
 
 	}
-
-	public void setIsShowing(int value) {
-		isShowing = value;
+	
+	public void setLocation(Location loc) {
+		myLocation = loc;
+		setChanged();
+		notifyObservers();
+	}
+	
+	public Location getLocation() {
+		return myLocation;
 	}
 
-	public int getIsShowing() {
+	public void setIsShowing(boolean value) {
+		isShowing = value;
+		setChanged();
+		notifyObservers();
+	}
+
+	public boolean getIsShowing() {
 		return isShowing;
 	}
 
@@ -23,22 +37,7 @@ public abstract class SlogoObjects {
 		return myHeadAngle;
 	}
 
-	public void setMyHeadAngle(double myHeadAngle) {
-		this.myHeadAngle = myHeadAngle;
+	public void setMyHeadAngle(double headAngle) {
+		myHeadAngle = headAngle;
 	}
-
-	public void setRotation(int angle) {
-		this.getMyImage().setRotate(angle);
-	}
-
-	public abstract ImageView getMyImage();
-
-	public void showSlogoObject() {
-		this.getMyImage().setVisible(true);
-	}
-
-	public void hideSlogoObject() {
-		this.getMyImage().setVisible(false);
-	}
-
 }

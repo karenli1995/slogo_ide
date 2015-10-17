@@ -21,9 +21,11 @@ public class ParserTester {
 			}
 
 	public static void main(String[] args) throws IOException {
+		Data allData = new Data();
 		Parser parser = new Parser();
+		Traverser traverse = new Traverser();
 		String input = readFile("examples/procedures/dash.logo", StandardCharsets.UTF_8);
-		parser.parse(input);
+		List<ParseTreeNode<Command>> head = parser.parse(input);
 		List<String[]> lol = parser.getCommandList();
 
 		//Command tempCommand = control.getParser().getCommandFactory().createCommand("Constant");

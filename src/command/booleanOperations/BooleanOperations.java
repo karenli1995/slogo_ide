@@ -10,8 +10,7 @@ import java.util.Comparator;
  * @author Sally Al
  *
  */
-public class BooleanOperations implements Comparator<Integer>{
-
+public class BooleanOperations implements Comparator<Integer> {
 
 	@Override
 	public int compare(Integer arg0, Integer arg1) {

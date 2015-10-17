@@ -1,25 +1,10 @@
 package model;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import view.TurtleScene;
+import javafx.geometry.Point2D;
 
-public class Turtle extends SlogoObjects {
-	private static TurtleScene turtleScene = new TurtleScene();
-	private final Image myImage = new Image(getClass().getClassLoader().getResourceAsStream("Turtle.png"));
-	private ImageView myTurtle = new ImageView(myImage);
-
+public class Turtle extends SlogoObjects{
+	
 	public Turtle() {
-		myTurtle.setFitWidth(40);
-		myTurtle.setFitHeight(40);
-		myTurtle.setLayoutX(turtleScene.getCentrex());
-		myTurtle.setLayoutY(turtleScene.getCentrey());
-
+		setLocation(new Location( new Point2D(0,0), 270 ));
 	}
-
-	@Override
-	public ImageView getMyImage() {
-		return myTurtle;
-	}
-
 }

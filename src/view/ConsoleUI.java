@@ -1,59 +1,44 @@
 package view;
 
+import java.util.ResourceBundle;
+
+import controller.ModelController;
+import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
-public class ConsoleUI extends BorderPane{
-	TabPane myTabPane;
-	Tab myTab;
-	TextArea myTextArea;
-	
-	private int myTextWidth = 800;
-	private int myTextHeight = 800;
+public class ConsoleUI extends GridPane{
+//	private GUIManager myGUIManager;
+	private Console myConsole;
+	private Prompt myPrompt;
+	private Buttons myButtonsOnGUI;
 
 	
-	ConsoleUI(){
-		myTabPane = new TabPane();
-		
-		createTabAndText();
-		
-		this.setWidth(myTextWidth);
-		this.setHeight(myTextHeight);
-		//this.getChildren().add(myTabPane);
-		this.setCenter(myTabPane);
-	}
-	
-	private void createTabAndText() {
-		myTab = new Tab();
-		myTab.setText("Project 1");
-		myTextArea = new TextArea();
-		myTextArea.setPrefSize(myTextWidth, myTextHeight);
-		myTextArea.setWrapText(true);
-		myTextArea.setEditable(true);
-		myTab.setContent(myTextArea);
-		myTabPane.getTabs().add(myTab);
-	}
+	public ConsoleUI(Scene scene, ModelController controller, GUIManager guimanager, ResourceBundle resource){
+		super();
+		this.setPrefHeight(scene.getHeight()/5);
+		myPrompt = new Prompt(scene, resource);
+		myConsole = new Console(scene, resource);
+		myButtonsOnGUI = new Buttons(this, controller,scene, guimanager, resource);
+		this.add(myConsole, 1, 1);
+		this.add(myPrompt, 3, 1);
+		this.add(myButtonsOnGUI, 2, 1);
+		}
 	
 	public String getTextFromConsole(){
-		String currText = myTabPane.getSelectionModel().getSelectedItem().getContent().getAccessibleText();
-		return currText;
+		return myConsole.getTextFromConsole();
 	}
 	
 	public void clearTextFromConsole(){
-		TextArea currTextArea = (TextArea) myTabPane.getSelectionModel().getSelectedItem().getContent();
-		currTextArea.clear();
+		myConsole.clearTextFromConsole();
 	}
 	
 	public void setConsoleText(String text){
-		TextArea currTextArea = (TextArea) myTabPane.getSelectionModel().getSelectedItem().getContent();
-
-		String currText = currTextArea.getAccessibleText();
-		String newText = "";
-		if(currText == null){ newText = text;} else{ newText = currText + text; }
-		
-		currTextArea.setText(newText);
+		myConsole.setConsoleText(text);
 	}
 
 }
