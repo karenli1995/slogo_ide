@@ -12,8 +12,9 @@ public class Forward extends Command {
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
 
 		MoveTurtle moveTurtle = new MoveTurtle();
-		moveTurtle.moveFdorBK(distance.get(0), -1, data.getTurtle(0).getMyImage());
+		moveTurtle.moveFdorBK(distance.get(0).getCommand().getValue(), -1, data.getTurtle(0));
 		this.setValue(distance.get(0).getCommand().getValue());
+		return data;
 
 	}
 
