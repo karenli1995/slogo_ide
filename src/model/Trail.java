@@ -69,9 +69,9 @@ public class Trail {
 		myPath.add(current);
 		
 		System.out.println("Current trail");
-		for(int i = 0; i < myPath.size(); i++){
-			System.out.println("Point "+i+" = "+myPath.get(i).toString());
-		}
+//		for(int i = 0; i < myPath.size(); i++){
+//			System.out.println("Point "+i+" = "+myPath.get(i).toString());
+//		}
 		
 	}
 }
