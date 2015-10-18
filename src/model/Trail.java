@@ -2,10 +2,11 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import javafx.geometry.Point2D;
 
-public class Trail {
+public class Trail{
 	private AbstractPen myPen;
 	private Point2D myPoint;
 	private List<Point2D> myPath = new ArrayList<Point2D>();
@@ -17,6 +18,7 @@ public class Trail {
 
 	public Trail(Point2D point, double direction) {
 		myPen = new Pen();
+		myPath.add(point);
 		myPoint = point;
 		myDirection = direction;
 	}
@@ -31,14 +33,6 @@ public class Trail {
 	
 	public List<Point2D> getPathCoordinates(){
 		return myPath;
-	}
-	
-	public void setX(double x) {
-		myPoint.add(x, myPoint.getY());
-	}
-
-	public void setY(double y) {
-		myPoint.add(myPoint.getX(), y);
 	}
 	
 	public double getX() {
@@ -69,9 +63,9 @@ public class Trail {
 		myPath.add(current);
 		
 		System.out.println("Current trail");
-		for(int i = 0; i < myPath.size(); i++){
-			System.out.println("Point "+i+" = "+myPath.get(i).toString());
-		}
+//		for(int i = 0; i < myPath.size(); i++){
+//			System.out.println("Point "+i+" = "+myPath.get(i).toString());
+//		}
 		
 	}
 }

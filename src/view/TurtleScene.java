@@ -3,9 +3,12 @@ package view;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import view.shapes.StraightLine;
 import controller.ModelController;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Line;
 
 public class TurtleScene extends TabPane{
 	
@@ -24,11 +27,16 @@ public class TurtleScene extends TabPane{
 		myDefaultSceneTab = new TurtleSceneTab(this, myController);
 		myTabs.add(myDefaultSceneTab);
 		myImage = getCurrTab().getTurtImage();
+		
 		this.getChildren().add(myImage);
 	}
 	
 	public TurtleSceneTab getCurrTab(){
 		return (TurtleSceneTab) this.getSelectionModel().getSelectedItem();
+	}
+	
+	public void addChildren(Line line){
+		this.getChildren().add(line);
 	}
 	
 	public double getX(){

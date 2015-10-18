@@ -59,7 +59,7 @@ public class SceneProps extends Tab{
 		    Color chosenColor = (Color) cmbColors.getSelectionModel().getSelectedItem();
 		    Canvas currCanvas = (Canvas) myTurtleScene.getSelectionModel().getSelectedItem().getContent();
 		    
-		    myTurtleScene.getCurrTab().setColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
+		    myTurtleScene.getCurrTab().setBackgroundColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
 		    System.out.println("ComboBox Action (selected: " + chosenColor.toString().toUpperCase() + ")");
 		});
 		 
