@@ -28,10 +28,7 @@ public class Data {
 
 		setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
 		myTrails.add(defaultTurtle.getTrail());
-
-		// setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
-		// defaultTurtle.getPen().getTrail().addCoord(defaultTurtle.getLocation().getPoint());
-		// myTrails.add(defaultTurtle.getPen().getTrail());
+		variableMap = new  HashMap<String, Double>();
 
 	}
 
@@ -93,6 +90,7 @@ public class Data {
 		this.variableMap = variableMap;
 	}
 	public void updateVaraibleMap(String varName, Double value){
+		System.out.println("update");
 		variableMap.put(varName, value);
 	}
 
