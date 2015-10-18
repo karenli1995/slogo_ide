@@ -12,7 +12,7 @@ import model.Trail;
 public class Traverser {
 	private Queue<ParseTreeNode<Command>> commandQueue;
 	private Stack<ParseTreeNode<Command>> listEndStack;
-	
+
 	public Data traverse(List<ParseTreeNode<Command>> node, Data allData) {
 		listEndStack = new Stack<ParseTreeNode<Command>>();
 		commandQueue = new LinkedList<ParseTreeNode<Command>>();
@@ -29,8 +29,8 @@ public class Traverser {
 		if (node == null)
 			return;
 
-		if(node.getClass().getSimpleName().equals("ListEnd")){
-			
+		if (node.getClass().getSimpleName().equals("ListEnd")) {
+
 		}
 		for (ParseTreeNode<Command> childNode : node.getChildren()) {
 			this.iterateTreePostOrder(childNode);
@@ -39,7 +39,7 @@ public class Traverser {
 		commandQueue.add(node);
 	}
 
-	public Data executeCommands(Data allData) {		
+	public Data executeCommands(Data allData) {
 
 		while (!commandQueue.isEmpty()) {
 			ParseTreeNode<Command> tempNode = commandQueue.poll();

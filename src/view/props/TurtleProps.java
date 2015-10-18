@@ -2,25 +2,17 @@ package view.props;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import view.TurtleScene;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
@@ -29,10 +21,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Callback;
+import view.scene.TurtleScene;
 
 public class TurtleProps extends Tab {
 	private static final int OFFSET_SPACE = 10;
@@ -68,11 +59,10 @@ public class TurtleProps extends Tab {
 		HBox hb5 = addTurtVisibleLable();
 		HBox hb6 = addPenColorLabel();
 		HBox hb7 = addPenThicknessLabel();
-		HBox hb8 = drawTester();
 
 		setAllMargins(allElements);
 
-		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5, hb6, hb7, hb8);
+		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5, hb6, hb7);
 
 		this.setContent(vb);
 	}
@@ -84,8 +74,8 @@ public class TurtleProps extends Tab {
 		final ComboBox cbNumTurtles = new ComboBox(numTurtlesOptions);
 		hb1.getChildren().addAll(numTurtles, cbNumTurtles);
 
-		allElements.add((Node) numTurtles);
-		allElements.add((Node) cbNumTurtles);
+		allElements.add(numTurtles);
+		allElements.add(cbNumTurtles);
 
 		return hb1;
 	}
@@ -98,9 +88,9 @@ public class TurtleProps extends Tab {
 		Button setPosX = new Button("Set");
 		hb2.getChildren().addAll(turtlePosX, inputPosX, setPosX);
 
-		allElements.add((Node) turtlePosX);
-		allElements.add((Node) inputPosX);
-		allElements.add((Node) setPosX);
+		allElements.add(turtlePosX);
+		allElements.add(inputPosX);
+		allElements.add(setPosX);
 
 		return hb2;
 	}
@@ -113,9 +103,9 @@ public class TurtleProps extends Tab {
 		Button setPosY = new Button("Set");
 		hb3.getChildren().addAll(turtlePosY, inputPosY, setPosY);
 
-		allElements.add((Node) turtlePosY);
-		allElements.add((Node) inputPosY);
-		allElements.add((Node) setPosY);
+		allElements.add(turtlePosY);
+		allElements.add(inputPosY);
+		allElements.add(setPosY);
 
 		return hb3;
 	}
@@ -129,15 +119,16 @@ public class TurtleProps extends Tab {
 		});
 		hb4.getChildren().addAll(turtleShape, chooseShape);
 
-		allElements.add((Node) turtleShape);
-		allElements.add((Node) chooseShape);
+		allElements.add(turtleShape);
+		allElements.add(chooseShape);
 
 		return hb4;
 	}
 
 	private void openImage() {
 		FileChooser chooser = new FileChooser();
-		FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Image files (*.png), (*.jpg), (*.bmp)", "*.png","*.jpg","*.bmp");
+		FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter(
+				"Image files (*.png), (*.jpg), (*.bmp)", "*.png", "*.jpg", "*.bmp");
 		chooser.getExtensionFilters().add(extensionFilter);
 		File userDirectory = getDataDirectory();
 		if (userDirectory.canRead()) {
@@ -153,7 +144,7 @@ public class TurtleProps extends Tab {
 				myTurtleScene.changeTurtImage(newTurt);
 			}
 		} catch (Exception e) {
-			//showError("Error!","Failed to load "+file.getName(),e);
+			// showError("Error!","Failed to load "+file.getName(),e);
 		}
 	}
 
@@ -164,8 +155,8 @@ public class TurtleProps extends Tab {
 		final ComboBox cbTurtVisible = new ComboBox(visibleOptions);
 		hb5.getChildren().addAll(turtVisible, cbTurtVisible);
 
-		allElements.add((Node) turtVisible);
-		allElements.add((Node) cbTurtVisible);
+		allElements.add(turtVisible);
+		allElements.add(cbTurtVisible);
 
 		return hb5;
 	}
@@ -175,62 +166,43 @@ public class TurtleProps extends Tab {
 		Label penColor = new Label(myResource.getString("PENC"));
 		final ComboBox<Color> cbColors = new ColorComboBox();
 		hb6.getChildren().addAll(penColor, cbColors);
-		cbColors.setOnAction((event)->
-		{
-		    Color chosenColor = (Color) cbColors.getSelectionModel().getSelectedItem();
-		    myTurtleScene.getController().getData().getTurtle(0).getTrail().getPen().setColor(chosenColor);
+		cbColors.setOnAction((event) -> {
+			Color chosenColor = cbColors.getSelectionModel().getSelectedItem();
+			myTurtleScene.getController().getData().getTurtle(0).getTrail().getPen().setColor(chosenColor);
 
 		});
 
-		allElements.add((Node) penColor);
-		allElements.add((Node) cbColors);
+		allElements.add(penColor);
+		allElements.add(cbColors);
 
 		return hb6;
 	}
-	
+
 	private HBox addPenThicknessLabel() {
 		HBox hb8 = new HBox();
 		Label thickLabel = new Label("Pen Thickness");
-		ObservableList<Integer> thicks = FXCollections.observableArrayList(1,2,3,4,5);
+		ObservableList<Integer> thicks = FXCollections.observableArrayList(1, 2, 3, 4, 5);
 		ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
 		thicknesses.setOnAction((e) -> {
-			Integer thick = (Integer) thicknesses.getSelectionModel().getSelectedItem();
+			Integer thick = thicknesses.getSelectionModel().getSelectedItem();
 			myTurtleScene.getController().getData().getTurtle(0).getTrail().getPen().setThickness(thick);
 		});
 		hb8.getChildren().addAll(thickLabel, thicknesses);
 
-		allElements.add((Node) thickLabel);
-		allElements.add((Node) thicknesses);
+		allElements.add(thickLabel);
+		allElements.add(thicknesses);
 
 		return hb8;
-	}
-	
-	private HBox drawTester() {
-		HBox hb7 = new HBox();
-		Label drawer = new Label("drawing test");
-		Button draw = new Button("Draw");
-		draw.setOnAction((e) -> {
-			drawTrail();
-		});
-		hb7.getChildren().addAll(drawer, draw);
-
-		allElements.add((Node) drawer);
-		allElements.add((Node) draw);
-
-		return hb7;
-	}
-	
-	private void drawTrail(){
-		myTurtleScene.getCurrTab().drawTrail();
 	}
 
 	private void setAllMargins(List<Node> nodes) {
 		for (Node n : nodes)
 			HBox.setMargin(n, myInset);
 	}
-	private File getDataDirectory(){
-		File file = new File(System.getProperty("user.dir")+File.separator+"data");
-		if(!file.exists()){
+
+	private File getDataDirectory() {
+		File file = new File(System.getProperty("user.dir") + File.separator + "data");
+		if (!file.exists()) {
 			file.mkdirs();
 		}
 		return file;

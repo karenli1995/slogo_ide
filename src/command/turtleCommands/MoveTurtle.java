@@ -9,7 +9,6 @@ import java.util.List;
 import javafx.geometry.Point2D;
 import model.Data;
 import model.SlogoObjects;
-import model.Trail;
 
 /**
  *
@@ -17,7 +16,6 @@ import model.Trail;
  *
  */
 public class MoveTurtle {
-
 
 	double RoundTo2Decimals(double val) {
 		DecimalFormat df2 = new DecimalFormat("###.##");
@@ -46,10 +44,13 @@ public class MoveTurtle {
 			tempYLocation = myTurtle.getTrail().getY() + (sign * (distance / Math.cos(radians)));
 		}
 
-		Trail newLoc = new Trail(new Point2D(tempXLocation, tempYLocation), degrees);
+		Point2D newLoc = new Point2D(tempXLocation, tempYLocation);
 
-		myTurtle.setTrail(newLoc);
 		myTurtle.getTrail().addCoord(new Point2D(tempXLocation, tempYLocation));
+		myTurtle.setTrail(myTurtle.getTrail());
+		myTurtle.getTrail().setPoint(newLoc);
+		myTurtle.setRotationAngle(degrees);
+
 
 	}
 
@@ -63,8 +64,8 @@ public class MoveTurtle {
 		double distance = ((y2 - y1) * (y2 - y1)) + ((x2 - x1) * (x2 - x1));
 		distance = Math.sqrt(distance);
 
-		data.getTurtle(0).getTrail().setX(x2);
-		data.getTurtle(0).getTrail().setY(y2);
+		// data.getTurtle(0).getTrail().setX(x2);
+		// data.getTurtle(0).getTrail().setY(y2);
 
 		data.getTurtle(0).getTrail().addCoord(new Point2D(x2, y2));
 

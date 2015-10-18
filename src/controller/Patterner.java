@@ -17,14 +17,14 @@ public class Patterner {
 
 	private List<Entry<String, Pattern>> patterns;
 
-	public Patterner(){
+	public Patterner() {
 		this.initPattern();
 	}
 
-	private void initPattern(){
+	private void initPattern() {
 		patterns = new ArrayList<>();
 		File[] folder = new File(RESOURCES_PATH).listFiles();
-		for(File f: folder){
+		for (File f : folder) {
 			patterns.addAll(makePatterns(DEFAULT_RESOURCES + f.getName().split("\\.")[0]));
 		}
 	}
@@ -33,8 +33,7 @@ public class Patterner {
 		return patterns;
 	}
 
-
-	private List<Entry<String, Pattern>> makePatterns (String syntax) {
+	private List<Entry<String, Pattern>> makePatterns(String syntax) {
 		ResourceBundle resources = ResourceBundle.getBundle(syntax);
 		List<Entry<String, Pattern>> patterns = new ArrayList<>();
 		Enumeration<String> iter = resources.getKeys();
@@ -48,28 +47,30 @@ public class Patterner {
 		return patterns;
 	}
 
-	private boolean match (String input, Pattern regex) {
+	private boolean match(String input, Pattern regex) {
 		// THIS IS THE KEY LINE
 		return regex.matcher(input).matches();
-		// basic strings can match also, but not using a Pattern (thus not ignore case)
+		// basic strings can match also, but not using a Pattern (thus not
+		// ignore case)
 		// return input.matches(regex);
 	}
 
-	public List<String[]> matchSplitCommand (String[] tests, List<Entry<String, Pattern>> patterns) {
+	public List<String[]> matchSplitCommand(String[] tests, List<Entry<String, Pattern>> patterns) {
 		List<String[]> tempList = new ArrayList<>();
 		for (String s : tests) {
 			boolean matched = false;
 			if (s.trim().length() > 0) {
 				for (Entry<String, Pattern> p : patterns) {
 					if (match(s, p.getValue())) {
-						//System.out.println(String.format("%s matches %s", s, p.getKey()));
-						String[] tempArray = {s, p.getKey()};
+						// System.out.println(String.format("%s matches %s", s,
+						// p.getKey()));
+						String[] tempArray = { s, p.getKey() };
 						tempList.add(tempArray);
 						matched = true;
 						break;
 					}
 				}
-				if (! matched) {
+				if (!matched) {
 					// TODO error
 					System.out.println(String.format("%s not matched", s));
 				}
@@ -79,4 +80,3 @@ public class Patterner {
 	}
 
 }
-

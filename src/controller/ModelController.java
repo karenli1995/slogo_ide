@@ -1,12 +1,13 @@
 package controller;
 
 import java.util.List;
+
 import command.Command;
 import javafx.stage.Stage;
 import model.Data;
 import model.SlogoObjects;
 import view.GUIManager;
-import view.TurtleSceneTab;
+import view.scene.TurtleSceneTab;
 
 public class ModelController {
 
@@ -18,6 +19,7 @@ public class ModelController {
 
 	/**
 	 * The Controller
+	 *
 	 * @param stage
 	 */
 	public ModelController(Stage stage) {
@@ -27,28 +29,30 @@ public class ModelController {
 		myTraverser = new Traverser();
 		addObservable();
 	}
-	
+
 	/**
-	 * The controller connects the observables and observers between the front end and back end.
+	 * The controller connects the observables and observers between the front
+	 * end and back end.
 	 */
-	private void addObservable(){
+	private void addObservable() {
 		SlogoObjects turtObj = getData().getTurtle(0);
 		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
 		turtObj.addObserver(currSceneTab);
-		
-//		Trail currStraightLine = getData().getTrail(0);
 	}
 
 	/**
 	 * Gets the GUIManager (view) instance.
+	 *
 	 * @return GUIManager
 	 */
 	public GUIManager getGuiManager() {
 		return myGuiManager;
 	}
-	
+
 	/**
-	 * Sets the Data object, passing information to Data from the front-end to the back-end.
+	 * Sets the Data object, passing information to Data from the front-end to
+	 * the back-end.
+	 *
 	 * @param data
 	 */
 	public void setData(Data data) {
@@ -56,7 +60,9 @@ public class ModelController {
 	}
 
 	/**
-	 * Gets the Data object, containing information to be passed from back-end to front-end.
+	 * Gets the Data object, containing information to be passed from back-end
+	 * to front-end.
+	 *
 	 * @return
 	 */
 	public Data getData() {
@@ -65,6 +71,7 @@ public class ModelController {
 
 	/**
 	 * Gets Parser which parses the commands
+	 *
 	 * @return Parser
 	 */
 	public Parser getParser() {
@@ -73,6 +80,7 @@ public class ModelController {
 
 	/**
 	 * Parses the commands
+	 *
 	 * @param s
 	 */
 	public void parse(String s) {
@@ -81,6 +89,7 @@ public class ModelController {
 
 	/**
 	 * Traverses command tree
+	 *
 	 * @return
 	 */
 	public Data traverse() {
