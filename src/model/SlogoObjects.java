@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Observable;
+
 import javafx.geometry.Point2D;
 
 public abstract class SlogoObjects extends Observable {

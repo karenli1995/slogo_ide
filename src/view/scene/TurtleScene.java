@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import view.settings.SlogoProperties;
-import view.shapes.StraightLine;
 import controller.ModelController;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
+import view.settings.SlogoProperties;
 
 public class TurtleScene extends TabPane {
 

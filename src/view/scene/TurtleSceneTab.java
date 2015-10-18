@@ -4,10 +4,6 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-import view.settings.SlogoProperties;
-import view.shapes.AbstractShape;
-import view.shapes.StraightLine;
-import view.turtles.SlogoImage;
 import controller.ModelController;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
@@ -18,6 +14,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import model.SlogoObjects;
 import model.Turtle;
+import view.settings.SlogoProperties;
+import view.shapes.AbstractShape;
+import view.shapes.StraightLine;
+import view.turtles.SlogoImage;
 
 public class TurtleSceneTab extends Tab implements Observer {
 	private SlogoImage mySlogoImage;

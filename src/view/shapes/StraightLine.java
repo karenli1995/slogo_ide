@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controller.ModelController;
-import view.scene.TurtleScene;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Line;
-import model.Pen;
-import model.Trail;
-import model.Turtle;
+import view.scene.TurtleScene;
 
 public class StraightLine extends AbstractShape {
 	protected List<Line> myAllShapes = new ArrayList<Line>();

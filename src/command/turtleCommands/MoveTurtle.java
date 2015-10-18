@@ -9,7 +9,6 @@ import java.util.List;
 import javafx.geometry.Point2D;
 import model.Data;
 import model.SlogoObjects;
-import model.Trail;
 
 /**
  *

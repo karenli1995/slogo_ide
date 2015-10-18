@@ -8,16 +8,11 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.util.Callback;
 import view.GUIManager;
 import view.scene.TurtleScene;
 
@@ -57,7 +52,7 @@ public class SceneProps extends Tab {
 		ComboBox<Color> cmbColors = new ColorComboBox();
 
 		cmbColors.setOnAction((event) -> {
-			Color chosenColor = (Color) cmbColors.getSelectionModel().getSelectedItem();
+			Color chosenColor = cmbColors.getSelectionModel().getSelectedItem();
 			Canvas currCanvas = (Canvas) myTurtleScene.getSelectionModel().getSelectedItem().getContent();
 
 			myTurtleScene.getCurrTab().setBackgroundColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
@@ -66,8 +61,8 @@ public class SceneProps extends Tab {
 
 		hb7.getChildren().addAll(background, cmbColors);
 
-		allElements.add((Node) background);
-		allElements.add((Node) cmbColors);
+		allElements.add(background);
+		allElements.add(cmbColors);
 
 		return hb7;
 	}

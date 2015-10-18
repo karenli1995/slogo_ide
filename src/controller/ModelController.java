@@ -19,7 +19,7 @@ public class ModelController {
 
 	/**
 	 * The Controller
-	 * 
+	 *
 	 * @param stage
 	 */
 	public ModelController(Stage stage) {
@@ -42,7 +42,7 @@ public class ModelController {
 
 	/**
 	 * Gets the GUIManager (view) instance.
-	 * 
+	 *
 	 * @return GUIManager
 	 */
 	public GUIManager getGuiManager() {
@@ -52,7 +52,7 @@ public class ModelController {
 	/**
 	 * Sets the Data object, passing information to Data from the front-end to
 	 * the back-end.
-	 * 
+	 *
 	 * @param data
 	 */
 	public void setData(Data data) {
@@ -62,7 +62,7 @@ public class ModelController {
 	/**
 	 * Gets the Data object, containing information to be passed from back-end
 	 * to front-end.
-	 * 
+	 *
 	 * @return
 	 */
 	public Data getData() {
@@ -71,7 +71,7 @@ public class ModelController {
 
 	/**
 	 * Gets Parser which parses the commands
-	 * 
+	 *
 	 * @return Parser
 	 */
 	public Parser getParser() {
@@ -80,7 +80,7 @@ public class ModelController {
 
 	/**
 	 * Parses the commands
-	 * 
+	 *
 	 * @param s
 	 */
 	public void parse(String s) {
@@ -89,7 +89,7 @@ public class ModelController {
 
 	/**
 	 * Traverses command tree
-	 * 
+	 *
 	 * @return
 	 */
 	public Data traverse() {
