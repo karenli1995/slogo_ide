@@ -21,7 +21,6 @@ public class Backward extends Command {
 		MoveTurtle moveTurtle = new MoveTurtle();
 		moveTurtle.moveFdorBK(distance.get(0).getCommand().getValue(), -1, data.getTurtle(0));
 		this.setValue(distance.get(0).getCommand().getValue());
-		System.out.println("bk");
 		return data;
 	}
 

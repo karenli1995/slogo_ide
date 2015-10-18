@@ -92,6 +92,9 @@ public class Data {
 	public void setVariableMap(Map<String, Double> variableMap) {
 		this.variableMap = variableMap;
 	}
+	public void updateVaraibleMap(String varName, Double value){
+		variableMap.put(varName, value);
+	}
 
 	public Map<String, ParseTreeNode<Command>> getUserCommandMap() {
 		return userCommandMap;
