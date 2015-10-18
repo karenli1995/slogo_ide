@@ -17,7 +17,7 @@ import model.Data;
 public class IsPenDown extends Command {
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
-		this.setValue(data.getTurtle(0).getTrail().getPen().isDown());
+		this.setValue(data.getTurtle(0).getPen().isDown());
 		return data;
 	}
 

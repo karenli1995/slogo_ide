@@ -38,6 +38,11 @@ public class TurtleScene extends TabPane {
 	public void addChildren(Line line) {
 		this.getChildren().add(line);
 	}
+	
+	//use
+	public void removeChildren(Line line) {
+		this.getChildren().remove(line);
+	}
 
 	public double getX() {
 		return this.getTranslateX();
