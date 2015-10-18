@@ -15,7 +15,7 @@ public class Data {
 	private boolean error = false;
 	private String errorMessage;
 	private List<String> userHistory;
-	private Map<String, Double> variableMap;
+	private Map<String, Double> variableMap = new  HashMap<String, Double>();
 	private Map<String, ParseTreeNode<Command>> userCommandMap;
 	// private int pen = 0;
 
@@ -28,7 +28,7 @@ public class Data {
 
 		setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
 		myTrails.add(defaultTurtle.getTrail());
-		variableMap = new  HashMap<String, Double>();
+
 
 	}
 
