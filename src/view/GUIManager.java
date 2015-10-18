@@ -133,6 +133,10 @@ public class GUIManager extends BorderPane {
 	public History getMyHistory() {
 		return myHistory;
 	}
+	
+	public AvailableUserCommands getMyUserCommands(){
+		return myAvailableUserCommands;
+	}
 
 	/**
 	 * Initialize the window

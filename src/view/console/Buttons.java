@@ -30,7 +30,7 @@ public class Buttons extends VBox {
 			ResourceBundle resource) {
 		BUTTON_NAMES[0] = resource.getString("RUN");
 		BUTTON_NAMES[1] = resource.getString("CLEAR");
-		BUTTON_NAMES[2] = "Clear History";
+		BUTTON_NAMES[2] = "C Hst";
 		myConsole = console;
 		myController = controller;
 		myGUIManager = guimanager;
@@ -88,6 +88,8 @@ public class Buttons extends VBox {
 		myController.parse(consoleText);
 		Data data = myController.traverse();
 		myGUIManager.getMyHistory().addHistory(consoleText);
+		System.out.println("fuck " + myController.getData().getVariableMap().size());
+		addUserDefinitions();
 	}
 
 	private void clearConsole() {
@@ -100,5 +102,19 @@ public class Buttons extends VBox {
 
 	private void setAllMargins(Node n) {
 		HBox.setMargin(n, myInset);
+	}
+	
+	private void addUserDefinitions(){
+		if(myController.getData().getUserCommandMap().size()!=0){
+			for(String i:myController.getData().getUserCommandMap().keySet()){
+			myGUIManager.getMyUserCommands().add(i);
+			}
+		}
+		if(myController.getData().getVariableMap().size()!=0){
+			for(String j:myController.getData().getVariableMap().keySet()){
+			myGUIManager.getMyUserCommands().add(j);
+			System.out.println("fuck " + myController.getData().getVariableMap().size());
+			}
+		}
 	}
 }

@@ -102,9 +102,10 @@ public class TurtleSceneTab extends Tab implements Observer {
 
 		// check if pen down or up
 		List<Point2D> currTrailList = otherSlogoObj.getTrail().getPathCoordinates();
-		Line currLine = (Line) myShape.drawShape(currTrailList);
-		myTurtScene.addChildren(currLine);
-
+		if (myModelController.getData().getTurtle(0).getTrail().getPen().isDown() == 1.0) {
+			Line currLine = (Line) myShape.drawShape(currTrailList);
+			myTurtScene.addChildren(currLine);
+		}
 		double newRotAngle = otherSlogoObj.getRotationAngle();
 		double newLocX = otherSlogoObj.getTrail().getX();
 		double newLocY = otherSlogoObj.getTrail().getY();
