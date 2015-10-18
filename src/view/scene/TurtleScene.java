@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import controller.ModelController;
+import javafx.scene.Node;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
@@ -35,13 +36,13 @@ public class TurtleScene extends TabPane {
 		return (TurtleSceneTab) this.getSelectionModel().getSelectedItem();
 	}
 
-	public void addChildren(Line line) {
-		this.getChildren().add(line);
+	public void addChildren(Node node) {
+		this.getChildren().add(node);
 	}
 	
 	//use
-	public void removeChildren(Line line) {
-		this.getChildren().remove(line);
+	public void removeChildren(Node node) {
+		this.getChildren().remove(node);
 	}
 
 	public double getX() {

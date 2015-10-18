@@ -6,6 +6,7 @@ import java.util.Observer;
 
 import controller.ModelController;
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Tab;
@@ -111,7 +112,7 @@ public class TurtleSceneTab extends Tab implements Observer {
 		// check if pen down or up
 		List<Point2D> currTrailList = otherSlogoObj.getTrail().getPathCoordinates();
 		if (otherSlogoObj.getPen().isDown() == 1.0) {
-			Line currLine = (Line) myShape.drawShape(currTrailList);
+			Node currLine = (Node) myShape.drawShape(currTrailList);
 			myTurtScene.addChildren(currLine);
 		}
 		
