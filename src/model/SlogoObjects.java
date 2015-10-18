@@ -27,22 +27,22 @@ public abstract class SlogoObjects extends Observable {
 	public Trail getTrail() {
 		return myTrail;
 	}
-	
+
 	public boolean getClearTrail() {
 		return clearTrails;
 	}
-	
+
 	public void setClearTrail(boolean b){
 		clearTrails = b;
 		this.getTrail().getPathCoordinates().clear();
 		setChanged();
 		notifyObservers();
 	}
-	
+
 	public Pen getPen() {
 		return (Pen) myPen;
 	}
-	
+
 	public void setPen(Pen pen){
 		myPen = pen;
 		setChanged();
