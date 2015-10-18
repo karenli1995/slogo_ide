@@ -1,7 +1,9 @@
 /**
  *
  */
-package command;
+package command.turtleCommands;
+
+import command.Command;
 
 /**
  *

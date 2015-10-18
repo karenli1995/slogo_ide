@@ -1,9 +1,10 @@
-package command;
+package command.otherCommands;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import command.Command;
 import controller.ParseTreeNode;
 import model.Data;
 
