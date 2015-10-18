@@ -28,9 +28,7 @@ public class SetPosition extends Command {
 		this.setValue(moveTurtle.calculateDistanceBetweenTwoPoints(newlocation, data));
 		Point2D point = new Point2D(newLocation.get(0).getCommand().getValue(),
 				newLocation.get(1).getCommand().getValue());
-		
-		Trail loc = data.getTurtle(0).getTrail();
-		loc.setPoint(point);
+		Trail loc = new Trail(point, 0);
 
 		data.getTurtle(0).setTrail(loc);
 		data.getTurtle(0).getTrail().addCoord(point);

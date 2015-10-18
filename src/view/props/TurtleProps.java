@@ -68,10 +68,11 @@ public class TurtleProps extends Tab {
 		HBox hb5 = addTurtVisibleLable();
 		HBox hb6 = addPenColorLabel();
 		HBox hb7 = addPenThicknessLabel();
+		HBox hb8 = drawTester();
 
 		setAllMargins(allElements);
 
-		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5, hb6, hb7);
+		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5, hb6, hb7, hb8);
 
 		this.setContent(vb);
 	}
@@ -202,6 +203,25 @@ public class TurtleProps extends Tab {
 		allElements.add((Node) thicknesses);
 
 		return hb8;
+	}
+	
+	private HBox drawTester() {
+		HBox hb7 = new HBox();
+		Label drawer = new Label("drawing test");
+		Button draw = new Button("Draw");
+		draw.setOnAction((e) -> {
+			drawTrail();
+		});
+		hb7.getChildren().addAll(drawer, draw);
+
+		allElements.add((Node) drawer);
+		allElements.add((Node) draw);
+
+		return hb7;
+	}
+	
+	private void drawTrail(){
+		myTurtleScene.getCurrTab().drawTrail();
 	}
 
 	private void setAllMargins(List<Node> nodes) {
