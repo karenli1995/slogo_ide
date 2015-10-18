@@ -1,18 +1,16 @@
-package command;
+package command.otherCommands;
 
 import java.util.List;
 
+import command.Command;
 import controller.ParseTreeNode;
 import model.Data;
 
-public class ListStart extends Command {
-	public ListStart() {
-
-	}
+public class MakeUserInstruction extends Command {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
-		return data;
+		return null;
 	}
 
 }

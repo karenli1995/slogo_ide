@@ -1,7 +1,8 @@
-package command;
+package command.otherCommands;
 
 import java.util.List;
 
+import command.Command;
 import controller.ParseTreeNode;
 import model.Data;
 

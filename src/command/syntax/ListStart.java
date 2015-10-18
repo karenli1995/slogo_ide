@@ -1,15 +1,19 @@
-package command;
+package command.syntax;
 
 import java.util.List;
 
+import command.Command;
 import controller.ParseTreeNode;
 import model.Data;
 
-public class Variable extends Command {
+public class ListStart extends Command {
+	public ListStart() {
+
+	}
+
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
-		// TODO Auto-generated method stub
-		return null;
+		return data;
 	}
 
 }

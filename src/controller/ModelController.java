@@ -17,11 +17,6 @@ public class ModelController {
 	private Traverser myTraverser;
 	private List<ParseTreeNode<Command>> myTree;
 
-	/**
-	 * The Controller
-	 *
-	 * @param stage
-	 */
 	public ModelController(Stage stage) {
 		myAllData = new Data();
 		myGuiManager = new GUIManager(stage, this);
@@ -40,11 +35,7 @@ public class ModelController {
 		turtObj.addObserver(currSceneTab);
 	}
 
-	/**
-	 * Gets the GUIManager (view) instance.
-	 *
-	 * @return GUIManager
-	 */
+
 	public GUIManager getGuiManager() {
 		return myGuiManager;
 	}
@@ -52,8 +43,6 @@ public class ModelController {
 	/**
 	 * Sets the Data object, passing information to Data from the front-end to
 	 * the back-end.
-	 *
-	 * @param data
 	 */
 	public void setData(Data data) {
 		myAllData = data;
