@@ -24,7 +24,7 @@ public class Data {
 		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
 		myTrails.add(defaultTurtle.getTrail());
-		
+
 		myUserHistory = new ArrayList<String>();
 		myVariableMap = new HashMap<String, Double>();
 		myUserCommandMap = new HashMap<String, ParseTreeNode<Command>>();
