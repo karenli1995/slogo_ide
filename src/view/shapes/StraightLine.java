@@ -18,6 +18,10 @@ public class StraightLine{
 		myTurtleId = id;
 	} 
 	
+	public Line getLine(){
+		return myLine;
+	}
+	
 	public Line drawLine(List<Point2D> currTrailList){
 		//should call getAllTrails from the Data instead?
 		int lastPointInList = currTrailList.size()-1;

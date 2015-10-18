@@ -12,6 +12,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import model.SlogoObjects;
 import model.Turtle;
 
@@ -65,6 +66,9 @@ public class TurtleSceneTab extends Tab implements Observer{
 		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
 	}
 
+	public Line getStraightLine(){
+		return myStraightLine.getLine();
+	}
 
 	public ImageView getTurtImage(){
 		return myImage;
