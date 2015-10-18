@@ -6,6 +6,14 @@ import controller.ParseTreeNode;
 import model.Data;
 
 public abstract class Command {
+	protected String name;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	protected double value;
 

@@ -19,7 +19,6 @@ public class CommandFactory {
 
 	public Command createCommand(String commandName) {
 		Class<?> commandClass = reflectionMap.get(commandName);
-
 		Constructor<?> commandConstructor = null;
 		try {
 			commandConstructor = commandClass.getDeclaredConstructor();
