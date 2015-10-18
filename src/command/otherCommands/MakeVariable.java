@@ -1,15 +1,11 @@
 package command.otherCommands;
 
-import java.util.List;
-
 import command.Command;
-import controller.ParseTreeNode;
-import model.Data;
 
 public class MakeVariable extends Command {
 
 
-	@Override
+/*	@Override
 	public Data execute(List<ParseTreeNode<Command>> argument, Data data) {
 
 		String varName = argument.get(0).getCommand().getName();
@@ -18,6 +14,6 @@ public class MakeVariable extends Command {
 		System.out.println(data.getVariableMap().size());
 
 		return data;
-	}
+	}*/
 
 }

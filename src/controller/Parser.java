@@ -11,6 +11,7 @@ import command.CommandFactory;
 import command.math.Quotient;
 import command.math.Sine;
 import command.math.Sum;
+import command.otherCommands.ClearScreen;
 import command.otherCommands.DoTimes;
 import command.otherCommands.MakeUserInstruction;
 import command.otherCommands.MakeVariable;
@@ -69,6 +70,7 @@ public class Parser {
 			cf.registerCommand("Home", Home.class);
 			cf.registerCommand("SetHeading", SetHeading.class);
 			cf.registerCommand("SetPosition", SetPosition.class);
+			cf.registerCommand("ClearScreen", ClearScreen.class);
 			cf.registerCommand("Heading", Heading.class);
 			cf.registerCommand("Constant", Constant.class);
 			cf.registerCommand("ListEnd", ListEnd.class);

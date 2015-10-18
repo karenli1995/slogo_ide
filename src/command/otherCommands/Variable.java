@@ -1,21 +1,23 @@
 package command.otherCommands;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class Variable  {
+import command.Command;
+import controller.ParseTreeNode;
+import model.Data;
 
-	private static Map<String, Double> varaibleMap = new HashMap<String, Double>();
+public class Variable  extends Command {
 
 
-	public Boolean containsKey(String varName){
-		return varaibleMap.containsKey(varName);
-	}
-	public void put(String varName, Double value){
-		varaibleMap.put(varName, value);
-	}
-	public Map<String, Double> getMap(){
-		return varaibleMap;
+	@Override
+	public Data execute(List<ParseTreeNode<Command>> argument, Data data) {
+
+		String varName = argument.get(0).getCommand().getName();
+		Double value = argument.get(1).getCommand().getValue();
+		data.updateVaraibleMap(varName, value);
+		System.out.println(data.getVariableMap().size());
+
+		return data;
 	}
 
 

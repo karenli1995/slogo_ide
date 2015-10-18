@@ -26,11 +26,11 @@ public abstract class SlogoObjects extends Observable {
 	public Trail getTrail() {
 		return myTrail;
 	}
-	
+
 	public Pen getPen() {
 		return (Pen) myPen;
 	}
-	
+
 	public void setPen(Pen pen){
 		myPen = pen;
 		setChanged();
@@ -55,5 +55,8 @@ public abstract class SlogoObjects extends Observable {
 
 	public double getRotationAngle() {
 		return myRotationAngle;
+	}
+	public void clearTrail(){
+		this.getTrail().getPathCoordinates().clear();
 	}
 }
