@@ -14,6 +14,7 @@ public abstract class AbstractShape {
 
 	public AbstractShape(TurtleScene turtlescene, ModelController controller) {
 		myTurtScene = turtlescene;
+		myModelController = controller;
 	}
 
 	public List<Object> getAllShapes() {
