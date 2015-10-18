@@ -35,14 +35,6 @@ public class Trail{
 		return myPath;
 	}
 	
-//	public void setX(double x) {
-//		myPoint.add(x, myPoint.getY());
-//	}
-//
-//	public void setY(double y) {
-//		myPoint.add(myPoint.getX(), y);
-//	}
-	
 	public double getX() {
 		return myPoint.getX();
 	}

@@ -22,11 +22,13 @@ public class TurtleSceneTab extends Tab implements Observer{
 	private ImageView myImage;
 	private Canvas myCanvas;
 	private ModelController myModelController;
+	private TurtleScene myTurtScene;
 
 	private double myCanvasWidth = SlogoProperties.getSceneWidth()*3/7;
 	private double myCanvasHeight = SlogoProperties.getSceneHeight()*5/7;
 
 	public TurtleSceneTab(TurtleScene turtScene, ModelController controller){
+		myTurtScene = turtScene;
 		myModelController = controller;
 		this.setText("New Text");
 		myCanvas = new Canvas();
@@ -36,10 +38,11 @@ public class TurtleSceneTab extends Tab implements Observer{
  		setBackgroundColor(gc, myCanvas, Color.ALICEBLUE);
 
  		turtScene.getTabs().add(this);
-
+ 		
  		int defaultTurt = 0;
  		setTurtleAndTrail(defaultTurt, turtScene);
  		this.setContent(myCanvas);
+
 	}
 
 
@@ -65,9 +68,9 @@ public class TurtleSceneTab extends Tab implements Observer{
 		myImage = mySlogoImage.getMyImage();
 		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
 	}
-
-	public Line getStraightLine(){
-		return myStraightLine.getLine();
+	
+	public List<Line> getAllLines(){
+		return myStraightLine.getAllLines();
 	}
 
 	public ImageView getTurtImage(){
@@ -100,7 +103,8 @@ public class TurtleSceneTab extends Tab implements Observer{
 			
 			//check if pen down or up
 			List<Point2D> currTrailList = otherSlogoObj.getTrail().getPathCoordinates();
-			myStraightLine.drawLine(currTrailList);
+			Line currLine = myStraightLine.drawLine(currTrailList);
+			myTurtScene.addChildren(currLine);
 			
 			double newRotAngle = otherSlogoObj.getRotationAngle();
 			double newLocX = otherSlogoObj.getTrail().getX();

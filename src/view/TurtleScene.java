@@ -13,7 +13,6 @@ import javafx.scene.shape.Line;
 public class TurtleScene extends TabPane{
 	
 	private ImageView myImage;
-	private Line myLine;
 	private TurtleSceneTab myDefaultSceneTab;
 	private List<TurtleSceneTab> myTabs = new ArrayList<TurtleSceneTab>();
 	private ModelController myController;
@@ -28,12 +27,16 @@ public class TurtleScene extends TabPane{
 		myDefaultSceneTab = new TurtleSceneTab(this, myController);
 		myTabs.add(myDefaultSceneTab);
 		myImage = getCurrTab().getTurtImage();
-		myLine = getCurrTab().getStraightLine();
-		this.getChildren().addAll(myImage, myLine);
+		
+		this.getChildren().add(myImage);
 	}
 	
 	public TurtleSceneTab getCurrTab(){
 		return (TurtleSceneTab) this.getSelectionModel().getSelectedItem();
+	}
+	
+	public void addChildren(Line line){
+		this.getChildren().add(line);
 	}
 	
 	public double getX(){
