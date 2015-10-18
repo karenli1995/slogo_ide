@@ -17,6 +17,7 @@ public class Trail {
 
 	public Trail(Point2D point, double direction) {
 		myPen = new Pen();
+		myPath.add(point);
 		myPoint = point;
 		myDirection = direction;
 	}

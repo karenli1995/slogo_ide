@@ -2,6 +2,8 @@ package model;
 
 import java.util.Observable;
 
+import javafx.geometry.Point2D;
+
 public abstract class SlogoObjects extends Observable {
 
 	private Trail myTrail;
@@ -9,7 +11,8 @@ public abstract class SlogoObjects extends Observable {
 	private double myRotationAngle;
 
 	public SlogoObjects() {
-
+		Point2D startPoint = new Point2D(0,0);
+		myTrail = new Trail(startPoint, 0);
 	}
 
 
