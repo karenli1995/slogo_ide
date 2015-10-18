@@ -8,7 +8,7 @@ import java.util.Map;
 import command.Command;
 import controller.ParseTreeNode;
 
-public class Data{
+public class Data {
 
 	private List<SlogoObjects> myTurtles;
 	private List<Trail> myTrails = new ArrayList<Trail>();
@@ -17,7 +17,7 @@ public class Data{
 	private List<String> userHistory;
 	private Map<String, Integer> variableMap;
 	private Map<String, ParseTreeNode<Command>> userCommandMap;
-//	private int pen = 0;
+	// private int pen = 0;
 
 	public Data() {
 		myTurtles = new ArrayList<SlogoObjects>();
@@ -29,9 +29,9 @@ public class Data{
 		setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
 		myTrails.add(defaultTurtle.getTrail());
 
-		//setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
-		//defaultTurtle.getPen().getTrail().addCoord(defaultTurtle.getLocation().getPoint());
-		//myTrails.add(defaultTurtle.getPen().getTrail());
+		// setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
+		// defaultTurtle.getPen().getTrail().addCoord(defaultTurtle.getLocation().getPoint());
+		// myTrails.add(defaultTurtle.getPen().getTrail());
 
 	}
 
@@ -40,11 +40,10 @@ public class Data{
 	}
 
 	/*
-	 * public void addTurtle() {
-	 * tempTurt = new Turtle();
+	 * public void addTurtle() { tempTurt = new Turtle();
 	 * myTurtles.add(tempTurt);
-	 * tempTurtle.getPen().getTrail().addCoord(tempTurtle.getLocation().getPoint());
-		myTrails.add(tempTurtle.getPen().getTrail());
+	 * tempTurtle.getPen().getTrail().addCoord(tempTurtle.getLocation().getPoint
+	 * ()); myTrails.add(tempTurtle.getPen().getTrail());
 	 *
 	 *
 	 * }
@@ -62,7 +61,6 @@ public class Data{
 		return errorMessage;
 	}
 
-
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
@@ -70,7 +68,6 @@ public class Data{
 	public boolean isError() {
 		return error;
 	}
-
 
 	public void setError(boolean error) {
 		this.error = error;
@@ -80,30 +77,25 @@ public class Data{
 		return userHistory;
 	}
 
-
 	public void setUserHistory(List<String> userHistory) {
 		this.userHistory = userHistory;
 	}
 
-	public void addCommandToHistory(String s){
+	public void addCommandToHistory(String s) {
 		userHistory.add(s);
 	}
-
 
 	public Map<String, Integer> getVariableMap() {
 		return variableMap;
 	}
 
-
 	public void setVariableMap(Map<String, Integer> variableMap) {
 		this.variableMap = variableMap;
 	}
 
-
 	public Map<String, ParseTreeNode<Command>> getUserCommandMap() {
 		return userCommandMap;
 	}
-
 
 	public void setUserCommandMap(Map<String, ParseTreeNode<Command>> userCommandMap) {
 		this.userCommandMap = userCommandMap;

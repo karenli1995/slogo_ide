@@ -17,7 +17,7 @@ public class SLogo extends Application {
 		stage.setResizable(false);
 
 		ModelController myModelController = new ModelController(stage);
-		//new GUIManager(stage, myModelController);
+		// new GUIManager(stage, myModelController);
 
 	}
 

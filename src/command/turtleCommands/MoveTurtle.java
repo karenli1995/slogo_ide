@@ -18,7 +18,6 @@ import model.Trail;
  */
 public class MoveTurtle {
 
-
 	double RoundTo2Decimals(double val) {
 		DecimalFormat df2 = new DecimalFormat("###.##");
 		return Double.valueOf(df2.format(val));
@@ -63,8 +62,8 @@ public class MoveTurtle {
 		double distance = ((y2 - y1) * (y2 - y1)) + ((x2 - x1) * (x2 - x1));
 		distance = Math.sqrt(distance);
 
-//		data.getTurtle(0).getTrail().setX(x2);
-//		data.getTurtle(0).getTrail().setY(y2);
+		// data.getTurtle(0).getTrail().setX(x2);
+		// data.getTurtle(0).getTrail().setY(y2);
 
 		data.getTurtle(0).getTrail().addCoord(new Point2D(x2, y2));
 

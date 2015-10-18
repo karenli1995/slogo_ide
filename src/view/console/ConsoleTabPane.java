@@ -5,14 +5,14 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 
-public abstract class ConsoleTabPane extends TabPane{
-	
+public abstract class ConsoleTabPane extends TabPane {
+
 	protected TextArea myTextArea;
 	protected Tab myFirstTab;
-	
-	public ConsoleTabPane(Scene scene){
+
+	public ConsoleTabPane(Scene scene) {
 		super();
-		this.setPrefWidth(scene.getWidth()*5/11);
+		this.setPrefWidth(scene.getWidth() * 5 / 11);
 		myFirstTab = new Tab();
 		myTextArea = new TextArea();
 		myTextArea = new TextArea();
@@ -22,4 +22,3 @@ public abstract class ConsoleTabPane extends TabPane{
 		this.getTabs().add(myFirstTab);
 	}
 }
-

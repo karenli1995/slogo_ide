@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.geometry.Point2D;
 
-public class Trail{
+public class Trail {
 	private AbstractPen myPen;
 	private Point2D myPoint;
 	private List<Point2D> myPath = new ArrayList<Point2D>();
 	private double myDirection;
-	
+
 	public Trail(Trail oldBearing) {
 		this(oldBearing.getPoint(), oldBearing.getDirection());
 	}
@@ -22,17 +22,17 @@ public class Trail{
 	}
 
 	public Trail() {
-		this(new Point2D(0,0), 0);
+		this(new Point2D(0, 0), 0);
 	}
-	
-	public Pen getPen(){
+
+	public Pen getPen() {
 		return (Pen) myPen;
 	}
-	
-	public List<Point2D> getPathCoordinates(){
+
+	public List<Point2D> getPathCoordinates() {
 		return myPath;
 	}
-	
+
 	public double getX() {
 		return myPoint.getX();
 	}
@@ -59,11 +59,11 @@ public class Trail{
 
 	public void addCoord(Point2D current) {
 		myPath.add(current);
-		
+
 		System.out.println("Current trail");
-//		for(int i = 0; i < myPath.size(); i++){
-//			System.out.println("Point "+i+" = "+myPath.get(i).toString());
-//		}
-		
+		// for(int i = 0; i < myPath.size(); i++){
+		// System.out.println("Point "+i+" = "+myPath.get(i).toString());
+		// }
+
 	}
 }

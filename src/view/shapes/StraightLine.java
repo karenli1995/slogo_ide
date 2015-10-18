@@ -8,33 +8,31 @@ import view.scene.TurtleScene;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Line;
 
-public class StraightLine extends AbstractShape{
+public class StraightLine extends AbstractShape {
 	protected List<Line> myAllShapes = new ArrayList<Line>();
-	
-	public StraightLine(TurtleScene turtlescene, ModelController controller){
+
+	public StraightLine(TurtleScene turtlescene, ModelController controller) {
 		super(turtlescene, controller);
 		Line myRecentLine = new Line();
 		myAllShapes.add(myRecentLine);
 	}
-	
-	
-	public List<Line> getAllLines(){
+
+	public List<Line> getAllLines() {
 		return myAllShapes;
 	}
 
 	@Override
 	public Line drawShape(List<Point2D> currTrailList) {
-		//should call getAllTrails from the Data instead?
-		int lastPointInList = currTrailList.size()-1;
+		// should call getAllTrails from the Data instead?
+		int lastPointInList = currTrailList.size() - 1;
 
-		Point2D point1 = translateForScreen(currTrailList.get(lastPointInList-1));
+		Point2D point1 = translateForScreen(currTrailList.get(lastPointInList - 1));
 		Point2D point2 = translateForScreen(currTrailList.get(lastPointInList));
 
 		Line recentLine = new Line(point1.getX(), point1.getY(), point2.getX(), point2.getY());
 		myAllShapes.add(recentLine);
 
 		return recentLine;
-	} 
-	
-	
+	}
+
 }

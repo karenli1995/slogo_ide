@@ -14,7 +14,7 @@ import model.Data;
  * @author Sally Al
  *
  */
-public class Backward extends Command{
+public class Backward extends Command {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
@@ -24,7 +24,5 @@ public class Backward extends Command{
 		System.out.println("bk");
 		return data;
 	}
-
-
 
 }

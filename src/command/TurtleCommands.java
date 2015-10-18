@@ -10,5 +10,4 @@ package command;
  */
 public abstract class TurtleCommands extends Command {
 
-
 }
