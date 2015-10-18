@@ -1,4 +1,5 @@
 package controller;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -67,13 +68,12 @@ public class ParseTreeNode<Command> {
 		this.command = command;
 	}
 
-	public void setParent(ParseTreeNode<Command> p){
+	public void setParent(ParseTreeNode<Command> p) {
 		this.parent = p;
 	}
-	
-	public ParseTreeNode<Command> getParent(){
+
+	public ParseTreeNode<Command> getParent() {
 		return this.parent;
 	}
-
 
 }

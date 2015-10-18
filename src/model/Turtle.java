@@ -1,6 +1,6 @@
 package model;
 
-public class Turtle extends SlogoObjects{
+public class Turtle extends SlogoObjects {
 
 	public Turtle() {
 	}

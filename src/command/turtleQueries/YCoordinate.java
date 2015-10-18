@@ -18,7 +18,8 @@ public class YCoordinate extends Command {
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
 		distance.clear();
-		double y = data.getTurtle(0).getTrail().getY();// - turtleScene.getCentrey();
+		double y = data.getTurtle(0).getTrail().getY();// -
+														// turtleScene.getCentrey();
 		this.setValue(y);
 		return data;
 	}

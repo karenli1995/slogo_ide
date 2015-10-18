@@ -4,7 +4,6 @@ import javafx.scene.paint.Color;
 
 public class Pen extends AbstractPen { // class with properties of the path
 
-
 	public Pen() {
 		super(Color.BLACK, 1, 0, 1.0);
 	}

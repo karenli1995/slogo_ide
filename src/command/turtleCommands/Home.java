@@ -19,12 +19,13 @@ import model.Trail;
  */
 public class Home extends Command {
 
-	MoveTurtle moveTurtle= new MoveTurtle();
+	MoveTurtle moveTurtle = new MoveTurtle();
+
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> argument, Data data) {
-	List<Double> defaultPosition= new ArrayList<Double>();
-	defaultPosition.add(0.0);
-	defaultPosition.add(0.0);
+		List<Double> defaultPosition = new ArrayList<Double>();
+		defaultPosition.add(0.0);
+		defaultPosition.add(0.0);
 		this.setValue(moveTurtle.calculateDistanceBetweenTwoPoints(defaultPosition, data));
 		Trail newLoc = new Trail(new Point2D(0.0, 0.0), 0.0);
 		data.getTurtle(0).setTrail(newLoc);

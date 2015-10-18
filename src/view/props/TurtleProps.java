@@ -136,7 +136,8 @@ public class TurtleProps extends Tab {
 
 	private void openImage() {
 		FileChooser chooser = new FileChooser();
-		FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Image files (*.png), (*.jpg), (*.bmp)", "*.png","*.jpg","*.bmp");
+		FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter(
+				"Image files (*.png), (*.jpg), (*.bmp)", "*.png", "*.jpg", "*.bmp");
 		chooser.getExtensionFilters().add(extensionFilter);
 		File userDirectory = getDataDirectory();
 		if (userDirectory.canRead()) {
@@ -152,7 +153,7 @@ public class TurtleProps extends Tab {
 				myTurtleScene.changeTurtImage(newTurt);
 			}
 		} catch (Exception e) {
-			//showError("Error!","Failed to load "+file.getName(),e);
+			// showError("Error!","Failed to load "+file.getName(),e);
 		}
 	}
 
@@ -174,10 +175,9 @@ public class TurtleProps extends Tab {
 		Label penColor = new Label(myResource.getString("PENC"));
 		final ComboBox<Color> cbColors = new ColorComboBox();
 		hb6.getChildren().addAll(penColor, cbColors);
-		cbColors.setOnAction((event)->
-		{
-		    Color chosenColor = (Color) cbColors.getSelectionModel().getSelectedItem();
-		    myTurtleScene.getController().getData().getTurtle(0).getTrail().getPen().setColor(chosenColor);
+		cbColors.setOnAction((event) -> {
+			Color chosenColor = (Color) cbColors.getSelectionModel().getSelectedItem();
+			myTurtleScene.getController().getData().getTurtle(0).getTrail().getPen().setColor(chosenColor);
 
 		});
 
@@ -186,11 +186,11 @@ public class TurtleProps extends Tab {
 
 		return hb6;
 	}
-	
+
 	private HBox addPenThicknessLabel() {
 		HBox hb8 = new HBox();
 		Label thickLabel = new Label("Pen Thickness");
-		ObservableList<Integer> thicks = FXCollections.observableArrayList(1,2,3,4,5);
+		ObservableList<Integer> thicks = FXCollections.observableArrayList(1, 2, 3, 4, 5);
 		ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
 		thicknesses.setOnAction((e) -> {
 			Integer thick = (Integer) thicknesses.getSelectionModel().getSelectedItem();
@@ -208,9 +208,10 @@ public class TurtleProps extends Tab {
 		for (Node n : nodes)
 			HBox.setMargin(n, myInset);
 	}
-	private File getDataDirectory(){
-		File file = new File(System.getProperty("user.dir")+File.separator+"data");
-		if(!file.exists()){
+
+	private File getDataDirectory() {
+		File file = new File(System.getProperty("user.dir") + File.separator + "data");
+		if (!file.exists()) {
 			file.mkdirs();
 		}
 		return file;

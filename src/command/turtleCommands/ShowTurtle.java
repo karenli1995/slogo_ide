@@ -16,13 +16,11 @@ import model.Data;
  */
 public class ShowTurtle extends Command {
 
-
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> angle,Data data) {
+	public Data execute(List<ParseTreeNode<Command>> angle, Data data) {
 		data.getTurtle(0).setIsShowing(true);
 		this.setValue(1);
 		return data;
-
 
 	}
 

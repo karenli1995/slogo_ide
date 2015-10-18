@@ -17,7 +17,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-public class History extends VBox{
+public class History extends VBox {
 
 	private ConsoleUI myConsole;
 	private Button myClearButton;
@@ -26,23 +26,23 @@ public class History extends VBox{
 	private List<String> myHistoryButtonString = new ArrayList<String>();
 	private VBox myVbox = new VBox();
 
-	public History(ConsoleUI console, Scene scene){
+	public History(ConsoleUI console, Scene scene) {
 		myConsole = console;
-		this.setPrefWidth(scene.getWidth()/7);
+		this.setPrefWidth(scene.getWidth() / 7);
 		Label label = new Label("History Bar");
-		label.setPrefWidth(scene.getWidth()/7);
+		label.setPrefWidth(scene.getWidth() / 7);
 		label.setBackground(new Background(new BackgroundFill(Color.CADETBLUE, new CornerRadii(0), new Insets(0))));
 		this.getChildren().add(label);
 		this.getChildren().add(myScroller);
 		this.getChildren().add(myVbox);
-		myScroller.setPrefHeight(scene.getHeight()*4/5);
+		myScroller.setPrefHeight(scene.getHeight() * 4 / 5);
 		myScroller.setContent(myVbox);
 		myScroller.setVbarPolicy(ScrollBarPolicy.ALWAYS);
 		myScroller.setHbarPolicy(ScrollBarPolicy.ALWAYS);
 	}
 
-	public void addHistory(String history){
-		if(!myHistoryButtonString.contains(history)) {
+	public void addHistory(String history) {
+		if (!myHistoryButtonString.contains(history)) {
 			Button newHistoryButton = new Button(history);
 			myHistoryButtons.add(newHistoryButton);
 			myHistoryButtonString.add(history);
@@ -51,7 +51,7 @@ public class History extends VBox{
 		}
 	}
 
-	private void addButtonEvent(Button b){
+	private void addButtonEvent(Button b) {
 		b.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -62,8 +62,8 @@ public class History extends VBox{
 
 		});
 	}
-	
-	public void clear(){
+
+	public void clear() {
 		myVbox.getChildren().removeAll(myHistoryButtons);
 	}
 

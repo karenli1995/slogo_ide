@@ -9,15 +9,13 @@ import java.util.List;
 
 import command.Command;
 import model.Data;
+
 public class ParserTester {
 
-
-	static String readFile(String path, Charset encoding)
-			  throws IOException
-			{
-			  byte[] encoded = Files.readAllBytes(Paths.get(path));
-			  return new String(encoded, encoding);
-			}
+	static String readFile(String path, Charset encoding) throws IOException {
+		byte[] encoded = Files.readAllBytes(Paths.get(path));
+		return new String(encoded, encoding);
+	}
 
 	public static void main(String[] args) throws IOException {
 		Data allData = new Data();
@@ -26,8 +24,8 @@ public class ParserTester {
 		String input = readFile("examples/procedures_with_parameters/dash.logo", StandardCharsets.UTF_8);
 		List<ParseTreeNode<Command>> head = parser.parse(input);
 
-		//Command tempCommand = control.getParser().getCommandFactory().createCommand("Constant");
-		//tempCommand.returnValue();
+		// Command tempCommand =
+		// control.getParser().getCommandFactory().createCommand("Constant");
+		// tempCommand.returnValue();
 	}
 }
-

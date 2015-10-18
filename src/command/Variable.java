@@ -12,5 +12,4 @@ public class Variable extends Command {
 		return null;
 	}
 
-
 }
