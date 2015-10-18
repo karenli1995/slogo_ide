@@ -12,24 +12,22 @@ public class Data {
 
 	private List<SlogoObjects> myTurtles;
 	private List<Trail> myTrails = new ArrayList<Trail>();
-	private boolean error = false;
-	private String errorMessage;
-	private List<String> userHistory;
-	private Map<String, Double> variableMap = new  HashMap<String, Double>();
-	private Map<String, ParseTreeNode<Command>> userCommandMap;
-	// private int pen = 0;
+	private boolean myError = false;
+	private String myErrorMessage;
+	private List<String> myUserHistory;
+	private Map<String, Double> myVariableMap;
+	private Map<String, ParseTreeNode<Command>> myUserCommandMap;
 
 	public Data() {
 		myTurtles = new ArrayList<SlogoObjects>();
+		
 		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
-		setUserHistory(new ArrayList<String>());
-		setVariableMap(new HashMap<String, Double>());
-
-		setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
 		myTrails.add(defaultTurtle.getTrail());
 
-
+		myUserHistory = new ArrayList<String>();
+		myVariableMap = new HashMap<String, Double>();
+		myUserCommandMap = new HashMap<String, ParseTreeNode<Command>>();
 	}
 
 	public SlogoObjects getTurtle(int turtleId) {
@@ -55,51 +53,51 @@ public class Data {
 	}
 
 	public String getErrorMessage() {
-		return errorMessage;
+		return myErrorMessage;
 	}
 
 	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
+		this.myErrorMessage = errorMessage;
 	}
 
 	public boolean isError() {
-		return error;
+		return myError;
 	}
 
 	public void setError(boolean error) {
-		this.error = error;
+		this.myError = error;
 	}
 
 	public List<String> getUserHistory() {
-		return userHistory;
+		return myUserHistory;
 	}
 
 	public void setUserHistory(List<String> userHistory) {
-		this.userHistory = userHistory;
+		this.myUserHistory = userHistory;
 	}
 
 	public void addCommandToHistory(String s) {
-		userHistory.add(s);
+		myUserHistory.add(s);
 	}
 
 	public Map<String, Double> getVariableMap() {
-		return variableMap;
+		return myVariableMap;
 	}
 
 	public void setVariableMap(Map<String, Double> variableMap) {
-		this.variableMap = variableMap;
+		this.myVariableMap = variableMap;
 	}
 	public void updateVaraibleMap(String varName, Double value){
 		System.out.println("update");
-		variableMap.put(varName, value);
+		myVariableMap.put(varName, value);
 	}
 
 	public Map<String, ParseTreeNode<Command>> getUserCommandMap() {
-		return userCommandMap;
+		return myUserCommandMap;
 	}
 
 	public void setUserCommandMap(Map<String, ParseTreeNode<Command>> userCommandMap) {
-		this.userCommandMap = userCommandMap;
+		this.myUserCommandMap = userCommandMap;
 	}
 
 }

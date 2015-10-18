@@ -16,6 +16,7 @@ public class Trail {
 
 	public Trail(Point2D point, double direction) {
 		myPath.add(point);
+		myPath.add(point); //check
 		myPoint = point;
 		myDirection = direction;
 	}

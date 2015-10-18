@@ -6,6 +6,7 @@ import java.util.Observer;
 
 import controller.ModelController;
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Tab;
@@ -71,8 +72,12 @@ public class TurtleSceneTab extends Tab implements Observer {
 		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
 	}
 
-	public List<Line> getAllLines() {
-		return ((StraightLine) myShape).getAllLines();
+//	public List<Line> getAllLines() {
+//		return ((StraightLine) myShape).getAllLines();
+//	}
+//	
+	private List<Object> getAllShapes() {
+		return myShape.getAllShapes();
 	}
 
 	public ImageView getTurtImage() {
@@ -99,11 +104,15 @@ public class TurtleSceneTab extends Tab implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		SlogoObjects otherSlogoObj = (SlogoObjects) o;
-
+		
+		if(otherSlogoObj.getClearTrail() == true){
+			
+		}
+		
 		// check if pen down or up
 		List<Point2D> currTrailList = otherSlogoObj.getTrail().getPathCoordinates();
 		if (otherSlogoObj.getPen().isDown() == 1.0) {
-			Line currLine = (Line) myShape.drawShape(currTrailList);
+			Node currLine = (Node) myShape.drawShape(currTrailList);
 			myTurtScene.addChildren(currLine);
 		}
 		

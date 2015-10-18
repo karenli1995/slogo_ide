@@ -10,6 +10,7 @@ public abstract class SlogoObjects extends Observable {
 	private AbstractPen myPen;
 	private boolean isShowing = true;
 	private double myRotationAngle;
+	private boolean clearTrails = false;
 
 	public SlogoObjects() {
 		Point2D startPoint = new Point2D(0, 0);
@@ -25,6 +26,17 @@ public abstract class SlogoObjects extends Observable {
 
 	public Trail getTrail() {
 		return myTrail;
+	}
+
+	public boolean getClearTrail() {
+		return clearTrails;
+	}
+
+	public void setClearTrail(boolean b){
+		clearTrails = b;
+		this.getTrail().getPathCoordinates().clear();
+		setChanged();
+		notifyObservers();
 	}
 
 	public Pen getPen() {
@@ -55,8 +67,5 @@ public abstract class SlogoObjects extends Observable {
 
 	public double getRotationAngle() {
 		return myRotationAngle;
-	}
-	public void clearTrail(){
-		this.getTrail().getPathCoordinates().clear();
 	}
 }
