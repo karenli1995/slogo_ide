@@ -3,6 +3,7 @@ package view.props;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
@@ -18,7 +19,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Callback;
 import view.GUIManager;
-import view.TurtleScene;
+import view.scene.TurtleScene;
 
 public class SceneProps extends Tab{
 	private static final int OFFSET_SPACE = 10;

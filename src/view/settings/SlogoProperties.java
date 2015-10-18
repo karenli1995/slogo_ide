@@ -1,4 +1,4 @@
-package view;
+package view.settings;
 
 import javafx.stage.Screen;
 

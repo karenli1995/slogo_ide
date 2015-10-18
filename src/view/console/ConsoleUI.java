@@ -1,7 +1,8 @@
-package view;
+package view.console;
 
 import java.util.ResourceBundle;
 
+import view.GUIManager;
 import controller.ModelController;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;

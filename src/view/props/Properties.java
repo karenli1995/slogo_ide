@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import view.GUIManager;
-import view.TurtleScene;
+import view.scene.TurtleScene;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;

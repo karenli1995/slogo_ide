@@ -67,7 +67,6 @@ public class Data{
 		this.errorMessage = errorMessage;
 	}
 
-
 	public boolean isError() {
 		return error;
 	}
@@ -76,7 +75,6 @@ public class Data{
 	public void setError(boolean error) {
 		this.error = error;
 	}
-
 
 	public List<String> getUserHistory() {
 		return userHistory;
@@ -110,19 +108,5 @@ public class Data{
 	public void setUserCommandMap(Map<String, ParseTreeNode<Command>> userCommandMap) {
 		this.userCommandMap = userCommandMap;
 	}
-
-
-//	@Override
-//	public void update(Observable o, Object arg) {
-//		for (SlogoObjects slogoObj : myTurtles){
-//			slogoObj.addObserver(this);
-//			if (slogoObj == o) {
-//				System.out.println("karen " );
-//			} else {
-//				System.out.println("jenny ");
-//			}
-//		}
-//
-//	}
 
 }

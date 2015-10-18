@@ -1,7 +1,8 @@
-package view;
+package view.turtles;
 
 import java.util.List;
 
+import view.scene.TurtleScene;
 import model.SlogoObjects;
 import controller.ModelController;
 import javafx.scene.image.Image;

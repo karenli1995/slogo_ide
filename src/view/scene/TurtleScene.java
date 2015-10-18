@@ -1,9 +1,10 @@
-package view;
+package view.scene;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import view.settings.SlogoProperties;
 import view.shapes.StraightLine;
 import controller.ModelController;
 import javafx.scene.control.TabPane;

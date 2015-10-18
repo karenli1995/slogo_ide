@@ -1,10 +1,13 @@
-package view;
+package view.scene;
 
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import view.settings.SlogoProperties;
+import view.shapes.AbstractShape;
 import view.shapes.StraightLine;
+import view.turtles.SlogoImage;
 import controller.ModelController;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
@@ -18,7 +21,7 @@ import model.Turtle;
 
 public class TurtleSceneTab extends Tab implements Observer{
 	private SlogoImage mySlogoImage;
-	private StraightLine myStraightLine; //check this
+	private AbstractShape myShape; //check this
 	private ImageView myImage;
 	private Canvas myCanvas;
 	private ModelController myModelController;
@@ -57,7 +60,7 @@ public class TurtleSceneTab extends Tab implements Observer{
 		myImage = mySlogoImage.getMyImage();
 		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
 		
-		myStraightLine = new StraightLine(turtScene, myModelController, id);
+		myShape = new StraightLine(turtScene, myModelController);
 	}
 
 	public void setTurtImage(ImageView image, int id){
@@ -70,7 +73,7 @@ public class TurtleSceneTab extends Tab implements Observer{
 	}
 	
 	public List<Line> getAllLines(){
-		return myStraightLine.getAllLines();
+		return ((StraightLine) myShape).getAllLines();
 	}
 
 	public ImageView getTurtImage(){
@@ -97,23 +100,17 @@ public class TurtleSceneTab extends Tab implements Observer{
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		
-		if (myModelController.getData().getTurtle(0) == o){
-			SlogoObjects otherSlogoObj = (SlogoObjects) o;
-			
-			//check if pen down or up
-			List<Point2D> currTrailList = otherSlogoObj.getTrail().getPathCoordinates();
-			Line currLine = myStraightLine.drawLine(currTrailList);
-			myTurtScene.addChildren(currLine);
-			
-			double newRotAngle = otherSlogoObj.getRotationAngle();
-			double newLocX = otherSlogoObj.getTrail().getX();
-			double newLocY = otherSlogoObj.getTrail().getY();
-			mySlogoImage.setScreenLoc(newLocX, newLocY);
-			mySlogoImage.setRotation(newRotAngle);
-		}else{
-			/*System.out.println("jenny ");*/
-		}
+		SlogoObjects otherSlogoObj = (SlogoObjects) o;
 
+		//check if pen down or up
+		List<Point2D> currTrailList = otherSlogoObj.getTrail().getPathCoordinates();
+		Line currLine = (Line) myShape.drawShape(currTrailList);
+		myTurtScene.addChildren(currLine);
+
+		double newRotAngle = otherSlogoObj.getRotationAngle();
+		double newLocX = otherSlogoObj.getTrail().getX();
+		double newLocY = otherSlogoObj.getTrail().getY();
+		mySlogoImage.setScreenLoc(newLocX, newLocY);
+		mySlogoImage.setRotation(newRotAngle);
 	}
 }

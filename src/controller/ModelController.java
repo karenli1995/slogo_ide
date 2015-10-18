@@ -1,12 +1,13 @@
 package controller;
 
 import java.util.List;
+
 import command.Command;
 import javafx.stage.Stage;
 import model.Data;
 import model.SlogoObjects;
 import view.GUIManager;
-import view.TurtleSceneTab;
+import view.scene.TurtleSceneTab;
 
 public class ModelController {
 
@@ -35,9 +36,6 @@ public class ModelController {
 		SlogoObjects turtObj = getData().getTurtle(0);
 		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
 		turtObj.addObserver(currSceneTab);
-//		turtObj.getTrail().addObserver(currSceneTab);
-		
-//		Trail currStraightLine = getData().getTrail(0);
 	}
 
 	/**

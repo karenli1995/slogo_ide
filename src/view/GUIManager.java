@@ -2,6 +2,7 @@ package view;
 
 import java.util.Optional;
 import java.util.ResourceBundle;
+
 import controller.ModelController;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -9,7 +10,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import view.console.AvailableUserCommands;
+import view.console.ConsoleUI;
+import view.console.History;
 import view.props.Properties;
+import view.scene.TurtleScene;
+import view.settings.LangDialog;
+import view.settings.MenuPanel;
 
 public class GUIManager extends BorderPane {
 	private static final String TITLE = "SLogo";

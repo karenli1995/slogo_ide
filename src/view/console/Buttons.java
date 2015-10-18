@@ -1,8 +1,10 @@
-package view;
+package view.console;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import view.GUIManager;
 import model.Data;
 import controller.ModelController;
 import javafx.event.ActionEvent;
