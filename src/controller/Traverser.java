@@ -7,7 +7,6 @@ import java.util.Stack;
 
 import command.Command;
 import model.Data;
-import model.Trail;
 
 public class Traverser {
 	private Queue<ParseTreeNode<Command>> commandQueue;
@@ -19,7 +18,7 @@ public class Traverser {
 		for (ParseTreeNode<Command> s : node) {
 			this.iterateTreePostOrder(s);
 		}
-		System.out.println(node.size());
+
 		this.executeCommands(allData);
 
 		return allData;
