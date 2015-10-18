@@ -6,7 +6,6 @@ import java.util.List;
 import javafx.geometry.Point2D;
 
 public class Trail {
-	private AbstractPen myPen;
 	private Point2D myPoint;
 	private List<Point2D> myPath = new ArrayList<Point2D>();
 	private double myDirection;
@@ -16,7 +15,6 @@ public class Trail {
 	}
 
 	public Trail(Point2D point, double direction) {
-		myPen = new Pen();
 		myPath.add(point);
 		myPoint = point;
 		myDirection = direction;
@@ -24,10 +22,6 @@ public class Trail {
 
 	public Trail() {
 		this(new Point2D(0, 0), 0);
-	}
-
-	public Pen getPen() {
-		return (Pen) myPen;
 	}
 
 	public List<Point2D> getPathCoordinates() {

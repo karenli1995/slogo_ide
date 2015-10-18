@@ -36,7 +36,7 @@ public abstract class AbstractPen {
 		return myColor;
 	}
 
-	public void setPen(Double bool) {
+	public void setPenDown(Double bool) {
 		myStatus = bool;
 	}
 

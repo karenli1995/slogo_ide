@@ -46,7 +46,7 @@ public class MoveTurtle {
 
 		Point2D newLoc = new Point2D(tempXLocation, tempYLocation);
 
-		myTurtle.getTrail().addCoord(new Point2D(tempXLocation, tempYLocation));
+		myTurtle.getTrail().addCoord(newLoc);
 		myTurtle.setTrail(myTurtle.getTrail());
 		myTurtle.getTrail().setPoint(newLoc);
 		myTurtle.setRotationAngle(degrees);
