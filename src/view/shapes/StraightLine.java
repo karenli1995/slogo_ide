@@ -7,6 +7,9 @@ import controller.ModelController;
 import view.scene.TurtleScene;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Line;
+import model.Pen;
+import model.Trail;
+import model.Turtle;
 
 public class StraightLine extends AbstractShape {
 	protected List<Line> myAllShapes = new ArrayList<Line>();
@@ -30,6 +33,8 @@ public class StraightLine extends AbstractShape {
 		Point2D point2 = translateForScreen(currTrailList.get(lastPointInList));
 
 		Line recentLine = new Line(point1.getX(), point1.getY(), point2.getX(), point2.getY());
+		recentLine.setStroke(myModelController.getData().getTurtle(0).getTrail().getPen().getColor());
+		recentLine.setStrokeWidth(myModelController.getData().getTurtle(0).getTrail().getPen().getThickness());
 		myAllShapes.add(recentLine);
 
 		return recentLine;
