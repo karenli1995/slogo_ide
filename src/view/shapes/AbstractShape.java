@@ -25,7 +25,6 @@ public abstract class AbstractShape {
 
 	protected Point2D translateForScreen(Point2D point) {
 		double X = point.getX() + myTurtScene.getX() + myTurtScene.getCurrTab().getMyCanvasWidth() / 2;
-		;
 		double Y = myTurtScene.getY() + myTurtScene.getCurrTab().getMyCanvasHeight() / 2 - point.getY();
 		return new Point2D(X, Y);
 	}
