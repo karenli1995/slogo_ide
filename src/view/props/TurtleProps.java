@@ -36,9 +36,7 @@ public class TurtleProps extends Tab {
 	private ResourceBundle myResource;
 	private Stage myStage;
 
-	TurtleScene myTurtleScene;
-	TabPane myTabPane;
-	Tab myTab;
+	private TurtleScene myTurtleScene;
 
 	public TurtleProps(TurtleScene scene, ResourceBundle resource, Stage stage) {
 		myStage = stage;
@@ -55,12 +53,10 @@ public class TurtleProps extends Tab {
 		HBox hb1 = addNumTurtLabel();
 		HBox hb4 = addTurtShapeLabel();
 		HBox hb5 = addTurtVisibleLable();
-		HBox hb6 = addPenColorLabel();
-		HBox hb7 = addPenThicknessLabel();
 
 		setAllMargins(allElements);
 
-		vb.getChildren().addAll(hb1, hb4, hb5, hb6, hb7);
+		vb.getChildren().addAll(hb1, hb4, hb5);
 
 		this.setContent(vb);
 	}
@@ -127,40 +123,6 @@ public class TurtleProps extends Tab {
 		allElements.add(cbTurtVisible);
 
 		return hb5;
-	}
-
-	private HBox addPenColorLabel() {
-		HBox hb6 = new HBox();
-		Label penColor = new Label(myResource.getString("PENC"));
-		final ComboBox<Color> cbColors = new ColorComboBox();
-		hb6.getChildren().addAll(penColor, cbColors);
-		cbColors.setOnAction((event) -> {
-			Color chosenColor = cbColors.getSelectionModel().getSelectedItem();
-			myTurtleScene.getController().getData().getTurtle(0).getPen().setColor(chosenColor);
-
-		});
-
-		allElements.add(penColor);
-		allElements.add(cbColors);
-
-		return hb6;
-	}
-
-	private HBox addPenThicknessLabel() {
-		HBox hb8 = new HBox();
-		Label thickLabel = new Label("Pen Thickness");
-		ObservableList<Integer> thicks = FXCollections.observableArrayList(1, 2, 3, 4, 5);
-		ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
-		thicknesses.setOnAction((e) -> {
-			Integer thick = thicknesses.getSelectionModel().getSelectedItem();
-			myTurtleScene.getController().getData().getTurtle(0).getPen().setThickness(thick);
-		});
-		hb8.getChildren().addAll(thickLabel, thicknesses);
-
-		allElements.add(thickLabel);
-		allElements.add(thicknesses);
-
-		return hb8;
 	}
 
 	private void setAllMargins(List<Node> nodes) {
