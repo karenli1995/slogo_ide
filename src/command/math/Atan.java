@@ -3,27 +3,16 @@
  */
 package command.math;
 
-import java.util.List;
-
-import command.Command;
-import controller.ParseTreeNode;
-import model.Data;
-
 /**
  *
  * @author Sally Al
  *
  */
-public class Atan extends Command {
+public class Atan extends Trig {
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> angle, Data data) {
-		if (angle.get(0).getCommand().getValue() % 90 == 0) {
-			this.setValue(0);
-		} else {
-			this.setValue(Math.atan(Math.toRadians(angle.get(0).getCommand().getValue())));
-		}
-		return data;
+	protected double evaluateAngle(double angle) {
+		return (Math.atan(angle));
 	}
 
 }
