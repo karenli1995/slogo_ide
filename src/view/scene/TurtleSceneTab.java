@@ -72,13 +72,18 @@ public class TurtleSceneTab extends Tab implements Observer {
 		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
 	}
 
-//	public List<Line> getAllLines() {
-//		return ((StraightLine) myShape).getAllLines();
+//	public List<Object> getAllShapes() {
+//		return myShape.getAllShapes();
 //	}
-//	
-	private List<Object> getAllShapes() {
-		return myShape.getAllShapes();
+	
+	public Object getRecentShape(){
+		int ind =  myShape.getAllShapes().size()-1;
+		return myShape.getAllShapes().get(ind);
 	}
+	
+//	public AbstractShape getShape() {
+//		return myShape;
+//	}
 
 	public ImageView getTurtImage() {
 		return myImage;
