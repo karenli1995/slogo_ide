@@ -2,8 +2,11 @@ package view.props;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.ResourceBundle;
 
+import model.SlogoObjects;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -16,7 +19,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-public class CurrentTurtleState extends VBox{
+public class CurrentTurtleState extends VBox implements Observer{
 	private static final int OFFSET_SPACE = 10;
 	private Insets myInset = new Insets(OFFSET_SPACE);
 	
@@ -25,6 +28,11 @@ public class CurrentTurtleState extends VBox{
 	private ResourceBundle myResource;
 	private int myTextAreaWidth = 100;
 	private int myTextAreaHeight = 10;
+	
+	private TextArea myDisplayPos;
+	private TextArea myDisplayHeading;
+	private TextArea myDisplayPenPos;
+	private TextArea myDisplayTurtVis;
 	
 	public CurrentTurtleState(Scene scene, ResourceBundle resource){
 		myResource = resource;
@@ -48,13 +56,14 @@ public class CurrentTurtleState extends VBox{
 	private HBox addTurtPosition() {
 		HBox hb1 = new HBox();
 		Label turtlePos = new Label(myResource.getString("TURTPOS"));
-		TextArea displayPos = new TextArea();
-		displayPos.setPrefSize(myTextAreaWidth, myTextAreaHeight);
+		myDisplayPos = new TextArea();
+		myDisplayPos.setPrefSize(myTextAreaWidth, myTextAreaHeight);
+		myDisplayPos.setEditable(false);
 		
-		hb1.getChildren().addAll(turtlePos, displayPos);
+		hb1.getChildren().addAll(turtlePos, myDisplayPos);
 
 		allElements.add(turtlePos);
-		allElements.add(displayPos);
+		allElements.add(myDisplayPos);
 
 		return hb1;
 	}
@@ -62,13 +71,15 @@ public class CurrentTurtleState extends VBox{
 	private HBox addTurtHeading() {
 		HBox hb1 = new HBox();
 		Label turtleHeading = new Label(myResource.getString("TURTHEAD"));
-		TextArea displayHeading = new TextArea();
-		displayHeading.setPrefSize(myTextAreaWidth, myTextAreaHeight);
+		myDisplayHeading = new TextArea();
+		myDisplayHeading.setPrefSize(myTextAreaWidth, myTextAreaHeight);
+		myDisplayHeading.setEditable(false);
+
 		
-		hb1.getChildren().addAll(turtleHeading, displayHeading);
+		hb1.getChildren().addAll(turtleHeading, myDisplayHeading);
 
 		allElements.add(turtleHeading);
-		allElements.add(displayHeading);
+		allElements.add(myDisplayHeading);
 
 		return hb1;
 	}
@@ -76,13 +87,14 @@ public class CurrentTurtleState extends VBox{
 	private HBox addPenPos() {
 		HBox hb1 = new HBox();
 		Label penPos = new Label(myResource.getString("PENPOS"));
-		TextArea displayPenPos = new TextArea();
-		displayPenPos.setPrefSize(myTextAreaWidth, myTextAreaHeight);
+		myDisplayPenPos = new TextArea();
+		myDisplayPenPos.setPrefSize(myTextAreaWidth, myTextAreaHeight);
+		myDisplayPenPos.setEditable(false);
 		
-		hb1.getChildren().addAll(penPos, displayPenPos);
+		hb1.getChildren().addAll(penPos, myDisplayPenPos);
 
 		allElements.add(penPos);
-		allElements.add(displayPenPos);
+		allElements.add(myDisplayPenPos);
 
 		return hb1;
 	}
@@ -90,13 +102,14 @@ public class CurrentTurtleState extends VBox{
 	private HBox addTurtVisibility() {
 		HBox hb1 = new HBox();
 		Label turtVisible = new Label(myResource.getString("TURTVISIBLE"));
-		TextArea displayTurtVis = new TextArea();
-		displayTurtVis.setPrefSize(myTextAreaWidth, myTextAreaHeight);
+		myDisplayTurtVis = new TextArea();
+		myDisplayTurtVis.setPrefSize(myTextAreaWidth, myTextAreaHeight);
+		myDisplayTurtVis.setEditable(false);
 		
-		hb1.getChildren().addAll(turtVisible, displayTurtVis);
+		hb1.getChildren().addAll(turtVisible, myDisplayTurtVis);
 
 		allElements.add(turtVisible);
-		allElements.add(displayTurtVis);
+		allElements.add(myDisplayTurtVis);
 
 		return hb1;
 	}
@@ -104,6 +117,30 @@ public class CurrentTurtleState extends VBox{
 	private void setAllMargins(List<Node> nodes) {
 		for (Node n : nodes)
 			HBox.setMargin(n, myInset);
+	}
+
+	
+	@Override
+	public void update(Observable o, Object arg) {
+		SlogoObjects otherSlogoObj = (SlogoObjects) o;
+		
+		double currPosX = otherSlogoObj.getTrail().getX();
+		double currPosY = otherSlogoObj.getTrail().getY();
+		myDisplayPos.setText(currPosX + ", " + currPosY);
+		
+		double currRotAngle = otherSlogoObj.getRotationAngle() % 360;
+		myDisplayHeading.setText(currRotAngle + "");
+		
+		String penPos = "Down";
+		double currPenPos = otherSlogoObj.getPen().isDown();
+		if(currPenPos == 1.0) penPos="Down";
+		if(currPenPos == 0.0) penPos="Up";
+		myDisplayPenPos.setText(penPos);
+		
+		String turtVis = "Visible";
+		if (otherSlogoObj.getIsShowing() == true) turtVis="Visible";
+		if (otherSlogoObj.getIsShowing() == false) turtVis="Invisible";
+		myDisplayTurtVis.setText(turtVis);
 	}
 	
 }

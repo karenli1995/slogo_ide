@@ -143,6 +143,10 @@ public class GUIManager extends BorderPane {
 	public AvailableUserCommands getMyUserCommands(){
 		return myAvailableUserCommands;
 	}
+	
+	public CurrentTurtleState getMyCurrTurtState(){
+		return myCurrTurtState;
+	}
 
 	/**
 	 * Initialize the window
