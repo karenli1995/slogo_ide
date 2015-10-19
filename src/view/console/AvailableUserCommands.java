@@ -1,5 +1,7 @@
 package view.console;
 
+import java.util.ResourceBundle;
+
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,11 +17,13 @@ public class AvailableUserCommands extends VBox {
 	private ScrollPane myScroller = new ScrollPane();
 	private VBox myVBox = new VBox();
 	private ConsoleUI myConsole;
+	private ResourceBundle myResource;
 
-	public AvailableUserCommands(ConsoleUI console, Scene scene) {
+	public AvailableUserCommands(ConsoleUI console, Scene scene, ResourceBundle resource) {
+		myResource = resource;
 		this.setPrefWidth(scene.getWidth() / 7);
 		this.setPrefHeight(scene.getHeight() * 4 / 5);
-		this.getChildren().add(new Label("User Defined Info"));
+		this.getChildren().add(new Label(myResource.getString("USERINFO")));
 		myConsole = console;
 		myScroller.setVbarPolicy(ScrollBarPolicy.ALWAYS);
 		myScroller.setHbarPolicy(ScrollBarPolicy.ALWAYS);

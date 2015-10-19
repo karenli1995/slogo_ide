@@ -53,8 +53,6 @@ public class TurtleProps extends Tab {
 		VBox vb = new VBox();
 
 		HBox hb1 = addNumTurtLabel();
-		HBox hb2 = addTurtXLabel();
-		HBox hb3 = addTurtYLabel();
 		HBox hb4 = addTurtShapeLabel();
 		HBox hb5 = addTurtVisibleLable();
 		HBox hb6 = addPenColorLabel();
@@ -62,7 +60,7 @@ public class TurtleProps extends Tab {
 
 		setAllMargins(allElements);
 
-		vb.getChildren().addAll(hb1, hb2, hb3, hb4, hb5, hb6, hb7);
+		vb.getChildren().addAll(hb1, hb4, hb5, hb6, hb7);
 
 		this.setContent(vb);
 	}
@@ -78,36 +76,6 @@ public class TurtleProps extends Tab {
 		allElements.add(cbNumTurtles);
 
 		return hb1;
-	}
-
-	private HBox addTurtXLabel() {
-		HBox hb2 = new HBox();
-		Label turtlePosX = new Label(myResource.getString("TURTX"));
-		TextArea inputPosX = new TextArea();
-		inputPosX.setPrefSize(myTextAreaWidth, myTextAreaHeight);
-		Button setPosX = new Button("Set");
-		hb2.getChildren().addAll(turtlePosX, inputPosX, setPosX);
-
-		allElements.add(turtlePosX);
-		allElements.add(inputPosX);
-		allElements.add(setPosX);
-
-		return hb2;
-	}
-
-	private HBox addTurtYLabel() {
-		HBox hb3 = new HBox();
-		Label turtlePosY = new Label(myResource.getString("TURTY"));
-		TextArea inputPosY = new TextArea();
-		inputPosY.setPrefSize(myTextAreaWidth, myTextAreaHeight);
-		Button setPosY = new Button("Set");
-		hb3.getChildren().addAll(turtlePosY, inputPosY, setPosY);
-
-		allElements.add(turtlePosY);
-		allElements.add(inputPosY);
-		allElements.add(setPosY);
-
-		return hb3;
 	}
 
 	private HBox addTurtShapeLabel() {

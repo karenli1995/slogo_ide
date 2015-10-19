@@ -2,6 +2,7 @@ package view.console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -20,16 +21,18 @@ import javafx.scene.paint.Color;
 public class History extends VBox {
 
 	private ConsoleUI myConsole;
+	private ResourceBundle myResource;
 	private Button myClearButton;
 	private ScrollPane myScroller = new ScrollPane();
 	private List<Button> myHistoryButtons = new ArrayList<Button>();
 	private List<String> myHistoryButtonString = new ArrayList<String>();
 	private VBox myVbox = new VBox();
 
-	public History(ConsoleUI console, Scene scene) {
+	public History(ConsoleUI console, Scene scene, ResourceBundle resource) {
+		myResource = resource;
 		myConsole = console;
 		this.setPrefWidth(scene.getWidth() / 7);
-		Label label = new Label("History Bar");
+		Label label = new Label(myResource.getString("HISTBAR"));
 		label.setPrefWidth(scene.getWidth() / 7);
 		label.setBackground(new Background(new BackgroundFill(Color.CADETBLUE, new CornerRadii(0), new Insets(0))));
 		this.getChildren().add(label);

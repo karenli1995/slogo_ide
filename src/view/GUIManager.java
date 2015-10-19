@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import view.console.AvailableUserCommands;
 import view.console.ConsoleUI;
 import view.console.History;
+import view.props.CurrentTurtleState;
 import view.props.Properties;
 import view.scene.TurtleScene;
 import view.settings.LangDialog;
@@ -32,6 +33,7 @@ public class GUIManager extends BorderPane {
 	private History myHistory;
 	private ConsoleUI myConsoleUI;
 	private TurtleScene myTurtleScene;
+	private CurrentTurtleState myCurrTurtState;
 	private Properties myProps;
 	private MenuPanel myMenu;
 	public ResourceBundle myResource;
@@ -94,15 +96,19 @@ public class GUIManager extends BorderPane {
 	}
 
 	private void addRightPane(Scene scene) {
+		GridPane turtstateAndProps = new GridPane();
+		myCurrTurtState = new CurrentTurtleState(scene, myResource);
+		turtstateAndProps.add(myCurrTurtState, 0, 1);
 		myProps = new Properties(scene, myTurtleScene, this, myResource, myStage);
-		this.setRight(myProps);
+		turtstateAndProps.add(myProps, 0, 2);
+		this.setRight(turtstateAndProps);
 	}
 
 	private void addLeftPane(Scene scene) {
 		GridPane histAndUser = new GridPane();
-		myHistory = new History(myConsoleUI, scene);
+		myHistory = new History(myConsoleUI, scene, myResource);
 		histAndUser.add(myHistory, 1, 1);
-		myAvailableUserCommands = new AvailableUserCommands(myConsoleUI, scene);
+		myAvailableUserCommands = new AvailableUserCommands(myConsoleUI, scene, myResource);
 		histAndUser.add(myAvailableUserCommands, 2, 1);
 		this.setLeft(histAndUser);
 	}
