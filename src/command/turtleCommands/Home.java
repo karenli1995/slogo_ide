@@ -10,32 +10,23 @@ import command.Command;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
 import model.Data;
-import model.Trail;
 
 /**
  *
  * @author Sally Al
  *
  */
-public class Home extends Command {
-
-	MoveTurtle moveTurtle = new MoveTurtle();
+public class Home extends TurtleAbsolutePosition {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> argument, Data data) {
 		List<Double> defaultPosition = new ArrayList<Double>();
 		defaultPosition.add(0.0);
 		defaultPosition.add(0.0);
-		this.setValue(moveTurtle.calculateDistanceBetweenTwoPoints(defaultPosition, data));
-		/*Trail newLoc = new Trail(new Point2D(0.0, 0.0), 0.0);
-		data.getTurtle(0).setTrail(newLoc);*/
 		data.getTurtle(0).setRotationAngle(0.0);
-
-		Trail loc = data.getTurtle(0).getTrail();
-		loc.setPoint(new Point2D(0.0, 0.0));
-
-		data.getTurtle(0).setTrail(loc);
-		data.getTurtle(0).getTrail().addCoord(new Point2D(0.0, 0.0));
+		this.setValue(calculateDistanceBetweenTwoPoints(defaultPosition, data));
+		Point2D point = new Point2D(0.0, 0.0);
+		addToTrail(data, point);
 		return data;
 	}
 
