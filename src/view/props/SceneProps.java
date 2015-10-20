@@ -22,10 +22,12 @@ public class SceneProps extends Tab {
 	private Insets myInset = new Insets(OFFSET_SPACE);
 	private ResourceBundle myResource;
 	private ModelController myController;
+	private TurtleScene myTurtScene;
 
 	private List<Node> allElements;
 
-	public SceneProps(ResourceBundle resource,  ModelController controller) {
+	public SceneProps(TurtleScene turtscene, ResourceBundle resource,  ModelController controller) {
+		myTurtScene = turtscene;
 		myResource = resource;
 		myController = controller;
 		allElements = new ArrayList<Node>();
@@ -52,8 +54,10 @@ public class SceneProps extends Tab {
 
 		cmbColors.setOnAction((event) -> {
 			Color chosenColor = cmbColors.getSelectionModel().getSelectedItem();
+			Canvas currCanvas = (Canvas) myTurtScene.getSelectionModel().getSelectedItem().getContent();
+			
+			myTurtScene.getCurrTab().setBackgroundColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
 			myController.getData().getTurtle(0).getMyScene().setMyColor(chosenColor);
-
 			System.out.println("ComboBox Action (selected: " + chosenColor.toString().toUpperCase() + ")");
 		});
 

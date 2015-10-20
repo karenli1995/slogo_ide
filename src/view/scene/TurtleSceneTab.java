@@ -97,10 +97,10 @@ public class TurtleSceneTab extends Tab implements Observer {
 		return myCanvasHeight;
 	}
 
-//	public void setBackgroundColor(GraphicsContext gc, Canvas canvas, Color color) {
-//		gc.setFill(color);
-//		gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-//	}
+	public void setBackgroundColor(GraphicsContext gc, Canvas canvas, Color color) {
+		gc.setFill(color);
+		gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+	}
 
 	public SlogoImage getSlogoImage() {
 		return mySlogoImage;

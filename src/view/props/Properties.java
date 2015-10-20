@@ -21,7 +21,7 @@ public class Properties extends TabPane {
 
 	public Properties(Scene scene, TurtleScene turtScene, GUIManager gui, ResourceBundle resource, Stage stage, ModelController controller) {
 		myTurtProps = new TurtleProps(turtScene, resource, stage);
-		mySceneProps = new SceneProps(resource, controller);
+		mySceneProps = new SceneProps(turtScene, resource, controller);
 		myPenProps = new PenProps(turtScene, resource, controller);
 		allTabs.add(myTurtProps);
 		allTabs.add(mySceneProps);
