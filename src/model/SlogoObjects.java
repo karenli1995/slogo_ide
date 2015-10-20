@@ -1,13 +1,10 @@
 package model;
 
-import java.util.Observable;
-
 import javafx.geometry.Point2D;
 
 public abstract class SlogoObjects{
 
 	private Trail myTrail;
-//	private SlogoScene mySlogoScene;
 	private AbstractPen myPen;
 	private boolean isShowing = true;
 	private double myRotationAngle;
@@ -17,13 +14,12 @@ public abstract class SlogoObjects{
 		Point2D startPoint = new Point2D(0, 0);
 		myTrail = new Trail(startPoint, 0);
 		myPen = new Pen();
-//		mySlogoScene = new SlogoScene();
 	}
 
 	public void setTrail(Trail loc) {
 		myTrail = loc;
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	public Trail getTrail() {
@@ -47,8 +43,8 @@ public abstract class SlogoObjects{
 	public void setClearTrail(boolean b){
 		clearTrails = b;
 		this.getTrail().getPathCoordinates().clear();
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	public Pen getPen() {
@@ -57,14 +53,14 @@ public abstract class SlogoObjects{
 
 	public void setPen(Pen pen){
 		myPen = pen;
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	public void setIsShowing(boolean value) {
 		isShowing = value;
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	public boolean getIsShowing() {
@@ -73,8 +69,8 @@ public abstract class SlogoObjects{
 
 	public void setRotationAngle(Double angle) {
 		myRotationAngle = angle;
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	public double getRotationAngle() {

@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
+import model.Data;
 import model.SlogoObjects;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -122,24 +123,24 @@ public class CurrentTurtleState extends VBox implements Observer{
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		SlogoObjects otherSlogoObj = (SlogoObjects) o;
+		Data otherSlogoObj = (Data) o;
 		
-		double currPosX = otherSlogoObj.getTrail().getX();
-		double currPosY = otherSlogoObj.getTrail().getY();
+		double currPosX = otherSlogoObj.getTurtle(0).getTrail().getX();
+		double currPosY = otherSlogoObj.getTurtle(0).getTrail().getY();
 		myDisplayPos.setText(currPosX + ", " + currPosY);
 		
-		double currRotAngle = otherSlogoObj.getRotationAngle() % 360;
+		double currRotAngle = otherSlogoObj.getTurtle(0).getRotationAngle() % 360;
 		myDisplayHeading.setText(currRotAngle + "");
 		
 		String penPos = "Down";
-		double currPenPos = otherSlogoObj.getPen().isDown();
+		double currPenPos = otherSlogoObj.getTurtle(0).getPen().isDown();
 		if(currPenPos == 1.0) penPos="Down";
 		if(currPenPos == 0.0) penPos="Up";
 		myDisplayPenPos.setText(penPos);
 		
 		String turtVis = "Visible";
-		if (otherSlogoObj.getIsShowing() == true) turtVis="Visible";
-		if (otherSlogoObj.getIsShowing() == false) turtVis="Invisible";
+		if (otherSlogoObj.getTurtle(0).getIsShowing() == true) turtVis="Visible";
+		if (otherSlogoObj.getTurtle(0).getIsShowing() == false) turtVis="Invisible";
 		myDisplayTurtVis.setText(turtVis);
 	}
 	
