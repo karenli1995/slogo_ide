@@ -42,6 +42,10 @@ public class Traverser {
 
 		while (!commandQueue.isEmpty()) {
 			ParseTreeNode<Command> tempNode = commandQueue.poll();
+			System.out.println("this is running");
+			if(allData == null){
+				System.out.println("ruh roh");
+			}
 			allData = tempNode.getCommand().execute(tempNode.getChildren(), allData);
 		}
 		return allData;

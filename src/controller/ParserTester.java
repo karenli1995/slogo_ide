@@ -22,7 +22,9 @@ public class ParserTester {
 		Parser parser = new Parser();
 		Traverser traverse = new Traverser();
 		String input = readFile("examples/procedures_with_parameters/dash.logo", StandardCharsets.UTF_8);
+		input = "make :d 4";
 		List<ParseTreeNode<Command>> head = parser.parse(input);
+		
 
 		// Command tempCommand =
 		// control.getParser().getCommandFactory().createCommand("Constant");
