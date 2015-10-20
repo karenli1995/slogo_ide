@@ -7,7 +7,10 @@ import model.Data;
 
 public abstract class Command {
 	protected String name;
-
+	protected double value;
+	public Command() {
+		
+	}
 	public String getName() {
 		return name;
 	}
@@ -16,12 +19,10 @@ public abstract class Command {
 		this.name = name;
 	}
 
-	protected double value;
 
 	public abstract Data execute(List<ParseTreeNode<Command>> distance, Data data);
 
-	public Command() {
-	}
+
 
 	public double getValue() {
 		return value;
