@@ -39,7 +39,7 @@ public class TurtleSceneTab extends Tab implements Observer {
 		myCanvas.setWidth(myCanvasWidth);
 		myCanvas.setHeight(myCanvasHeight);
 		GraphicsContext gc = myCanvas.getGraphicsContext2D();
-		setBackgroundColor(gc, myCanvas, Color.ALICEBLUE);
+//		setBackgroundColor(gc, myCanvas, Color.ALICEBLUE);
 
 		turtScene.getTabs().add(this);
 
@@ -97,10 +97,10 @@ public class TurtleSceneTab extends Tab implements Observer {
 		return myCanvasHeight;
 	}
 
-	public void setBackgroundColor(GraphicsContext gc, Canvas canvas, Color color) {
-		gc.setFill(color);
-		gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-	}
+//	public void setBackgroundColor(GraphicsContext gc, Canvas canvas, Color color) {
+//		gc.setFill(color);
+//		gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+//	}
 
 	public SlogoImage getSlogoImage() {
 		return mySlogoImage;
@@ -110,21 +110,30 @@ public class TurtleSceneTab extends Tab implements Observer {
 	public void update(Observable o, Object arg) {
 		SlogoObjects otherSlogoObj = (SlogoObjects) o;
 		
+		//when setClear() changes
 		if(otherSlogoObj.getClearTrail() == true){
 			
 		}
 		
 		// check if pen down or up
+		//when pendown() changes
 		List<Point2D> currTrailList = otherSlogoObj.getTrail().getPathCoordinates();
 		if (otherSlogoObj.getPen().isDown() == 1.0) {
 			Node currLine = (Node) myShape.drawShape(currTrailList);
 			myTurtScene.addChildren(currLine);
 		}
 		
+		//when setRotationAngle() changes and setTrail() changes
 		double newRotAngle = otherSlogoObj.getRotationAngle();
 		double newLocX = otherSlogoObj.getTrail().getX();
 		double newLocY = otherSlogoObj.getTrail().getY();
 		mySlogoImage.setScreenLoc(newLocX, newLocY);
 		mySlogoImage.setRotation(newRotAngle);
+		
+		//when setScene() changes
+		Color newColor = otherSlogoObj.getMyScene().getMyColor();
+		GraphicsContext gc = myCanvas.getGraphicsContext2D();
+		gc.setFill(newColor);
+		gc.fillRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
 	}
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import controller.ModelController;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
@@ -19,16 +20,14 @@ import view.scene.TurtleScene;
 public class SceneProps extends Tab {
 	private static final int OFFSET_SPACE = 10;
 	private Insets myInset = new Insets(OFFSET_SPACE);
-	private TurtleScene myTurtleScene;
-	private GUIManager myGUI;
 	private ResourceBundle myResource;
+	private ModelController myController;
 
 	private List<Node> allElements;
 
-	public SceneProps(TurtleScene scene, GUIManager gui, ResourceBundle resource) {
+	public SceneProps(ResourceBundle resource,  ModelController controller) {
 		myResource = resource;
-		myGUI = gui;
-		myTurtleScene = scene;
+		myController = controller;
 		allElements = new ArrayList<Node>();
 		createSceneTab();
 	}
@@ -53,9 +52,8 @@ public class SceneProps extends Tab {
 
 		cmbColors.setOnAction((event) -> {
 			Color chosenColor = cmbColors.getSelectionModel().getSelectedItem();
-			Canvas currCanvas = (Canvas) myTurtleScene.getSelectionModel().getSelectedItem().getContent();
+			myController.getData().getTurtle(0).getMyScene().setMyColor(chosenColor);
 
-			myTurtleScene.getCurrTab().setBackgroundColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
 			System.out.println("ComboBox Action (selected: " + chosenColor.toString().toUpperCase() + ")");
 		});
 

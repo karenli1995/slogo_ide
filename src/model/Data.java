@@ -11,6 +11,7 @@ import controller.ParseTreeNode;
 public class Data {
 
 	private List<SlogoObjects> myTurtles;
+	private List<SlogoScene> myScenes = new ArrayList<SlogoScene>();
 	private List<Trail> myTrails = new ArrayList<Trail>();
 	private boolean myError = false;
 	private String myErrorMessage;
@@ -24,6 +25,7 @@ public class Data {
 		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
 		myTrails.add(defaultTurtle.getTrail());
+		myScenes.add(defaultTurtle.getMyScene());
 
 		myUserHistory = new ArrayList<String>();
 		myVariableMap = new HashMap<String, Double>();

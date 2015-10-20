@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import controller.ModelController;
 import view.GUIManager;
 import view.scene.TurtleScene;
 import javafx.scene.Scene;
@@ -14,14 +15,14 @@ import javafx.stage.Stage;
 public class Properties extends TabPane {
 
 	private List<Tab> allTabs = new ArrayList<Tab>();
-	TurtleProps myTurtProps;
-	SceneProps mySceneProps;
-	PenProps myPenProps;
+	private TurtleProps myTurtProps;
+	private SceneProps mySceneProps;
+	private PenProps myPenProps;
 
-	public Properties(Scene scene, TurtleScene turtScene, GUIManager gui, ResourceBundle resource, Stage stage) {
+	public Properties(Scene scene, TurtleScene turtScene, GUIManager gui, ResourceBundle resource, Stage stage, ModelController controller) {
 		myTurtProps = new TurtleProps(turtScene, resource, stage);
-		mySceneProps = new SceneProps(turtScene, gui, resource);
-		myPenProps = new PenProps(turtScene, resource, stage);
+		mySceneProps = new SceneProps(resource, controller);
+		myPenProps = new PenProps(turtScene, resource, controller);
 		allTabs.add(myTurtProps);
 		allTabs.add(mySceneProps);
 		allTabs.add(myPenProps);
