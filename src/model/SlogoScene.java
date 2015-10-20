@@ -12,6 +12,7 @@ public class SlogoScene {
 	SlogoScene(){
 		myHistory = new History();
 		myUserCommands = new UserCommands();
+		setMyColor(Color.ALICEBLUE);
 	}
 	
 	public void setMyColor(Color color){

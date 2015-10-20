@@ -38,7 +38,7 @@ public class TurtleSceneTab extends Tab implements Observer {
 		myCanvas = new Canvas();
 		myCanvas.setWidth(myCanvasWidth);
 		myCanvas.setHeight(myCanvasHeight);
-		GraphicsContext gc = myCanvas.getGraphicsContext2D();
+//		GraphicsContext gc = myCanvas.getGraphicsContext2D();
 //		setBackgroundColor(gc, myCanvas, Color.ALICEBLUE);
 
 		turtScene.getTabs().add(this);
