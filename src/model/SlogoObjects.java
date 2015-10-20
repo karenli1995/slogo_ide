@@ -4,10 +4,10 @@ import java.util.Observable;
 
 import javafx.geometry.Point2D;
 
-public abstract class SlogoObjects extends Observable {
+public abstract class SlogoObjects{
 
 	private Trail myTrail;
-	private SlogoScene mySlogoScene;
+//	private SlogoScene mySlogoScene;
 	private AbstractPen myPen;
 	private boolean isShowing = true;
 	private double myRotationAngle;
@@ -17,7 +17,7 @@ public abstract class SlogoObjects extends Observable {
 		Point2D startPoint = new Point2D(0, 0);
 		myTrail = new Trail(startPoint, 0);
 		myPen = new Pen();
-		mySlogoScene = new SlogoScene();
+//		mySlogoScene = new SlogoScene();
 	}
 
 	public void setTrail(Trail loc) {
@@ -30,15 +30,15 @@ public abstract class SlogoObjects extends Observable {
 		return myTrail;
 	}
 	
-	public void setMyScene(SlogoScene scene){
-		mySlogoScene = scene;
-		setChanged();
-		notifyObservers();
-	}
-	
-	public SlogoScene getMyScene(){
-		return mySlogoScene;
-	}
+//	public void setMyScene(SlogoScene scene){
+//		mySlogoScene = scene;
+//		setChanged();
+//		notifyObservers();
+//	}
+//	
+//	public SlogoScene getMyScene(){
+//		return mySlogoScene;
+//	}
 
 	public boolean getClearTrail() {
 		return clearTrails;

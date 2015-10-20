@@ -10,30 +10,40 @@ import controller.ParseTreeNode;
 
 public class Data {
 
-	private List<SlogoObjects> myTurtles;
+//	private List<SlogoObjects> myTurtles = new ArrayList<SlogoObjects>();
+	private SlogoScene myScene;
 	private List<SlogoScene> myScenes = new ArrayList<SlogoScene>();
-	private List<Trail> myTrails = new ArrayList<Trail>();
+//	private List<Trail> myTrails = new ArrayList<Trail>();
 	private boolean myError = false;
 	private String myErrorMessage;
 	private List<String> myUserHistory;
 	private Map<String, Double> myVariableMap;
 	private Map<String, ParseTreeNode<Command>> myUserCommandMap;
 
-	public Data() {
-		myTurtles = new ArrayList<SlogoObjects>();
+	public Data() {		
+//		Turtle defaultTurtle = new Turtle();
+//		myTurtles.add(defaultTurtle);
+//		myTrails.add(defaultTurtle.getTrail());
+//		myScenes.add(defaultTurtle.getMyScene());
 		
-		Turtle defaultTurtle = new Turtle();
-		myTurtles.add(defaultTurtle);
-		myTrails.add(defaultTurtle.getTrail());
-		myScenes.add(defaultTurtle.getMyScene());
+		myScene = new SlogoScene();
+//		myScenes.add(defaultScene);
 
 		myUserHistory = new ArrayList<String>();
 		myVariableMap = new HashMap<String, Double>();
 		myUserCommandMap = new HashMap<String, ParseTreeNode<Command>>();
 	}
+	
+//	public SlogoScene getScene(int sceneId) {
+//		return myScenes.get(sceneId);
+//	}
+	
+	public SlogoScene getScene(){
+		return myScene;
+	}
 
 	public SlogoObjects getTurtle(int turtleId) {
-		return myTurtles.get(turtleId);
+		return myScene.getTurtle(turtleId);
 	}
 
 	/*
@@ -46,13 +56,13 @@ public class Data {
 	 * }
 	 */
 
-	public List<SlogoObjects> getAllTurtles() {
-		return myTurtles;
-	}
+//	public List<SlogoObjects> getAllTurtles() {
+//		return myTurtles;
+//	}
 
-	public Trail getTrail(int turtleId) {
-		return myTrails.get(turtleId);
-	}
+//	public Trail getTrail(int turtleId) {
+//		return myTrails.get(turtleId);
+//	}
 
 	public String getErrorMessage() {
 		return myErrorMessage;

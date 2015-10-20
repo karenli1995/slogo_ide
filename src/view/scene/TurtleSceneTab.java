@@ -1,5 +1,6 @@
 package view.scene;
 
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -14,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import model.SlogoObjects;
+import model.SlogoScene;
 import model.Turtle;
 import view.settings.SlogoProperties;
 import view.shapes.AbstractShape;
@@ -131,9 +133,22 @@ public class TurtleSceneTab extends Tab implements Observer {
 		mySlogoImage.setRotation(newRotAngle);
 		
 		//when setScene() changes
-		Color newColor = otherSlogoObj.getMyScene().getMyColor();
-		GraphicsContext gc = myCanvas.getGraphicsContext2D();
-		gc.setFill(newColor);
-		gc.fillRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
+//		SlogoScene otherSlogoScene = (SlogoScene) o;
+//		Color newColor = otherSlogoScene.getMyColor();
+//		GraphicsContext gc = myCanvas.getGraphicsContext2D();
+//		gc.setFill(newColor);
+//		gc.fillRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
 	}
+	
+//	@Override
+//	public void update(Observable o, Object arg) {
+//		try{
+//			Method update = getClass().getMethod(o.getClass(), Object.class);
+//			update.invoke(this, o, arg);
+//		} catch(Exception e) {
+//			// log exception
+//		}
+//	}
+	
+	
 }

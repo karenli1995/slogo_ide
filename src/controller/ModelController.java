@@ -6,6 +6,7 @@ import command.Command;
 import javafx.stage.Stage;
 import model.Data;
 import model.SlogoObjects;
+import model.SlogoScene;
 import view.GUIManager;
 import view.props.CurrentTurtleState;
 import view.scene.TurtleSceneTab;
@@ -38,6 +39,10 @@ public class ModelController {
 		//check
 		CurrentTurtleState currTurtState = myGuiManager.getMyCurrTurtState();
 		turtObj.addObserver(currTurtState);
+		
+		SlogoScene scene = getData().getScene();
+		scene.addObserver(currSceneTab);
+		
 	}
 
 
