@@ -8,6 +8,7 @@ import java.util.List;
 import command.Command;
 import controller.ParseTreeNode;
 import model.Data;
+import model.MathCommand;
 
 /**
  *
@@ -17,7 +18,7 @@ import model.Data;
 public class SetHeading extends Command {
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> headingAngle, Data data) {
+	public Data execute(List<ParseTreeNode<Command>> headingAngle, Data data, MathCommand mathcommand) {
 		Double turtleCurrentHeading = data.getTurtle(0).getRotationAngle();
 		Double delta = headingAngle.get(0).getCommand().getValue() - turtleCurrentHeading;
 		data.getTurtle(0).setRotationAngle(turtleCurrentHeading + delta);

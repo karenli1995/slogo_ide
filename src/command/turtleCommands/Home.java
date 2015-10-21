@@ -10,6 +10,7 @@ import command.Command;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
 import model.Data;
+import model.MathCommand;
 
 /**
  *
@@ -19,7 +20,7 @@ import model.Data;
 public class Home extends TurtleAbsolutePosition {
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> argument, Data data) {
+	public Data execute(List<ParseTreeNode<Command>> argument, Data data, MathCommand mathcommand) {
 		List<Double> defaultPosition = new ArrayList<Double>();
 		defaultPosition.add(0.0);
 		defaultPosition.add(0.0);

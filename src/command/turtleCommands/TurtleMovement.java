@@ -10,6 +10,7 @@ import command.Command;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
 import model.Data;
+import model.MathCommand;
 import model.SlogoObjects;
 
 /**
@@ -20,7 +21,7 @@ import model.SlogoObjects;
 public abstract class TurtleMovement extends Command {
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
+	public Data execute(List<ParseTreeNode<Command>> distance, Data data, MathCommand mathcommand) {
 		SlogoObjects currTurtle = data.getTurtle(0);
 		moveFdorBK(distance.get(0).getCommand().getValue(), currTurtle, data);
 		this.setValue(distance.get(0).getCommand().getValue());

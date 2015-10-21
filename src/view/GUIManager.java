@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import view.console.AvailableUserCommands;
 import view.console.ConsoleUI;
 import view.console.History;
+import view.console.Prompt;
 import view.props.CurrentTurtleState;
 import view.props.Properties;
 import view.scene.TurtleScene;
@@ -146,6 +147,10 @@ public class GUIManager extends BorderPane {
 	
 	public CurrentTurtleState getMyCurrTurtState(){
 		return myCurrTurtState;
+	}
+	
+	public Prompt getMyPrompt(){
+		return myConsoleUI.getPrompt();
 	}
 
 	/**

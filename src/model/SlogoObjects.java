@@ -9,6 +9,7 @@ public abstract class SlogoObjects{
 	private boolean isShowing = true;
 	private double myRotationAngle;
 	private boolean clearTrails = false;
+	private boolean isActive = false;
 
 	public SlogoObjects() {
 		Point2D startPoint = new Point2D(0, 0);
@@ -56,5 +57,13 @@ public abstract class SlogoObjects{
 
 	public double getRotationAngle() {
 		return myRotationAngle;
+	}
+	
+	public void setIsActive(boolean b){
+		isActive = b;
+	}
+	
+	public boolean getIsActive(){
+		return isActive;
 	}
 }
