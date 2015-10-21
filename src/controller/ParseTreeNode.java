@@ -10,6 +10,7 @@ import command.Command;
 public class ParseTreeNode<Command> {
 
 	private Command command;
+	//TODO make this a class
 	private List<ParseTreeNode<Command>> children;
 	private ParseTreeNode parent = this;
 

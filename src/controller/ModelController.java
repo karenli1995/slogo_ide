@@ -10,7 +10,7 @@ import view.GUIManager;
 import view.props.CurrentTurtleState;
 import view.scene.TurtleSceneTab;
 
-public class ModelController {
+public class ModelController extends ControlFunctions {
 
 	private Data myAllData;
 	private Parser myParser;
@@ -19,6 +19,7 @@ public class ModelController {
 	private List<ParseTreeNode<Command>> myTree;
 
 	public ModelController(Stage stage) {
+		super();
 		myAllData = new Data();
 		myGuiManager = new GUIManager(stage, this);
 		myParser = new Parser();
