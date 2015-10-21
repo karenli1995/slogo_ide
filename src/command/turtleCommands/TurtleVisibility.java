@@ -8,6 +8,7 @@ import java.util.List;
 import command.Command;
 import controller.ParseTreeNode;
 import model.Data;
+import model.SlogoObjects;
 
 /**
  *
@@ -18,8 +19,13 @@ public abstract class TurtleVisibility extends Command {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> angle, Data data) {
-		data.getTurtle(0).setIsShowing(visibility());
+		SlogoObjects currTurtle = data.getTurtle(0);
+		
+		currTurtle.setIsShowing(visibility());
 		this.setValue(visibilityValue());
+		
+		data.setTurtle(0, currTurtle);
+		
 		return data;
 
 	}

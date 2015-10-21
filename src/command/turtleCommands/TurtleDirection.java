@@ -8,6 +8,7 @@ import java.util.List;
 import command.Command;
 import controller.ParseTreeNode;
 import model.Data;
+import model.SlogoObjects;
 
 /**
  *
@@ -19,10 +20,15 @@ public abstract class TurtleDirection extends Command {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> angle, Data data) {
+		SlogoObjects currTurtle = data.getTurtle(0);
+		
 		double angleValue = angle.get(0).getCommand().getValue();
-		double newHeadAngle = data.getTurtle(0).getRotationAngle() + ((sign()) * angleValue);
-		data.getTurtle(0).setRotationAngle(newHeadAngle);
+		double newHeadAngle = currTurtle.getRotationAngle() + ((sign()) * angleValue);
+		currTurtle.setRotationAngle(newHeadAngle);
 		this.setValue(angleValue);
+		
+		data.setTurtle(0, currTurtle);
+		
 		return data;
 	}
 
