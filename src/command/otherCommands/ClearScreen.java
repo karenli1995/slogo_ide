@@ -11,6 +11,7 @@ import command.turtleCommands.TurtleAbsolutePosition;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
 import model.Data;
+import model.SlogoObjects;
 import model.Trail;
 
 /**
@@ -27,14 +28,18 @@ public class ClearScreen extends TurtleAbsolutePosition{
 		defaultPosition.add(0.0);
 		this.setValue(calculateDistanceBetweenTwoPoints(defaultPosition, data));
 
-		data.getTurtle(0).setRotationAngle(0.0);
+		SlogoObjects currTurt = data.getTurtle(0);
+		
+		currTurt.setRotationAngle(0.0);
 
-		Trail loc = data.getTurtle(0).getTrail();
-		loc.setPoint(new Point2D(0.0, 0.0));
-
-		data.getTurtle(0).setTrail(loc);
-		data.getTurtle(0).getTrail().addCoord(new Point2D(0.0, 0.0));
-
+//		Trail loc = data.getTurtle(0).getTrail();
+//		loc.setPoint(new Point2D(0.0, 0.0));
+//
+//		data.getTurtle(0).setTrail(loc);
+//		data.getTurtle(0).getTrail().addCoord(new Point2D(0.0, 0.0));
+		
+		currTurt.setClearTrail(true);
+		data.setTurtle(0, currTurt);
 
 		return data;
 	}

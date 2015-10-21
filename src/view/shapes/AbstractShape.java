@@ -16,6 +16,10 @@ public abstract class AbstractShape {
 		myTurtScene = turtlescene;
 		myModelController = controller;
 	}
+	
+	public void addShape(Object shape){
+		myAllShapes.add(shape);
+	}
 
 	public List<Object> getAllShapes() {
 		return myAllShapes;

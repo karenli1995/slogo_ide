@@ -18,23 +18,11 @@ public abstract class SlogoObjects{
 
 	public void setTrail(Trail loc) {
 		myTrail = loc;
-//		setChanged();
-//		notifyObservers();
 	}
 
 	public Trail getTrail() {
 		return myTrail;
 	}
-	
-//	public void setMyScene(SlogoScene scene){
-//		mySlogoScene = scene;
-//		setChanged();
-//		notifyObservers();
-//	}
-//	
-//	public SlogoScene getMyScene(){
-//		return mySlogoScene;
-//	}
 
 	public boolean getClearTrail() {
 		return clearTrails;
@@ -42,7 +30,6 @@ public abstract class SlogoObjects{
 
 	public void setClearTrail(boolean b){
 		clearTrails = b;
-		this.getTrail().getPathCoordinates().clear();
 //		setChanged();
 //		notifyObservers();
 	}
@@ -53,14 +40,10 @@ public abstract class SlogoObjects{
 
 	public void setPen(Pen pen){
 		myPen = pen;
-//		setChanged();
-//		notifyObservers();
 	}
 
 	public void setIsShowing(boolean value) {
 		isShowing = value;
-//		setChanged();
-//		notifyObservers();
 	}
 
 	public boolean getIsShowing() {
@@ -69,8 +52,6 @@ public abstract class SlogoObjects{
 
 	public void setRotationAngle(Double angle) {
 		myRotationAngle = angle;
-//		setChanged();
-//		notifyObservers();
 	}
 
 	public double getRotationAngle() {

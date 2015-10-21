@@ -111,7 +111,8 @@ public class TurtleSceneTab extends Tab implements Observer {
 		
 		//when setClear() changes
 		if(otherSlogoObj.getTurtle(0).getClearTrail() == true){
-			
+			List<Object> currLines = myShape.getAllShapes();
+			for (Object line : currLines) myTurtScene.removeChildren((Node) line);
 		}
 		
 		// check if pen down or up
@@ -119,6 +120,7 @@ public class TurtleSceneTab extends Tab implements Observer {
 		List<Point2D> currTrailList = otherSlogoObj.getTurtle(0).getTrail().getPathCoordinates();
 		if (otherSlogoObj.getTurtle(0).getPen().isDown() == 1.0) {
 			Node currLine = (Node) myShape.drawShape(currTrailList);
+			myShape.addShape(currLine);
 			myTurtScene.addChildren(currLine);
 		}
 		
@@ -135,48 +137,5 @@ public class TurtleSceneTab extends Tab implements Observer {
 		gc.setFill(newColor);
 		gc.fillRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
 	}
-
-//	@Override
-//	public void update(Observable o, Object arg) {
-//		SlogoObjects otherSlogoObj = (SlogoObjects) o;
-//		
-//		//when setClear() changes
-//		if(otherSlogoObj.getClearTrail() == true){
-//			
-//		}
-//		
-//		// check if pen down or up
-//		//when pendown() changes
-//		List<Point2D> currTrailList = otherSlogoObj.getTrail().getPathCoordinates();
-//		if (otherSlogoObj.getPen().isDown() == 1.0) {
-//			Node currLine = (Node) myShape.drawShape(currTrailList);
-//			myTurtScene.addChildren(currLine);
-//		}
-//		
-//		//when setRotationAngle() changes and setTrail() changes
-//		double newRotAngle = otherSlogoObj.getRotationAngle();
-//		double newLocX = otherSlogoObj.getTrail().getX();
-//		double newLocY = otherSlogoObj.getTrail().getY();
-//		mySlogoImage.setScreenLoc(newLocX, newLocY);
-//		mySlogoImage.setRotation(newRotAngle);
-//		
-//		//when setScene() changes
-////		SlogoScene otherSlogoScene = (SlogoScene) o;
-////		Color newColor = otherSlogoScene.getMyColor();
-////		GraphicsContext gc = myCanvas.getGraphicsContext2D();
-////		gc.setFill(newColor);
-////		gc.fillRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
-//	}
-	
-//	@Override
-//	public void update(Observable o, Object arg) {
-//		try{
-//			Method update = getClass().getMethod(o.getClass(), Object.class);
-//			update.invoke(this, o, arg);
-//		} catch(Exception e) {
-//			// log exception
-//		}
-//	}
-	
 	
 }
