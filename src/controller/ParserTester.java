@@ -9,6 +9,7 @@ import java.util.List;
 
 import command.CommandInterface;
 import model.Data;
+import model.Data_Turtle_Interface;
 
 public class ParserTester {
 
@@ -18,10 +19,11 @@ public class ParserTester {
 	}
 
 	public static void main(String[] args) throws IOException {
-		Data allData = new Data();
+		Data_Turtle_Interface allData = new Data();
 		Parser parser = new Parser();
 		Traverser traverse = new Traverser();
 		String input = readFile("examples/procedures_with_parameters/dash.logo", StandardCharsets.UTF_8);
+		input= "fd 50";
 		List<ParseTreeNode<CommandInterface>> head = parser.parse(input);
 
 		// Command tempCommand =

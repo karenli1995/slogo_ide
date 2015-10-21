@@ -5,21 +5,25 @@ package command.math;
 
 import java.util.List;
 
+import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
 
 /**
  *
  * @author Sally Al
  *
  */
-public class Power extends CommandInterface {
+public class Power extends Command {
+	public Power() {
+		super();
+	}
 
 	@Override
-	public Data execute(List<ParseTreeNode<CommandInterface>> number, Data data) {
-		this.setValue(Math.pow(number.get(0).getCommand().getValue(), number.get(1).getCommand().getValue()));
-		return data;
+	public double execute(List<ParseTreeNode<CommandInterface>> number) {
+		double power = Math.pow(number.get(0).getCommandValue(), number.get(1).getCommand().getValue());
+		this.setValue(power);
+		return power;
 
 	}
 

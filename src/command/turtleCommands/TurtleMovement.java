@@ -19,15 +19,19 @@ import model.SlogoObjects;
  *
  */
 public abstract class TurtleMovement extends Command {
-
+	Data data;
+	public TurtleMovement(Data allData){
+		data=allData;
+	}
 
 
 	@Override
-	public Data execute(List<ParseTreeNode<CommandInterface>> distance, Data data) {
+	public double execute(List<ParseTreeNode<CommandInterface>> distance) {
 		SlogoObjects currTurtle = data.getTurtle(0);
 		moveFdorBK(distance.get(0).getCommand().getValue(), currTurtle, data);
 		setValue(distance.get(0).getCommand().getValue());
-		return data;
+		return distance.get(0).getCommand().getValue();
+
 	}
 
 	private double RoundTo2Decimals(double val) {

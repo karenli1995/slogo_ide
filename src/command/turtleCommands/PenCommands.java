@@ -7,7 +7,7 @@ import java.util.List;
 
 import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
+import model.Data_Turtle_Interface;
 import model.Pen;
 
 /**
@@ -18,7 +18,7 @@ import model.Pen;
 public abstract class PenCommands extends CommandInterface {
 
 	@Override
-	public Data execute(List<ParseTreeNode<CommandInterface>> distance, Data data) {
+	public Data_Turtle_Interface execute(List<ParseTreeNode<CommandInterface>> distance, Data_Turtle_Interface data) {
 		Pen currPen = data.getTurtle(0).getPen();
 		currPen.setPenDown(switchPen());
 		data.getTurtle(0).setPen(currPen);

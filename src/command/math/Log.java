@@ -5,21 +5,25 @@ package command.math;
 
 import java.util.List;
 
+import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
 
 /**
  *
  * @author Sally Al
  *
  */
-public class Log extends CommandInterface {
+public class Log extends Command {
+	public Log(){
+		super();
+	}
 
 	@Override
-	public Data execute(List<ParseTreeNode<CommandInterface>> number, Data data) {
-		this.setValue(Math.log10(number.get(0).getCommand().getValue()));
-		return data;
+	public double execute(List<ParseTreeNode<CommandInterface>> number) {
+		double log =Math.log10(number.get(0).getCommandValue());
+		this.setValue(log);
+		return log;
 
 	}
 

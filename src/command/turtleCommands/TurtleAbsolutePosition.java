@@ -7,7 +7,7 @@ import java.util.List;
 
 import command.CommandInterface;
 import javafx.geometry.Point2D;
-import model.Data;
+import model.Data_Turtle_Interface;
 import model.Trail;
 
 /**
@@ -17,7 +17,7 @@ import model.Trail;
  */
 public abstract class TurtleAbsolutePosition extends CommandInterface {
 
-	protected double calculateDistanceBetweenTwoPoints(List<Double> newLocation, Data data) {
+	protected double calculateDistanceBetweenTwoPoints(List<Double> newLocation, Data_Turtle_Interface data) {
 
 		double x1 = data.getTurtle(0).getTrail().getX();
 		double y1 = data.getTurtle(0).getTrail().getY();
@@ -32,7 +32,7 @@ public abstract class TurtleAbsolutePosition extends CommandInterface {
 		return distance;
 	}
 
-	protected void addToTrail(Data data, Point2D point) {
+	protected void addToTrail(Data_Turtle_Interface data, Point2D point) {
 		Trail loc = data.getTurtle(0).getTrail();
 		loc.setPoint(point);
 		data.getTurtle(0).setTrail(loc);

@@ -6,11 +6,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import command.CommandInterface;
+import com.sun.org.apache.xpath.internal.operations.Minus;
+
 import command.CommandFactory;
+import command.CommandInterface;
+import command.math.Atan;
+import command.math.Cos;
+import command.math.Difference;
+import command.math.Log;
+import command.math.Pi;
+import command.math.Power;
+import command.math.Product;
 import command.math.Quotient;
+import command.math.RandomNumber;
+import command.math.Remainder;
 import command.math.Sine;
 import command.math.Sum;
+import command.math.Tan;
 import command.otherCommands.ClearScreen;
 import command.otherCommands.DoTimes;
 import command.otherCommands.MakeUserInstruction;
@@ -36,6 +48,7 @@ import command.turtleQueries.Heading;
 import command.turtleQueries.IsPenDown;
 import command.turtleQueries.XCoordinate;
 import command.turtleQueries.YCoordinate;
+import model.Data_Turtle_Interface;
 
 public class Parser {
 	private String[] inputArray;
@@ -53,10 +66,10 @@ public class Parser {
 	private boolean doTimesBoolean = false;
 	private Map<String, Integer> commandInputMap;
 
-	public Parser() {
+	public Parser(Data_Turtle_Interface allData) {
 		errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
 		pattern = new Patterner();
-		cf = new CommandFactory();
+		cf = new CommandFactory(allData);
 		this.commandRegistration();
 		this.numInputs();
 	}
@@ -77,6 +90,20 @@ public class Parser {
 			cf.registerCommand("ListStart", ListStart.class);
 			cf.registerCommand("Repeat", Repeat.class);
 			cf.registerCommand("Sum", Sum.class);
+			cf.registerCommand("Product", Product.class);
+			cf.registerCommand("ArcTangent", Atan.class);
+			cf.registerCommand("Cosine", Cos.class);
+			cf.registerCommand("Difference", Difference.class);
+			cf.registerCommand("Log", Log.class);
+			cf.registerCommand("Minus", Minus.class);
+			cf.registerCommand("Pi", Pi.class);
+			cf.registerCommand("Power", Power.class);
+			cf.registerCommand("Quotient", Quotient.class);
+			cf.registerCommand("Random", RandomNumber.class);
+			cf.registerCommand("Remainder", Remainder.class);
+			cf.registerCommand("Sine", Sine.class);
+			cf.registerCommand("Tangent", Tan.class);
+
 			cf.registerCommand("IsPenDown", IsPenDown.class);
 			cf.registerCommand("DoTimes", DoTimes.class);
 			cf.registerCommand("Quotient", Quotient.class);
@@ -204,7 +231,7 @@ public class Parser {
 					}
 
 					p.addChild(newNode);
-					System.out.println(newNode.getCommand().getClass().getSimpleName());
+					// System.out.println(newNode.getCommand().getClass().getSimpleName());
 					index++;
 					index = createParseTree(index, newNode);
 
@@ -217,7 +244,7 @@ public class Parser {
 
 	public void printCommandList() {
 		for (String[] s : commandList) {
-			System.out.println(s[0] + ", " + s[1]);
+			// System.out.println(s[0] + ", " + s[1]);
 		}
 	}
 
@@ -229,9 +256,12 @@ public class Parser {
 			printTreeInOrder(node);
 		}
 
-		System.out.println(head.getCommand().getClass().getSimpleName() + " " + head.getCommand().getValue() + "->"
-				+ head.getParent().getCommand().getClass().getSimpleName() + " "
-				+ head.getParent().getCommand().getValue());
+		/*
+		 * System.out.println(head.getCommand().getClass().getSimpleName() + " "
+		 * + head.getCommand().getValue() + "->" +
+		 * head.getParent().getCommand().getClass().getSimpleName() + " " +
+		 * head.getParent().getCommand().getValue());
+		 */
 	}
 
 	private void numInputs() {

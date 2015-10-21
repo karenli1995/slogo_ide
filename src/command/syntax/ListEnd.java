@@ -5,7 +5,7 @@ import java.util.List;
 
 import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
+import model.Data_Turtle_Interface;
 
 public class ListEnd extends CommandInterface {
 
@@ -14,7 +14,7 @@ public class ListEnd extends CommandInterface {
 	}
 
 	@Override
-	public Data execute(List<ParseTreeNode<CommandInterface>> distance, Data data) {
+	public Data_Turtle_Interface execute(List<ParseTreeNode<CommandInterface>> distance, Data_Turtle_Interface data) {
 		return data;
 	}
 

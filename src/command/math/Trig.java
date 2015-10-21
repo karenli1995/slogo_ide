@@ -5,27 +5,28 @@ package command.math;
 
 import java.util.List;
 
+import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
 
 /**
  *
  * @author Sally Al
  *
  */
-public abstract class Trig extends CommandInterface {
+public abstract class Trig extends Command {
 	private static final int ANGLE = 90;
 
 	@Override
-	public Data execute(List<ParseTreeNode<CommandInterface>> angle, Data data) {
+	public double execute(List<ParseTreeNode<CommandInterface>> angle) {
 		if (checkUnderfinedAngle(angle.get(0).getCommand().getValue())) {
 			this.setValue(0);
 		} else {
 
 			this.setValue(evaluateAngle(Math.toRadians(angle.get(0).getCommand().getValue())));
 		}
-		return data;
+		return this.getValue();
+
 	}
 
 	private Boolean checkUnderfinedAngle(double angle) {

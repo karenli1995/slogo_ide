@@ -7,7 +7,7 @@ import java.util.List;
 
 import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
+import model.Data_Turtle_Interface;
 
 /**
  *
@@ -17,7 +17,7 @@ import model.Data;
 public class GreaterThan extends CommandInterface {
 
 	@Override
-	public Data execute(List<ParseTreeNode<CommandInterface>> argument, Data data) {
+	public Data_Turtle_Interface execute(List<ParseTreeNode<CommandInterface>> argument, Data_Turtle_Interface data) {
 		if (argument.get(0).getCommand().getValue() > argument.get(1).getCommand().getValue()) {
 			this.setValue(1);
 		} else {

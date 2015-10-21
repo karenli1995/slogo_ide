@@ -2,15 +2,16 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import command.CommandInterface;
 
 public class ParseTreeNode<Command> {
 
 	private Command command;
+
+	//TODO make this a class
 	private List<ParseTreeNode<Command>> children;
+	private List<ParseTreeNode<CommandInterface>> sth;
 	private ParseTreeNode parent = this;
 
 	public ParseTreeNode() {
@@ -21,6 +22,7 @@ public class ParseTreeNode<Command> {
 	public ParseTreeNode(Command command) {
 		this();
 		setCommand(command);
+
 	}
 
 	public List<ParseTreeNode<Command>> getChildren() {
@@ -61,11 +63,13 @@ public class ParseTreeNode<Command> {
 	}
 
 	public Command getCommand() {
+
 		return this.command;
 	}
 
 	public void setCommand(Command command) {
 		this.command = command;
+
 	}
 
 	public void setParent(ParseTreeNode<Command> p) {
@@ -74,6 +78,15 @@ public class ParseTreeNode<Command> {
 
 	public ParseTreeNode<Command> getParent() {
 		return this.parent;
+	}
+
+	public double getCommandValue(){
+
+		return ((command.Command) this.command).getValue();
+	}
+
+	public void setCommandValue(double d){
+		((command.Command) this.command).setValue(d);
 	}
 
 }

@@ -10,7 +10,7 @@ import command.CommandInterface;
 import controller.ParseTreeNode;
 import javafx.scene.paint.Color;
 
-public class Data extends Observable{
+public class Data extends Observable implements Data_Turtle_Interface{
 
 	private List<SlogoObjects> myTurtles = new ArrayList<SlogoObjects>();
 	private List<Trail> myTrails = new ArrayList<Trail>();
@@ -33,19 +33,6 @@ public class Data extends Observable{
 		setMyColor(Color.ALICEBLUE);
 	}
 
-	/*
-	 * public void addTurtle() { tempTurt = new Turtle();
-	 * myTurtles.add(tempTurt);
-	 * tempTurtle.getPen().getTrail().addCoord(tempTurtle.getLocation().getPoint
-	 * ()); myTrails.add(tempTurtle.getPen().getTrail());
-	 *
-	 *
-	 * }
-	 */
-
-//	public List<SlogoObjects> getAllTurtles() {
-//		return myTurtles;
-//	}
 
 	public void setTurtle(int turtleId, SlogoObjects turtle){
 		myTurtles.set(turtleId, turtle);
@@ -53,6 +40,7 @@ public class Data extends Observable{
 		notifyObservers();
 	}
 
+	@Override
 	public SlogoObjects getTurtle(int turtleId){
 		return myTurtles.get(turtleId);
 	}
@@ -127,6 +115,7 @@ public class Data extends Observable{
 
 	public Color getMyColor(){
 		return myColor;
+
 	}
 
 

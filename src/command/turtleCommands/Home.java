@@ -9,7 +9,7 @@ import java.util.List;
 import command.CommandInterface;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
-import model.Data;
+import model.Data_Turtle_Interface;
 
 /**
  *
@@ -19,7 +19,7 @@ import model.Data;
 public class Home extends TurtleAbsolutePosition {
 
 	@Override
-	public Data execute(List<ParseTreeNode<CommandInterface>> argument, Data data) {
+	public Data_Turtle_Interface execute(List<ParseTreeNode<CommandInterface>> argument, Data_Turtle_Interface data) {
 		List<Double> defaultPosition = new ArrayList<Double>();
 		defaultPosition.add(0.0);
 		defaultPosition.add(0.0);

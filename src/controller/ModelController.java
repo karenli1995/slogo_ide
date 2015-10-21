@@ -5,7 +5,7 @@ import java.util.List;
 import command.CommandInterface;
 import javafx.stage.Stage;
 import model.Data;
-import model.SlogoObjects;
+import model.Data_Turtle_Interface;
 import view.GUIManager;
 import view.props.CurrentTurtleState;
 import view.scene.TurtleSceneTab;
@@ -21,7 +21,7 @@ public class ModelController {
 	public ModelController(Stage stage) {
 		myAllData = new Data();
 		myGuiManager = new GUIManager(stage, this);
-		myParser = new Parser();
+		myParser = new Parser(myAllData);
 		myTraverser = new Traverser();
 		addObservable();
 	}
@@ -34,11 +34,11 @@ public class ModelController {
 		Data scene = getData();
 		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
 		scene.addObserver(currSceneTab);
-		
+
 		//check
 		CurrentTurtleState currTurtState = myGuiManager.getMyCurrTurtState();
 		scene.addObserver(currTurtState);
-		
+
 	}
 
 
@@ -87,7 +87,7 @@ public class ModelController {
 	 *
 	 * @return
 	 */
-	public Data traverse() {
+	public Data_Turtle_Interface traverse() {
 		myAllData = myTraverser.traverse(myTree, myAllData);
 		return myAllData;
 	}

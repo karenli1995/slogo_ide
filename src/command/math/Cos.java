@@ -5,23 +5,24 @@ package command.math;
 
 import java.util.List;
 
+import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
 
 /**
  *
  * @author Sally Al
  *
  */
-public class Cos extends CommandInterface {
-
+public class Cos extends Command {
+	public Cos(){
+		super();
+	}
 	@Override
-	public Data execute(List<ParseTreeNode<CommandInterface>> argument, Data data) {
-
-		this.setValue(value);
-		Math.cos(Math.toRadians(argument.get(0).getCommand().getValue()));
-		return data;
+	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
+		double cosangle=Math.cos(Math.toRadians(argument.get(0).getCommandValue()));
+		this.setValue(cosangle);
+		return cosangle;
 	}
 
 }

@@ -6,7 +6,7 @@ package command;
 import java.util.List;
 
 import controller.ParseTreeNode;
-import model.Data;
+import model.Data_Turtle_Interface;
 
 /**
  *
@@ -14,6 +14,10 @@ import model.Data;
  *
  */
 public abstract class Command implements CommandInterface {
+
+public Command(){}
+public Command(Data_Turtle_Interface allData){}
+
 	private String name;
 
 	private double value;
@@ -21,6 +25,7 @@ public abstract class Command implements CommandInterface {
 	@Override
 	public String getName() {
 		return name;
+
 	}
 
 	@Override
@@ -29,10 +34,7 @@ public abstract class Command implements CommandInterface {
 	}
 
 	@Override
-	public Data execute(List<ParseTreeNode<CommandInterface>> distance, Data data) {
-
-		return null;
-	}
+	public abstract double execute(List<ParseTreeNode<CommandInterface>> distance);
 
 	@Override
 	public double getValue() {
@@ -43,5 +45,6 @@ public abstract class Command implements CommandInterface {
 	public void setValue(double d) {
 		this.value = d;
 	}
+	public void test(){}
 
 }

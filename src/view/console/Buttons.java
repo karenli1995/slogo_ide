@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 import view.GUIManager;
-import model.Data;
 import controller.ModelController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import model.Data_Turtle_Interface;
 
 public class Buttons extends VBox {
 	private static final int OFFSET_SPACE = 10;
@@ -88,7 +88,7 @@ public class Buttons extends VBox {
 	private void runConsole() {
 		String consoleText = myConsole.getTextFromConsole();
 		myController.parse(consoleText);
-		Data data = myController.traverse();
+		Data_Turtle_Interface data = myController.traverse();
 		myGUIManager.getMyHistory().addHistory(consoleText);
 		System.out.println("fuck " + myController.getData().getVariableMap().size());
 		addUserDefinitions();

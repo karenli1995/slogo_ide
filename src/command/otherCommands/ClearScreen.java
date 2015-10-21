@@ -11,6 +11,7 @@ import command.turtleCommands.TurtleAbsolutePosition;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
 import model.Data;
+import model.Data_Turtle_Interface;
 import model.SlogoObjects;
 import model.Trail;
 
@@ -22,7 +23,7 @@ import model.Trail;
 public class ClearScreen extends TurtleAbsolutePosition{
 
 	@Override
-	public Data execute(List<ParseTreeNode<CommandInterface>> distance, Data data) {
+	public Data_Turtle_Interface execute(List<ParseTreeNode<CommandInterface>> distance, Data data) {
 		List<Double> defaultPosition = new ArrayList<Double>();
 		defaultPosition.add(0.0);
 		defaultPosition.add(0.0);

@@ -5,32 +5,32 @@ package command.math;
 
 import java.util.List;
 
+import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
 
 /**
  *
  * @author Sally Al
  *
  */
-public class Quotient extends CommandInterface {
+public class Quotient extends Command{
+public Quotient(){super();}
 
 	@Override
-	public Data execute(List<ParseTreeNode<CommandInterface>> argument, Data data) {
+	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
 
 		double quotient = 0;
 
 		try {
-			quotient = argument.get(0).getCommand().getValue() / argument.get(1).getCommand().getValue();
+			quotient = argument.get(0).getCommandValue() / argument.get(1).getCommandValue();
 
 		} catch (ArithmeticException e) {
-			// TODO: BOOLEAN IN DATA AND MESSAGE AND PROPERTIES
 			System.out.println("Division by zero is not allowed.");
 		}
 
 		this.setValue(quotient);
-		return data;
+		return quotient;
 	}
 
 }

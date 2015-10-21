@@ -19,7 +19,7 @@ public class Traverser {
 			this.iterateTreePostOrder(s);
 		}
 
-		this.executeCommands(allData);
+		this.executeCommands();
 
 		return allData;
 	}
@@ -38,13 +38,13 @@ public class Traverser {
 		commandQueue.add(node);
 	}
 
-	public Data executeCommands(Data allData) {
+	public void executeCommands() {
 
 		while (!commandQueue.isEmpty()) {
 			ParseTreeNode<CommandInterface> tempNode = commandQueue.poll();
-			allData = tempNode.getCommand().execute(tempNode.getChildren(), allData);
+			Double commandValue= tempNode.getCommand().execute(tempNode.getChildren());
 		}
-		return allData;
+
 	}
 
 }
