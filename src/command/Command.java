@@ -13,12 +13,10 @@ import model.Data;
  * @author Sally Al
  *
  */
-public abstract class Command implements CommandInterface{
+public abstract class Command implements CommandInterface {
 	protected String name;
 
 	protected double value;
-
-
 
 	@Override
 	public String getName() {
@@ -40,8 +38,6 @@ public abstract class Command implements CommandInterface{
 	public double getValue() {
 		return 0;
 	}
-
-
 
 	@Override
 	public void setValue(double d) {
