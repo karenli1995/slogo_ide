@@ -17,7 +17,7 @@ public class CommandFactory {
 		reflectionMap.put(commandName, commandClass);
 	}
 
-	public Command createCommand(String commandName) {
+	public CommandInterface createCommand(String commandName) {
 		Class<?> commandClass = reflectionMap.get(commandName);
 		Constructor<?> commandConstructor = null;
 		try {
@@ -25,9 +25,9 @@ public class CommandFactory {
 		} catch (NoSuchMethodException | SecurityException e) {
 			e.printStackTrace();
 		}
-		Command command = null;
+		CommandInterface command = null;
 		try {
-			command = (Command) commandConstructor.newInstance(new Object[] {});
+			command = (CommandInterface) commandConstructor.newInstance(new Object[] {});
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) {
 			e.printStackTrace();

@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
-import command.Command;
+import command.CommandInterface;
 import model.Data;
 
 public class Traverser {
-	private Queue<ParseTreeNode<Command>> commandQueue;
-	private Stack<ParseTreeNode<Command>> listEndStack;
+	private Queue<ParseTreeNode<CommandInterface>> commandQueue;
+	private Stack<ParseTreeNode<CommandInterface>> listEndStack;
 
-	public Data traverse(List<ParseTreeNode<Command>> node, Data allData) {
-		listEndStack = new Stack<ParseTreeNode<Command>>();
-		commandQueue = new LinkedList<ParseTreeNode<Command>>();
-		for (ParseTreeNode<Command> s : node) {
+	public Data traverse(List<ParseTreeNode<CommandInterface>> node, Data allData) {
+		listEndStack = new Stack<ParseTreeNode<CommandInterface>>();
+		commandQueue = new LinkedList<ParseTreeNode<CommandInterface>>();
+		for (ParseTreeNode<CommandInterface> s : node) {
 			this.iterateTreePostOrder(s);
 		}
 
@@ -24,14 +24,14 @@ public class Traverser {
 		return allData;
 	}
 
-	public void iterateTreePostOrder(ParseTreeNode<Command> node) {
+	public void iterateTreePostOrder(ParseTreeNode<CommandInterface> node) {
 		if (node == null)
 			return;
 
 		if (node.getClass().getSimpleName().equals("ListEnd")) {
 
 		}
-		for (ParseTreeNode<Command> childNode : node.getChildren()) {
+		for (ParseTreeNode<CommandInterface> childNode : node.getChildren()) {
 			this.iterateTreePostOrder(childNode);
 		}
 
@@ -41,7 +41,7 @@ public class Traverser {
 	public Data executeCommands(Data allData) {
 
 		while (!commandQueue.isEmpty()) {
-			ParseTreeNode<Command> tempNode = commandQueue.poll();
+			ParseTreeNode<CommandInterface> tempNode = commandQueue.poll();
 			allData = tempNode.getCommand().execute(tempNode.getChildren(), allData);
 		}
 		return allData;

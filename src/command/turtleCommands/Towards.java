@@ -5,7 +5,7 @@ package command.turtleCommands;
 
 import java.util.List;
 
-import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeNode;
 import model.Data;
 
@@ -14,9 +14,9 @@ import model.Data;
  * @author Sally Al
  *
  */
-public class Towards extends Command {
+public class Towards extends CommandInterface {
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
+	public Data execute(List<ParseTreeNode<CommandInterface>> distance, Data data) {
 		this.setValue(0);
 		return data;
 	}

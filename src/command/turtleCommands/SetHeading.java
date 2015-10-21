@@ -5,7 +5,7 @@ package command.turtleCommands;
 
 import java.util.List;
 
-import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeNode;
 import model.Data;
 
@@ -14,10 +14,10 @@ import model.Data;
  * @author Sally Al
  *
  */
-public class SetHeading extends Command {
+public class SetHeading extends CommandInterface {
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> headingAngle, Data data) {
+	public Data execute(List<ParseTreeNode<CommandInterface>> headingAngle, Data data) {
 		Double turtleCurrentHeading = data.getTurtle(0).getRotationAngle();
 		Double delta = headingAngle.get(0).getCommand().getValue() - turtleCurrentHeading;
 		data.getTurtle(0).setRotationAngle(turtleCurrentHeading + delta);

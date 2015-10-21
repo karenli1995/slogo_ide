@@ -2,7 +2,7 @@ package controller;
 
 import java.util.List;
 
-import command.Command;
+import command.CommandInterface;
 import javafx.stage.Stage;
 import model.Data;
 import model.SlogoObjects;
@@ -16,7 +16,7 @@ public class ModelController {
 	private Parser myParser;
 	private GUIManager myGuiManager;
 	private Traverser myTraverser;
-	private List<ParseTreeNode<Command>> myTree;
+	private List<ParseTreeNode<CommandInterface>> myTree;
 
 	public ModelController(Stage stage) {
 		myAllData = new Data();

@@ -1,3 +1,6 @@
+/**
+ *
+ */
 package command;
 
 import java.util.List;
@@ -5,28 +8,42 @@ import java.util.List;
 import controller.ParseTreeNode;
 import model.Data;
 
-public abstract class Command {
+/**
+ *
+ * @author Sally Al
+ *
+ */
+public abstract class Command implements CommandInterface{
 	protected String name;
 
+	protected double value;
+
+
+
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	protected double value;
+	@Override
+	public Data execute(List<ParseTreeNode<CommandInterface>> distance, Data data) {
 
-	public abstract Data execute(List<ParseTreeNode<Command>> distance, Data data);
-
-	public Command() {
+		return null;
 	}
 
+	@Override
 	public double getValue() {
-		return value;
+		return 0;
 	}
 
+
+
+	@Override
 	public void setValue(double d) {
 		this.value = d;
 	}

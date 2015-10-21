@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-import command.Command;
+import command.CommandInterface;
 import model.Data;
 
 public class ParserTester {
@@ -22,7 +22,7 @@ public class ParserTester {
 		Parser parser = new Parser();
 		Traverser traverse = new Traverser();
 		String input = readFile("examples/procedures_with_parameters/dash.logo", StandardCharsets.UTF_8);
-		List<ParseTreeNode<Command>> head = parser.parse(input);
+		List<ParseTreeNode<CommandInterface>> head = parser.parse(input);
 
 		// Command tempCommand =
 		// control.getParser().getCommandFactory().createCommand("Constant");

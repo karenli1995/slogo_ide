@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import command.Command;
+import command.CommandInterface;
 import command.CommandFactory;
 import command.math.Quotient;
 import command.math.Sine;
@@ -46,9 +46,9 @@ public class Parser {
 	private ResourceBundle errorResources;
 	private final String INPUT_RESOURCES = "resources/input";
 	private final String ERROR_RESOURCES = "resources/error";
-	private ParseTreeNode<Command> head;
-	private ParseTreeNode<Command> currentNode;
-	private List<ParseTreeNode<Command>> nodeList;
+	private ParseTreeNode<CommandInterface> head;
+	private ParseTreeNode<CommandInterface> currentNode;
+	private List<ParseTreeNode<CommandInterface>> nodeList;
 	private int bracketCount;
 	private boolean doTimesBoolean = false;
 	private Map<String, Integer> commandInputMap;
@@ -103,9 +103,9 @@ public class Parser {
 
 	}
 
-	public List<ParseTreeNode<Command>> parse(String input) {
+	public List<ParseTreeNode<CommandInterface>> parse(String input) {
 		this.createCommandList(this.removeComments(input));
-		nodeList = new ArrayList<ParseTreeNode<Command>>();
+		nodeList = new ArrayList<ParseTreeNode<CommandInterface>>();
 		this.printCommandList();
 
 		if (this.checkInput()) {
@@ -124,7 +124,7 @@ public class Parser {
 			index = this.createParseTree(index + 1, currentNode);
 			if (index < commandList.size()) {
 
-				ParseTreeNode<Command> newNode = new ParseTreeNode<Command>(
+				ParseTreeNode<CommandInterface> newNode = new ParseTreeNode<CommandInterface>(
 						cf.createCommand(commandList.get(index)[1]));
 				if (newNode.getCommand().getClass().getSimpleName().equals("Constant")) {
 					newNode.getCommand().setValue(Double.parseDouble(commandList.get(index)[0]));
@@ -152,7 +152,7 @@ public class Parser {
 		return index;
 	}
 
-	private int createParseTree(int index, ParseTreeNode<Command> p) {
+	private int createParseTree(int index, ParseTreeNode<CommandInterface> p) {
 		if (index < commandList.size()) {
 			int numInputs = Integer.parseInt(resources.getString(p.getCommand().getClass().getSimpleName()));
 			if (commandInputMap.containsKey(p.getCommand().getName())
@@ -181,7 +181,7 @@ public class Parser {
 			} else {
 				for (int j = 0; j < numInputs; j++) {
 
-					ParseTreeNode<Command> newNode = new ParseTreeNode<Command>(
+					ParseTreeNode<CommandInterface> newNode = new ParseTreeNode<CommandInterface>(
 							cf.createCommand(commandList.get(index)[1]));
 					if (newNode.getCommand().getClass().getSimpleName().equals("Constant")) {
 						newNode.getCommand().setValue(Double.parseDouble(commandList.get(index)[0]));
@@ -221,11 +221,11 @@ public class Parser {
 		}
 	}
 
-	public void printTreeInOrder(ParseTreeNode<Command> head) {
+	public void printTreeInOrder(ParseTreeNode<CommandInterface> head) {
 		if (head == null)
 			return;
 
-		for (ParseTreeNode<Command> node : head.getChildren()) {
+		for (ParseTreeNode<CommandInterface> node : head.getChildren()) {
 			printTreeInOrder(node);
 		}
 
@@ -239,7 +239,7 @@ public class Parser {
 	}
 
 	private void createHeadNode() {
-		head = new ParseTreeNode<Command>(cf.createCommand(commandList.get(0)[1]));
+		head = new ParseTreeNode<CommandInterface>(cf.createCommand(commandList.get(0)[1]));
 		currentNode = head;
 	}
 

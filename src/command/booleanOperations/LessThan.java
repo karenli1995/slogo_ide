@@ -5,7 +5,7 @@ package command.booleanOperations;
 
 import java.util.List;
 
-import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeNode;
 import model.Data;
 
@@ -14,10 +14,10 @@ import model.Data;
  * @author Sally Al
  *
  */
-public class LessThan extends Command {
+public class LessThan extends CommandInterface {
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> argument, Data data) {
+	public Data execute(List<ParseTreeNode<CommandInterface>> argument, Data data) {
 		if (argument.get(0).getCommand().getValue() < argument.get(1).getCommand().getValue()) {
 			this.setValue(1);
 		} else {

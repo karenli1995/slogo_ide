@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
-import javafx.scene.paint.Color;
-import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeNode;
+import javafx.scene.paint.Color;
 
 public class Data extends Observable{
 
@@ -18,18 +18,18 @@ public class Data extends Observable{
 	private String myErrorMessage;
 	private List<String> myUserHistory;
 	private Map<String, Double> myVariableMap;
-	private Map<String, ParseTreeNode<Command>> myUserCommandMap;
+	private Map<String, ParseTreeNode<CommandInterface>> myUserCommandMap;
 	private Color myColor;
 
-	public Data() {		
+	public Data() {
 		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
 		myTrails.add(defaultTurtle.getTrail());
 
 		myUserHistory = new ArrayList<String>();
 		myVariableMap = new HashMap<String, Double>();
-		myUserCommandMap = new HashMap<String, ParseTreeNode<Command>>();
-		
+		myUserCommandMap = new HashMap<String, ParseTreeNode<CommandInterface>>();
+
 		setMyColor(Color.ALICEBLUE);
 	}
 
@@ -46,13 +46,13 @@ public class Data extends Observable{
 //	public List<SlogoObjects> getAllTurtles() {
 //		return myTurtles;
 //	}
-	
+
 	public void setTurtle(int turtleId, SlogoObjects turtle){
 		myTurtles.set(turtleId, turtle);
 		setChanged();
 		notifyObservers();
 	}
-	
+
 	public SlogoObjects getTurtle(int turtleId){
 		return myTurtles.get(turtleId);
 	}
@@ -111,20 +111,20 @@ public class Data extends Observable{
 		notifyObservers();
 	}
 
-	public Map<String, ParseTreeNode<Command>> getUserCommandMap() {
+	public Map<String, ParseTreeNode<CommandInterface>> getUserCommandMap() {
 		return myUserCommandMap;
 	}
 
-	public void setUserCommandMap(Map<String, ParseTreeNode<Command>> userCommandMap) {
+	public void setUserCommandMap(Map<String, ParseTreeNode<CommandInterface>> userCommandMap) {
 		this.myUserCommandMap = userCommandMap;
 	}
-	
+
 	public void setMyColor(Color color){
 		myColor = color;
 		setChanged();
 		notifyObservers();
 	}
-	
+
 	public Color getMyColor(){
 		return myColor;
 	}

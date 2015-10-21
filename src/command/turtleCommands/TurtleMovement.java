@@ -6,6 +6,7 @@ package command.turtleCommands;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import command.CommandInterface;
 import command.Command;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
@@ -19,11 +20,19 @@ import model.SlogoObjects;
  */
 public abstract class TurtleMovement extends Command {
 
+	private double value;
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
+	public double getValue() {
+
+		return value;
+	}
+
+
+	@Override
+	public Data execute(List<ParseTreeNode<CommandInterface>> distance, Data data) {
 		SlogoObjects currTurtle = data.getTurtle(0);
 		moveFdorBK(distance.get(0).getCommand().getValue(), currTurtle, data);
-		this.setValue(distance.get(0).getCommand().getValue());
+		value=distance.get(0).getCommand().getValue();
 		return data;
 	}
 

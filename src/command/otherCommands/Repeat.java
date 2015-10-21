@@ -2,18 +2,18 @@ package command.otherCommands;
 
 import java.util.List;
 
-import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeNode;
 import model.Data;
 
-public class Repeat extends Command {
+public class Repeat extends CommandInterface {
 
 	public Repeat() {
 
 	}
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
+	public Data execute(List<ParseTreeNode<CommandInterface>> distance, Data data) {
 		return data;
 	}
 

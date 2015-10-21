@@ -5,7 +5,7 @@ package command.turtleCommands;
 
 import java.util.List;
 
-import command.Command;
+import command.CommandInterface;
 import javafx.geometry.Point2D;
 import model.Data;
 import model.Trail;
@@ -15,7 +15,7 @@ import model.Trail;
  * @author Sally Al
  *
  */
-public abstract class TurtleAbsolutePosition extends Command {
+public abstract class TurtleAbsolutePosition extends CommandInterface {
 
 	protected double calculateDistanceBetweenTwoPoints(List<Double> newLocation, Data data) {
 
