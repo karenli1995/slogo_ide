@@ -14,9 +14,9 @@ import model.Data;
  *
  */
 public abstract class Command implements CommandInterface {
-	protected String name;
+	private String name;
 
-	protected double value;
+	private double value;
 
 	@Override
 	public String getName() {
@@ -36,7 +36,7 @@ public abstract class Command implements CommandInterface {
 
 	@Override
 	public double getValue() {
-		return 0;
+		return value;
 	}
 
 	@Override
