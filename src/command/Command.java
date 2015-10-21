@@ -1,11 +1,12 @@
 package command;
 
 import java.util.List;
+import java.util.Observable;
 
 import controller.ParseTreeNode;
 import model.Data;
 
-public abstract class Command {
+public abstract class Command extends Observable{
 	protected String name;
 
 	public String getName() {

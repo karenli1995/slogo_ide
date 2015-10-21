@@ -23,6 +23,7 @@ public class Data extends Observable{
 
 	public Data() {		
 		Turtle defaultTurtle = new Turtle();
+		defaultTurtle.setIsActive(true);
 		myTurtles.add(defaultTurtle);
 		myTrails.add(defaultTurtle.getTrail());
 
