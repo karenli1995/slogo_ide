@@ -13,8 +13,8 @@ import view.settings.SlogoProperties;
 
 public class TurtleScene extends TabPane {
 
-	private ImageView myImage;
-	private TurtleSceneTab myDefaultSceneTab;
+//	private ImageView myImage;
+	private TurtleSceneTab myCurrentSceneTab;
 	private List<TurtleSceneTab> myTabs = new ArrayList<TurtleSceneTab>();
 	private ModelController myController;
 	private ResourceBundle myResource;
@@ -25,11 +25,38 @@ public class TurtleScene extends TabPane {
 	public TurtleScene(ModelController controller, ResourceBundle resource) {
 		myResource = resource;
 		myController = controller;
-		myDefaultSceneTab = new TurtleSceneTab(this, myController);
-		myTabs.add(myDefaultSceneTab);
-		myImage = getCurrTab().getTurtImage();
+		TurtleSceneTab newTab = new TurtleSceneTab(this, myController);
+		myCurrentSceneTab = newTab;
+		myTabs.add(newTab);
+		ImageView myImage = getCurrTab().getSlogoImage().getMyImage();
 
 		this.getChildren().add(myImage);
+	}
+	
+	public void updateMyTabs(int id, TurtleSceneTab tab){
+		myTabs.add(id, tab);
+	}
+	
+	public List<TurtleSceneTab> getMyTabs() {
+		return myTabs;
+	}
+	
+//	public void setCurrentSceneTab(TurtleSceneTab scene){
+//		this.getSelectionModel().
+////		myCurrentSceneTab = scene;
+//	}
+	
+//	public TurtleSceneTab getCurrentSceneTab(){
+//		return myCurrentSceneTab;
+//	}
+	
+//	public TurtleSceneTab getTabById(int id) {
+//		return myTabs.get(id);
+//	}
+//	
+	public int getIdOfTab(){
+		TurtleSceneTab sceneTab = (TurtleSceneTab) this.getSelectionModel().getSelectedItem();
+		return myTabs.indexOf(sceneTab);
 	}
 
 	public TurtleSceneTab getCurrTab() {
@@ -65,11 +92,11 @@ public class TurtleScene extends TabPane {
 		return myController;
 	}
 
-	public void changeTurtImage(ImageView image) {
-		image.setFitHeight(40);
-		image.setFitWidth(40);
-		this.getChildren().remove(myImage);
-		myImage = image;
-		this.getChildren().add(myImage);
-	}
+//	public void changeTurtImage(ImageView image) {
+//		image.setFitHeight(40);
+//		image.setFitWidth(40);
+//		this.getChildren().remove(myImage);
+//		myImage = image;
+//		this.getChildren().add(myImage);
+//	}
 }

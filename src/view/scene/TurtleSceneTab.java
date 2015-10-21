@@ -22,10 +22,10 @@ import view.turtles.SlogoImage;
 public class TurtleSceneTab extends Tab implements Observer {
 	private SlogoImage mySlogoImage;
 	private AbstractShape myShape; // check this
-	private ImageView myImage;
 	private Canvas myCanvas;
 	private ModelController myModelController;
 	private TurtleScene myTurtScene;
+//	private int myTabId;
 
 	private double myCanvasWidth = SlogoProperties.getSceneWidth() * 3 / 7;
 	private double myCanvasHeight = SlogoProperties.getSceneHeight() * 5 / 7;
@@ -33,6 +33,7 @@ public class TurtleSceneTab extends Tab implements Observer {
 	public TurtleSceneTab(TurtleScene turtScene, ModelController controller) {
 		myTurtScene = turtScene;
 		myModelController = controller;
+//		myTabId = id;
 		this.setText("New Text");
 		myCanvas = new Canvas();
 		myCanvas.setWidth(myCanvasWidth);
@@ -47,6 +48,10 @@ public class TurtleSceneTab extends Tab implements Observer {
 		this.setContent(myCanvas);
 
 	}
+	
+//	public int getTabId(){
+//		return myTabId;
+//	}
 
 	public void setTurtleAndTrail(int id, TurtleScene turtScene) {
 		Turtle currTurt = (Turtle) myModelController.getData().getTurtle(id);
@@ -56,7 +61,6 @@ public class TurtleSceneTab extends Tab implements Observer {
 		System.out.println(currTurtLocY);
 
 		mySlogoImage = new SlogoImage(turtScene, myModelController, id);
-		myImage = mySlogoImage.getMyImage();
 		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
 
 		myShape = new StraightLine(turtScene, myModelController);
@@ -67,7 +71,6 @@ public class TurtleSceneTab extends Tab implements Observer {
 		double currTurtLocX = currTurt.getTrail().getX();
 		double currTurtLocY = currTurt.getTrail().getY();
 		mySlogoImage.setMyImage(image);
-		myImage = mySlogoImage.getMyImage();
 		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
 	}
 
@@ -83,10 +86,10 @@ public class TurtleSceneTab extends Tab implements Observer {
 //	public AbstractShape getShape() {
 //		return myShape;
 //	}
-
-	public ImageView getTurtImage() {
-		return myImage;
-	}
+//
+//	public ImageView getTurtImage() {
+//		return myImage;
+//	}
 
 	public double getMyCanvasWidth() {
 		return myCanvasWidth;
