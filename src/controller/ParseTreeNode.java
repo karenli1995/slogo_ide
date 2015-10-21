@@ -11,12 +11,12 @@ public class ParseTreeNode<Command> {
 
 	private Command command;
 	//TODO make this a class
-	private ParseTreeChildren children;
-	private ParseTreeNode<Command> parent = this;
+	private List<ParseTreeNode<Command>> children;
+	private ParseTreeNode parent = this;
 
 	public ParseTreeNode() {
 		super();
-		children = new ParseTreeChildren();
+		children = new ArrayList<ParseTreeNode<Command>>();
 	}
 
 	public ParseTreeNode(Command command) {
@@ -24,40 +24,41 @@ public class ParseTreeNode<Command> {
 		setCommand(command);
 	}
 
-	public ParseTreeChildren getChildren() {
+	public List<ParseTreeNode<Command>> getChildren() {
 		return this.children;
 	}
 
 	public int getNumberOfChildren() {
-		return children.getChildList().size();
+		return getChildren().size();
 	}
 
 	public boolean hasChildren() {
 		return (getNumberOfChildren() > 0);
 	}
 
-	public void setChildren(ParseTreeChildren children) {
+	public void setChildren(List<ParseTreeNode<Command>> children) {
 		this.children = children;
 	}
 
-	public void addChild(List<ParseTreeNode<command.Command>> child) {
-		children.getChildList().add(child);
+	public void addChild(ParseTreeNode<Command> child) {
+		children.add(child);
+		child.setParent(this);
 	}
 
-	public void addChildAt(int index, List<ParseTreeNode<command.Command>> child) throws IndexOutOfBoundsException {
-		children.getChildList().add(index, child);
+	public void addChildAt(int index, ParseTreeNode<Command> child) throws IndexOutOfBoundsException {
+		children.add(index, child);
 	}
 
 	public void removeChildren() {
-		this.children = new ParseTreeChildren();
+		this.children = new ArrayList<ParseTreeNode<Command>>();
 	}
 
 	public void removeChildAt(int index) throws IndexOutOfBoundsException {
-		children.getChildList().remove(index);
+		children.remove(index);
 	}
 
-	public List<ParseTreeNode<command.Command>> getChildAt(int index) throws IndexOutOfBoundsException {
-		return children.getChildList().get(index);
+	public ParseTreeNode<Command> getChildAt(int index) throws IndexOutOfBoundsException {
+		return children.get(index);
 	}
 
 	public Command getCommand() {
@@ -73,7 +74,7 @@ public class ParseTreeNode<Command> {
 	}
 
 	public ParseTreeNode<Command> getParent() {
-		return parent;
+		return this.parent;
 	}
 
 }

@@ -2,7 +2,6 @@ package command;
 
 import java.util.List;
 
-import controller.ParseTreeChildren;
 import controller.ParseTreeNode;
 import model.Data;
 
@@ -21,7 +20,7 @@ public abstract class Command {
 	}
 
 
-	public abstract Data execute(ParseTreeChildren parseTreeChildren, Data data);
+	public abstract Data execute(List<ParseTreeNode<Command>> distance, Data data);
 
 
 
