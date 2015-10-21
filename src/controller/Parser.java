@@ -36,16 +36,16 @@ import command.turtleQueries.Heading;
 import command.turtleQueries.IsPenDown;
 import command.turtleQueries.XCoordinate;
 import command.turtleQueries.YCoordinate;
+import error.ErrorResources;
 
-public class Parser {
+public class Parser extends ControlFunctions {
 	private String[] inputArray;
 	private Patterner pattern;
 	private List<String[]> commandList;
 	private CommandFactory cf;
 	private ResourceBundle resources;
-	private ResourceBundle errorResources;
+	private ErrorResources error;
 	private final String INPUT_RESOURCES = "resources/input";
-	private final String ERROR_RESOURCES = "resources/error";
 	private ParseTreeNode<Command> head;
 	private ParseTreeNode<Command> currentNode;
 	private List<ParseTreeNode<Command>> nodeList;
@@ -54,7 +54,7 @@ public class Parser {
 	private Map<String, Integer> commandInputMap;
 
 	public Parser() {
-		errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
+		error = new ErrorResources();
 		pattern = new Patterner();
 		cf = new CommandFactory();
 		this.commandRegistration();
@@ -98,7 +98,7 @@ public class Parser {
 			cf.registerCommand("IsPenDown", IsPenDown.class);
 
 		} catch (Exception e) {
-			throw new ParserException(errorResources.getString("commandRegistration"));
+			throw new ControllerException(error.getErrorResources().getString("commandRegistration"));
 		}
 
 	}

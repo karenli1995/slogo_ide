@@ -8,9 +8,6 @@ import model.Data;
 
 public class MakeVariable extends Command {
 
-
-
-@Override
 	public Data execute(List<ParseTreeNode<Command>> argument, Data data) {
 
 		String varName = argument.get(0).getCommand().getName();
