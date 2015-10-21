@@ -1,8 +1,10 @@
 package view.console;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import view.GUIManager;
 import model.Data;
@@ -106,8 +108,9 @@ public class Buttons extends VBox {
 	
 	private void addUserDefinitions(){
 		if(myController.getData().getUserCommandMap().size()!=0){
-			for(String i:myController.getData().getUserCommandMap().keySet()){
-			myGUIManager.getMyUserCommands().add(i);
+			Set<String> allUserCommands = myController.getData().getUserCommandMap().keySet();
+			for(String i : allUserCommands){
+				myGUIManager.getMyUserCommands().add(i);
 			}
 		}
 		if(myController.getData().getVariableMap().size()!=0){

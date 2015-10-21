@@ -99,7 +99,7 @@ public class GUIManager extends BorderPane {
 		GridPane turtstateAndProps = new GridPane();
 		myCurrTurtState = new CurrentTurtleState(scene, myResource);
 		turtstateAndProps.add(myCurrTurtState, 0, 1);
-		myProps = new Properties(scene, myTurtleScene, this, myResource, myStage);
+		myProps = new Properties(scene, myTurtleScene, this, myResource, myStage, myModelController);
 		turtstateAndProps.add(myProps, 0, 2);
 		this.setRight(turtstateAndProps);
 	}

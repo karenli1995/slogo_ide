@@ -31,13 +31,14 @@ public class ModelController {
 	 * end and back end.
 	 */
 	private void addObservable() {
-		SlogoObjects turtObj = getData().getTurtle(0);
+		Data scene = getData();
 		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
-		turtObj.addObserver(currSceneTab);
+		scene.addObserver(currSceneTab);
 		
 		//check
 		CurrentTurtleState currTurtState = myGuiManager.getMyCurrTurtState();
-		turtObj.addObserver(currTurtState);
+		scene.addObserver(currTurtState);
+		
 	}
 
 

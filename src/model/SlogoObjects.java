@@ -1,10 +1,8 @@
 package model;
 
-import java.util.Observable;
-
 import javafx.geometry.Point2D;
 
-public abstract class SlogoObjects extends Observable {
+public abstract class SlogoObjects{
 
 	private Trail myTrail;
 	private AbstractPen myPen;
@@ -20,8 +18,6 @@ public abstract class SlogoObjects extends Observable {
 
 	public void setTrail(Trail loc) {
 		myTrail = loc;
-		setChanged();
-		notifyObservers();
 	}
 
 	public Trail getTrail() {
@@ -34,9 +30,8 @@ public abstract class SlogoObjects extends Observable {
 
 	public void setClearTrail(boolean b){
 		clearTrails = b;
-		this.getTrail().getPathCoordinates().clear();
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	public Pen getPen() {
@@ -45,14 +40,10 @@ public abstract class SlogoObjects extends Observable {
 
 	public void setPen(Pen pen){
 		myPen = pen;
-		setChanged();
-		notifyObservers();
 	}
 
 	public void setIsShowing(boolean value) {
 		isShowing = value;
-		setChanged();
-		notifyObservers();
 	}
 
 	public boolean getIsShowing() {
@@ -61,8 +52,6 @@ public abstract class SlogoObjects extends Observable {
 
 	public void setRotationAngle(Double angle) {
 		myRotationAngle = angle;
-		setChanged();
-		notifyObservers();
 	}
 
 	public double getRotationAngle() {

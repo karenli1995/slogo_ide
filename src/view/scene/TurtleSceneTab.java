@@ -12,8 +12,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
-import model.SlogoObjects;
+import model.Data;
 import model.Turtle;
 import view.settings.SlogoProperties;
 import view.shapes.AbstractShape;
@@ -38,8 +37,8 @@ public class TurtleSceneTab extends Tab implements Observer {
 		myCanvas = new Canvas();
 		myCanvas.setWidth(myCanvasWidth);
 		myCanvas.setHeight(myCanvasHeight);
-		GraphicsContext gc = myCanvas.getGraphicsContext2D();
-		setBackgroundColor(gc, myCanvas, Color.ALICEBLUE);
+//		GraphicsContext gc = myCanvas.getGraphicsContext2D();
+//		setBackgroundColor(gc, myCanvas, Color.ALICEBLUE);
 
 		turtScene.getTabs().add(this);
 
@@ -105,26 +104,38 @@ public class TurtleSceneTab extends Tab implements Observer {
 	public SlogoImage getSlogoImage() {
 		return mySlogoImage;
 	}
-
+	
 	@Override
 	public void update(Observable o, Object arg) {
-		SlogoObjects otherSlogoObj = (SlogoObjects) o;
+		Data otherSlogoObj = (Data) o;
 		
-		if(otherSlogoObj.getClearTrail() == true){
-			
+		//when setClear() changes
+		if(otherSlogoObj.getTurtle(0).getClearTrail() == true){
+			List<Object> currLines = myShape.getAllShapes();
+			for (Object line : currLines) myTurtScene.removeChildren((Node) line);
 		}
 		
 		// check if pen down or up
-		List<Point2D> currTrailList = otherSlogoObj.getTrail().getPathCoordinates();
-		if (otherSlogoObj.getPen().isDown() == 1.0) {
+		//when pendown() changes
+		List<Point2D> currTrailList = otherSlogoObj.getTurtle(0).getTrail().getPathCoordinates();
+		if (otherSlogoObj.getTurtle(0).getPen().isDown() == 1.0) {
 			Node currLine = (Node) myShape.drawShape(currTrailList);
+			myShape.addShape(currLine);
 			myTurtScene.addChildren(currLine);
 		}
 		
-		double newRotAngle = otherSlogoObj.getRotationAngle();
-		double newLocX = otherSlogoObj.getTrail().getX();
-		double newLocY = otherSlogoObj.getTrail().getY();
+		//when setRotationAngle() changes and setTrail() changes
+		double newRotAngle = otherSlogoObj.getTurtle(0).getRotationAngle();
+		double newLocX = otherSlogoObj.getTurtle(0).getTrail().getX();
+		double newLocY = otherSlogoObj.getTurtle(0).getTrail().getY();
 		mySlogoImage.setScreenLoc(newLocX, newLocY);
 		mySlogoImage.setRotation(newRotAngle);
+		
+		//when setScene() changes
+		Color newColor = otherSlogoObj.getMyColor();
+		GraphicsContext gc = myCanvas.getGraphicsContext2D();
+		gc.setFill(newColor);
+		gc.fillRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
 	}
+	
 }

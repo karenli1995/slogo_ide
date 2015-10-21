@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import controller.ModelController;
 import view.scene.TurtleScene;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,14 +25,14 @@ public class PenProps extends Tab{
 
 	private List<Node> allElements;
 	private ResourceBundle myResource;
-	private Stage myStage;
 	private TurtleScene myTurtleScene;
+	private ModelController myController;
 
-	PenProps(TurtleScene scene, ResourceBundle resource, Stage stage){
+	PenProps(TurtleScene scene, ResourceBundle resource, ModelController controller){
 		allElements = new ArrayList<Node>();
-		myStage = stage;
 		myResource = resource;
 		myTurtleScene = scene;
+		myController = controller;
 		
 		createPenTab();
 	}
@@ -57,7 +58,7 @@ public class PenProps extends Tab{
 		hb6.getChildren().addAll(penColor, cbColors);
 		cbColors.setOnAction((event) -> {
 			Color chosenColor = cbColors.getSelectionModel().getSelectedItem();
-			myTurtleScene.getController().getData().getTurtle(0).getPen().setColor(chosenColor);
+			myController.getData().getTurtle(0).getPen().setColor(chosenColor);
 
 		});
 
@@ -74,7 +75,7 @@ public class PenProps extends Tab{
 		ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
 		thicknesses.setOnAction((e) -> {
 			Integer thick = thicknesses.getSelectionModel().getSelectedItem();
-			myTurtleScene.getController().getData().getTurtle(0).getPen().setThickness(thick);
+			myController.getData().getTurtle(0).getPen().setThickness(thick);
 		});
 		hb8.getChildren().addAll(thickLabel, thicknesses);
 
@@ -91,8 +92,8 @@ public class PenProps extends Tab{
 		ComboBox<String> positions = new ComboBox<String>(pos);
 		positions.setOnAction((e) -> {
 			String chosenPos = positions.getSelectionModel().getSelectedItem();
-			if (chosenPos == "Up") myTurtleScene.getController().getData().getTurtle(0).getPen().setPenDown(0.0);
-			if (chosenPos == "Down") myTurtleScene.getController().getData().getTurtle(0).getPen().setPenDown(1.0);
+			if (chosenPos == "Up") myController.getData().getTurtle(0).getPen().setPenDown(0.0);
+			if (chosenPos == "Down") myController.getData().getTurtle(0).getPen().setPenDown(1.0);
 		});
 		hb8.getChildren().addAll(penPosLabel, positions);
 

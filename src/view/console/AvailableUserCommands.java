@@ -1,5 +1,7 @@
 package view.console;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.event.EventHandler;
@@ -18,6 +20,9 @@ public class AvailableUserCommands extends VBox {
 	private VBox myVBox = new VBox();
 	private ConsoleUI myConsole;
 	private ResourceBundle myResource;
+	
+	private List<String> myUserButtonString = new ArrayList<String>();
+
 
 	public AvailableUserCommands(ConsoleUI console, Scene scene, ResourceBundle resource) {
 		myResource = resource;
@@ -34,9 +39,12 @@ public class AvailableUserCommands extends VBox {
 	}
 	
 	public void add(String name){
-		Button newUserButton = new Button(name);
-		myVBox.getChildren().add(newUserButton);
-		addButtonEvent(newUserButton);
+		if (!myUserButtonString.contains(name)){
+			myUserButtonString.add(name);
+			Button newUserButton = new Button(name);
+			myVBox.getChildren().add(newUserButton);
+			addButtonEvent(newUserButton);
+		}
 	}
 	
 	private void addButtonEvent(Button b) {
@@ -45,7 +53,8 @@ public class AvailableUserCommands extends VBox {
 			@Override
 			public void handle(MouseEvent event) {
 				String buttonText = b.getText();
-				myConsole.setConsoleText(buttonText);
+				String currConsoleText = myConsole.getTextFromConsole();
+				myConsole.setConsoleText(currConsoleText + buttonText);
 			}
 
 		});

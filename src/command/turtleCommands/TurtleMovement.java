@@ -21,7 +21,8 @@ public abstract class TurtleMovement extends Command {
 
 	@Override
 	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
-		moveFdorBK(distance.get(0).getCommand().getValue(), data.getTurtle(0));
+		SlogoObjects currTurtle = data.getTurtle(0);
+		moveFdorBK(distance.get(0).getCommand().getValue(), currTurtle, data);
 		this.setValue(distance.get(0).getCommand().getValue());
 		return data;
 	}
@@ -31,7 +32,7 @@ public abstract class TurtleMovement extends Command {
 		return Double.valueOf(df2.format(val));
 	}
 
-	public void moveFdorBK(double distance, SlogoObjects myTurtle) {
+	public void moveFdorBK(double distance, SlogoObjects myTurtle, Data myData) {
 		int sign = getSign();
 
 		double tempXLocation;
@@ -61,6 +62,7 @@ public abstract class TurtleMovement extends Command {
 		myTurtle.getTrail().setPoint(newLoc);
 		myTurtle.setRotationAngle(degrees);
 
+		myData.setTurtle(0, myTurtle);
 	}
 
 	protected abstract int getSign();
