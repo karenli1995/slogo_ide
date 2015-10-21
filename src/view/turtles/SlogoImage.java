@@ -18,11 +18,13 @@ public class SlogoImage {
 	private ModelController myController;
 	private List<SlogoObjects> allMyObjects;
 	private SlogoObjects myObject;
+//	private int mySceneId;
 
 	public SlogoImage(TurtleScene turtlescene, ModelController controller, int id) {
 		myTurtScene = turtlescene;
 		myController = controller;
-		myObject = myController.getData().getTurtle(id);
+		int mySceneId = myTurtScene.getIdOfTab();
+		myObject = myController.getData(mySceneId).getTurtle(id);
 		// allMyObjects = myController.getData().getAllTurtles();
 		myImageView.setFitWidth(40);
 		myImageView.setFitHeight(40);
@@ -31,7 +33,8 @@ public class SlogoImage {
 	public SlogoImage(TurtleScene turtlescene, ModelController controller, int id, ImageView image) {
 		myTurtScene = turtlescene;
 		myController = controller;
-		myObject = myController.getData().getTurtle(id);
+		int mySceneId = myTurtScene.getIdOfTab();
+		myObject = myController.getData(mySceneId).getTurtle(id);
 		// allMyObjects = myController.getData().getAllTurtles();
 		myImageView = image;
 		myImageView.setFitWidth(40);
@@ -77,6 +80,7 @@ public class SlogoImage {
 	public void setScreenLoc(double x, double y) {
 		TurtleSceneTab currTab = myTurtScene.getCurrTab();
 		int id = myTurtScene.getIdOfTab();		
+		System.out.println(id + " bob");
 		
 		// should check for bounds as well
 		double newLocX = x + myTurtScene.getX() + currTab.getMyCanvasWidth() / 2;

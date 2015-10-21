@@ -1,20 +1,24 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import command.Command;
 import javafx.stage.Stage;
 import model.Data;
 import model.MathCommand;
+import model.Scene;
 import view.GUIManager;
 import view.console.Prompt;
 import view.props.CurrentTurtleState;
+import view.scene.TurtleScene;
 import view.scene.TurtleSceneTab;
 
 public class ModelController extends ControlFunctions {
 
-	private List<Data> myDataList;
-	private Data myAllData;
+	private List<Data> myDataList = new ArrayList<Data>();
+//	private Data myAllData;
+	private Scene myScene;
 	private Parser myParser;
 	private GUIManager myGuiManager;
 	private Traverser myTraverser;
@@ -22,7 +26,8 @@ public class ModelController extends ControlFunctions {
 
 	public ModelController(Stage stage) {
 		super();
-		myAllData = new Data();
+		Data myAllData = new Data();
+		myDataList.add(myAllData);
 		myGuiManager = new GUIManager(stage, this);
 		myParser = new Parser();
 		myTraverser = new Traverser();
@@ -33,14 +38,21 @@ public class ModelController extends ControlFunctions {
 	 * The controller connects the observables and observers between the front
 	 * end and back end.
 	 */
-	private void addObservable() {
-		Data scene = getData();
-		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
-		scene.addObserver(currSceneTab);
-		
+	public void addObservable() {
+		TurtleScene turtScene = myGuiManager.getTurtScene();
+//		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
+//		int id = turtScene.getIdOfTab();
+//		Data scene = getData(id);
+//		scene.addObserver(currSceneTab);
+
 		//check
 		CurrentTurtleState currTurtState = myGuiManager.getMyCurrTurtState();
-		scene.addObserver(currTurtState);
+//		scene.addObserver(currTurtState);
+		for(int i=0; i<myDataList.size(); i++) {
+			myDataList.get(i).addObserver(turtScene.getMyTabs().get(i));
+			myDataList.get(i).addObserver(currTurtState);
+		}
+		
 		
 		MathCommand values = myTraverser.getMathCommand();
 		Prompt prompt = myGuiManager.getMyPrompt();
@@ -57,8 +69,9 @@ public class ModelController extends ControlFunctions {
 	 * Sets the Data object, passing information to Data from the front-end to
 	 * the back-end.
 	 */
-	public void setData(Data data) {
-		myAllData = data;
+	public void setData(int id, Data data) {
+		myDataList.add(id, data);
+//		myAllData = data;
 	}
 
 	/**
@@ -67,10 +80,18 @@ public class ModelController extends ControlFunctions {
 	 *
 	 * @return
 	 */
-	public Data getData() {
-		return myAllData;
+	public Data getData(int id) {
+		return myDataList.get(id);
+	}
+	
+	public List<Data> getAllData() {
+		return myDataList;
 	}
 
+	public void addData(Data data){
+		myDataList.add(data);
+	}
+	
 	/**
 	 * Gets Parser which parses the commands
 	 *
@@ -94,9 +115,11 @@ public class ModelController extends ControlFunctions {
 	 *
 	 * @return
 	 */
-	public Data traverse() {
-		myAllData = myTraverser.traverse(myTree, myAllData);
-		return myAllData;
+	public Data traverse(int id) {
+		Data myCurrData = myDataList.get(id);
+		myCurrData = myTraverser.traverse(myTree, myCurrData);
+		myDataList.add(id, myCurrData);
+		return myCurrData;
 	}
 
 }

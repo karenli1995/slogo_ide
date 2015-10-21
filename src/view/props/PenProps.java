@@ -27,11 +27,13 @@ public class PenProps extends Tab{
 	private ResourceBundle myResource;
 	private TurtleScene myTurtleScene;
 	private ModelController myController;
+//	private int mySceneId;
 
 	PenProps(TurtleScene scene, ResourceBundle resource, ModelController controller){
 		allElements = new ArrayList<Node>();
 		myResource = resource;
 		myTurtleScene = scene;
+//		mySceneId = myTurtleScene.getIdOfTab();
 		myController = controller;
 		
 		createPenTab();
@@ -52,13 +54,15 @@ public class PenProps extends Tab{
 	}
 	
 	private HBox addPenColorLabel() {
+		int mySceneId = myTurtleScene.getIdOfTab();
+
 		HBox hb6 = new HBox();
 		Label penColor = new Label(myResource.getString("PENC"));
 		final ComboBox<Color> cbColors = new ColorComboBox();
 		hb6.getChildren().addAll(penColor, cbColors);
 		cbColors.setOnAction((event) -> {
 			Color chosenColor = cbColors.getSelectionModel().getSelectedItem();
-			myController.getData().getTurtle(0).getPen().setColor(chosenColor);
+			myController.getData(mySceneId).getTurtle(0).getPen().setColor(chosenColor);
 
 		});
 
@@ -69,13 +73,15 @@ public class PenProps extends Tab{
 	}
 
 	private HBox addPenThicknessLabel() {
+		int mySceneId = myTurtleScene.getIdOfTab();
+
 		HBox hb8 = new HBox();
 		Label thickLabel = new Label("Pen Thickness");
 		ObservableList<Integer> thicks = FXCollections.observableArrayList(1, 2, 3, 4, 5);
 		ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
 		thicknesses.setOnAction((e) -> {
 			Integer thick = thicknesses.getSelectionModel().getSelectedItem();
-			myController.getData().getTurtle(0).getPen().setThickness(thick);
+			myController.getData(mySceneId).getTurtle(0).getPen().setThickness(thick);
 		});
 		hb8.getChildren().addAll(thickLabel, thicknesses);
 
@@ -86,14 +92,16 @@ public class PenProps extends Tab{
 	}
 	
 	private HBox addPenPosLabel() {
+		int mySceneId = myTurtleScene.getIdOfTab();
+
 		HBox hb8 = new HBox();
 		Label penPosLabel = new Label("Pen Position");
 		ObservableList<String> pos = FXCollections.observableArrayList("Up","Down");
 		ComboBox<String> positions = new ComboBox<String>(pos);
 		positions.setOnAction((e) -> {
 			String chosenPos = positions.getSelectionModel().getSelectedItem();
-			if (chosenPos == "Up") myController.getData().getTurtle(0).getPen().setPenDown(0.0);
-			if (chosenPos == "Down") myController.getData().getTurtle(0).getPen().setPenDown(1.0);
+			if (chosenPos == "Up") myController.getData(mySceneId).getTurtle(0).getPen().setPenDown(0.0);
+			if (chosenPos == "Down") myController.getData(mySceneId).getTurtle(0).getPen().setPenDown(1.0);
 		});
 		hb8.getChildren().addAll(penPosLabel, positions);
 

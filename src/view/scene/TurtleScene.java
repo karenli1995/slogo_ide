@@ -27,10 +27,14 @@ public class TurtleScene extends TabPane {
 		myController = controller;
 		TurtleSceneTab newTab = new TurtleSceneTab(this, myController);
 		myCurrentSceneTab = newTab;
-		myTabs.add(newTab);
+//		myTabs.add(newTab);
 		ImageView myImage = getCurrTab().getSlogoImage().getMyImage();
 
 		this.getChildren().add(myImage);
+	}
+	
+	public void addTab(TurtleSceneTab tab){
+		myTabs.add(tab);
 	}
 	
 	public void updateMyTabs(int id, TurtleSceneTab tab){
@@ -55,12 +59,23 @@ public class TurtleScene extends TabPane {
 //	}
 //	
 	public int getIdOfTab(){
-		TurtleSceneTab sceneTab = (TurtleSceneTab) this.getSelectionModel().getSelectedItem();
-		return myTabs.indexOf(sceneTab);
+//		TurtleSceneTab sceneTab = (TurtleSceneTab) this.getSelectionModel().getSelectedItem();
+//		System.out.println(myTabs.indexOf(sceneTab));
+//		return myTabs.indexOf(sceneTab);
+		System.out.println(this.getSelectionModel().getSelectedIndex() + " karen ");
+		return this.getSelectionModel().getSelectedIndex();
 	}
 
 	public TurtleSceneTab getCurrTab() {
-		return (TurtleSceneTab) this.getSelectionModel().getSelectedItem();
+		int ind = this.getSelectionModel().getSelectedIndex();
+		System.out.println(ind + " jenny");
+		return myTabs.get(ind);
+//		return (TurtleSceneTab) this.getSelectionModel().getSelectedItem();
+	}
+	
+	public void createNewTab() {
+		TurtleSceneTab newTab = new TurtleSceneTab(this, myController);
+		myTabs.add(newTab);
 	}
 
 	public void addChildren(Node node) {
@@ -92,11 +107,4 @@ public class TurtleScene extends TabPane {
 		return myController;
 	}
 
-//	public void changeTurtImage(ImageView image) {
-//		image.setFitHeight(40);
-//		image.setFitWidth(40);
-//		this.getChildren().remove(myImage);
-//		myImage = image;
-//		this.getChildren().add(myImage);
-//	}
 }

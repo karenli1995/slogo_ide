@@ -41,6 +41,7 @@ public class TurtleSceneTab extends Tab implements Observer {
 //		GraphicsContext gc = myCanvas.getGraphicsContext2D();
 //		setBackgroundColor(gc, myCanvas, Color.ALICEBLUE);
 
+		turtScene.addTab(this);
 		turtScene.getTabs().add(this);
 
 		int defaultTurt = 0;
@@ -54,7 +55,8 @@ public class TurtleSceneTab extends Tab implements Observer {
 //	}
 
 	public void setTurtleAndTrail(int id, TurtleScene turtScene) {
-		Turtle currTurt = (Turtle) myModelController.getData().getTurtle(id);
+		int sceneId = turtScene.getIdOfTab();
+		Turtle currTurt = (Turtle) myModelController.getData(sceneId).getTurtle(id);
 		double currTurtLocX = currTurt.getTrail().getX();
 		double currTurtLocY = currTurt.getTrail().getY();
 		System.out.println(currTurtLocX);
@@ -67,7 +69,8 @@ public class TurtleSceneTab extends Tab implements Observer {
 	}
 
 	public void setTurtImage(ImageView image, int id) {
-		Turtle currTurt = (Turtle) myModelController.getData().getTurtle(id);
+		int sceneId = myTurtScene.getIdOfTab();
+		Turtle currTurt = (Turtle) myModelController.getData(sceneId).getTurtle(id);
 		double currTurtLocX = currTurt.getTrail().getX();
 		double currTurtLocY = currTurt.getTrail().getY();
 		mySlogoImage.setMyImage(image);

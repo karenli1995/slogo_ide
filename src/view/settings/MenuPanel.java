@@ -81,14 +81,16 @@ public class MenuPanel extends MenuBar {
 			System.exit(0);
 		});
 
-		menu.getItems().addAll(open, save, help, new SeparatorMenuItem(), exit);
+		menu.getItems().addAll(newfile, open, save, help, new SeparatorMenuItem(), exit);
 
 		return menu;
 	}
 	
 	private void newSlogo() {
 		Data newData = new Data();
-		myController.getGuiManager().getMyHistory();
+		myController.addData(newData);
+		myController.getGuiManager().getTurtScene().createNewTab();
+		myController.addObservable();
 	}
 
 	private void openSlogo() {

@@ -3,6 +3,7 @@ package view.console;
 import java.util.ResourceBundle;
 
 import view.GUIManager;
+import view.scene.TurtleScene;
 import controller.ModelController;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;

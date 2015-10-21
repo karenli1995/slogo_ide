@@ -6,15 +6,19 @@ public abstract class SlogoObjects{
 
 	private Trail myTrail;
 	private AbstractPen myPen;
-	private boolean isShowing = true;
+	private boolean isShowing;
 	private double myRotationAngle;
-	private boolean clearTrails = false;
-	private boolean isActive = false;
+	private boolean clearTrails;
+	private boolean isActive;
 
 	public SlogoObjects() {
 		Point2D startPoint = new Point2D(0, 0);
-		myTrail = new Trail(startPoint, 0);
-		myPen = new Pen();
+		setTrail(new Trail(startPoint, 0));
+		setPen(new Pen());
+		
+		setIsShowing(true);
+		setClearTrail(false);
+		setIsActive(false);
 	}
 
 	public void setTrail(Trail loc) {
@@ -39,8 +43,8 @@ public abstract class SlogoObjects{
 		return (Pen) myPen;
 	}
 
-	public void setPen(Pen pen){
-		myPen = pen;
+	public void setPen(AbstractPen myPen2){
+		myPen = myPen2;
 	}
 
 	public void setIsShowing(boolean value) {

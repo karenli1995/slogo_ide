@@ -12,27 +12,30 @@ import controller.ParseTreeNode;
 
 public class Data extends Observable{
 
-	private List<SlogoObjects> myTurtles = new ArrayList<SlogoObjects>();
-	private List<Trail> myTrails = new ArrayList<Trail>();
-	private boolean myError = false;
+	private List<SlogoObjects> myTurtles;
+	private List<Trail> myTrails;
+	private boolean myError;
 	private String myErrorMessage;
 	private List<String> myUserHistory;
 	private Map<String, Double> myVariableMap;
 	private Map<String, ParseTreeNode<Command>> myUserCommandMap;
 	private Color myColor;
-//	private MathCommand myMathCommand;
 
-	public Data() {		
+	public Data() {	
+		myTurtles = new ArrayList<SlogoObjects>();
+		myTrails = new ArrayList<Trail>();
+		
 		Turtle defaultTurtle = new Turtle();
 		defaultTurtle.setIsActive(true);
 		myTurtles.add(defaultTurtle);
+		setTurtle(0, defaultTurtle); //check
 		myTrails.add(defaultTurtle.getTrail());
 
-		myUserHistory = new ArrayList<String>();
-		myVariableMap = new HashMap<String, Double>();
-		myUserCommandMap = new HashMap<String, ParseTreeNode<Command>>();
-//		myMathCommand = new MathCommand();
+		setUserHistory(new ArrayList<String>());		
+		setVariableMap(new HashMap<String, Double>());
+		setUserCommandMap(new HashMap<String, ParseTreeNode<Command>>());
 		
+		setError(false);
 		setMyColor(Color.ALICEBLUE);
 	}
 
@@ -120,6 +123,8 @@ public class Data extends Observable{
 
 	public void setUserCommandMap(Map<String, ParseTreeNode<Command>> userCommandMap) {
 		this.myUserCommandMap = userCommandMap;
+		setChanged();
+		notifyObservers();
 	}
 	
 	public void setMyColor(Color color){
@@ -131,10 +136,5 @@ public class Data extends Observable{
 	public Color getMyColor(){
 		return myColor;
 	}
-	
-//	public MathCommand getMathCommand(){
-//		return myMathCommand;
-//	}
-
 
 }

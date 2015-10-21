@@ -107,11 +107,11 @@ public class TurtleProps extends Tab {
 				ImageView newTurt = new ImageView(img);
 				
 				TurtleSceneTab currTab = myTurtleScene.getCurrTab();
-				int id = myTurtleScene.getIdOfTab();
+				int sceneId = myTurtleScene.getIdOfTab();
 				currTab.setTurtImage(newTurt, 0);
 				currTab.getSlogoImage().changeTurtImage(newTurt);
 				
-				myTurtleScene.updateMyTabs(id, currTab);
+				myTurtleScene.updateMyTabs(sceneId, currTab);
 			}
 		} catch (Exception e) {
 			// showError("Error!","Failed to load "+file.getName(),e);

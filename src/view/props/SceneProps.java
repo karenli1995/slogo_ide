@@ -24,11 +24,13 @@ public class SceneProps extends Tab {
 	private ResourceBundle myResource;
 	private ModelController myController;
 	private TurtleScene myTurtScene;
+//	private int mySceneId;
 
 	private List<Node> allElements;
 
 	public SceneProps(TurtleScene turtscene, ResourceBundle resource,  ModelController controller) {
 		myTurtScene = turtscene;
+//		mySceneId = myTurtScene.getIdOfTab();
 		myResource = resource;
 		myController = controller;
 		allElements = new ArrayList<Node>();
@@ -58,13 +60,13 @@ public class SceneProps extends Tab {
 			Canvas currCanvas = (Canvas) myTurtScene.getSelectionModel().getSelectedItem().getContent();
 			
 			TurtleSceneTab currTab = myTurtScene.getCurrTab();
-			int id = myTurtScene.getIdOfTab();
+			int mySceneId = myTurtScene.getIdOfTab();
 			
 			currTab.setBackgroundColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
-			myController.getData().setMyColor(chosenColor);
+			myController.getData(mySceneId).setMyColor(chosenColor);
 			System.out.println("ComboBox Action (selected: " + chosenColor.toString().toUpperCase() + ")");
 			
-			myTurtScene.updateMyTabs(id, currTab);
+			myTurtScene.updateMyTabs(mySceneId, currTab);
 		});
 
 		hb7.getChildren().addAll(background, cmbColors);
