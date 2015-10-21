@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
+import model.MathCommand;
 import javafx.scene.Scene;
 
 public class Prompt extends ConsoleTabPane implements Observer{
@@ -14,14 +15,16 @@ public class Prompt extends ConsoleTabPane implements Observer{
 		myTextArea.setEditable(false);
 	}
 	
-	public void setPromptText(String text){
+	private void setPromptText(String text){
 		myTextArea.setText(text);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		MathCommand mathValue = (MathCommand) o;
 		
+		double currValue = mathValue.getMathValue();
+		this.setPromptText(currValue + "");
 	}
 
 }

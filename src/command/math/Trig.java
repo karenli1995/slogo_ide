@@ -8,6 +8,7 @@ import java.util.List;
 import command.Command;
 import controller.ParseTreeNode;
 import model.Data;
+import model.MathCommand;
 
 /**
  *
@@ -18,7 +19,7 @@ public abstract class Trig extends Command {
 	private static final int ANGLE = 90;
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> angle, Data data) {
+	public Data execute(List<ParseTreeNode<Command>> angle, Data data, MathCommand mathcommand) {
 		if (checkUnderfinedAngle(angle.get(0).getCommand().getValue())) {
 			this.setValue(0);
 		} else {

@@ -8,6 +8,7 @@ import java.util.List;
 import command.Command;
 import controller.ParseTreeNode;
 import model.Data;
+import model.MathCommand;
 import model.Pen;
 
 /**
@@ -18,7 +19,7 @@ import model.Pen;
 public abstract class PenCommands extends Command {
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> distance, Data data) {
+	public Data execute(List<ParseTreeNode<Command>> distance, Data data, MathCommand mathcommand) {
 		Pen currPen = data.getTurtle(0).getPen();
 		currPen.setPenDown(switchPen());
 		data.getTurtle(0).setPen(currPen);

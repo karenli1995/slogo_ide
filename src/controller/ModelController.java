@@ -5,7 +5,7 @@ import java.util.List;
 import command.Command;
 import javafx.stage.Stage;
 import model.Data;
-import model.SlogoObjects;
+import model.MathCommand;
 import view.GUIManager;
 import view.console.Prompt;
 import view.props.CurrentTurtleState;
@@ -13,6 +13,7 @@ import view.scene.TurtleSceneTab;
 
 public class ModelController extends ControlFunctions {
 
+	private List<Data> myDataList;
 	private Data myAllData;
 	private Parser myParser;
 	private GUIManager myGuiManager;
@@ -41,9 +42,9 @@ public class ModelController extends ControlFunctions {
 		CurrentTurtleState currTurtState = myGuiManager.getMyCurrTurtState();
 		scene.addObserver(currTurtState);
 		
-//		Command values = 
-//		Prompt prompt = myGuiManager.getMyPrompt();
-//		scene.addObserver(prompt);
+		MathCommand values = myTraverser.getMathCommand();
+		Prompt prompt = myGuiManager.getMyPrompt();
+		values.addObserver(prompt);
 		
 	}
 

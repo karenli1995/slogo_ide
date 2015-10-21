@@ -5,12 +5,15 @@ import java.util.Observable;
 
 import controller.ParseTreeNode;
 import model.Data;
+import model.MathCommand;
 
-public abstract class Command extends Observable{
+public abstract class Command{
 	protected String name;
 	protected double value;
+//	protected MathCommand myMathCommand;
+	
 	public Command() {
-		
+//		myMathCommand = new MathCommand();
 	}
 	public String getName() {
 		return name;
@@ -21,7 +24,7 @@ public abstract class Command extends Observable{
 	}
 
 
-	public abstract Data execute(List<ParseTreeNode<Command>> distance, Data data);
+	public abstract Data execute(List<ParseTreeNode<Command>> distance, Data data, MathCommand mathcommand);
 
 
 
@@ -31,6 +34,8 @@ public abstract class Command extends Observable{
 
 	public void setValue(double d) {
 		this.value = d;
+//		double prevValue = myMathCommand.getMathValue();
+//		myMathCommand.setMathValue(this.value);
 	}
 
 }

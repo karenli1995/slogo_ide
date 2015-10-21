@@ -8,6 +8,7 @@ import java.util.List;
 import command.Command;
 import controller.ParseTreeNode;
 import model.Data;
+import model.MathCommand;
 
 /**
  *
@@ -17,7 +18,7 @@ import model.Data;
 public class NotEqual extends Command {
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> argument, Data data) {
+	public Data execute(List<ParseTreeNode<Command>> argument, Data data, MathCommand mathcommand) {
 		if (argument.get(0) != argument.get(1)) {
 			this.setValue(1);
 		} else {

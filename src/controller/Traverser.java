@@ -7,10 +7,16 @@ import java.util.Stack;
 
 import command.Command;
 import model.Data;
+import model.MathCommand;
 
 public class Traverser extends ControlFunctions {
 	private Queue<ParseTreeNode<Command>> commandQueue;
 	private Stack<ParseTreeNode<Command>> listEndStack;
+	private MathCommand myMathCommand;
+	
+	Traverser(){
+		myMathCommand = new MathCommand();
+	}
 
 	public Data traverse(List<ParseTreeNode<Command>> node, Data allData) {
 		listEndStack = new Stack<ParseTreeNode<Command>>();
@@ -22,6 +28,10 @@ public class Traverser extends ControlFunctions {
 		this.executeCommands(allData);
 
 		return allData;
+	}
+	
+	public MathCommand getMathCommand(){
+		return myMathCommand;
 	}
 
 	public void iterateTreePostOrder(ParseTreeNode<Command> node) {
@@ -43,7 +53,7 @@ public class Traverser extends ControlFunctions {
 		while (!commandQueue.isEmpty()) {
 			ParseTreeNode<Command> tempNode = commandQueue.poll();
 			try {
-				allData = tempNode.getCommand().execute(tempNode.getChildren(), allData);
+				allData = tempNode.getCommand().execute(tempNode.getChildren(), allData, myMathCommand);
 			} catch (Exception e) {
 				allData.setError(true);
 				allData.setErrorMessage(error.getErrorResources().getString("execute"));

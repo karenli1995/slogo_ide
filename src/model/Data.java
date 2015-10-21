@@ -20,6 +20,7 @@ public class Data extends Observable{
 	private Map<String, Double> myVariableMap;
 	private Map<String, ParseTreeNode<Command>> myUserCommandMap;
 	private Color myColor;
+//	private MathCommand myMathCommand;
 
 	public Data() {		
 		Turtle defaultTurtle = new Turtle();
@@ -30,6 +31,7 @@ public class Data extends Observable{
 		myUserHistory = new ArrayList<String>();
 		myVariableMap = new HashMap<String, Double>();
 		myUserCommandMap = new HashMap<String, ParseTreeNode<Command>>();
+//		myMathCommand = new MathCommand();
 		
 		setMyColor(Color.ALICEBLUE);
 	}
@@ -129,6 +131,10 @@ public class Data extends Observable{
 	public Color getMyColor(){
 		return myColor;
 	}
+	
+//	public MathCommand getMathCommand(){
+//		return myMathCommand;
+//	}
 
 
 }
