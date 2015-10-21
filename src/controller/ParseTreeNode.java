@@ -12,7 +12,7 @@ public class ParseTreeNode<Command> {
 	private Command command;
 	//TODO make this a class
 	private List<ParseTreeNode<Command>> children;
-	private ParseTreeNode parent = this;
+	private ParseTreeNode<Command> parent = this;
 
 	public ParseTreeNode() {
 		super();
@@ -76,5 +76,12 @@ public class ParseTreeNode<Command> {
 	public ParseTreeNode<Command> getParent() {
 		return this.parent;
 	}
+	
+	public double getCommandValue(){
+		return ((command.Command) this.command).getValue();
+	}
 
+	public void setCommandValue(double d){
+		((command.Command) this.command).setValue(d);
+	}
 }
