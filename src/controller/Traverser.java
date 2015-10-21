@@ -31,8 +31,10 @@ public class Traverser extends ControlFunctions {
 		if (node.getClass().getSimpleName().equals("ListEnd")) {
 
 		}
-		for (ParseTreeNode<Command> childNode : node.getChildren()) {
-			this.iterateTreePostOrder(childNode);
+		for (List<ParseTreeNode<Command>> childNodeList : node.getChildren().getChildList()) {
+			for(ParseTreeNode<Command> childNode: childNodeList){
+				this.iterateTreePostOrder(childNode);
+			}
 		}
 
 		commandQueue.add(node);
