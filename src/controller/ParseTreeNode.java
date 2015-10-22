@@ -42,7 +42,7 @@ public class ParseTreeNode<Command> {
 
 	public void addChild(List<ParseTreeNode<Command>> child) {
 		children.add(child);
-		for(ParseTreeNode<Command> p:child){
+		for (ParseTreeNode<Command> p : child) {
 			p.setParent(this);
 		}
 	}
@@ -81,12 +81,12 @@ public class ParseTreeNode<Command> {
 		return this.parent;
 	}
 
-	public double getCommandValue(){
+	public double getCommandValue() {
 
 		return ((command.Command) this.command).getValue();
 	}
 
-	public void setCommandValue(double d){
+	public void setCommandValue(double d) {
 		((command.Command) this.command).setValue(d);
 	}
 
