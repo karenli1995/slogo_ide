@@ -24,7 +24,7 @@ public class SlogoImage {
 		myTurtScene = turtlescene;
 		myController = controller;
 		int mySceneId = myTurtScene.getIdOfTab();
-		myObject = myController.getData(mySceneId).getTurtle(id);
+		myObject = myController.getMyScene().getData(mySceneId).getTurtle(id);
 		// allMyObjects = myController.getData().getAllTurtles();
 		myImageView.setFitWidth(40);
 		myImageView.setFitHeight(40);
@@ -34,7 +34,7 @@ public class SlogoImage {
 		myTurtScene = turtlescene;
 		myController = controller;
 		int mySceneId = myTurtScene.getIdOfTab();
-		myObject = myController.getData(mySceneId).getTurtle(id);
+		myObject = myController.getMyScene().getData(mySceneId).getTurtle(id);
 		// allMyObjects = myController.getData().getAllTurtles();
 		myImageView = image;
 		myImageView.setFitWidth(40);

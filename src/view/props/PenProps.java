@@ -62,7 +62,7 @@ public class PenProps extends Tab{
 		hb6.getChildren().addAll(penColor, cbColors);
 		cbColors.setOnAction((event) -> {
 			Color chosenColor = cbColors.getSelectionModel().getSelectedItem();
-			myController.getData(mySceneId).getTurtle(0).getPen().setColor(chosenColor);
+			myController.getMyScene().getData(mySceneId).getTurtle(0).getPen().setColor(chosenColor);
 
 		});
 
@@ -81,7 +81,7 @@ public class PenProps extends Tab{
 		ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
 		thicknesses.setOnAction((e) -> {
 			Integer thick = thicknesses.getSelectionModel().getSelectedItem();
-			myController.getData(mySceneId).getTurtle(0).getPen().setThickness(thick);
+			myController.getMyScene().getData(mySceneId).getTurtle(0).getPen().setThickness(thick);
 		});
 		hb8.getChildren().addAll(thickLabel, thicknesses);
 
@@ -100,8 +100,8 @@ public class PenProps extends Tab{
 		ComboBox<String> positions = new ComboBox<String>(pos);
 		positions.setOnAction((e) -> {
 			String chosenPos = positions.getSelectionModel().getSelectedItem();
-			if (chosenPos == "Up") myController.getData(mySceneId).getTurtle(0).getPen().setPenDown(0.0);
-			if (chosenPos == "Down") myController.getData(mySceneId).getTurtle(0).getPen().setPenDown(1.0);
+			if (chosenPos == "Up") myController.getMyScene().getData(mySceneId).getTurtle(0).getPen().setPenDown(0.0);
+			if (chosenPos == "Down") myController.getMyScene().getData(mySceneId).getTurtle(0).getPen().setPenDown(1.0);
 		});
 		hb8.getChildren().addAll(penPosLabel, positions);
 

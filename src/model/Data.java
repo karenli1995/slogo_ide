@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import command.Command;
 import controller.ParseTreeNode;
 
-public class Data extends Observable{
+public class Data{
 
 	private List<SlogoObjects> myTurtles;
 	private List<Trail> myTrails;
@@ -55,8 +55,8 @@ public class Data extends Observable{
 	
 	public void setTurtle(int turtleId, SlogoObjects turtle){
 		myTurtles.set(turtleId, turtle);
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 	
 	public SlogoObjects getTurtle(int turtleId){
@@ -73,8 +73,8 @@ public class Data extends Observable{
 
 	public void setErrorMessage(String errorMessage) {
 		this.myErrorMessage = errorMessage;
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	public boolean isError() {
@@ -83,8 +83,8 @@ public class Data extends Observable{
 
 	public void setError(boolean error) {
 		this.myError = error;
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	public List<String> getUserHistory() {
@@ -93,14 +93,14 @@ public class Data extends Observable{
 
 	public void setUserHistory(List<String> userHistory) {
 		this.myUserHistory = userHistory;
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	public void addCommandToHistory(String s) {
 		myUserHistory.add(s);
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	public Map<String, Double> getVariableMap() {
@@ -113,8 +113,8 @@ public class Data extends Observable{
 	public void updateVaraibleMap(String varName, Double value){
 		System.out.println("update");
 		myVariableMap.put(varName, value);
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	public Map<String, ParseTreeNode<Command>> getUserCommandMap() {
@@ -123,14 +123,14 @@ public class Data extends Observable{
 
 	public void setUserCommandMap(Map<String, ParseTreeNode<Command>> userCommandMap) {
 		this.myUserCommandMap = userCommandMap;
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 	
 	public void setMyColor(Color color){
 		myColor = color;
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 	
 	public Color getMyColor(){

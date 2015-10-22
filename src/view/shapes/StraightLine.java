@@ -32,8 +32,8 @@ public class StraightLine extends AbstractShape {
 		Point2D point2 = translateForScreen(currTrailList.get(lastPointInList));
 
 		Line recentLine = new Line(point1.getX(), point1.getY(), point2.getX(), point2.getY());
-		recentLine.setStroke(myModelController.getData(mySceneId).getTurtle(0).getPen().getColor());
-		recentLine.setStrokeWidth(myModelController.getData(mySceneId).getTurtle(0).getPen().getThickness());
+		recentLine.setStroke(myModelController.getMyScene().getData(mySceneId).getTurtle(0).getPen().getColor());
+		recentLine.setStrokeWidth(myModelController.getMyScene().getData(mySceneId).getTurtle(0).getPen().getThickness());
 		myAllShapes.add(recentLine);
 
 		return recentLine;

@@ -13,13 +13,14 @@ import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import model.Data;
+import model.SlogoScene;
 import model.Turtle;
 import view.settings.SlogoProperties;
 import view.shapes.AbstractShape;
 import view.shapes.StraightLine;
 import view.turtles.SlogoImage;
 
-public class TurtleSceneTab extends Tab implements Observer {
+public class TurtleSceneTab extends Tab{
 	private SlogoImage mySlogoImage;
 	private AbstractShape myShape; // check this
 	private Canvas myCanvas;
@@ -38,14 +39,13 @@ public class TurtleSceneTab extends Tab implements Observer {
 		myCanvas = new Canvas();
 		myCanvas.setWidth(myCanvasWidth);
 		myCanvas.setHeight(myCanvasHeight);
-//		GraphicsContext gc = myCanvas.getGraphicsContext2D();
-//		setBackgroundColor(gc, myCanvas, Color.ALICEBLUE);
 
 		turtScene.addTab(this);
 		turtScene.getTabs().add(this);
 
 		int defaultTurt = 0;
 		setTurtleAndTrail(defaultTurt, turtScene);
+		myShape = new StraightLine(turtScene, myModelController);
 		this.setContent(myCanvas);
 
 	}
@@ -56,7 +56,7 @@ public class TurtleSceneTab extends Tab implements Observer {
 
 	public void setTurtleAndTrail(int id, TurtleScene turtScene) {
 		int sceneId = turtScene.getIdOfTab();
-		Turtle currTurt = (Turtle) myModelController.getData(sceneId).getTurtle(id);
+		Turtle currTurt = (Turtle) myModelController.getMyScene().getData(sceneId).getTurtle(id);
 		double currTurtLocX = currTurt.getTrail().getX();
 		double currTurtLocY = currTurt.getTrail().getY();
 		System.out.println(currTurtLocX);
@@ -64,13 +64,11 @@ public class TurtleSceneTab extends Tab implements Observer {
 
 		mySlogoImage = new SlogoImage(turtScene, myModelController, id);
 		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
-
-		myShape = new StraightLine(turtScene, myModelController);
 	}
 
 	public void setTurtImage(ImageView image, int id) {
 		int sceneId = myTurtScene.getIdOfTab();
-		Turtle currTurt = (Turtle) myModelController.getData(sceneId).getTurtle(id);
+		Turtle currTurt = (Turtle) myModelController.getMyScene().getData(sceneId).getTurtle(id);
 		double currTurtLocX = currTurt.getTrail().getX();
 		double currTurtLocY = currTurt.getTrail().getY();
 		mySlogoImage.setMyImage(image);
@@ -86,13 +84,17 @@ public class TurtleSceneTab extends Tab implements Observer {
 		return myShape.getAllShapes().get(ind);
 	}
 	
-//	public AbstractShape getShape() {
-//		return myShape;
-//	}
+	public AbstractShape getShape() {
+		return myShape;
+	}
 //
 //	public ImageView getTurtImage() {
 //		return myImage;
 //	}
+	
+	public Canvas getCanvas(){
+		return myCanvas;
+	}
 
 	public double getMyCanvasWidth() {
 		return myCanvasWidth;
@@ -109,39 +111,6 @@ public class TurtleSceneTab extends Tab implements Observer {
 
 	public SlogoImage getSlogoImage() {
 		return mySlogoImage;
-	}
-	
-	@Override
-	public void update(Observable o, Object arg) {
-		Data otherSlogoObj = (Data) o;
-		
-		//when setClear() changes
-		if(otherSlogoObj.getTurtle(0).getClearTrail() == true){
-			List<Object> currLines = myShape.getAllShapes();
-			for (Object line : currLines) myTurtScene.removeChildren((Node) line);
-		}
-		
-		// check if pen down or up
-		//when pendown() changes
-		List<Point2D> currTrailList = otherSlogoObj.getTurtle(0).getTrail().getPathCoordinates();
-		if (otherSlogoObj.getTurtle(0).getPen().isDown() == 1.0) {
-			Node currLine = (Node) myShape.drawShape(currTrailList);
-			myShape.addShape(currLine);
-			myTurtScene.addChildren(currLine);
-		}
-		
-		//when setRotationAngle() changes and setTrail() changes
-		double newRotAngle = otherSlogoObj.getTurtle(0).getRotationAngle();
-		double newLocX = otherSlogoObj.getTurtle(0).getTrail().getX();
-		double newLocY = otherSlogoObj.getTurtle(0).getTrail().getY();
-		mySlogoImage.setScreenLoc(newLocX, newLocY);
-		mySlogoImage.setRotation(newRotAngle);
-		
-		//when setScene() changes
-		Color newColor = otherSlogoObj.getMyColor();
-		GraphicsContext gc = myCanvas.getGraphicsContext2D();
-		gc.setFill(newColor);
-		gc.fillRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
 	}
 	
 }

@@ -6,6 +6,8 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
+import view.scene.TurtleScene;
+import model.SlogoScene;
 import model.Data;
 import model.SlogoObjects;
 import javafx.geometry.Insets;
@@ -24,6 +26,8 @@ public class CurrentTurtleState extends VBox implements Observer{
 	private static final int OFFSET_SPACE = 10;
 	private Insets myInset = new Insets(OFFSET_SPACE);
 	
+	private TurtleScene myTurtScene;
+	
 	private List<Node> allElements;
 	private Label myTitle;
 	private ResourceBundle myResource;
@@ -35,7 +39,8 @@ public class CurrentTurtleState extends VBox implements Observer{
 	private TextArea myDisplayPenPos;
 	private TextArea myDisplayTurtVis;
 	
-	public CurrentTurtleState(Scene scene, ResourceBundle resource){
+	public CurrentTurtleState(Scene scene, ResourceBundle resource, TurtleScene turtScene){
+		myTurtScene = turtScene;
 		myResource = resource;
 		allElements = new ArrayList<Node>();
 		this.setPrefWidth(scene.getWidth() / 7);
@@ -123,24 +128,26 @@ public class CurrentTurtleState extends VBox implements Observer{
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		Data otherSlogoObj = (Data) o;
+		SlogoScene otherSlogoObj = (SlogoScene) o;
 		
-		double currPosX = otherSlogoObj.getTurtle(0).getTrail().getX();
-		double currPosY = otherSlogoObj.getTurtle(0).getTrail().getY();
+		int tabId = myTurtScene.getIdOfTab();
+		
+		double currPosX = otherSlogoObj.getData(tabId).getTurtle(0).getTrail().getX();
+		double currPosY = otherSlogoObj.getData(tabId).getTurtle(0).getTrail().getY();
 		myDisplayPos.setText(currPosX + ", " + currPosY);
 		
-		double currRotAngle = otherSlogoObj.getTurtle(0).getRotationAngle() % 360;
+		double currRotAngle = otherSlogoObj.getData(tabId).getTurtle(0).getRotationAngle() % 360;
 		myDisplayHeading.setText(currRotAngle + "");
 		
 		String penPos = "Down";
-		double currPenPos = otherSlogoObj.getTurtle(0).getPen().isDown();
+		double currPenPos = otherSlogoObj.getData(tabId).getTurtle(0).getPen().isDown();
 		if(currPenPos == 1.0) penPos="Down";
 		if(currPenPos == 0.0) penPos="Up";
 		myDisplayPenPos.setText(penPos);
 		
 		String turtVis = "Visible";
-		if (otherSlogoObj.getTurtle(0).getIsShowing() == true) turtVis="Visible";
-		if (otherSlogoObj.getTurtle(0).getIsShowing() == false) turtVis="Invisible";
+		if (otherSlogoObj.getData(tabId).getTurtle(0).getIsShowing() == true) turtVis="Visible";
+		if (otherSlogoObj.getData(tabId).getTurtle(0).getIsShowing() == false) turtVis="Invisible";
 		myDisplayTurtVis.setText(turtVis);
 	}
 	

@@ -94,10 +94,9 @@ public class Buttons extends VBox {
 		TurtleScene myTurtScene = myGUIManager.getTurtScene();
 		int mySceneId = myTurtScene.getIdOfTab();
 		String consoleText = myConsole.getTextFromConsole();
-		myController.parse(consoleText);
-		Data data = myController.traverse(mySceneId);
+		myController.getMyScene().parse(consoleText);
+		Data data = myController.getMyScene().traverse(mySceneId);
 		myGUIManager.getMyHistory().addHistory(consoleText);
-		System.out.println("fuck " + myController.getData(mySceneId).getVariableMap().size());
 		addUserDefinitions();
 	}
 
@@ -116,16 +115,16 @@ public class Buttons extends VBox {
 	private void addUserDefinitions(){
 		TurtleScene myTurtScene = myGUIManager.getTurtScene();
 		int mySceneId = myTurtScene.getIdOfTab();
-		if(myController.getData(mySceneId).getUserCommandMap().size()!=0){
-			Set<String> allUserCommands = myController.getData(mySceneId).getUserCommandMap().keySet();
+		if(myController.getMyScene().getData(mySceneId).getUserCommandMap().size()!=0){
+			Set<String> allUserCommands = myController.getMyScene().getData(mySceneId).getUserCommandMap().keySet();
 			for(String i : allUserCommands){
 				myGUIManager.getMyUserCommands().add(i);
 			}
 		}
-		if(myController.getData(mySceneId).getVariableMap().size()!=0){
-			for(String j:myController.getData(mySceneId).getVariableMap().keySet()){
+		if(myController.getMyScene().getData(mySceneId).getVariableMap().size()!=0){
+			for(String j:myController.getMyScene().getData(mySceneId).getVariableMap().keySet()){
 			myGUIManager.getMyUserCommands().add(j);
-			System.out.println("fuck " + myController.getData(mySceneId).getVariableMap().size());
+			System.out.println("fuck " + myController.getMyScene().getData(mySceneId).getVariableMap().size());
 			}
 		}
 	}

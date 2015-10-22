@@ -14,7 +14,7 @@ public class Traverser extends ControlFunctions {
 	private Stack<ParseTreeNode<Command>> listEndStack;
 	private MathCommand myMathCommand;
 	
-	Traverser(){
+	public Traverser(){
 		myMathCommand = new MathCommand();
 	}
 

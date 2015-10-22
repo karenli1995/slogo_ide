@@ -63,7 +63,7 @@ public class SceneProps extends Tab {
 			int mySceneId = myTurtScene.getIdOfTab();
 			
 			currTab.setBackgroundColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
-			myController.getData(mySceneId).setMyColor(chosenColor);
+			myController.getMyScene().getData(mySceneId).setMyColor(chosenColor);
 			System.out.println("ComboBox Action (selected: " + chosenColor.toString().toUpperCase() + ")");
 			
 			myTurtScene.updateMyTabs(mySceneId, currTab);
