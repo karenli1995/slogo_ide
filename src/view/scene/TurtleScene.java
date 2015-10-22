@@ -79,6 +79,7 @@ public class TurtleScene extends TabPane implements Observer{
 //		return (TurtleSceneTab) this.getSelectionModel().getSelectedItem();
 	}
 	
+	//maybe here
 	public TurtleSceneTab createNewTab(ModelController newController) {
 		TurtleSceneTab newTab = new TurtleSceneTab(this, newController);
 		updateMyTabs(myTabs.size(), newTab);
@@ -163,8 +164,9 @@ public class TurtleScene extends TabPane implements Observer{
 				
 				List<SlogoImage> newTurts = newTab.getAllSlogoImages();
 				for (SlogoImage slogoImage : newTurts){
-					newTab.getTurtScene().addChildren(slogoImage.getMyImage());
-					newTab.getTurtScene().setScreenLoc(slogoImage.getMyImage(), slogoImage.getMyImage().getX(), slogoImage.getMyImage().getY());
+					ImageView image = slogoImage.getMyImage();
+					newTab.getTurtScene().addChildren(image);
+					newTab.getTurtScene().setScreenLoc(image, image.getX(), image.getY());
 				}
 
 				newTab.getTurtScene().updateMyTabs((int) newValue, newTab);
@@ -178,7 +180,10 @@ public class TurtleScene extends TabPane implements Observer{
 				for (Object line : oldLines) oldTab.getTurtScene().removeChildren((Node) line);
 				
 				List<SlogoImage> oldTurts = oldTab.getAllSlogoImages();
-				for (SlogoImage slogoImage : oldTurts) oldTab.getTurtScene().removeChildren(slogoImage.getMyImage());
+				for (SlogoImage slogoImage : oldTurts){
+					ImageView image = slogoImage.getMyImage();
+					oldTab.getTurtScene().removeChildren(image);				
+				}
 			}
 		}); 
 	}
@@ -213,6 +218,7 @@ public class TurtleScene extends TabPane implements Observer{
 			double newRotAngle = slogoObject.getRotationAngle();
 			double newLocX = slogoObject.getTrail().getX();
 			double newLocY = slogoObject.getTrail().getY();
+//			slogoObject.getTrail().setPoint(point);
 			SlogoImage currSlogoImage = tab.getSlogoImage(i);
 			currSlogoImage.setX(newLocX);
 			currSlogoImage.setY(newLocY);

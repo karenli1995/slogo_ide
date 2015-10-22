@@ -1,11 +1,15 @@
 package controller;
 
+import java.util.List;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Point2D;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Data;
 import model.MathCommand;
+import model.SlogoObjects;
 import model.SlogoScene;
 import view.GUIManager;
 import view.console.Prompt;
@@ -38,6 +42,12 @@ public class ModelController extends ControlFunctions {
 		super();
 		myScene = scene;
 		Data newData = new Data();
+		List<SlogoObjects> allTurtles = newData.getAllTurtles();
+		for(int i = 0; i<allTurtles.size(); i++){
+			SlogoObjects turtle = allTurtles.get(i);
+			turtle.getTrail().setPoint(new Point2D(0,0));
+			newData.setTurtle(i, turtle);
+		}
 		myScene.setData(myScene.getAllData().size(), newData);
 		
 		myGuiManager = guiManager;
