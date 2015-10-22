@@ -56,11 +56,10 @@ public class TurtleSceneTab extends Tab{
 
 	public void setTurtleAndTrail(int id, TurtleScene turtScene) {
 		int sceneId = turtScene.getIdOfTab();
+		System.out.println(sceneId + " waterbottle");
 		Turtle currTurt = (Turtle) myModelController.getMyScene().getData(sceneId).getTurtle(id);
 		double currTurtLocX = currTurt.getTrail().getX();
 		double currTurtLocY = currTurt.getTrail().getY();
-		System.out.println(currTurtLocX);
-		System.out.println(currTurtLocY);
 
 		mySlogoImage = new SlogoImage(turtScene, myModelController, id);
 		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);

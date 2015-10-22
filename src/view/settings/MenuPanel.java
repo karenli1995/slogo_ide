@@ -25,6 +25,7 @@ import javafx.scene.layout.Priority;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Data;
+import model.SlogoScene;
 
 public class MenuPanel extends MenuBar {
 
@@ -92,8 +93,9 @@ public class MenuPanel extends MenuBar {
 //		myController.getMyScene().addData(newData);
 //		myController.getGuiManager().getTurtScene().createNewTab();
 //		myController.addObservable();
+		SlogoScene currScene = myController.getMyScene();
 		GUIManager currGuiManager = myController.getGuiManager();
-		ModelController newController = new ModelController(myStage, currGuiManager);
+		ModelController newController = new ModelController(myStage, currGuiManager, currScene);
 	}
 
 	private void openSlogo() {

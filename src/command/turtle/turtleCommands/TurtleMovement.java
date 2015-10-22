@@ -34,7 +34,7 @@ public abstract class TurtleMovement extends Command {
 		setValue(distance.get(0).getCommandValue());
 		return distance.get(0).getCommandValue();
 
-	}
+	}s
 
 	private double RoundTo2Decimals(double val) {
 		DecimalFormat df2 = new DecimalFormat("###.##");
