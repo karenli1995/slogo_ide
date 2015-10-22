@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import model.Data_Turtle_Interface;
 
 public class Buttons extends VBox {
 	private static final int OFFSET_SPACE = 10;
@@ -94,8 +95,10 @@ public class Buttons extends VBox {
 		TurtleScene myTurtScene = myGUIManager.getTurtScene();
 		int mySceneId = myTurtScene.getIdOfTab();
 		String consoleText = myConsole.getTextFromConsole();
+
 		myController.getMyScene().parse(consoleText);
-		Data data = myController.getMyScene().traverse(mySceneId);
+		Data data = myController.getMyScene().traverse(mySceneId); //change Data
+
 		myGUIManager.getMyHistory().addHistory(consoleText);
 		addUserDefinitions();
 	}

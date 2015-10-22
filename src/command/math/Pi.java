@@ -6,9 +6,8 @@ package command.math;
 import java.util.List;
 
 import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
-import model.MathCommand;
 
 /**
  *
@@ -16,12 +15,17 @@ import model.MathCommand;
  *
  */
 public class Pi extends Command {
+	public static final double PI = 3.1416;
+
+	public Pi() {
+		super();
+	}
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> argument, Data data, MathCommand mathcommand) {
+	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
 
-		this.setValue(3.1416);
-		return data;
+		this.setValue(PI);
+		return PI;
 	}
 
 }

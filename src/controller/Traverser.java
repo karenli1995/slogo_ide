@@ -5,62 +5,47 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
-import command.Command;
+import command.CommandInterface;
 import model.Data;
-import model.MathCommand;
 
-public class Traverser extends ControlFunctions {
-	private Queue<ParseTreeNode<Command>> commandQueue;
-	private Stack<ParseTreeNode<Command>> listEndStack;
-	private MathCommand myMathCommand;
-	
-	public Traverser(){
-		myMathCommand = new MathCommand();
-	}
 
-	public Data traverse(List<ParseTreeNode<Command>> node, Data allData) {
-		listEndStack = new Stack<ParseTreeNode<Command>>();
-		commandQueue = new LinkedList<ParseTreeNode<Command>>();
-		for (ParseTreeNode<Command> s : node) {
+public class Traverser {
+	private Queue<ParseTreeNode<CommandInterface>> commandQueue;
+	private Stack<ParseTreeNode<CommandInterface>> listEndStack;
+
+	public Data traverse(List<ParseTreeNode<CommandInterface>> node, Data allData) {
+		listEndStack = new Stack<ParseTreeNode<CommandInterface>>();
+		commandQueue = new LinkedList<ParseTreeNode<CommandInterface>>();
+		for (ParseTreeNode<CommandInterface> s : node) {
 			this.iterateTreePostOrder(s);
 		}
 
-		this.executeCommands(allData);
+		this.executeCommands();
 
 		return allData;
 	}
-	
-	public MathCommand getMathCommand(){
-		return myMathCommand;
-	}
 
-	public void iterateTreePostOrder(ParseTreeNode<Command> node) {
+	public void iterateTreePostOrder(ParseTreeNode<CommandInterface> node) {
 		if (node == null)
 			return;
 
 		if (node.getClass().getSimpleName().equals("ListEnd")) {
 
 		}
-		for (ParseTreeNode<Command> childNode : node.getChildren()) {
+		for (ParseTreeNode<CommandInterface> childNode : node.getChildren()) {
 			this.iterateTreePostOrder(childNode);
 		}
 
 		commandQueue.add(node);
 	}
 
-	public Data executeCommands(Data allData) {
-		//TODO: VARIABLE CHECKING ERROR!!
+	public void executeCommands() {
+
 		while (!commandQueue.isEmpty()) {
-			ParseTreeNode<Command> tempNode = commandQueue.poll();
-			try {
-				allData = tempNode.getCommand().execute(tempNode.getChildren(), allData, myMathCommand);
-			} catch (Exception e) {
-				allData.setError(true);
-				allData.setErrorMessage(error.getErrorResources().getString("execute"));
-				throw new ControllerException(error.getErrorResources().getString("execute"));
-			}
+			ParseTreeNode<CommandInterface> tempNode = commandQueue.poll();
+			Double commandValue= tempNode.getCommand().execute(tempNode.getChildren());
 		}
-		return allData;
+
 	}
 
 }

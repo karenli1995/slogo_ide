@@ -1,41 +1,50 @@
+/**
+ *
+ */
 package command;
 
 import java.util.List;
-import java.util.Observable;
 
 import controller.ParseTreeNode;
-import model.Data;
-import model.MathCommand;
+import model.Data_Turtle_Interface;
 
-public abstract class Command{
-	protected String name;
-	protected double value;
-//	protected MathCommand myMathCommand;
-	
-	public Command() {
-//		myMathCommand = new MathCommand();
-	}
+/**
+ *
+ * @author Sally Al
+ *
+ */
+public abstract class Command implements CommandInterface {
+
+public Command(){}
+public Command(Data_Turtle_Interface allData){}
+
+	private String name;
+
+	private double value;
+
+	@Override
 	public String getName() {
 		return name;
+
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	@Override
+	public abstract double execute(List<ParseTreeNode<CommandInterface>> distance);
 
-	public abstract Data execute(List<ParseTreeNode<Command>> distance, Data data, MathCommand mathcommand);
-
-
-
+	@Override
 	public double getValue() {
 		return value;
 	}
 
+	@Override
 	public void setValue(double d) {
 		this.value = d;
-//		double prevValue = myMathCommand.getMathValue();
-//		myMathCommand.setMathValue(this.value);
 	}
+	public void test(){}
 
 }

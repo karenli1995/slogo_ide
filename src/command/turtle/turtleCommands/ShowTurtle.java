@@ -1,7 +1,9 @@
 /**
  *
  */
-package command.turtleCommands;
+package command.turtle.turtleCommands;
+
+import model.Data_Turtle_Interface;
 
 /**
  *
@@ -9,6 +11,11 @@ package command.turtleCommands;
  *
  */
 public class ShowTurtle extends TurtleVisibility {
+
+
+	public ShowTurtle(Data_Turtle_Interface turtleData) {
+		super(turtleData);
+	}
 
 	@Override
 	protected Boolean visibility() {

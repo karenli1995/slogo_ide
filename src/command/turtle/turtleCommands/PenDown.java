@@ -1,7 +1,9 @@
 /**
  *
  */
-package command.turtleCommands;
+package command.turtle.turtleCommands;
+
+import model.Data;
 
 /**
  *
@@ -9,6 +11,11 @@ package command.turtleCommands;
  *
  */
 public class PenDown extends PenCommands {
+
+
+	public PenDown(Data turtleData) {
+		super(turtleData);
+	}
 
 	@Override
 	protected double switchPen() {

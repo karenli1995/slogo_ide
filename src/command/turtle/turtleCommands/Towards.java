@@ -1,14 +1,13 @@
 /**
  *
  */
-package command.turtleCommands;
+package command.turtle.turtleCommands;
 
 import java.util.List;
 
 import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
-import model.MathCommand;
 
 /**
  *
@@ -17,9 +16,9 @@ import model.MathCommand;
  */
 public class Towards extends Command {
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> distance, Data data, MathCommand mathcommand) {
+	public double execute(List<ParseTreeNode<CommandInterface>> distance) {
 		this.setValue(0);
-		return data;
+		return 0;
 	}
 
 }

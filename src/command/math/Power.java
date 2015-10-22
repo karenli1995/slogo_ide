@@ -6,9 +6,8 @@ package command.math;
 import java.util.List;
 
 import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
-import model.MathCommand;
 
 /**
  *
@@ -16,11 +15,15 @@ import model.MathCommand;
  *
  */
 public class Power extends Command {
+	public Power() {
+		super();
+	}
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> number, Data data, MathCommand mathcommand) {
-		this.setValue(Math.pow(number.get(0).getCommand().getValue(), number.get(1).getCommand().getValue()));
-		return data;
+	public double execute(List<ParseTreeNode<CommandInterface>> number) {
+		double power = Math.pow(number.get(0).getCommandValue(), number.get(1).getCommand().getValue());
+		this.setValue(power);
+		return power;
 
 	}
 

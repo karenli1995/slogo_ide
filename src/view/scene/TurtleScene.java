@@ -150,6 +150,8 @@ public class TurtleScene extends TabPane implements Observer{
 		gc.setFill(newColor);
 		gc.fillRect(0, 0, tab.getCanvas().getWidth(), tab.getCanvas().getHeight());
 		
+		this.updateMyTabs(tabId, tab);
+		
 	}
 
 }

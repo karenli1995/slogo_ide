@@ -3,17 +3,21 @@ package command.math;
 import java.util.List;
 
 import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
-import model.MathCommand;
 
 public class Sum extends Command {
+	public Sum() {
+		super();
+	}
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> argument, Data data, MathCommand mathcommand) {
+	public double execute(List<ParseTreeNode<CommandInterface>> arguments) {
 
-		mathcommand.setMathValue(argument.get(0).getCommand().getValue() + argument.get(1).getCommand().getValue());
-		return data;
+		double sum =arguments.get(0).getCommandValue()+ arguments.get(1).getCommandValue();
+		this.setValue(sum);
+		System.out.println(sum);
+		return sum;
 
 	}
 

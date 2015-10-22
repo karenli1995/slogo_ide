@@ -6,9 +6,8 @@ package command.booleanOperations;
 import java.util.List;
 
 import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
-import model.MathCommand;
 
 /**
  *
@@ -16,14 +15,20 @@ import model.MathCommand;
  *
  */
 public class And extends Command {
+	public And() {
+		super();
+	}
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> argument, Data data, MathCommand mathcommand) {
-		if ((argument.get(0).getCommand().getValue() != 0 && argument.get(1).getCommand().getValue() != 0))
-			this.setValue(1);
-		else
+	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
+
+		if ((argument.get(0).getCommandValue() != 0 && argument.get(1).getCommandValue() != 0)) {
+			this.setValue(1.0);
+			return 1.0;
+		} else {
 			this.setValue(0);
-		return data;
+			return 0;
+		}
 	}
 
 }

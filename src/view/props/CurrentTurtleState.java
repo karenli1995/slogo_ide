@@ -8,8 +8,6 @@ import java.util.ResourceBundle;
 
 import view.scene.TurtleScene;
 import model.SlogoScene;
-import model.Data;
-import model.SlogoObjects;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -129,8 +127,8 @@ public class CurrentTurtleState extends VBox implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		SlogoScene otherSlogoObj = (SlogoScene) o;
-		
 		int tabId = myTurtScene.getIdOfTab();
+//		Data_Turtle_Interface otherSlogoObj = (Data_Turtle_Interface) o;
 		
 		double currPosX = otherSlogoObj.getData(tabId).getTurtle(0).getTrail().getX();
 		double currPosY = otherSlogoObj.getData(tabId).getTurtle(0).getTrail().getY();

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Observable;
 
 import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeNode;
 import controller.Parser;
 import controller.Traverser;
@@ -13,7 +14,7 @@ public class SlogoScene extends Observable{
 
 	private List<Data> myDataList = new ArrayList<Data>();
 	private Traverser myTraverser;
-	private List<ParseTreeNode<Command>> myTree;
+	private List<ParseTreeNode<CommandInterface>> myTree;
 	private Parser myParser;
 	
 	public SlogoScene(){
@@ -21,7 +22,7 @@ public class SlogoScene extends Observable{
 //		myDataList.add(myAllData);
 		setData(myDataList.size(), myAllData);
 		
-		myParser = new Parser();
+		myParser = new Parser(myAllData);
 		myTraverser = new Traverser();
 	}
 

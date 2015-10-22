@@ -7,9 +7,8 @@ import java.util.List;
 import java.util.Random;
 
 import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data;
-import model.MathCommand;
 
 /**
  *
@@ -21,10 +20,11 @@ public class RandomNumber extends Command {
 	private Random random = new Random();
 
 	@Override
-	public Data execute(List<ParseTreeNode<Command>> max, Data data, MathCommand mathcommand) {
-
-		this.setValue(random.nextInt((int) max.get(0).getCommand().getValue()));
-		return data;
+	public double execute(List<ParseTreeNode<CommandInterface>> max) {
+		double randomValue = random.nextInt((int) max.get(0).getCommandValue());
+		this.setValue(randomValue);
+		System.out.println(randomValue);
+		return randomValue;
 	}
 
 }

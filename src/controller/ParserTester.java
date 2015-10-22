@@ -7,8 +7,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-import command.Command;
+import command.CommandInterface;
 import model.Data;
+import model.Data_Turtle_Interface;
 
 public class ParserTester {
 
@@ -18,13 +19,12 @@ public class ParserTester {
 	}
 
 	public static void main(String[] args) throws IOException {
-		Data allData = new Data();
-		Parser parser = new Parser();
+		Data_Turtle_Interface allData = new Data();
+		Parser parser = new Parser(allData);
 		Traverser traverse = new Traverser();
 		String input = readFile("examples/procedures_with_parameters/dash.logo", StandardCharsets.UTF_8);
-		input = "make :d 4";
-		List<ParseTreeNode<Command>> head = parser.parse(input);
-		
+		input= "fd 50";
+		List<ParseTreeNode<CommandInterface>> head = parser.parse(input);
 
 		// Command tempCommand =
 		// control.getParser().getCommandFactory().createCommand("Constant");
