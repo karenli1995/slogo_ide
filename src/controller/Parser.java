@@ -6,60 +6,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import com.sun.org.apache.xpath.internal.operations.Minus;
 
 import command.CommandFactory;
 import command.CommandInterface;
-import command.booleanOperations.And;
-import command.booleanOperations.Equal;
-import command.booleanOperations.GreaterThan;
-import command.booleanOperations.LessThan;
-import command.booleanOperations.Not;
-import command.booleanOperations.NotEqual;
-import command.booleanOperations.Or;
-import command.math.Atan;
-import command.math.Cos;
-import command.math.Difference;
-import command.math.Log;
-import command.math.Pi;
-import command.math.Power;
-import command.math.Product;
-import command.math.Quotient;
-import command.math.RandomNumber;
-import command.math.Remainder;
-import command.math.Sine;
-import command.math.Sum;
-import command.math.Tan;
-import command.otherCommands.DoTimes;
-import command.otherCommands.MakeUserInstruction;
-import command.otherCommands.Repeat;
-import command.otherCommands.UserCommand;
-import command.otherCommands.Variable;
-import command.syntax.Constant;
-import command.syntax.ListEnd;
-import command.syntax.ListStart;
-import command.turtle.turtleCommands.Backward;
-import command.turtle.turtleCommands.ClearScreen;
-import command.turtle.turtleCommands.Forward;
-import command.turtle.turtleCommands.HideTurtle;
-import command.turtle.turtleCommands.Home;
-import command.turtle.turtleCommands.Left;
-import command.turtle.turtleCommands.MakeVariable;
-import command.turtle.turtleCommands.PenDown;
-import command.turtle.turtleCommands.PenUp;
-import command.turtle.turtleCommands.Right;
-import command.turtle.turtleCommands.SetHeading;
-import command.turtle.turtleCommands.SetPosition;
-import command.turtle.turtleCommands.ShowTurtle;
-import command.turtle.turtleQueries.Heading;
-import command.turtle.turtleQueries.IsPenDown;
-import command.turtle.turtleQueries.XCoordinate;
-import command.turtle.turtleQueries.YCoordinate;
-import jdk.nashorn.internal.runtime.ParserException;
+import command.CommandRegister;
+
 import model.Data;
 import model.ForObserverInterface;
 
-public class Parser{
+public class Parser {
 	private String[] inputArray;
 	private Patterner pattern;
 	private List<String[]> commandList;
@@ -68,6 +23,9 @@ public class Parser{
 	private final String INPUT_RESOURCES = "resources/input";
 	private final String ERROR_RESOURCES = "resources/error";
 	private List<ParseTreeNode<CommandInterface>> nodeList;
+
+	private CommandRegister cr;
+
 	private String myErrorMessage;
 	private ResourceBundle resources;
 	private Map<String, Integer> commandTimesMap;
@@ -78,75 +36,16 @@ public class Parser{
 		errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
 		pattern = new Patterner();
 		cf = new CommandFactory(allData);
+		cr = new CommandRegister(cf);
 		this.commandRegistration();
-		this.allData= allData;
-
+		this.allData = allData;
 
 		this.numInputs();
 	}
 
 	private void commandRegistration() {
-		try {
-			cf.registerCommand("Forward", Forward.class);
-			cf.registerCommand("Backward", Backward.class);
-			cf.registerCommand("Right", Right.class);
-			cf.registerCommand("Left", Left.class);
-			cf.registerCommand("Home", Home.class);
-			cf.registerCommand("SetHeading", SetHeading.class);
-			cf.registerCommand("SetPosition", SetPosition.class);
-			cf.registerCommand("ClearScreen", ClearScreen.class);
-			cf.registerCommand("Heading", Heading.class);
-			cf.registerCommand("Constant", Constant.class);
-			cf.registerCommand("ListEnd", ListEnd.class);
-			cf.registerCommand("ListStart", ListStart.class);
-			cf.registerCommand("Repeat", Repeat.class);
-			cf.registerCommand("Sum", Sum.class);
-			cf.registerCommand("Product", Product.class);
-			cf.registerCommand("ArcTangent", Atan.class);
-			cf.registerCommand("Cosine", Cos.class);
-			cf.registerCommand("Difference", Difference.class);
-			cf.registerCommand("Log", Log.class);
-			cf.registerCommand("Minus", Minus.class);
-			cf.registerCommand("Pi", Pi.class);
-			cf.registerCommand("Power", Power.class);
-			cf.registerCommand("Quotient", Quotient.class);
-			cf.registerCommand("Random", RandomNumber.class);
-			cf.registerCommand("Remainder", Remainder.class);
-			cf.registerCommand("Sine", Sine.class);
-			cf.registerCommand("Tangent", Tan.class);
-			cf.registerCommand("IsPenDown", IsPenDown.class);
-			cf.registerCommand("DoTimes", DoTimes.class);
-			cf.registerCommand("Quotient", Quotient.class);
-			cf.registerCommand("Sine", Sine.class);
-			cf.registerCommand("MakeUserInstruction", MakeUserInstruction.class);
-			cf.registerCommand("PenUp", PenUp.class);
-			cf.registerCommand("PenDown", PenDown.class);
-			cf.registerCommand("MakeVariable", MakeVariable.class);
-			cf.registerCommand("Variable", Variable.class);
-			cf.registerCommand("UserCommand", UserCommand.class);
-			cf.registerCommand("HideTurtle", HideTurtle.class);
-			cf.registerCommand("ShowTurtle", ShowTurtle.class);
-			cf.registerCommand("PenDown", PenDown.class);
-			cf.registerCommand("PenUp", PenUp.class);
-			cf.registerCommand("PenUp", PenUp.class);
-			cf.registerCommand("XCoordinate", XCoordinate.class);
-			cf.registerCommand("YCoordinate", YCoordinate.class);
-			// cf.registerCommand("IsShowing", IsShowing.class);
-			cf.registerCommand("IsPenDown", IsPenDown.class);
-			cf.registerCommand("And", And.class);
-			cf.registerCommand("Or", Or.class);
-			cf.registerCommand("GreaterThan", GreaterThan.class);
-			cf.registerCommand("Equal", Equal.class);
-			cf.registerCommand("NotEqual", NotEqual.class);
-			cf.registerCommand("LessThan", LessThan.class);
-			cf.registerCommand("Not", Not.class);
 
-
-		} catch (Exception e) {
-
-			throw new ParserException(errorResources.getString("commandRegistration"));
-
-		}
+		cr.register();
 
 	}
 
@@ -158,10 +57,10 @@ public class Parser{
 		if (this.checkInput()) {
 			this.createParseTree();
 		}
-		//System.out.println(nodeList.size());
+
 		for (ParseTreeNode<CommandInterface> p : nodeList) {
 			this.printTreeInOrder(p);
-		//	System.out.println("");
+			// System.out.println("");
 
 		}
 
@@ -185,7 +84,7 @@ public class Parser{
 	private int createParseTree(int index, ParseTreeNode<CommandInterface> head) {
 
 		int numInputs = this.getNumInputs(head);
-		//System.out.println(numInputs);
+		// System.out.println(numInputs);
 
 		if (numInputs == 0) {
 			return index;
@@ -194,13 +93,18 @@ public class Parser{
 			List<ParseTreeNode<CommandInterface>> tempNodeList = new ArrayList<ParseTreeNode<CommandInterface>>();
 
 			if (commandList.get(index)[1].equals("ListStart")) {
+				ParseTreeNode<CommandInterface> listStart = createNewNode(index);
+				tempNodeList.add(listStart);
 				index++;
 				while (true) {
 					if (!commandList.get(index)[1].equals("ListEnd")) {
 						ParseTreeNode<CommandInterface> newNode = createNewNode(index);
+
 						index = createParseTree(index + 1, newNode);
 						tempNodeList.add(newNode);
 					} else {
+						ParseTreeNode<CommandInterface> listEnd = createNewNode(index);
+						tempNodeList.add(listEnd);
 						index++;
 
 						break;
@@ -208,8 +112,8 @@ public class Parser{
 				}
 			} else {
 				ParseTreeNode<CommandInterface> newNode = createNewNode(index);
-				//System.out.println(commandList.get(index)[1]);
-				//System.out.println(index);
+				// System.out.println(commandList.get(index)[1]);
+				// System.out.println(index);
 				index = createParseTree(index + 1, newNode);
 				tempNodeList.add(newNode);
 			}
@@ -259,18 +163,16 @@ public class Parser{
 
 	private int getNumInputs(ParseTreeNode<CommandInterface> node) {
 		int numInputs = Integer.parseInt(resources.getString(node.getCommand().getClass().getSimpleName()));
-		if (checkMatch("UserCommand", node)){
-			if(!commandTimesMap.containsKey(node.getCommand().getName())){
 
-				try{
-				numInputs = commandInputMap.get(node.getCommand().getName());
+		if (checkMatch("UserCommand", node)) {
+			if (!commandTimesMap.containsKey(node.getCommand().getName())) {
+				try {
+					numInputs = commandInputMap.get(node.getCommand().getName());
+				} catch (Exception e) {
+					allData.setErrorMessage(errorResources.getString("notFound"));
 				}
-			 catch (Exception e) {
-				 allData.setErrorMessage(errorResources.getString("notFound"));
-				//throw new ParserException(errorResources.getString("notFound"));
+			} else {
 
-			}
-			} else{
 				commandTimesMap.remove(node.getCommand().getName());
 			}
 
@@ -278,10 +180,9 @@ public class Parser{
 		return numInputs;
 	}
 
-
 	public void printCommandList() {
 		for (String[] s : commandList) {
-		//	System.out.println(s[0] + ", " + s[1]);
+			// System.out.println(s[0] + ", " + s[1]);
 		}
 	}
 
@@ -294,10 +195,12 @@ public class Parser{
 				printTreeInOrder(node);
 			}
 		}
-/*
-		System.out.println(head.getCommand().getClass().getSimpleName() + " " + head.getCommand().getValue() + "->"
-				+ head.getParent().getCommand().getClass().getSimpleName() + " "
-				+ head.getParent().getCommand().getValue());*/
+		/*
+		 * System.out.println(head.getCommand().getClass().getSimpleName() + " "
+		 * + head.getCommand().getValue() + "->" +
+		 * head.getParent().getCommand().getClass().getSimpleName() + " " +
+		 * head.getParent().getCommand().getValue());
+		 */
 
 	}
 
@@ -343,7 +246,5 @@ public class Parser{
 	public boolean checkInput() {
 		return !commandList.isEmpty();
 	}
-
-
 
 }
