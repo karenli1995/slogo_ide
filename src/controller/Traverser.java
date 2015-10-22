@@ -44,6 +44,7 @@ public class Traverser {
 		while (!commandQueue.isEmpty()) {
 			ParseTreeNode<CommandInterface> tempNode = commandQueue.poll();
 			Double commandValue= tempNode.getCommand().execute(tempNode.getChildren());
+			
 		}
 
 	}

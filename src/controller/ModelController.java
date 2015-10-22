@@ -51,6 +51,9 @@ public class ModelController extends ControlFunctions {
 		scene.addObserver(turtleScene);
 		scene.addObserver(currTurtState);
 		
+		Prompt prompt = myGuiManager.getMyPrompt();
+		scene.addObserver(prompt);
+		
 	}
 
 
