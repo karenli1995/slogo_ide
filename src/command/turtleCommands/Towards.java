@@ -5,20 +5,20 @@ package command.turtleCommands;
 
 import java.util.List;
 
+import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data_Turtle_Interface;
 
 /**
  *
  * @author Sally Al
  *
  */
-public class Towards extends CommandInterface {
+public class Towards extends Command {
 	@Override
-	public Data_Turtle_Interface execute(List<ParseTreeNode<CommandInterface>> distance, Data_Turtle_Interface data) {
+	public double execute(List<ParseTreeNode<CommandInterface>> distance) {
 		this.setValue(0);
-		return data;
+		return 0;
 	}
 
 }

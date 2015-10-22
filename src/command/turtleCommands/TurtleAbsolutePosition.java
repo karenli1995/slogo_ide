@@ -5,7 +5,7 @@ package command.turtleCommands;
 
 import java.util.List;
 
-import command.CommandInterface;
+import command.Command;
 import javafx.geometry.Point2D;
 import model.Data_Turtle_Interface;
 import model.Trail;
@@ -15,28 +15,38 @@ import model.Trail;
  * @author Sally Al
  *
  */
-public abstract class TurtleAbsolutePosition extends CommandInterface {
+public abstract class TurtleAbsolutePosition extends Command {
+	private Data_Turtle_Interface turtleData;
 
-	protected double calculateDistanceBetweenTwoPoints(List<Double> newLocation, Data_Turtle_Interface data) {
+	public TurtleAbsolutePosition(Data_Turtle_Interface turtleData) {
+		this.turtleData = turtleData;
 
-		double x1 = data.getTurtle(0).getTrail().getX();
-		double y1 = data.getTurtle(0).getTrail().getY();
+	}
+
+	protected double calculateDistanceBetweenTwoPoints(List<Double> newLocation) {
+
+		double x1 = turtleData.getTurtle(0).getTrail().getX();
+		double y1 = turtleData.getTurtle(0).getTrail().getY();
 		double x2 = newLocation.get(0);
 		double y2 = newLocation.get(1);
 
 		double distance = ((y2 - y1) * (y2 - y1)) + ((x2 - x1) * (x2 - x1));
 		distance = Math.sqrt(distance);
 
-		data.getTurtle(0).getTrail().addCoord(new Point2D(x2, y2));
+		turtleData.getTurtle(0).getTrail().addCoord(new Point2D(x2, y2));
 
 		return distance;
 	}
 
-	protected void addToTrail(Data_Turtle_Interface data, Point2D point) {
-		Trail loc = data.getTurtle(0).getTrail();
+	protected void addToTrail(Point2D point) {
+		Trail loc = turtleData.getTurtle(0).getTrail();
 		loc.setPoint(point);
-		data.getTurtle(0).setTrail(loc);
-		data.getTurtle(0).getTrail().addCoord(point);
+		turtleData.getTurtle(0).setTrail(loc);
+		turtleData.getTurtle(0).getTrail().addCoord(point);
+		turtleData.setTurtle(0, turtleData.getTurtle(0));
+
+
+
 	}
 
 }

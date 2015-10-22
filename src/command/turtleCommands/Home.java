@@ -17,17 +17,24 @@ import model.Data_Turtle_Interface;
  *
  */
 public class Home extends TurtleAbsolutePosition {
+	private Data_Turtle_Interface turtleData;
+
+	public Home(Data_Turtle_Interface turtleData) {
+		super(turtleData);
+		this.turtleData = turtleData;
+	}
 
 	@Override
-	public Data_Turtle_Interface execute(List<ParseTreeNode<CommandInterface>> argument, Data_Turtle_Interface data) {
+	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
 		List<Double> defaultPosition = new ArrayList<Double>();
 		defaultPosition.add(0.0);
 		defaultPosition.add(0.0);
-		data.getTurtle(0).setRotationAngle(0.0);
-		this.setValue(calculateDistanceBetweenTwoPoints(defaultPosition, data));
+		turtleData.getTurtle(0).setRotationAngle(0.0);
+		double distanceMoved= calculateDistanceBetweenTwoPoints(defaultPosition);
+		this.setValue(distanceMoved);
 		Point2D point = new Point2D(0.0, 0.0);
-		addToTrail(data, point);
-		return data;
+		addToTrail(point);
+		return distanceMoved;
 	}
 
 }

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -11,5 +11,6 @@ package model;
 public interface Data_Turtle_Interface {
 
 	SlogoObjects getTurtle(int turtleId);
+	void  setTurtle(int turtleId, SlogoObjects turtle);
 
 }

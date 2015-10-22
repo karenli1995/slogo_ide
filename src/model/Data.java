@@ -33,7 +33,7 @@ public class Data extends Observable implements Data_Turtle_Interface{
 		setMyColor(Color.ALICEBLUE);
 	}
 
-
+	@Override
 	public void setTurtle(int turtleId, SlogoObjects turtle){
 		myTurtles.set(turtleId, turtle);
 		setChanged();
@@ -93,7 +93,7 @@ public class Data extends Observable implements Data_Turtle_Interface{
 		this.myVariableMap = variableMap;
 	}
 	public void updateVaraibleMap(String varName, Double value){
-		System.out.println("update");
+	//	System.out.println("update");
 		myVariableMap.put(varName, value);
 		setChanged();
 		notifyObservers();

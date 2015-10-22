@@ -20,7 +20,7 @@ public class ParserTester {
 
 	public static void main(String[] args) throws IOException {
 		Data_Turtle_Interface allData = new Data();
-		Parser parser = new Parser();
+		Parser parser = new Parser(allData);
 		Traverser traverse = new Traverser();
 		String input = readFile("examples/procedures_with_parameters/dash.logo", StandardCharsets.UTF_8);
 		input= "fd 50";

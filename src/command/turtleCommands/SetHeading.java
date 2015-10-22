@@ -5,6 +5,7 @@ package command.turtleCommands;
 
 import java.util.List;
 
+import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeNode;
 import model.Data_Turtle_Interface;
@@ -14,15 +15,21 @@ import model.Data_Turtle_Interface;
  * @author Sally Al
  *
  */
-public class SetHeading extends CommandInterface {
+public class SetHeading extends Command {
+	private Data_Turtle_Interface turtleData;
+
+	public SetHeading(Data_Turtle_Interface turtleDate) {
+		this.turtleData = turtleDate;
+	}
 
 	@Override
-	public Data_Turtle_Interface execute(List<ParseTreeNode<CommandInterface>> headingAngle, Data_Turtle_Interface data) {
-		Double turtleCurrentHeading = data.getTurtle(0).getRotationAngle();
-		Double delta = headingAngle.get(0).getCommand().getValue() - turtleCurrentHeading;
-		data.getTurtle(0).setRotationAngle(turtleCurrentHeading + delta);
+	public double execute(List<ParseTreeNode<CommandInterface>> headingAngle) {
+		Double turtleCurrentHeading = turtleData.getTurtle(0).getRotationAngle();
+		Double delta = headingAngle.get(0).getCommandValue() - turtleCurrentHeading;
+		turtleData.getTurtle(0).setRotationAngle(turtleCurrentHeading + delta);
 		this.setValue(delta);
-		return data;
+		turtleData.setTurtle(0, turtleData.getTurtle(0));
+		return delta;
 	}
 
 }

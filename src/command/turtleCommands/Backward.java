@@ -3,7 +3,7 @@
  */
 package command.turtleCommands;
 
-import model.Data;
+import model.Data_Turtle_Interface;
 
 /**
  *
@@ -13,7 +13,7 @@ import model.Data;
 public class Backward extends TurtleMovement {
 
 
-	public Backward(Data data) {
+	public Backward(Data_Turtle_Interface data) {
 		super(data);
 	}
 

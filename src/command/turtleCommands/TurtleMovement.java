@@ -10,7 +10,7 @@ import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
-import model.Data;
+import model.Data_Turtle_Interface;
 import model.SlogoObjects;
 
 /**
@@ -19,18 +19,20 @@ import model.SlogoObjects;
  *
  */
 public abstract class TurtleMovement extends Command {
-	Data data;
-	public TurtleMovement(Data allData){
-		data=allData;
-	}
+	private Data_Turtle_Interface data;
 
+	public TurtleMovement(Data_Turtle_Interface allData) {
+		data = allData;
+
+	}
 
 	@Override
 	public double execute(List<ParseTreeNode<CommandInterface>> distance) {
 		SlogoObjects currTurtle = data.getTurtle(0);
-		moveFdorBK(distance.get(0).getCommand().getValue(), currTurtle, data);
-		setValue(distance.get(0).getCommand().getValue());
-		return distance.get(0).getCommand().getValue();
+		// moveFdorBK(distance.get(0).getCommandValue(), currTurtle, data);
+		moveFdorBK(distance.get(0).getCommandValue(), currTurtle);
+		setValue(distance.get(0).getCommandValue());
+		return distance.get(0).getCommandValue();
 
 	}
 
@@ -39,7 +41,9 @@ public abstract class TurtleMovement extends Command {
 		return Double.valueOf(df2.format(val));
 	}
 
-	public void moveFdorBK(double distance, SlogoObjects myTurtle, Data myData) {
+	// public void moveFdorBK(double distance, SlogoObjects myTurtle, Data
+	// myData) {
+	public void moveFdorBK(double distance, SlogoObjects myTurtle) {
 		int sign = getSign();
 
 		double tempXLocation;
@@ -50,7 +54,7 @@ public abstract class TurtleMovement extends Command {
 
 		tempXLocation = RoundTo2Decimals(Math.sin(radians));
 		tempYLocation = RoundTo2Decimals(Math.cos(radians));
-
+		// will re-factor this later
 		if (tempXLocation == 0.0 || tempXLocation == -0.0) {
 			tempXLocation = myTurtle.getTrail().getX();
 		} else {
@@ -69,7 +73,7 @@ public abstract class TurtleMovement extends Command {
 		myTurtle.getTrail().setPoint(newLoc);
 		myTurtle.setRotationAngle(degrees);
 
-		myData.setTurtle(0, myTurtle);
+		data.setTurtle(0, myTurtle);
 	}
 
 	protected abstract int getSign();

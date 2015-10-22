@@ -5,6 +5,7 @@ package command.turtleCommands;
 
 import java.util.List;
 
+import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeNode;
 import model.Data_Turtle_Interface;
@@ -14,13 +15,19 @@ import model.Data_Turtle_Interface;
  * @author Sally Al
  *
  */
-public abstract class TurtleVisibility extends CommandInterface {
+public abstract class TurtleVisibility extends Command {
+	private Data_Turtle_Interface data;
+
+	public TurtleVisibility(Data_Turtle_Interface turtleData) {
+		super(turtleData);
+		data = turtleData;
+	}
 
 	@Override
-	public Data_Turtle_Interface execute(List<ParseTreeNode<CommandInterface>> angle, Data_Turtle_Interface data) {
+	public double execute(List<ParseTreeNode<CommandInterface>> angle) {
 		data.getTurtle(0).setIsShowing(visibility());
 		this.setValue(visibilityValue());
-		return data;
+		return visibilityValue();
 
 	}
 
