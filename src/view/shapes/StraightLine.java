@@ -24,7 +24,7 @@ public class StraightLine extends AbstractShape {
 	@Override
 	public Line drawShape(List<Point2D> currTrailList) {
 		int mySceneId = myTurtScene.getIdOfTab();
-		
+
 		// should call getAllTrails from the Data instead?
 		int lastPointInList = currTrailList.size() - 1;
 
@@ -32,8 +32,8 @@ public class StraightLine extends AbstractShape {
 		Point2D point2 = translateForScreen(currTrailList.get(lastPointInList));
 
 		Line recentLine = new Line(point1.getX(), point1.getY(), point2.getX(), point2.getY());
-		recentLine.setStroke(myModelController.getMyScene().getData(mySceneId).getTurtle(0).getPen().getColor());
-		recentLine.setStrokeWidth(myModelController.getMyScene().getData(mySceneId).getTurtle(0).getPen().getThickness());
+		recentLine.setStroke(myModelController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().getColor());
+		recentLine.setStrokeWidth(myModelController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().getThickness());
 		myAllShapes.add(recentLine);
 
 		return recentLine;

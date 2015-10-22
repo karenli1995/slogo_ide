@@ -1,19 +1,11 @@
 package view.scene;
 
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-
 import controller.ModelController;
-import javafx.geometry.Point2D;
-import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import model.Data;
-import model.SlogoScene;
 import model.Turtle;
 import view.settings.SlogoProperties;
 import view.shapes.AbstractShape;
@@ -49,14 +41,14 @@ public class TurtleSceneTab extends Tab{
 		this.setContent(myCanvas);
 
 	}
-	
+
 //	public int getTabId(){
 //		return myTabId;
 //	}
 
 	public void setTurtleAndTrail(int id, TurtleScene turtScene) {
 		int sceneId = turtScene.getIdOfTab();
-		Turtle currTurt = (Turtle) myModelController.getMyScene().getData(sceneId).getTurtle(id);
+		Turtle currTurt = (Turtle) myModelController.getMyScene().getTurtleData(sceneId).getTurtle(id);
 		double currTurtLocX = currTurt.getTrail().getX();
 		double currTurtLocY = currTurt.getTrail().getY();
 		System.out.println(currTurtLocX);
@@ -68,7 +60,7 @@ public class TurtleSceneTab extends Tab{
 
 	public void setTurtImage(ImageView image, int id) {
 		int sceneId = myTurtScene.getIdOfTab();
-		Turtle currTurt = (Turtle) myModelController.getMyScene().getData(sceneId).getTurtle(id);
+		Turtle currTurt = (Turtle) myModelController.getMyScene().getTurtleData(sceneId).getTurtle(id);
 		double currTurtLocX = currTurt.getTrail().getX();
 		double currTurtLocY = currTurt.getTrail().getY();
 		mySlogoImage.setMyImage(image);
@@ -78,12 +70,12 @@ public class TurtleSceneTab extends Tab{
 //	public List<Object> getAllShapes() {
 //		return myShape.getAllShapes();
 //	}
-	
+
 	public Object getRecentShape(){
 		int ind =  myShape.getAllShapes().size()-1;
 		return myShape.getAllShapes().get(ind);
 	}
-	
+
 	public AbstractShape getShape() {
 		return myShape;
 	}
@@ -91,7 +83,7 @@ public class TurtleSceneTab extends Tab{
 //	public ImageView getTurtImage() {
 //		return myImage;
 //	}
-	
+
 	public Canvas getCanvas(){
 		return myCanvas;
 	}
@@ -112,5 +104,5 @@ public class TurtleSceneTab extends Tab{
 	public SlogoImage getSlogoImage() {
 		return mySlogoImage;
 	}
-	
+
 }
