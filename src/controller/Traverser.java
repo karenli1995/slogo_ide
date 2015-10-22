@@ -21,6 +21,8 @@ public class Traverser {
 
 		return allData;
 	}
+	
+	
 
 	public void iterateTreePostOrder(ParseTreeNode<CommandInterface> node) {
 		System.out.println(node.getNumberOfChildren());
@@ -32,7 +34,7 @@ public class Traverser {
 		commandQueue.add(node);
 	}
 
-	public void iterateTreePostOrder(List<ParseTreeNode<CommandInterface>> node) {
+	private void iterateTreePostOrder(List<ParseTreeNode<CommandInterface>> node) {
 		if (node == null)
 			return;
 		
