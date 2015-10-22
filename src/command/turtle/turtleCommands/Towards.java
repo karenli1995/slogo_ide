@@ -16,7 +16,7 @@ import controller.ParseTreeNode;
  */
 public class Towards extends Command {
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> distance) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
 		this.setValue(0);
 		return 0;
 	}

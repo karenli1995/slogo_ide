@@ -24,7 +24,7 @@ public abstract class TurtleVisibility extends Command {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> angle) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> angle) {
 		data.getTurtle(0).setIsShowing(visibility());
 		this.setValue(visibilityValue());
 		return visibilityValue();

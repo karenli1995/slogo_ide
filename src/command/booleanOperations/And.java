@@ -20,7 +20,7 @@ public class And extends Command {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
 
 		if ((argument.get(0).getCommandValue() != 0 && argument.get(1).getCommandValue() != 0)) {
 			this.setValue(1.0);

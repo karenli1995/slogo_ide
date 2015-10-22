@@ -23,7 +23,7 @@ public class SetHeading extends Command {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> headingAngle) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> headingAngle) {
 		Double turtleCurrentHeading = turtleData.getTurtle(0).getRotationAngle();
 		Double delta = headingAngle.get(0).getCommandValue() - turtleCurrentHeading;
 		turtleData.getTurtle(0).setRotationAngle(turtleCurrentHeading + delta);

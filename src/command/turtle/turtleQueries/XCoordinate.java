@@ -24,7 +24,7 @@ public class XCoordinate extends Command {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> distance) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
 		double x = turtleData.getTurtle(0).getTrail().getX();
 		// turtleScene.getCentrex();
 		this.setValue(x);

@@ -18,7 +18,7 @@ public abstract class Trig extends Command {
 	private static final int ANGLE = 90;
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> angle) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> angle) {
 		if (checkUnderfinedAngle(angle.get(0).getCommand().getValue())) {
 			this.setValue(0);
 		} else {

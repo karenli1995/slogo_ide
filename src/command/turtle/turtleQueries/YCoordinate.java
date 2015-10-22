@@ -24,7 +24,7 @@ public class YCoordinate extends Command {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> distance) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
 		distance.clear();
 		double y = turtleData.getTurtle(0).getTrail().getY();
 

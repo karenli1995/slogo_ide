@@ -17,7 +17,7 @@ import controller.ParseTreeNode;
 public class Sine extends Command {
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
 		double sine =Math.sin(Math.toRadians(argument.get(0).getCommandValue()));
 		this.setValue(sine);
 		return sine;

@@ -27,7 +27,7 @@ public abstract class TurtleMovement extends Command {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> distance) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
 		SlogoObjects currTurtle = data.getTurtle(0);
 		// moveFdorBK(distance.get(0).getCommandValue(), currTurtle, data);
 		moveFdorBK(distance.get(0).getCommandValue(), currTurtle);

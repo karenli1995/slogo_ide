@@ -17,7 +17,7 @@ import controller.ParseTreeNode;
 public class GreaterThan extends Command {
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
 		if (argument.get(0).getCommandValue() > argument.get(1).getCommandValue()) {
 			this.setValue(1);
 			return 1.0;

@@ -11,10 +11,8 @@ import model.Data;
 
 public class Traverser {
 	private Queue<ParseTreeNode<CommandInterface>> commandQueue;
-	private Stack<ParseTreeNode<CommandInterface>> listEndStack;
 
 	public Data traverse(List<ParseTreeNode<CommandInterface>> node, Data allData) {
-		listEndStack = new Stack<ParseTreeNode<CommandInterface>>();
 		commandQueue = new LinkedList<ParseTreeNode<CommandInterface>>();
 		for (ParseTreeNode<CommandInterface> s : node) {
 			this.iterateTreePostOrder(s);
@@ -26,27 +24,36 @@ public class Traverser {
 	}
 
 	public void iterateTreePostOrder(ParseTreeNode<CommandInterface> node) {
-		if (node == null)
-			return;
-
-		if (node.getClass().getSimpleName().equals("ListEnd")) {
-
-		}
-		for (ParseTreeNode<CommandInterface> childNode : node.getChildren()) {
+		for (List<ParseTreeNode<CommandInterface>> childNode : node.getChildren()) {
 			this.iterateTreePostOrder(childNode);
 		}
 
 		commandQueue.add(node);
 	}
 
-	public void executeCommands() {
+	public void iterateTreePostOrder(List<ParseTreeNode<CommandInterface>> node) {
+		if (node == null)
+			return;
+		for (ParseTreeNode<CommandInterface> subList : node) {
+			for (List<ParseTreeNode<CommandInterface>> childNode : subList.getChildren()) {
+				this.iterateTreePostOrder(childNode);
+			}
+		}
+		if(node.size() == 1){
+			commandQueue.add(node.get(0));
+		}
+	}
 
+	public double executeCommands() {
+		Double commandValue = null;
 		while (!commandQueue.isEmpty()) {
 			ParseTreeNode<CommandInterface> tempNode = commandQueue.poll();
-			Double commandValue= tempNode.getCommand().execute(tempNode.getChildren());
+
+			commandValue = tempNode.getCommand().execute(tempNode.getChildren());
+
 			
 		}
-
+		return commandValue;
 	}
 
 }

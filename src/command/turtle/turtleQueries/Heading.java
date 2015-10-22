@@ -24,7 +24,7 @@ public class Heading extends Command {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> distance) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
 		double angle = turtleData.getTurtle(0).getRotationAngle();
 		this.setValue(angle);
 		return angle;
