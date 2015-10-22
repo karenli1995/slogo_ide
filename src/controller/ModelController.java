@@ -27,9 +27,10 @@ public class ModelController extends ControlFunctions {
 		myGuiManager = new GUIManager(stage, this);
 		
 		TurtleScene turtScene = myGuiManager.getTurtScene();
-//		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
 		
 		addObservable(turtScene, myScene);
+		
+//		myGuiManager.getTurtScene().getCurrTab().getSlogoImage(0).setScreenLoc(0, 0);
 //		createAnimation();
 	}
 	

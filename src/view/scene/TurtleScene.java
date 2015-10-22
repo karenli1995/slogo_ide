@@ -17,13 +17,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import view.settings.SlogoProperties;
 import view.turtles.SlogoImage;
 
 public class TurtleScene extends TabPane implements Observer{
-
-//	private ImageView myImage;
 	private TurtleSceneTab myCurrentSceneTab;
 	private List<TurtleSceneTab> myTabs = new ArrayList<TurtleSceneTab>();
 	private ModelController myController;
@@ -38,6 +35,16 @@ public class TurtleScene extends TabPane implements Observer{
 		TurtleSceneTab newTab = new TurtleSceneTab(this, myController);
 		myCurrentSceneTab = newTab;
 		addListener();
+		
+		//check
+		List<SlogoImage> allSlogoImages = newTab.getAllSlogoImages();
+		for (SlogoImage slogoImage : allSlogoImages){
+			ImageView image = slogoImage.getMyImage();
+			image.setX(0);
+			image.setY(0);
+			this.setScreenLoc(image, image.getX(), image.getY());
+		}
+		
 //		myTabs.add(newTab);
 	}
 	
@@ -52,15 +59,6 @@ public class TurtleScene extends TabPane implements Observer{
 	public List<TurtleSceneTab> getMyTabs() {
 		return myTabs;
 	}
-	
-//	public void setCurrentSceneTab(TurtleSceneTab scene){
-//		this.getSelectionModel().
-////		myCurrentSceneTab = scene;
-//	}
-	
-//	public TurtleSceneTab getCurrentSceneTab(){
-//		return myCurrentSceneTab;
-//	}
 	
 	public TurtleSceneTab getTabById(int id) {
 		return myTabs.get(id);
@@ -116,6 +114,40 @@ public class TurtleScene extends TabPane implements Observer{
 		return myController;
 	}
 	
+	/**
+	 * translates coordinates to a point on the canvas TurtleScene
+	 * 
+	 * @param x
+	 * @param y
+	 */
+	public void setScreenLoc(ImageView imageView, double x, double y) {
+		TurtleSceneTab currTab = this.getCurrTab();
+		int id = this.getIdOfTab();		
+		System.out.println(id + " bob");
+		
+		// should check for bounds as well
+		double newLocX = x + this.getX() + currTab.getMyCanvasWidth() / 2;
+		double newLocY = this.getY() + currTab.getMyCanvasHeight() / 2 - y;
+		if (checkBounds(newLocX, newLocY)) {
+			imageView.setLayoutX(newLocX);
+			imageView.setLayoutY(newLocY);
+		}
+		
+		this.updateMyTabs(id, currTab);
+	}
+
+	private boolean checkBounds(double x, double y) {
+		TurtleSceneTab currTab = this.getCurrTab();
+		int id = this.getIdOfTab();
+		
+		if (x < this.getX() || x > this.getX() + currTab.getMyCanvasWidth()
+				|| y < this.getY() || y > this.getY() + currTab.getMyCanvasHeight()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
 	
 	public void addListener(){
 		this.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
@@ -132,6 +164,7 @@ public class TurtleScene extends TabPane implements Observer{
 				List<SlogoImage> newTurts = newTab.getAllSlogoImages();
 				for (SlogoImage slogoImage : newTurts){
 					newTab.getTurtScene().addChildren(slogoImage.getMyImage());
+					newTab.getTurtScene().setScreenLoc(slogoImage.getMyImage(), slogoImage.getMyImage().getX(), slogoImage.getMyImage().getY());
 				}
 
 				newTab.getTurtScene().updateMyTabs((int) newValue, newTab);
@@ -181,8 +214,10 @@ public class TurtleScene extends TabPane implements Observer{
 			double newLocX = slogoObject.getTrail().getX();
 			double newLocY = slogoObject.getTrail().getY();
 			SlogoImage currSlogoImage = tab.getSlogoImage(i);
-			currSlogoImage.setScreenLoc(newLocX, newLocY);
+			currSlogoImage.setX(newLocX);
+			currSlogoImage.setY(newLocY);
 			currSlogoImage.setRotation(newRotAngle);
+			this.setScreenLoc(currSlogoImage.getMyImage(), currSlogoImage.getX(), currSlogoImage.getY());
 			tab.setSlogoImage(i, currSlogoImage);
 		}
 		

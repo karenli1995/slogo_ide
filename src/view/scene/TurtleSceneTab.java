@@ -33,6 +33,7 @@ public class TurtleSceneTab extends Tab{
 
 	public TurtleSceneTab(TurtleScene turtScene, ModelController controller) {
 		this.setText("New Text");
+		turtScene.getSelectionModel().select(this);
 		myAllSlogoImages = new ArrayList<SlogoImage>();
 		myTurtScene = turtScene;
 		myModelController = controller;
@@ -57,7 +58,8 @@ public class TurtleSceneTab extends Tab{
 		double currTurtLocX = currTurt.getTrail().getX();
 		double currTurtLocY = currTurt.getTrail().getY();
 		SlogoImage slogoImage = this.getSlogoImage(id);
-		slogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
+		slogoImage.setX(currTurtLocX);
+		slogoImage.setY(currTurtLocY);
 		myAllSlogoImages.add(id, slogoImage);
 	}
 	
@@ -87,7 +89,6 @@ public class TurtleSceneTab extends Tab{
 		gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 	}
 	
-	//unused
 	public void setSlogoImage(int id, SlogoImage slogoImage) {
 		myAllSlogoImages.add(id, slogoImage);
 	}

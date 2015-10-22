@@ -15,11 +15,34 @@ public class SlogoImage {
 	private ImageView myImageView = new ImageView(myImage);
 
 	private TurtleScene myTurtScene;
+	
+	private double myX;
+	private double myY;
 
 	public SlogoImage(TurtleScene turtlescene) {
 		myTurtScene = turtlescene;
 		setMyImage(myImageView); 
-		setScreenLoc(0, 0);
+		myX = 0;
+		myY = 0;
+//		setScreenLoc(myX, myY);
+	}
+	
+	public double setX(double x){
+		myX = x;
+		return myX;
+	}
+	
+	public double getX(){
+		return myX;
+	}
+	
+	public double setY(double y){
+		myY = y;
+		return myY;
+	}
+	
+	public double getY(){
+		return myY;
 	}
 
 	public ImageView getMyImage() {
@@ -41,39 +64,39 @@ public class SlogoImage {
 		myTurtScene.addChildren((Node) image);
 	}
 
-	/**
-	 * translates coordinates to a point on the canvas TurtleScene
-	 * 
-	 * @param x
-	 * @param y
-	 */
-	public void setScreenLoc(double x, double y) {
-		TurtleSceneTab currTab = myTurtScene.getCurrTab();
-		int id = myTurtScene.getIdOfTab();		
-		System.out.println(id + " bob");
-		
-		// should check for bounds as well
-		double newLocX = x + myTurtScene.getX() + currTab.getMyCanvasWidth() / 2;
-		double newLocY = myTurtScene.getY() + currTab.getMyCanvasHeight() / 2 - y;
-		if (checkBounds(newLocX, newLocY)) {
-			myImageView.setLayoutX(newLocX);
-			myImageView.setLayoutY(newLocY);
-		}
-		
-		myTurtScene.updateMyTabs(id, currTab);
-	}
-
-	private boolean checkBounds(double x, double y) {
-		TurtleSceneTab currTab = myTurtScene.getCurrTab();
-		int id = myTurtScene.getIdOfTab();
-		
-		if (x < myTurtScene.getX() || x > myTurtScene.getX() + currTab.getMyCanvasWidth()
-				|| y < myTurtScene.getY() || y > myTurtScene.getY() + currTab.getMyCanvasHeight()) {
-			return false;
-		} else {
-			return true;
-		}
-	}
+//	/**
+//	 * translates coordinates to a point on the canvas TurtleScene
+//	 * 
+//	 * @param x
+//	 * @param y
+//	 */
+//	public void setScreenLoc(double x, double y) {
+//		TurtleSceneTab currTab = myTurtScene.getCurrTab();
+//		int id = myTurtScene.getIdOfTab();		
+//		System.out.println(id + " bob");
+//		
+//		// should check for bounds as well
+//		double newLocX = x + myTurtScene.getX() + currTab.getMyCanvasWidth() / 2;
+//		double newLocY = myTurtScene.getY() + currTab.getMyCanvasHeight() / 2 - y;
+//		if (checkBounds(newLocX, newLocY)) {
+//			myImageView.setLayoutX(newLocX);
+//			myImageView.setLayoutY(newLocY);
+//		}
+//		
+//		myTurtScene.updateMyTabs(id, currTab);
+//	}
+//
+//	private boolean checkBounds(double x, double y) {
+//		TurtleSceneTab currTab = myTurtScene.getCurrTab();
+//		int id = myTurtScene.getIdOfTab();
+//		
+//		if (x < myTurtScene.getX() || x > myTurtScene.getX() + currTab.getMyCanvasWidth()
+//				|| y < myTurtScene.getY() || y > myTurtScene.getY() + currTab.getMyCanvasHeight()) {
+//			return false;
+//		} else {
+//			return true;
+//		}
+//	}
 
 	public void setRotation(double angle) {
 		this.getMyImage().setRotate(angle);
