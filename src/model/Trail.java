@@ -56,10 +56,7 @@ public class Trail {
 	public void addCoord(Point2D current) {
 		myPath.add(current);
 
-		System.out.println("Current trail");
-		// for(int i = 0; i < myPath.size(); i++){
-		// System.out.println("Point "+i+" = "+myPath.get(i).toString());
-		// }
+
 
 	}
 }

@@ -24,7 +24,6 @@ public class And extends Command {
 
 		if ((argument.get(0).get(0).getCommandValue() != 0 && argument.get(1).get(0).getCommandValue() != 0)) {
 			this.setValue(1.0);
-			System.out.println("Y");
 			return 1.0;
 		} else {
 			this.setValue(0);

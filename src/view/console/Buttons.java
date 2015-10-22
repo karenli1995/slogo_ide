@@ -1,14 +1,10 @@
 package view.console;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-import view.GUIManager;
-import view.scene.TurtleScene;
-import model.Data;
 import controller.ModelController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,7 +14,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import model.Data_Turtle_Interface;
+import model.ForObserverInterface;
+import view.GUIManager;
+import view.scene.TurtleScene;
 
 public class Buttons extends VBox {
 	private static final int OFFSET_SPACE = 10;
@@ -70,7 +68,7 @@ public class Buttons extends VBox {
 
 	/**
 	 * Create the control buttons and place them on the screen
-	 * 
+	 *
 	 * @param property
 	 *            The button text
 	 * @param yIndex
@@ -91,13 +89,13 @@ public class Buttons extends VBox {
 		return button;
 	}
 
-	private void runConsole() {		
+	private void runConsole() {
 		TurtleScene myTurtScene = myGUIManager.getTurtScene();
 		int mySceneId = myTurtScene.getIdOfTab();
 		String consoleText = myConsole.getTextFromConsole();
 
 		myController.getMyScene().parse(consoleText);
-		Data data = myController.getMyScene().traverse(mySceneId); //change Data
+		ForObserverInterface data = myController.getMyScene().traverse(mySceneId); //change Data
 
 		myGUIManager.getMyHistory().addHistory(consoleText);
 		addUserDefinitions();
@@ -114,20 +112,20 @@ public class Buttons extends VBox {
 	private void setAllMargins(Node n) {
 		HBox.setMargin(n, myInset);
 	}
-	
+
 	private void addUserDefinitions(){
 		TurtleScene myTurtScene = myGUIManager.getTurtScene();
 		int mySceneId = myTurtScene.getIdOfTab();
-		if(myController.getMyScene().getData(mySceneId).getUserCommandMap().size()!=0){
-			Set<String> allUserCommands = myController.getMyScene().getData(mySceneId).getUserCommandMap().keySet();
+		if(myController.getMyScene().getObserverData(mySceneId).getUserCommandMap().size()!=0){
+			Set<String> allUserCommands = myController.getMyScene().getObserverData(mySceneId).getUserCommandMap().keySet();
 			for(String i : allUserCommands){
 				myGUIManager.getMyUserCommands().add(i);
 			}
 		}
-		if(myController.getMyScene().getData(mySceneId).getVariableMap().size()!=0){
-			for(String j:myController.getMyScene().getData(mySceneId).getVariableMap().keySet()){
+		if(myController.getMyScene().getObserverData(mySceneId).getVariableMap().size()!=0){
+			for(String j:myController.getMyScene().getObserverData(mySceneId).getVariableMap().keySet()){
 			myGUIManager.getMyUserCommands().add(j);
-			System.out.println("fuck " + myController.getMyScene().getData(mySceneId).getVariableMap().size());
+			System.out.println("fuck " + myController.getMyScene().getObserverData(mySceneId).getVariableMap().size());
 			}
 		}
 	}
