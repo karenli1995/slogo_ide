@@ -2,15 +2,15 @@ package command.otherCommands;
 
 import java.util.List;
 
+import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeNode;
-import model.Data_Turtle_Interface;
 
-public class MakeUserInstruction extends CommandInterface {
+public class MakeUserInstruction extends Command {
 
 	@Override
-	public Data_Turtle_Interface execute(List<ParseTreeNode<CommandInterface>> distance, Data_Turtle_Interface data) {
-		return null;
+	public double execute(List<ParseTreeNode<CommandInterface>> distance) {
+		return 0;
 	}
 
 }

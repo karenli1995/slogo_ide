@@ -92,8 +92,8 @@ public class Data extends Observable implements Data_Turtle_Interface{
 	public void setVariableMap(Map<String, Double> variableMap) {
 		this.myVariableMap = variableMap;
 	}
+	@Override
 	public void updateVaraibleMap(String varName, Double value){
-	//	System.out.println("update");
 		myVariableMap.put(varName, value);
 		setChanged();
 		notifyObservers();
