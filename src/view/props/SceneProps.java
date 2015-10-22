@@ -14,7 +14,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import view.GUIManager;
 import view.scene.TurtleScene;
 import view.scene.TurtleSceneTab;
 
@@ -58,14 +57,14 @@ public class SceneProps extends Tab {
 		cmbColors.setOnAction((event) -> {
 			Color chosenColor = cmbColors.getSelectionModel().getSelectedItem();
 			Canvas currCanvas = (Canvas) myTurtScene.getSelectionModel().getSelectedItem().getContent();
-			
+
 			TurtleSceneTab currTab = myTurtScene.getCurrTab();
 			int mySceneId = myTurtScene.getIdOfTab();
-			
+
 			currTab.setBackgroundColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
-			myController.getMyScene().getData(mySceneId).setMyColor(chosenColor);
+			myController.getMyScene().ColorData(mySceneId).setMyColor(chosenColor);
 			System.out.println("ComboBox Action (selected: " + chosenColor.toString().toUpperCase() + ")");
-			
+
 			myTurtScene.updateMyTabs(mySceneId, currTab);
 		});
 

@@ -43,6 +43,7 @@ public class TurtleScene extends TabPane implements Observer{
 			image.setX(0);
 			image.setY(0);
 			this.setScreenLoc(image, image.getX(), image.getY());
+			this.addChildren(image);
 		}
 		
 //		myTabs.add(newTab);
@@ -197,22 +198,22 @@ public class TurtleScene extends TabPane implements Observer{
 		TurtleSceneTab tab = this.getCurrTab();
 		
 		//when setClear() changes
-		if(otherSlogoObj.getData(tabId).getTurtle(0).getClearTrail() == true){
+		if(otherSlogoObj.getTurtleData(tabId).getTurtle(0).getClearTrail() == true){
 			List<Object> currLines = tab.getShape().getAllShapes();
 			for (Object line : currLines) this.removeChildren((Node) line);
 		}
 		
 		// check if pen down or up
 		//when pendown() changes
-		List<Point2D> currTrailList = otherSlogoObj.getData(tabId).getTurtle(0).getTrail().getPathCoordinates();
-		if (otherSlogoObj.getData(tabId).getTurtle(0).getPen().isDown() == 1.0) {
+		List<Point2D> currTrailList = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPathCoordinates();
+		if (otherSlogoObj.getTurtleData(tabId).getTurtle(0).getPen().isDown() == 1.0) {
 			Node currLine = (Node) tab.getShape().drawShape(currTrailList);
 			tab.getShape().addShape(currLine);
 			this.addChildren(currLine);
 		}
 		
 		//when setRotationAngle() changes and setTrail() changes
-		List<SlogoObjects> turts = otherSlogoObj.getData(tabId).getAllTurtles();
+		List<SlogoObjects> turts = otherSlogoObj.getTurtleData(tabId).getAllTurtles();
 		for (int i=0; i<turts.size(); i++){
 			SlogoObjects slogoObject = turts.get(i);
 			double newRotAngle = slogoObject.getRotationAngle();
@@ -228,7 +229,7 @@ public class TurtleScene extends TabPane implements Observer{
 		}
 		
 		//when setScene() changes
-		Color newColor = otherSlogoObj.getData(tabId).getMyColor();
+		Color newColor = otherSlogoObj.ColorData(tabId).getMyColor();
 		GraphicsContext gc = tab.getCanvas().getGraphicsContext2D();
 		gc.setFill(newColor);
 		gc.fillRect(0, 0, tab.getCanvas().getWidth(), tab.getCanvas().getHeight());

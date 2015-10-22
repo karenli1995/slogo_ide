@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import controller.ModelController;
-import view.scene.TurtleScene;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -17,7 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import javafx.stage.Stage;
+import view.scene.TurtleScene;
 
 public class PenProps extends Tab{
 	private static final int OFFSET_SPACE = 10;
@@ -35,10 +34,10 @@ public class PenProps extends Tab{
 		myTurtleScene = scene;
 //		mySceneId = myTurtleScene.getIdOfTab();
 		myController = controller;
-		
+
 		createPenTab();
 	}
-	
+
 	private void createPenTab(){
 		this.setText(myResource.getString("PENPROPTITLE"));
 		VBox vb = new VBox();
@@ -46,13 +45,13 @@ public class PenProps extends Tab{
 		HBox hb2 = addPenThicknessLabel();
 		HBox hb3 = addPenPosLabel();
 		HBox hb4 = addPenShapeLabel();
-		
+
 		setAllMargins(allElements);
-		
+
 		vb.getChildren().addAll(hb1, hb2, hb3, hb4);
 		this.setContent(vb);
 	}
-	
+
 	private HBox addPenColorLabel() {
 		int mySceneId = myTurtleScene.getIdOfTab();
 
@@ -62,7 +61,7 @@ public class PenProps extends Tab{
 		hb6.getChildren().addAll(penColor, cbColors);
 		cbColors.setOnAction((event) -> {
 			Color chosenColor = cbColors.getSelectionModel().getSelectedItem();
-			myController.getMyScene().getData(mySceneId).getTurtle(0).getPen().setColor(chosenColor);
+			myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setColor(chosenColor);
 
 		});
 
@@ -81,7 +80,7 @@ public class PenProps extends Tab{
 		ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
 		thicknesses.setOnAction((e) -> {
 			Integer thick = thicknesses.getSelectionModel().getSelectedItem();
-			myController.getMyScene().getData(mySceneId).getTurtle(0).getPen().setThickness(thick);
+			myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setThickness(thick);
 		});
 		hb8.getChildren().addAll(thickLabel, thicknesses);
 
@@ -90,7 +89,7 @@ public class PenProps extends Tab{
 
 		return hb8;
 	}
-	
+
 	private HBox addPenPosLabel() {
 		int mySceneId = myTurtleScene.getIdOfTab();
 
@@ -100,8 +99,8 @@ public class PenProps extends Tab{
 		ComboBox<String> positions = new ComboBox<String>(pos);
 		positions.setOnAction((e) -> {
 			String chosenPos = positions.getSelectionModel().getSelectedItem();
-			if (chosenPos == "Up") myController.getMyScene().getData(mySceneId).getTurtle(0).getPen().setPenDown(0.0);
-			if (chosenPos == "Down") myController.getMyScene().getData(mySceneId).getTurtle(0).getPen().setPenDown(1.0);
+			if (chosenPos == "Up") myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setPenDown(0.0);
+			if (chosenPos == "Down") myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setPenDown(1.0);
 		});
 		hb8.getChildren().addAll(penPosLabel, positions);
 
@@ -110,7 +109,7 @@ public class PenProps extends Tab{
 
 		return hb8;
 	}
-	
+
 	private HBox addPenShapeLabel() {
 		HBox hb8 = new HBox();
 		Label penShapeLabel = new Label("Pen Shape");
@@ -135,7 +134,7 @@ public class PenProps extends Tab{
 
 		return hb8;
 	}
-	
+
 	private void setAllMargins(List<Node> nodes) {
 		for (Node n : nodes)
 			HBox.setMargin(n, myInset);

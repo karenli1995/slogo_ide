@@ -14,13 +14,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import view.scene.TurtleScene;
@@ -105,12 +102,12 @@ public class TurtleProps extends Tab {
 				FileInputStream stream = new FileInputStream(file);
 				Image img = new Image(stream);
 				ImageView newTurt = new ImageView(img);
-				
+
 				TurtleSceneTab currTab = myTurtleScene.getCurrTab();
 				int sceneId = myTurtleScene.getIdOfTab();
 				currTab.setTurtImage(newTurt, 0);
 				currTab.getSlogoImage(0).changeTurtImage(newTurt);
-				
+
 				myTurtleScene.updateMyTabs(sceneId, currTab);
 			}
 		} catch (Exception e) {

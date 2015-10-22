@@ -54,7 +54,7 @@ public class TurtleSceneTab extends Tab{
 
 	public void setTurtImage(ImageView image, int id) {
 		int sceneId = myTurtScene.getIdOfTab();
-		Turtle currTurt = (Turtle) myModelController.getMyScene().getData(sceneId).getTurtle(id);
+		Turtle currTurt = (Turtle) myModelController.getMyScene().getTurtleData(sceneId).getTurtle(id);
 		double currTurtLocX = currTurt.getTrail().getX();
 		double currTurtLocY = currTurt.getTrail().getY();
 		SlogoImage slogoImage = this.getSlogoImage(id);

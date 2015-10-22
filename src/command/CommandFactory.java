@@ -22,19 +22,16 @@ public class CommandFactory {
 	public Command createCommand(String commandName) {
 		Class<?> commandClass = reflectionMap.get(commandName);
 
-
 		Constructor<?> commandConstructor = null;
-		try {//based on name grab constractor
+		try {// based on name grab constractor
 
-				commandConstructor = commandClass.getDeclaredConstructors()[0];
-
-		//	System.out.println(commandClass.getDeclaredConstructors()[0]);
+			commandConstructor = commandClass.getDeclaredConstructors()[0];
 
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		}
 		Command command = null;
-		try {//creating the instance
+		try {// creating the instance
 
 			if (commandClass.getPackage().getName().contains("turtle")) {
 				Object[] o = new Object[1];
