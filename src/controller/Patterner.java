@@ -11,7 +11,7 @@ import java.util.Map.Entry;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-public class Patterner {
+public class Patterner extends ControlFunctions {
 	private final String RESOURCES_PATH = "src/resources/languages/";
 	private final String DEFAULT_RESOURCES = "resources/languages/";
 

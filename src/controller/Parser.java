@@ -48,6 +48,7 @@ import command.turtle.turtleQueries.Heading;
 import command.turtle.turtleQueries.IsPenDown;
 import command.turtle.turtleQueries.XCoordinate;
 import command.turtle.turtleQueries.YCoordinate;
+import jdk.nashorn.internal.runtime.ParserException;
 import model.Data_Turtle_Interface;
 
 public class Parser {

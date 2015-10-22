@@ -10,7 +10,7 @@ import command.CommandInterface;
 import controller.ParseTreeNode;
 import javafx.scene.paint.Color;
 
-public class Data extends Observable implements Data_Turtle_Interface {
+public class Data extends Observable implements Data_Turtle_Interface{
 
 	private List<SlogoObjects> myTurtles = new ArrayList<SlogoObjects>();
 	private List<Trail> myTrails = new ArrayList<Trail>();
@@ -20,7 +20,6 @@ public class Data extends Observable implements Data_Turtle_Interface {
 	private Map<String, Double> myVariableMap;
 	private Map<String, ParseTreeNode<CommandInterface>> myUserCommandMap;
 	private Color myColor;
-	private double commandReturnedValue;
 
 	public Data() {
 		Turtle defaultTurtle = new Turtle();
@@ -35,14 +34,14 @@ public class Data extends Observable implements Data_Turtle_Interface {
 	}
 
 	@Override
-	public void setTurtle(int turtleId, SlogoObjects turtle) {
+	public void setTurtle(int turtleId, SlogoObjects turtle){
 		myTurtles.set(turtleId, turtle);
 		setChanged();
 		notifyObservers();
 	}
 
 	@Override
-	public SlogoObjects getTurtle(int turtleId) {
+	public SlogoObjects getTurtle(int turtleId){
 		return myTurtles.get(turtleId);
 	}
 
@@ -58,17 +57,6 @@ public class Data extends Observable implements Data_Turtle_Interface {
 		this.myErrorMessage = errorMessage;
 		setChanged();
 		notifyObservers();
-	}
-
-	public void setCommandReturnedValue(double value) {
-		commandReturnedValue = value;
-		setChanged();
-		notifyObservers();
-
-	}
-
-	public double getCommandReturnedValue() {
-		return commandReturnedValue;
 	}
 
 	public boolean isError() {
@@ -104,9 +92,8 @@ public class Data extends Observable implements Data_Turtle_Interface {
 	public void setVariableMap(Map<String, Double> variableMap) {
 		this.myVariableMap = variableMap;
 	}
-
 	@Override
-	public void updateVaraibleMap(String varName, Double value) {
+	public void updateVaraibleMap(String varName, Double value){
 		myVariableMap.put(varName, value);
 		setChanged();
 		notifyObservers();
@@ -120,15 +107,16 @@ public class Data extends Observable implements Data_Turtle_Interface {
 		this.myUserCommandMap = userCommandMap;
 	}
 
-	public void setMyColor(Color color) {
+	public void setMyColor(Color color){
 		myColor = color;
 		setChanged();
 		notifyObservers();
 	}
 
-	public Color getMyColor() {
+	public Color getMyColor(){
 		return myColor;
 
 	}
+
 
 }

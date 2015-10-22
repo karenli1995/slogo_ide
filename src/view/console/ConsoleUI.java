@@ -28,6 +28,10 @@ public class ConsoleUI extends GridPane {
 		this.add(myPrompt, 3, 1);
 		this.add(myButtonsOnGUI, 2, 1);
 	}
+	
+	public Prompt getPrompt(){
+		return myPrompt;
+	}
 
 	public String getTextFromConsole() {
 		return myConsole.getTextFromConsole();

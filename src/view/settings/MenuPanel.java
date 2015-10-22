@@ -50,6 +50,12 @@ public class MenuPanel extends MenuBar {
 	 */
 	private Menu fileMenu(Stage stage) {
 		Menu menu = new Menu(myResource.getString("FILE"));
+		
+		MenuItem newfile = new MenuItem(myResource.getString("NEW"));
+		newfile.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
+		newfile.setOnAction(e -> {
+			newSlogo();
+		});
 
 		MenuItem open = new MenuItem(myResource.getString("OPEN"));
 		open.setAccelerator(KeyCombination.keyCombination("Ctrl+O"));
@@ -78,6 +84,11 @@ public class MenuPanel extends MenuBar {
 		menu.getItems().addAll(open, save, help, new SeparatorMenuItem(), exit);
 
 		return menu;
+	}
+	
+	private void newSlogo() {
+		Data newData = new Data();
+		myController.getGuiManager().getMyHistory();
 	}
 
 	private void openSlogo() {
