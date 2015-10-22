@@ -6,58 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import com.sun.org.apache.xpath.internal.operations.Minus;
 
 import command.CommandFactory;
 import command.CommandInterface;
 import command.CommandRegister;
-import command.booleanOperations.And;
-import command.booleanOperations.Equal;
-import command.booleanOperations.GreaterThan;
-import command.booleanOperations.LessThan;
-import command.booleanOperations.Not;
-import command.booleanOperations.NotEqual;
-import command.booleanOperations.Or;
-import command.math.Atan;
-import command.math.Cos;
-import command.math.Difference;
-import command.math.Log;
-import command.math.Pi;
-import command.math.Power;
-import command.math.Product;
-import command.math.Quotient;
-import command.math.RandomNumber;
-import command.math.Remainder;
-import command.math.Sine;
-import command.math.Sum;
-import command.math.Tan;
-import command.otherCommands.DoTimes;
-import command.otherCommands.MakeUserInstruction;
-import command.otherCommands.Repeat;
-import command.otherCommands.UserCommand;
-import command.otherCommands.Variable;
-import command.syntax.Constant;
-import command.syntax.ListEnd;
-import command.syntax.ListStart;
-import command.turtle.turtleCommands.Backward;
-import command.turtle.turtleCommands.ClearScreen;
-import command.turtle.turtleCommands.Forward;
-import command.turtle.turtleCommands.HideTurtle;
-import command.turtle.turtleCommands.Home;
-import command.turtle.turtleCommands.Left;
-import command.turtle.turtleCommands.MakeVariable;
-import command.turtle.turtleCommands.PenDown;
-import command.turtle.turtleCommands.PenUp;
-import command.turtle.turtleCommands.Right;
-import command.turtle.turtleCommands.SetHeading;
-import command.turtle.turtleCommands.SetPosition;
-import command.turtle.turtleCommands.ShowTurtle;
-import command.turtle.turtleQueries.Heading;
-import command.turtle.turtleQueries.IsPenDown;
-import command.turtle.turtleQueries.XCoordinate;
-import command.turtle.turtleQueries.YCoordinate;
-import jdk.nashorn.internal.runtime.ParserException;
-import model.Data_Turtle_Interface;
+
+import model.Data;
+import model.ForObserverInterface;
 
 public class Parser {
 	private String[] inputArray;
@@ -68,23 +23,30 @@ public class Parser {
 	private final String INPUT_RESOURCES = "resources/input";
 	private final String ERROR_RESOURCES = "resources/error";
 	private List<ParseTreeNode<CommandInterface>> nodeList;
+
 	private CommandRegister cr;
 
+	private String myErrorMessage;
 	private ResourceBundle resources;
 	private Map<String, Integer> commandTimesMap;
 	private Map<String, Integer> commandInputMap;
+	private ForObserverInterface allData;
 
-	public Parser(Data_Turtle_Interface allData) {
+	public Parser(Data allData) {
 		errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
 		pattern = new Patterner();
 		cf = new CommandFactory(allData);
 		cr = new CommandRegister(cf);
 		this.commandRegistration();
+		this.allData = allData;
+
 		this.numInputs();
 	}
 
 	private void commandRegistration() {
+
 		cr.register();
+
 	}
 
 	public List<ParseTreeNode<CommandInterface>> parse(String input) {
@@ -95,9 +57,10 @@ public class Parser {
 		if (this.checkInput()) {
 			this.createParseTree();
 		}
+
 		for (ParseTreeNode<CommandInterface> p : nodeList) {
 			this.printTreeInOrder(p);
-			System.out.println("");
+			// System.out.println("");
 
 		}
 
@@ -136,8 +99,7 @@ public class Parser {
 				while (true) {
 					if (!commandList.get(index)[1].equals("ListEnd")) {
 						ParseTreeNode<CommandInterface> newNode = createNewNode(index);
-						// System.out.println(commandList.get(index)[1]);
-						// System.out.println(index);
+
 						index = createParseTree(index + 1, newNode);
 						tempNodeList.add(newNode);
 					} else {
@@ -201,128 +163,26 @@ public class Parser {
 
 	private int getNumInputs(ParseTreeNode<CommandInterface> node) {
 		int numInputs = Integer.parseInt(resources.getString(node.getCommand().getClass().getSimpleName()));
+
 		if (checkMatch("UserCommand", node)) {
 			if (!commandTimesMap.containsKey(node.getCommand().getName())) {
-				numInputs = commandInputMap.get(node.getCommand().getName());
+				try {
+					numInputs = commandInputMap.get(node.getCommand().getName());
+				} catch (Exception e) {
+					allData.setErrorMessage(errorResources.getString("notFound"));
+				}
 			} else {
+
 				commandTimesMap.remove(node.getCommand().getName());
 			}
 
 		}
 		return numInputs;
 	}
-	// private int createParseTree() {
-	// int index = 0;
-	// commandInputMap = new HashMap<String, Integer>();
-	// while (index < commandList.size() - 1) {
-	// index = this.createParseTree(index + 1, currentNode);
-	// if (index < commandList.size()) {
-	//
-	// ParseTreeNode<CommandInterface> newNode = new
-	// ParseTreeNode<CommandInterface>(
-	// cf.createCommand(commandList.get(index)[1]));
-	// if (newNode.getCommand().getClass().getSimpleName().equals("Constant")) {
-	// newNode.getCommand().setValue(Double.parseDouble(commandList.get(index)[0]));
-	// } else {
-	// newNode.getCommand().setValue(index);
-	// }
-	// if (newNode.getCommand().getClass().getSimpleName().equals("Variable")
-	// || newNode.getCommand().getClass().getSimpleName().equals("UserCommand"))
-	// {
-	// newNode.getCommand().setName(commandList.get(index)[0]);
-	// }
-	// if (newNode.getCommand().getClass().getSimpleName().equals("UserCommand")
-	// && !commandInputMap.containsKey(commandList.get(index)[0])) {
-	// for (int i = index; i < commandList.size(); i++) {
-	// if (commandList.get(i)[1].equals("ListEnd")) {
-	// int tempInputs = (i - index) - 2;
-	// commandInputMap.put(commandList.get(index)[0], tempInputs);
-	// break;
-	// }
-	// }
-	// }
-	// currentNode.addChild(newNode);
-	// currentNode = newNode;
-	// }
-	// }
-	// return index;
-	// }
-	//
-	// private int createParseTree(int index, ParseTreeNode<CommandInterface> p)
-	// {
-	// if (index < commandList.size()) {
-	// int numInputs =
-	// Integer.parseInt(resources.getString(p.getCommand().getClass().getSimpleName()));
-	// if (commandInputMap.containsKey(p.getCommand().getName())
-	// &&
-	// !p.getParent().getCommand().getClass().getSimpleName().equals("MakeUserInstruction"))
-	// {
-	// numInputs = commandInputMap.get(p.getCommand().getName());
-	// System.out.println(numInputs);
-	// }
-	// if (p.getCommand().getClass().getSimpleName().equals("DoTimes")) {
-	// // System.out.println("turn this to true");
-	// doTimesBoolean = true;
-	// }
-	// if (p.getCommand().getClass().getSimpleName().equals("ListEnd")
-	// ||
-	// p.getCommand().getClass().getSimpleName().equals("MakeUserInstruction"))
-	// {
-	// // System.out.println("this happened");
-	// doTimesBoolean = false;
-	// }
-	// if ((doTimesBoolean &&
-	// p.getCommand().getClass().getSimpleName().equals("Variable"))
-	// || commandList.get(index)[1].equals("ListEnd")) {
-	// // System.out.println("this also happened");
-	// numInputs = 1;
-	// }
-	//
-	// if (numInputs == 0) {
-	// currentNode = p;
-	// return index;
-	// } else {
-	// for (int j = 0; j < numInputs; j++) {
-	//
-	// ParseTreeNode<CommandInterface> newNode = new
-	// ParseTreeNode<CommandInterface>(
-	// cf.createCommand(commandList.get(index)[1]));
-	// if (newNode.getCommand().getClass().getSimpleName().equals("Constant")) {
-	// newNode.getCommand().setValue(Double.parseDouble(commandList.get(index)[0]));
-	// } else {
-	// newNode.getCommand().setValue(index);
-	// }
-	// if (newNode.getCommand().getClass().getSimpleName().equals("Variable")
-	// || newNode.getCommand().getClass().getSimpleName().equals("UserCommand"))
-	// {
-	// newNode.getCommand().setName(commandList.get(index)[0]);
-	// }
-	// if (newNode.getCommand().getClass().getSimpleName().equals("UserCommand")
-	// && !commandInputMap.containsKey(commandList.get(index)[0])) {
-	// for (int i = index; i < commandList.size(); i++) {
-	// if (commandList.get(i)[1].equals("ListEnd")) {
-	// int tempInputs = (i - index) - 2;
-	// commandInputMap.put(commandList.get(index)[0], tempInputs);
-	// break;
-	// }
-	// }
-	// }
-	//
-	// p.addChild(newNode);
-	// // System.out.println(newNode.getCommand().getClass().getSimpleName());
-	// index++;
-	// index = createParseTree(index, newNode);
-	//
-	// }
-	// }
-	// }
-	//
-	// return index;
-	// }
 
 	public void printCommandList() {
 		for (String[] s : commandList) {
-			System.out.println(s[0] + ", " + s[1]);
+			// System.out.println(s[0] + ", " + s[1]);
 		}
 	}
 
@@ -335,10 +195,12 @@ public class Parser {
 				printTreeInOrder(node);
 			}
 		}
-
-		System.out.println(head.getCommand().getClass().getSimpleName() + " " + head.getCommand().getValue() + "->"
-				+ head.getParent().getCommand().getClass().getSimpleName() + " "
-				+ head.getParent().getCommand().getValue());
+		/*
+		 * System.out.println(head.getCommand().getClass().getSimpleName() + " "
+		 * + head.getCommand().getValue() + "->" +
+		 * head.getParent().getCommand().getClass().getSimpleName() + " " +
+		 * head.getParent().getCommand().getValue());
+		 */
 
 	}
 
@@ -384,4 +246,5 @@ public class Parser {
 	public boolean checkInput() {
 		return !commandList.isEmpty();
 	}
+
 }

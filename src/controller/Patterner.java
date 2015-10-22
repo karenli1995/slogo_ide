@@ -2,11 +2,9 @@ package controller;
 
 import java.io.File;
 import java.util.AbstractMap.SimpleEntry;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
@@ -72,7 +70,7 @@ public class Patterner extends ControlFunctions {
 				}
 				if (!matched) {
 					// TODO error
-					System.out.println(String.format("%s not matched", s));
+					//System.out.println(String.format("%s not matched", s));
 				}
 			}
 		}
