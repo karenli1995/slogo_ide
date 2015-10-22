@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ResourceBundle;
 
+import view.GUIManager;
 import controller.ModelController;
 import javafx.animation.Animation.Status;
 import javafx.scene.control.Alert;
@@ -81,14 +82,18 @@ public class MenuPanel extends MenuBar {
 			System.exit(0);
 		});
 
-		menu.getItems().addAll(open, save, help, new SeparatorMenuItem(), exit);
+		menu.getItems().addAll(newfile, open, save, help, new SeparatorMenuItem(), exit);
 
 		return menu;
 	}
 	
 	private void newSlogo() {
-		Data newData = new Data();
-		myController.getGuiManager().getMyHistory();
+//		Data newData = new Data();
+//		myController.getMyScene().addData(newData);
+//		myController.getGuiManager().getTurtScene().createNewTab();
+//		myController.addObservable();
+		GUIManager currGuiManager = myController.getGuiManager();
+		ModelController newController = new ModelController(myStage, currGuiManager);
 	}
 
 	private void openSlogo() {

@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import view.GUIManager;
 import view.scene.TurtleScene;
+import view.scene.TurtleSceneTab;
 
 public class SceneProps extends Tab {
 	private static final int OFFSET_SPACE = 10;
@@ -23,11 +24,13 @@ public class SceneProps extends Tab {
 	private ResourceBundle myResource;
 	private ModelController myController;
 	private TurtleScene myTurtScene;
+//	private int mySceneId;
 
 	private List<Node> allElements;
 
 	public SceneProps(TurtleScene turtscene, ResourceBundle resource,  ModelController controller) {
 		myTurtScene = turtscene;
+//		mySceneId = myTurtScene.getIdOfTab();
 		myResource = resource;
 		myController = controller;
 		allElements = new ArrayList<Node>();
@@ -56,9 +59,14 @@ public class SceneProps extends Tab {
 			Color chosenColor = cmbColors.getSelectionModel().getSelectedItem();
 			Canvas currCanvas = (Canvas) myTurtScene.getSelectionModel().getSelectedItem().getContent();
 			
-			myTurtScene.getCurrTab().setBackgroundColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
-			myController.getData().setMyColor(chosenColor);
+			TurtleSceneTab currTab = myTurtScene.getCurrTab();
+			int mySceneId = myTurtScene.getIdOfTab();
+			
+			currTab.setBackgroundColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
+			myController.getMyScene().getData(mySceneId).setMyColor(chosenColor);
 			System.out.println("ComboBox Action (selected: " + chosenColor.toString().toUpperCase() + ")");
+			
+			myTurtScene.updateMyTabs(mySceneId, currTab);
 		});
 
 		hb7.getChildren().addAll(background, cmbColors);

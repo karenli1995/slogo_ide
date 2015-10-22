@@ -24,6 +24,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import view.scene.TurtleScene;
+import view.scene.TurtleSceneTab;
 
 public class TurtleProps extends Tab {
 	private static final int OFFSET_SPACE = 10;
@@ -104,8 +105,13 @@ public class TurtleProps extends Tab {
 				FileInputStream stream = new FileInputStream(file);
 				Image img = new Image(stream);
 				ImageView newTurt = new ImageView(img);
-				myTurtleScene.getCurrTab().setTurtImage(newTurt, 0);
-				myTurtleScene.changeTurtImage(newTurt);
+				
+				TurtleSceneTab currTab = myTurtleScene.getCurrTab();
+				int sceneId = myTurtleScene.getIdOfTab();
+				currTab.setTurtImage(newTurt, 0);
+				currTab.getSlogoImage().changeTurtImage(newTurt);
+				
+				myTurtleScene.updateMyTabs(sceneId, currTab);
 			}
 		} catch (Exception e) {
 			// showError("Error!","Failed to load "+file.getName(),e);

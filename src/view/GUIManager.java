@@ -57,8 +57,8 @@ public class GUIManager extends BorderPane {
 		this.prefWidthProperty().bind(scene.widthProperty());
 
 		addTopPane();
-		addBottomPane(scene);
 		addCenterPane();
+		addBottomPane(scene);
 		addRightPane(scene);
 		addLeftPane(scene);
 
@@ -86,19 +86,19 @@ public class GUIManager extends BorderPane {
 		this.setTop(myMenu);
 	}
 
-	private void addBottomPane(Scene scene) {
-		myConsoleUI = new ConsoleUI(scene, myModelController, this, myResource);
-		this.setBottom(myConsoleUI);
-	}
-
 	private void addCenterPane() {
 		myTurtleScene = new TurtleScene(myModelController, myResource);
 		this.setCenter(myTurtleScene);
 	}
+	
+	private void addBottomPane(Scene scene) {
+		myConsoleUI = new ConsoleUI(scene, myModelController, this, myResource, myTurtleScene);
+		this.setBottom(myConsoleUI);
+	}
 
 	private void addRightPane(Scene scene) {
 		GridPane turtstateAndProps = new GridPane();
-		myCurrTurtState = new CurrentTurtleState(scene, myResource);
+		myCurrTurtState = new CurrentTurtleState(scene, myResource, myTurtleScene);
 		turtstateAndProps.add(myCurrTurtState, 0, 1);
 		myProps = new Properties(scene, myTurtleScene, this, myResource, myStage, myModelController);
 		turtstateAndProps.add(myProps, 0, 2);

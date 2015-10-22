@@ -8,6 +8,7 @@ import java.util.Stack;
 import command.CommandInterface;
 import model.Data;
 
+
 public class Traverser {
 	private Queue<ParseTreeNode<CommandInterface>> commandQueue;
 
@@ -47,7 +48,9 @@ public class Traverser {
 		Double commandValue = null;
 		while (!commandQueue.isEmpty()) {
 			ParseTreeNode<CommandInterface> tempNode = commandQueue.poll();
+
 			commandValue = tempNode.getCommand().execute(tempNode.getChildren());
+
 			
 		}
 		return commandValue;

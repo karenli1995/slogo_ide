@@ -1,95 +1,68 @@
 package controller;
 
-import java.util.List;
-
-import command.CommandInterface;
 import javafx.stage.Stage;
 import model.Data;
-import model.Data_Turtle_Interface;
+import model.MathCommand;
+import model.SlogoScene;
 import view.GUIManager;
+import view.console.Prompt;
 import view.props.CurrentTurtleState;
+import view.scene.TurtleScene;
 import view.scene.TurtleSceneTab;
 
-public class ModelController {
+public class ModelController extends ControlFunctions {
 
-	private Data myAllData;
-	private Parser myParser;
+	private SlogoScene myScene;
 	private GUIManager myGuiManager;
-	private Traverser myTraverser;
-	private List<ParseTreeNode<CommandInterface>> myTree;
 
 	public ModelController(Stage stage) {
-		myAllData = new Data();
+		super();
+		myScene = new SlogoScene();
 		myGuiManager = new GUIManager(stage, this);
-		myParser = new Parser(myAllData);
-		myTraverser = new Traverser();
-		addObservable();
+		
+		TurtleScene turtScene = myGuiManager.getTurtScene();
+//		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
+		
+		addObservable(turtScene);
+	}
+	
+	public ModelController(Stage stage, GUIManager guiManager){
+		super();
+		myScene = new SlogoScene();
+		myGuiManager = guiManager;
+		TurtleScene turtScene = myGuiManager.getTurtScene();
+		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().createNewTab(this);
+		
+		addObservable(turtScene);
 	}
 
 	/**
 	 * The controller connects the observables and observers between the front
 	 * end and back end.
 	 */
-	private void addObservable() {
-		Data scene = getData();
-		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
-		scene.addObserver(currSceneTab);
+	public void addObservable(TurtleScene turtleScene) {
+//		TurtleScene turtScene = myGuiManager.getTurtScene();
+//		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
+//		int id = turtScene.getIdOfTab();
+		SlogoScene scene = myScene; //set id
 
-		//check
 		CurrentTurtleState currTurtState = myGuiManager.getMyCurrTurtState();
+		
+		scene.addObserver(turtleScene);
 		scene.addObserver(currTurtState);
-
+		
+		Prompt prompt = myGuiManager.getMyPrompt();
+		scene.addObserver(prompt);
+		
 	}
 
 
 	public GUIManager getGuiManager() {
 		return myGuiManager;
 	}
-
-	/**
-	 * Sets the Data object, passing information to Data from the front-end to
-	 * the back-end.
-	 */
-	public void setData(Data data) {
-		myAllData = data;
-	}
-
-	/**
-	 * Gets the Data object, containing information to be passed from back-end
-	 * to front-end.
-	 *
-	 * @return
-	 */
-	public Data getData() {
-		return myAllData;
-	}
-
-	/**
-	 * Gets Parser which parses the commands
-	 *
-	 * @return Parser
-	 */
-	public Parser getParser() {
-		return myParser;
-	}
-
-	/**
-	 * Parses the commands
-	 *
-	 * @param s
-	 */
-	public void parse(String s) {
-		myTree = myParser.parse(s);
-	}
-
-	/**
-	 * Traverses command tree
-	 *
-	 * @return
-	 */
-	public Data_Turtle_Interface traverse() {
-		myAllData = myTraverser.traverse(myTree, myAllData);
-		return myAllData;
+	
+	public SlogoScene getMyScene(){
+		return myScene;
 	}
 
 }
