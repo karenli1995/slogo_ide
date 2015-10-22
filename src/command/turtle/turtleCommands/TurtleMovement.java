@@ -1,7 +1,7 @@
 /**
  *
  */
-package command.turtleCommands;
+package command.turtle.turtleCommands;
 
 import java.text.DecimalFormat;
 import java.util.List;

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import command.CommandInterface;
-import command.turtleCommands.TurtleAbsolutePosition;
+import command.turtle.turtleCommands.TurtleAbsolutePosition;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
 import model.Data;

@@ -36,7 +36,7 @@ public class CommandFactory {
 		Command command = null;
 		try {//creating the instance
 
-			if (commandClass.getPackage().getName().contains("turtleCommands")) {
+			if (commandClass.getPackage().getName().contains("turtle")) {
 				Object[] o = new Object[1];
 				o[0] = turtleData;
 				command = (Command) commandConstructor.newInstance(o);

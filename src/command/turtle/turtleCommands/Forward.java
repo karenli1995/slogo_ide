@@ -1,4 +1,4 @@
-package command.turtleCommands;
+package command.turtle.turtleCommands;
 
 import model.Data_Turtle_Interface;
 
