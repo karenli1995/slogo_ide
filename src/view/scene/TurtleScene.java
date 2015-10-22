@@ -6,8 +6,11 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
+import model.SlogoObjects;
 import model.SlogoScene;
 import controller.ModelController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.canvas.GraphicsContext;
@@ -16,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import view.settings.SlogoProperties;
+import view.turtles.SlogoImage;
 
 public class TurtleScene extends TabPane implements Observer{
 
@@ -33,10 +37,8 @@ public class TurtleScene extends TabPane implements Observer{
 		myController = controller;
 		TurtleSceneTab newTab = new TurtleSceneTab(this, myController);
 		myCurrentSceneTab = newTab;
+		addListener();
 //		myTabs.add(newTab);
-		ImageView myImage = getCurrTab().getSlogoImage().getMyImage();
-
-		this.getChildren().add(myImage);
 	}
 	
 	public void addTab(TurtleSceneTab tab){
@@ -60,10 +62,10 @@ public class TurtleScene extends TabPane implements Observer{
 //		return myCurrentSceneTab;
 //	}
 	
-//	public TurtleSceneTab getTabById(int id) {
-//		return myTabs.get(id);
-//	}
-//	
+	public TurtleSceneTab getTabById(int id) {
+		return myTabs.get(id);
+	}
+	
 	public int getIdOfTab(){
 //		TurtleSceneTab sceneTab = (TurtleSceneTab) this.getSelectionModel().getSelectedItem();
 //		System.out.println(myTabs.indexOf(sceneTab));
@@ -81,7 +83,7 @@ public class TurtleScene extends TabPane implements Observer{
 	
 	public TurtleSceneTab createNewTab(ModelController newController) {
 		TurtleSceneTab newTab = new TurtleSceneTab(this, newController);
-		myTabs.add(newTab);
+		updateMyTabs(myTabs.size(), newTab);
 		return newTab;
 	}
 
@@ -113,6 +115,41 @@ public class TurtleScene extends TabPane implements Observer{
 	public ModelController getController() {
 		return myController;
 	}
+	
+	
+	public void addListener(){
+		this.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+		    @Override
+		    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
+		    	oldTab(oldValue);
+		    	newTab(newValue);
+		    }
+
+			private void newTab(Number newValue) {
+				int tabId = (int) newValue;
+				TurtleSceneTab newTab = myTabs.get(tabId);
+				
+				List<SlogoImage> newTurts = newTab.getAllSlogoImages();
+				for (SlogoImage slogoImage : newTurts){
+					newTab.getTurtScene().addChildren(slogoImage.getMyImage());
+				}
+
+				newTab.getTurtScene().updateMyTabs((int) newValue, newTab);
+			}
+
+			private void oldTab(Number oldValue) {
+				int tabId = (int) oldValue;
+				TurtleSceneTab oldTab = myTabs.get(tabId);
+		    	
+		    	List<Object> oldLines = oldTab.getShape().getAllShapes();
+				for (Object line : oldLines) oldTab.getTurtScene().removeChildren((Node) line);
+				
+				List<SlogoImage> oldTurts = oldTab.getAllSlogoImages();
+				for (SlogoImage slogoImage : oldTurts) oldTab.getTurtScene().removeChildren(slogoImage.getMyImage());
+			}
+		}); 
+	}
+	
 
 	@Override
 	public void update(Observable o, Object arg) {
@@ -120,7 +157,6 @@ public class TurtleScene extends TabPane implements Observer{
 		
 		int tabId = this.getIdOfTab();
 		TurtleSceneTab tab = this.getCurrTab();
-		System.out.println(tabId + " katring");
 		
 		//when setClear() changes
 		if(otherSlogoObj.getData(tabId).getTurtle(0).getClearTrail() == true){
@@ -138,11 +174,17 @@ public class TurtleScene extends TabPane implements Observer{
 		}
 		
 		//when setRotationAngle() changes and setTrail() changes
-		double newRotAngle = otherSlogoObj.getData(tabId).getTurtle(0).getRotationAngle();
-		double newLocX = otherSlogoObj.getData(tabId).getTurtle(0).getTrail().getX();
-		double newLocY = otherSlogoObj.getData(tabId).getTurtle(0).getTrail().getY();
-		tab.getSlogoImage().setScreenLoc(newLocX, newLocY);
-		tab.getSlogoImage().setRotation(newRotAngle);
+		List<SlogoObjects> turts = otherSlogoObj.getData(tabId).getAllTurtles();
+		for (int i=0; i<turts.size(); i++){
+			SlogoObjects slogoObject = turts.get(i);
+			double newRotAngle = slogoObject.getRotationAngle();
+			double newLocX = slogoObject.getTrail().getX();
+			double newLocY = slogoObject.getTrail().getY();
+			SlogoImage currSlogoImage = tab.getSlogoImage(i);
+			currSlogoImage.setScreenLoc(newLocX, newLocY);
+			currSlogoImage.setRotation(newRotAngle);
+			tab.setSlogoImage(i, currSlogoImage);
+		}
 		
 		//when setScene() changes
 		Color newColor = otherSlogoObj.getData(tabId).getMyColor();

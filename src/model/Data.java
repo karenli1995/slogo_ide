@@ -55,6 +55,10 @@ public class Data implements Data_Turtle_Interface{
 	public SlogoObjects getTurtle(int turtleId){
 		return myTurtles.get(turtleId);
 	}
+	
+	public List<SlogoObjects> getAllTurtles(){
+		return myTurtles;
+	}
 
 	public Trail getTrail(int turtleId) {
 		return myTrails.get(turtleId);

@@ -15,38 +15,11 @@ public class SlogoImage {
 	private ImageView myImageView = new ImageView(myImage);
 
 	private TurtleScene myTurtScene;
-	private ModelController myController;
-	private List<SlogoObjects> allMyObjects;
-	private SlogoObjects myObject;
-//	private int mySceneId;
 
-	public SlogoImage(TurtleScene turtlescene, ModelController controller, int id) {
+	public SlogoImage(TurtleScene turtlescene) {
 		myTurtScene = turtlescene;
-		myController = controller;
-		int mySceneId = myTurtScene.getIdOfTab();
-		myObject = myController.getMyScene().getData(mySceneId).getTurtle(id);
-		// allMyObjects = myController.getData().getAllTurtles();
-		myImageView.setFitWidth(40);
-		myImageView.setFitHeight(40);
-	}
-
-	public SlogoImage(TurtleScene turtlescene, ModelController controller, int id, ImageView image) {
-		myTurtScene = turtlescene;
-		myController = controller;
-		int mySceneId = myTurtScene.getIdOfTab();
-		myObject = myController.getMyScene().getData(mySceneId).getTurtle(id);
-		// allMyObjects = myController.getData().getAllTurtles();
-		myImageView = image;
-		myImageView.setFitWidth(40);
-		myImageView.setFitHeight(40);
-	}
-
-	// public void getAllObjects(){
-	// allMyObjects = myController.getData().getAllTurtles();
-	// }
-
-	public SlogoObjects getMyObject() {
-		return myObject;
+		setMyImage(myImageView); 
+		setScreenLoc(0, 0);
 	}
 
 	public ImageView getMyImage() {
@@ -57,6 +30,7 @@ public class SlogoImage {
 		myImageView = image;
 		myImageView.setFitWidth(40);
 		myImageView.setFitHeight(40);
+		myTurtScene.addChildren(myImageView);
 	}
 	
 	public void changeTurtImage(ImageView image) {
@@ -65,10 +39,6 @@ public class SlogoImage {
 		image.setFitWidth(40);
 		myImageView=image;
 		myTurtScene.addChildren((Node) image);
-	}
-
-	public Image getImage() {
-		return myImage;
 	}
 
 	/**

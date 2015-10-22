@@ -1,5 +1,6 @@
 package view.scene;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -21,48 +22,33 @@ import view.shapes.StraightLine;
 import view.turtles.SlogoImage;
 
 public class TurtleSceneTab extends Tab{
-	private SlogoImage mySlogoImage;
+	private List<SlogoImage> myAllSlogoImages;
 	private AbstractShape myShape; // check this
 	private Canvas myCanvas;
 	private ModelController myModelController;
 	private TurtleScene myTurtScene;
-//	private int myTabId;
 
 	private double myCanvasWidth = SlogoProperties.getSceneWidth() * 3 / 7;
 	private double myCanvasHeight = SlogoProperties.getSceneHeight() * 5 / 7;
 
 	public TurtleSceneTab(TurtleScene turtScene, ModelController controller) {
+		this.setText("New Text");
+		myAllSlogoImages = new ArrayList<SlogoImage>();
 		myTurtScene = turtScene;
 		myModelController = controller;
-//		myTabId = id;
-		this.setText("New Text");
-		myCanvas = new Canvas();
-		myCanvas.setWidth(myCanvasWidth);
-		myCanvas.setHeight(myCanvasHeight);
-
+		myCanvas = new Canvas(myCanvasWidth, myCanvasHeight);
+		myShape = new StraightLine(turtScene, myModelController);
+		
 		turtScene.addTab(this);
 		turtScene.getTabs().add(this);
-
-		int defaultTurt = 0;
-		setTurtleAndTrail(defaultTurt, turtScene);
-		myShape = new StraightLine(turtScene, myModelController);
+		
+		setTurtleAndTrail(myTurtScene);
 		this.setContent(myCanvas);
-
 	}
-	
-//	public int getTabId(){
-//		return myTabId;
-//	}
 
-	public void setTurtleAndTrail(int id, TurtleScene turtScene) {
-		int sceneId = turtScene.getIdOfTab();
-		System.out.println(sceneId + " waterbottle");
-		Turtle currTurt = (Turtle) myModelController.getMyScene().getData(sceneId).getTurtle(id);
-		double currTurtLocX = currTurt.getTrail().getX();
-		double currTurtLocY = currTurt.getTrail().getY();
-
-		mySlogoImage = new SlogoImage(turtScene, myModelController, id);
-		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
+	public void setTurtleAndTrail(TurtleScene turtScene) {
+		SlogoImage slogoImage = new SlogoImage(turtScene);
+		myAllSlogoImages.add(slogoImage);
 	}
 
 	public void setTurtImage(ImageView image, int id) {
@@ -70,13 +56,10 @@ public class TurtleSceneTab extends Tab{
 		Turtle currTurt = (Turtle) myModelController.getMyScene().getData(sceneId).getTurtle(id);
 		double currTurtLocX = currTurt.getTrail().getX();
 		double currTurtLocY = currTurt.getTrail().getY();
-		mySlogoImage.setMyImage(image);
-		mySlogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
+		SlogoImage slogoImage = this.getSlogoImage(id);
+		slogoImage.setScreenLoc(currTurtLocX, currTurtLocY);
+		myAllSlogoImages.add(id, slogoImage);
 	}
-
-//	public List<Object> getAllShapes() {
-//		return myShape.getAllShapes();
-//	}
 	
 	public Object getRecentShape(){
 		int ind =  myShape.getAllShapes().size()-1;
@@ -86,10 +69,6 @@ public class TurtleSceneTab extends Tab{
 	public AbstractShape getShape() {
 		return myShape;
 	}
-//
-//	public ImageView getTurtImage() {
-//		return myImage;
-//	}
 	
 	public Canvas getCanvas(){
 		return myCanvas;
@@ -107,9 +86,22 @@ public class TurtleSceneTab extends Tab{
 		gc.setFill(color);
 		gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 	}
+	
+	//unused
+	public void setSlogoImage(int id, SlogoImage slogoImage) {
+		myAllSlogoImages.add(id, slogoImage);
+	}
 
-	public SlogoImage getSlogoImage() {
-		return mySlogoImage;
+	public SlogoImage getSlogoImage(int id) {
+		return myAllSlogoImages.get(id);
+	}
+	
+	public List<SlogoImage> getAllSlogoImages(){
+		return myAllSlogoImages;
+	}
+	
+	public TurtleScene getTurtScene(){
+		return myTurtScene;
 	}
 	
 }

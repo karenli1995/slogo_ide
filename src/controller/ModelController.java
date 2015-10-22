@@ -1,6 +1,9 @@
 package controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.Data;
 import model.MathCommand;
 import model.SlogoScene;
@@ -11,7 +14,10 @@ import view.scene.TurtleScene;
 import view.scene.TurtleSceneTab;
 
 public class ModelController extends ControlFunctions {
-
+	private static final int FRAMES_PER_SECOND = 10;
+	private static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
+	
+	private Timeline myAnimation;
 	private SlogoScene myScene;
 	private GUIManager myGuiManager;
 
@@ -24,6 +30,7 @@ public class ModelController extends ControlFunctions {
 //		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
 		
 		addObservable(turtScene, myScene);
+//		createAnimation();
 	}
 	
 	public ModelController(Stage stage, GUIManager guiManager, SlogoScene scene){
@@ -37,7 +44,18 @@ public class ModelController extends ControlFunctions {
 		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().createNewTab(this);
 		
 		addObservable(turtScene, myScene);
+//		createAnimation();
 	}
+	
+	/**
+	 * Create the animation and timeline.
+	 */
+//	private void createAnimation() {
+//		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY), e -> myManager.step());
+//		myAnimation = new Timeline();
+//		myAnimation.setCycleCount(Timeline.INDEFINITE);
+//		myAnimation.getKeyFrames().add(frame);
+//	}
 
 	/**
 	 * The controller connects the observables and observers between the front
