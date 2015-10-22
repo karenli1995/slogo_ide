@@ -9,7 +9,7 @@ public interface CommandInterface {
 
 	public abstract void setName(String name);
 
-	public abstract double execute(List<ParseTreeNode<CommandInterface>> distance);
+	public abstract double execute(List<List<ParseTreeNode<CommandInterface>>> distance);
 
 	public abstract double getValue();
 

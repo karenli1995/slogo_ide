@@ -20,7 +20,7 @@ public class Product extends Command {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
 		double product = argument.get(0).getCommandValue() * argument.get(1).getCommandValue();
 		this.setValue(product);
 		return product;

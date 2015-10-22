@@ -19,7 +19,7 @@ public class Constant extends Command {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
 		return 0;
 	}
 

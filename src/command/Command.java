@@ -34,7 +34,7 @@ public Command(Data_Turtle_Interface allData){}
 	}
 
 	@Override
-	public abstract double execute(List<ParseTreeNode<CommandInterface>> distance);
+	public abstract double execute(List<List<ParseTreeNode<CommandInterface>>> distance);
 
 	@Override
 	public double getValue() {

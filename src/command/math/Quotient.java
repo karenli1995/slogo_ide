@@ -18,7 +18,7 @@ public class Quotient extends Command{
 public Quotient(){super();}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
 
 		double quotient = 0;
 

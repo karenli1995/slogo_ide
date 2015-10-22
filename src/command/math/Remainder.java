@@ -17,7 +17,7 @@ import controller.ParseTreeNode;
 public class Remainder extends Command {
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
 		double remainder = argument.get(0).getCommandValue() % argument.get(1).getCommandValue();
 		this.setValue(remainder);
 		return remainder;

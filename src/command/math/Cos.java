@@ -19,7 +19,7 @@ public class Cos extends Command {
 		super();
 	}
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
 		double cosangle=Math.cos(Math.toRadians(argument.get(0).getCommandValue()));
 		this.setValue(cosangle);
 		return cosangle;

@@ -20,7 +20,7 @@ public class Power extends Command {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> number) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> number) {
 		double power = Math.pow(number.get(0).getCommandValue(), number.get(1).getCommand().getValue());
 		this.setValue(power);
 		return power;

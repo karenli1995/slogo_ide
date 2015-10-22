@@ -17,7 +17,7 @@ public class MakeVariable extends Command {
 	}
 
 @Override
-	public double execute(List<ParseTreeNode<CommandInterface>> argument) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
 
 		String varName = argument.get(0).getCommand().getName();
 		Double value = argument.get(1).getCommand().getValue();

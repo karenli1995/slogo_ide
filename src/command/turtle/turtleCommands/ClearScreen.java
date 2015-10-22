@@ -25,7 +25,7 @@ public class ClearScreen extends TurtleAbsolutePosition {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> distance) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
 		List<Double> defaultPosition = new ArrayList<Double>();
 		defaultPosition.add(0.0);
 		defaultPosition.add(0.0);

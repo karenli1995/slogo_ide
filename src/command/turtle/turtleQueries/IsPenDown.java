@@ -24,7 +24,7 @@ public class IsPenDown extends Command {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> distance) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
 		double flag = turtleData.getTurtle(0).getPen().isDown();
 		this.setValue(flag);
 		return flag;

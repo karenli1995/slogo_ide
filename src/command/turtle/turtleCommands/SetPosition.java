@@ -25,7 +25,7 @@ public class SetPosition extends TurtleAbsolutePosition {
 	}
 
 	@Override
-	public double execute(List<ParseTreeNode<CommandInterface>> newLocation) {
+	public double execute(List<List<ParseTreeNode<CommandInterface>>> newLocation) {
 		List<Double> newlocation = new ArrayList<Double>();
 		newlocation.add(newLocation.get(0).getCommandValue());
 		newlocation.add(newLocation.get(1).getCommandValue());
