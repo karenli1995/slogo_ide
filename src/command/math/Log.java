@@ -21,7 +21,7 @@ public class Log extends Command {
 
 	@Override
 	public double execute(List<List<ParseTreeNode<CommandInterface>>> number) {
-		double log =Math.log10(number.get(0).getCommandValue());
+		double log =Math.log10(number.get(0).get(0).getCommandValue());
 		this.setValue(log);
 		return log;
 

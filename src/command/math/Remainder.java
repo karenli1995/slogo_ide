@@ -18,7 +18,7 @@ public class Remainder extends Command {
 
 	@Override
 	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
-		double remainder = argument.get(0).getCommandValue() % argument.get(1).getCommandValue();
+		double remainder = argument.get(0).get(0).getCommandValue() % argument.get(1).get(0).getCommandValue();
 		this.setValue(remainder);
 		return remainder;
 	}

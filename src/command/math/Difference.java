@@ -21,7 +21,7 @@ public class Difference extends Command {
 
 	@Override
 	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
-		double diff = argument.get(0).getCommandValue() - argument.get(1).getCommandValue();
+		double diff = argument.get(0).get(0).getCommandValue() - argument.get(1).get(0).getCommandValue();
 		this.setValue(diff);
 		return diff;
 	}

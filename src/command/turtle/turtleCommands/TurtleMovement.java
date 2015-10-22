@@ -30,9 +30,9 @@ public abstract class TurtleMovement extends Command {
 	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
 		SlogoObjects currTurtle = data.getTurtle(0);
 		// moveFdorBK(distance.get(0).getCommandValue(), currTurtle, data);
-		moveFdorBK(distance.get(0).getCommandValue(), currTurtle);
-		setValue(distance.get(0).getCommandValue());
-		return distance.get(0).getCommandValue();
+		moveFdorBK(distance.get(0).get(0).getCommandValue(), currTurtle);
+		setValue(distance.get(0).get(0).getCommandValue());
+		return distance.get(0).get(0).getCommandValue();
 
 	}
 

@@ -23,7 +23,7 @@ public Quotient(){super();}
 		double quotient = 0;
 
 		try {
-			quotient = argument.get(0).getCommandValue() / argument.get(1).getCommandValue();
+			quotient = argument.get(0).get(0).getCommandValue() / argument.get(1).get(0).getCommandValue();
 
 		} catch (ArithmeticException e) {
 			System.out.println("Division by zero is not allowed.");

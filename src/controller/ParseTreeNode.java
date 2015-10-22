@@ -7,10 +7,11 @@ import command.CommandInterface;
 
 public class ParseTreeNode<Command> {
 
+
+
 	private Command command;
 
 	private List<List<ParseTreeNode<Command>>> children;
-	private List<ParseTreeNode<CommandInterface>> sth;
 	private ParseTreeNode<Command> parent = this;
 
 	public ParseTreeNode() {
