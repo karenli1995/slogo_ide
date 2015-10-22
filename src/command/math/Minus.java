@@ -21,7 +21,7 @@ public class Minus extends Command {
 
 	@Override
 	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
-		double negative = -(argument.get(0).getCommandValue());
+		double negative = -(argument.get(0).get(0).getCommandValue());
 		this.setValue(negative);
 		return negative;
 	}

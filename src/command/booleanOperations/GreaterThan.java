@@ -18,7 +18,7 @@ public class GreaterThan extends Command {
 
 	@Override
 	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
-		if (argument.get(0).getCommandValue() > argument.get(1).getCommandValue()) {
+		if (argument.get(0).get(0).getCommandValue() > argument.get(1).get(0).getCommandValue()) {
 			this.setValue(1);
 			return 1.0;
 		} else {

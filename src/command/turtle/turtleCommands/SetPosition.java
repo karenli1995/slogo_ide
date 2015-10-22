@@ -27,12 +27,12 @@ public class SetPosition extends TurtleAbsolutePosition {
 	@Override
 	public double execute(List<List<ParseTreeNode<CommandInterface>>> newLocation) {
 		List<Double> newlocation = new ArrayList<Double>();
-		newlocation.add(newLocation.get(0).getCommandValue());
-		newlocation.add(newLocation.get(1).getCommandValue());
+		newlocation.add(newLocation.get(0).get(0).getCommandValue());
+		newlocation.add(newLocation.get(1).get(0).getCommandValue());
 		double distance = calculateDistanceBetweenTwoPoints(newlocation);
 		this.setValue(distance);
-		Point2D point = new Point2D(newLocation.get(0).getCommand().getValue(),
-				newLocation.get(1).getCommand().getValue());
+		Point2D point = new Point2D(newLocation.get(0).get(0).getCommand().getValue(),
+				newLocation.get(1).get(0).getCommand().getValue());
 		addToTrail(point);
 		return distance;
 	}

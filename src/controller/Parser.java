@@ -10,6 +10,13 @@ import com.sun.org.apache.xpath.internal.operations.Minus;
 
 import command.CommandFactory;
 import command.CommandInterface;
+import command.booleanOperations.And;
+import command.booleanOperations.Equal;
+import command.booleanOperations.GreaterThan;
+import command.booleanOperations.LessThan;
+import command.booleanOperations.Not;
+import command.booleanOperations.NotEqual;
+import command.booleanOperations.Or;
 import command.math.Atan;
 import command.math.Cos;
 import command.math.Difference;
@@ -102,7 +109,6 @@ public class Parser {
 			cf.registerCommand("Remainder", Remainder.class);
 			cf.registerCommand("Sine", Sine.class);
 			cf.registerCommand("Tangent", Tan.class);
-
 			cf.registerCommand("IsPenDown", IsPenDown.class);
 			cf.registerCommand("DoTimes", DoTimes.class);
 			cf.registerCommand("Quotient", Quotient.class);
@@ -122,6 +128,14 @@ public class Parser {
 			cf.registerCommand("YCoordinate", YCoordinate.class);
 			// cf.registerCommand("IsShowing", IsShowing.class);
 			cf.registerCommand("IsPenDown", IsPenDown.class);
+			cf.registerCommand("And", And.class);
+			cf.registerCommand("Or", Or.class);
+			cf.registerCommand("GreaterThan", GreaterThan.class);
+			cf.registerCommand("Equal", Equal.class);
+			cf.registerCommand("NotEqual", NotEqual.class);
+			cf.registerCommand("LessThan", LessThan.class);
+			cf.registerCommand("Not", Not.class);
+
 
 		} catch (Exception e) {
 			throw new ParserException(errorResources.getString("commandRegistration"));
@@ -143,7 +157,7 @@ public class Parser {
 			System.out.println("");
 
 		}
-		
+
 		return nodeList;
 	}
 

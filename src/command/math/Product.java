@@ -21,7 +21,7 @@ public class Product extends Command {
 
 	@Override
 	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
-		double product = argument.get(0).getCommandValue() * argument.get(1).getCommandValue();
+		double product = argument.get(0).get(0).getCommandValue() * argument.get(1).get(0).getCommandValue();
 		this.setValue(product);
 		return product;
 	}

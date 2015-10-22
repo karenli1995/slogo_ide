@@ -3,7 +3,6 @@ package controller;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.Stack;
 
 import command.CommandInterface;
 import model.Data;
@@ -18,7 +17,7 @@ public class Traverser {
 			this.iterateTreePostOrder(s);
 		}
 
-		this.executeCommands();
+		allData.setCommandValue(this.executeCommands());
 
 		return allData;
 	}
@@ -51,7 +50,7 @@ public class Traverser {
 
 			commandValue = tempNode.getCommand().execute(tempNode.getChildren());
 
-			
+
 		}
 		return commandValue;
 	}
