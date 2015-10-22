@@ -22,8 +22,9 @@ public class And extends Command {
 	@Override
 	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
 
-		if ((argument.get(0).getCommandValue() != 0 && argument.get(1).getCommandValue() != 0)) {
+		if ((argument.get(0).get(0).getCommandValue() != 0 && argument.get(1).get(0).getCommandValue() != 0)) {
 			this.setValue(1.0);
+			System.out.println("Y");
 			return 1.0;
 		} else {
 			this.setValue(0);

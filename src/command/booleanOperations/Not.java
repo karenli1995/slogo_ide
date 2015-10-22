@@ -18,7 +18,7 @@ public class Not extends Command {
 
 	@Override
 	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
-		if ((argument.get(0).getCommand().getValue() == 0)) {
+		if ((argument.get(0).get(0).getCommand().getValue() == 0)) {
 			this.setValue(1);
 			return 1.0;
 		} else {
