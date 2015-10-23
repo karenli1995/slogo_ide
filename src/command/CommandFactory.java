@@ -25,15 +25,16 @@ public class CommandFactory {
     }
 
     public Command createCommand (String commandName) {
-        // Class<?> commandClass = reflectionMap.get(commandName);
         Class<?> commandClass = null;
-        try {
-            commandClass = Class.forName(reflectionMapString.get(commandName));
-        }
-        catch (ClassNotFoundException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
+
+        commandClass = reflectionMap.get(commandName);
+//        try {
+//            commandClass = Class.forName(reflectionMapString.get(commandName));
+//        }
+//        catch (ClassNotFoundException e1) {
+//            // TODO Auto-generated catch block
+//            e1.printStackTrace();
+//        }
         Constructor<?> commandConstructor = null;
         try {// based on name grab constractor
 
