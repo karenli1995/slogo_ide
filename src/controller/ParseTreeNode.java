@@ -10,8 +10,6 @@ import command.CommandInterface;
 
 public class ParseTreeNode<CommandInterface> implements Serializable{
 
-
-
 	/**
 	 * 
 	 */
