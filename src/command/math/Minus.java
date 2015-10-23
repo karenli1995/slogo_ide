@@ -3,11 +3,8 @@
  */
 package command.math;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 /**
  *
@@ -20,7 +17,7 @@ public class Minus extends Command {
 	}
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
+	public double execute(ParseTreeChildren argument) {
 		double negative = -(argument.get(0).get(0).getCommandValue());
 		this.setValue(negative);
 		return negative;

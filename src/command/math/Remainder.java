@@ -3,11 +3,8 @@
  */
 package command.math;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 /**
  *
@@ -17,7 +14,7 @@ import controller.ParseTreeNode;
 public class Remainder extends Command {
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
+	public double execute(ParseTreeChildren argument) {
 		double remainder = argument.get(0).get(0).getCommandValue() % argument.get(1).get(0).getCommandValue();
 		this.setValue(remainder);
 		return remainder;

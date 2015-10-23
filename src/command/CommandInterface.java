@@ -1,15 +1,13 @@
 package command;
 
-import java.util.List;
-
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 public interface CommandInterface {
 	public abstract String getName();
 
 	public abstract void setName(String name);
 
-	public abstract double execute(List<List<ParseTreeNode<CommandInterface>>> distance);
+	public abstract double execute(ParseTreeChildren distance);
 
 	public abstract double getValue();
 

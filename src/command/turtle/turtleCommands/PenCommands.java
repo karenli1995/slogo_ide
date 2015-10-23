@@ -3,11 +3,8 @@
  */
 package command.turtle.turtleCommands;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 import model.Data_Turtle_Interface;
 import model.Pen;
 
@@ -26,7 +23,7 @@ public abstract class PenCommands extends Command {
 	}
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
+	public double execute(ParseTreeChildren distance) {
 		Pen currPen = turtleData.getTurtle(0).getPen();
 		currPen.setPenDown(switchPen());
 		turtleData.getTurtle(0).setPen(currPen);

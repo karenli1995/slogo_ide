@@ -3,11 +3,8 @@
  */
 package command.math;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 /**
  *
@@ -18,7 +15,7 @@ public abstract class Trig extends Command {
 	private static final int ANGLE = 90;
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> angle) {
+	public double execute(ParseTreeChildren angle) {
 		if (checkUnderfinedAngle(angle.get(0).get(0).getCommand().getValue())) {
 			this.setValue(0);
 		} else {
