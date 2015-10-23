@@ -1,7 +1,5 @@
 package command;
 
-import com.sun.org.apache.xpath.internal.operations.Minus;
-
 import command.booleanOperations.And;
 import command.booleanOperations.Equal;
 import command.booleanOperations.Greater;
@@ -13,6 +11,7 @@ import command.math.Atan;
 import command.math.Cos;
 import command.math.Difference;
 import command.math.Log;
+import command.math.Negative;
 import command.math.Pi;
 import command.math.Power;
 import command.math.Product;
@@ -55,6 +54,7 @@ public class CommandRegister {
 	}
 
 	public void register(){
+		//turtle commands:
 		cf.registerCommand("Forward", Forward.class);
 		cf.registerCommand("Backward", Backward.class);
 		cf.registerCommand("Right", Right.class);
@@ -67,39 +67,57 @@ public class CommandRegister {
 		cf.registerCommand("Constant", Constant.class);
 		cf.registerCommand("ListEnd", ListEnd.class);
 		cf.registerCommand("ListStart", ListStart.class);
-		cf.registerCommand("Repeat", Repeat.class);
-		cf.registerCommand("Sum", Sum.class);
-		cf.registerCommand("Product", Product.class);
-		cf.registerCommand("ArcTangent", Atan.class);
-		cf.registerCommand("Cosine", Cos.class);
+
+
+
+		//math-arithmetic
 		cf.registerCommand("Difference", Difference.class);
 		cf.registerCommand("Log", Log.class);
-		cf.registerCommand("Minus", Minus.class);
+		cf.registerCommand("Minus", Negative.class);
 		cf.registerCommand("Pi", Pi.class);
 		cf.registerCommand("Power", Power.class);
+		cf.registerCommand("Product", Product.class);
 		cf.registerCommand("Quotient", Quotient.class);
 		cf.registerCommand("Random", RandomNumber.class);
 		cf.registerCommand("Remainder", Remainder.class);
+		cf.registerCommand("Sum", Sum.class);
+
+
+
+		//math-trig
+		cf.registerCommand("ArcTangent", Atan.class);
+		cf.registerCommand("Cosine", Cos.class);
 		cf.registerCommand("Sine", Sine.class);
 		cf.registerCommand("Tangent", Tan.class);
-		cf.registerCommand("IsPenDown", IsPenDown.class);
-		cf.registerCommand("DoTimes", DoTimes.class);
-		cf.registerCommand("Quotient", Quotient.class);
 		cf.registerCommand("Sine", Sine.class);
-		cf.registerCommand("MakeUserInstruction", MakeUserInstruction.class);
-		cf.registerCommand("PenUp", PenUp.class);
+
+
+		//show-hide
 		cf.registerCommand("PenDown", PenDown.class);
-		cf.registerCommand("MakeVariable", MakeVariable.class);
-		cf.registerCommand("Variable", Variable.class);
-		cf.registerCommand("UserCommand", UserCommand.class);
+		cf.registerCommand("PenUp", PenUp.class);
+		cf.registerCommand("IsPenDown", IsPenDown.class);
 		cf.registerCommand("HideTurtle", HideTurtle.class);
 		cf.registerCommand("ShowTurtle", ShowTurtle.class);
 		cf.registerCommand("PenDown", PenDown.class);
 		cf.registerCommand("PenUp", PenUp.class);
 		cf.registerCommand("PenUp", PenUp.class);
+		cf.registerCommand("IsPenDown", IsPenDown.class);
+
+		//harder-commands
+		cf.registerCommand("MakeUserInstruction", MakeUserInstruction.class);
+		cf.registerCommand("DoTimes", DoTimes.class);
+		cf.registerCommand("Repeat", Repeat.class);
+		cf.registerCommand("MakeVariable", MakeVariable.class);
+		cf.registerCommand("Variable", Variable.class);
+		cf.registerCommand("UserCommand", UserCommand.class);
+
+
+		//turtle-queries
 		cf.registerCommand("XCoordinate", XCoordinate.class);
 		cf.registerCommand("YCoordinate", YCoordinate.class);
-		cf.registerCommand("IsPenDown", IsPenDown.class);
+
+
+		//logic commands
 		cf.registerCommand("And", And.class);
 		cf.registerCommand("Or", Or.class);
 		cf.registerCommand("Greater",Greater.class);

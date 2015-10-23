@@ -3,9 +3,7 @@
  */
 package command.turtle.turtleCommands;
 
-import java.text.DecimalFormat;
-
-import command.Command;
+import command.RoundingResults;
 import controller.ParseTreeChildren;
 import javafx.geometry.Point2D;
 import model.Data_Turtle_Interface;
@@ -16,27 +14,26 @@ import model.SlogoObjects;
  * @author Sally Al
  *
  */
-public abstract class TurtleMovement extends Command {
-	private Data_Turtle_Interface data;
-
+public abstract class TurtleMovement extends RoundingResults {
+	/**
+	 * @param allData
+	 */
 	public TurtleMovement(Data_Turtle_Interface allData) {
+		super(allData);
 		data = allData;
 
 	}
+
+	private Data_Turtle_Interface data;
 
 	@Override
 	public double execute(ParseTreeChildren distance) {
 		SlogoObjects currTurtle = data.getTurtle(0);
 		// moveFdorBK(distance.get(0).getCommandValue(), currTurtle, data);
-		moveFdorBK(distance.getCommandValue(0,0), currTurtle);
-		setValue(distance.getCommandValue(0,0));
-		return distance.getCommandValue(0,0);
+		moveFdorBK(distance.getCommandValue(0, 0), currTurtle);
+		setValue(distance.getCommandValue(0, 0));
+		return distance.getCommandValue(0, 0);
 
-	}
-
-	private double RoundTo2Decimals(double val) {
-		DecimalFormat df2 = new DecimalFormat("###.##");
-		return Double.valueOf(df2.format(val));
 	}
 
 	// public void moveFdorBK(double distance, SlogoObjects myTurtle, Data

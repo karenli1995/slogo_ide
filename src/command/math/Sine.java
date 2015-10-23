@@ -3,7 +3,7 @@
  */
 package command.math;
 
-import command.Command;
+import command.RoundingResults;
 import controller.ParseTreeChildren;
 
 /**
@@ -11,11 +11,13 @@ import controller.ParseTreeChildren;
  * @author Sally Al
  *
  */
-public class Sine extends Command {
+public class Sine extends RoundingResults {
+	public Sine() {}
 
 	@Override
 	public double execute(ParseTreeChildren argument) {
 		double sine =Math.sin(Math.toRadians(argument.getCommandValue(0,0)));
+		sine = RoundTo2Decimals(sine);
 		this.setValue(sine);
 		return sine;
 	}
