@@ -25,8 +25,9 @@ public class CommandFactory {
     }
 
     public Command createCommand (String commandName) {
-        // Class<?> commandClass = reflectionMap.get(commandName);
         Class<?> commandClass = null;
+        // Class<?> commandClass = reflectionMap.get(commandName);
+
         try {
             commandClass = Class.forName(reflectionMapString.get(commandName));
         }
