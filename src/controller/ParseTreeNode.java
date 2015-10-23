@@ -1,13 +1,19 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import command.CommandInterface;
 
-public class ParseTreeNode<Command> {
+public class ParseTreeNode<Command> implements Serializable{
 
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7349603750906614666L;
 
 	private Command command;
 

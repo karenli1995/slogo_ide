@@ -2,8 +2,17 @@ package model;
 
 import javafx.geometry.Point2D;
 
-public abstract class SlogoObjects{
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
+public abstract class SlogoObjects implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2429059406459972387L;
 	private Trail myTrail;
 	private AbstractPen myPen;
 	private boolean isShowing;
@@ -11,7 +20,7 @@ public abstract class SlogoObjects{
 	private boolean clearTrails;
 	private boolean isActive;
 
-	public SlogoObjects() {
+	public SlogoObjects(){
 		Point2D startPoint = new Point2D(0, 0);
 		setTrail(new Trail(startPoint, 0));
 		setPen(new Pen());
@@ -70,4 +79,12 @@ public abstract class SlogoObjects{
 	public boolean getIsActive(){
 		return isActive;
 	}
+	
+	/*public void writeObject(ObjectOutputStream o) throws IOException{
+		o.defaultWriteObject();
+	}
+	
+	public void readObject(ObjectInputStream i) throws ClassNotFoundException, IOException{
+		i.defaultReadObject();
+	}*/
 }

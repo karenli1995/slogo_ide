@@ -68,7 +68,7 @@ public abstract class TurtleMovement extends Command {
 
 		Point2D newLoc = new Point2D(tempXLocation, tempYLocation);
 
-		myTurtle.getTrail().addCoord(newLoc);
+		myTurtle.getTrail().addCoord(newLoc,data.getTurtle(0).getPen().isDown());
 		myTurtle.setTrail(myTurtle.getTrail());
 		myTurtle.getTrail().setPoint(newLoc);
 		myTurtle.setRotationAngle(degrees);

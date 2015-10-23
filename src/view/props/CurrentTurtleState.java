@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import model.SlogoScene;
+import model.Trail;
 import view.scene.TurtleScene;
 
 public class CurrentTurtleState extends VBox implements Observer{
@@ -147,6 +148,9 @@ public class CurrentTurtleState extends VBox implements Observer{
 		if (otherSlogoObj.getTurtleData(tabId).getTurtle(0).getIsShowing() == true) turtVis="Visible";
 		if (otherSlogoObj.getTurtleData(tabId).getTurtle(0).getIsShowing() == false) turtVis="Invisible";
 		myDisplayTurtVis.setText(turtVis);
+		
+		Trail trails = otherSlogoObj.getAllData().get(tabId).getTrail(0);
+		
 	}
 
 }
