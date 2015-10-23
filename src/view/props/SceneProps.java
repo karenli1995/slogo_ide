@@ -1,42 +1,24 @@
 package view.props;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import controller.ModelController;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import view.scene.TurtleScene;
 import view.scene.TurtleSceneTab;
 
-public class SceneProps extends Tab {
-	private static final int OFFSET_SPACE = 10;
-	private Insets myInset = new Insets(OFFSET_SPACE);
-	private ResourceBundle myResource;
-	private ModelController myController;
-	private TurtleScene myTurtScene;
-//	private int mySceneId;
-
-	private List<Node> allElements;
+public class SceneProps extends AbstractProperties {
 
 	public SceneProps(TurtleScene turtscene, ResourceBundle resource,  ModelController controller) {
-		myTurtScene = turtscene;
-//		mySceneId = myTurtScene.getIdOfTab();
-		myResource = resource;
-		myController = controller;
-		allElements = new ArrayList<Node>();
-		createSceneTab();
+		super(turtscene, resource, controller);
 	}
 
-	private void createSceneTab() {
+	protected void createTab() {
 		this.setText(myResource.getString("SCENE"));
 		VBox vb = new VBox();
 		HBox hb2 = addBGColorLabel();
@@ -56,16 +38,16 @@ public class SceneProps extends Tab {
 
 		cmbColors.setOnAction((event) -> {
 			Color chosenColor = cmbColors.getSelectionModel().getSelectedItem();
-			Canvas currCanvas = (Canvas) myTurtScene.getSelectionModel().getSelectedItem().getContent();
+			Canvas currCanvas = (Canvas) myTurtleScene.getSelectionModel().getSelectedItem().getContent();
 
-			TurtleSceneTab currTab = myTurtScene.getCurrTab();
-			int mySceneId = myTurtScene.getIdOfTab();
+			TurtleSceneTab currTab = myTurtleScene.getCurrTab();
+			int mySceneId = myTurtleScene.getIdOfTab();
 
 			currTab.setBackgroundColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
 			myController.getMyScene().ColorData(mySceneId).setMyColor(chosenColor);
 			System.out.println("ComboBox Action (selected: " + chosenColor.toString().toUpperCase() + ")");
 
-			myTurtScene.updateMyTabs(mySceneId, currTab);
+			myTurtleScene.updateMyTabs(mySceneId, currTab);
 		});
 
 		hb7.getChildren().addAll(background, cmbColors);
@@ -74,10 +56,5 @@ public class SceneProps extends Tab {
 		allElements.add(cmbColors);
 
 		return hb7;
-	}
-
-	private void setAllMargins(List<Node> nodes) {
-		for (Node n : nodes)
-			HBox.setMargin(n, myInset);
 	}
 }

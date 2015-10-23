@@ -7,7 +7,7 @@ import javafx.geometry.Point2D;
 import view.scene.TurtleScene;
 import controller.ModelController;
 
-public abstract class AbstractShape {
+public abstract class AbstractShape implements ShapeInterface{
 	protected TurtleScene myTurtScene;
 	protected List<Object> myAllShapes = new ArrayList<Object>();
 	protected ModelController myModelController;

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import controller.ModelController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -23,28 +24,15 @@ import javafx.stage.Stage;
 import view.scene.TurtleScene;
 import view.scene.TurtleSceneTab;
 
-public class TurtleProps extends Tab {
-	private static final int OFFSET_SPACE = 10;
-	private Insets myInset = new Insets(OFFSET_SPACE);
-
-	private List<Node> allElements;
-
-	private int myTextAreaWidth = 100;
-	private int myTextAreaHeight = 10;
-	private ResourceBundle myResource;
+public class TurtleProps extends AbstractProperties {
 	private Stage myStage;
 
-	private TurtleScene myTurtleScene;
-
-	public TurtleProps(TurtleScene scene, ResourceBundle resource, Stage stage) {
+	public TurtleProps(TurtleScene scene, ResourceBundle resource, ModelController controller, Stage stage) {
+		super(scene, resource, controller);
 		myStage = stage;
-		myResource = resource;
-		myTurtleScene = scene;
-		allElements = new ArrayList<Node>();
-		createTurtleTab();
 	}
 
-	private void createTurtleTab() {
+	protected void createTab() {
 		this.setText(myResource.getString("TURTLE"));
 		VBox vb = new VBox();
 
@@ -126,11 +114,6 @@ public class TurtleProps extends Tab {
 		allElements.add(cbTurtVisible);
 
 		return hb5;
-	}
-
-	private void setAllMargins(List<Node> nodes) {
-		for (Node n : nodes)
-			HBox.setMargin(n, myInset);
 	}
 
 	private File getDataDirectory() {

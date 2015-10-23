@@ -40,16 +40,16 @@ public class TurtleSceneTab extends Tab{
 		myCanvas = new Canvas(myCanvasWidth, myCanvasHeight);
 		myShape = new StraightLine(turtScene, myModelController);
 		
-		turtScene.addTab(this);
-		turtScene.getTabs().add(this);
-		
 		setTurtleAndTrail(myTurtScene);
 		this.setContent(myCanvas);
+		
+		turtScene.addTab(this);
+		turtScene.getTabs().add(this);
 	}
 
 	public void setTurtleAndTrail(TurtleScene turtScene) {
 		SlogoImage slogoImage = new SlogoImage(turtScene);
-		myAllSlogoImages.add(slogoImage);
+		setSlogoImage(myAllSlogoImages.size(), slogoImage);
 	}
 
 	public void setTurtImage(ImageView image, int id) {
@@ -60,7 +60,7 @@ public class TurtleSceneTab extends Tab{
 		SlogoImage slogoImage = this.getSlogoImage(id);
 		slogoImage.setX(currTurtLocX);
 		slogoImage.setY(currTurtLocY);
-		myAllSlogoImages.add(id, slogoImage);
+		setSlogoImage(id, slogoImage);
 	}
 	
 	public Object getRecentShape(){

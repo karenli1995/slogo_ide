@@ -1,44 +1,27 @@
 package view.props;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import controller.ModelController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import view.scene.TurtleScene;
 
-public class PenProps extends Tab{
-	private static final int OFFSET_SPACE = 10;
-	private Insets myInset = new Insets(OFFSET_SPACE);
-
-	private List<Node> allElements;
-	private ResourceBundle myResource;
-	private TurtleScene myTurtleScene;
-	private ModelController myController;
-//	private int mySceneId;
+public class PenProps extends AbstractProperties{
 
 	PenProps(TurtleScene scene, ResourceBundle resource, ModelController controller){
-		allElements = new ArrayList<Node>();
-		myResource = resource;
-		myTurtleScene = scene;
-//		mySceneId = myTurtleScene.getIdOfTab();
-		myController = controller;
-
-		createPenTab();
+		super(scene, resource, controller);
 	}
 
-	private void createPenTab(){
+	protected void createTab(){
 		this.setText(myResource.getString("PENPROPTITLE"));
 		VBox vb = new VBox();
 		HBox hb1 = addPenColorLabel();
@@ -133,10 +116,5 @@ public class PenProps extends Tab{
 		allElements.add(shapes);
 
 		return hb8;
-	}
-
-	private void setAllMargins(List<Node> nodes) {
-		for (Node n : nodes)
-			HBox.setMargin(n, myInset);
 	}
 }

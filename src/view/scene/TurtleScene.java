@@ -14,6 +14,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -34,7 +35,6 @@ public class TurtleScene extends TabPane implements Observer{
 		myController = controller;
 		TurtleSceneTab newTab = new TurtleSceneTab(this, myController);
 		myCurrentSceneTab = newTab;
-		addListener();
 		
 		//check
 		List<SlogoImage> allSlogoImages = newTab.getAllSlogoImages();
@@ -46,6 +46,8 @@ public class TurtleScene extends TabPane implements Observer{
 			this.addChildren(image);
 		}
 		
+		addListener();
+//		addListener2();
 //		myTabs.add(newTab);
 	}
 	
@@ -84,6 +86,8 @@ public class TurtleScene extends TabPane implements Observer{
 	public TurtleSceneTab createNewTab(ModelController newController) {
 		TurtleSceneTab newTab = new TurtleSceneTab(this, newController);
 		updateMyTabs(myTabs.size(), newTab);
+//		addListener();
+		
 		return newTab;
 	}
 
@@ -150,6 +154,52 @@ public class TurtleScene extends TabPane implements Observer{
 		}
 	}
 	
+//	public void addListener2(){
+//		this.getSelectionModel().selectedItemProperty().addListener(
+//			    new ChangeListener<Tab>() {
+//			        @Override
+//			        public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
+//			        	oldTab(t);
+//				    	newTab(t1);
+//			        }
+//			        
+//			        private void oldTab(Tab olderTab) {
+//						int tabId = (int) myTabs.indexOf((TurtleSceneTab) olderTab);
+//						System.out.println(tabId + " bye");
+//
+//						TurtleSceneTab oldTab = myTabs.get(tabId);
+//				    	
+//				    	List<Object> oldLines = oldTab.getShape().getAllShapes();
+//						for (Object line : oldLines) oldTab.getTurtScene().removeChildren((Node) line);
+//						
+//						List<SlogoImage> oldTurts = oldTab.getAllSlogoImages();
+//						for (SlogoImage slogoImage : oldTurts){
+//							ImageView image = slogoImage.getMyImage();
+//							oldTab.getTurtScene().removeChildren(image);				
+//						}
+//						
+//						oldTab.getTurtScene().updateMyTabs((int) tabId, oldTab);
+//					}
+//			        
+//			        private void newTab(Tab newerTab) {
+//						int tabId = (int) myTabs.indexOf((TurtleSceneTab) newerTab);
+//						System.out.println(tabId + " hi");
+//						TurtleSceneTab newTab = myTabs.get(tabId);
+//						
+//						List<SlogoImage> newTurts = newTab.getAllSlogoImages();
+//						for (SlogoImage slogoImage : newTurts){
+//							ImageView image = slogoImage.getMyImage();
+//							newTab.getTurtScene().addChildren(image);
+//							newTab.getTurtScene().setScreenLoc(image, image.getX(), image.getY());
+//						}
+//
+//						newTab.getTurtScene().updateMyTabs((int) tabId, newTab);
+//					}
+//			        
+//			    }
+//			);
+//	}
+	
 	
 	public void addListener(){
 		this.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
@@ -161,6 +211,7 @@ public class TurtleScene extends TabPane implements Observer{
 
 			private void newTab(Number newValue) {
 				int tabId = (int) newValue;
+				System.out.println(newValue + " hi");
 				TurtleSceneTab newTab = myTabs.get(tabId);
 				
 				List<SlogoImage> newTurts = newTab.getAllSlogoImages();
@@ -175,6 +226,8 @@ public class TurtleScene extends TabPane implements Observer{
 
 			private void oldTab(Number oldValue) {
 				int tabId = (int) oldValue;
+				System.out.println(oldValue + " bye");
+
 				TurtleSceneTab oldTab = myTabs.get(tabId);
 		    	
 		    	List<Object> oldLines = oldTab.getShape().getAllShapes();

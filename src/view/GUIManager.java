@@ -10,12 +10,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import view.console.AvailableUserCommands;
 import view.console.ConsoleUI;
-import view.console.History;
 import view.console.Prompt;
+import view.history.AvailableUserCommands;
+import view.history.History;
 import view.props.CurrentTurtleState;
-import view.props.Properties;
+import view.props.AllProperties;
 import view.scene.TurtleScene;
 import view.settings.LangDialog;
 import view.settings.MenuPanel;
@@ -35,7 +35,7 @@ public class GUIManager extends BorderPane {
 	private ConsoleUI myConsoleUI;
 	private TurtleScene myTurtleScene;
 	private CurrentTurtleState myCurrTurtState;
-	private Properties myProps;
+	private AllProperties myProps;
 	private MenuPanel myMenu;
 	public ResourceBundle myResource;
 
@@ -100,7 +100,7 @@ public class GUIManager extends BorderPane {
 		GridPane turtstateAndProps = new GridPane();
 		myCurrTurtState = new CurrentTurtleState(scene, myResource, myTurtleScene);
 		turtstateAndProps.add(myCurrTurtState, 0, 1);
-		myProps = new Properties(scene, myTurtleScene, this, myResource, myStage, myModelController);
+		myProps = new AllProperties(scene, myTurtleScene, this, myResource, myStage, myModelController);
 		turtstateAndProps.add(myProps, 0, 2);
 		this.setRight(turtstateAndProps);
 	}
