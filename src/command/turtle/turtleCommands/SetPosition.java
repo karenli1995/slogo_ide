@@ -3,11 +3,7 @@
  */
 package command.turtle.turtleCommands;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import controller.ParseTreeChildren;
-import javafx.geometry.Point2D;
 import model.Data_Turtle_Interface;
 
 /**
@@ -25,14 +21,9 @@ public class SetPosition extends TurtleAbsolutePosition {
 
 	@Override
 	public double execute(ParseTreeChildren newLocation) {
-		List<Double> newlocation = new ArrayList<Double>();
-		newlocation.add(newLocation.getCommandValue(0,0));
-		newlocation.add(newLocation.getCommandValue(1,0));
-		double distance = calculateDistanceBetweenTwoPoints(newlocation);
+		double distance = calculateDistanceBetweenTwoPoints(newLocation.getCommandValue(0,0),newLocation.getCommandValue(1,0));
 		this.setValue(distance);
-		Point2D point = new Point2D(newLocation.getCommandValue(0,0),
-				newLocation.getCommandValue(1,0));
-		addToTrail(point);
+		updateLocation(newLocation.getCommandValue(0,0), newLocation.getCommandValue(1,0),  turtleData.getTurtle(0).getRotationAngle());
 		return distance;
 	}
 

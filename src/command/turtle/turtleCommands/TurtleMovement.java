@@ -3,10 +3,7 @@
  */
 package command.turtle.turtleCommands;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import command.RoundingResults;
+import command.TurtleCommands;
 import controller.ParseTreeChildren;
 import model.Data_Turtle_Interface;
 import model.SlogoObjects;
@@ -16,15 +13,9 @@ import model.SlogoObjects;
  * @author Sally Al
  *
  */
-public abstract class TurtleMovement extends RoundingResults {
-	/**
-	 * @param allData
-	 */
-	private Map<String, Double> coordinates = new HashMap<String, Double>();
+public abstract class TurtleMovement extends TurtleCommands {
 
-	private static final String XCOR = "XCor";
-	private static final String YCOR = "YCor";
-	private static final String ANGLE = "Angle";
+
 
 	public TurtleMovement(Data_Turtle_Interface allData) {
 		super(allData);
@@ -32,18 +23,6 @@ public abstract class TurtleMovement extends RoundingResults {
 
 	}
 
-	private void updateLocation(Double x, Double y, double angle) {
-
-		coordinates.put(XCOR, x);
-		coordinates.put(YCOR, y);
-		coordinates.put(ANGLE, angle);
-		setChanged();
-		notifyObservers();
-	}
-
-	public Map<String, Double> getCoordinates() {
-		return coordinates;
-	}
 
 	private Data_Turtle_Interface data;
 
