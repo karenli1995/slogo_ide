@@ -29,7 +29,7 @@ public abstract class AbstractShape implements ShapeInterface{
 		return myAllShapes;
 	}
 
-	public abstract ArrayList<Line> drawShape(List<Point2D> currTrailList, List<Double> currPenStatus);
+	public abstract ArrayList<Line> drawShape(List<Point2D> currTrailList, List<Double> currPenStatus, List<String> penColors, List<Integer> penThicks);
 
 	protected Point2D translateForScreen(Point2D point) {
 		double X = point.getX() + myTurtScene.getX() + myTurtScene.getCurrTab().getMyCanvasWidth() / 2;

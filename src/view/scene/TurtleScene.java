@@ -252,7 +252,7 @@ public class TurtleScene extends TabPane implements Observer{
 		
 		int tabId = this.getIdOfTab();
 		TurtleSceneTab tab = this.getCurrTab();
-		
+		//tab.setTurtleAndTrail(this);
 		//when setClear() changes
 		/*if(otherSlogoObj.getTurtleData(tabId).getTurtle(0).getClearTrail() == true){
 			List<Object> currLines = tab.getShape().getAllShapes();
@@ -263,7 +263,9 @@ public class TurtleScene extends TabPane implements Observer{
 		//when pendown() changes
 		ArrayList<Point2D> currTrailList = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPathCoordinates();
 		ArrayList<Double> penStatusList = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPenPath();
-		ArrayList<Line> currLine = tab.getShape().drawShape(currTrailList,penStatusList);
+		ArrayList<String> penColors = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getColorPath();
+		ArrayList<Integer> penThicks = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getThicknessPath();
+		ArrayList<Line> currLine = tab.getShape().drawShape(currTrailList,penStatusList,penColors,penThicks);
 		for(Line j:currLine){
 			tab.getShape().addShape(j);
 			this.addChildren((Node)j);
@@ -278,6 +280,7 @@ public class TurtleScene extends TabPane implements Observer{
 //			slogoObject.getTrail().setPoint(point);
 			SlogoImage currSlogoImage = tab.getSlogoImage(i);
 			currSlogoImage.setX(newLocX);
+			System.out.println("IMOVED");
 			currSlogoImage.setY(newLocY);
 			currSlogoImage.setRotation(newRotAngle);
 			this.setScreenLoc(currSlogoImage.getMyImage(), currSlogoImage.getX(), currSlogoImage.getY());
