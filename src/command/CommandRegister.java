@@ -120,7 +120,7 @@ public class CommandRegister {
 		//logic commands
 		cf.registerCommand("And", And.class);
 		cf.registerCommand("Or", Or.class);
-		cf.registerCommand("Greater",Greater.class);
+		cf.registerCommand("GreaterThan",Greater.class);
 		cf.registerCommand("Equal", Equal.class);
 		cf.registerCommand("NotEqual", NotEqual.class);
 		cf.registerCommand("LessThan", LessThan.class);
