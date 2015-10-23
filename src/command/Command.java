@@ -4,6 +4,10 @@
 package command;
 
 import controller.ParseTreeChildren;
+import java.io.Serializable;
+import java.util.List;
+
+import controller.ParseTreeNode;
 import model.Data_Turtle_Interface;
 
 /**
@@ -11,7 +15,12 @@ import model.Data_Turtle_Interface;
  * @author Sally Al
  *
  */
-public abstract class Command implements CommandInterface {
+public abstract class Command implements CommandInterface, Serializable {
+
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8555344826572870264L;
 
 public Command(){}
 public Command(Data_Turtle_Interface allData){}

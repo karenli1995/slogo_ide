@@ -2,8 +2,11 @@ package view.settings;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ResourceBundle;
@@ -39,7 +42,7 @@ public class MenuPanel extends MenuBar {
 		myResource = resource;
 		myController = controller;
 		myFileChooser = new FileChooser();
-		FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
+		FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Java files (*.ser)", "*.ser");
 		myFileChooser.getExtensionFilters().add(extensionFilter);
 		myStage = stage;
 		this.getMenus().addAll(fileMenu(myStage));
@@ -68,7 +71,12 @@ public class MenuPanel extends MenuBar {
 		MenuItem save = new MenuItem(myResource.getString("SAVE"));
 		save.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
 		save.setOnAction(e -> {
-			saveSlogo();
+			try {
+				saveSlogo();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		});
 
 		MenuItem help = new MenuItem(myResource.getString("HELP"));
@@ -100,32 +108,42 @@ public class MenuPanel extends MenuBar {
 
 	private void openSlogo() {
 		myFileChooser.setTitle(myResource.getString("OPEN"));
-		File userDirectory = getDataDirectory();
+		/*File userDirectory = getDataDirectory();
 		if (userDirectory.canRead()) {
 			myFileChooser.setInitialDirectory(userDirectory);
-		}
+		}*/
 		File file = myFileChooser.showOpenDialog(myStage);
 
 		try {
-			if (file != null) {
-
-			}
+			//if (file != null) {
+				FileInputStream f = new FileInputStream(file);
+				ObjectInputStream o = new ObjectInputStream(f);
+				Data newDat = (Data) o.readObject();
+				o.close();
+				newDat.recreate();
+				myController.getMyScene().setData(0,newDat);
+			//}
 		} catch (Exception e) {
 			// showError("Error!","Failed to load "+file.getName(),e);
+			e.printStackTrace();
 		}
 	}
 
-	private void saveSlogo() {
+	private void saveSlogo() throws IOException {
 		myFileChooser.setTitle(myResource.getString("SAVE"));
-		myFileChooser.showSaveDialog(myStage);
-
+		File slogo = myFileChooser.showSaveDialog(myStage);
+		if(!slogo.exists()){
+			slogo.createNewFile();
+		}
 		try {
-			// myFileChooser.
-			// String fileName = myManager.save(getDataDirectory());
-			// showInfo("File saved successfully","File name: "+fileName);
+			FileOutputStream f = new FileOutputStream(slogo);
+			ObjectOutputStream o = new ObjectOutputStream(f);
+			o.writeObject(myController.getMyScene().getAllData().get(0));
+			f.close();
 		} catch (Exception e) {
 			// showError("Save Exception","Failed to save current model as an
 			// XML",e);
+			e.printStackTrace();
 		}
 	}
 

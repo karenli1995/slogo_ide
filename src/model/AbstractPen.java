@@ -1,10 +1,19 @@
 package model;
 
+import java.io.Serializable;
+
 import javafx.scene.paint.Color;
 
-public abstract class AbstractPen {
+public abstract class AbstractPen implements Serializable {
 
-	protected Color myColor;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3942383150109943668L;
+
+	protected transient Color myColor;
+	
+	protected String mySColor;
 
 	protected int myThickness;
 
@@ -16,6 +25,7 @@ public abstract class AbstractPen {
 	public AbstractPen(Color color, int thickness, int dashSparsity, Double bool) {
 		myStatus = bool;
 		myColor = color;
+		mySColor = color.toString();
 		myThickness = thickness;
 		myDashSparsity = dashSparsity;
 	}
@@ -30,6 +40,12 @@ public abstract class AbstractPen {
 
 	public void setColor(Color color) {
 		myColor = color;
+		mySColor = color.toString();
+	}
+	
+	public void recreate(){
+		System.out.println(mySColor);
+		myColor = Color.web(mySColor);
 	}
 
 	public Color getColor() {

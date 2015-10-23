@@ -33,7 +33,7 @@ public abstract class TurtleAbsolutePosition extends Command {
 		double distance = ((y2 - y1) * (y2 - y1)) + ((x2 - x1) * (x2 - x1));
 		distance = Math.sqrt(distance);
 
-		turtleData.getTurtle(0).getTrail().addCoord(new Point2D(x2, y2));
+		turtleData.getTurtle(0).getTrail().addCoord(new Point2D(x2, y2), turtleData.getTurtle(0).getPen().isDown(),turtleData.getTurtle(0).getPen().getColor().toString(),turtleData.getTurtle(0).getPen().getThickness());
 
 		return distance;
 	}
@@ -42,7 +42,7 @@ public abstract class TurtleAbsolutePosition extends Command {
 		Trail loc = turtleData.getTurtle(0).getTrail();
 		loc.setPoint(point);
 		turtleData.getTurtle(0).setTrail(loc);
-		turtleData.getTurtle(0).getTrail().addCoord(point);
+		turtleData.getTurtle(0).getTrail().addCoord(point,turtleData.getTurtle(0).getPen().isDown(),turtleData.getTurtle(0).getPen().getColor().toString(),turtleData.getTurtle(0).getPen().getThickness());
 		turtleData.setTurtle(0, turtleData.getTurtle(0));
 
 
