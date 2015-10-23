@@ -1,7 +1,7 @@
 /**
  *
  */
-package command.math;
+package command.math.arithmetic;
 
 import java.util.Random;
 

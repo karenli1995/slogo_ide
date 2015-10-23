@@ -1,7 +1,7 @@
 /**
  *
  */
-package command.math;
+package command.math.trig;
 
 import command.RoundingResults;
 import controller.ParseTreeChildren;

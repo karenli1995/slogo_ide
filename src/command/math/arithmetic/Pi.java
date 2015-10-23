@@ -1,7 +1,7 @@
 /**
  *
  */
-package command.math;
+package command.math.arithmetic;
 
 import command.Command;
 import controller.ParseTreeChildren;
@@ -11,16 +11,18 @@ import controller.ParseTreeChildren;
  * @author Sally Al
  *
  */
-public class Negative extends Command {
-	public Negative() {
+public class Pi extends Command {
+	public static final double PI = 3.1416;
+
+	public Pi() {
 		super();
 	}
 
 	@Override
 	public double execute(ParseTreeChildren argument) {
-		double negative = -(argument.getCommandValue(0,0));
-		this.setValue(negative);
-		return negative;
+
+		this.setValue(PI);
+		return PI;
 	}
 
 }
