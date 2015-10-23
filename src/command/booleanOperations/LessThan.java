@@ -15,7 +15,7 @@ public class LessThan extends Command {
 
 	@Override
 	public double execute(ParseTreeChildren argument) {
-		if (argument.get(0).get(0).getCommand().getValue() < argument.get(1).get(0).getCommand().getValue()) {
+		if (argument.getCommandValue(0,0) < argument.getCommandValue(1,0)) {
 			this.setValue(1);
 			return 1.0;
 		} else {

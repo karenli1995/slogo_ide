@@ -16,8 +16,8 @@ public class MakeVariable extends Command {
 @Override
 	public double execute(ParseTreeChildren argument) {
 
-		String varName = argument.get(0).get(0).getCommand().getName();
-		Double value = argument.get(1).get(0).getCommand().getValue();
+		String varName = argument.getCommandName(0,0);
+		Double value = argument.getCommandValue(1,0);
 		turtleData.updateVaraibleMap(varName, value);
 		return value;
 	}

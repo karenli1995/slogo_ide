@@ -15,7 +15,7 @@ public class Or extends Command {
 
 	@Override
 	public double execute(ParseTreeChildren argument) {
-		if ((argument.get(0).get(0).getCommandValue() == 0 && argument.get(1).get(0).getCommandValue() == 0)) {
+		if ((argument.getCommandValue(0,0) == 0 && argument.getCommandValue(1,0) == 0)) {
 			this.setValue(0);
 			return 0;
 		} else {

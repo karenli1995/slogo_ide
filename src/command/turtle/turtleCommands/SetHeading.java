@@ -22,7 +22,7 @@ public class SetHeading extends Command {
 	@Override
 	public double execute(ParseTreeChildren headingAngle) {
 		Double turtleCurrentHeading = turtleData.getTurtle(0).getRotationAngle();
-		Double delta = headingAngle.get(0).get(0).getCommandValue() - turtleCurrentHeading;
+		Double delta = headingAngle.getCommandValue(0,0) - turtleCurrentHeading;
 		turtleData.getTurtle(0).setRotationAngle(turtleCurrentHeading + delta);
 		this.setValue(delta);
 		turtleData.setTurtle(0, turtleData.getTurtle(0));

@@ -15,7 +15,7 @@ public class Sine extends Command {
 
 	@Override
 	public double execute(ParseTreeChildren argument) {
-		double sine =Math.sin(Math.toRadians(argument.get(0).get(0).getCommandValue()));
+		double sine =Math.sin(Math.toRadians(argument.getCommandValue(0,0)));
 		this.setValue(sine);
 		return sine;
 	}

@@ -18,7 +18,7 @@ public class Power extends Command {
 
 	@Override
 	public double execute(ParseTreeChildren number) {
-		double power = Math.pow(number.get(0).get(0).getCommandValue(), number.get(1).get(0).getCommand().getValue());
+		double power = Math.pow(number.getCommandValue(0,0), number.getCommandValue(1,0));
 		this.setValue(power);
 		return power;
 

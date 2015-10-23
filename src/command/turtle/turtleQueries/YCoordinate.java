@@ -22,7 +22,7 @@ public class YCoordinate extends Command {
 
 	@Override
 	public double execute(ParseTreeChildren distance) {
-		distance.clear();
+		//distance.clear();
 		double y = turtleData.getTurtle(0).getTrail().getY();
 
 		this.setValue(y);

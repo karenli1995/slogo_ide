@@ -18,7 +18,7 @@ public class Difference extends Command {
 
 	@Override
 	public double execute(ParseTreeChildren argument) {
-		double diff = argument.get(0).get(0).getCommandValue() - argument.get(1).get(0).getCommandValue();
+		double diff = argument.getCommandValue(0,0) - argument.getCommandValue(1,0);
 		this.setValue(diff);
 		return diff;
 	}

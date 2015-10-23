@@ -18,7 +18,7 @@ public class Product extends Command {
 
 	@Override
 	public double execute(ParseTreeChildren argument) {
-		double product = argument.get(0).get(0).getCommandValue() * argument.get(1).get(0).getCommandValue();
+		double product = argument.getCommandValue(0,0) * argument.getCommandValue(1,0);
 		this.setValue(product);
 		return product;
 	}

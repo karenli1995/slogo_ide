@@ -16,11 +16,11 @@ public abstract class Trig extends Command {
 
 	@Override
 	public double execute(ParseTreeChildren angle) {
-		if (checkUnderfinedAngle(angle.get(0).get(0).getCommand().getValue())) {
+		if (checkUnderfinedAngle(angle.getCommandValue(0,0))) {
 			this.setValue(0);
 		} else {
 
-			this.setValue(evaluateAngle(Math.toRadians(angle.get(0).get(0).getCommand().getValue())));
+			this.setValue(evaluateAngle(Math.toRadians(angle.getCommandValue(0,0))));
 		}
 		return this.getValue();
 

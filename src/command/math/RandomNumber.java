@@ -19,7 +19,7 @@ public class RandomNumber extends Command {
 
 	@Override
 	public double execute(ParseTreeChildren max) {
-		double randomValue = random.nextInt((int) max.get(0).get(0).getCommandValue());
+		double randomValue = random.nextInt((int) max.getCommandValue(0,0));
 		this.setValue(randomValue);
 		return randomValue;
 	}

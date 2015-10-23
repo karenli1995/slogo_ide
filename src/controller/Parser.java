@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import command.CommandFactory;
 import command.CommandInterface;
 import command.CommandRegister;
-
 import model.Data;
 import model.ForObserverInterface;
 
@@ -22,6 +21,7 @@ public class Parser {
 	private final String INPUT_RESOURCES = "resources/input";
 	private final String ERROR_RESOURCES = "resources/error";
 	private List<ParseTreeNode<CommandInterface>> nodeList;
+	private Boolean error = false;
 
 	private CommandRegister cr;
 
@@ -90,7 +90,11 @@ public class Parser {
 		}
 		for (int i = 0; i < numInputs; i++) {
 			List<ParseTreeNode<CommandInterface>> tempNodeList = new ArrayList<ParseTreeNode<CommandInterface>>();
-
+			if (index >= commandList.size()) {
+				allData.setErrorMessage(errorResources.getString("noArgument"));
+				error = true;
+				return index;
+			}
 			if (commandList.get(index)[1].equals("ListStart")) {
 				ParseTreeNode<CommandInterface> listStart = createNewNode(index, head);
 				tempNodeList.add(listStart);

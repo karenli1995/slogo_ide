@@ -54,8 +54,9 @@ public class Data implements Data_Turtle_Interface, ForObserverInterface, ColorD
 	public SlogoObjects getTurtle(int turtleId) {
 		return myTurtles.get(turtleId);
 	}
-	
+
 	@Override
+
 	public List<SlogoObjects> getAllTurtles(){
 		return myTurtles;
 	}

@@ -11,7 +11,7 @@ public class Sum extends Command {
 	@Override
 	public double execute(ParseTreeChildren arguments) {
 
-		double sum =arguments.get(0).get(0).getCommandValue()+ arguments.get(1).get(0).getCommandValue();
+		double sum =arguments.getCommandValue(0,0)+ arguments.getCommandValue(1,0);
 		this.setValue(sum);
 		return sum;
 

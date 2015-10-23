@@ -17,7 +17,7 @@ public class Cos extends Command {
 	}
 	@Override
 	public double execute(ParseTreeChildren argument) {
-		double cosangle=Math.cos(Math.toRadians(argument.get(0).get(0).getCommandValue()));
+		double cosangle=Math.cos(Math.toRadians(argument.getCommandValue(0,0)));
 		this.setValue(cosangle);
 		return cosangle;
 	}

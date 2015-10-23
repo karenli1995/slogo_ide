@@ -1,13 +1,10 @@
 package command;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.sun.org.apache.xpath.internal.operations.Minus;
 
 import command.booleanOperations.And;
 import command.booleanOperations.Equal;
-import command.booleanOperations.GreaterThan;
+import command.booleanOperations.Greater;
 import command.booleanOperations.LessThan;
 import command.booleanOperations.Not;
 import command.booleanOperations.NotEqual;
@@ -56,7 +53,7 @@ public class CommandRegister {
 	public CommandRegister(CommandFactory commandfac){
 		cf = commandfac;
 	}
-	
+
 	public void register(){
 		cf.registerCommand("Forward", Forward.class);
 		cf.registerCommand("Backward", Backward.class);
@@ -105,11 +102,11 @@ public class CommandRegister {
 		cf.registerCommand("IsPenDown", IsPenDown.class);
 		cf.registerCommand("And", And.class);
 		cf.registerCommand("Or", Or.class);
-		cf.registerCommand("GreaterThan", GreaterThan.class);
+		cf.registerCommand("Greater",Greater.class);
 		cf.registerCommand("Equal", Equal.class);
 		cf.registerCommand("NotEqual", NotEqual.class);
 		cf.registerCommand("LessThan", LessThan.class);
 		cf.registerCommand("Not", Not.class);
-		
+
 	}
 }
