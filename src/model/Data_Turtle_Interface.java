@@ -3,6 +3,8 @@
  */
 package model;
 
+import java.util.List;
+
 /**
  *
  * @author Sally Al
@@ -10,8 +12,9 @@ package model;
  */
 public interface Data_Turtle_Interface {
 
-	SlogoObjects getTurtle(int turtleId);
-	void  setTurtle(int turtleId, SlogoObjects turtle);
+	public SlogoObjects getTurtle(int turtleId);
+	public void  setTurtle(int turtleId, SlogoObjects turtle);
 	public void updateVaraibleMap(String varName, Double value);
+	public List<SlogoObjects> getAllTurtles();
 
 }

@@ -6,8 +6,7 @@ package command.turtle.turtleCommands;
 import java.util.ArrayList;
 import java.util.List;
 
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 import javafx.geometry.Point2D;
 import model.Data_Turtle_Interface;
 
@@ -25,14 +24,14 @@ public class SetPosition extends TurtleAbsolutePosition {
 	}
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> newLocation) {
+	public double execute(ParseTreeChildren newLocation) {
 		List<Double> newlocation = new ArrayList<Double>();
-		newlocation.add(newLocation.get(0).get(0).getCommandValue());
-		newlocation.add(newLocation.get(1).get(0).getCommandValue());
+		newlocation.add(newLocation.getCommandValue(0,0));
+		newlocation.add(newLocation.getCommandValue(1,0));
 		double distance = calculateDistanceBetweenTwoPoints(newlocation);
 		this.setValue(distance);
-		Point2D point = new Point2D(newLocation.get(0).get(0).getCommand().getValue(),
-				newLocation.get(1).get(0).getCommand().getValue());
+		Point2D point = new Point2D(newLocation.getCommandValue(0,0),
+				newLocation.getCommandValue(1,0));
 		addToTrail(point);
 		return distance;
 	}

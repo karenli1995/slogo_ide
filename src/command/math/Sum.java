@@ -1,10 +1,7 @@
 package command.math;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 public class Sum extends Command {
 	public Sum() {
@@ -12,9 +9,9 @@ public class Sum extends Command {
 	}
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> arguments) {
+	public double execute(ParseTreeChildren arguments) {
 
-		double sum =arguments.get(0).get(0).getCommandValue()+ arguments.get(1).get(0).getCommandValue();
+		double sum =arguments.getCommandValue(0,0)+ arguments.getCommandValue(1,0);
 		this.setValue(sum);
 		return sum;
 

@@ -21,20 +21,25 @@ public class Traverser {
 
 		return allData;
 	}
+	
+	
 
 	public void iterateTreePostOrder(ParseTreeNode<CommandInterface> node) {
-		for (List<ParseTreeNode<CommandInterface>> childNode : node.getChildren()) {
+		System.out.println(node.getNumberOfChildren());
+		for (List<ParseTreeNode<CommandInterface>> childNode : node.getChildren().getNodeList()) {
+			System.out.println(childNode.size());
 			this.iterateTreePostOrder(childNode);
 		}
 
 		commandQueue.add(node);
 	}
 
-	public void iterateTreePostOrder(List<ParseTreeNode<CommandInterface>> node) {
+	private void iterateTreePostOrder(List<ParseTreeNode<CommandInterface>> node) {
 		if (node == null)
 			return;
+		
 		for (ParseTreeNode<CommandInterface> subList : node) {
-			for (List<ParseTreeNode<CommandInterface>> childNode : subList.getChildren()) {
+			for (List<ParseTreeNode<CommandInterface>> childNode : subList.getChildren().getNodeList()) {
 				this.iterateTreePostOrder(childNode);
 			}
 		}

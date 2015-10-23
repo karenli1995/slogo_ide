@@ -3,11 +3,8 @@
  */
 package command.turtle.turtleQueries;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 import model.Data_Turtle_Interface;
 
 /**
@@ -24,7 +21,7 @@ public class Heading extends Command {
 	}
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
+	public double execute(ParseTreeChildren distance) {
 		double angle = turtleData.getTurtle(0).getRotationAngle();
 		this.setValue(angle);
 		return angle;

@@ -11,17 +11,21 @@ import controller.ParseTreeChildren;
  * @author Sally Al
  *
  */
-public class Equal extends Command {
+public class Greater extends Command {
 
 	@Override
 	public double execute(ParseTreeChildren argument) {
-		if (argument.getCommandValue(0,0) == argument.getCommandValue(1,0)) {
-			this.setValue(1);
+		System.out.println("abc");
+		if (argument.getCommandValue(0,0) > argument.getCommandValue(1,0)) {
+			System.out.println("ddd"+argument.getCommandValue(0,0));
+			this.setValue(1.0);
 			return 1.0;
 		} else {
+			System.out.println("xyz");
 			this.setValue(0);
 			return 0;
 		}
 
 	}
+
 }

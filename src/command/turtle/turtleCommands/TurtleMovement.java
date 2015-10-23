@@ -4,11 +4,9 @@
 package command.turtle.turtleCommands;
 
 import java.text.DecimalFormat;
-import java.util.List;
 
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 import javafx.geometry.Point2D;
 import model.Data_Turtle_Interface;
 import model.SlogoObjects;
@@ -27,12 +25,12 @@ public abstract class TurtleMovement extends Command {
 	}
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
+	public double execute(ParseTreeChildren distance) {
 		SlogoObjects currTurtle = data.getTurtle(0);
 		// moveFdorBK(distance.get(0).getCommandValue(), currTurtle, data);
-		moveFdorBK(distance.get(0).get(0).getCommandValue(), currTurtle);
-		setValue(distance.get(0).get(0).getCommandValue());
-		return distance.get(0).get(0).getCommandValue();
+		moveFdorBK(distance.getCommandValue(0,0), currTurtle);
+		setValue(distance.getCommandValue(0,0));
+		return distance.getCommandValue(0,0);
 
 	}
 

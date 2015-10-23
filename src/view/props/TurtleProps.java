@@ -106,7 +106,7 @@ public class TurtleProps extends Tab {
 				TurtleSceneTab currTab = myTurtleScene.getCurrTab();
 				int sceneId = myTurtleScene.getIdOfTab();
 				currTab.setTurtImage(newTurt, 0);
-				currTab.getSlogoImage().changeTurtImage(newTurt);
+				currTab.getSlogoImage(0).changeTurtImage(newTurt);
 
 				myTurtleScene.updateMyTabs(sceneId, currTab);
 			}

@@ -3,11 +3,8 @@
  */
 package command.booleanOperations;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 /**
  *
@@ -17,8 +14,8 @@ import controller.ParseTreeNode;
 public class LessThan extends Command {
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
-		if (argument.get(0).get(0).getCommand().getValue() < argument.get(1).get(0).getCommand().getValue()) {
+	public double execute(ParseTreeChildren argument) {
+		if (argument.getCommandValue(0,0) < argument.getCommandValue(1,0)) {
 			this.setValue(1);
 			return 1.0;
 		} else {

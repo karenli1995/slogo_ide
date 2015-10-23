@@ -3,11 +3,8 @@
  */
 package command.math;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 /**
  *
@@ -20,8 +17,8 @@ public class Log extends Command {
 	}
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> number) {
-		double log =Math.log10(number.get(0).get(0).getCommandValue());
+	public double execute(ParseTreeChildren number) {
+		double log =Math.log10(number.getCommandValue(0,0));
 		this.setValue(log);
 		return log;
 

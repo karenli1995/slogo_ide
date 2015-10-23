@@ -3,11 +3,8 @@
  */
 package command.math;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 /**
  *
@@ -17,8 +14,8 @@ import controller.ParseTreeNode;
 public class Sine extends Command {
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
-		double sine =Math.sin(Math.toRadians(argument.get(0).get(0).getCommandValue()));
+	public double execute(ParseTreeChildren argument) {
+		double sine =Math.sin(Math.toRadians(argument.getCommandValue(0,0)));
 		this.setValue(sine);
 		return sine;
 	}

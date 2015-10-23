@@ -3,11 +3,8 @@
  */
 package command.math;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 /**
  *
@@ -19,8 +16,8 @@ public class Cos extends Command {
 		super();
 	}
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
-		double cosangle=Math.cos(Math.toRadians(argument.get(0).get(0).getCommandValue()));
+	public double execute(ParseTreeChildren argument) {
+		double cosangle=Math.cos(Math.toRadians(argument.getCommandValue(0,0)));
 		this.setValue(cosangle);
 		return cosangle;
 	}

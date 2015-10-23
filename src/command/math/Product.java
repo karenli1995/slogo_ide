@@ -3,11 +3,8 @@
  */
 package command.math;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 /**
  *
@@ -20,8 +17,8 @@ public class Product extends Command {
 	}
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
-		double product = argument.get(0).get(0).getCommandValue() * argument.get(1).get(0).getCommandValue();
+	public double execute(ParseTreeChildren argument) {
+		double product = argument.getCommandValue(0,0) * argument.getCommandValue(1,0);
 		this.setValue(product);
 		return product;
 	}
