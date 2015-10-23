@@ -23,13 +23,11 @@ public class SceneProps extends Tab {
 	private ResourceBundle myResource;
 	private ModelController myController;
 	private TurtleScene myTurtScene;
-//	private int mySceneId;
 
 	private List<Node> allElements;
 
 	public SceneProps(TurtleScene turtscene, ResourceBundle resource,  ModelController controller) {
 		myTurtScene = turtscene;
-//		mySceneId = myTurtScene.getIdOfTab();
 		myResource = resource;
 		myController = controller;
 		allElements = new ArrayList<Node>();

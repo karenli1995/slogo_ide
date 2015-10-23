@@ -27,8 +27,6 @@ public class Buttons extends VBox {
 	private Map<String, Button> myButtons;
 	private ConsoleUI myConsole;
 	private ModelController myController;
-//	private TurtleScene myTurtScene;
-//	private int mySceneId;
 
 	public Buttons(ConsoleUI console, ModelController controller, Scene scene, GUIManager guimanager,
 			ResourceBundle resource) {
@@ -97,7 +95,7 @@ public class Buttons extends VBox {
 		myController.getMyScene().parse(consoleText);
 		ForObserverInterface data = myController.getMyScene().traverse(mySceneId); //change Data
 
-		myGUIManager.getMyHistory().addHistory(consoleText);
+		myGUIManager.getMyHistory().addCommand(consoleText);
 		addUserDefinitions();
 	}
 
@@ -119,12 +117,12 @@ public class Buttons extends VBox {
 		if(myController.getMyScene().getObserverData(mySceneId).getUserCommandMap().size()!=0){
 			Set<String> allUserCommands = myController.getMyScene().getObserverData(mySceneId).getUserCommandMap().keySet();
 			for(String i : allUserCommands){
-				myGUIManager.getMyUserCommands().add(i);
+				myGUIManager.getMyUserCommands().addCommand(i);
 			}
 		}
 		if(myController.getMyScene().getObserverData(mySceneId).getVariableMap().size()!=0){
 			for(String j:myController.getMyScene().getObserverData(mySceneId).getVariableMap().keySet()){
-			myGUIManager.getMyUserCommands().add(j);
+			myGUIManager.getMyUserCommands().addCommand(j);
 			System.out.println("fuck " + myController.getMyScene().getObserverData(mySceneId).getVariableMap().size());
 			}
 		}

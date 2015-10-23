@@ -2,12 +2,9 @@ package view.turtles;
 
 import java.util.List;
 
-import controller.ModelController;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.SlogoObjects;
 import view.scene.TurtleScene;
-import view.scene.TurtleSceneTab;
 
 public class SlogoImage {
 	private final Image myImage = new Image(getClass().getClassLoader().getResourceAsStream("Turtle.png"));

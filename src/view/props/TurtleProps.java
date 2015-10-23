@@ -29,8 +29,6 @@ public class TurtleProps extends Tab {
 
 	private List<Node> allElements;
 
-	private int myTextAreaWidth = 100;
-	private int myTextAreaHeight = 10;
 	private ResourceBundle myResource;
 	private Stage myStage;
 

@@ -52,7 +52,7 @@ public class ModelController extends ControlFunctions {
 		
 		myGuiManager = guiManager;
 		TurtleScene turtScene = myGuiManager.getTurtScene();
-		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().createNewTab(this);
+		TurtleSceneTab currSceneTab = turtScene.createNewTab(this);
 		
 		addObservable(turtScene, myScene);
 //		createAnimation();
