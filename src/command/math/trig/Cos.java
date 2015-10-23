@@ -3,7 +3,7 @@
  */
 package command.math.trig;
 
-import command.RoundingResults;
+import command.TurtleCommands;
 import controller.ParseTreeChildren;
 
 /**
@@ -11,7 +11,7 @@ import controller.ParseTreeChildren;
  * @author Sally Al
  *
  */
-public class Cos extends RoundingResults {
+public class Cos extends TurtleCommands {
 	public Cos(){
 		super();
 	}
