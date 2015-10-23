@@ -161,6 +161,7 @@ public class Data implements Data_Turtle_Interface, ForObserverInterface, ColorD
 	
 	public void recreate(){
 		myTrails.get(0).recreate();
+		myTurtles.get(0).getPen().recreate();
 		myColor = Color.web(myColorHex);
 	}
 	
