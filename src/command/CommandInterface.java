@@ -11,10 +11,10 @@ public interface CommandInterface extends Serializable {
 
 	public abstract void setName(String name);
 
-	public abstract double execute(ParseTreeChildren distance);
-
 	public abstract double getValue();
 
 	public void setValue(double d);
+
+	public abstract double execute(ParseTreeChildren distance);
 
 }

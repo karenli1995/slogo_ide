@@ -33,10 +33,13 @@ public class Prompt extends ConsoleTabPane implements Observer {
 
 
 		double currValue = scene.getObserverData(tabId).getCommandValue();
+
 		this.setPromptText(currValue + "");
 
 		String errorMessage = scene.getObserverData(tabId).getErrorMessage();
-		this.setPromptText(errorMessage + "");
+
+	//	this.setPromptText(errorMessage + "");
+
 
 	}
 

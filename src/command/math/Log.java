@@ -18,7 +18,7 @@ public class Log extends Command {
 
 	@Override
 	public double execute(ParseTreeChildren number) {
-		double log =Math.log10(number.getCommandValue(0,0));
+		double log =Math.log(number.getCommandValue(0,0));
 		this.setValue(log);
 		return log;
 
