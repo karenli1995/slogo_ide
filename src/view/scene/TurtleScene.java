@@ -1,10 +1,12 @@
 package view.scene;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+import java.util.TreeMap;
 
 import model.SlogoObjects;
 import model.SlogoScene;
@@ -18,6 +20,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import view.settings.SlogoProperties;
 import view.turtles.SlogoImage;
 
@@ -251,20 +254,20 @@ public class TurtleScene extends TabPane implements Observer{
 		TurtleSceneTab tab = this.getCurrTab();
 		
 		//when setClear() changes
-		if(otherSlogoObj.getTurtleData(tabId).getTurtle(0).getClearTrail() == true){
+		/*if(otherSlogoObj.getTurtleData(tabId).getTurtle(0).getClearTrail() == true){
 			List<Object> currLines = tab.getShape().getAllShapes();
 			for (Object line : currLines) this.removeChildren((Node) line);
-		}
+		}*/
 		
 		// check if pen down or up
 		//when pendown() changes
-		List<Point2D> currTrailList = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPathCoordinates();
-		if (otherSlogoObj.getTurtleData(tabId).getTurtle(0).getPen().isDown() == 1.0) {
-			Node currLine = (Node) tab.getShape().drawShape(currTrailList);
-			tab.getShape().addShape(currLine);
-			this.addChildren(currLine);
+		ArrayList<Point2D> currTrailList = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPathCoordinates();
+		ArrayList<Double> penStatusList = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPenPath();
+		ArrayList<Line> currLine = tab.getShape().drawShape(currTrailList,penStatusList);
+		for(Line j:currLine){
+			tab.getShape().addShape(j);
+			this.addChildren((Node)j);
 		}
-		
 		//when setRotationAngle() changes and setTrail() changes
 		List<SlogoObjects> turts = otherSlogoObj.getTurtleData(tabId).getAllTurtles();
 		for (int i=0; i<turts.size(); i++){

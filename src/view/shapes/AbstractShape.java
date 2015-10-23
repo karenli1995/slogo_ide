@@ -1,9 +1,13 @@
 package view.shapes;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeMap;
 
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
+import javafx.scene.shape.Line;
 import view.scene.TurtleScene;
 import controller.ModelController;
 
@@ -25,7 +29,7 @@ public abstract class AbstractShape implements ShapeInterface{
 		return myAllShapes;
 	}
 
-	public abstract Object drawShape(List<Point2D> currTrailList);
+	public abstract ArrayList<Line> drawShape(List<Point2D> currTrailList, List<Double> currPenStatus);
 
 	protected Point2D translateForScreen(Point2D point) {
 		double X = point.getX() + myTurtScene.getX() + myTurtScene.getCurrTab().getMyCanvasWidth() / 2;

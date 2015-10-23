@@ -1,10 +1,17 @@
 package model;
 
+import java.io.Serializable;
+
 import javafx.scene.paint.Color;
 
-public abstract class AbstractPen {
+public abstract class AbstractPen implements Serializable {
 
-	protected Color myColor;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3942383150109943668L;
+
+	protected transient Color myColor;
 
 	protected int myThickness;
 

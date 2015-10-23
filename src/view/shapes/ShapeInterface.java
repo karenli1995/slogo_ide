@@ -8,6 +8,6 @@ public interface ShapeInterface {
 	
 	public void addShape(Object shape);
 	public List<Object> getAllShapes();
-	public abstract Object drawShape(List<Point2D> currTrailList);
+	public abstract Object drawShape(List<Point2D> currTrailList, List<Double> penStatusList);
 	
 }
