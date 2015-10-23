@@ -3,9 +3,7 @@
  */
 package command;
 
-import java.util.List;
-
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 import model.Data_Turtle_Interface;
 
 /**
@@ -34,7 +32,7 @@ public Command(Data_Turtle_Interface allData){}
 	}
 
 	@Override
-	public abstract double execute(List<List<ParseTreeNode<CommandInterface>>> distance);
+	public abstract double execute(ParseTreeChildren distance);
 
 	@Override
 	public double getValue() {

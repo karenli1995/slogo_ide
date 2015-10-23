@@ -3,11 +3,8 @@
  */
 package command.math;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 /**
  *
@@ -22,7 +19,7 @@ public class Pi extends Command {
 	}
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
+	public double execute(ParseTreeChildren argument) {
 
 		this.setValue(PI);
 		return PI;

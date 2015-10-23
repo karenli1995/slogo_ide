@@ -1,10 +1,7 @@
 package command.syntax;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 import model.Data_Turtle_Interface;
 
 public class Constant extends Command {
@@ -19,7 +16,7 @@ public class Constant extends Command {
 	}
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
+	public double execute(ParseTreeChildren argument) {
 		return 0;
 	}
 

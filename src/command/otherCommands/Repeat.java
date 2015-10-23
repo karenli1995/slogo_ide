@@ -1,15 +1,12 @@
 package command.otherCommands;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 public class Repeat extends Command {
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
+	public double execute(ParseTreeChildren distance) {
 		return 0;
 	}
 }

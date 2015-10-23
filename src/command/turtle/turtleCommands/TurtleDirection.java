@@ -3,11 +3,8 @@
  */
 package command.turtle.turtleCommands;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 import model.Data_Turtle_Interface;
 
 /**
@@ -23,7 +20,7 @@ public abstract class TurtleDirection extends Command {
 	protected abstract int sign();
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> angle) {
+	public double execute(ParseTreeChildren angle) {
 		double angleValue = angle.get(0).get(0).getCommand().getValue();
 		double newHeadAngle = turtleData.getTurtle(0).getRotationAngle() + ((sign()) * angleValue);
 		turtleData.getTurtle(0).setRotationAngle(newHeadAngle);
