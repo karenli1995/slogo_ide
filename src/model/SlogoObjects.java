@@ -1,16 +1,13 @@
 package model;
 
-import javafx.geometry.Point2D;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public abstract class SlogoObjects implements Serializable{
+import javafx.geometry.Point2D;
+
+public abstract class SlogoObjects implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 2429059406459972387L;
 	private Trail myTrail;
@@ -20,11 +17,11 @@ public abstract class SlogoObjects implements Serializable{
 	private boolean clearTrails;
 	private boolean isActive;
 
-	public SlogoObjects(){
+	public SlogoObjects() {
 		Point2D startPoint = new Point2D(0, 0);
 		setTrail(new Trail(startPoint, 0));
 		setPen(new Pen());
-		
+
 		setIsShowing(true);
 		setClearTrail(false);
 		setIsActive(false);
@@ -42,17 +39,17 @@ public abstract class SlogoObjects implements Serializable{
 		return clearTrails;
 	}
 
-	public void setClearTrail(boolean b){
+	public void setClearTrail(boolean b) {
 		clearTrails = b;
-//		setChanged();
-//		notifyObservers();
+		// setChanged();
+		// notifyObservers();
 	}
 
 	public Pen getPen() {
 		return (Pen) myPen;
 	}
 
-	public void setPen(AbstractPen myPen2){
+	public void setPen(AbstractPen myPen2) {
 		myPen = myPen2;
 	}
 
@@ -71,20 +68,15 @@ public abstract class SlogoObjects implements Serializable{
 	public double getRotationAngle() {
 		return myRotationAngle;
 	}
-	
-	public void setIsActive(boolean b){
+
+	public void setIsActive(boolean b) {
 		isActive = b;
 	}
-	
-	public boolean getIsActive(){
+
+	public boolean getIsActive() {
 		return isActive;
 	}
-	
-	/*public void writeObject(ObjectOutputStream o) throws IOException{
-		o.defaultWriteObject();
-	}
-	
-	public void readObject(ObjectInputStream i) throws ClassNotFoundException, IOException{
-		i.defaultReadObject();
-	}*/
+
+
+
 }

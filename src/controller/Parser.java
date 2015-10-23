@@ -46,6 +46,7 @@ public class Parser {
 
 		cr.register();
 
+
 	}
 
 	public List<ParseTreeNode<CommandInterface>> parse(String input) {

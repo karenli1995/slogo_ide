@@ -3,11 +3,10 @@
  */
 package command;
 
-import controller.ParseTreeChildren;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Observable;
 
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 import model.Data_Turtle_Interface;
 
 /**
@@ -15,10 +14,10 @@ import model.Data_Turtle_Interface;
  * @author Sally Al
  *
  */
-public abstract class Command implements CommandInterface, Serializable {
+public abstract class Command extends Observable implements CommandInterface, Serializable {
 
 /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -8555344826572870264L;
 
@@ -52,6 +51,6 @@ public Command(Data_Turtle_Interface allData){}
 	public void setValue(double d) {
 		this.value = d;
 	}
-	public void test(){}
+
 
 }

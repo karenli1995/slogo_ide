@@ -10,7 +10,7 @@ import model.Data;
 
 public class Traverser {
 	private Queue<ParseTreeNode<CommandInterface>> commandQueue;
-
+	Data allData;
 	public Data traverse(List<ParseTreeNode<CommandInterface>> node, Data allData) {
 		commandQueue = new LinkedList<ParseTreeNode<CommandInterface>>();
 		for (ParseTreeNode<CommandInterface> s : node) {
@@ -18,11 +18,11 @@ public class Traverser {
 		}
 
 		allData.setCommandValue(this.executeCommands());
-
+this.allData=allData;
 		return allData;
 	}
-	
-	
+
+
 
 	public void iterateTreePostOrder(ParseTreeNode<CommandInterface> node) {
 		System.out.println(node.getNumberOfChildren());
@@ -37,7 +37,7 @@ public class Traverser {
 	private void iterateTreePostOrder(List<ParseTreeNode<CommandInterface>> node) {
 		if (node == null)
 			return;
-		
+
 		for (ParseTreeNode<CommandInterface> subList : node) {
 			for (List<ParseTreeNode<CommandInterface>> childNode : subList.getChildren().getNodeList()) {
 				this.iterateTreePostOrder(childNode);
@@ -52,7 +52,7 @@ public class Traverser {
 		Double commandValue = null;
 		while (!commandQueue.isEmpty()) {
 			ParseTreeNode<CommandInterface> tempNode = commandQueue.poll();
-
+			tempNode.getCommand().addObserver(new Data());
 			commandValue = tempNode.getCommand().execute(tempNode.getChildren());
 
 

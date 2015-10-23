@@ -3,11 +3,11 @@
  */
 package command.turtle.turtleCommands;
 
-import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 
-import command.Command;
+import command.RoundingResults;
 import controller.ParseTreeChildren;
-import javafx.geometry.Point2D;
 import model.Data_Turtle_Interface;
 import model.SlogoObjects;
 
@@ -16,31 +16,45 @@ import model.SlogoObjects;
  * @author Sally Al
  *
  */
-public abstract class TurtleMovement extends Command {
-	private Data_Turtle_Interface data;
+public abstract class TurtleMovement extends RoundingResults {
+	/**
+	 * @param allData
+	 */
+	private Map<String, Double> coordinates = new HashMap<String, Double>();
+	private static final String XCOR = "XCor";
+	private static final String YCOR = "YCor";
+	private static final String ANGLE = "Angle";
 
 	public TurtleMovement(Data_Turtle_Interface allData) {
+		super(allData);
 		data = allData;
 
 	}
 
+	private void updateLocation(Double x, Double y, double angle) {
+		coordinates.put(XCOR, x);
+		coordinates.put(YCOR, y);
+		coordinates.put(ANGLE, angle);
+		setChanged();
+		notifyObservers();
+	}
+
+	public Map<String, Double> getCoordinates() {
+		return coordinates;
+	}
+
+	private Data_Turtle_Interface data;
+
 	@Override
 	public double execute(ParseTreeChildren distance) {
+
 		SlogoObjects currTurtle = data.getTurtle(0);
-		// moveFdorBK(distance.get(0).getCommandValue(), currTurtle, data);
-		moveFdorBK(distance.getCommandValue(0,0), currTurtle);
-		setValue(distance.getCommandValue(0,0));
-		return distance.getCommandValue(0,0);
+		moveFdorBK(distance.getCommandValue(0, 0), currTurtle);
+		setValue(distance.getCommandValue(0, 0));
+		return distance.getCommandValue(0, 0);
 
 	}
 
-	private double RoundTo2Decimals(double val) {
-		DecimalFormat df2 = new DecimalFormat("###.##");
-		return Double.valueOf(df2.format(val));
-	}
-
-	// public void moveFdorBK(double distance, SlogoObjects myTurtle, Data
-	// myData) {
 	public void moveFdorBK(double distance, SlogoObjects myTurtle) {
 		int sign = getSign();
 
@@ -64,14 +78,9 @@ public abstract class TurtleMovement extends Command {
 			tempYLocation = myTurtle.getTrail().getY() + (sign * (distance / Math.cos(radians)));
 		}
 
-		Point2D newLoc = new Point2D(tempXLocation, tempYLocation);
+				updateLocation(tempXLocation, tempYLocation,degrees);
 
-		myTurtle.getTrail().addCoord(newLoc,data.getTurtle(0).getPen().isDown(),data.getTurtle(0).getPen().getColor().toString(),data.getTurtle(0).getPen().getThickness());
-		myTurtle.setTrail(myTurtle.getTrail());
-		myTurtle.getTrail().setPoint(newLoc);
-		myTurtle.setRotationAngle(degrees);
 
-		data.setTurtle(0, myTurtle);
 	}
 
 	protected abstract int getSign();
