@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
+
 import model.Data_Turtle_Interface;
 
 
@@ -60,6 +61,7 @@ public class CommandFactory {
                 | InvocationTargetException e) {
             e.printStackTrace();
         }
+
         return command;
     }
 }
