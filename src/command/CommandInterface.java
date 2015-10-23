@@ -1,8 +1,12 @@
 package command;
 
 import controller.ParseTreeChildren;
+import java.io.Serializable;
+import java.util.List;
 
-public interface CommandInterface {
+import controller.ParseTreeNode;
+
+public interface CommandInterface extends Serializable {
 	public abstract String getName();
 
 	public abstract void setName(String name);
