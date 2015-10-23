@@ -19,7 +19,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-public class PastCommandsAbstract extends VBox implements PastCommandsInterface{
+public abstract class PastCommandsAbstract extends VBox implements PastCommandsInterface{
 	
 	private Scene myScene;
 	private ConsoleUI myConsole;

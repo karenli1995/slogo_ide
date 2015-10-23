@@ -22,7 +22,6 @@ import view.settings.SlogoProperties;
 import view.turtles.SlogoImage;
 
 public class TurtleScene extends TabPane implements Observer{
-	private TurtleSceneTab myCurrentSceneTab;
 	private List<TurtleSceneTab> myTabs = new ArrayList<TurtleSceneTab>();
 	private ModelController myController;
 	private ResourceBundle myResource;
@@ -34,7 +33,6 @@ public class TurtleScene extends TabPane implements Observer{
 		myResource = resource;
 		myController = controller;
 		TurtleSceneTab newTab = new TurtleSceneTab(this, myController);
-		myCurrentSceneTab = newTab;
 		
 		//check
 		List<SlogoImage> allSlogoImages = newTab.getAllSlogoImages();
