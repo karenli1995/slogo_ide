@@ -3,20 +3,21 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import command.Command;
 import command.CommandInterface;
 
-public class ParseTreeNode<Command> {
+public class ParseTreeNode<CommandInterface> {
 
 
 
 	private Command command;
 
-	private List<List<ParseTreeNode<Command>>> children;
-	private ParseTreeNode<Command> parent = this;
+	private ParseTreeChildren children;
+	private ParseTreeNode<CommandInterface> parent = this;
 
 	public ParseTreeNode() {
 		super();
-		children = new ArrayList<List<ParseTreeNode<Command>>>();
+		children = new ParseTreeChildren((ParseTreeNode<command.CommandInterface>) this);
 	}
 
 	public ParseTreeNode(Command command) {
@@ -25,43 +26,41 @@ public class ParseTreeNode<Command> {
 
 	}
 
-	public List<List<ParseTreeNode<Command>>> getChildren() {
+	public ParseTreeChildren getChildren() {
 		return this.children;
 	}
 
 	public int getNumberOfChildren() {
-		return getChildren().size();
+		return getChildren().getSize();
 	}
 
 	public boolean hasChildren() {
 		return (getNumberOfChildren() > 0);
 	}
 
-	public void setChildren(List<List<ParseTreeNode<Command>>> children) {
+	public void setChildren(ParseTreeChildren children) {
 		this.children = children;
 	}
 
-	public void addChild(List<ParseTreeNode<Command>> child) {
-		children.add(child);
-		for (ParseTreeNode<Command> p : child) {
-			p.setParent(this);
-		}
+	public void addChild(List<ParseTreeNode<command.CommandInterface>> child) {
+		children.addChildList(child);
+
 	}
 
-	public void addChildAt(int index, List<ParseTreeNode<Command>> child) throws IndexOutOfBoundsException {
-		children.add(index, child);
+	public void addChildAt(int index, List<ParseTreeNode<command.CommandInterface>> child) throws IndexOutOfBoundsException {
+		children.addChildListAt(index, child);
 	}
 
 	public void removeChildren() {
-		this.children = new ArrayList<List<ParseTreeNode<Command>>>();
+		this.children = new ParseTreeChildren((ParseTreeNode<command.CommandInterface>) this);
 	}
 
 	public void removeChildListAt(int index) throws IndexOutOfBoundsException {
-		children.remove(index);
+		children.removeChildListAt(index);
 	}
 
-	public List<ParseTreeNode<Command>> getChildListAt(int index) throws IndexOutOfBoundsException {
-		return children.get(index);
+	public List<ParseTreeNode<command.CommandInterface>> getChildListAt(int index) throws IndexOutOfBoundsException {
+		return children.getChildListAt(index);
 	}
 
 	public Command getCommand() {
@@ -74,11 +73,11 @@ public class ParseTreeNode<Command> {
 
 	}
 
-	public void setParent(ParseTreeNode<Command> p) {
+	public void setParent(ParseTreeNode<CommandInterface> p) {
 		this.parent = p;
 	}
 
-	public ParseTreeNode<Command> getParent() {
+	public ParseTreeNode<CommandInterface> getParent() {
 		return this.parent;
 	}
 
@@ -89,6 +88,10 @@ public class ParseTreeNode<Command> {
 
 	public void setCommandValue(double d) {
 		((command.Command) this.command).setValue(d);
+	}
+	
+	public String getCommandName(){
+		return ((command.Command) this.command).getName();
 	}
 
 }

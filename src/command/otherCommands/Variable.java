@@ -1,16 +1,13 @@
 package command.otherCommands;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 public class Variable  extends Command {
 
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
+	public double execute(ParseTreeChildren argument) {
 
 	/*	String varName = argument.get(0).getCommand().getName();
 		Double value = argument.get(1).getCommand().getValue();

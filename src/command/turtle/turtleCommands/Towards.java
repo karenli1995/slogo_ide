@@ -3,11 +3,8 @@
  */
 package command.turtle.turtleCommands;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 /**
  *
@@ -16,7 +13,7 @@ import controller.ParseTreeNode;
  */
 public class Towards extends Command {
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
+	public double execute(ParseTreeChildren distance) {
 		this.setValue(0);
 		return 0;
 	}

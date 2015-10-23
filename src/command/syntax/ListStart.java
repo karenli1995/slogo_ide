@@ -1,10 +1,7 @@
 package command.syntax;
 
-import java.util.List;
-
 import command.Command;
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 
 public class ListStart extends Command {
 	public ListStart() {
@@ -12,7 +9,7 @@ public class ListStart extends Command {
 	}
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> distance) {
+	public double execute(ParseTreeChildren distance) {
 		return 0;
 	}
 

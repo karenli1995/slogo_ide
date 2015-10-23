@@ -6,8 +6,7 @@ package command.turtle.turtleCommands;
 import java.util.ArrayList;
 import java.util.List;
 
-import command.CommandInterface;
-import controller.ParseTreeNode;
+import controller.ParseTreeChildren;
 import javafx.geometry.Point2D;
 import model.Data_Turtle_Interface;
 
@@ -25,7 +24,7 @@ public class Home extends TurtleAbsolutePosition {
 	}
 
 	@Override
-	public double execute(List<List<ParseTreeNode<CommandInterface>>> argument) {
+	public double execute(ParseTreeChildren argument) {
 		List<Double> defaultPosition = new ArrayList<Double>();
 		defaultPosition.add(0.0);
 		defaultPosition.add(0.0);
