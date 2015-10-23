@@ -9,22 +9,21 @@ import controller.ParseTreeNode;
 import controller.Parser;
 import controller.Traverser;
 
-public class SlogoScene extends Observable{
+public class SlogoScene extends Observable {
 
 	private List<Data> myDataList = new ArrayList<Data>();
 	private Traverser myTraverser;
 	private List<ParseTreeNode<CommandInterface>> myTree;
 	private Parser myParser;
 
-	public SlogoScene(){
+	public SlogoScene() {
 		Data myAllData = new Data();
-//		myDataList.add(myAllData);
+		// myDataList.add(myAllData);
 		setData(myDataList.size(), myAllData);
 
 		myParser = new Parser(myAllData);
 		myTraverser = new Traverser();
 	}
-
 
 	/**
 	 * Sets the Data object, passing information to Data from the front-end to
@@ -34,9 +33,8 @@ public class SlogoScene extends Observable{
 		myDataList.add(id, data);
 		setChanged();
 		notifyObservers();
-//		myAllData = data;
+		// myAllData = data;
 	}
-
 
 	public ForObserverInterface getObserverData(int id) {
 		return myDataList.get(id);
@@ -61,9 +59,12 @@ public class SlogoScene extends Observable{
 	 */
 	public ForObserverInterface traverse(int id) {
 		Data myCurrData = myDataList.get(id);
-		myCurrData = myTraverser.traverse(myTree, myCurrData);
+
+		if (!myTree.isEmpty()) {
+			myCurrData = myTraverser.traverse(myTree, myCurrData);
+		}
 		setData(id, myCurrData);
-//		myDataList.add(id, myCurrData);
+		// myDataList.add(id, myCurrData);
 		return myCurrData;
 	}
 
@@ -80,7 +81,7 @@ public class SlogoScene extends Observable{
 		return myParser;
 	}
 
-	public Traverser getTraverser(){
+	public Traverser getTraverser() {
 		return myTraverser;
 	}
 }

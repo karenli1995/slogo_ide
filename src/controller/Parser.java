@@ -59,7 +59,7 @@ import jdk.nashorn.internal.runtime.ParserException;
 import model.Data;
 import model.ForObserverInterface;
 
-public class Parser{
+public class Parser {
 	private String[] inputArray;
 	private Patterner pattern;
 	private List<String[]> commandList;
@@ -73,14 +73,14 @@ public class Parser{
 	private Map<String, Integer> commandTimesMap;
 	private Map<String, Integer> commandInputMap;
 	private ForObserverInterface allData;
+	private Boolean error = false;
 
 	public Parser(Data allData) {
 		errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
 		pattern = new Patterner();
 		cf = new CommandFactory(allData);
 		this.commandRegistration();
-		this.allData= allData;
-
+		this.allData = allData;
 
 		this.numInputs();
 	}
@@ -141,7 +141,6 @@ public class Parser{
 			cf.registerCommand("LessThan", LessThan.class);
 			cf.registerCommand("Not", Not.class);
 
-
 		} catch (Exception e) {
 
 			throw new ParserException(errorResources.getString("commandRegistration"));
@@ -158,10 +157,10 @@ public class Parser{
 		if (this.checkInput()) {
 			this.createParseTree();
 		}
-		//System.out.println(nodeList.size());
+		// System.out.println(nodeList.size());
 		for (ParseTreeNode<CommandInterface> p : nodeList) {
 			this.printTreeInOrder(p);
-		//	System.out.println("");
+			// System.out.println("");
 
 		}
 
@@ -177,7 +176,9 @@ public class Parser{
 			index = createParseTree(index + 1, newNode);
 			nodeList.add(newNode);
 		}
-
+		if (error) {
+			nodeList.clear();
+		}
 		return index;
 
 	}
@@ -185,13 +186,18 @@ public class Parser{
 	private int createParseTree(int index, ParseTreeNode<CommandInterface> head) {
 
 		int numInputs = this.getNumInputs(head);
-		//System.out.println(numInputs);
+		// System.out.println(numInputs);
 
 		if (numInputs == 0) {
 			return index;
 		}
 		for (int i = 0; i < numInputs; i++) {
 			List<ParseTreeNode<CommandInterface>> tempNodeList = new ArrayList<ParseTreeNode<CommandInterface>>();
+			if (index >= commandList.size()) {
+				allData.setErrorMessage(errorResources.getString("noArgument"));
+				error = true;
+				return index;
+			}
 
 			if (commandList.get(index)[1].equals("ListStart")) {
 				index++;
@@ -208,13 +214,12 @@ public class Parser{
 				}
 			} else {
 				ParseTreeNode<CommandInterface> newNode = createNewNode(index);
-				//System.out.println(commandList.get(index)[1]);
-				//System.out.println(index);
 				index = createParseTree(index + 1, newNode);
 				tempNodeList.add(newNode);
 			}
 
 			head.addChild(tempNodeList);
+
 		}
 
 		return index;
@@ -259,29 +264,30 @@ public class Parser{
 
 	private int getNumInputs(ParseTreeNode<CommandInterface> node) {
 		int numInputs = Integer.parseInt(resources.getString(node.getCommand().getClass().getSimpleName()));
-		if (checkMatch("UserCommand", node)){
-			if(!commandTimesMap.containsKey(node.getCommand().getName())){
+		if (checkMatch("UserCommand", node)) {
+			if (!commandTimesMap.containsKey(node.getCommand().getName())) {
 
-				try{
-				numInputs = commandInputMap.get(node.getCommand().getName());
+				try {
+					numInputs = commandInputMap.get(node.getCommand().getName());
+				} catch (Exception e) {
+
+					allData.setErrorMessage(errorResources.getString("notFound"));
+					// throw new
+					// ParserException(errorResources.getString("notFound"));
+
 				}
-			 catch (Exception e) {
-				 allData.setErrorMessage(errorResources.getString("notFound"));
-				//throw new ParserException(errorResources.getString("notFound"));
-
-			}
-			} else{
+			} else {
 				commandTimesMap.remove(node.getCommand().getName());
 			}
 
 		}
+
 		return numInputs;
 	}
 
-
 	public void printCommandList() {
 		for (String[] s : commandList) {
-		//	System.out.println(s[0] + ", " + s[1]);
+			// System.out.println(s[0] + ", " + s[1]);
 		}
 	}
 
@@ -294,10 +300,12 @@ public class Parser{
 				printTreeInOrder(node);
 			}
 		}
-/*
-		System.out.println(head.getCommand().getClass().getSimpleName() + " " + head.getCommand().getValue() + "->"
-				+ head.getParent().getCommand().getClass().getSimpleName() + " "
-				+ head.getParent().getCommand().getValue());*/
+		/*
+		 * System.out.println(head.getCommand().getClass().getSimpleName() + " "
+		 * + head.getCommand().getValue() + "->" +
+		 * head.getParent().getCommand().getClass().getSimpleName() + " " +
+		 * head.getParent().getCommand().getValue());
+		 */
 
 	}
 
@@ -343,7 +351,5 @@ public class Parser{
 	public boolean checkInput() {
 		return !commandList.isEmpty();
 	}
-
-
 
 }
