@@ -1,5 +1,9 @@
 package model;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,8 +13,12 @@ import command.CommandInterface;
 import controller.ParseTreeNode;
 import javafx.scene.paint.Color;
 
-public class Data implements Data_Turtle_Interface, ForObserverInterface, ColorData {
+public class Data implements Data_Turtle_Interface, ForObserverInterface, ColorData, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2437173979976418913L;
 	private List<SlogoObjects> myTurtles;
 	private List<Trail> myTrails;
 	private boolean myError;
@@ -18,7 +26,8 @@ public class Data implements Data_Turtle_Interface, ForObserverInterface, ColorD
 	private List<String> myUserHistory;
 	private Map<String, Double> myVariableMap;
 	private Map<String, ParseTreeNode<CommandInterface>> myUserCommandMap;
-	private Color myColor;
+	private transient Color myColor;
+	private String myColorHex;
 	private double myCommandValue;
 
 	public Data() {
@@ -116,7 +125,7 @@ public class Data implements Data_Turtle_Interface, ForObserverInterface, ColorD
 	@Override
 	public void setMyColor(Color color) {
 		myColor = color;
-
+		myColorHex = color.toString();
 	}
 
 	@Override
@@ -148,6 +157,19 @@ public class Data implements Data_Turtle_Interface, ForObserverInterface, ColorD
 	@Override
 	public Map<String, ParseTreeNode<CommandInterface>> getUserCommandMap() {
 		return myUserCommandMap;
+	}
+	
+	public void recreate(){
+		myTrails.get(0).recreate();
+		myColor = Color.web(myColorHex);
+	}
+	
+	public void writeObject(ObjectOutputStream o) throws IOException{
+		o.defaultWriteObject();
+	}
+	
+	public void readObject(ObjectInputStream i) throws ClassNotFoundException, IOException{
+		i.defaultReadObject();
 	}
 
 }
