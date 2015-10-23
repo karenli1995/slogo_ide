@@ -21,6 +21,7 @@ public abstract class TurtleMovement extends RoundingResults {
 	 * @param allData
 	 */
 	private Map<String, Double> coordinates = new HashMap<String, Double>();
+
 	private static final String XCOR = "XCor";
 	private static final String YCOR = "YCor";
 	private static final String ANGLE = "Angle";
@@ -32,6 +33,7 @@ public abstract class TurtleMovement extends RoundingResults {
 	}
 
 	private void updateLocation(Double x, Double y, double angle) {
+
 		coordinates.put(XCOR, x);
 		coordinates.put(YCOR, y);
 		coordinates.put(ANGLE, angle);
@@ -58,29 +60,26 @@ public abstract class TurtleMovement extends RoundingResults {
 	public void moveFdorBK(double distance, SlogoObjects myTurtle) {
 		int sign = getSign();
 
-		double tempXLocation;
-		double tempYLocation;
-
 		double degrees = myTurtle.getRotationAngle();
 		double radians = Math.toRadians(degrees);
 
-		tempXLocation = RoundTo2Decimals(Math.sin(radians));
-		tempYLocation = RoundTo2Decimals(Math.cos(radians));
-		// will re-factor this later
-		if (tempXLocation == 0.0 || tempXLocation == -0.0) {
-			tempXLocation = myTurtle.getTrail().getX();
+		double tempXLocation = RoundTo2Decimals(Math.sin(radians));
+		double tempYLocation = RoundTo2Decimals(Math.cos(radians));
+
+		tempXLocation = calcualteCoordinate(tempXLocation, myTurtle.getTrail().getX(), sign, distance);
+		tempYLocation = calcualteCoordinate(tempYLocation, myTurtle.getTrail().getY(), sign, distance);
+
+		updateLocation(tempXLocation, tempYLocation, degrees);
+
+	}
+
+	private double calcualteCoordinate(double Tempcoordinate, double previousCoordinate, int sign, double distance) {
+		if (Tempcoordinate == 0.0 || Tempcoordinate == -0.0) {
+			return previousCoordinate;
 		} else {
-			tempXLocation = myTurtle.getTrail().getX() + ((sign) * distance / Math.sin(radians));
+
+			return (previousCoordinate + (sign * (distance / Tempcoordinate)));
 		}
-		if (tempYLocation == 0.0 || tempYLocation == -0.0) {
-			tempYLocation = (myTurtle.getTrail().getY());
-		} else {
-			tempYLocation = myTurtle.getTrail().getY() + (sign * (distance / Math.cos(radians)));
-		}
-
-				updateLocation(tempXLocation, tempYLocation,degrees);
-
-
 	}
 
 	protected abstract int getSign();
