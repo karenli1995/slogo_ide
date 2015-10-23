@@ -5,9 +5,6 @@ package command;
 
 import controller.ParseTreeChildren;
 import java.io.Serializable;
-import java.util.List;
-
-import controller.ParseTreeNode;
 import model.Data_Turtle_Interface;
 
 /**
