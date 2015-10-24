@@ -1,6 +1,4 @@
-/**
- *
- */
+
 package command;
 
 import java.text.DecimalFormat;
