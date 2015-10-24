@@ -19,6 +19,7 @@ import javafx.scene.paint.Color;
 
 public class Data implements Observer, Data_Turtle_Interface, ForObserverInterface, ColorData, Serializable {
 
+
 	private List<SlogoObjects> myTurtles;
 	private List<Trail> myTrails;
 	private boolean myError;
@@ -29,6 +30,7 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 	private transient Color myColor;
 	private String myColorHex;
 	private double myCommandValue;
+
 
 	public Data() {
 		myTurtles = new ArrayList<SlogoObjects>();
@@ -66,7 +68,7 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 
 	@Override
 
-	public List<SlogoObjects> getAllTurtles() {
+	public List<SlogoObjects> getAllTurtles(){
 		return myTurtles;
 	}
 
@@ -161,19 +163,20 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 		return myUserCommandMap;
 	}
 
-	public void recreate() {
+	public void recreate(){
 		myTrails.get(0).recreate();
 		myTurtles.get(0).getPen().recreate();
 		myColor = Color.web(myColorHex);
 	}
 
-	public void writeObject(ObjectOutputStream o) throws IOException {
+	public void writeObject(ObjectOutputStream o) throws IOException{
 		o.defaultWriteObject();
 	}
 
-	public void readObject(ObjectInputStream i) throws ClassNotFoundException, IOException {
+	public void readObject(ObjectInputStream i) throws ClassNotFoundException, IOException{
 		i.defaultReadObject();
 	}
+
 
 	@Override
 	public void update(Observable o, Object arg) {
@@ -182,12 +185,14 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 				observedClass.getCoordinates().get("YCor"));
 		this.getTurtle(0).setTrail(new Trail(NewCoordinate, 0));
 
-		this.getTurtle(0).getTrail().addCoord(NewCoordinate, this.getTurtle(0).getPen().isDown(),
-				this.getTurtle(0).getPen().getColor().toString(), this.getTurtle(0).getPen().getThickness());
+		this.getTurtle(0).getTrail().addCoord(NewCoordinate, this.getTurtle(0).getPen().isDown(), this.getTurtle(0).getPen().getColor().toString(),
+				this.getTurtle(0).getPen().getThickness());
 		this.getTurtle(0).setTrail(this.getTurtle(0).getTrail());
 		this.getTurtle(0).getTrail().setPoint(NewCoordinate);
 		this.getTurtle(0).setRotationAngle(observedClass.getCoordinates().get("Angle"));
 		this.setTurtle(0, this.getTurtle(0));
+
+
 
 	}
 
