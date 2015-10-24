@@ -1,14 +1,15 @@
 /**
  *
  */
-package command;
+package src.command;
 
 import java.io.Serializable;
 import java.util.Observable;
 
+import command.CommandInterface;
 import controller.ParseTreeChildren;
+import model.Data;
 import model.Data_Turtle_Interface;
-import model.ForObserverInterface;
 
 /**
  *
@@ -22,7 +23,7 @@ public abstract class Command extends Observable implements CommandInterface, Se
 
 public Command(){}
 public Command(Data_Turtle_Interface allData){}
-public Command(Data_Turtle_Interface allData, ForObserverInterface observerData){}
+public Command(Data allData){}
 
 	private String name;
 
