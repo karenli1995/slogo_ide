@@ -37,9 +37,9 @@ public class Prompt extends ConsoleTabPane implements Observer {
         this.setPromptText(currValue + "");
 
         String errorMessage = scene.getObserverData(tabId).getErrorMessage();
-
+if(errorMessage!=null){
         this.setPromptText(errorMessage + "");
-
+}
     }
 
 }
