@@ -32,6 +32,7 @@ public class StraightLine extends AbstractShape {
 			if (currPenStatus.get(i+1) == 1.0) {
 				Point2D point1 = translateForScreen(currTrailList.get(i));
 				Point2D point2 = translateForScreen(currTrailList.get(i+1));
+				//System.out.println(point1.getY() + " " + point2.getY());
 				Line recentLine = new Line(point1.getX(), point1.getY(), point2.getX(), point2.getY());
 				recentLine.setStroke(Color.web(penColors.get(i)));
 				recentLine.setStrokeWidth(penThicks.get(i));
