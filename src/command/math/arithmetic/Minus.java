@@ -11,8 +11,8 @@ import controller.ParseTreeChildren;
  * @author Sally Al
  *
  */
-public class Negative extends Command {
-	public Negative() {
+public class Minus extends Command {
+	public Minus() {
 		super();
 	}
 

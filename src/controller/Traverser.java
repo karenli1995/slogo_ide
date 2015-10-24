@@ -25,7 +25,6 @@ this.allData=allData;
 
 
 	public void iterateTreePostOrder(ParseTreeNode<CommandInterface> node) {
-		System.out.println(node.getNumberOfChildren());
 		for (List<ParseTreeNode<CommandInterface>> childNode : node.getChildren().getNodeList()) {
 			System.out.println(childNode.size());
 			this.iterateTreePostOrder(childNode);

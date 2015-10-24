@@ -11,8 +11,8 @@ import controller.ParseTreeChildren;
  * @author Sally Al
  *
  */
-public class Cos extends TurtleCommands {
-	public Cos(){
+public class Cosine extends TurtleCommands {
+	public Cosine(){
 		super();
 	}
 	@Override

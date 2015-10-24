@@ -8,8 +8,8 @@ package command.math.trig;
  * @author Sally Al
  *
  */
-public class Atan extends Trig {
-    public Atan () {
+public class ArcTangent extends Trig {
+    public ArcTangent () {
         super();
     }
 

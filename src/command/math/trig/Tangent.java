@@ -8,7 +8,7 @@ package command.math.trig;
  * @author Sally Al
  *
  */
-public class Tan extends Trig {
+public class Tangent extends Trig {
 
 	@Override
 	protected double evaluateAngle(double angle) {
