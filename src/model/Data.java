@@ -144,7 +144,9 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 
 	@Override
 	public String getErrorMessage() {
-		return myErrorMessage;
+		String temp = myErrorMessage;
+		myErrorMessage=null;
+		return temp;
 	}
 
 	@Override
