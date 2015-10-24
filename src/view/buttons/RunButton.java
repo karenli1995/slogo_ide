@@ -21,7 +21,7 @@ public class RunButton extends AbstractButton{
 		int mySceneId = myTurtScene.getIdOfTab();
 		String consoleText = myConsole.getTextFromConsole();
 
-		myController.getMyScene().parse(consoleText, mySceneId);
+		myController.getMyScene().parse(consoleText);
 		ForObserverInterface data = myController.getMyScene().traverse(mySceneId); //change Data
 
 		myGUIManager.getMyHistory().addCommand(consoleText);
