@@ -1,7 +1,7 @@
 /**
  *
  */
-package command.math;
+package command.math.trig;
 
 import command.Command;
 import controller.ParseTreeChildren;
@@ -12,6 +12,10 @@ import controller.ParseTreeChildren;
  *
  */
 public abstract class Trig extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7985189152995269845L;
 	private static final int ANGLE = 90;
 
 	@Override

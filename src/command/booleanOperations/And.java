@@ -12,6 +12,11 @@ import controller.ParseTreeChildren;
  *
  */
 public class And extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6933861121473227309L;
+
 	public And() {
 		super();
 	}
@@ -27,5 +32,7 @@ public class And extends Command {
 			return 0;
 		}
 	}
+
+
 
 }

@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import view.settings.SlogoProperties;
+import view.shapes.AbstractShape;
 import view.turtles.SlogoImage;
 
 public class TurtleScene extends TabPane implements Observer{
@@ -259,6 +260,11 @@ public class TurtleScene extends TabPane implements Observer{
 		
 		// check if pen down or up
 		//when pendown() changes
+		for(Object i:tab.getShape().getAllShapes()){
+			Line temp = (Line) i;
+			this.removeChildren((Node)temp);
+		}
+		//this.removeChildren((Node)tab.getShape().getAllShapes());
 		ArrayList<Point2D> currTrailList = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPathCoordinates();
 		ArrayList<Double> penStatusList = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPenPath();
 		ArrayList<String> penColors = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getColorPath();
@@ -278,7 +284,6 @@ public class TurtleScene extends TabPane implements Observer{
 //			slogoObject.getTrail().setPoint(point);
 			SlogoImage currSlogoImage = tab.getSlogoImage(i);
 			currSlogoImage.setX(newLocX);
-			System.out.println("IMOVED");
 			currSlogoImage.setY(newLocY);
 			currSlogoImage.setRotation(newRotAngle);
 			this.setScreenLoc(currSlogoImage.getMyImage(), currSlogoImage.getX(), currSlogoImage.getY());

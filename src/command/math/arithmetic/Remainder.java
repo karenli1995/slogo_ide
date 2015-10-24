@@ -1,7 +1,7 @@
 /**
  *
  */
-package command.math;
+package command.math.arithmetic;
 
 import command.Command;
 import controller.ParseTreeChildren;
@@ -12,6 +12,11 @@ import controller.ParseTreeChildren;
  *
  */
 public class Remainder extends Command {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5675238179764860997L;
 
 	@Override
 	public double execute(ParseTreeChildren argument) {

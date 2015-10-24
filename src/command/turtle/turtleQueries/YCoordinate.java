@@ -13,6 +13,10 @@ import model.Data_Turtle_Interface;
  *
  */
 public class YCoordinate extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6465432849463275329L;
 	private Data_Turtle_Interface turtleData;
 
 	public YCoordinate(Data_Turtle_Interface data) {

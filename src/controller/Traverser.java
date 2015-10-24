@@ -6,58 +6,68 @@ import java.util.Queue;
 
 import command.CommandInterface;
 import model.Data;
+import model.ForObserverInterface;
 
 
 public class Traverser {
-	private Queue<ParseTreeNode<CommandInterface>> commandQueue;
+    private Queue<ParseTreeNode<CommandInterface>> commandQueue;
+private Data data;
 
-	public Data traverse(List<ParseTreeNode<CommandInterface>> node, Data allData) {
-		commandQueue = new LinkedList<ParseTreeNode<CommandInterface>>();
-		for (ParseTreeNode<CommandInterface> s : node) {
-			this.iterateTreePostOrder(s);
-		}
+    public Double traverse (List<ParseTreeNode<CommandInterface>> node, Data allData) {
+    	data=allData;
+        commandQueue = new LinkedList<ParseTreeNode<CommandInterface>>();
+        if (node.get(0) == null) {
+            return -1.0;
+        }
+        else {
+            for (ParseTreeNode<CommandInterface> s : node) {
+                this.iterateTreePostOrder(s, allData);
+            }
+            Double value = this.executeCommands();
+            allData.setCommandValue(value);
+            return value;
+        }
 
-		allData.setCommandValue(this.executeCommands());
+    }
 
-		return allData;
-	}
-	
-	
+    public void iterateTreePostOrder (ParseTreeNode<CommandInterface> node, ForObserverInterface allData) {
+        if (node != null) {
+            for (List<ParseTreeNode<CommandInterface>> childNode : node.getChildren()
+                    .getNodeList()) {
+                this.iterateTreePostOrder(childNode, allData);
+            }
+            commandQueue.add(node);
 
-	public void iterateTreePostOrder(ParseTreeNode<CommandInterface> node) {
-		System.out.println(node.getNumberOfChildren());
-		for (List<ParseTreeNode<CommandInterface>> childNode : node.getChildren().getNodeList()) {
-			System.out.println(childNode.size());
-			this.iterateTreePostOrder(childNode);
-		}
+        } else{
+            allData.setErrorMessage("No Argument");
+        }
 
-		commandQueue.add(node);
-	}
+    }
 
-	private void iterateTreePostOrder(List<ParseTreeNode<CommandInterface>> node) {
-		if (node == null)
-			return;
-		
-		for (ParseTreeNode<CommandInterface> subList : node) {
-			for (List<ParseTreeNode<CommandInterface>> childNode : subList.getChildren().getNodeList()) {
-				this.iterateTreePostOrder(childNode);
-			}
-		}
-		if(node.size() == 1){
-			commandQueue.add(node.get(0));
-		}
-	}
+    private void iterateTreePostOrder (List<ParseTreeNode<CommandInterface>> node,  ForObserverInterface allData) {
+        if (node == null)
+            return;
 
-	public double executeCommands() {
-		Double commandValue = null;
-		while (!commandQueue.isEmpty()) {
-			ParseTreeNode<CommandInterface> tempNode = commandQueue.poll();
+        for (ParseTreeNode<CommandInterface> subList : node) {
+            for (List<ParseTreeNode<CommandInterface>> childNode : subList.getChildren()
+                    .getNodeList()) {
+                this.iterateTreePostOrder(childNode, allData);
+            }
+        }
+        if (node.size() == 1) {
+            commandQueue.add(node.get(0));
+        }
+    }
 
-			commandValue = tempNode.getCommand().execute(tempNode.getChildren());
+    public double executeCommands () {
+        Double commandValue = null;
+        while (!commandQueue.isEmpty()) {
+            ParseTreeNode<CommandInterface> tempNode = commandQueue.poll();
+            tempNode.getCommand().addObserver(data);
+            commandValue = tempNode.getCommand().execute(tempNode.getChildren());
 
-
-		}
-		return commandValue;
-	}
+        }
+        return commandValue;
+    }
 
 }

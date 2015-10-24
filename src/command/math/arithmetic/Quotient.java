@@ -1,7 +1,7 @@
 /**
  *
  */
-package command.math;
+package command.math.arithmetic;
 
 import command.Command;
 import controller.ParseTreeChildren;
@@ -12,6 +12,11 @@ import controller.ParseTreeChildren;
  *
  */
 public class Quotient extends Command{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5543181629851201807L;
+
 public Quotient(){super();}
 
 	@Override

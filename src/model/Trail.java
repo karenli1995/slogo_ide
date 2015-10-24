@@ -1,14 +1,9 @@
 package model;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+
 
 import javafx.geometry.Point2D;
 
@@ -31,13 +26,17 @@ public class Trail implements Serializable{
 	}
 
 	public Trail(Point2D point, double direction) {
-		myPath.add(point);
+		Point2D starter = new Point2D(0.0,0.0);
+		myPath.add(starter);
 		myPenStatus.add(1.0);
 		//myPath.put(point); //check
-		myPoint = point;
-		myDPoint[0] = myPoint.getX();
-		myDPoint[1] = myPoint.getY();
-		myDPath.add(myDPoint);
+		myPoint = starter;
+		myDPoint[0] = starter.getX();
+		myDPoint[1] = starter.getY();
+		Double[] temp = new Double[2];
+		temp[0] = starter.getX();
+		temp[1] = starter.getY();
+		myDPath.add(temp);
 		myDirection = direction;
 	}
 
@@ -66,11 +65,12 @@ public class Trail implements Serializable{
 	}
 	
 	public void recreate(){
-		myPoint = new Point2D(myDPoint[0],myDPoint[1]);
+		myPoint = new Point2D(0,0);
 		myPath = new ArrayList<Point2D>();
-		for(Double[] i:myDPath){
-			myPath.add(new Point2D(i[0],i[1]));
+		for(int i = 0; i <myDPath.size();i++){
+			myPath.add(new Point2D(myDPath.get(i)[0],myDPath.get(i)[1]));
 		}
+		myPoint = new Point2D(myDPoint[0],myDPoint[1]);
 		
 	}
 

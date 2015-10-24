@@ -1,7 +1,7 @@
 /**
  *
  */
-package command.math;
+package command.math.arithmetic;
 
 import command.Command;
 import controller.ParseTreeChildren;
@@ -12,6 +12,11 @@ import controller.ParseTreeChildren;
  *
  */
 public class Product extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3795052450458213450L;
+
 	public Product() {
 		super();
 	}

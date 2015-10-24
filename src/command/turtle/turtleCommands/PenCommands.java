@@ -14,6 +14,10 @@ import model.Pen;
  *
  */
 public abstract class PenCommands extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7003996375537002670L;
 	private Data_Turtle_Interface turtleData;
 
 	public PenCommands(Data_Turtle_Interface turtleData) {

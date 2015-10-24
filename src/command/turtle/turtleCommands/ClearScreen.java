@@ -3,12 +3,8 @@
  */
 package command.turtle.turtleCommands;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import controller.ParseTreeChildren;
 import model.Data_Turtle_Interface;
-import model.SlogoObjects;
 
 /**
  *
@@ -16,6 +12,10 @@ import model.SlogoObjects;
  *
  */
 public class ClearScreen extends TurtleAbsolutePosition {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -240865876563370225L;
 	private Data_Turtle_Interface turtleData;
 
 	public ClearScreen(Data_Turtle_Interface data) {
@@ -25,20 +25,10 @@ public class ClearScreen extends TurtleAbsolutePosition {
 
 	@Override
 	public double execute(ParseTreeChildren distance) {
-		List<Double> defaultPosition = new ArrayList<Double>();
-		defaultPosition.add(0.0);
-		defaultPosition.add(0.0);
-		double distanceMoved = calculateDistanceBetweenTwoPoints(defaultPosition);
-		this.setValue(distanceMoved);
 
-		SlogoObjects currTurt = turtleData.getTurtle(0);
-
-		currTurt.setRotationAngle(0.0);
-
-		currTurt.setClearTrail(true);
-		turtleData.setTurtle(0, currTurt);
-
-		return distanceMoved;
+		this.setValue(resetTurtlePosition());
+		turtleData.getTurtle(0).setClearTrail(true);
+		return resetTurtlePosition();
 	}
 
 }

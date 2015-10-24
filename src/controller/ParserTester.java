@@ -19,12 +19,12 @@ public class ParserTester {
 
 	public static void main(String[] args) throws IOException {
 		Data allData = new Data();
-		Parser parser = new Parser(allData);
+		Parser parser = new Parser();
 		Traverser traverse = new Traverser();
 		String input = readFile("examples/loops_with_variables/flower.logo", StandardCharsets.UTF_8);
 		input = "dotimes [ :d 10 ] [ repeat 20 [ fd :d ] rt 2 ]";
-		//input = "sum 10 20";
-		List<ParseTreeNode<CommandInterface>> head = parser.parse(input);
+		//input = "fd 50";
+		List<ParseTreeNode<CommandInterface>> head = parser.parse(input, allData);
 	//	traverse.traverse(head, allData);
 		// Command tempCommand =
 		// control.getParser().getCommandFactory().createCommand("Constant");

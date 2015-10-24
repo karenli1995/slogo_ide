@@ -31,13 +31,14 @@ public class Prompt extends ConsoleTabPane implements Observer {
 		int tabId = myTurtScene.getIdOfTab();
 		TurtleSceneTab tab = myTurtScene.getCurrTab();
 
-
 		double currValue = scene.getObserverData(tabId).getCommandValue();
+
 		this.setPromptText(currValue + "");
 
 		String errorMessage = scene.getObserverData(tabId).getErrorMessage();
-		this.setPromptText(errorMessage + "");
-
+		if (errorMessage != null) {
+			this.setPromptText(errorMessage + "");
+		}
 	}
 
 }

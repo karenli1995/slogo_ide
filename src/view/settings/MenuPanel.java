@@ -108,21 +108,18 @@ public class MenuPanel extends MenuBar {
 
 	private void openSlogo() {
 		myFileChooser.setTitle(myResource.getString("OPEN"));
-		/*File userDirectory = getDataDirectory();
-		if (userDirectory.canRead()) {
-			myFileChooser.setInitialDirectory(userDirectory);
-		}*/
 		File file = myFileChooser.showOpenDialog(myStage);
 
 		try {
-			//if (file != null) {
+			if (file != null) {
 				FileInputStream f = new FileInputStream(file);
 				ObjectInputStream o = new ObjectInputStream(f);
 				Data newDat = (Data) o.readObject();
 				o.close();
 				newDat.recreate();
+				myController.getGuiManager().getTurtScene();
 				myController.getMyScene().setData(0,newDat);
-			//}
+			}
 		} catch (Exception e) {
 			// showError("Error!","Failed to load "+file.getName(),e);
 			e.printStackTrace();

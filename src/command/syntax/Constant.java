@@ -5,6 +5,10 @@ import controller.ParseTreeChildren;
 import model.Data_Turtle_Interface;
 
 public class Constant extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4748693328683228805L;
 	Data_Turtle_Interface data;
 
 	public Constant() {

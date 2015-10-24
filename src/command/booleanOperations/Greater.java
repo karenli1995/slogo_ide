@@ -13,6 +13,11 @@ import controller.ParseTreeChildren;
  */
 public class Greater extends Command {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8827586110836348387L;
+
 	@Override
 	public double execute(ParseTreeChildren argument) {
 		System.out.println("abc");
