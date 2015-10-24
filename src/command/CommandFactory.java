@@ -69,7 +69,7 @@ public class CommandFactory {
                 command = (Command) commandConstructor.newInstance(o);
             }
             else if ((commandClass.getPackage().getName().contains("otherCommands"))) {
-                Object[] o = new Object[2];
+                Object[] o = new Object[1];
                 o[0] = allData;
                 command = (Command) commandConstructor.newInstance(o);
             }
