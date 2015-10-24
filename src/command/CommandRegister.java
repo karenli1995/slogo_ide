@@ -9,7 +9,7 @@ import command.booleanOperations.NotEqual;
 import command.booleanOperations.Or;
 import command.math.arithmetic.Difference;
 import command.math.arithmetic.Log;
-import command.math.arithmetic.Negative;
+import command.math.arithmetic.Minus;
 import command.math.arithmetic.Pi;
 import command.math.arithmetic.Power;
 import command.math.arithmetic.Product;
@@ -17,10 +17,10 @@ import command.math.arithmetic.Quotient;
 import command.math.arithmetic.RandomNumber;
 import command.math.arithmetic.Remainder;
 import command.math.arithmetic.Sum;
-import command.math.trig.Atan;
-import command.math.trig.Cos;
+import command.math.trig.ArcTangent;
+import command.math.trig.Cosine;
 import command.math.trig.Sine;
-import command.math.trig.Tan;
+import command.math.trig.Tangent;
 import command.otherCommands.DoTimes;
 import command.otherCommands.MakeUserInstruction;
 import command.otherCommands.Repeat;
@@ -73,7 +73,7 @@ public class CommandRegister {
 		//math-arithmetic
 		cf.registerCommand("Difference", Difference.class);
 		cf.registerCommand("Log", Log.class);
-		cf.registerCommand("Minus", Negative.class);
+		cf.registerCommand("Minus", Minus.class);
 		cf.registerCommand("Pi", Pi.class);
 		cf.registerCommand("Power", Power.class);
 		cf.registerCommand("Product", Product.class);
@@ -85,10 +85,10 @@ public class CommandRegister {
 
 
 		//math-trig
-		cf.registerCommand("ArcTangent", Atan.class);
-		cf.registerCommand("Cosine", Cos.class);
+		cf.registerCommand("ArcTangent", ArcTangent.class);
+		cf.registerCommand("Cosine", Cosine.class);
 		cf.registerCommand("Sine", Sine.class);
-		cf.registerCommand("Tangent", Tan.class);
+		cf.registerCommand("Tangent", Tangent.class);
 		cf.registerCommand("Sine", Sine.class);
 
 

@@ -31,10 +31,17 @@ public class Traverser {
 	}
 
 	public void iterateTreePostOrder(ParseTreeNode<CommandInterface> node) {
+
 		if (node != null) {
 			for (List<ParseTreeNode<CommandInterface>> childNode : node.getChildren().getNodeList()) {
 				this.iterateTreePostOrder(childNode);
 			}
+
+		for (List<ParseTreeNode<CommandInterface>> childNode : node.getChildren().getNodeList()) {
+			System.out.println(childNode.size());
+			this.iterateTreePostOrder(childNode);
+		}
+
 
 			commandQueue.add(node);
 		}

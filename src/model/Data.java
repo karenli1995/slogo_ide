@@ -12,7 +12,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import command.CommandInterface;
-import command.turtle.turtleCommands.TurtleMovement;
+import command.TurtleCommands;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
@@ -180,7 +180,7 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 
 	@Override
 	public void update(Observable o, Object arg) {
-		TurtleMovement observedClass = (TurtleMovement) o;
+		TurtleCommands observedClass = (TurtleCommands) o;
 		Point2D NewCoordinate = new Point2D(observedClass.getCoordinates().get("XCor"),
 				observedClass.getCoordinates().get("YCor"));
 		this.getTurtle(0).setTrail(new Trail(NewCoordinate, 0));
