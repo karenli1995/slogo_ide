@@ -8,6 +8,7 @@ import java.util.Observable;
 
 import controller.ParseTreeChildren;
 import model.Data_Turtle_Interface;
+import model.ForObserverInterface;
 
 /**
  *
@@ -16,13 +17,12 @@ import model.Data_Turtle_Interface;
  */
 public abstract class Command extends Observable implements CommandInterface, Serializable {
 
-/**
-	 *
-	 */
+
 	private static final long serialVersionUID = -8555344826572870264L;
 
 public Command(){}
 public Command(Data_Turtle_Interface allData){}
+public Command(Data_Turtle_Interface allData, ForObserverInterface observerData){}
 
 	private String name;
 
