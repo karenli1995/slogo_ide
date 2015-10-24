@@ -11,6 +11,8 @@ public Variable() {
 
 }
 
+	private static final long serialVersionUID = 8952601530556268609L;
+
 	@Override
 	public double execute(ParseTreeChildren argument) {
 

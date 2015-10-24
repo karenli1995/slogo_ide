@@ -12,6 +12,10 @@ import controller.ParseTreeChildren;
  *
  */
 public class Pi extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7294696481342781769L;
 	public static final double PI = 3.1416;
 
 	public Pi() {

@@ -13,11 +13,15 @@ import model.Data_Turtle_Interface;
  *
  */
 public class Heading extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3264254956067658867L;
 	private Data_Turtle_Interface turtleData;
 
 	public Heading(Data_Turtle_Interface data) {
 		super(data);
-		Data_Turtle_Interface turtleData = data;
+		//Data_Turtle_Interface turtleData = data;
 	}
 
 	@Override

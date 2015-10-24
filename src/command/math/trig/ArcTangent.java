@@ -9,7 +9,12 @@ package command.math.trig;
  *
  */
 public class ArcTangent extends Trig {
-    public ArcTangent () {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1770768285470329057L;
+
+	public ArcTangent () {
         super();
     }
 

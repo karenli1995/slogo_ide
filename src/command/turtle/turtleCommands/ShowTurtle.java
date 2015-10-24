@@ -13,6 +13,11 @@ import model.Data_Turtle_Interface;
 public class ShowTurtle extends TurtleVisibility {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -234848329032905536L;
+
 	public ShowTurtle(Data_Turtle_Interface turtleData) {
 		super(turtleData);
 	}

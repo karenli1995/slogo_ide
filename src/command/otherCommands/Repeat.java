@@ -6,7 +6,11 @@ import controller.Traverser;
 import model.Data;
 
 public class Repeat extends Command {
-        Traverser traverse = new Traverser();
+        /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4606139237584581984L;
+		Traverser traverse = new Traverser();
         private Data allData;
 
         public Repeat (Data allData) {

@@ -12,6 +12,10 @@ import controller.ParseTreeChildren;
  *
  */
 public class Cosine extends TurtleCommands {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8210600920444364245L;
 	public Cosine(){
 		super();
 	}

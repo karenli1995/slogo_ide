@@ -12,6 +12,10 @@ import model.Data_Turtle_Interface;
  *
  */
 public abstract class TurtleAbsolutePosition extends TurtleCommands {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8142832169960392982L;
 	private Data_Turtle_Interface turtleData;
 
 	public TurtleAbsolutePosition(Data_Turtle_Interface turtleData) {

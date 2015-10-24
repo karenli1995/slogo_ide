@@ -13,6 +13,10 @@ import model.Data_Turtle_Interface;
  *
  */
 public class SetHeading extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6593453308174239806L;
 	private Data_Turtle_Interface turtleData;
 
 	public SetHeading(Data_Turtle_Interface turtleDate) {
