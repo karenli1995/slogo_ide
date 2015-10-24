@@ -143,9 +143,7 @@ public class Parser {
 		} else {
 			node.getCommand().setValue(index);
 		}
-		if (node.getCommand() == null) {
-			System.out.println("DS");
-		}
+
 		if (checkMatch("Variable", node) || checkMatch("UserCommand", node)) {
 			this.setNodeName(index, node);
 		}
