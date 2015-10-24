@@ -6,14 +6,14 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+
 import model.Data;
 import model.Data_Turtle_Interface;
-import model.ForObserverInterface;
 
 
 public class CommandFactory {
     private Data_Turtle_Interface turtleData;
-    private ForObserverInterface errorData;
+    private Data allData;
     private Map<String, Class<?>> reflectionMap = new HashMap<String, Class<?>>();
     private Map<String, String> reflectionMapString = new HashMap<String, String>();
     private final String CLASS_PROPERTIES = "resources/class";
@@ -21,7 +21,7 @@ public class CommandFactory {
 
     public CommandFactory (Data data) {
         turtleData = data;
-        errorData = data;
+        allData = data;
 
         resource = ResourceBundle.getBundle(CLASS_PROPERTIES);
         Enumeration<String> tempList = resource.getKeys();
@@ -70,8 +70,7 @@ public class CommandFactory {
             }
             else if ((commandClass.getPackage().getName().contains("otherCommands"))) {
                 Object[] o = new Object[2];
-                o[0] = turtleData;
-                o[1] = errorData;
+                o[0] = allData;
                 command = (Command) commandConstructor.newInstance(o);
             }
             else {

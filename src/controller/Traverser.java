@@ -3,6 +3,7 @@ package controller;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+
 import command.CommandInterface;
 import model.Data;
 import model.ForObserverInterface;
@@ -10,9 +11,10 @@ import model.ForObserverInterface;
 
 public class Traverser {
     private Queue<ParseTreeNode<CommandInterface>> commandQueue;
+private Data data;
 
-
-    public Double traverse (List<ParseTreeNode<CommandInterface>> node, ForObserverInterface allData) {
+    public Double traverse (List<ParseTreeNode<CommandInterface>> node, Data allData) {
+    	data=allData;
         commandQueue = new LinkedList<ParseTreeNode<CommandInterface>>();
         if (node.get(0) == null) {
             return -1.0;
@@ -61,7 +63,7 @@ public class Traverser {
         Double commandValue = null;
         while (!commandQueue.isEmpty()) {
             ParseTreeNode<CommandInterface> tempNode = commandQueue.poll();
-            tempNode.getCommand().addObserver(new Data());
+            tempNode.getCommand().addObserver(data);
             commandValue = tempNode.getCommand().execute(tempNode.getChildren());
 
         }
