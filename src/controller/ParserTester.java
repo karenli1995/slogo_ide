@@ -22,8 +22,8 @@ public class ParserTester {
 		Parser parser = new Parser(allData);
 		Traverser traverse = new Traverser();
 		String input = readFile("examples/loops_with_variables/flower.logo", StandardCharsets.UTF_8);
-		//input = "dotimes [ :d 10 ] [ repeat 20 [ fd :d ] rt 2 ]";
-		input = "pow 10 5";
+		input = "dotimes [ :d 10 ] [ repeat 20 [ fd :d ] rt 2 ]";
+		//input = "fd 50";
 		List<ParseTreeNode<CommandInterface>> head = parser.parse(input);
 	//	traverse.traverse(head, allData);
 		// Command tempCommand =
