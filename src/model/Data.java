@@ -12,17 +12,14 @@ import java.util.Observable;
 import java.util.Observer;
 
 import command.CommandInterface;
-import command.turtle.turtleCommands.TurtleMovement;
+import command.TurtleCommands;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 
 public class Data implements Observer, Data_Turtle_Interface, ForObserverInterface, ColorData, Serializable {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 2437173979976418913L;
+
 	private List<SlogoObjects> myTurtles;
 	private List<Trail> myTrails;
 	private boolean myError;
@@ -183,7 +180,7 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 
 	@Override
 	public void update(Observable o, Object arg) {
-		TurtleMovement observedClass = (TurtleMovement) o;
+		TurtleCommands observedClass = (TurtleCommands) o;
 		Point2D NewCoordinate = new Point2D(observedClass.getCoordinates().get("XCor"),
 				observedClass.getCoordinates().get("YCor"));
 		this.getTurtle(0).setTrail(new Trail(NewCoordinate, 0));
@@ -193,7 +190,6 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 		this.getTurtle(0).setTrail(this.getTurtle(0).getTrail());
 		this.getTurtle(0).getTrail().setPoint(NewCoordinate);
 		this.getTurtle(0).setRotationAngle(observedClass.getCoordinates().get("Angle"));
-		System.out.println("FFF"+observedClass.getCoordinates().get("YCor"));
 		this.setTurtle(0, this.getTurtle(0));
 
 

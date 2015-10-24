@@ -59,9 +59,10 @@ public class SlogoScene extends Observable {
 	 */
 	public ForObserverInterface traverse(int id) {
 		Data myCurrData = myDataList.get(id);
-		System.out.println(myCurrData);
+
 		if (!myTree.isEmpty()) {
 			myTraverser.traverse(myTree, myCurrData);
+
 		}
 		setData(id, myCurrData);
 		// myDataList.add(id, myCurrData);
