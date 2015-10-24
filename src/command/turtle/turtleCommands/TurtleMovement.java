@@ -17,6 +17,11 @@ public abstract class TurtleMovement extends TurtleCommands {
 
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8387538421594848834L;
+
 	public TurtleMovement(Data_Turtle_Interface allData) {
 		super(allData);
 		data = allData;

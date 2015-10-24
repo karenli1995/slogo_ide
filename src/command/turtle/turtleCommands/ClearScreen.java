@@ -12,6 +12,10 @@ import model.Data_Turtle_Interface;
  *
  */
 public class ClearScreen extends TurtleAbsolutePosition {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -240865876563370225L;
 	private Data_Turtle_Interface turtleData;
 
 	public ClearScreen(Data_Turtle_Interface data) {

@@ -15,6 +15,10 @@ import controller.ParseTreeChildren;
  */
 public class RandomNumber extends Command {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5872935478310813722L;
 	private Random random = new Random();
 
 	@Override

@@ -12,6 +12,11 @@ import controller.ParseTreeChildren;
  *
  */
 public class Difference extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7357237139931369565L;
+
 	public Difference(){
 		super();
 	}

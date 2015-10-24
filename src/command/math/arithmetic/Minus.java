@@ -12,6 +12,11 @@ import controller.ParseTreeChildren;
  *
  */
 public class Minus extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8903675332338885329L;
+
 	public Minus() {
 		super();
 	}

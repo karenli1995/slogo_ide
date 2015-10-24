@@ -13,6 +13,11 @@ import model.Data;
 public class PenDown extends PenCommands {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2673531222514598884L;
+
 	public PenDown(Data turtleData) {
 		super(turtleData);
 	}

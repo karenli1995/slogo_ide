@@ -19,7 +19,7 @@ import javafx.scene.paint.Color;
 
 public class Data implements Observer, Data_Turtle_Interface, ForObserverInterface, ColorData, Serializable {
 
-
+	private static final long serialVersionUID = 2437173979976418913L;
 	private List<SlogoObjects> myTurtles;
 	private List<Trail> myTrails;
 	private boolean myError;
@@ -185,7 +185,7 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 		TurtleCommands observedClass = (TurtleCommands) o;
 		Point2D NewCoordinate = new Point2D(observedClass.getCoordinates().get("XCor"),
 				observedClass.getCoordinates().get("YCor"));
-		this.getTurtle(0).setTrail(new Trail(NewCoordinate, 0));
+		//this.getTurtle(0).setTrail(new Trail(NewCoordinate, 0));
 
 		this.getTurtle(0).getTrail().addCoord(NewCoordinate, this.getTurtle(0).getPen().isDown(), this.getTurtle(0).getPen().getColor().toString(),
 				this.getTurtle(0).getPen().getThickness());

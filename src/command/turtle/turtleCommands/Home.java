@@ -12,6 +12,10 @@ import model.Data_Turtle_Interface;
  *
  */
 public class Home extends TurtleAbsolutePosition {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -667813910576164717L;
 	private Data_Turtle_Interface turtleData;
 
 	public Home(Data_Turtle_Interface turtleData) {

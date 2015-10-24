@@ -12,6 +12,11 @@ import controller.ParseTreeChildren;
  *
  */
 public class Sine extends TurtleCommands {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6705493355876350144L;
+
 	public Sine() {}
 
 	@Override
