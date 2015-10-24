@@ -4,9 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 
 import command.Command;
+import command.CommandInterface;
 
-public class ParseTreeNode<CommandInterface> implements Serializable {
 
+public class ParseTreeNode<CommandInterface> implements Serializable{
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = -7349603750906614666L;
 
 	private Command command;
@@ -46,8 +51,7 @@ public class ParseTreeNode<CommandInterface> implements Serializable {
 
 	}
 
-	public void addChildAt(int index, List<ParseTreeNode<command.CommandInterface>> child)
-			throws IndexOutOfBoundsException {
+	public void addChildAt(int index, List<ParseTreeNode<command.CommandInterface>> child) throws IndexOutOfBoundsException {
 		children.addChildListAt(index, child);
 	}
 
@@ -83,15 +87,15 @@ public class ParseTreeNode<CommandInterface> implements Serializable {
 
 	public double getCommandValue() {
 
-		return this.command.getValue();
+		return ((command.Command) this.command).getValue();
 	}
 
 	public void setCommandValue(double d) {
-		this.command.setValue(d);
+		((command.Command) this.command).setValue(d);
 	}
-
-	public String getCommandName() {
-		return this.command.getName();
+	
+	public String getCommandName(){
+		return ((command.Command) this.command).getName();
 	}
 
 }
