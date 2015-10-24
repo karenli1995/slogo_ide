@@ -193,9 +193,6 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 		this.getTurtle(0).getTrail().setPoint(NewCoordinate);
 		this.getTurtle(0).setRotationAngle(observedClass.getCoordinates().get("Angle"));
 		this.setTurtle(0, this.getTurtle(0));
-
-
-
 	}
 
 }
