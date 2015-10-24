@@ -3,6 +3,7 @@ package view.console;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+
 import javafx.scene.Scene;
 import model.SlogoScene;
 import view.scene.TurtleScene;
@@ -37,7 +38,7 @@ public class Prompt extends ConsoleTabPane implements Observer {
 
         String errorMessage = scene.getObserverData(tabId).getErrorMessage();
 
-        // this.setPromptText(errorMessage + "");
+        this.setPromptText(errorMessage + "");
 
     }
 

@@ -16,5 +16,6 @@ public interface Data_Turtle_Interface {
 	public void  setTurtle(int turtleId, SlogoObjects turtle);
 	public void updateVaraibleMap(String varName, Double value);
 	public List<SlogoObjects> getAllTurtles();
+	void setErrorMessage(String errorMessage);
 
 }

@@ -5,16 +5,20 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
+import model.Data;
 import model.Data_Turtle_Interface;
+import model.ForObserverInterface;
 
 
 public class CommandFactory {
     private Data_Turtle_Interface turtleData;
+    private ForObserverInterface errorData;
     private Map<String, Class<?>> reflectionMap = new HashMap<String, Class<?>>();
     private Map<String, String> reflectionMapString = new HashMap<String, String>();
 
-    public CommandFactory (Data_Turtle_Interface data) {
+    public CommandFactory (Data data) {
         turtleData = data;
+        errorData=data;
     }
 
     public void registerCommand (String commandName, Class<?> commandClass) {
@@ -29,13 +33,7 @@ public class CommandFactory {
         Class<?> commandClass = null;
 
         commandClass = reflectionMap.get(commandName);
-//        try {
-//            commandClass = Class.forName(reflectionMapString.get(commandName));
-//        }
-//        catch (ClassNotFoundException e1) {
-//            // TODO Auto-generated catch block
-//            e1.printStackTrace();
-//        }
+
         Constructor<?> commandConstructor = null;
         try {// based on name grab constractor
 
@@ -53,13 +51,23 @@ public class CommandFactory {
                 o[0] = turtleData;
                 command = (Command) commandConstructor.newInstance(o);
             }
+            else if((commandClass.getPackage().getName().contains("otherCommands"))){
+            	Object[] o = new Object[2];
+                o[0] = turtleData;
+                o[1]=errorData;
+                command = (Command) commandConstructor.newInstance(o);
+            }
             else {
                 command = (Command) commandConstructor.newInstance(new Object[] {});
             }
         }
         catch (InstantiationException | IllegalAccessException | IllegalArgumentException
                 | InvocationTargetException e) {
-            e.printStackTrace();
+        	//e.printStackTrace();
+        	turtleData.setErrorMessage("noArgument");
+
+
+
         }
 
         return command;
