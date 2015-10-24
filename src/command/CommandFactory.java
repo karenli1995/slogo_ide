@@ -6,7 +6,6 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-
 import model.Data;
 import model.Data_Turtle_Interface;
 import model.ForObserverInterface;
@@ -22,11 +21,11 @@ public class CommandFactory {
 
     public CommandFactory (Data data) {
         turtleData = data;
-        errorData=data;
+        errorData = data;
 
         resource = ResourceBundle.getBundle(CLASS_PROPERTIES);
         Enumeration<String> tempList = resource.getKeys();
-        while(tempList.hasMoreElements()){
+        while (tempList.hasMoreElements()) {
             String tempString = tempList.nextElement();
             this.registerCommand(tempString, resource.getString(tempString));
         }
@@ -69,10 +68,10 @@ public class CommandFactory {
                 o[0] = turtleData;
                 command = (Command) commandConstructor.newInstance(o);
             }
-            else if((commandClass.getPackage().getName().contains("otherCommands"))){
-            	Object[] o = new Object[2];
+            else if ((commandClass.getPackage().getName().contains("otherCommands"))) {
+                Object[] o = new Object[2];
                 o[0] = turtleData;
-                o[1]=errorData;
+                o[1] = errorData;
                 command = (Command) commandConstructor.newInstance(o);
             }
             else {
@@ -81,10 +80,8 @@ public class CommandFactory {
         }
         catch (InstantiationException | IllegalAccessException | IllegalArgumentException
                 | InvocationTargetException e) {
-        	//e.printStackTrace();
-        	turtleData.setErrorMessage("noArgument");
-
-
+            // e.printStackTrace();
+            turtleData.setErrorMessage("noArgument");
 
         }
 
