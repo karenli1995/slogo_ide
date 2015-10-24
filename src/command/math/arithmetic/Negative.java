@@ -1,7 +1,7 @@
 /**
  *
  */
-package command.math;
+package command.math.arithmetic;
 
 import command.Command;
 import controller.ParseTreeChildren;
@@ -11,8 +11,8 @@ import controller.ParseTreeChildren;
  * @author Sally Al
  *
  */
-public class Minus extends Command {
-	public Minus() {
+public class Negative extends Command {
+	public Negative() {
 		super();
 	}
 

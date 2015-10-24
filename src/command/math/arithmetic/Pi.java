@@ -1,7 +1,7 @@
 /**
  *
  */
-package command.math;
+package command.math.arithmetic;
 
 import command.Command;
 import controller.ParseTreeChildren;
@@ -11,13 +11,18 @@ import controller.ParseTreeChildren;
  * @author Sally Al
  *
  */
-public class Sine extends Command {
+public class Pi extends Command {
+	public static final double PI = 3.1416;
+
+	public Pi() {
+		super();
+	}
 
 	@Override
 	public double execute(ParseTreeChildren argument) {
-		double sine =Math.sin(Math.toRadians(argument.getCommandValue(0,0)));
-		this.setValue(sine);
-		return sine;
+
+		this.setValue(PI);
+		return PI;
 	}
 
 }
