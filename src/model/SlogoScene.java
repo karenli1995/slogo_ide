@@ -3,86 +3,87 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
-
 import command.CommandInterface;
 import controller.ParseTreeNode;
 import controller.Parser;
 import controller.Traverser;
 
+
 public class SlogoScene extends Observable {
 
-	private List<Data> myDataList = new ArrayList<Data>();
-	private Traverser myTraverser;
-	private List<ParseTreeNode<CommandInterface>> myTree;
-	private Parser myParser;
+    private List<Data> myDataList = new ArrayList<Data>();
+    private Traverser myTraverser;
+    private List<ParseTreeNode<CommandInterface>> myTree;
+    private Parser myParser;
 
-	public SlogoScene() {
-		Data myAllData = new Data();
-		// myDataList.add(myAllData);
-		setData(myDataList.size(), myAllData);
+    public SlogoScene () {
+        Data myAllData = new Data();
+        // myDataList.add(myAllData);
+        setData(myDataList.size(), myAllData);
 
-		myParser = new Parser(myAllData);
-		myTraverser = new Traverser();
-	}
+        myParser = new Parser();
+        myTraverser = new Traverser();
+    }
 
-	/**
-	 * Sets the Data object, passing information to Data from the front-end to
-	 * the back-end.
-	 */
-	public void setData(int id, Data data) {
-		myDataList.add(id, data);
-		setChanged();
-		notifyObservers();
-		// myAllData = data;
-	}
+    /**
+     * Sets the Data object, passing information to Data from the front-end to
+     * the back-end.
+     */
+    public void setData (int id, Data data) {
+        myDataList.add(id, data);
+        setChanged();
+        notifyObservers();
+        // myAllData = data;
+    }
 
-	public ForObserverInterface getObserverData(int id) {
-		return myDataList.get(id);
-	}
+    public ForObserverInterface getObserverData (int id) {
+        return myDataList.get(id);
+    }
 
-	public Data_Turtle_Interface getTurtleData(int id) {
-		return myDataList.get(id);
-	}
+    public Data_Turtle_Interface getTurtleData (int id) {
+        return myDataList.get(id);
+    }
 
-	public ColorData ColorData(int id) {
-		return myDataList.get(id);
-	}
+    public ColorData ColorData (int id) {
+        return myDataList.get(id);
+    }
 
-	public List<Data> getAllData() {
-		return myDataList;
-	}
+    public List<Data> getAllData () {
+        return myDataList;
+    }
 
-	/**
-	 * Traverses command tree
-	 *
-	 * @return
-	 */
-	public ForObserverInterface traverse(int id) {
-		Data myCurrData = myDataList.get(id);
-	//	Data errorData =myDataList.get(id);
+    /**
+     * Traverses command tree
+     *
+     * @return
+     */
+    public ForObserverInterface traverse (int id) {
+        Data myCurrData = myDataList.get(id);
 
-		if (!myTree.isEmpty()) {
-			myCurrData = myTraverser.traverse(myTree, myCurrData);
-		}
-		setData(id, myCurrData);
-		// myDataList.add(id, myCurrData);
-		return myCurrData;
-	}
+        if (!myTree.isEmpty()) {
+            myTraverser.traverse(myTree, myCurrData);
 
-	/**
-	 * Parses the commands
-	 *
-	 * @param s
-	 */
-	public void parse(String s) {
-		myTree = myParser.parse(s);
-	}
+        }
+        setData(id, myCurrData);
+        // myDataList.add(id, myCurrData);
+        return myCurrData;
+    }
 
-	public Parser getParser() {
-		return myParser;
-	}
+    /**
+     * Parses the commands
+     *
+     * @param s
+     */
+    public void parse (String s, int id) {
+        Data myCurrData = myDataList.get(id);
+        myTree = myParser.parse(s, myCurrData);
+    }
 
-	public Traverser getTraverser() {
-		return myTraverser;
-	}
+    public Parser getParser () {
+        return myParser;
+    }
+
+    public Traverser getTraverser () {
+        return myTraverser;
+    }
 }
