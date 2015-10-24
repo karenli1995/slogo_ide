@@ -13,6 +13,10 @@ import model.Data_Turtle_Interface;
  *
  */
 public class IsPenDown extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7464805867540834237L;
 	private Data_Turtle_Interface turtleData;
 
 	public IsPenDown(Data_Turtle_Interface data) {

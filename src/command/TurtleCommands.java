@@ -15,6 +15,11 @@ import model.Data_Turtle_Interface;
  *
  */
 public abstract class TurtleCommands extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3800846758549642667L;
+
 	private Map<String, Double> coordinates = new HashMap<String, Double>();
 
 	private static final String XCOR = "XCor";

@@ -12,6 +12,11 @@ import controller.ParseTreeChildren;
  *
  */
 public class Log extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -870186448395394224L;
+
 	public Log(){
 		super();
 	}

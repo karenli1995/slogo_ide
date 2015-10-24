@@ -13,6 +13,10 @@ import model.Data_Turtle_Interface;
  *
  */
 public abstract class TurtleDirection extends TurtleCommands {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4365978061345276670L;
 	private Data_Turtle_Interface turtleData;
 
 	public TurtleDirection(Data_Turtle_Interface data) {

@@ -7,7 +7,11 @@ import model.Data;
 
 
 public class DoTimes extends Command {
-    private Data allData;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1709915109882273600L;
+	private Data allData;
     Traverser traverser = new Traverser();
 
     public DoTimes (Data allData) {

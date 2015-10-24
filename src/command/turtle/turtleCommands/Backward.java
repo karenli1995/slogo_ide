@@ -13,6 +13,11 @@ import model.Data_Turtle_Interface;
 public class Backward extends TurtleMovement {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6054146528991269604L;
+
 	public Backward(Data_Turtle_Interface data) {
 		super(data);
 	}

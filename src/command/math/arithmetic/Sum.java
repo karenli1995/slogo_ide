@@ -5,7 +5,12 @@ import controller.ParseTreeChildren;
 
 
 public class Sum extends Command {
-    public Sum () {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3214409066608523993L;
+
+	public Sum () {
         super();
     }
 

@@ -13,6 +13,10 @@ import model.Data_Turtle_Interface;
  *
  */
 public abstract class TurtleVisibility extends Command {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4129734871347895441L;
 	private Data_Turtle_Interface data;
 
 	public TurtleVisibility(Data_Turtle_Interface turtleData) {

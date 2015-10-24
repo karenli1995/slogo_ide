@@ -6,6 +6,10 @@ import model.Data_Turtle_Interface;
 
 public class MakeVariable extends Command {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3131529990290290269L;
 	private Data_Turtle_Interface turtleData;
 
 	public MakeVariable(Data_Turtle_Interface data) {
