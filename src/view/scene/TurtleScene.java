@@ -6,8 +6,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
-import model.SlogoScene;
-import model.turtleinfo.SlogoObjects;
 import controller.ModelController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -18,6 +16,8 @@ import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import model.SlogoScene;
+import model.turtleinfo.SlogoObjects;
 import view.settings.SlogoProperties;
 import view.turtles.SlogoImage;
 
@@ -33,7 +33,7 @@ public class TurtleScene extends TabPane implements Observer{
 		myResource = resource;
 		myController = controller;
 		TurtleSceneTab newTab = new TurtleSceneTab(this, myController);
-		
+
 		//check
 		List<SlogoImage> allSlogoImages = newTab.getAllSlogoImages();
 		for (SlogoImage slogoImage : allSlogoImages){
@@ -43,26 +43,26 @@ public class TurtleScene extends TabPane implements Observer{
 			this.setScreenLoc(image, image.getX(), image.getY());
 			this.addChildren(image);
 		}
-		
+
 		addListener();
 	}
-	
+
 	public void addTab(TurtleSceneTab tab){
 		myTabs.add(tab);
 	}
-	
+
 	public void updateMyTabs(int id, TurtleSceneTab tab){
 		myTabs.set(id, tab);
 	}
-	
+
 	public List<TurtleSceneTab> getMyTabs() {
 		return myTabs;
 	}
-	
+
 	public TurtleSceneTab getTabById(int id) {
 		return myTabs.get(id);
 	}
-	
+
 	public int getIdOfTab(){
 		return this.getSelectionModel().getSelectedIndex();
 	}
@@ -71,19 +71,19 @@ public class TurtleScene extends TabPane implements Observer{
 		int ind = this.getSelectionModel().getSelectedIndex();
 		return myTabs.get(ind);
 	}
-	
+
 	//maybe here
 	public TurtleSceneTab createNewTab(ModelController newController) {
 		TurtleSceneTab newTab = new TurtleSceneTab(this, newController);
 		myTabs.add(newTab);
-		
+
 		return newTab;
 	}
 
 	public void addChildren(Node node) {
 		this.getChildren().add(node);
 	}
-	
+
 	//use
 	public void removeChildren(Node node) {
 		this.getChildren().remove(node);
@@ -104,38 +104,38 @@ public class TurtleScene extends TabPane implements Observer{
 	public double getMyCanvasHeight() {
 		return myCanvasHeight;
 	}
-	
+
 	public double getCanvasX(){
 		return getCurrTab().getCanvas().getTranslateX();
 	}
-	
+
 	public double getCanvasY(){
 		return getCurrTab().getCanvas().getTranslateY();
 	}
-	
+
 	/**
 	 * translates coordinates to a point on the canvas TurtleScene
-	 * 
+	 *
 	 * @param x
 	 * @param y
 	 */
 	public void setScreenLoc(ImageView imageView, double x, double y) {
 		TurtleSceneTab currTab = this.getCurrTab();
-		int id = this.getIdOfTab();		
-		
+		int id = this.getIdOfTab();
+
 		double newLocX = Math.floorMod( (long) (x + this.getX() + currTab.getMyCanvasWidth() / 2) , (long) myCanvasWidth);
 		double newLocY = Math.floorMod( (long) (this.getY() + currTab.getMyCanvasHeight() / 2 - y), (long) myCanvasHeight);
 		if (checkBounds(newLocX, newLocY)) {
 			imageView.setLayoutX(newLocX);
 			imageView.setLayoutY(newLocY);
 		}
-		
+
 		this.updateMyTabs(id, currTab);
 	}
 
 	private boolean checkBounds(double x, double y) {
 		TurtleSceneTab currTab = this.getCurrTab();
-		
+
 		if (x < this.getX() || x > this.getX() + currTab.getMyCanvasWidth()
 				|| y < this.getY() || y > this.getY() + currTab.getMyCanvasHeight()) {
 			return false;
@@ -143,8 +143,8 @@ public class TurtleScene extends TabPane implements Observer{
 			return true;
 		}
 	}
-	
-	
+
+
 	public void addListener(){
 		this.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 		    @Override
@@ -156,7 +156,7 @@ public class TurtleScene extends TabPane implements Observer{
 			private void newTab(Number newValue) {
 				int tabId = (int) newValue;
 				TurtleSceneTab newTab = myTabs.get(tabId);
-				
+
 				List<SlogoImage> newTurts = newTab.getAllSlogoImages();
 				for (SlogoImage slogoImage : newTurts){
 					ImageView image = slogoImage.getMyImage();
@@ -171,24 +171,24 @@ public class TurtleScene extends TabPane implements Observer{
 				int tabId = (int) oldValue;
 
 				TurtleSceneTab oldTab = myTabs.get(tabId);
-		    	
+
 		    	List<Object> oldLines = oldTab.getShape().getAllShapes();
 				for (Object line : oldLines) oldTab.getTurtScene().removeChildren((Node) line);
-				
+
 				List<SlogoImage> oldTurts = oldTab.getAllSlogoImages();
 				for (SlogoImage slogoImage : oldTurts){
 					ImageView image = slogoImage.getMyImage();
-					oldTab.getTurtScene().removeChildren(image);				
+					oldTab.getTurtScene().removeChildren(image);
 				}
 			}
-		}); 
+		});
 	}
-	
+
 
 	@Override
 	public void update(Observable o, Object arg) {
 		SlogoScene otherSlogoObj = (SlogoScene) o;
-		
+
 		int tabId = this.getIdOfTab();
 		TurtleSceneTab tab = this.getCurrTab();
 		//tab.setTurtleAndTrail(this);
@@ -197,12 +197,12 @@ public class TurtleScene extends TabPane implements Observer{
 			List<Object> currLines = tab.getShape().getAllShapes();
 			for (Object line : currLines) this.removeChildren((Node) line);
 		}*/
-		
+
 		// check if pen down or up
 		//when pendown() changes
 		for(Object i:tab.getShape().getAllShapes()){
 			Line temp = (Line) i;
-			this.removeChildren((Node)temp);
+			this.removeChildren(temp);
 		}
 		//this.removeChildren((Node)tab.getShape().getAllShapes());
 		ArrayList<Point2D> currTrailList = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPathCoordinates();
@@ -212,11 +212,10 @@ public class TurtleScene extends TabPane implements Observer{
 		ArrayList<Line> currLine = tab.getShape().drawShape(currTrailList,penStatusList,penColors,penThicks);
 		for(Line j:currLine){
 			tab.getShape().addShape(j);
-			this.addChildren((Node)j);
+			this.addChildren(j);
 		}
 		//when setRotationAngle() changes and setTrail() changes
 		List<SlogoObjects> turts = otherSlogoObj.getTurtleData(tabId).getAllTurtles();
-		System.out.println("ahhh " + turts.size());
 		for (int i=0; i<turts.size(); i++){
 			SlogoObjects slogoObject = turts.get(i);
 			double newRotAngle = slogoObject.getRotationAngle();
@@ -230,15 +229,15 @@ public class TurtleScene extends TabPane implements Observer{
 			this.setScreenLoc(currSlogoImage.getMyImage(), currSlogoImage.getX(), currSlogoImage.getY());
 			tab.setSlogoImage(i, currSlogoImage);
 		}
-		
+
 		//when setScene() changes
 		Color newColor = otherSlogoObj.ColorData(tabId).getMyColor();
 		GraphicsContext gc = tab.getCanvas().getGraphicsContext2D();
 		gc.setFill(newColor);
 		gc.fillRect(0, 0, tab.getCanvas().getWidth(), tab.getCanvas().getHeight());
-		
+
 		this.updateMyTabs(tabId, tab);
-		
+
 	}
 
 }

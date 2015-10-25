@@ -17,6 +17,7 @@ public abstract class SlogoObjects implements Serializable {
 	private boolean clearTrails;
 	private boolean isActive;
 
+
 	public SlogoObjects() {
 		Point2D startPoint = new Point2D(0, 0);
 		setTrail(new Trail(startPoint, 0));
@@ -25,6 +26,7 @@ public abstract class SlogoObjects implements Serializable {
 		setIsShowing(true);
 		setClearTrail(false);
 		setIsActive(false);
+
 	}
 
 	public void setTrail(Trail loc) {
@@ -74,5 +76,7 @@ public abstract class SlogoObjects implements Serializable {
 	public boolean getIsActive() {
 		return isActive;
 	}
+
+
 
 }

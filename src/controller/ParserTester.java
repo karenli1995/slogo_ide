@@ -8,8 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import command.CommandInterface;
-import model.turtleinfo.Data;
-
+import model.data.Data;
 public class ParserTester {
 
 	static String readFile(String path, Charset encoding) throws IOException {

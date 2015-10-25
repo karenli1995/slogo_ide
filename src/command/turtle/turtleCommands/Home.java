@@ -13,7 +13,7 @@ import model.DataTurtleInterface;
  */
 public class Home extends TurtleAbsolutePosition {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -667813910576164717L;
 	private DataTurtleInterface turtleData;
@@ -24,7 +24,7 @@ public class Home extends TurtleAbsolutePosition {
 	}
 
 	@Override
-	public double execute(ParseTreeChildren argument) {
+	public double executeCommand(ParseTreeChildren argument) {
 		this.setValue(resetTurtlePosition());
 		return resetTurtlePosition();
 	}

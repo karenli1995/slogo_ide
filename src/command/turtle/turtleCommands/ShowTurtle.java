@@ -12,10 +12,6 @@ import model.DataTurtleInterface;
  */
 public class ShowTurtle extends TurtleVisibility {
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -234848329032905536L;
 
 	public ShowTurtle(DataTurtleInterface turtleData) {

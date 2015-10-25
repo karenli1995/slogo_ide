@@ -3,7 +3,7 @@
  */
 package command.turtle.turtleQueries;
 
-import command.Command;
+import command.turtle.turtleCommands.TurtleCommands;
 import controller.ParseTreeChildren;
 import model.DataTurtleInterface;
 
@@ -12,21 +12,18 @@ import model.DataTurtleInterface;
  * @author Sally Al
  *
  */
-public class Heading extends Command {
-	/**
-	 * 
-	 */
+public class Heading extends TurtleCommands {
+
 	private static final long serialVersionUID = 3264254956067658867L;
-	private DataTurtleInterface turtleData;
 
 	public Heading(DataTurtleInterface data) {
 		super(data);
-		//Data_Turtle_Interface turtleData = data;
+		// Data_Turtle_Interface turtleData = data;
 	}
 
 	@Override
-	public double execute(ParseTreeChildren distance) {
-		double angle = turtleData.getTurtle(0).getRotationAngle();
+	public double executeCommand(ParseTreeChildren distance) {
+		double angle = getTurtle().getRotationAngle();
 		this.setValue(angle);
 		return angle;
 	}

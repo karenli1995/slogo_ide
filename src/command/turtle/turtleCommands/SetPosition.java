@@ -12,22 +12,21 @@ import model.DataTurtleInterface;
  *
  */// goto x y
 public class SetPosition extends TurtleAbsolutePosition {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 8951107742111791983L;
-	DataTurtleInterface turtleData;
 
 	public SetPosition(DataTurtleInterface turtleData) {
 		super(turtleData);
-		this.turtleData = turtleData;
+
 	}
 
 	@Override
-	public double execute(ParseTreeChildren newLocation) {
-		double distance = calculateDistanceBetweenTwoPoints(newLocation.getCommandValue(0,0),newLocation.getCommandValue(1,0));
+	public double executeCommand(ParseTreeChildren newLocation) {
+		double distance = calculateDistanceBetweenTwoPoints(newLocation.getCommandValue(0, 0),
+				newLocation.getCommandValue(1, 0));
 		this.setValue(distance);
-		updateLocation(newLocation.getCommandValue(0,0), newLocation.getCommandValue(1,0),  turtleData.getTurtle(0).getRotationAngle());
+		updateLocation(newLocation.getCommandValue(0, 0), newLocation.getCommandValue(1, 0),
+				getTurtle().getRotationAngle());
 		return distance;
 	}
 
