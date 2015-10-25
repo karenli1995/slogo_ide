@@ -1,4 +1,4 @@
-package model.turtleinfo;
+package model.data;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -11,14 +11,17 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-import model.ColorDataInterface;
-import model.DataTurtleInterface;
-import model.ForObserverInterface;
 import command.CommandInterface;
-import command.TurtleCommands;
+import command.turtle.turtleCommands.TurtleCommands;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
+import model.ColorDataInterface;
+import model.DataTurtleInterface;
+import model.ForObserverInterface;
+import model.turtleinfo.SlogoObjects;
+import model.turtleinfo.Trail;
+import model.turtleinfo.Turtle;
 
 public class Data implements Observer, DataTurtleInterface, ForObserverInterface, ColorDataInterface, Serializable {
 
@@ -33,7 +36,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 	private transient Color myColor;
 	private String myColorHex;
 	private double myCommandValue;
-
+	private ActiveTurtles activeTurtles;
 
 	public Data() {
 		myTurtles = new ArrayList<SlogoObjects>();
@@ -44,6 +47,8 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 		setTurtle(0, defaultTurtle); // check
 		myTrails.add(defaultTurtle.getTrail());
 
+
+		activeTurtles = new ActiveTurtles();
 		setUserHistory(new ArrayList<String>());
 		setVariableMap(new HashMap<String, Double>());
 		setUserCommandMap(new HashMap<String, ParseTreeNode<CommandInterface>>());
@@ -71,7 +76,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 
 	@Override
 
-	public List<SlogoObjects> getAllTurtles(){
+	public List<SlogoObjects> getAllTurtles() {
 		return myTurtles;
 	}
 
@@ -138,9 +143,19 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 	}
 
 	@Override
+	public int activeTurtleListSize() {
+		return activeTurtles.size();
+	}
+
+	@Override
+	public int activeTurtleListValue(int index) {
+		return activeTurtles.getvalue(index);
+	}
+
+	@Override
 	public String getErrorMessage() {
 		String temp = myErrorMessage;
-		myErrorMessage=null;
+		myErrorMessage = null;
 		return temp;
 	}
 
@@ -160,34 +175,35 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 		return myUserCommandMap;
 	}
 
-	public void recreate(){
+	public void recreate() {
 		myTrails.get(0).recreate();
 		myTurtles.get(0).getPen().recreate();
 		myColor = Color.web(myColorHex);
 	}
 
-	public void writeObject(ObjectOutputStream o) throws IOException{
+	public void writeObject(ObjectOutputStream o) throws IOException {
 		o.defaultWriteObject();
 	}
 
-	public void readObject(ObjectInputStream i) throws ClassNotFoundException, IOException{
+	public void readObject(ObjectInputStream i) throws ClassNotFoundException, IOException {
 		i.defaultReadObject();
 	}
-
 
 	@Override
 	public void update(Observable o, Object arg) {
 		TurtleCommands observedClass = (TurtleCommands) o;
 		Point2D NewCoordinate = new Point2D(observedClass.getCoordinates().get("XCor"),
 				observedClass.getCoordinates().get("YCor"));
-		//this.getTurtle(0).setTrail(new Trail(NewCoordinate, 0));
+		int index =  observedClass.getCoordinates().get("id").intValue();
+		SlogoObjects turtle = this.getTurtle(index);
 
-		this.getTurtle(0).getTrail().addCoord(NewCoordinate, this.getTurtle(0).getPen().isDown(), this.getTurtle(0).getPen().getColor().toString(),
-				this.getTurtle(0).getPen().getThickness());
-		this.getTurtle(0).setTrail(this.getTurtle(0).getTrail());
-		this.getTurtle(0).getTrail().setPoint(NewCoordinate);
-		this.getTurtle(0).setRotationAngle(observedClass.getCoordinates().get("Angle"));
-		this.setTurtle(0, this.getTurtle(0));
+		turtle.getTrail().addCoord(NewCoordinate, turtle.getPen().isDown(), turtle.getPen().getColor().toString(),
+				turtle.getPen().getThickness());
+		turtle.setTrail(turtle.getTrail());
+		turtle.getTrail().setPoint(NewCoordinate);
+		turtle.setRotationAngle(observedClass.getCoordinates().get("Angle"));
+		this.setTurtle(index, turtle);
+
 	}
 
 }

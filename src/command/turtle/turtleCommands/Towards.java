@@ -12,9 +12,7 @@ import controller.ParseTreeChildren;
  *
  */
 public class Towards extends Command {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 9008069239665135874L;
 
 	@Override

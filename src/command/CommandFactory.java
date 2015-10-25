@@ -8,8 +8,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import model.DataTurtleInterface;
-import model.turtleinfo.Data;
-
+import model.data.Data;
 
 public class CommandFactory {
     private DataTurtleInterface turtleData;

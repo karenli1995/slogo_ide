@@ -3,7 +3,7 @@
  */
 package command.turtle.turtleCommands;
 
-import model.turtleinfo.Data;
+import model.data.Data;
 
 /**
  *
@@ -12,10 +12,6 @@ import model.turtleinfo.Data;
  */
 public class PenDown extends PenCommands {
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2673531222514598884L;
 
 	public PenDown(Data turtleData) {
@@ -26,5 +22,6 @@ public class PenDown extends PenCommands {
 	protected double switchPen() {
 		return 1.0;
 	}
+
 
 }

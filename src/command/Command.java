@@ -8,8 +8,7 @@ import java.util.Observable;
 
 import controller.ParseTreeChildren;
 import model.DataTurtleInterface;
-import model.turtleinfo.Data;
-
+import model.data.Data;
 /**
  *
  * @author Sally Al

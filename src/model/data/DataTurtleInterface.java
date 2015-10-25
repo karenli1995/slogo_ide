@@ -1,7 +1,7 @@
 /**
  *
  */
-package model;
+package model.data;
 
 import java.util.List;
 
@@ -19,7 +19,8 @@ public interface DataTurtleInterface {
 	public void updateVaraibleMap(String varName, Double value);
 	public List<SlogoObjects> getAllTurtles();
 	void setErrorMessage(String errorMessage);
-	public int activeTurtleListSize();
-	public int activeTurtleListValue(int index);
+    int size();
+    int getValue(int index);
+
 
 }

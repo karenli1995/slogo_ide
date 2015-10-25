@@ -3,7 +3,7 @@
  */
 package command.turtle.turtleQueries;
 
-import command.Command;
+import command.turtle.turtleCommands.TurtleCommands;
 import controller.ParseTreeChildren;
 import model.DataTurtleInterface;
 
@@ -12,23 +12,18 @@ import model.DataTurtleInterface;
  * @author Sally Al
  *
  */
-public class YCoordinate extends Command {
-	/**
-	 * 
-	 */
+public class YCoordinate extends TurtleCommands {
+
 	private static final long serialVersionUID = 6465432849463275329L;
-	private DataTurtleInterface turtleData;
 
 	public YCoordinate(DataTurtleInterface data) {
 		super(data);
-		turtleData = data;
+
 	}
 
 	@Override
-	public double execute(ParseTreeChildren distance) {
-		//distance.clear();
-		double y = turtleData.getTurtle(0).getTrail().getY();
-
+	public double executeCommand(ParseTreeChildren distance) {
+		double y = getCurrY();
 		this.setValue(y);
 		return y;
 	}

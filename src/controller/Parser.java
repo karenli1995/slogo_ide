@@ -10,8 +10,7 @@ import command.CommandFactory;
 import command.CommandInterface;
 import command.CommandRegister;
 import model.ForObserverInterface;
-import model.turtleinfo.Data;
-
+import model.data.Data;
 public class Parser {
 	private String[] inputArray;
 	private Patterner pattern;

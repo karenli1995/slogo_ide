@@ -3,12 +3,10 @@ package command.otherCommands;
 import command.Command;
 import controller.ParseTreeChildren;
 import controller.Traverser;
-import model.turtleinfo.Data;
+import model.data.Data;
 
 public class Repeat extends Command {
-        /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 4606139237584581984L;
 		Traverser traverse = new Traverser();
         private Data allData;

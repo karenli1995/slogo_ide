@@ -3,12 +3,12 @@ package command.otherCommands;
 import command.Command;
 import controller.ParseTreeChildren;
 import controller.Traverser;
-import model.turtleinfo.Data;
+import model.data.Data;
 
 
 public class DoTimes extends Command {
     /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -1709915109882273600L;
 	private Data allData;
