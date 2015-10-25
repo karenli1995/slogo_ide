@@ -104,9 +104,13 @@ public class TurtleScene extends TabPane implements Observer{
 	public double getMyCanvasHeight() {
 		return myCanvasHeight;
 	}
-
-	public ModelController getController() {
-		return myController;
+	
+	public double getCanvasX(){
+		return getCurrTab().getCanvas().getTranslateX();
+	}
+	
+	public double getCanvasY(){
+		return getCurrTab().getCanvas().getTranslateY();
 	}
 	
 	/**
@@ -118,11 +122,9 @@ public class TurtleScene extends TabPane implements Observer{
 	public void setScreenLoc(ImageView imageView, double x, double y) {
 		TurtleSceneTab currTab = this.getCurrTab();
 		int id = this.getIdOfTab();		
-		System.out.println(id + " bob");
 		
-		// should check for bounds as well
-		double newLocX = x + this.getX() + currTab.getMyCanvasWidth() / 2;
-		double newLocY = this.getY() + currTab.getMyCanvasHeight() / 2 - y;
+		double newLocX = Math.floorMod( (long) (x + this.getX() + currTab.getMyCanvasWidth() / 2) , (long) myCanvasWidth);
+		double newLocY = Math.floorMod( (long) (this.getY() + currTab.getMyCanvasHeight() / 2 - y), (long) myCanvasHeight);
 		if (checkBounds(newLocX, newLocY)) {
 			imageView.setLayoutX(newLocX);
 			imageView.setLayoutY(newLocY);
@@ -133,7 +135,6 @@ public class TurtleScene extends TabPane implements Observer{
 
 	private boolean checkBounds(double x, double y) {
 		TurtleSceneTab currTab = this.getCurrTab();
-		int id = this.getIdOfTab();
 		
 		if (x < this.getX() || x > this.getX() + currTab.getMyCanvasWidth()
 				|| y < this.getY() || y > this.getY() + currTab.getMyCanvasHeight()) {
