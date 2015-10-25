@@ -2,19 +2,19 @@ package command.syntax;
 
 import command.Command;
 import controller.ParseTreeChildren;
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 public class Constant extends Command {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4748693328683228805L;
-	Data_Turtle_Interface data;
+	DataTurtleInterface data;
 
 	public Constant() {
 	}
 
-	public Constant(Data_Turtle_Interface s) {
+	public Constant(DataTurtleInterface s) {
 		super(s);
 		data = s;
 	}

@@ -1,4 +1,4 @@
-package model;
+package model.turtleinfo;
 
 
 import java.io.Serializable;

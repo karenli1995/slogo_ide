@@ -3,7 +3,7 @@
  */
 package command.turtle.turtleCommands;
 
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 /**
  *
@@ -17,7 +17,7 @@ public class HideTurtle extends TurtleVisibility {
 	 */
 	private static final long serialVersionUID = -9141645305362865708L;
 
-	public HideTurtle(Data_Turtle_Interface turtleData) {
+	public HideTurtle(DataTurtleInterface turtleData) {
 		super(turtleData);
 	}
 

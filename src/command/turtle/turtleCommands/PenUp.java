@@ -3,7 +3,7 @@
  */
 package command.turtle.turtleCommands;
 
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 /**
  *
@@ -17,7 +17,7 @@ public class PenUp extends PenCommands {
 	 */
 	private static final long serialVersionUID = 1082991179374772194L;
 
-	public PenUp(Data_Turtle_Interface turtleData) {
+	public PenUp(DataTurtleInterface turtleData) {
 		super(turtleData);
 	}
 

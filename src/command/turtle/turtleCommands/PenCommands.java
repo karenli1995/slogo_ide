@@ -5,8 +5,8 @@ package command.turtle.turtleCommands;
 
 import command.Command;
 import controller.ParseTreeChildren;
-import model.Data_Turtle_Interface;
-import model.Pen;
+import model.DataTurtleInterface;
+import model.turtleinfo.Pen;
 
 /**
  *
@@ -18,9 +18,9 @@ public abstract class PenCommands extends Command {
 	 * 
 	 */
 	private static final long serialVersionUID = -7003996375537002670L;
-	private Data_Turtle_Interface turtleData;
+	private DataTurtleInterface turtleData;
 
-	public PenCommands(Data_Turtle_Interface turtleData) {
+	public PenCommands(DataTurtleInterface turtleData) {
 		this.turtleData = turtleData;
 
 

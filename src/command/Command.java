@@ -7,8 +7,8 @@ import java.io.Serializable;
 import java.util.Observable;
 
 import controller.ParseTreeChildren;
-import model.Data;
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
+import model.turtleinfo.Data;
 
 /**
  *
@@ -21,7 +21,7 @@ public abstract class Command extends Observable implements CommandInterface, Se
 	private static final long serialVersionUID = -8555344826572870264L;
 
 public Command(){}
-public Command(Data_Turtle_Interface allData){}
+public Command(DataTurtleInterface allData){}
 public Command(Data allData){}
 
 	private String name;

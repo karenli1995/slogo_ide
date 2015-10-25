@@ -2,7 +2,7 @@ package command.turtle.turtleCommands;
 
 import command.Command;
 import controller.ParseTreeChildren;
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 public class MakeVariable extends Command {
 
@@ -10,9 +10,9 @@ public class MakeVariable extends Command {
 	 * 
 	 */
 	private static final long serialVersionUID = 3131529990290290269L;
-	private Data_Turtle_Interface turtleData;
+	private DataTurtleInterface turtleData;
 
-	public MakeVariable(Data_Turtle_Interface data) {
+	public MakeVariable(DataTurtleInterface data) {
 		super(data);
 		 turtleData = data;
 	}

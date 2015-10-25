@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 /**
  *
@@ -29,7 +29,7 @@ public abstract class TurtleCommands extends Command {
 	public TurtleCommands() {
 	}
 
-	public TurtleCommands(Data_Turtle_Interface allData) {
+	public TurtleCommands(DataTurtleInterface allData) {
 	}
 
 	protected double RoundTo2Decimals(double val) {

@@ -1,4 +1,4 @@
-package model;
+package model.turtleinfo;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -11,13 +11,16 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import model.ColorDataInterface;
+import model.DataTurtleInterface;
+import model.ForObserverInterface;
 import command.CommandInterface;
 import command.TurtleCommands;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 
-public class Data implements Observer, Data_Turtle_Interface, ForObserverInterface, ColorData, Serializable {
+public class Data implements Observer, DataTurtleInterface, ForObserverInterface, ColorDataInterface, Serializable {
 
 	private static final long serialVersionUID = 2437173979976418913L;
 	private List<SlogoObjects> myTurtles;
@@ -82,8 +85,6 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 
 	public void setError(boolean error) {
 		this.myError = error;
-		// setChanged();
-		// notifyObservers();
 	}
 
 	public List<String> getUserHistory() {
@@ -92,14 +93,10 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 
 	public void setUserHistory(List<String> userHistory) {
 		this.myUserHistory = userHistory;
-		// setChanged();
-		// notifyObservers();
 	}
 
 	public void addCommandToHistory(String s) {
 		myUserHistory.add(s);
-		// setChanged();
-		// notifyObservers();
 	}
 
 	public void setVariableMap(Map<String, Double> variableMap) {
@@ -109,8 +106,6 @@ public class Data implements Observer, Data_Turtle_Interface, ForObserverInterfa
 	@Override
 	public void updateVaraibleMap(String varName, Double value) {
 		myVariableMap.put(varName, value);
-		// setChanged();
-		// notifyObservers();
 	}
 
 	public void setUserCommandMap(Map<String, ParseTreeNode<CommandInterface>> userCommandMap) {

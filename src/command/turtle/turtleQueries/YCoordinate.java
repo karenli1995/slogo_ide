@@ -5,7 +5,7 @@ package command.turtle.turtleQueries;
 
 import command.Command;
 import controller.ParseTreeChildren;
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 /**
  *
@@ -17,9 +17,9 @@ public class YCoordinate extends Command {
 	 * 
 	 */
 	private static final long serialVersionUID = 6465432849463275329L;
-	private Data_Turtle_Interface turtleData;
+	private DataTurtleInterface turtleData;
 
-	public YCoordinate(Data_Turtle_Interface data) {
+	public YCoordinate(DataTurtleInterface data) {
 		super(data);
 		turtleData = data;
 	}

@@ -9,8 +9,8 @@ import java.util.ResourceBundle;
 import command.CommandFactory;
 import command.CommandInterface;
 import command.CommandRegister;
-import model.Data;
 import model.ForObserverInterface;
+import model.turtleinfo.Data;
 
 public class Parser {
 	private String[] inputArray;

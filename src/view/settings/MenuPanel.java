@@ -27,8 +27,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import model.Data;
 import model.SlogoScene;
+import model.turtleinfo.Data;
 
 public class MenuPanel extends MenuBar {
 

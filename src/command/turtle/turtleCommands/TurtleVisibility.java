@@ -5,7 +5,7 @@ package command.turtle.turtleCommands;
 
 import command.Command;
 import controller.ParseTreeChildren;
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 /**
  *
@@ -17,9 +17,9 @@ public abstract class TurtleVisibility extends Command {
 	 * 
 	 */
 	private static final long serialVersionUID = 4129734871347895441L;
-	private Data_Turtle_Interface data;
+	private DataTurtleInterface data;
 
-	public TurtleVisibility(Data_Turtle_Interface turtleData) {
+	public TurtleVisibility(DataTurtleInterface turtleData) {
 		super(turtleData);
 		data = turtleData;
 	}

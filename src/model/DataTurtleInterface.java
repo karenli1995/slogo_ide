@@ -5,12 +5,14 @@ package model;
 
 import java.util.List;
 
+import model.turtleinfo.SlogoObjects;
+
 /**
  *
  * @author Sally Al
  *
  */
-public interface Data_Turtle_Interface {
+public interface DataTurtleInterface {
 
 	public SlogoObjects getTurtle(int turtleId);
 	public void  setTurtle(int turtleId, SlogoObjects turtle);

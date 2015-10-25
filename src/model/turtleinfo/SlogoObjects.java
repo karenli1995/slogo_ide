@@ -1,4 +1,4 @@
-package model;
+package model.turtleinfo;
 
 import java.io.Serializable;
 
@@ -41,8 +41,6 @@ public abstract class SlogoObjects implements Serializable {
 
 	public void setClearTrail(boolean b) {
 		clearTrails = b;
-		// setChanged();
-		// notifyObservers();
 	}
 
 	public Pen getPen() {
@@ -76,7 +74,5 @@ public abstract class SlogoObjects implements Serializable {
 	public boolean getIsActive() {
 		return isActive;
 	}
-
-
 
 }

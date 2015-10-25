@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import command.CommandInterface;
-import model.Data;
+import model.turtleinfo.Data;
 
 public class ParserTester {
 

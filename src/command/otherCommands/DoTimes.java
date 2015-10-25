@@ -3,7 +3,7 @@ package command.otherCommands;
 import command.Command;
 import controller.ParseTreeChildren;
 import controller.Traverser;
-import model.Data;
+import model.turtleinfo.Data;
 
 
 public class DoTimes extends Command {

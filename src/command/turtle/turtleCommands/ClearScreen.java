@@ -4,7 +4,7 @@
 package command.turtle.turtleCommands;
 
 import controller.ParseTreeChildren;
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 /**
  *
@@ -16,9 +16,9 @@ public class ClearScreen extends TurtleAbsolutePosition {
 	 * 
 	 */
 	private static final long serialVersionUID = -240865876563370225L;
-	private Data_Turtle_Interface turtleData;
+	private DataTurtleInterface turtleData;
 
-	public ClearScreen(Data_Turtle_Interface data) {
+	public ClearScreen(DataTurtleInterface data) {
 		super(data);
 		turtleData = data;
 	}

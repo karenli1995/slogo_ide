@@ -10,10 +10,9 @@ import javafx.scene.paint.Color;
  * @author Sally Al
  *
  */
-public interface ColorData {
+public interface ColorDataInterface {
 
-	Color getMyColor();
-
+	public Color getMyColor();
 	public void setMyColor(Color color);
 
 }

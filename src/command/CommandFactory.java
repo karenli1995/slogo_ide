@@ -7,12 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import model.Data;
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
+import model.turtleinfo.Data;
 
 
 public class CommandFactory {
-    private Data_Turtle_Interface turtleData;
+    private DataTurtleInterface turtleData;
     private Data allData;
     private Map<String, Class<?>> reflectionMap = new HashMap<String, Class<?>>();
     private Map<String, String> reflectionMapString = new HashMap<String, String>();

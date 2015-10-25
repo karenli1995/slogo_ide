@@ -2,20 +2,14 @@ package view.scene;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 import controller.ModelController;
-import javafx.geometry.Point2D;
-import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import model.Data;
-import model.SlogoScene;
-import model.Turtle;
+import model.turtleinfo.Turtle;
 import view.settings.SlogoProperties;
 import view.shapes.AbstractShape;
 import view.shapes.StraightLine;

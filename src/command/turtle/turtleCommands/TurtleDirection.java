@@ -5,7 +5,7 @@ package command.turtle.turtleCommands;
 
 import command.TurtleCommands;
 import controller.ParseTreeChildren;
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 /**
  *
@@ -17,9 +17,9 @@ public abstract class TurtleDirection extends TurtleCommands {
 	 * 
 	 */
 	private static final long serialVersionUID = 4365978061345276670L;
-	private Data_Turtle_Interface turtleData;
+	private DataTurtleInterface turtleData;
 
-	public TurtleDirection(Data_Turtle_Interface data) {
+	public TurtleDirection(DataTurtleInterface data) {
 		turtleData = data;
 	}
 

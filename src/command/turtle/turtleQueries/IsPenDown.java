@@ -5,7 +5,7 @@ package command.turtle.turtleQueries;
 
 import command.Command;
 import controller.ParseTreeChildren;
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 /**
  *
@@ -17,9 +17,9 @@ public class IsPenDown extends Command {
 	 * 
 	 */
 	private static final long serialVersionUID = 7464805867540834237L;
-	private Data_Turtle_Interface turtleData;
+	private DataTurtleInterface turtleData;
 
-	public IsPenDown(Data_Turtle_Interface data) {
+	public IsPenDown(DataTurtleInterface data) {
 		super(data);
 		turtleData = data;
 	}

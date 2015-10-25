@@ -1,4 +1,4 @@
-package model;
+package model.turtleinfo;
 
 public class Turtle extends SlogoObjects {
 

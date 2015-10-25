@@ -7,10 +7,9 @@ import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import model.Data;
-import model.MathCommand;
-import model.SlogoObjects;
 import model.SlogoScene;
+import model.turtleinfo.Data;
+import model.turtleinfo.SlogoObjects;
 import view.GUIManager;
 import view.console.Prompt;
 import view.props.CurrentTurtleState;
@@ -29,13 +28,10 @@ public class ModelController extends ControlFunctions {
 		super();
 		myScene = new SlogoScene();
 		myGuiManager = new GUIManager(stage, this);
-		
 		TurtleScene turtScene = myGuiManager.getTurtScene();
-		
 		addObservable(turtScene, myScene);
 		
-//		myGuiManager.getTurtScene().getCurrTab().getSlogoImage(0).setScreenLoc(0, 0);
-//		createAnimation();
+		createAnimation();
 	}
 	
 	public ModelController(Stage stage, GUIManager guiManager, SlogoScene scene){
@@ -52,32 +48,27 @@ public class ModelController extends ControlFunctions {
 		
 		myGuiManager = guiManager;
 		TurtleScene turtScene = myGuiManager.getTurtScene();
-		TurtleSceneTab currSceneTab = turtScene.createNewTab(this);
+		turtScene.createNewTab(this);
 		
 		addObservable(turtScene, myScene);
-//		createAnimation();
+		createAnimation();
 	}
 	
 	/**
 	 * Create the animation and timeline.
 	 */
-//	private void createAnimation() {
+	private void createAnimation() {
 //		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY), e -> myManager.step());
 //		myAnimation = new Timeline();
 //		myAnimation.setCycleCount(Timeline.INDEFINITE);
 //		myAnimation.getKeyFrames().add(frame);
-//	}
+	}
 
 	/**
 	 * The controller connects the observables and observers between the front
 	 * end and back end.
 	 */
 	public void addObservable(TurtleScene turtleScene, SlogoScene scene) {
-//		TurtleScene turtScene = myGuiManager.getTurtScene();
-//		TurtleSceneTab currSceneTab = myGuiManager.getTurtScene().getCurrTab();
-//		int id = turtScene.getIdOfTab();
-//		SlogoScene scene = myScene; //set id
-
 		CurrentTurtleState currTurtState = myGuiManager.getMyCurrTurtState();
 		
 		scene.addObserver(turtleScene);

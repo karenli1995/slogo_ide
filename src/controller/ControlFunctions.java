@@ -2,7 +2,7 @@ package controller;
 
 import error.ErrorResources;
 
-public class ControlFunctions {
+public abstract class ControlFunctions {
 	protected ErrorResources error;
 	
 	public ControlFunctions(){

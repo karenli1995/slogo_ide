@@ -4,7 +4,7 @@
 package command.turtle.turtleCommands;
 
 import command.TurtleCommands;
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 /**
  *
@@ -16,9 +16,9 @@ public abstract class TurtleAbsolutePosition extends TurtleCommands {
 	 * 
 	 */
 	private static final long serialVersionUID = 8142832169960392982L;
-	private Data_Turtle_Interface turtleData;
+	private DataTurtleInterface turtleData;
 
-	public TurtleAbsolutePosition(Data_Turtle_Interface turtleData) {
+	public TurtleAbsolutePosition(DataTurtleInterface turtleData) {
 		this.turtleData = turtleData;
 
 	}

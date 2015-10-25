@@ -3,7 +3,7 @@
  */
 package command.turtle.turtleCommands;
 
-import model.Data;
+import model.turtleinfo.Data;
 
 /**
  *

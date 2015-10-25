@@ -15,13 +15,13 @@ import controller.ParseTreeNode;
  */
 public interface ForObserverInterface {
 
-	double getCommandValue();
+	public double getCommandValue();
 
-	void setCommandValue(double commandValue);
+	public void setCommandValue(double commandValue);
 
-	String getErrorMessage();
+	public String getErrorMessage();
 
-	void setErrorMessage(String errorMessage);
+	public void setErrorMessage(String errorMessage);
 
 	public Map<String, Double> getVariableMap();
 

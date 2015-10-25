@@ -5,7 +5,7 @@ package command.turtle.turtleQueries;
 
 import command.Command;
 import controller.ParseTreeChildren;
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 /**
  *
@@ -17,9 +17,9 @@ public class Heading extends Command {
 	 * 
 	 */
 	private static final long serialVersionUID = 3264254956067658867L;
-	private Data_Turtle_Interface turtleData;
+	private DataTurtleInterface turtleData;
 
-	public Heading(Data_Turtle_Interface data) {
+	public Heading(DataTurtleInterface data) {
 		super(data);
 		//Data_Turtle_Interface turtleData = data;
 	}

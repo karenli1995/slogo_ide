@@ -4,7 +4,7 @@
 package command.turtle.turtleCommands;
 
 import controller.ParseTreeChildren;
-import model.Data_Turtle_Interface;
+import model.DataTurtleInterface;
 
 /**
  *
@@ -16,9 +16,9 @@ public class Home extends TurtleAbsolutePosition {
 	 * 
 	 */
 	private static final long serialVersionUID = -667813910576164717L;
-	private Data_Turtle_Interface turtleData;
+	private DataTurtleInterface turtleData;
 
-	public Home(Data_Turtle_Interface turtleData) {
+	public Home(DataTurtleInterface turtleData) {
 		super(turtleData);
 		this.turtleData = turtleData;
 	}

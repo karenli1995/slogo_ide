@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Queue;
 
 import command.CommandInterface;
-import model.Data;
 import model.ForObserverInterface;
+import model.turtleinfo.Data;
 
 
 public class Traverser {

@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+
+import model.turtleinfo.Data;
 import command.CommandInterface;
 import controller.ParseTreeNode;
 import controller.Parser;
@@ -18,9 +20,7 @@ public class SlogoScene extends Observable {
 
     public SlogoScene () {
         Data myAllData = new Data();
-        // myDataList.add(myAllData);
         myDataList.add(myAllData);
-
         myParser = new Parser();
         myTraverser = new Traverser();
     }
@@ -33,18 +33,17 @@ public class SlogoScene extends Observable {
         myDataList.set(id, data);
         setChanged();
         notifyObservers();
-        // myAllData = data;
     }
 
     public ForObserverInterface getObserverData (int id) {
         return myDataList.get(id);
     }
 
-    public Data_Turtle_Interface getTurtleData (int id) {
+    public DataTurtleInterface getTurtleData (int id) {
         return myDataList.get(id);
     }
 
-    public ColorData ColorData (int id) {
+    public ColorDataInterface ColorData (int id) {
         return myDataList.get(id);
     }
 
@@ -65,7 +64,6 @@ public class SlogoScene extends Observable {
 
         }
         setData(id, myCurrData);
-        // myDataList.add(id, myCurrData);
         return myCurrData;
     }
 

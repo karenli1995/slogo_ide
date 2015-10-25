@@ -5,8 +5,8 @@ package command.turtle.turtleCommands;
 
 import command.TurtleCommands;
 import controller.ParseTreeChildren;
-import model.Data_Turtle_Interface;
-import model.SlogoObjects;
+import model.DataTurtleInterface;
+import model.turtleinfo.SlogoObjects;
 
 /**
  *
@@ -22,14 +22,14 @@ public abstract class TurtleMovement extends TurtleCommands {
 	 */
 	private static final long serialVersionUID = 8387538421594848834L;
 
-	public TurtleMovement(Data_Turtle_Interface allData) {
+	public TurtleMovement(DataTurtleInterface allData) {
 		super(allData);
 		data = allData;
 
 	}
 
 
-	private Data_Turtle_Interface data;
+	private DataTurtleInterface data;
 
 	@Override
 	public double execute(ParseTreeChildren distance) {
