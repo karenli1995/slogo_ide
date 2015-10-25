@@ -11,7 +11,7 @@ import controller.ParseTreeChildren;
  * @author Sally Al
  *
  */
-public class Product extends Command {
+public class Product extends UnlimitedInputCommand {
 	/**
 	 * 
 	 */
@@ -22,10 +22,10 @@ public class Product extends Command {
 	}
 
 	@Override
-	public double execute(ParseTreeChildren argument) {
-		double product = argument.getCommandValue(0,0) * argument.getCommandValue(1,0);
-		this.setValue(product);
-		return product;
+	public double execute(ParseTreeChildren arguments) {
+	        double sum = parameterLoop((list) -> list.stream().reduce((x,y) -> x*y).get() , arguments);
+	        this.setValue(sum);
+	        return sum;
 	}
 
 }

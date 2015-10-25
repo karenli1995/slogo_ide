@@ -14,7 +14,11 @@ public abstract class UnlimitedInputCommand extends Command {
         for (int i = 0; i < arguments.getNodeList().size(); i++) {
             List<ParseTreeNode<CommandInterface>> tempList = arguments.getChildListAt(i);
             for (int j = 0; j < tempList.size(); j++) {
-                compiledList.add(arguments.getCommandValue(i, j));
+                if (!(arguments.getCommand(i, j).getClass().getSimpleName().equals("ListEnd") ||
+                      (arguments.getCommand(i, j).getClass().getSimpleName()
+                              .equals("ListStart")))) {
+                    compiledList.add(arguments.getCommandValue(i, j));
+                }
             }
 
         }
