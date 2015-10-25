@@ -25,6 +25,7 @@ public class RunButton extends AbstractButton{
 		ForObserverInterface data = myController.getMyScene().traverse(mySceneId); //change Data
 
 		myGUIManager.getMyHistory().addCommand(consoleText);
+		myController.getMyScene().getAllData().get(mySceneId).getUserHistory().add(consoleText);
 		addUserDefinitions();
 	}
 	
