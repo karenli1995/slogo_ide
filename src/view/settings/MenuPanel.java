@@ -118,7 +118,19 @@ public class MenuPanel extends MenuBar {
 				o.close();
 				newDat.recreate();
 				myController.getGuiManager().getTurtScene();
+				myController.getGuiManager().getMyHistory().clear();
 				myController.getMyScene().setData(0,newDat);
+				for(String i: newDat.getUserHistory()){
+					myController.getGuiManager().getMyHistory().addCommand(i);
+					System.out.println(i);
+				}
+				for(String j: newDat.getUserCommandMap().keySet()){
+					myController.getGuiManager().getMyUserCommands().addCommand(j);
+				}
+				for(String k: newDat.getVariableMap().keySet()){
+					myController.getGuiManager().getMyUserCommands().addCommand(k);
+				}
+				
 			}
 		} catch (Exception e) {
 			// showError("Error!","Failed to load "+file.getName(),e);
