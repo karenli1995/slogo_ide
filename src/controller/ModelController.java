@@ -48,7 +48,7 @@ public class ModelController extends ControlFunctions {
 			turtle.getTrail().setPoint(new Point2D(0,0));
 			newData.setTurtle(i, turtle);
 		}
-		myScene.setData(myScene.getAllData().size(), newData);
+		myScene.getAllData().add(newData);
 		
 		myGuiManager = guiManager;
 		TurtleScene turtScene = myGuiManager.getTurtScene();

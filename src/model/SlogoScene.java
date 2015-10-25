@@ -19,7 +19,7 @@ public class SlogoScene extends Observable {
     public SlogoScene () {
         Data myAllData = new Data();
         // myDataList.add(myAllData);
-        setData(myDataList.size(), myAllData);
+        myDataList.add(myAllData);
 
         myParser = new Parser();
         myTraverser = new Traverser();
@@ -30,7 +30,7 @@ public class SlogoScene extends Observable {
      * the back-end.
      */
     public void setData (int id, Data data) {
-        myDataList.add(id, data);
+        myDataList.set(id, data);
         setChanged();
         notifyObservers();
         // myAllData = data;

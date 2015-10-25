@@ -49,7 +49,8 @@ public class TurtleSceneTab extends Tab{
 
 	public void setTurtleAndTrail(TurtleScene turtScene) {
 		SlogoImage slogoImage = new SlogoImage(turtScene);
-		setSlogoImage(myAllSlogoImages.size(), slogoImage);
+		myAllSlogoImages.add(slogoImage);
+		System.out.println("kern " + myAllSlogoImages.size());
 	}
 
 	public void setTurtImage(ImageView image, int id) {
@@ -90,7 +91,7 @@ public class TurtleSceneTab extends Tab{
 	}
 	
 	public void setSlogoImage(int id, SlogoImage slogoImage) {
-		myAllSlogoImages.add(id, slogoImage);
+		myAllSlogoImages.set(id, slogoImage);
 	}
 
 	public SlogoImage getSlogoImage(int id) {

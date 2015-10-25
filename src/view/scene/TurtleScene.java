@@ -58,7 +58,7 @@ public class TurtleScene extends TabPane implements Observer{
 	}
 	
 	public void updateMyTabs(int id, TurtleSceneTab tab){
-		myTabs.add(id, tab);
+		myTabs.set(id, tab);
 	}
 	
 	public List<TurtleSceneTab> getMyTabs() {
@@ -87,7 +87,7 @@ public class TurtleScene extends TabPane implements Observer{
 	//maybe here
 	public TurtleSceneTab createNewTab(ModelController newController) {
 		TurtleSceneTab newTab = new TurtleSceneTab(this, newController);
-		updateMyTabs(myTabs.size(), newTab);
+		myTabs.add(newTab);
 //		addListener();
 		
 		return newTab;
@@ -236,6 +236,7 @@ public class TurtleScene extends TabPane implements Observer{
 				for (Object line : oldLines) oldTab.getTurtScene().removeChildren((Node) line);
 				
 				List<SlogoImage> oldTurts = oldTab.getAllSlogoImages();
+				System.out.println("lol " + oldTurts.size());
 				for (SlogoImage slogoImage : oldTurts){
 					ImageView image = slogoImage.getMyImage();
 					oldTab.getTurtScene().removeChildren(image);				
@@ -276,6 +277,7 @@ public class TurtleScene extends TabPane implements Observer{
 		}
 		//when setRotationAngle() changes and setTrail() changes
 		List<SlogoObjects> turts = otherSlogoObj.getTurtleData(tabId).getAllTurtles();
+		System.out.println("ahhh " + turts.size());
 		for (int i=0; i<turts.size(); i++){
 			SlogoObjects slogoObject = turts.get(i);
 			double newRotAngle = slogoObject.getRotationAngle();
