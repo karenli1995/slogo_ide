@@ -141,7 +141,9 @@ public class Parser {
 		if (checkMatch("Constant", node)) {
 			this.setNodeValue(index, node);
 		} else {
-			node.getCommand().setValue(index);
+		    //for debug
+		    //node.getCommand().setValue(index);
+		    node.getCommand().setValue(0);
 		}
 
 		if (checkMatch("Variable", node) || checkMatch("UserCommand", node)) {

@@ -1,10 +1,12 @@
 package command.math.arithmetic;
 
+import java.util.Arrays;
+import java.util.List;
 import command.Command;
 import controller.ParseTreeChildren;
 
 
-public class Sum extends Command {
+public class Sum extends UnlimitedInputCommand {
     /**
 	 * 
 	 */
@@ -16,8 +18,8 @@ public class Sum extends Command {
 
     @Override
     public double execute (ParseTreeChildren arguments) {
-
-        double sum = arguments.getCommandValue(0, 0) + arguments.getCommandValue(1, 0);
+      
+        double sum = parameterLoop((list) -> list.stream().reduce((x,y) -> x+y).get() , arguments);
         this.setValue(sum);
         return sum;
 
