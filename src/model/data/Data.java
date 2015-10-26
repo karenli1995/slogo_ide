@@ -29,6 +29,7 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	private Map<String, Double> myVariableMap;
 	private Map<String, List<ParseTreeNode<CommandInterface>>> myUserCommandMap;
 	private Map<String, List<String>> myCommandVariableMap;
+	private Map<String, Double> myUserCommandInputMap;
 	private transient Color myColor;
 	private String myColorHex;
 	private double myCommandValue;
@@ -49,6 +50,7 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 		setVariableMap(new HashMap<String, Double>());
 		setUserCommandMap(new HashMap<String, List<ParseTreeNode<CommandInterface>>>());
 		setMyCommandVariableMap(new HashMap<String, List<String>>());
+		setMyUserCommandInputMap(new HashMap<String, Double>());
 
 		setError(false);
 
@@ -238,5 +240,13 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	public DisplayCommandObserver getDisplayCommandsObserver(){
 		return displayCommands;
 	}
+
+    public Map<String, Double> getMyUserCommandInputMap () {
+        return myUserCommandInputMap;
+    }
+
+    public void setMyUserCommandInputMap (Map<String, Double> myUserCommandInputMap) {
+        this.myUserCommandInputMap = myUserCommandInputMap;
+    }
 
 }
