@@ -98,7 +98,7 @@ public class GUIManager extends BorderPane {
 
     private void addRightPane (Scene scene) {
         GridPane turtstateAndProps = new GridPane();
-        myCurrTurtState = new CurrentTurtleState(scene, myResource, myTurtleScene);
+        myCurrTurtState = new CurrentTurtleState(this, scene, myResource, myTurtleScene);
         turtstateAndProps.add(myCurrTurtState, 0, 1);
         myProps =
                 new AllProperties(scene, myTurtleScene, this, myResource, myStage,
@@ -109,9 +109,9 @@ public class GUIManager extends BorderPane {
 
     private void addLeftPane (Scene scene) {
         GridPane histAndUser = new GridPane();
-        myHistory = new History(myConsoleUI, scene, myResource);
+        myHistory = new History(this, scene, myResource);
         histAndUser.add(myHistory, 1, 1);
-        myAvailableUserCommands = new AvailableUserCommands(myConsoleUI, scene, myResource);
+        myAvailableUserCommands = new AvailableUserCommands(this, scene, myResource);
         histAndUser.add(myAvailableUserCommands, 2, 1);
         setLeft(histAndUser);
     }
@@ -153,6 +153,10 @@ public class GUIManager extends BorderPane {
 
     public Prompt getMyPrompt () {
         return myConsoleUI.getPrompt();
+    }
+    
+    public ConsoleUI getMyConsole() {
+    	return myConsoleUI;
     }
 
     /**
