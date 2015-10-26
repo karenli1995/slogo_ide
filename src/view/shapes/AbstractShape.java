@@ -30,7 +30,7 @@ public abstract class AbstractShape implements ShapeInterface{
 		return myAllShapes;
 	}
 
-	public abstract ArrayList<Line> drawShape(List<Point2D> currTrailList, List<Double> currPenStatus, List<String> penColors, List<Integer> penThicks);
+	public abstract ArrayList<Line> drawShape(List<Point2D> currTrailList, List<Double> currPenStatus, List<String> penColors, List<Integer> penThicks,List<Double> penDash);
 
 	protected Point2D translateForScreen(Point2D point) {
 		List<Point2D> allPoints = new ArrayList<Point2D>();

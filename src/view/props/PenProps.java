@@ -95,20 +95,21 @@ public class PenProps extends AbstractProperties{
 
 	private HBox addPenShapeLabel() {
 		HBox hb8 = new HBox();
+		int mySceneId = myTurtleScene.getIdOfTab();
 		Label penShapeLabel = new Label("Pen Shape");
 		ObservableList<String> shape = FXCollections.observableArrayList("Solid","Dashed", "Dotted");
 		ComboBox<String> shapes = new ComboBox<String>(shape);
 		shapes.setOnAction((e) -> {
 			String chosenShape = shapes.getSelectionModel().getSelectedItem();
 			if (chosenShape == "Solid"){
-				Line recentLine = (Line) myTurtleScene.getCurrTab().getRecentShape();
-				recentLine.setStrokeDashOffset(0);
+				myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setDashes(1.0);
 			}
 			if (chosenShape == "Dashed"){
-				Line recentLine = (Line) myTurtleScene.getCurrTab().getRecentShape();
-				recentLine.setStrokeDashOffset(50);
+				myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setDashes(5.0);
 			}
-			//if (chosenShape == "Dotted") ;
+			if (chosenShape == "Dotted"){
+				myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setDashes(2.0);
+			}
 		});
 		hb8.getChildren().addAll(penShapeLabel, shapes);
 

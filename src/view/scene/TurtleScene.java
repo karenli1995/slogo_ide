@@ -204,12 +204,12 @@ public class TurtleScene extends TabPane implements Observer{
 			Line temp = (Line) i;
 			this.removeChildren(temp);
 		}
-		//this.removeChildren((Node)tab.getShape().getAllShapes());
 		ArrayList<Point2D> currTrailList = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPathCoordinates();
 		ArrayList<Double> penStatusList = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPenPath();
 		ArrayList<String> penColors = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getColorPath();
 		ArrayList<Integer> penThicks = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getThicknessPath();
-		ArrayList<Line> currLine = tab.getShape().drawShape(currTrailList,penStatusList,penColors,penThicks);
+		ArrayList<Double> penDashes = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getDashPath();
+		ArrayList<Line> currLine = tab.getShape().drawShape(currTrailList,penStatusList,penColors,penThicks,penDashes);
 		for(Line j:currLine){
 			tab.getShape().addShape(j);
 			this.addChildren(j);
