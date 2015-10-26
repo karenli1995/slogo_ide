@@ -1,6 +1,7 @@
 package model.turtleinfo;
 
 import java.io.Serializable;
+
 import javafx.geometry.Point2D;
 
 

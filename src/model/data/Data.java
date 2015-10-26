@@ -213,7 +213,8 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 		return myTurtles.size();
 	}
 
-	public static void setActiveTurtle(int value) {
+	@Override
+	public  void setActiveTurtle(int value) {
 		activeTurtle = value;
 	}
 
@@ -241,6 +242,14 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 		return displayCommands;
 	}
 
+
+	@Override
+	public void removeElementActiveList(int index) {
+		activeTurtles.remove(index);
+
+
+	}
+
     public Map<String, Double> getMyUserCommandInputMap () {
         return myUserCommandInputMap;
     }
@@ -248,5 +257,6 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
     public void setMyUserCommandInputMap (Map<String, Double> myUserCommandInputMap) {
         this.myUserCommandInputMap = myUserCommandInputMap;
     }
+
 
 }

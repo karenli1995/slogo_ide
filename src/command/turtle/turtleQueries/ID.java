@@ -1,6 +1,7 @@
 
-package command.turtle.turtleCommands;
+package command.turtle.turtleQueries;
 
+import command.turtle.turtleCommands.TurtleCommands;
 import controller.ParseTreeChildren;
 import model.data.DataTurtleInterface;
 

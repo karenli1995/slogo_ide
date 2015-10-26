@@ -50,12 +50,13 @@ public class CommandFactory {
 			// e1.printStackTrace();
 		}
 		Constructor<?> commandConstructor = null;
-		try {// based on name grab constractor
+		try {// based on name grab constructor
 
 			commandConstructor = commandClass.getDeclaredConstructors()[0];
 
-		} catch (SecurityException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			//e.printStackTrace();
+			allData.setErrorMessage("command not found");
 		}
 		Command command = null;
 		try {// creating the instance
@@ -84,7 +85,7 @@ public class CommandFactory {
 				| InvocationTargetException e) {*/
 		catch(Exception e){
 			// e.printStackTrace();
-			turtleData.setErrorMessage("notFound");
+			allData.setErrorMessage("notFound");
 
 		}
 

@@ -24,11 +24,16 @@ public class ActiveTurtles implements Serializable {
 
         if (activeTurtles.contains(activeTobe) == false) {
             activeTurtles.add(activeTobe);
+
         }
     }
 
     public int size () {
         return activeTurtles.size();
+    }
+
+    public void remove(int index){
+    	activeTurtles.remove(index);
     }
 
     public int getvalue (int index) {
