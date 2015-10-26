@@ -231,7 +231,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 	@Override
 	public int getActiveTurtleID() {
 
-		return activeTurtle;
+		return activeTurtle+1;
 
 	}
 

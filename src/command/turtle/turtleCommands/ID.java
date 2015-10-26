@@ -10,6 +10,8 @@ import model.DataTurtleInterface;
  *
  */
 public class ID extends TurtleCommands{
+
+	private static final long serialVersionUID = 3565943439758546699L;
 	DataTurtleInterface turtleData;
 public ID (DataTurtleInterface turtleData){
 	super(turtleData);
