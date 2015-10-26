@@ -1,5 +1,6 @@
 package model.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * @author Sally Al
  *
  */
-public class ActiveTurtles {
+public class ActiveTurtles implements Serializable {
 
 	private static List<Integer> activeTurtles;
 

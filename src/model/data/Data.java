@@ -210,7 +210,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 		SlogoObjects turtle = this.getTurtle(index);
 
 		turtle.getTrail().addCoord(NewCoordinate, turtle.getPen().isDown(), turtle.getPen().getColor().toString(),
-				turtle.getPen().getThickness());
+				turtle.getPen().getThickness(), turtle.getPen().getDashes());
 		turtle.setTrail(turtle.getTrail());
 		turtle.getTrail().setPoint(NewCoordinate);
 		turtle.setRotationAngle(observedClass.getCoordinates().get("Angle"));
