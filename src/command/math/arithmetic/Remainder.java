@@ -3,7 +3,6 @@
  */
 package command.math.arithmetic;
 
-import command.Command;
 import command.otherCommands.UnlimitedInputCommand;
 import controller.ParseTreeChildren;
 import model.data.Data;
@@ -20,9 +19,6 @@ public class Remainder extends UnlimitedInputCommand {
         super(allData);
     }
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = -5675238179764860997L;
 
     @Override
