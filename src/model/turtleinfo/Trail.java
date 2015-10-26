@@ -19,6 +19,7 @@ public class Trail implements Serializable{
 	private ArrayList<Double[]> myDPath = new ArrayList<Double[]>();
 	private ArrayList<String> myPathColors = new ArrayList<String>();
 	private ArrayList<Integer> myPathThicknesses = new ArrayList<Integer>();
+	private ArrayList<Double> myPathDashes = new ArrayList<Double>();
 	private double myDirection;
 
 	public Trail(Trail oldBearing) {
@@ -54,6 +55,10 @@ public class Trail implements Serializable{
 	
 	public ArrayList<String> getColorPath(){
 		return myPathColors;
+	}
+	
+	public ArrayList<Double> getDashPath(){
+		return myPathDashes;
 	}
 	
 	public ArrayList<Integer> getThicknessPath(){
@@ -96,11 +101,12 @@ public class Trail implements Serializable{
 		return myDirection;
 	}
 
-	public void addCoord(Point2D current, Double upDown, String penColor, int thick) {
+	public void addCoord(Point2D current, Double upDown, String penColor, int thick, double dash) {
 		myPath.add(current);
 		myPenStatus.add(upDown);
 		myPathColors.add(penColor);
 		myPathThicknesses.add(thick);
+		myPathDashes.add(dash);
 		Double[] temp = {current.getX(),current.getY()};
 		myDPath.add(temp);
 	}

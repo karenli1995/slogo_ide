@@ -17,12 +17,12 @@ public abstract class AbstractPen implements Serializable {
 
 	protected int myThickness;
 
-	protected int myDashSparsity;
+	protected Double myDashSparsity;
 
 	protected Double myStatus;
 
 	// pen down =1.0 , pen up =0.0
-	public AbstractPen(Color color, int thickness, int dashSparsity, Double bool) {
+	public AbstractPen(Color color, int thickness, Double dashSparsity, Double bool) {
 		myStatus = bool;
 		myColor = color;
 		mySColor = color.toString();
@@ -37,7 +37,14 @@ public abstract class AbstractPen implements Serializable {
 	public void setThickness(int myThickness) {
 		this.myThickness = myThickness;
 	}
-
+	
+	public Double getDashes(){
+		return myDashSparsity;
+	}
+	
+	public void setDashes(Double dash){
+		myDashSparsity = dash;
+	}
 	public void setColor(Color color) {
 		myColor = color;
 		mySColor = color.toString();
