@@ -3,6 +3,7 @@ package command.display.setters;
 
 import command.display.Display;
 
+
 /**
  *
  * @author Sally Al
@@ -10,11 +11,11 @@ import command.display.Display;
  */
 public class SetPenSize extends SetDisplayCommands {
 
-	private static final long serialVersionUID = -7187401381565709898L;
+    private static final long serialVersionUID = -7187401381565709898L;
 
-	@Override
-	protected Display getEnum() {
-		return Display.SETPS;
-	}
+    @Override
+    protected Display getEnum () {
+        return Display.SETPS;
+    }
 
 }

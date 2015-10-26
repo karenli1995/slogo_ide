@@ -2,15 +2,16 @@ package command;
 
 import controller.ParseTreeChildren;
 
-public interface CommandInterface  {
-	public abstract String getName();
 
-	public abstract void setName(String name);
+public interface CommandInterface {
+    public abstract String getName ();
 
-	public abstract double getValue();
+    public abstract void setName (String name);
 
-	public void setValue(double d);
+    public abstract double getValue ();
 
-	public abstract double execute(ParseTreeChildren distance);
+    public void setValue (double d);
+
+    public abstract double execute (ParseTreeChildren distance);
 
 }

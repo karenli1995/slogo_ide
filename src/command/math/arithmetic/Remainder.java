@@ -3,7 +3,7 @@
  */
 package command.math.arithmetic;
 
-import command.otherCommands.UnlimitedInputCommand;
+import command.otherCommands.UnlimitedInputDoubleCommand;
 import controller.ParseTreeChildren;
 import model.data.Data;
 
@@ -13,7 +13,7 @@ import model.data.Data;
  * @author Sally Al
  *
  */
-public class Remainder extends UnlimitedInputCommand {
+public class Remainder extends UnlimitedInputDoubleCommand {
 
     public Remainder (Data allData) {
         super(allData);
@@ -25,7 +25,7 @@ public class Remainder extends UnlimitedInputCommand {
     public double execute (ParseTreeChildren argument) {
         double ans =
                 parameterLoop( (list) -> list.stream().reduce( (x, y) -> x % y).get(), argument);
-        this.setValue(ans);
+        setValue(ans);
         return ans;
     }
 

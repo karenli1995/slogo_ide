@@ -1,17 +1,40 @@
 package command.otherCommands;
 
+import java.util.List;
 import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeChildren;
+import controller.ParseTreeNode;
+import controller.Traverser;
+import model.data.Data;
+
 
 public class UserCommand extends Command {
+    private Data allData;
+    Traverser traverser = new Traverser();
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -544968087064980006L;
+    public UserCommand (Data allData) {
+        super(allData);
+        this.allData = allData;
+    }
 
-	@Override
-	public double execute(ParseTreeChildren distance) {
-		return 0;
-	}
+    @Override
+    public double execute (ParseTreeChildren distance) {
+        double ans = 0;
+        if (allData.getUserCommandMap().containsKey(this.getName())) {
+            List<ParseTreeNode<CommandInterface>> temp =
+                    allData.getUserCommandMap().get(this.getName());
+            List<String> tempString = allData.getMyCommandVariableMap().get(this.getName());
+            for (int i = 0; i < distance.getNodeList().size(); i++) {
+
+
+                allData.getVariableMap().put(tempString.get(i), distance.getCommandValue(i, 0));
+            }
+            ans = traverser.traverse(temp, allData);
+            System.out.println(ans);
+        }
+
+        return ans;
+    }
+
 }

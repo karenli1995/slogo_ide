@@ -2,19 +2,20 @@ package error;
 
 import java.util.ResourceBundle;
 
+
 public class ErrorResources {
-	private final String ERROR_RESOURCES = "resources/error";
-	private ResourceBundle errorResources;
-	
-	public ErrorResources(){
-		setErrorResources(ResourceBundle.getBundle(ERROR_RESOURCES));
-	}
+    private final String ERROR_RESOURCES = "resources/error";
+    private ResourceBundle errorResources;
 
-	public ResourceBundle getErrorResources() {
-		return errorResources;
-	}
+    public ErrorResources () {
+        setErrorResources(ResourceBundle.getBundle(ERROR_RESOURCES));
+    }
 
-	public void setErrorResources(ResourceBundle errorResources) {
-		this.errorResources = errorResources;
-	}
+    public ResourceBundle getErrorResources () {
+        return errorResources;
+    }
+
+    public void setErrorResources (ResourceBundle errorResources) {
+        this.errorResources = errorResources;
+    }
 }

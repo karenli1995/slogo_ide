@@ -5,6 +5,7 @@ package command;
 
 import model.DataTurtleInterface;
 
+
 /**
  *
  * @author Sally Al
@@ -12,12 +13,10 @@ import model.DataTurtleInterface;
  */
 public class TurtlesToCall {
 
-	public TurtlesToCall() {
-	}
+    public TurtlesToCall () {
+    }
 
-	public TurtlesToCall(DataTurtleInterface turtleData) {
-	}
-
-
+    public TurtlesToCall (DataTurtleInterface turtleData) {
+    }
 
 }

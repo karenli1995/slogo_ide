@@ -3,6 +3,7 @@ package command.display.setters;
 
 import command.display.Display;
 
+
 /**
  *
  * @author Sally Al
@@ -10,11 +11,11 @@ import command.display.Display;
  */
 public class Palette extends SetDisplayCommands {
 
-	private static final long serialVersionUID = 7026916684777044850L;
+    private static final long serialVersionUID = 7026916684777044850L;
 
-	@Override
-	protected Display getEnum() {
-		return Display.SETPALETTE;
-	}
+    @Override
+    protected Display getEnum () {
+        return Display.SETPALETTE;
+    }
 
 }

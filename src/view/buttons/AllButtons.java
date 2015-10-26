@@ -1,43 +1,39 @@
 package view.buttons;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Set;
-
 import controller.ModelController;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import model.ForObserverInterface;
 import view.GUIManager;
 import view.console.ConsoleUI;
-import view.scene.TurtleScene;
+
 
 public class AllButtons extends VBox {
 
-	private RunButton myRunButton;
-	private ClearHistoryButton myClearHistoryButton;
-	private ClearConsoleButton myClearConsoleButton;
+    private RunButton myRunButton;
+    private ClearHistoryButton myClearHistoryButton;
+    private ClearConsoleButton myClearConsoleButton;
 
-	public AllButtons(ConsoleUI console, ModelController controller, Scene scene, GUIManager guimanager,
-			ResourceBundle resource) {
+    public AllButtons (ConsoleUI console,
+                       ModelController controller,
+                       Scene scene,
+                       GUIManager guimanager,
+                       ResourceBundle resource) {
 
-		myRunButton = new RunButton(console, controller, guimanager, resource, "RUN");
-		myClearHistoryButton = new ClearHistoryButton(console, controller, guimanager, resource, "CLEARHISTORY");
-		myClearConsoleButton = new ClearConsoleButton(console, controller, guimanager, resource, "CLEAR");
-		
-		this.setPrefWidth(scene.getWidth() / 11);
-		this.setPadding(
-				new Insets(scene.getWidth() / 40, scene.getWidth() / 40, scene.getWidth() / 40, scene.getWidth() / 40));
-		this.setSpacing(20);
-		this.setStyle("-fx-background-color: #dbdbdb");
-		this.getChildren().addAll(myRunButton, myClearConsoleButton, myClearHistoryButton);
-	}
+        myRunButton = new RunButton(console, controller, guimanager, resource, "RUN");
+        myClearHistoryButton =
+                new ClearHistoryButton(console, controller, guimanager, resource, "CLEARHISTORY");
+        myClearConsoleButton =
+                new ClearConsoleButton(console, controller, guimanager, resource, "CLEAR");
+
+        setPrefWidth(scene.getWidth() / 11);
+        setPadding(
+                   new Insets(scene.getWidth() / 40, scene.getWidth() / 40,
+                              scene.getWidth() / 40, scene.getWidth() / 40));
+        setSpacing(20);
+        setStyle("-fx-background-color: #dbdbdb");
+        getChildren().addAll(myRunButton, myClearConsoleButton, myClearHistoryButton);
+    }
 
 }

@@ -1,35 +1,37 @@
 
 package command.math.arithmetic;
 
-import command.otherCommands.UnlimitedInputCommand;
+import command.otherCommands.UnlimitedInputDoubleCommand;
 import controller.ParseTreeChildren;
 import model.data.Data;
+
 
 /**
  *
  * @author Sally Al
  *
  */
-public class Quotient extends UnlimitedInputCommand {
+public class Quotient extends UnlimitedInputDoubleCommand {
 
-	private static final long serialVersionUID = -5543181629851201807L;
+    private static final long serialVersionUID = -5543181629851201807L;
 
-	public Quotient(Data allData) {
-		super(allData);
-	}
+    public Quotient (Data allData) {
+        super(allData);
+    }
 
-	@Override
-	public double execute(ParseTreeChildren argument) {
+    @Override
+    public double execute (ParseTreeChildren argument) {
 
-		double ans = 0;
+        double ans = 0;
 
-		try {
-			ans = parameterLoop((list) -> list.stream().reduce((x, y) -> x / y).get(), argument);
-		} catch (ArithmeticException e) {
-			System.out.println("cannot divide by 0");
-		}
-		this.setValue(ans);
-		return ans;
-	}
+        try {
+            ans = parameterLoop( (list) -> list.stream().reduce( (x, y) -> x / y).get(), argument);
+        }
+        catch (ArithmeticException e) {
+            System.out.println("cannot divide by 0");
+        }
+        setValue(ans);
+        return ans;
+    }
 
 }
