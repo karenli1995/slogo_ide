@@ -5,10 +5,11 @@ package command;
 
 import java.io.Serializable;
 import java.util.Observable;
-
 import controller.ParseTreeChildren;
 import model.DataTurtleInterface;
 import model.data.Data;
+
+
 /**
  *
  * @author Sally Al
@@ -16,40 +17,43 @@ import model.data.Data;
  */
 public abstract class Command extends Observable implements CommandInterface, Serializable {
 
+    private static final long serialVersionUID = -8555344826572870264L;
 
-	private static final long serialVersionUID = -8555344826572870264L;
+    public Command () {
+    }
 
-public Command(){}
-public Command(DataTurtleInterface allData){}
-public Command(Data allData){}
+    public Command (DataTurtleInterface allData) {
+    }
 
-	private String name;
+    public Command (Data allData) {
+    }
 
-	private double value;
+    private String name;
 
-	@Override
-	public String getName() {
-		return name;
+    private double value;
 
-	}
+    @Override
+    public String getName () {
+        return name;
 
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
+    }
 
-	@Override
-	public abstract double execute(ParseTreeChildren distance);
+    @Override
+    public void setName (String name) {
+        this.name = name;
+    }
 
-	@Override
-	public double getValue() {
-		return value;
-	}
+    @Override
+    public abstract double execute (ParseTreeChildren distance);
 
-	@Override
-	public void setValue(double d) {
-		this.value = d;
-	}
+    @Override
+    public double getValue () {
+        return value;
+    }
 
+    @Override
+    public void setValue (double d) {
+        this.value = d;
+    }
 
 }

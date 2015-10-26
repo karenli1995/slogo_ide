@@ -22,7 +22,7 @@ public class MakeVariable extends Command {
 
 		String varName = argument.getCommandName(0,0);
 		Double value = argument.getCommandValue(1,0);
-		turtleData.updateVaraibleMap(varName, value);
+		turtleData.updateVariableMap(varName, value);
 		return value;
 	}
 

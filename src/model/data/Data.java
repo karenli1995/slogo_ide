@@ -115,7 +115,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 	}
 
 	@Override
-	public void updateVaraibleMap(String varName, Double value) {
+	public void updateVariableMap(String varName, Double value) {
 		myVariableMap.put(varName, value);
 	}
 
