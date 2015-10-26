@@ -3,7 +3,6 @@ package view.history;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import view.console.ConsoleUI;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -17,6 +16,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import view.console.ConsoleUI;
 
 
 public abstract class PastCommandsAbstract extends VBox implements PastCommandsInterface {
@@ -37,9 +37,9 @@ public abstract class PastCommandsAbstract extends VBox implements PastCommandsI
         myScroller.setContent(myVbox);
         myScroller.setVbarPolicy(ScrollBarPolicy.ALWAYS);
         myScroller.setHbarPolicy(ScrollBarPolicy.ALWAYS);
-        this.setPrefWidth(scene.getWidth() / 7);
-        this.getChildren().add(myScroller);
-        this.getChildren().add(myVbox);
+        setPrefWidth(scene.getWidth() / 7);
+        getChildren().add(myScroller);
+        getChildren().add(myVbox);
     }
 
     protected void addLabel (String name) {
@@ -47,7 +47,7 @@ public abstract class PastCommandsAbstract extends VBox implements PastCommandsI
         label.setPrefWidth(myScene.getWidth() / 7);
         label.setBackground(new Background(new BackgroundFill(Color.CADETBLUE, new CornerRadii(0),
                                                               new Insets(0))));
-        this.getChildren().add(label);
+        getChildren().add(label);
     }
 
     @Override

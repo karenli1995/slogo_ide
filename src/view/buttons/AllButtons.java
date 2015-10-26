@@ -1,22 +1,12 @@
 package view.buttons;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Set;
 import controller.ModelController;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import model.ForObserverInterface;
 import view.GUIManager;
 import view.console.ConsoleUI;
-import view.scene.TurtleScene;
 
 
 public class AllButtons extends VBox {
@@ -37,13 +27,13 @@ public class AllButtons extends VBox {
         myClearConsoleButton =
                 new ClearConsoleButton(console, controller, guimanager, resource, "CLEAR");
 
-        this.setPrefWidth(scene.getWidth() / 11);
-        this.setPadding(
-                        new Insets(scene.getWidth() / 40, scene.getWidth() / 40,
-                                   scene.getWidth() / 40, scene.getWidth() / 40));
-        this.setSpacing(20);
-        this.setStyle("-fx-background-color: #dbdbdb");
-        this.getChildren().addAll(myRunButton, myClearConsoleButton, myClearHistoryButton);
+        setPrefWidth(scene.getWidth() / 11);
+        setPadding(
+                   new Insets(scene.getWidth() / 40, scene.getWidth() / 40,
+                              scene.getWidth() / 40, scene.getWidth() / 40));
+        setSpacing(20);
+        setStyle("-fx-background-color: #dbdbdb");
+        getChildren().addAll(myRunButton, myClearConsoleButton, myClearHistoryButton);
     }
 
 }

@@ -7,7 +7,7 @@ import model.DataTurtleInterface;
 
 public class Constant extends Command {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -4748693328683228805L;
     DataTurtleInterface data;

@@ -15,18 +15,18 @@ import controller.ParseTreeChildren;
 public class LessThan extends Command {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 2264004364728040654L;
 
     @Override
     public double execute (ParseTreeChildren argument) {
         if (argument.getCommandValue(0, 0) < argument.getCommandValue(1, 0)) {
-            this.setValue(1);
+            setValue(1);
             return 1.0;
         }
         else {
-            this.setValue(0);
+            setValue(0);
             return 0;
         }
 

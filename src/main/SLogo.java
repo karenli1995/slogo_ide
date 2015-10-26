@@ -17,8 +17,7 @@ public class SLogo extends Application {
         stage.setHeight(bounds.getHeight());
         stage.setResizable(false);
 
-        ModelController myModelController = new ModelController(stage);
-        // new GUIManager(stage, myModelController);
+        new ModelController(stage);
 
     }
 

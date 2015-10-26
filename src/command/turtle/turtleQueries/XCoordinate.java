@@ -22,7 +22,7 @@ public class XCoordinate extends TurtleCommands {
     @Override
     public double executeCommand (ParseTreeChildren distance) {
         double x = getCurrX();
-        this.setValue(x);
+        setValue(x);
         return x;
     }
 

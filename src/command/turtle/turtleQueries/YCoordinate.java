@@ -25,7 +25,7 @@ public class YCoordinate extends TurtleCommands {
     @Override
     public double executeCommand (ParseTreeChildren distance) {
         double y = getCurrY();
-        this.setValue(y);
+        setValue(y);
         return y;
     }
 

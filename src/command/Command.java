@@ -53,7 +53,7 @@ public abstract class Command extends Observable implements CommandInterface, Se
 
     @Override
     public void setValue (double d) {
-        this.value = d;
+        value = d;
     }
 
 }

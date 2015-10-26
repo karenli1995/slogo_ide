@@ -17,7 +17,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import model.SlogoScene;
-import model.turtleinfo.Trail;
 import view.scene.TurtleScene;
 
 
@@ -42,12 +41,12 @@ public class CurrentTurtleState extends VBox implements Observer {
         myTurtScene = turtScene;
         myResource = resource;
         allElements = new ArrayList<Node>();
-        this.setPrefWidth(scene.getWidth() / 7);
+        setPrefWidth(scene.getWidth() / 7);
         myTitle = new Label(myResource.getString("CURRPROPS"));
         myTitle.setPrefWidth(scene.getWidth() / 7);
         myTitle.setBackground(new Background(new BackgroundFill(Color.CADETBLUE, new CornerRadii(0),
                                                                 new Insets(0))));
-        this.getChildren().add(myTitle);
+        getChildren().add(myTitle);
 
         HBox hb1 = addTurtPosition();
         HBox hb2 = addTurtHeading();
@@ -56,7 +55,7 @@ public class CurrentTurtleState extends VBox implements Observer {
 
         setAllMargins(allElements);
 
-        this.getChildren().addAll(hb1, hb2, hb3, hb4);
+        getChildren().addAll(hb1, hb2, hb3, hb4);
     }
 
     private HBox addTurtPosition () {
@@ -120,8 +119,9 @@ public class CurrentTurtleState extends VBox implements Observer {
     }
 
     private void setAllMargins (List<Node> nodes) {
-        for (Node n : nodes)
+        for (Node n : nodes) {
             HBox.setMargin(n, myInset);
+        }
     }
 
     @Override
@@ -140,20 +140,24 @@ public class CurrentTurtleState extends VBox implements Observer {
 
         String penPos = "Down";
         double currPenPos = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getPen().isDown();
-        if (currPenPos == 1.0)
+        if (currPenPos == 1.0) {
             penPos = "Down";
-        if (currPenPos == 0.0)
+        }
+        if (currPenPos == 0.0) {
             penPos = "Up";
+        }
         myDisplayPenPos.setText(penPos);
 
         String turtVis = "Visible";
-        if (otherSlogoObj.getTurtleData(tabId).getTurtle(0).getIsShowing() == true)
+        if (otherSlogoObj.getTurtleData(tabId).getTurtle(0).getIsShowing() == true) {
             turtVis = "Visible";
-        if (otherSlogoObj.getTurtleData(tabId).getTurtle(0).getIsShowing() == false)
+        }
+        if (otherSlogoObj.getTurtleData(tabId).getTurtle(0).getIsShowing() == false) {
             turtVis = "Invisible";
+        }
         myDisplayTurtVis.setText(turtVis);
 
-        Trail trails = otherSlogoObj.getAllData().get(tabId).getTrail(0);
+        otherSlogoObj.getAllData().get(tabId).getTrail(0);
 
     }
 

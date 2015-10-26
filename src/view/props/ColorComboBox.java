@@ -13,16 +13,16 @@ public class ColorComboBox extends ComboBox<Color> {
 
     public ColorComboBox () {
         super();
-        this.getItems().addAll(Color.ALICEBLUE, Color.PURPLE, Color.CADETBLUE, Color.AQUAMARINE,
-                               Color.AZURE,
-                               Color.GREEN, Color.DARKGREEN, Color.CHARTREUSE, Color.CORAL,
-                               Color.RED, Color.YELLOW,
-                               Color.DARKGOLDENROD, Color.DEEPPINK, Color.HOTPINK, Color.BROWN,
-                               Color.ROSYBROWN, Color.ORANGE,
-                               Color.ORCHID, Color.DARKORCHID, Color.BLACK, Color.BLANCHEDALMOND,
-                               Color.ANTIQUEWHITE, Color.GREY);
+        getItems().addAll(Color.ALICEBLUE, Color.PURPLE, Color.CADETBLUE, Color.AQUAMARINE,
+                          Color.AZURE,
+                          Color.GREEN, Color.DARKGREEN, Color.CHARTREUSE, Color.CORAL,
+                          Color.RED, Color.YELLOW,
+                          Color.DARKGOLDENROD, Color.DEEPPINK, Color.HOTPINK, Color.BROWN,
+                          Color.ROSYBROWN, Color.ORANGE,
+                          Color.ORCHID, Color.DARKORCHID, Color.BLACK, Color.BLANCHEDALMOND,
+                          Color.ANTIQUEWHITE, Color.GREY);
 
-        this.setCellFactory(new Callback<ListView<Color>, ListCell<Color>>() {
+        setCellFactory(new Callback<ListView<Color>, ListCell<Color>>() {
             @Override
             public ListCell<Color> call (ListView<Color> p) {
                 return new ListCell<Color>() {

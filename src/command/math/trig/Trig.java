@@ -14,7 +14,7 @@ import controller.ParseTreeChildren;
  */
 public abstract class Trig extends Command {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -7985189152995269845L;
     private static final int ANGLE = 90;
@@ -22,13 +22,13 @@ public abstract class Trig extends Command {
     @Override
     public double execute (ParseTreeChildren angle) {
         if (checkUnderfinedAngle(angle.getCommandValue(0, 0))) {
-            this.setValue(0);
+            setValue(0);
         }
         else {
 
-            this.setValue(evaluateAngle(Math.toRadians(angle.getCommandValue(0, 0))));
+            setValue(evaluateAngle(Math.toRadians(angle.getCommandValue(0, 0))));
         }
-        return this.getValue();
+        return getValue();
 
     }
 

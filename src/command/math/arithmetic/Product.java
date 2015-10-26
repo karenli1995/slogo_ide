@@ -22,7 +22,7 @@ public class Product extends UnlimitedInputDoubleCommand {
     public double execute (ParseTreeChildren arguments) {
         double ans =
                 parameterLoop( (list) -> list.stream().reduce( (x, y) -> x * y).get(), arguments);
-        this.setValue(ans);
+        setValue(ans);
         return ans;
     }
 

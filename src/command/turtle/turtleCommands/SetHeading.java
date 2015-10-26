@@ -20,7 +20,7 @@ public class SetHeading extends TurtleCommands {
     private DataTurtleInterface turtleData;
 
     public SetHeading (DataTurtleInterface turtleDate) {
-        this.turtleData = turtleDate;
+        turtleData = turtleDate;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class SetHeading extends TurtleCommands {
 
         // fix
         getTurtle().setRotationAngle(turtleCurrentHeading + delta);
-        this.setValue(delta);
+        setValue(delta);
         turtleData.setTurtle(0, turtleData.getTurtle(0));
 
         return delta;

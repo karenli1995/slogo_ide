@@ -1,17 +1,15 @@
 package view.buttons;
 
-import java.util.Map;
 import java.util.ResourceBundle;
-import view.GUIManager;
-import view.console.ConsoleUI;
 import controller.ModelController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import view.GUIManager;
+import view.console.ConsoleUI;
 
 
 public abstract class AbstractButton extends Button {
@@ -39,10 +37,10 @@ public abstract class AbstractButton extends Button {
     }
 
     protected void createButton (String name) {
-        this.setText(myResources.getString(name));
+        setText(myResources.getString(name));
 
-        this.applyCss();
-        this.setOnAction(myEvents[0]);
+        applyCss();
+        setOnAction(myEvents[0]);
 
         setAllMargins(this);
     }

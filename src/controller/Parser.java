@@ -34,7 +34,7 @@ public class Parser {
         errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
         pattern = new Patterner();
 
-        this.numInputs();
+        numInputs();
     }
 
     private void commandRegistration (Data allData) {
@@ -46,12 +46,12 @@ public class Parser {
     }
 
     public List<ParseTreeNode<CommandInterface>> parse (String input, Data allData) {
-        this.commandRegistration(allData);
-        this.createCommandList(this.removeComments(input));
+        commandRegistration(allData);
+        createCommandList(removeComments(input));
         nodeList = new ArrayList<ParseTreeNode<CommandInterface>>();
         // this.printCommandList();
 
-        if (this.checkInput()) {
+        if (checkInput()) {
             this.createParseTree(allData);
         }
 
@@ -86,7 +86,7 @@ public class Parser {
             return index;
 
         }
-        int numInputs = this.getNumInputs(head, allData);
+        int numInputs = getNumInputs(head, allData);
         // System.out.println(numInputs);
 
         if (numInputs == 0) {
@@ -147,7 +147,7 @@ public class Parser {
         }
 
         if (checkMatch("Constant", node)) {
-            this.setNodeValue(index, node);
+            setNodeValue(index, node);
         }
         else {
             // for debug
@@ -156,7 +156,7 @@ public class Parser {
         }
 
         if (checkMatch("Variable", node) || checkMatch("UserCommand", node)) {
-            this.setNodeName(index, node);
+            setNodeName(index, node);
         }
         if (checkMatch("UserCommand", node)) {
             for (int i = index; i < commandList.size(); i++) {
@@ -212,8 +212,9 @@ public class Parser {
             }
             return numInputs;
         }
-        else
+        else {
             return -1;
+        }
     }
 
     public void printCommandList () {
@@ -223,8 +224,9 @@ public class Parser {
     }
 
     public void printTreeInOrder (ParseTreeNode<CommandInterface> head) {
-        if (head == null)
+        if (head == null) {
             return;
+        }
 
         for (List<ParseTreeNode<CommandInterface>> nodeList : head.getChildren().getNodeList()) {
             for (ParseTreeNode<CommandInterface> node : nodeList) {
@@ -244,7 +246,7 @@ public class Parser {
     }
 
     private void createCommandList (String input) {
-        String[] example = this.splitInput(input);
+        String[] example = splitInput(input);
         commandList = pattern.matchSplitCommand(example, pattern.getPatterns());
     }
 

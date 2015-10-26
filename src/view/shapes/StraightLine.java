@@ -1,9 +1,7 @@
 package view.shapes;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.TreeMap;
 import controller.ModelController;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
@@ -30,7 +28,7 @@ public class StraightLine extends AbstractShape {
                                       List<String> penColors,
                                       List<Integer> penThicks,
                                       List<Double> penDash) {
-        int mySceneId = myTurtScene.getIdOfTab();
+        myTurtScene.getIdOfTab();
         ArrayList<Line> ret = new ArrayList<Line>();
         for (int i = 0; i < currTrailList.size() - 1; i++) {
             if (currPenStatus.get(i + 1) == 1.0) {

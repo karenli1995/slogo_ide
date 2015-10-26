@@ -17,7 +17,7 @@ public class Patterner extends ControlFunctions {
     private List<Entry<String, Pattern>> patterns;
 
     public Patterner () {
-        this.initPattern();
+        initPattern();
     }
 
     private void initPattern () {

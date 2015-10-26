@@ -40,8 +40,8 @@ public class TurtleScene extends TabPane implements Observer {
             ImageView image = slogoImage.getMyImage();
             image.setX(0);
             image.setY(0);
-            this.setScreenLoc(image, image.getX(), image.getY());
-            this.addChildren(image);
+            setScreenLoc(image, image.getX(), image.getY());
+            addChildren(image);
         }
 
         addListener();
@@ -64,11 +64,11 @@ public class TurtleScene extends TabPane implements Observer {
     }
 
     public int getIdOfTab () {
-        return this.getSelectionModel().getSelectedIndex();
+        return getSelectionModel().getSelectedIndex();
     }
 
     public TurtleSceneTab getCurrTab () {
-        int ind = this.getSelectionModel().getSelectedIndex();
+        int ind = getSelectionModel().getSelectedIndex();
         return myTabs.get(ind);
     }
 
@@ -81,20 +81,20 @@ public class TurtleScene extends TabPane implements Observer {
     }
 
     public void addChildren (Node node) {
-        this.getChildren().add(node);
+        getChildren().add(node);
     }
 
     // use
     public void removeChildren (Node node) {
-        this.getChildren().remove(node);
+        getChildren().remove(node);
     }
 
     public double getX () {
-        return this.getTranslateX();
+        return getTranslateX();
     }
 
     public double getY () {
-        return this.getTranslateY();
+        return getTranslateY();
     }
 
     public double getMyCanvasWidth () {
@@ -120,28 +120,28 @@ public class TurtleScene extends TabPane implements Observer {
      * @param y
      */
     public void setScreenLoc (ImageView imageView, double x, double y) {
-        TurtleSceneTab currTab = this.getCurrTab();
-        int id = this.getIdOfTab();
+        TurtleSceneTab currTab = getCurrTab();
+        int id = getIdOfTab();
 
         double newLocX =
-                Math.floorMod((long) (x + this.getX() + currTab.getMyCanvasWidth() / 2),
+                Math.floorMod((long) (x + getX() + currTab.getMyCanvasWidth() / 2),
                               (long) myCanvasWidth);
         double newLocY =
-                Math.floorMod((long) (this.getY() + currTab.getMyCanvasHeight() / 2 - y),
+                Math.floorMod((long) (getY() + currTab.getMyCanvasHeight() / 2 - y),
                               (long) myCanvasHeight);
         if (checkBounds(newLocX, newLocY)) {
             imageView.setLayoutX(newLocX);
             imageView.setLayoutY(newLocY);
         }
 
-        this.updateMyTabs(id, currTab);
+        updateMyTabs(id, currTab);
     }
 
     private boolean checkBounds (double x, double y) {
-        TurtleSceneTab currTab = this.getCurrTab();
+        TurtleSceneTab currTab = getCurrTab();
 
-        if (x < this.getX() || x > this.getX() + currTab.getMyCanvasWidth() || y < this.getY() ||
-            y > this.getY() + currTab.getMyCanvasHeight()) {
+        if (x < getX() || x > getX() + currTab.getMyCanvasWidth() || y < getY() ||
+            y > getY() + currTab.getMyCanvasHeight()) {
             return false;
         }
         else {
@@ -150,7 +150,7 @@ public class TurtleScene extends TabPane implements Observer {
     }
 
     public void addListener () {
-        this.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+        getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed (ObservableValue<? extends Number> ov,
                                  Number oldValue,
@@ -179,8 +179,9 @@ public class TurtleScene extends TabPane implements Observer {
                 TurtleSceneTab oldTab = myTabs.get(tabId);
 
                 List<Object> oldLines = oldTab.getShape().getAllShapes();
-                for (Object line : oldLines)
+                for (Object line : oldLines) {
                     oldTab.getTurtScene().removeChildren((Node) line);
+                }
 
                 List<SlogoImage> oldTurts = oldTab.getAllSlogoImages();
                 for (SlogoImage slogoImage : oldTurts) {
@@ -195,8 +196,8 @@ public class TurtleScene extends TabPane implements Observer {
     public void update (Observable o, Object arg) {
         SlogoScene otherSlogoObj = (SlogoScene) o;
 
-        int tabId = this.getIdOfTab();
-        TurtleSceneTab tab = this.getCurrTab();
+        int tabId = getIdOfTab();
+        TurtleSceneTab tab = getCurrTab();
         // tab.setTurtleAndTrail(this);
         // when setClear() changes
         /*
@@ -210,7 +211,7 @@ public class TurtleScene extends TabPane implements Observer {
         // when pendown() changes
         for (Object i : tab.getShape().getAllShapes()) {
             Line temp = (Line) i;
-            this.removeChildren(temp);
+            removeChildren(temp);
         }
         ArrayList<Point2D> currTrailList =
                 otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPathCoordinates();
@@ -227,7 +228,7 @@ public class TurtleScene extends TabPane implements Observer {
                                          penDashes);
         for (Line j : currLine) {
             tab.getShape().addShape(j);
-            this.addChildren(j);
+            addChildren(j);
         }
         // when setRotationAngle() changes and setTrail() changes
         List<SlogoObjects> turts = otherSlogoObj.getTurtleData(tabId).getAllTurtles();
@@ -241,8 +242,8 @@ public class TurtleScene extends TabPane implements Observer {
             currSlogoImage.setX(newLocX);
             currSlogoImage.setY(newLocY);
             currSlogoImage.setRotation(newRotAngle);
-            this.setScreenLoc(currSlogoImage.getMyImage(), currSlogoImage.getX(),
-                              currSlogoImage.getY());
+            setScreenLoc(currSlogoImage.getMyImage(), currSlogoImage.getX(),
+                         currSlogoImage.getY());
             tab.setSlogoImage(i, currSlogoImage);
         }
 
@@ -252,7 +253,7 @@ public class TurtleScene extends TabPane implements Observer {
         gc.setFill(newColor);
         gc.fillRect(0, 0, tab.getCanvas().getWidth(), tab.getCanvas().getHeight());
 
-        this.updateMyTabs(tabId, tab);
+        updateMyTabs(tabId, tab);
 
     }
 

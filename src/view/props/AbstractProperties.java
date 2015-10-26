@@ -3,12 +3,12 @@ package view.props;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import view.scene.TurtleScene;
 import controller.ModelController;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
+import view.scene.TurtleScene;
 
 
 public abstract class AbstractProperties extends Tab {
@@ -31,7 +31,8 @@ public abstract class AbstractProperties extends Tab {
     protected abstract void createTab ();
 
     protected void setAllMargins (List<Node> nodes) {
-        for (Node n : nodes)
+        for (Node n : nodes) {
             HBox.setMargin(n, myInset);
+        }
     }
 }

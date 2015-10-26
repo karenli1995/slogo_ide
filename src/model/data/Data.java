@@ -98,7 +98,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
     }
 
     public void setError (boolean error) {
-        this.myError = error;
+        myError = error;
     }
 
     public List<String> getUserHistory () {
@@ -106,7 +106,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
     }
 
     public void setUserHistory (List<String> userHistory) {
-        this.myUserHistory = userHistory;
+        myUserHistory = userHistory;
     }
 
     public void addCommandToHistory (String s) {
@@ -114,7 +114,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
     }
 
     public void setVariableMap (Map<String, Double> variableMap) {
-        this.myVariableMap = variableMap;
+        myVariableMap = variableMap;
     }
 
     @Override
@@ -123,7 +123,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
     }
 
     public void setUserCommandMap (Map<String, List<ParseTreeNode<CommandInterface>>> userCommandMap) {
-        this.myUserCommandMap = userCommandMap;
+        myUserCommandMap = userCommandMap;
 
     }
 
@@ -148,7 +148,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 
     @Override
     public void setCommandValue (double commandValue) {
-        this.myCommandValue = commandValue;
+        myCommandValue = commandValue;
     }
 
     @Override
@@ -176,7 +176,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 
     @Override
     public void setErrorMessage (String errorMessage) {
-        this.myErrorMessage = errorMessage;
+        myErrorMessage = errorMessage;
 
     }
 
@@ -210,7 +210,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
         Point2D NewCoordinate = new Point2D(observedClass.getCoordinates().get("XCor"),
                                             observedClass.getCoordinates().get("YCor"));
         int index = observedClass.getCoordinates().get("id").intValue();
-        SlogoObjects turtle = this.getTurtle(index);
+        SlogoObjects turtle = getTurtle(index);
 
         turtle.getTrail().addCoord(NewCoordinate, turtle.getPen().isDown(),
                                    turtle.getPen().getColor().toString(),
@@ -218,7 +218,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
         turtle.setTrail(turtle.getTrail());
         turtle.getTrail().setPoint(NewCoordinate);
         turtle.setRotationAngle(observedClass.getCoordinates().get("Angle"));
-        this.setTurtle(index, turtle);
+        setTurtle(index, turtle);
 
     }
 

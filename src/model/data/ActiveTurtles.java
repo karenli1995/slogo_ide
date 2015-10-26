@@ -22,8 +22,9 @@ public class ActiveTurtles implements Serializable {
 
     public void update (int activeTobe) {
 
-        if (activeTurtles.contains(activeTobe) == false)
+        if (activeTurtles.contains(activeTobe) == false) {
             activeTurtles.add(activeTobe);
+        }
     }
 
     public int size () {

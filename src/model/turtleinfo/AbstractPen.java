@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 public abstract class AbstractPen implements Serializable {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -3942383150109943668L;
 

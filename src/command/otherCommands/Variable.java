@@ -18,8 +18,8 @@ public class Variable extends Command {
     @Override
     public double execute (ParseTreeChildren argument) {
         double ans = 0;
-        if (allData.getVariableMap().containsKey(this.getName())) {
-            this.setValue(allData.getVariableMap().get(this.getName()));
+        if (allData.getVariableMap().containsKey(getName())) {
+            setValue(allData.getVariableMap().get(getName()));
         }
         return ans;
 

@@ -24,7 +24,7 @@ public abstract class TurtleDirection extends TurtleCommands {
     public double executeCommand (ParseTreeChildren angle) {
         double angleValue = angle.getCommandValue(0, 0);
         double newHeadAngle = getTurtle().getRotationAngle() + ((sign()) * angleValue);
-        this.setValue(angleValue);
+        setValue(angleValue);
         updateLocation(getCurrX(), getCurrY(), newHeadAngle);
         return angleValue;
     }

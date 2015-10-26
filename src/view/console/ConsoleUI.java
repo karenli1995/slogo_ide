@@ -1,17 +1,12 @@
 package view.console;
 
 import java.util.ResourceBundle;
+import controller.ModelController;
+import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import view.GUIManager;
 import view.buttons.AllButtons;
 import view.scene.TurtleScene;
-import controller.ModelController;
-import javafx.scene.Scene;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 
 
 public class ConsoleUI extends GridPane {
@@ -26,7 +21,7 @@ public class ConsoleUI extends GridPane {
                       ResourceBundle resource,
                       TurtleScene turtScene) {
         super();
-        this.setPrefHeight(scene.getHeight() / 5);
+        setPrefHeight(scene.getHeight() / 5);
         myPrompt = new Prompt(scene, resource, turtScene);
         myConsole = new Console(scene, resource);
         myButtonsOnGUI = new AllButtons(this, controller, scene, guimanager, resource);

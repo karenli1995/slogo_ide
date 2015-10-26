@@ -63,14 +63,14 @@ public class SlogoImage {
     }
 
     public void setRotation (double angle) {
-        this.getMyImage().setRotate(angle);
+        getMyImage().setRotate(angle);
     }
 
     public void showSlogoObject () {
-        this.getMyImage().setVisible(true);
+        getMyImage().setVisible(true);
     }
 
     public void hideSlogoObject () {
-        this.getMyImage().setVisible(false);
+        getMyImage().setVisible(false);
     }
 }

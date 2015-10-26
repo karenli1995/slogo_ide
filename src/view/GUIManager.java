@@ -13,8 +13,8 @@ import view.console.ConsoleUI;
 import view.console.Prompt;
 import view.history.AvailableUserCommands;
 import view.history.History;
-import view.props.CurrentTurtleState;
 import view.props.AllProperties;
+import view.props.CurrentTurtleState;
 import view.scene.TurtleScene;
 import view.settings.LangDialog;
 import view.settings.MenuPanel;
@@ -41,7 +41,7 @@ public class GUIManager extends BorderPane {
 
     /**
      * Instantiates the entire view
-     * 
+     *
      * @param stage
      * @param modelController
      */
@@ -53,8 +53,8 @@ public class GUIManager extends BorderPane {
         stage.setScene(scene);
         stage.setTitle(TITLE);
 
-        this.prefHeightProperty().bind(scene.heightProperty());
-        this.prefWidthProperty().bind(scene.widthProperty());
+        prefHeightProperty().bind(scene.heightProperty());
+        prefWidthProperty().bind(scene.widthProperty());
 
         addTopPane();
         addCenterPane();
@@ -83,17 +83,17 @@ public class GUIManager extends BorderPane {
      */
     private void addTopPane () {
         myMenu = new MenuPanel(myStage, myModelController, myResource);
-        this.setTop(myMenu);
+        setTop(myMenu);
     }
 
     private void addCenterPane () {
         myTurtleScene = new TurtleScene(myModelController, myResource);
-        this.setCenter(myTurtleScene);
+        setCenter(myTurtleScene);
     }
 
     private void addBottomPane (Scene scene) {
         myConsoleUI = new ConsoleUI(scene, myModelController, this, myResource, myTurtleScene);
-        this.setBottom(myConsoleUI);
+        setBottom(myConsoleUI);
     }
 
     private void addRightPane (Scene scene) {
@@ -104,7 +104,7 @@ public class GUIManager extends BorderPane {
                 new AllProperties(scene, myTurtleScene, this, myResource, myStage,
                                   myModelController);
         turtstateAndProps.add(myProps, 0, 2);
-        this.setRight(turtstateAndProps);
+        setRight(turtstateAndProps);
     }
 
     private void addLeftPane (Scene scene) {
@@ -113,12 +113,12 @@ public class GUIManager extends BorderPane {
         histAndUser.add(myHistory, 1, 1);
         myAvailableUserCommands = new AvailableUserCommands(myConsoleUI, scene, myResource);
         histAndUser.add(myAvailableUserCommands, 2, 1);
-        this.setLeft(histAndUser);
+        setLeft(histAndUser);
     }
 
     /**
      * Gets the root of the scene.
-     * 
+     *
      * @return
      */
     public Group getRoot () {
@@ -127,7 +127,7 @@ public class GUIManager extends BorderPane {
 
     /**
      * Sets the language of the IDE platform.
-     * 
+     *
      * @param lang
      */
     public void setLanguage (String lang) {
@@ -157,7 +157,7 @@ public class GUIManager extends BorderPane {
 
     /**
      * Initialize the window
-     * 
+     *
      * @param width
      *        The width of the window
      * @param height

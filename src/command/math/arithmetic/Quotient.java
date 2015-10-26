@@ -30,7 +30,7 @@ public class Quotient extends UnlimitedInputDoubleCommand {
         catch (ArithmeticException e) {
             System.out.println("cannot divide by 0");
         }
-        this.setValue(ans);
+        setValue(ans);
         return ans;
     }
 

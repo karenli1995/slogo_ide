@@ -2,14 +2,13 @@ package command.otherCommands;
 
 import command.Command;
 import controller.ParseTreeChildren;
-import model.DataTurtleInterface;
 import model.data.Data;
 
 
 public class MakeVariable extends Command {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 3131529990290290269L;
     private Data allData;

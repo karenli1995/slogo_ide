@@ -26,7 +26,7 @@ public class TurtleSceneTab extends Tab {
     private double myCanvasHeight = SlogoProperties.getSceneHeight() * 5 / 7;
 
     public TurtleSceneTab (TurtleScene turtScene, ModelController controller) {
-        this.setText("New Text");
+        setText("New Text");
         turtScene.getSelectionModel().select(this);
         myAllSlogoImages = new ArrayList<SlogoImage>();
         myTurtScene = turtScene;
@@ -35,7 +35,7 @@ public class TurtleSceneTab extends Tab {
         myShape = new StraightLine(turtScene, myModelController);
 
         setTurtleAndTrail(myTurtScene);
-        this.setContent(myCanvas);
+        setContent(myCanvas);
 
         turtScene.addTab(this);
         turtScene.getTabs().add(this);
@@ -53,7 +53,7 @@ public class TurtleSceneTab extends Tab {
                 (Turtle) myModelController.getMyScene().getTurtleData(sceneId).getTurtle(id);
         double currTurtLocX = currTurt.getTrail().getX();
         double currTurtLocY = currTurt.getTrail().getY();
-        SlogoImage slogoImage = this.getSlogoImage(id);
+        SlogoImage slogoImage = getSlogoImage(id);
         slogoImage.setX(currTurtLocX);
         slogoImage.setY(currTurtLocY);
         setSlogoImage(id, slogoImage);

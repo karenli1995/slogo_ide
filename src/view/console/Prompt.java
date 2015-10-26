@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import javafx.scene.Scene;
 import model.SlogoScene;
 import view.scene.TurtleScene;
-import view.scene.TurtleSceneTab;
 
 
 public class Prompt extends ConsoleTabPane implements Observer {
@@ -29,15 +28,15 @@ public class Prompt extends ConsoleTabPane implements Observer {
         SlogoScene scene = (SlogoScene) o;
 
         int tabId = myTurtScene.getIdOfTab();
-        TurtleSceneTab tab = myTurtScene.getCurrTab();
+        myTurtScene.getCurrTab();
 
         double currValue = scene.getObserverData(tabId).getCommandValue();
 
-        this.setPromptText(currValue + "");
+        setPromptText(currValue + "");
 
         String errorMessage = scene.getObserverData(tabId).getErrorMessage();
         if (errorMessage != null) {
-            this.setPromptText(errorMessage + "");
+            setPromptText(errorMessage + "");
         }
     }
 

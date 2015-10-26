@@ -67,7 +67,7 @@ public abstract class TurtleCommands extends Command {
         for (int i = 0; i < range; i++) {
             id = turtleData.activeTurtleListValue(i);
             value = executeCommand(distance);
-            this.setValue(value);
+            setValue(value);
         }
         return value;
 

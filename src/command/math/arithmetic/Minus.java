@@ -14,7 +14,7 @@ import controller.ParseTreeChildren;
  */
 public class Minus extends Command {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 8903675332338885329L;
 
@@ -25,7 +25,7 @@ public class Minus extends Command {
     @Override
     public double execute (ParseTreeChildren argument) {
         double negative = -(argument.getCommandValue(0, 0));
-        this.setValue(negative);
+        setValue(negative);
         return negative;
     }
 

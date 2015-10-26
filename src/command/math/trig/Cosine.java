@@ -26,7 +26,7 @@ public class Cosine extends TurtleCommands {
     public double executeCommand (ParseTreeChildren argument) {
         double cosangle = Math.cos(Math.toRadians(argument.getCommandValue(0, 0)));
         cosangle = RoundTo2Decimals(cosangle);
-        this.setValue(cosangle);
+        setValue(cosangle);
         return cosangle;
     }
 

@@ -24,7 +24,7 @@ public abstract class PenCommands extends TurtleCommands {
         Pen currPen = getTurtle().getPen();
         currPen.setPenDown(switchPen());
         getTurtle().setPen(currPen);
-        this.setValue(switchPen());
+        setValue(switchPen());
         return switchPen();
     }
 

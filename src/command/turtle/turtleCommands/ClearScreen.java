@@ -20,7 +20,7 @@ public class ClearScreen extends TurtleAbsolutePosition {
 
     @Override
     public double executeCommand (ParseTreeChildren distance) {
-        this.setValue(resetTurtlePosition());
+        setValue(resetTurtlePosition());
         getTurtle().setClearTrail(true);
         return resetTurtlePosition();
 

@@ -1,9 +1,9 @@
 package view.buttons;
 
 import java.util.ResourceBundle;
+import controller.ModelController;
 import view.GUIManager;
 import view.console.ConsoleUI;
-import controller.ModelController;
 
 
 public class ClearHistoryButton extends AbstractButton {

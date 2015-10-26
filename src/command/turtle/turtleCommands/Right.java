@@ -14,7 +14,7 @@ import model.DataTurtleInterface;
 public class Right extends TurtleDirection {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -5679997306598924872L;
 

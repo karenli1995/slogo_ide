@@ -14,7 +14,7 @@ import controller.ParseTreeChildren;
  */
 public class Log extends Command {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -870186448395394224L;
 
@@ -25,7 +25,7 @@ public class Log extends Command {
     @Override
     public double execute (ParseTreeChildren number) {
         double log = Math.log(number.getCommandValue(0, 0));
-        this.setValue(log);
+        setValue(log);
         return log;
 
     }

@@ -22,7 +22,7 @@ public class Traverser {
             for (ParseTreeNode<CommandInterface> s : node) {
                 this.iterateTreePostOrder(s, allData);
             }
-            Double value = this.executeCommands();
+            Double value = executeCommands();
             allData.setCommandValue(value);
             return value;
         }
@@ -47,8 +47,9 @@ public class Traverser {
 
     private void iterateTreePostOrder (List<ParseTreeNode<CommandInterface>> node,
                                        ForObserverInterface allData) {
-        if (node == null)
+        if (node == null) {
             return;
+        }
 
         for (ParseTreeNode<CommandInterface> subList : node) {
             for (List<ParseTreeNode<CommandInterface>> childNode : subList.getChildren()

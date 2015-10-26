@@ -1,8 +1,8 @@
 package view.history;
 
 import java.util.ResourceBundle;
-import view.console.ConsoleUI;
 import javafx.scene.Scene;
+import view.console.ConsoleUI;
 
 
 public class History extends PastCommandsAbstract {

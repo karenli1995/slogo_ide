@@ -25,7 +25,7 @@ public class Heading extends TurtleCommands {
     @Override
     public double executeCommand (ParseTreeChildren distance) {
         double angle = getTurtle().getRotationAngle();
-        this.setValue(angle);
+        setValue(angle);
         return angle;
     }
 

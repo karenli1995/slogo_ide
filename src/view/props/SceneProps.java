@@ -18,8 +18,9 @@ public class SceneProps extends AbstractProperties {
         super(turtscene, resource, controller);
     }
 
+    @Override
     protected void createTab () {
-        this.setText(myResource.getString("SCENE"));
+        setText(myResource.getString("SCENE"));
         VBox vb = new VBox();
         HBox hb2 = addBGColorLabel();
 
@@ -27,7 +28,7 @@ public class SceneProps extends AbstractProperties {
 
         vb.getChildren().addAll(hb2);
 
-        this.setContent(vb);
+        setContent(vb);
     }
 
     private HBox addBGColorLabel () {

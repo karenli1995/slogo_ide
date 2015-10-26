@@ -14,7 +14,7 @@ import controller.ParseTreeChildren;
  */
 public class And extends Command {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 6933861121473227309L;
 
@@ -26,11 +26,11 @@ public class And extends Command {
     public double execute (ParseTreeChildren argument) {
 
         if ((argument.getCommandValue(0, 0) != 0 && argument.getCommandValue(1, 0) != 0)) {
-            this.setValue(1.0);
+            setValue(1.0);
             return 1.0;
         }
         else {
-            this.setValue(0);
+            setValue(0);
             return 0;
         }
     }

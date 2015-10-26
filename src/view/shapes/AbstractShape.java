@@ -1,15 +1,12 @@
 package view.shapes;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.TreeMap;
+import controller.ModelController;
 import javafx.geometry.Point2D;
-import javafx.scene.Node;
 import javafx.scene.shape.Line;
 import view.scene.TurtleScene;
 import view.scene.TurtleSceneTab;
-import controller.ModelController;
 
 
 public abstract class AbstractShape implements ShapeInterface {
@@ -22,14 +19,17 @@ public abstract class AbstractShape implements ShapeInterface {
         myModelController = controller;
     }
 
+    @Override
     public void addShape (Object shape) {
         myAllShapes.add(shape);
     }
 
+    @Override
     public List<Object> getAllShapes () {
         return myAllShapes;
     }
 
+    @Override
     public abstract ArrayList<Line> drawShape (List<Point2D> currTrailList,
                                                List<Double> currPenStatus,
                                                List<String> penColors,
@@ -37,15 +37,13 @@ public abstract class AbstractShape implements ShapeInterface {
                                                List<Double> penDash);
 
     protected Point2D translateForScreen (Point2D point) {
-        List<Point2D> allPoints = new ArrayList<Point2D>();
+        new ArrayList<Point2D>();
 
         double canvasWidth = myTurtScene.getCurrTab().getMyCanvasWidth();
         double canvasHeight = myTurtScene.getCurrTab().getMyCanvasHeight();
 
         double canvasX1 = myTurtScene.getCanvasX();
-        double canvasX2 = canvasX1 + canvasWidth;
         double canvasY1 = myTurtScene.getCanvasY();
-        double canvasY2 = canvasY1 + canvasHeight;
 
         // double X = Math.floorMod( (long) (point.getX() + myTurtScene.getX() + canvasWidth/2) ,
         // (long) canvasWidth);
@@ -54,8 +52,8 @@ public abstract class AbstractShape implements ShapeInterface {
 
         double X = point.getX() + myTurtScene.getX() + canvasWidth / 2;
         double Y = myTurtScene.getY() + canvasHeight / 2 - point.getY();
-        double modX = Math.floorMod((long) X, (long) canvasWidth);
-        double modY = Math.floorMod((long) Y, (long) canvasHeight);
+        Math.floorMod((long) X, (long) canvasWidth);
+        Math.floorMod((long) Y, (long) canvasHeight);
 
         // if(X != modX && Y == modY) { //if only X needs to be mod
         // Point2D firstPoint = new Point2D(canvasWidth, Y);

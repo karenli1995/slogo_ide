@@ -15,7 +15,7 @@ public class PenColor extends GetDisplayCommands {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see command.Command#execute(controller.ParseTreeChildren)
      */
     @Override

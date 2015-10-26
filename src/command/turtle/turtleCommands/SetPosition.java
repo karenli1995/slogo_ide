@@ -25,7 +25,7 @@ public class SetPosition extends TurtleAbsolutePosition {
     public double executeCommand (ParseTreeChildren newLocation) {
         double distance = calculateDistanceBetweenTwoPoints(newLocation.getCommandValue(0, 0),
                                                             newLocation.getCommandValue(1, 0));
-        this.setValue(distance);
+        setValue(distance);
         updateLocation(newLocation.getCommandValue(0, 0), newLocation.getCommandValue(1, 0),
                        getTurtle().getRotationAngle());
         return distance;

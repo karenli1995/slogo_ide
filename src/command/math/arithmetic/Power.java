@@ -23,7 +23,7 @@ public class Power extends UnlimitedInputDoubleCommand {
         double ans =
                 parameterLoop( (list) -> list.stream().reduce( (x, y) -> Math.pow(x, y)).get(),
                                argument);
-        this.setValue(ans);
+        setValue(ans);
         return ans;
 
     }

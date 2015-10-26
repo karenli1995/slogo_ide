@@ -25,7 +25,7 @@ public class Remainder extends UnlimitedInputDoubleCommand {
     public double execute (ParseTreeChildren argument) {
         double ans =
                 parameterLoop( (list) -> list.stream().reduce( (x, y) -> x % y).get(), argument);
-        this.setValue(ans);
+        setValue(ans);
         return ans;
     }
 

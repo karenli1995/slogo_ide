@@ -18,7 +18,7 @@ public class MakeUserInstruction extends Command {
     }
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 6069217154717721913L;
 

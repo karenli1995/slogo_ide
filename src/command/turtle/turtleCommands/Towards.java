@@ -18,7 +18,7 @@ public class Towards extends Command {
 
     @Override
     public double execute (ParseTreeChildren distance) {
-        this.setValue(0);
+        setValue(0);
         return 0;
     }
 

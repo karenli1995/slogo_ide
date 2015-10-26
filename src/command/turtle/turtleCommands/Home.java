@@ -20,7 +20,7 @@ public class Home extends TurtleAbsolutePosition {
 
     @Override
     public double executeCommand (ParseTreeChildren argument) {
-        this.setValue(resetTurtlePosition());
+        setValue(resetTurtlePosition());
         return resetTurtlePosition();
     }
 

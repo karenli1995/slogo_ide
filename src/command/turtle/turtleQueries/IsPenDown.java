@@ -25,7 +25,7 @@ public class IsPenDown extends TurtleCommands {
     @Override
     public double executeCommand (ParseTreeChildren distance) {
         double flag = getTurtle().getPen().isDown();
-        this.setValue(flag);
+        setValue(flag);
         return flag;
     }
 

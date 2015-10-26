@@ -1,17 +1,14 @@
 package view.props;
 
-import java.util.List;
 import java.util.ResourceBundle;
 import controller.ModelController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import view.scene.TurtleScene;
 
 
@@ -21,8 +18,9 @@ public class PenProps extends AbstractProperties {
         super(scene, resource, controller);
     }
 
+    @Override
     protected void createTab () {
-        this.setText(myResource.getString("PENPROPTITLE"));
+        setText(myResource.getString("PENPROPTITLE"));
         VBox vb = new VBox();
         HBox hb1 = addPenColorLabel();
         HBox hb2 = addPenThicknessLabel();
@@ -32,7 +30,7 @@ public class PenProps extends AbstractProperties {
         setAllMargins(allElements);
 
         vb.getChildren().addAll(hb1, hb2, hb3, hb4);
-        this.setContent(vb);
+        setContent(vb);
     }
 
     private HBox addPenColorLabel () {
@@ -84,12 +82,14 @@ public class PenProps extends AbstractProperties {
         ComboBox<String> positions = new ComboBox<String>(pos);
         positions.setOnAction( (e) -> {
             String chosenPos = positions.getSelectionModel().getSelectedItem();
-            if (chosenPos == "Up")
+            if (chosenPos == "Up") {
                 myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
                         .setPenDown(0.0);
-            if (chosenPos == "Down")
+            }
+            if (chosenPos == "Down") {
                 myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
                         .setPenDown(1.0);
+            }
         });
         hb8.getChildren().addAll(penPosLabel, positions);
 

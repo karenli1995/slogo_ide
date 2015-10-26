@@ -37,7 +37,7 @@ public class MenuPanel extends MenuBar {
                 new FileChooser.ExtensionFilter("Java files (*.ser)", "*.ser");
         myFileChooser.getExtensionFilters().add(extensionFilter);
         myStage = stage;
-        this.getMenus().addAll(fileMenu(myStage));
+        getMenus().addAll(fileMenu(myStage));
     }
 
     /**
@@ -96,7 +96,7 @@ public class MenuPanel extends MenuBar {
         // myController.addObservable();
         SlogoScene currScene = myController.getMyScene();
         GUIManager currGuiManager = myController.getGuiManager();
-        ModelController newController = new ModelController(myStage, currGuiManager, currScene);
+        new ModelController(myStage, currGuiManager, currScene);
     }
 
     private void openSlogo () {

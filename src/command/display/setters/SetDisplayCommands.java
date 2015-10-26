@@ -22,7 +22,7 @@ public abstract class SetDisplayCommands extends DisplayCommands {
     @Override
     public double execute (ParseTreeChildren input) {
         double value = input.getCommandValue(0, 0);
-        this.setValue(value);
+        setValue(value);
         putAndNotify(getEnum(), value);
         return value;
 

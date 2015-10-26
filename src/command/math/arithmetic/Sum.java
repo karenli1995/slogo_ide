@@ -18,7 +18,7 @@ public class Sum extends UnlimitedInputDoubleCommand {
 
         double sum =
                 parameterLoop( (list) -> list.stream().reduce( (x, y) -> x + y).get(), arguments);
-        this.setValue(sum);
+        setValue(sum);
         return sum;
 
     }

@@ -23,7 +23,7 @@ public class Sine extends TurtleCommands {
     public double executeCommand (ParseTreeChildren argument) {
         double sine = Math.sin(Math.toRadians(argument.getCommandValue(0, 0)));
         sine = RoundTo2Decimals(sine);
-        this.setValue(sine);
+        setValue(sine);
         return sine;
     }
 

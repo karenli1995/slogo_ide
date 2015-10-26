@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import controller.ModelController;
-import view.GUIManager;
-import view.scene.TurtleScene;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
+import view.GUIManager;
+import view.scene.TurtleScene;
 
 
 public class AllProperties extends TabPane {
@@ -31,8 +31,8 @@ public class AllProperties extends TabPane {
         allTabs.add(myTurtProps);
         allTabs.add(mySceneProps);
         allTabs.add(myPenProps);
-        this.getTabs().addAll(allTabs);
-        this.setPrefWidth(scene.getWidth() * 2 / 7);
+        getTabs().addAll(allTabs);
+        setPrefWidth(scene.getWidth() * 2 / 7);
 
     }
 

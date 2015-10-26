@@ -3,7 +3,6 @@ package view.buttons;
 import java.util.ResourceBundle;
 import java.util.Set;
 import controller.ModelController;
-import model.ForObserverInterface;
 import view.GUIManager;
 import view.console.ConsoleUI;
 import view.scene.TurtleScene;
@@ -26,7 +25,7 @@ public class RunButton extends AbstractButton {
         String consoleText = myConsole.getTextFromConsole();
 
         myController.getMyScene().parse(consoleText, mySceneId);
-        ForObserverInterface data = myController.getMyScene().traverse(mySceneId); // change Data
+        myController.getMyScene().traverse(mySceneId);
 
         myGUIManager.getMyHistory().addCommand(consoleText);
         myController.getMyScene().getAllData().get(mySceneId).getUserHistory().add(consoleText);

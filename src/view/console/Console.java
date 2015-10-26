@@ -13,19 +13,19 @@ public class Console extends ConsoleTabPane {
     }
 
     public String getTextFromConsole () {
-        TextArea currTextArea = (TextArea) this.getSelectionModel().getSelectedItem().getContent();
+        TextArea currTextArea = (TextArea) getSelectionModel().getSelectedItem().getContent();
         String currText = currTextArea.getText();
         return currText;
     }
 
     public void clearTextFromConsole () {
-        TextArea currTextArea = (TextArea) this.getSelectionModel().getSelectedItem().getContent();
+        TextArea currTextArea = (TextArea) getSelectionModel().getSelectedItem().getContent();
         currTextArea.clear();
         currTextArea.requestFocus();
     }
 
     public void setConsoleText (String text) {
-        TextArea currTextArea = (TextArea) this.getSelectionModel().getSelectedItem().getContent();
+        TextArea currTextArea = (TextArea) getSelectionModel().getSelectedItem().getContent();
 
         String currText = currTextArea.getAccessibleText();
         String newText = "";

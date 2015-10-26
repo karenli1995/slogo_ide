@@ -13,13 +13,13 @@ public abstract class ConsoleTabPane extends TabPane {
 
     public ConsoleTabPane (Scene scene) {
         super();
-        this.setPrefWidth(scene.getWidth() * 5 / 11);
+        setPrefWidth(scene.getWidth() * 5 / 11);
         myFirstTab = new Tab();
         myTextArea = new TextArea();
         myTextArea = new TextArea();
         myTextArea.setWrapText(true);
         myTextArea.setEditable(true);
         myFirstTab.setContent(myTextArea);
-        this.getTabs().add(myFirstTab);
+        getTabs().add(myFirstTab);
     }
 }

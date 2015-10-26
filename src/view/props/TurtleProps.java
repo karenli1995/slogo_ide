@@ -2,18 +2,13 @@ package view.props;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import controller.ModelController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -35,8 +30,9 @@ public class TurtleProps extends AbstractProperties {
         myStage = stage;
     }
 
+    @Override
     protected void createTab () {
-        this.setText(myResource.getString("TURTLE"));
+        setText(myResource.getString("TURTLE"));
         VBox vb = new VBox();
 
         HBox hb1 = addNumTurtLabel();
@@ -47,7 +43,7 @@ public class TurtleProps extends AbstractProperties {
 
         vb.getChildren().addAll(hb1, hb4, hb5);
 
-        this.setContent(vb);
+        setContent(vb);
     }
 
     private HBox addNumTurtLabel () {

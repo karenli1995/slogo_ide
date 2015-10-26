@@ -3,13 +3,13 @@ package view.settings;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
-import javafx.scene.control.ButtonBar.ButtonData;
 
 
 public class LangDialog extends Dialog {
@@ -18,7 +18,7 @@ public class LangDialog extends Dialog {
 
     public LangDialog () {
         super();
-        this.setHeaderText("Language");
+        setHeaderText("Language");
         addOk();
         Label lang = new Label("Language: ");
         ObservableList<String> languages =
@@ -29,8 +29,9 @@ public class LangDialog extends Dialog {
         GridPane grid = new GridPane();
         grid.add(lang, 0, 0);
         grid.add(languageChoice, 1, 0);
-        this.getDialogPane().setContent(grid);
-        this.setResultConverter(new Callback<ButtonType, ResourceBundle>() {
+        getDialogPane().setContent(grid);
+        setResultConverter(new Callback<ButtonType, ResourceBundle>() {
+            @Override
             public ResourceBundle call (ButtonType ok) {
                 if (ok == myOKer) {
                     ResourceBundle ret =
@@ -45,6 +46,6 @@ public class LangDialog extends Dialog {
 
     private void addOk () {
         myOKer = new ButtonType("Okay", ButtonData.OK_DONE);
-        this.getDialogPane().getButtonTypes().add(myOKer);
+        getDialogPane().getButtonTypes().add(myOKer);
     }
 }

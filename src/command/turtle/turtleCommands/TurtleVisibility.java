@@ -15,7 +15,7 @@ import model.DataTurtleInterface;
  */
 public abstract class TurtleVisibility extends Command {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 4129734871347895441L;
     private DataTurtleInterface data;
@@ -28,7 +28,7 @@ public abstract class TurtleVisibility extends Command {
     @Override
     public double execute (ParseTreeChildren angle) {
         data.getTurtle(0).setIsShowing(visibility());
-        this.setValue(visibilityValue());
+        setValue(visibilityValue());
         return visibilityValue();
 
     }
