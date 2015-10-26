@@ -20,7 +20,7 @@ public abstract class UnlimitedInputCommand extends Command {
         this.allData= allData;
     }
     
-    public double parameterLoop (UnlimitedInputInterface inter, ParseTreeChildren arguments) {
+    public double parameterLoop (UnlimitedInputDoubleInterface inter, ParseTreeChildren arguments) {
         List<Double> compiledList = new ArrayList<Double>();
         for (int i = 0; i < arguments.getNodeList().size(); i++) {
             List<ParseTreeNode<CommandInterface>> tempList = arguments.getChildListAt(i);
