@@ -26,9 +26,9 @@ public class Tell extends Command {
 	public double execute(ParseTreeChildren distance) {
 
 		List<Integer> turtlesToworkOn = null;//kevin what should i put here to get [100] or [1 2 3]
-		int range = turtlesToworkOn.get(0);
-		if (turtlesToworkOn.size() == 1) {
-
+		int range = 0;
+		for(int j = 0 ; j <turtlesToworkOn.size(); j++ ) {
+			range=turtlesToworkOn.get(j);
 			int size = turtleData.turtleListSize();
 			if (range > size) {
 				int diff = range - size;

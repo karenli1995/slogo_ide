@@ -37,15 +37,14 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 	private String myColorHex;
 	private double myCommandValue;
 	private ActiveTurtles activeTurtles;
-	private static int turtleID=0;
-	private static int activeTurtle=0;
+	private static int turtleID = 0;
+	private static int activeTurtle = 0;
 
 	public Data() {
 		myTurtles = new ArrayList<SlogoObjects>();
 		myTrails = new ArrayList<Trail>();
 
 		createTurtle();
-
 
 		activeTurtles = new ActiveTurtles();
 		setUserHistory(new ArrayList<String>());
@@ -61,6 +60,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 		setMyColor(Color.ALICEBLUE);
 
 	}
+
 	@Override
 	public void createTurtle() {
 		Turtle defaultTurtle = new Turtle();
@@ -161,8 +161,9 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 	@Override
 	public void addToActiveList(int value) {
 		activeTurtles.update(value);
-		 setActiveTurtle(value);
+		setActiveTurtle(value);
 	}
+
 	@Override
 	public String getErrorMessage() {
 		String temp = myErrorMessage;
@@ -205,7 +206,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 		TurtleCommands observedClass = (TurtleCommands) o;
 		Point2D NewCoordinate = new Point2D(observedClass.getCoordinates().get("XCor"),
 				observedClass.getCoordinates().get("YCor"));
-		int index =  observedClass.getCoordinates().get("id").intValue();
+		int index = observedClass.getCoordinates().get("id").intValue();
 		SlogoObjects turtle = this.getTurtle(index);
 
 		turtle.getTrail().addCoord(NewCoordinate, turtle.getPen().isDown(), turtle.getPen().getColor().toString(),
@@ -217,17 +218,21 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 
 	}
 
-
 	@Override
 	public int turtleListSize() {
 
 		return myTurtles.size();
 	}
-	public static int getActiveTurtle() {
-		return activeTurtle;
-	}
+
 	public static void setActiveTurtle(int value) {
 		activeTurtle = value;
+	}
+
+	@Override
+	public int getActiveTurtleID() {
+
+		return activeTurtle;
+
 	}
 
 }
