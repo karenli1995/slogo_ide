@@ -3,11 +3,15 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+
 import command.CommandInterface;
 import controller.ParseTreeNode;
 import controller.Parser;
 import controller.Traverser;
+import model.data.ColorDataInterface;
 import model.data.Data;
+import model.data.DataTurtleInterface;
+import model.data.ForObserverInterface;
 
 
 public class SlogoScene extends Observable {

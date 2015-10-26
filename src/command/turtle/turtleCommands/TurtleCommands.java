@@ -6,9 +6,10 @@ package command.turtle.turtleCommands;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+
 import command.Command;
 import controller.ParseTreeChildren;
-import model.DataTurtleInterface;
+import model.data.DataTurtleInterface;
 import model.turtleinfo.SlogoObjects;
 
 

@@ -2,6 +2,7 @@ package command.otherCommands;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import command.Command;
 import controller.ParseTreeChildren;
 import controller.Traverser;
@@ -17,9 +18,7 @@ public class MakeUserInstruction extends Command {
         this.allData = allData;
     }
 
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 6069217154717721913L;
 
     @Override

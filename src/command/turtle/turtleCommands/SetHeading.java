@@ -1,11 +1,8 @@
-/**
- *
- */
+
 package command.turtle.turtleCommands;
 
 import controller.ParseTreeChildren;
-import model.DataTurtleInterface;
-
+import model.data.DataTurtleInterface;
 
 /**
  *
@@ -13,27 +10,25 @@ import model.DataTurtleInterface;
  *
  */
 public class SetHeading extends TurtleCommands {
-    /**
-     *
-     */
-    private static final long serialVersionUID = 6593453308174239806L;
-    private DataTurtleInterface turtleData;
 
-    public SetHeading (DataTurtleInterface turtleDate) {
-        turtleData = turtleDate;
-    }
+	private static final long serialVersionUID = 6593453308174239806L;
+	private DataTurtleInterface turtleData;
 
-    @Override
-    public double executeCommand (ParseTreeChildren headingAngle) {
-        Double turtleCurrentHeading = getTurtle().getRotationAngle();
-        Double delta = headingAngle.getCommandValue(0, 0) - turtleCurrentHeading;
+	public SetHeading(DataTurtleInterface turtleDate) {
+		turtleData = turtleDate;
+	}
 
-        // fix
-        getTurtle().setRotationAngle(turtleCurrentHeading + delta);
-        setValue(delta);
-        turtleData.setTurtle(0, turtleData.getTurtle(0));
+	@Override
+	public double executeCommand(ParseTreeChildren headingAngle) {
+		Double turtleCurrentHeading = getTurtle().getRotationAngle();
+		Double delta = headingAngle.getCommandValue(0, 0) - turtleCurrentHeading;
 
-        return delta;
-    }
+		// fix
+		getTurtle().setRotationAngle(turtleCurrentHeading + delta);
+		setValue(delta);
+		turtleData.setTurtle(0, turtleData.getTurtle(0));
+
+		return delta;
+	}
 
 }

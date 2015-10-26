@@ -5,11 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+
 import command.CommandFactory;
 import command.CommandInterface;
 import command.CommandRegister;
-import model.ForObserverInterface;
 import model.data.Data;
+import model.data.ForObserverInterface;
 
 
 public class Parser {

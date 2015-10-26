@@ -6,8 +6,9 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-import model.DataTurtleInterface;
+
 import model.data.Data;
+import model.data.DataTurtleInterface;
 
 
 public class CommandFactory {

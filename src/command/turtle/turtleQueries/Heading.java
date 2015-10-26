@@ -1,12 +1,9 @@
-/**
- *
- */
+
 package command.turtle.turtleQueries;
 
 import command.turtle.turtleCommands.TurtleCommands;
 import controller.ParseTreeChildren;
-import model.DataTurtleInterface;
-
+import model.data.DataTurtleInterface;
 
 /**
  *

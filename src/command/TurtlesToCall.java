@@ -3,7 +3,7 @@
  */
 package command;
 
-import model.DataTurtleInterface;
+import model.data.DataTurtleInterface;
 
 
 /**

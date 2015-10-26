@@ -1,10 +1,7 @@
-/**
- *
- */
+
 package command.turtle.turtleCommands;
 
-import model.DataTurtleInterface;
-
+import model.data.DataTurtleInterface;
 
 /**
  *
@@ -13,18 +10,15 @@ import model.DataTurtleInterface;
  */
 public class Right extends TurtleDirection {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = -5679997306598924872L;
+	private static final long serialVersionUID = -5679997306598924872L;
 
-    public Right (DataTurtleInterface turtleData) {
-        super(turtleData);
-    }
+	public Right(DataTurtleInterface turtleData) {
+		super(turtleData);
+	}
 
-    @Override
-    protected int sign () {
-        return 1;
-    }
+	@Override
+	protected int sign() {
+		return 1;
+	}
 
 }

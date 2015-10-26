@@ -3,11 +3,12 @@ package command.turtle.multiTurtle;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeChildren;
 import controller.ParseTreeNode;
-import model.DataTurtleInterface;
+import model.data.DataTurtleInterface;
 
 
 /**
