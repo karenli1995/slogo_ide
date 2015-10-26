@@ -1,4 +1,4 @@
-package command.math.arithmetic;
+package command.otherCommands;
 
 import java.util.List;
 
