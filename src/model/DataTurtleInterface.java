@@ -24,5 +24,6 @@ public interface DataTurtleInterface {
 	int activeTurtleListValue(int index);
 	public void createTurtle();
 	public void addToActiveList(int value);
+	int getActiveTurtleID();
 
 }

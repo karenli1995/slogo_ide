@@ -29,11 +29,14 @@ import command.otherCommands.UserCommand;
 import command.syntax.Constant;
 import command.syntax.ListEnd;
 import command.syntax.ListStart;
+import command.turtle.multiTurtle.Tell;
+import command.turtle.multiTurtle.Turtles;
 import command.turtle.turtleCommands.Backward;
 import command.turtle.turtleCommands.ClearScreen;
 import command.turtle.turtleCommands.Forward;
 import command.turtle.turtleCommands.HideTurtle;
 import command.turtle.turtleCommands.Home;
+import command.turtle.turtleCommands.ID;
 import command.turtle.turtleCommands.Left;
 import command.turtle.turtleCommands.MakeVariable;
 import command.turtle.turtleCommands.PenDown;
@@ -125,6 +128,12 @@ public class CommandRegister {
 		cf.registerCommand("NotEqual", NotEqual.class);
 		cf.registerCommand("LessThan", LessThan.class);
 		cf.registerCommand("Not", Not.class);
+
+		//extension:
+		cf.registerCommand("ID", ID.class);
+		cf.registerCommand("Turtles", Turtles.class);
+		cf.registerCommand("Tell", Tell.class);
+
 
 	}
 }
