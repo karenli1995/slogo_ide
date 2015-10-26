@@ -2,6 +2,7 @@
 package command.display.setters;
 
 import command.display.Display;
+import model.data.DisplayDataInterface;
 
 
 /**
@@ -11,7 +12,12 @@ import command.display.Display;
  */
 public class SetBackground extends SetDisplayCommands {
 
-    private static final long serialVersionUID = -2648763549594643733L;
+
+	public SetBackground(DisplayDataInterface displayData) {
+		super(displayData);
+	}
+
+	private static final long serialVersionUID = -2648763549594643733L;
 
     @Override
     public Display getEnum () {

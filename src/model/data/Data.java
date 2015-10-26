@@ -18,7 +18,7 @@ import model.turtleinfo.SlogoObjects;
 import model.turtleinfo.Trail;
 import model.turtleinfo.Turtle;
 
-public class Data implements DataTurtleInterface, ForObserverInterface, ColorDataInterface, Serializable {
+public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserverInterface, ColorDataInterface, Serializable {
 
 	private static final long serialVersionUID = 2437173979976418913L;
 	private List<SlogoObjects> myTurtles;
@@ -58,7 +58,7 @@ public class Data implements DataTurtleInterface, ForObserverInterface, ColorDat
 
 		setMyColor(Color.ALICEBLUE);
 
-		displayCommands = new DisplayCommandObserver();
+		displayCommands = new DisplayCommandObserver(this);
 		turtleCommands = new TurtleCommandsObserver(this);
 
 	}
@@ -234,8 +234,8 @@ public class Data implements DataTurtleInterface, ForObserverInterface, ColorDat
 	public TurtleCommandsObserver getTurtleCommandsObserver() {
 		return turtleCommands;
 	}
-
-	public DisplayCommandObserver getDisplayCommandsObserver() {
+	@Override
+	public DisplayCommandObserver getDisplayCommandsObserver(){
 		return displayCommands;
 	}
 

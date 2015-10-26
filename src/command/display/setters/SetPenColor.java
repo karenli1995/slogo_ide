@@ -2,6 +2,7 @@
 package command.display.setters;
 
 import command.display.Display;
+import model.data.DisplayDataInterface;
 
 
 /**
@@ -11,7 +12,12 @@ import command.display.Display;
  */
 public class SetPenColor extends SetDisplayCommands {
 
-    private static final long serialVersionUID = 5673442278693959109L;
+
+	public SetPenColor(DisplayDataInterface displayData) {
+		super(displayData);
+	}
+
+	private static final long serialVersionUID = 5673442278693959109L;
 
     @Override
     public Display getEnum () {
