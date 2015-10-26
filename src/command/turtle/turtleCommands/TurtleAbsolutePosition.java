@@ -3,7 +3,6 @@
  */
 package command.turtle.turtleCommands;
 
-import command.TurtleCommands;
 import model.DataTurtleInterface;
 
 /**
@@ -12,21 +11,17 @@ import model.DataTurtleInterface;
  *
  */
 public abstract class TurtleAbsolutePosition extends TurtleCommands {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 8142832169960392982L;
-	private DataTurtleInterface turtleData;
 
 	public TurtleAbsolutePosition(DataTurtleInterface turtleData) {
-		this.turtleData = turtleData;
-
+		super(turtleData);
 	}
 
 	protected double calculateDistanceBetweenTwoPoints(double x2, double y2) {
 
-		double x1 = turtleData.getTurtle(0).getTrail().getX();
-		double y1 = turtleData.getTurtle(0).getTrail().getY();
+		double x1 = getCurrX();
+		double y1 = getCurrY();
 
 		double distance = ((y2 - y1) * (y2 - y1)) + ((x2 - x1) * (x2 - x1));
 		distance = Math.sqrt(distance);
@@ -34,7 +29,7 @@ public abstract class TurtleAbsolutePosition extends TurtleCommands {
 		return distance;
 	}
 
-	protected double  resetTurtlePosition(){
+	protected double resetTurtlePosition() {
 		double distanceMoved = calculateDistanceBetweenTwoPoints(0.0, 0.0);
 		updateLocation(0.0, 0.0, 0);
 		return distanceMoved;

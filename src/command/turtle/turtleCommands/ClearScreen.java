@@ -13,7 +13,7 @@ import model.DataTurtleInterface;
  */
 public class ClearScreen extends TurtleAbsolutePosition {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -240865876563370225L;
 	private DataTurtleInterface turtleData;
@@ -24,11 +24,12 @@ public class ClearScreen extends TurtleAbsolutePosition {
 	}
 
 	@Override
-	public double execute(ParseTreeChildren distance) {
-
+	public double executeCommand(ParseTreeChildren distance) {
+		int x =0;
 		this.setValue(resetTurtlePosition());
-		turtleData.getTurtle(0).setClearTrail(true);
+		getTurtle().setClearTrail(true);
 		return resetTurtlePosition();
+
 	}
 
 }

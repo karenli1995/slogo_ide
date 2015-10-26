@@ -3,7 +3,7 @@
  */
 package command.turtle.turtleQueries;
 
-import command.Command;
+import command.turtle.turtleCommands.TurtleCommands;
 import controller.ParseTreeChildren;
 import model.DataTurtleInterface;
 
@@ -12,21 +12,18 @@ import model.DataTurtleInterface;
  * @author Sally Al
  *
  */
-public class IsPenDown extends Command {
-	/**
-	 * 
-	 */
+public class IsPenDown extends TurtleCommands {
+
 	private static final long serialVersionUID = 7464805867540834237L;
-	private DataTurtleInterface turtleData;
 
 	public IsPenDown(DataTurtleInterface data) {
 		super(data);
-		turtleData = data;
+
 	}
 
 	@Override
-	public double execute(ParseTreeChildren distance) {
-		double flag = turtleData.getTurtle(0).getPen().isDown();
+	public double executeCommand(ParseTreeChildren distance) {
+		double flag = getTurtle().getPen().isDown();
 		this.setValue(flag);
 		return flag;
 	}

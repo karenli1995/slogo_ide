@@ -1,9 +1,6 @@
-/**
- *
- */
+
 package command.turtle.turtleCommands;
 
-import command.Command;
 import controller.ParseTreeChildren;
 import model.DataTurtleInterface;
 import model.turtleinfo.Pen;
@@ -13,24 +10,19 @@ import model.turtleinfo.Pen;
  * @author Sally Al
  *
  */
-public abstract class PenCommands extends Command {
-	/**
-	 * 
-	 */
+public abstract class PenCommands extends TurtleCommands {
+
 	private static final long serialVersionUID = -7003996375537002670L;
-	private DataTurtleInterface turtleData;
 
 	public PenCommands(DataTurtleInterface turtleData) {
-		this.turtleData = turtleData;
-
-
+		super(turtleData);
 	}
 
 	@Override
-	public double execute(ParseTreeChildren distance) {
-		Pen currPen = turtleData.getTurtle(0).getPen();
+	public double executeCommand(ParseTreeChildren distance) {
+		Pen currPen = getTurtle().getPen();
 		currPen.setPenDown(switchPen());
-		turtleData.getTurtle(0).setPen(currPen);
+		getTurtle().setPen(currPen);
 		this.setValue(switchPen());
 		return switchPen();
 	}

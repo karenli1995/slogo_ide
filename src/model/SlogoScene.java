@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-import model.turtleinfo.Data;
 import command.CommandInterface;
 import controller.ParseTreeNode;
 import controller.Parser;
 import controller.Traverser;
-
-
+import model.data.Data;
 public class SlogoScene extends Observable {
 
     private List<Data> myDataList = new ArrayList<Data>();
@@ -63,6 +61,7 @@ public class SlogoScene extends Observable {
             myTraverser.traverse(myTree, myCurrData);
 
         }
+        System.out.println(id);
         setData(id, myCurrData);
         return myCurrData;
     }

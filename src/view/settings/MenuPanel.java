@@ -7,29 +7,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.ResourceBundle;
 
-import view.GUIManager;
 import controller.ModelController;
-import javafx.animation.Animation.Status;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.SlogoScene;
-import model.turtleinfo.Data;
-
+import model.data.Data;
+import view.GUIManager;
 public class MenuPanel extends MenuBar {
 
 	private Stage myStage;
@@ -50,12 +40,12 @@ public class MenuPanel extends MenuBar {
 
 	/**
 	 * create file menu
-	 * 
+	 *
 	 * @return menu
 	 */
 	private Menu fileMenu(Stage stage) {
 		Menu menu = new Menu(myResource.getString("FILE"));
-		
+
 		MenuItem newfile = new MenuItem(myResource.getString("NEW"));
 		newfile.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
 		newfile.setOnAction(e -> {
@@ -95,7 +85,7 @@ public class MenuPanel extends MenuBar {
 
 		return menu;
 	}
-	
+
 	private void newSlogo() {
 //		Data newData = new Data();
 //		myController.getMyScene().addData(newData);
@@ -130,7 +120,7 @@ public class MenuPanel extends MenuBar {
 				for(String k: newDat.getVariableMap().keySet()){
 					myController.getGuiManager().getMyUserCommands().addCommand(k);
 				}
-				
+
 			}
 		} catch (Exception e) {
 			// showError("Error!","Failed to load "+file.getName(),e);

@@ -3,7 +3,6 @@
  */
 package command.turtle.turtleCommands;
 
-import command.TurtleCommands;
 import controller.ParseTreeChildren;
 import model.DataTurtleInterface;
 import model.turtleinfo.SlogoObjects;
@@ -15,10 +14,8 @@ import model.turtleinfo.SlogoObjects;
  */
 public abstract class TurtleMovement extends TurtleCommands {
 
-
-
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 8387538421594848834L;
 
@@ -28,14 +25,13 @@ public abstract class TurtleMovement extends TurtleCommands {
 
 	}
 
-
 	private DataTurtleInterface data;
+	private Double turtleID;
 
 	@Override
-	public double execute(ParseTreeChildren distance) {
+	public double executeCommand(ParseTreeChildren distance) {
 
-		SlogoObjects currTurtle = data.getTurtle(0);
-		moveFdorBK(distance.getCommandValue(0, 0), currTurtle);
+		moveFdorBK(distance.getCommandValue(0, 0), getTurtle());
 		setValue(distance.getCommandValue(0, 0));
 		return distance.getCommandValue(0, 0);
 
@@ -50,8 +46,8 @@ public abstract class TurtleMovement extends TurtleCommands {
 		double tempXLocation = RoundTo2Decimals(Math.sin(radians));
 		double tempYLocation = RoundTo2Decimals(Math.cos(radians));
 
-		tempXLocation = calcualteCoordinate(tempXLocation, myTurtle.getTrail().getX(), sign, distance);
-		tempYLocation = calcualteCoordinate(tempYLocation, myTurtle.getTrail().getY(), sign, distance);
+		tempXLocation = calcualteCoordinate(tempXLocation, getCurrX(), sign, distance);
+		tempYLocation = calcualteCoordinate(tempYLocation, getCurrY(), sign, distance);
 
 		updateLocation(tempXLocation, tempYLocation, degrees);
 

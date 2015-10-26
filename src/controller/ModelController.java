@@ -2,24 +2,20 @@ package controller;
 
 import java.util.List;
 
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import model.SlogoScene;
-import model.turtleinfo.Data;
+import model.data.Data;
 import model.turtleinfo.SlogoObjects;
 import view.GUIManager;
 import view.console.Prompt;
 import view.props.CurrentTurtleState;
 import view.scene.TurtleScene;
-import view.scene.TurtleSceneTab;
-
 public class ModelController extends ControlFunctions {
 	private static final int FRAMES_PER_SECOND = 10;
 	private static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
-	
+
 	private Timeline myAnimation;
 	private SlogoScene myScene;
 	private GUIManager myGuiManager;
@@ -30,10 +26,10 @@ public class ModelController extends ControlFunctions {
 		myGuiManager = new GUIManager(stage, this);
 		TurtleScene turtScene = myGuiManager.getTurtScene();
 		addObservable(turtScene, myScene);
-		
+
 		createAnimation();
 	}
-	
+
 	public ModelController(Stage stage, GUIManager guiManager, SlogoScene scene){
 		super();
 		myScene = scene;
@@ -45,15 +41,15 @@ public class ModelController extends ControlFunctions {
 			newData.setTurtle(i, turtle);
 		}
 		myScene.getAllData().add(newData);
-		
+
 		myGuiManager = guiManager;
 		TurtleScene turtScene = myGuiManager.getTurtScene();
 		turtScene.createNewTab(this);
-		
+
 		addObservable(turtScene, myScene);
 		createAnimation();
 	}
-	
+
 	/**
 	 * Create the animation and timeline.
 	 */
@@ -70,20 +66,20 @@ public class ModelController extends ControlFunctions {
 	 */
 	public void addObservable(TurtleScene turtleScene, SlogoScene scene) {
 		CurrentTurtleState currTurtState = myGuiManager.getMyCurrTurtState();
-		
+
 		scene.addObserver(turtleScene);
 		scene.addObserver(currTurtState);
-		
+
 		Prompt prompt = myGuiManager.getMyPrompt();
 		scene.addObserver(prompt);
-		
+
 	}
 
 
 	public GUIManager getGuiManager() {
 		return myGuiManager;
 	}
-	
+
 	public SlogoScene getMyScene(){
 		return myScene;
 	}
