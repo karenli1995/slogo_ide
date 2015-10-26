@@ -29,7 +29,7 @@ public class Parser {
     private String myErrorMessage;
     private ResourceBundle resources;
     private Map<String, Integer> commandTimesMap;
-    private Map<String, Integer> commandInputMap;
+    private Map<String, Double> commandInputMap;
 
     public Parser () {
         errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
@@ -50,6 +50,7 @@ public class Parser {
         commandRegistration(allData);
         createCommandList(removeComments(input));
         nodeList = new ArrayList<ParseTreeNode<CommandInterface>>();
+        commandInputMap = allData.getMyUserCommandInputMap();
         // this.printCommandList();
 
         if (checkInput()) {
@@ -67,7 +68,6 @@ public class Parser {
 
     private int createParseTree (ForObserverInterface allData) {
         int index = 0;
-        commandInputMap = new HashMap<String, Integer>();
         commandTimesMap = new HashMap<String, Integer>();
         while (index < commandList.size()) {
             ParseTreeNode<CommandInterface> newNode = createNewNode(index, null);
@@ -87,7 +87,7 @@ public class Parser {
             return index;
 
         }
-        int numInputs = getNumInputs(head, allData);
+        Double numInputs = getNumInputs(head, allData);
         // System.out.println(numInputs);
 
         if (numInputs == 0) {
@@ -164,7 +164,7 @@ public class Parser {
                 if (commandList.get(i)[1].equals("ListEnd") &&
                     commandList.get(index - 1)[1].equals("MakeUserInstruction")) {
 
-                    int tempInputs = (i - index) - 2;
+                    Double tempInputs = (double) ((i - index) - 2);
                     commandInputMap.put(commandList.get(index)[0], tempInputs);
                     commandTimesMap.put(commandList.get(index)[0], 1);
                     break;
@@ -192,9 +192,9 @@ public class Parser {
 
     }
 
-    private int getNumInputs (ParseTreeNode<CommandInterface> node, ForObserverInterface allData) {
-        int numInputs =
-                Integer.parseInt(resources.getString(node.getCommand().getClass().getSimpleName()));
+    private Double getNumInputs (ParseTreeNode<CommandInterface> node, ForObserverInterface allData) {
+        Double numInputs =
+                (double) Integer.parseInt(resources.getString(node.getCommand().getClass().getSimpleName()));
         if (node.getCommand() != null) {
             if (checkMatch("UserCommand", node)) {
                 if (!commandTimesMap.containsKey(node.getCommand().getName())) {
@@ -214,7 +214,7 @@ public class Parser {
             return numInputs;
         }
         else {
-            return -1;
+            return -1.0;
         }
     }
 
