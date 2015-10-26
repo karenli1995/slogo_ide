@@ -2,7 +2,7 @@
 package command.display;
 
 import command.Command;
-
+import command.commandsObservers.DisplayCommandObserver;
 
 /**
  *
@@ -10,7 +10,14 @@ import command.Command;
  *
  */
 public abstract class DisplayCommands extends Command {
+	private static final DisplayCommandObserver observer = new DisplayCommandObserver();
 
-    private static final long serialVersionUID = -5049592034094334507L;
+	public DisplayCommands() {
+		this.addObserver(observer);
+	}
+
+	private static final long serialVersionUID = -5049592034094334507L;
+
+	public abstract Display getEnum();
 
 }

@@ -3,6 +3,7 @@ package command.display.setters;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import command.display.Display;
 import command.display.DisplayCommands;
 import controller.ParseTreeChildren;
@@ -28,7 +29,7 @@ public abstract class SetDisplayCommands extends DisplayCommands {
 
     }
 
-    protected abstract Display getEnum ();
+
 
     protected void putAndNotify (Display name, double value) {
         map.put(name, value);

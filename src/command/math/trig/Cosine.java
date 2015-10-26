@@ -3,7 +3,7 @@
  */
 package command.math.trig;
 
-import command.turtle.turtleCommands.TurtleCommands;
+import command.Command;
 import controller.ParseTreeChildren;
 
 
@@ -12,7 +12,7 @@ import controller.ParseTreeChildren;
  * @author Sally Al
  *
  */
-public class Cosine extends TurtleCommands {
+public class Cosine extends Command {
     /**
      *
      */
@@ -22,12 +22,21 @@ public class Cosine extends TurtleCommands {
         super();
     }
 
-    @Override
+/*    @Override
     public double executeCommand (ParseTreeChildren argument) {
         double cosangle = Math.cos(Math.toRadians(argument.getCommandValue(0, 0)));
         cosangle = RoundTo2Decimals(cosangle);
         setValue(cosangle);
         return cosangle;
     }
+*/
+	/* (non-Javadoc)
+	 * @see command.Command#execute(controller.ParseTreeChildren)
+	 */
+	@Override
+	public double execute(ParseTreeChildren distance) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

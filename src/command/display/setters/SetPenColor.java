@@ -14,7 +14,7 @@ public class SetPenColor extends SetDisplayCommands {
     private static final long serialVersionUID = 5673442278693959109L;
 
     @Override
-    protected Display getEnum () {
+    public Display getEnum () {
         return Display.SETPC;
     }
 

@@ -1,10 +1,7 @@
-/**
- *
- */
+
 package model.data;
 
 import javafx.scene.paint.Color;
-
 
 /**
  *
@@ -13,8 +10,8 @@ import javafx.scene.paint.Color;
  */
 public interface ColorDataInterface {
 
-    public Color getMyColor ();
+	public Color getMyColor();
 
-    public void setMyColor (Color color);
+	public void setMyColor(Color color);
 
 }
