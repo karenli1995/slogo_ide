@@ -3,7 +3,7 @@ package command.turtle.multiTurtle;
 
 import command.Command;
 import controller.ParseTreeChildren;
-import model.DataTurtleInterface;
+import model.data.DataTurtleInterface;
 
 
 /**

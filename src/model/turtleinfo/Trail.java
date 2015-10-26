@@ -2,13 +2,12 @@ package model.turtleinfo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 import javafx.geometry.Point2D;
 
 
 public class Trail implements Serializable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = -1670975363453388685L;
     private transient Point2D myPoint;
     private Double[] myDPoint = new Double[2];
@@ -109,13 +108,4 @@ public class Trail implements Serializable {
         myDPath.add(temp);
     }
 
-    /*
-     * public void writeObject(ObjectOutputStream o) throws IOException{
-     * o.defaultWriteObject();
-     * }
-     *
-     * public void readObject(ObjectInputStream i) throws ClassNotFoundException, IOException{
-     * i.defaultReadObject();
-     * }
-     */
 }

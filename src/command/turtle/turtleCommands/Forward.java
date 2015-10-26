@@ -1,7 +1,6 @@
 package command.turtle.turtleCommands;
 
-import model.DataTurtleInterface;
-
+import model.data.DataTurtleInterface;
 
 public class Forward extends TurtleMovement {
 

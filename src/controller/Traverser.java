@@ -3,9 +3,10 @@ package controller;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+
 import command.CommandInterface;
-import model.ForObserverInterface;
 import model.data.Data;
+import model.data.ForObserverInterface;
 
 
 public class Traverser {

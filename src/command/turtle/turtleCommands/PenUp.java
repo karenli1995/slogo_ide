@@ -1,9 +1,7 @@
-/**
- *
- */
+
 package command.turtle.turtleCommands;
 
-import model.DataTurtleInterface;
+import model.data.DataTurtleInterface;
 
 
 /**

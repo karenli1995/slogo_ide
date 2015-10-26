@@ -2,8 +2,7 @@
 package command.turtle.turtleCommands;
 
 import controller.ParseTreeChildren;
-import model.DataTurtleInterface;
-
+import model.data.DataTurtleInterface;
 
 /**
  *

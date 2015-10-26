@@ -1,6 +1,4 @@
-/**
- *
- */
+
 package command.turtle.turtleCommands;
 
 import model.data.Data;

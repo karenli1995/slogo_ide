@@ -5,9 +5,10 @@ package command;
 
 import java.io.Serializable;
 import java.util.Observable;
+
 import controller.ParseTreeChildren;
-import model.DataTurtleInterface;
 import model.data.Data;
+import model.data.DataTurtleInterface;
 
 
 /**

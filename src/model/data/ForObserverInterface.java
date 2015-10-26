@@ -3,7 +3,9 @@
  */
 package model.data;
 
+import java.util.List;
 import java.util.Map;
+
 import command.CommandInterface;
 import controller.ParseTreeNode;
 
@@ -25,5 +27,5 @@ public interface ForObserverInterface {
 
     public Map<String, Double> getVariableMap ();
 
-    public Map<String, ParseTreeNode<CommandInterface>> getUserCommandMap ();
+    public Map<String, List<ParseTreeNode<CommandInterface>>> getUserCommandMap ();
 }

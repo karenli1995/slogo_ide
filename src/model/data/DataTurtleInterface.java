@@ -1,11 +1,9 @@
-/**
- *
- */
+
 package model.data;
 
 import java.util.List;
-import model.turtleinfo.SlogoObjects;
 
+import model.turtleinfo.SlogoObjects;
 
 /**
  *
@@ -14,18 +12,16 @@ import model.turtleinfo.SlogoObjects;
  */
 public interface DataTurtleInterface {
 
-    public SlogoObjects getTurtle (int turtleId);
-
-    public void setTurtle (int turtleId, SlogoObjects turtle);
-
-    public void updateVaraibleMap (String varName, Double value);
-
-    public List<SlogoObjects> getAllTurtles ();
-
-    void setErrorMessage (String errorMessage);
-
-    public int activeTurtleListValue (int index);
-
-    public int size ();
+	public SlogoObjects getTurtle(int turtleId);
+	public void  setTurtle(int turtleId, SlogoObjects turtle);
+	public void updateVariableMap(String varName, Double value);
+	public List<SlogoObjects> getAllTurtles();
+	void setErrorMessage(String errorMessage);
+	public int activeTurtleListSize();
+	public int turtleListSize();
+	int activeTurtleListValue(int index);
+	public void createTurtle();
+	public void addToActiveList(int value);
+	int getActiveTurtleID();
 
 }

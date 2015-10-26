@@ -10,14 +10,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
+
 import command.CommandInterface;
 import command.turtle.turtleCommands.TurtleCommands;
 import controller.ParseTreeNode;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
-import model.ColorDataInterface;
-import model.DataTurtleInterface;
-import model.ForObserverInterface;
 import model.turtleinfo.SlogoObjects;
 import model.turtleinfo.Trail;
 import model.turtleinfo.Turtle;
@@ -186,7 +184,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
     }
 
     @Override
-    public Map<String, List<ParseTreeNode<CommandInterface>>> getUserCommandMap () {
+    public Map <String, List<ParseTreeNode<CommandInterface>>> getUserCommandMap () {
         return myUserCommandMap;
     }
 
