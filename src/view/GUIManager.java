@@ -109,9 +109,9 @@ public class GUIManager extends BorderPane {
 
     private void addLeftPane (Scene scene) {
         GridPane histAndUser = new GridPane();
-        myHistory = new History(this, scene, myResource);
+        myHistory = new History(this, scene, myResource, "HISTBAR");
         histAndUser.add(myHistory, 1, 1);
-        myAvailableUserCommands = new AvailableUserCommands(this, scene, myResource);
+        myAvailableUserCommands = new AvailableUserCommands(this, scene, myResource, "USERINFO");
         histAndUser.add(myAvailableUserCommands, 2, 1);
         setLeft(histAndUser);
     }

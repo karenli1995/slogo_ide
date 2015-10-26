@@ -18,8 +18,6 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import view.GUIManager;
-import view.console.ConsoleUI;
-
 
 public abstract class PastCommandsAbstract extends VBox implements PastCommandsInterface {
 
@@ -31,10 +29,11 @@ public abstract class PastCommandsAbstract extends VBox implements PastCommandsI
     private List<String> myButtonStrings = new ArrayList<String>();
     private VBox myVbox = new VBox();
 
-    protected PastCommandsAbstract (GUIManager guiManager, Scene scene, ResourceBundle resource) {
-        myScene = scene;
+    protected PastCommandsAbstract (GUIManager guiManager, Scene scene, ResourceBundle resource, String label) {
+    	myScene = scene;
         myResource = resource;
         myGuiManager = guiManager;
+        addLabel(label);
         myScroller.setPrefHeight(scene.getHeight() * 4 / 5);
         myScroller.setContent(myVbox);
         myScroller.setVbarPolicy(ScrollBarPolicy.ALWAYS);
