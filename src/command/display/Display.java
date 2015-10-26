@@ -1,7 +1,7 @@
 /**
  *
  */
-package display;
+package command.display;
 
 /**
  *
@@ -9,6 +9,6 @@ package display;
  *
  */
 public enum Display {
-	SETBG,
+	SETBG,SETPC,SETPS,SETSH,SETPALETTE,PC
 
 }

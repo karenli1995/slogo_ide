@@ -2,6 +2,7 @@ package command.otherCommands;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeChildren;
@@ -11,15 +12,16 @@ import model.data.Data;
 
 
 public abstract class UnlimitedInputCommand extends Command {
-    
-    Traverser traverser = new Traverser();
+
+	private static final long serialVersionUID = -127141521106485354L;
+	Traverser traverser = new Traverser();
     protected Data allData;
 
     public UnlimitedInputCommand (Data allData) {
         super(allData);
         this.allData= allData;
     }
-    
+
     public double parameterLoop (UnlimitedInputInterface inter, ParseTreeChildren arguments) {
         List<Double> compiledList = new ArrayList<Double>();
         for (int i = 0; i < arguments.getNodeList().size(); i++) {
