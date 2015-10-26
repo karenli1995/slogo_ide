@@ -21,17 +21,15 @@ public class UserCommand extends Command {
     @Override
     public double execute (ParseTreeChildren distance) {
         double ans = 0;
-        if (allData.getUserCommandMap().containsKey(this.getName())) {
+        if (allData.getUserCommandMap().containsKey(getName())) {
             List<ParseTreeNode<CommandInterface>> temp =
-                    allData.getUserCommandMap().get(this.getName());
-            List<String> tempString = allData.getMyCommandVariableMap().get(this.getName());
+                    allData.getUserCommandMap().get(getName());
+            List<String> tempString = allData.getMyCommandVariableMap().get(getName());
             for (int i = 0; i < distance.getNodeList().size(); i++) {
-
 
                 allData.getVariableMap().put(tempString.get(i), distance.getCommandValue(i, 0));
             }
             ans = traverser.traverse(temp, allData);
-            System.out.println(ans);
         }
 
         return ans;
