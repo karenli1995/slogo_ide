@@ -32,7 +32,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 	private String myErrorMessage;
 	private List<String> myUserHistory;
 	private Map<String, Double> myVariableMap;
-	private Map<String, ParseTreeNode<CommandInterface>> myUserCommandMap;
+	private Map<String, List<ParseTreeNode<CommandInterface>>> myUserCommandMap;
 	private transient Color myColor;
 	private String myColorHex;
 	private double myCommandValue;
@@ -49,13 +49,13 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 		activeTurtles = new ActiveTurtles();
 		setUserHistory(new ArrayList<String>());
 		setVariableMap(new HashMap<String, Double>());
-		setUserCommandMap(new HashMap<String, ParseTreeNode<CommandInterface>>());
+		setUserCommandMap(new HashMap<String, List<ParseTreeNode<CommandInterface>>>());
 
 		setError(false);
 
 		myUserHistory = new ArrayList<String>();
 		myVariableMap = new HashMap<String, Double>();
-		myUserCommandMap = new HashMap<String, ParseTreeNode<CommandInterface>>();
+		myUserCommandMap = new HashMap<String, List<ParseTreeNode<CommandInterface>>>();
 
 		setMyColor(Color.ALICEBLUE);
 
@@ -119,7 +119,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 		myVariableMap.put(varName, value);
 	}
 
-	public void setUserCommandMap(Map<String, ParseTreeNode<CommandInterface>> userCommandMap) {
+	public void setUserCommandMap(Map<String, List<ParseTreeNode<CommandInterface>>> userCommandMap) {
 		this.myUserCommandMap = userCommandMap;
 
 	}
@@ -183,7 +183,7 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 	}
 
 	@Override
-	public Map<String, ParseTreeNode<CommandInterface>> getUserCommandMap() {
+	public Map<String, List<ParseTreeNode<CommandInterface>>> getUserCommandMap() {
 		return myUserCommandMap;
 	}
 
