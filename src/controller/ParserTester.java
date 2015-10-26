@@ -20,9 +20,9 @@ public class ParserTester {
 		Data allData = new Data();
 		Parser parser = new Parser();
 		Traverser traverse = new Traverser();
-		String input = readFile("examples/loops_with_variables/flower.logo", StandardCharsets.UTF_8);
-		input = "dotimes [ :d 10 ] [ repeat 20 [ fd :d ] rt 2 ]";
-		input = "to";
+		String input = readFile("examples/procedures_with_parameters/dash.logo", StandardCharsets.UTF_8);
+		//input = "dotimes [ :d 10 ] [ repeat 20 [ fd :d ] rt 2 ]";
+		input = "to bleh [ ] [ bleh ] bleh sum 3 4";
 		List<ParseTreeNode<CommandInterface>> head = parser.parse(input, allData);
 	//	traverse.traverse(head, allData);
 		// Command tempCommand =

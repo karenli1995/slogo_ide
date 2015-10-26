@@ -5,264 +5,280 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
 import command.CommandFactory;
 import command.CommandInterface;
 import command.CommandRegister;
 import model.ForObserverInterface;
 import model.data.Data;
+
+
 public class Parser {
-	private String[] inputArray;
-	private Patterner pattern;
-	private List<String[]> commandList;
-	private CommandFactory cf;
-	private ResourceBundle errorResources;
-	private final String INPUT_RESOURCES = "resources/input";
-	private final String ERROR_RESOURCES = "resources/error";
-	private List<ParseTreeNode<CommandInterface>> nodeList;
-	private Boolean error = false;
+    private String[] inputArray;
+    private Patterner pattern;
+    private List<String[]> commandList;
+    private CommandFactory cf;
+    private ResourceBundle errorResources;
+    private final String INPUT_RESOURCES = "resources/input";
+    private final String ERROR_RESOURCES = "resources/error";
+    private List<ParseTreeNode<CommandInterface>> nodeList;
+    private Boolean error = false;
 
-	private CommandRegister cr;
+    private CommandRegister cr;
 
-	private String myErrorMessage;
-	private ResourceBundle resources;
-	private Map<String, Integer> commandTimesMap;
-	private Map<String, Integer> commandInputMap;
+    private String myErrorMessage;
+    private ResourceBundle resources;
+    private Map<String, Integer> commandTimesMap;
+    private Map<String, Integer> commandInputMap;
 
-	public Parser() {
-		errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
-		pattern = new Patterner();
+    public Parser () {
+        errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
+        pattern = new Patterner();
 
-		this.numInputs();
-	}
+        this.numInputs();
+    }
 
-	private void commandRegistration(Data allData) {
-		cf = new CommandFactory(allData);
-		cr = new CommandRegister(cf);
+    private void commandRegistration (Data allData) {
+        cf = new CommandFactory(allData);
+        cr = new CommandRegister(cf);
 
-		cr.register();
+        cr.register();
 
-	}
+    }
 
-	public List<ParseTreeNode<CommandInterface>> parse(String input, Data allData) {
-		this.commandRegistration(allData);
-		this.createCommandList(this.removeComments(input));
-		nodeList = new ArrayList<ParseTreeNode<CommandInterface>>();
-		this.printCommandList();
+    public List<ParseTreeNode<CommandInterface>> parse (String input, Data allData) {
+        this.commandRegistration(allData);
+        this.createCommandList(this.removeComments(input));
+        nodeList = new ArrayList<ParseTreeNode<CommandInterface>>();
+        //this.printCommandList();
 
-		if (this.checkInput()) {
-			this.createParseTree(allData);
-		}
+        if (this.checkInput()) {
+            this.createParseTree(allData);
+        }
 
-		for (ParseTreeNode<CommandInterface> p : nodeList) {
-			this.printTreeInOrder(p);
-			System.out.println("");
+        for (ParseTreeNode<CommandInterface> p : nodeList) {
+            //this.printTreeInOrder(p);
+            //System.out.println("");
 
-		}
+        }
 
-		return nodeList;
-	}
+        return nodeList;
+    }
 
-	private int createParseTree(ForObserverInterface allData) {
-		int index = 0;
-		commandInputMap = new HashMap<String, Integer>();
-		commandTimesMap = new HashMap<String, Integer>();
-		while (index < commandList.size()) {
-			ParseTreeNode<CommandInterface> newNode = createNewNode(index, null);
-			index = createParseTree(index + 1, newNode, allData);
-			nodeList.add(newNode);
-		}
+    private int createParseTree (ForObserverInterface allData) {
+        int index = 0;
+        commandInputMap = new HashMap<String, Integer>();
+        commandTimesMap = new HashMap<String, Integer>();
+        while (index < commandList.size()) {
+            ParseTreeNode<CommandInterface> newNode = createNewNode(index, null);
+            index = createParseTree(index + 1, newNode, allData);
+            nodeList.add(newNode);
+        }
 
-		return index;
+        return index;
 
-	}
+    }
 
-	private int createParseTree(int index, ParseTreeNode<CommandInterface> head, ForObserverInterface allData) {
-		if (head == null) {
-			error = true;
-			return index;
+    private int createParseTree (int index,
+                                 ParseTreeNode<CommandInterface> head,
+                                 ForObserverInterface allData) {
+        if (head == null) {
+            error = true;
+            return index;
 
-		}
-		int numInputs = this.getNumInputs(head, allData);
-		// System.out.println(numInputs);
+        }
+        int numInputs = this.getNumInputs(head, allData);
+        // System.out.println(numInputs);
 
-		if (numInputs == 0) {
-			return index;
-		}
-		if (numInputs == -1) {
-			error = true;
-			return index;
-		}
-		for (int i = 0; i < numInputs; i++) {
-			List<ParseTreeNode<CommandInterface>> tempNodeList = new ArrayList<ParseTreeNode<CommandInterface>>();
-			if (index >= commandList.size()) {
-				allData.setErrorMessage(errorResources.getString("noArgument"));
-				error = true;
-				return index;
-			}
-			if (commandList.get(index)[1].equals("ListStart")) {
-				ParseTreeNode<CommandInterface> listStart = createNewNode(index, head);
-				tempNodeList.add(listStart);
-				index++;
-				while (true) {
-					if (!commandList.get(index)[1].equals("ListEnd")) {
-						ParseTreeNode<CommandInterface> newNode = createNewNode(index, head);
+        if (numInputs == 0) {
+            return index;
+        }
+        if (numInputs == -1) {
+            error = true;
+            return index;
+        }
+        for (int i = 0; i < numInputs; i++) {
+            List<ParseTreeNode<CommandInterface>> tempNodeList =
+                    new ArrayList<ParseTreeNode<CommandInterface>>();
+            if (index >= commandList.size()) {
+                allData.setErrorMessage(errorResources.getString("noArgument"));
+                error = true;
+                return index;
+            }
+            if (commandList.get(index)[1].equals("ListStart")) {
+                ParseTreeNode<CommandInterface> listStart = createNewNode(index, head);
+                tempNodeList.add(listStart);
+                index++;
+                while (true) {
+                    if (!commandList.get(index)[1].equals("ListEnd")) {
+                        ParseTreeNode<CommandInterface> newNode = createNewNode(index, head);
 
-						index = createParseTree(index + 1, newNode, allData);
-						tempNodeList.add(newNode);
-					} else {
-						ParseTreeNode<CommandInterface> listEnd = createNewNode(index, head);
-						tempNodeList.add(listEnd);
-						index++;
+                        index = createParseTree(index + 1, newNode, allData);
+                        tempNodeList.add(newNode);
+                    }
+                    else {
+                        ParseTreeNode<CommandInterface> listEnd = createNewNode(index, head);
+                        tempNodeList.add(listEnd);
+                        index++;
 
-						break;
-					}
-				}
-			} else {
-				ParseTreeNode<CommandInterface> newNode = createNewNode(index, head);
-				index = createParseTree(index + 1, newNode, allData);
-				tempNodeList.add(newNode);
-			}
+                        break;
+                    }
+                }
+            }
+            else {
+                ParseTreeNode<CommandInterface> newNode = createNewNode(index, head);
+                index = createParseTree(index + 1, newNode, allData);
+                tempNodeList.add(newNode);
+            }
 
-			head.addChild(tempNodeList);
-		}
+            head.addChild(tempNodeList);
+        }
 
-		return index;
-	}
+        return index;
+    }
 
-	private ParseTreeNode<CommandInterface> createNewNode(int index, ParseTreeNode<CommandInterface> parent) {
-		ParseTreeNode<CommandInterface> node = new ParseTreeNode<CommandInterface>(
-				cf.createCommand(commandList.get(index)[1]));
-		if (node.getCommand() == null) {
-			return null;
-		}
+    private ParseTreeNode<CommandInterface> createNewNode (int index,
+                                                           ParseTreeNode<CommandInterface> parent) {
+        ParseTreeNode<CommandInterface> node = new ParseTreeNode<CommandInterface>(
+                                                                                   cf.createCommand(commandList
+                                                                                           .get(index)[1]));
+        if (node.getCommand() == null) {
 
-		if (checkMatch("Constant", node)) {
-			this.setNodeValue(index, node);
-		} else {
-		    //for debug
-		    //node.getCommand().setValue(index);
-		    node.getCommand().setValue(0);
-		}
+            return null;
+        }
 
-		if (checkMatch("Variable", node) || checkMatch("UserCommand", node)) {
-			this.setNodeName(index, node);
-		}
-		if (checkMatch("UserCommand", node)) {
-			for (int i = index; i < commandList.size(); i++) {
-				if (commandList.get(i)[1].equals("ListEnd")) {
-					int tempInputs = (i - index) - 2;
-					commandInputMap.put(commandList.get(index)[0], tempInputs);
-					commandTimesMap.put(commandList.get(index)[0], 1);
-					break;
-				}
-			}
-		}
-		if (parent != null) {
-			node.setParent(parent);
-		}
-		return node;
+        if (checkMatch("Constant", node)) {
+            this.setNodeValue(index, node);
+        }
+        else {
+            // for debug
+             node.getCommand().setValue(index);
+            //node.getCommand().setValue(0);
+        }
 
-	}
+        if (checkMatch("Variable", node) || checkMatch("UserCommand", node)) {
+            this.setNodeName(index, node);
+        }
+        if (checkMatch("UserCommand", node)) {
+            for (int i = index; i < commandList.size(); i++) {
+                if (commandList.get(i)[1].equals("ListEnd") && commandList.get(index-1)[1].equals("MakeUserInstruction")) {
+                    
+                    int tempInputs = (i - index) - 2;
+                    commandInputMap.put(commandList.get(index)[0], tempInputs);
+                    commandTimesMap.put(commandList.get(index)[0], 1);
+                    break;
+                }
+            }
+        }
+        if (parent != null) {
+            node.setParent(parent);
+        }
+        return node;
 
-	private void setNodeValue(int index, ParseTreeNode<CommandInterface> node) {
-		node.getCommand().setValue(Double.parseDouble(commandList.get(index)[0]));
-	}
+    }
 
-	private void setNodeName(int index, ParseTreeNode<CommandInterface> node) {
-		node.getCommand().setName(commandList.get(index)[0]);
-	}
+    private void setNodeValue (int index, ParseTreeNode<CommandInterface> node) {
+        node.getCommand().setValue(Double.parseDouble(commandList.get(index)[0]));
+    }
 
-	private boolean checkMatch(String s, ParseTreeNode<CommandInterface> node) {
+    private void setNodeName (int index, ParseTreeNode<CommandInterface> node) {
+        node.getCommand().setName(commandList.get(index)[0]);
+    }
 
-		return node.getCommand().getClass().getSimpleName().equals(s);
+    private boolean checkMatch (String s, ParseTreeNode<CommandInterface> node) {
 
-	}
+        return node.getCommand().getClass().getSimpleName().equals(s);
 
-	private int getNumInputs(ParseTreeNode<CommandInterface> node, ForObserverInterface allData) {
-		int numInputs = Integer.parseInt(resources.getString(node.getCommand().getClass().getSimpleName()));
-		if (node.getCommand() != null) {
-			if (checkMatch("UserCommand", node)) {
-				if (!commandTimesMap.containsKey(node.getCommand().getName())) {
-					try {
-						numInputs = commandInputMap.get(node.getCommand().getName());
-					} catch (Exception e) {
-						allData.setErrorMessage(errorResources.getString("notFound"));
-					}
-				} else {
+    }
 
-					commandTimesMap.remove(node.getCommand().getName());
-				}
+    private int getNumInputs (ParseTreeNode<CommandInterface> node, ForObserverInterface allData) {
+        int numInputs =
+                Integer.parseInt(resources.getString(node.getCommand().getClass().getSimpleName()));
+        if (node.getCommand() != null) {
+            if (checkMatch("UserCommand", node)) {
+                if (!commandTimesMap.containsKey(node.getCommand().getName())) {
+                    try {
+                        numInputs = commandInputMap.get(node.getCommand().getName());
+                    }
+                    catch (Exception e) {
+                        allData.setErrorMessage(errorResources.getString("notFound"));
+                    }
+                }
+                else {
 
-			}
-			return numInputs;
-		} else
-			return -1;
-	}
+                    commandTimesMap.remove(node.getCommand().getName());
+                }
 
-	public void printCommandList() {
-		for (String[] s : commandList) {
-			System.out.println(s[0] + ", " + s[1]);
-		}
-	}
+            }
+            return numInputs;
+        }
+        else
+            return -1;
+    }
 
-	public void printTreeInOrder(ParseTreeNode<CommandInterface> head) {
-		if (head == null)
-			return;
+    public void printCommandList () {
+        for (String[] s : commandList) {
+            System.out.println(s[0] + ", " + s[1]);
+        }
+    }
 
-		for (List<ParseTreeNode<CommandInterface>> nodeList : head.getChildren().getNodeList()) {
-			for (ParseTreeNode<CommandInterface> node : nodeList) {
-				printTreeInOrder(node);
-			}
-		}
+    public void printTreeInOrder (ParseTreeNode<CommandInterface> head) {
+        if (head == null)
+            return;
 
-		System.out.println(head.getCommand().getClass().getSimpleName() + " " + head.getCommand().getValue() + "->"
-				+ head.getParent().getCommand().getClass().getSimpleName() + " "
-				+ head.getParent().getCommand().getValue());
+        for (List<ParseTreeNode<CommandInterface>> nodeList : head.getChildren().getNodeList()) {
+            for (ParseTreeNode<CommandInterface> node : nodeList) {
+                printTreeInOrder(node);
+            }
+        }
 
-	}
+        System.out.println(head.getCommand().getClass().getSimpleName() + " " +
+                           head.getCommand().getValue() + "->" +
+                           head.getParent().getCommand().getClass().getSimpleName() + " " +
+                           head.getParent().getCommand().getValue());
 
-	private void numInputs() {
-		resources = ResourceBundle.getBundle(INPUT_RESOURCES);
-	}
+    }
 
-	private void createCommandList(String input) {
-		String[] example = this.splitInput(input);
-		commandList = pattern.matchSplitCommand(example, pattern.getPatterns());
-	}
+    private void numInputs () {
+        resources = ResourceBundle.getBundle(INPUT_RESOURCES);
+    }
 
-	private String removeComments(String input) {
+    private void createCommandList (String input) {
+        String[] example = this.splitInput(input);
+        commandList = pattern.matchSplitCommand(example, pattern.getPatterns());
+    }
 
-		String[] lines = input.split(System.getProperty("line.separator"));
-		StringBuilder modifiedString = new StringBuilder();
-		for (String s : lines) {
-			if (!s.contains("#")) {
-				modifiedString.append(s);
-				modifiedString.append(System.getProperty("line.separator"));
-			}
-		}
-		return modifiedString.toString();
-	}
+    private String removeComments (String input) {
 
-	public String[] splitInput(String input) {
-		inputArray = input.split("\\p{Space}");
-		return inputArray;
-	}
+        String[] lines = input.split(System.getProperty("line.separator"));
+        StringBuilder modifiedString = new StringBuilder();
+        for (String s : lines) {
+            if (!s.contains("#")) {
+                modifiedString.append(s);
+                modifiedString.append(System.getProperty("line.separator"));
+            }
+        }
+        return modifiedString.toString();
+    }
 
-	public List<String[]> getCommandList() {
-		return commandList;
-	}
+    public String[] splitInput (String input) {
+        inputArray = input.split("\\p{Space}");
+        return inputArray;
+    }
 
-	public Patterner getPattern() {
-		return pattern;
-	}
+    public List<String[]> getCommandList () {
+        return commandList;
+    }
 
-	public CommandFactory getCommandFactory() {
-		return cf;
-	}
+    public Patterner getPattern () {
+        return pattern;
+    }
 
-	public boolean checkInput() {
-		return !commandList.isEmpty();
-	}
+    public CommandFactory getCommandFactory () {
+        return cf;
+    }
+
+    public boolean checkInput () {
+        return !commandList.isEmpty();
+    }
 
 }

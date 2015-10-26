@@ -27,7 +27,6 @@ public class For extends Command {
         String variable = list.getCommandName(0, 1);
         double ans = 0;
         for (double i = start; i < end + increment; i = i + increment) {
-            System.out.println(i);
             allData.updateVariableMap(variable, i);
             ans = traverser.traverse(list.getChildListAt(1), allData);
         }
