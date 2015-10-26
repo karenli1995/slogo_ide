@@ -90,10 +90,6 @@ public class MenuPanel extends MenuBar {
     }
 
     private void newSlogo () {
-        // Data newData = new Data();
-        // myController.getMyScene().addData(newData);
-        // myController.getGuiManager().getTurtScene().createNewTab();
-        // myController.addObservable();
         SlogoScene currScene = myController.getMyScene();
         GUIManager currGuiManager = myController.getGuiManager();
         new ModelController(myStage, currGuiManager, currScene);

@@ -230,7 +230,6 @@ public class TurtleScene extends TabPane implements Observer {
             double newRotAngle = slogoObject.getRotationAngle();
             double newLocX = slogoObject.getTrail().getX();
             double newLocY = slogoObject.getTrail().getY();
-            // slogoObject.getTrail().setPoint(point);
             SlogoImage currSlogoImage = tab.getSlogoImage(i);
             currSlogoImage.setX(newLocX);
             currSlogoImage.setY(newLocY);
@@ -257,5 +256,4 @@ public class TurtleScene extends TabPane implements Observer {
         updateMyTabs(tabId, tab);
 
     }
-
 }
