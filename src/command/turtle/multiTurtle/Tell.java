@@ -1,10 +1,13 @@
 
 package command.turtle.multiTurtle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import command.Command;
+import command.CommandInterface;
 import controller.ParseTreeChildren;
+import controller.ParseTreeNode;
 import model.DataTurtleInterface;
 
 /**
@@ -25,10 +28,15 @@ public class Tell extends Command {
 	@Override
 	public double execute(ParseTreeChildren distance) {
 
-		List<Integer> turtlesToworkOn = null;//kevin what should i put here to get [100] or [1 2 3]
+		List<ParseTreeNode<CommandInterface>> tempList = distance.getChildListAt(0);
+		List<Double> turtlesToWorkOn = new ArrayList<Double>();
+		for (int i = 1; i < tempList.size() - 1; i++) {
+			turtlesToWorkOn.add(tempList.get(i).getCommandValue());
+		}
+
 		int range = 0;
-		for(int j = 0 ; j <turtlesToworkOn.size(); j++ ) {
-			range=turtlesToworkOn.get(j);
+		for (int j = 0; j < turtlesToWorkOn.size(); j++) {
+			range = turtlesToWorkOn.get(j).intValue();
 			int size = turtleData.turtleListSize();
 			if (range > size) {
 				int diff = range - size;
@@ -43,7 +51,7 @@ public class Tell extends Command {
 				add(range);
 			}
 		}
-		return range - 1;
+		return range ;
 	}
 
 	private void add(int range) {
