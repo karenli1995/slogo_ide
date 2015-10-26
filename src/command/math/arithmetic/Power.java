@@ -4,28 +4,32 @@
 package command.math.arithmetic;
 
 import command.Command;
+import command.otherCommands.UnlimitedInputCommand;
 import controller.ParseTreeChildren;
+import model.data.Data;
 
 /**
  *
  * @author Sally Al
  *
  */
-public class Power extends Command {
-	/**
+public class Power extends UnlimitedInputCommand {
+    public Power (Data allData) {
+        super(allData);
+    }
+
+
+    /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1369755541702689606L;
 
-	public Power() {
-		super();
-	}
 
 	@Override
-	public double execute(ParseTreeChildren number) {
-		double power = Math.pow(number.getCommandValue(0,0), number.getCommandValue(1,0));
-		this.setValue(power);
-		return power;
+	public double execute(ParseTreeChildren argument) {
+            double ans = parameterLoop((list) -> list.stream().reduce((x,y) -> Math.pow(x, y)).get() , argument);
+            this.setValue(ans);
+            return ans;
 
 	}
 

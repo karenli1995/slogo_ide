@@ -4,7 +4,9 @@
 package command.math.arithmetic;
 
 import command.Command;
+import command.otherCommands.UnlimitedInputCommand;
 import controller.ParseTreeChildren;
+import model.data.Data;
 
 /**
  *
@@ -12,20 +14,22 @@ import controller.ParseTreeChildren;
  *
  */
 public class Product extends UnlimitedInputCommand {
-	/**
+    public Product (Data allData) {
+        super(allData);
+    }
+
+
+    /**
 	 * 
 	 */
 	private static final long serialVersionUID = -3795052450458213450L;
 
-	public Product() {
-		super();
-	}
 
 	@Override
 	public double execute(ParseTreeChildren arguments) {
-	        double sum = parameterLoop((list) -> list.stream().reduce((x,y) -> x*y).get() , arguments);
-	        this.setValue(sum);
-	        return sum;
+	        double ans = parameterLoop((list) -> list.stream().reduce((x,y) -> x*y).get() , arguments);
+	        this.setValue(ans);
+	        return ans;
 	}
 
 }
