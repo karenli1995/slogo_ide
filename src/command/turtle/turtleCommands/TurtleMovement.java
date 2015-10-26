@@ -14,19 +14,15 @@ import model.turtleinfo.SlogoObjects;
  */
 public abstract class TurtleMovement extends TurtleCommands {
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 8387538421594848834L;
 
 	public TurtleMovement(DataTurtleInterface allData) {
 		super(allData);
-		data = allData;
+
 
 	}
 
-	private DataTurtleInterface data;
-	private Double turtleID;
+
 
 	@Override
 	public double executeCommand(ParseTreeChildren distance) {
