@@ -4,9 +4,9 @@
 package model.data;
 
 import java.util.Map;
-
 import command.CommandInterface;
 import controller.ParseTreeNode;
+
 
 /**
  *
@@ -15,15 +15,15 @@ import controller.ParseTreeNode;
  */
 public interface ForObserverInterface {
 
-	public double getCommandValue();
+    public double getCommandValue ();
 
-	public void setCommandValue(double commandValue);
+    public void setCommandValue (double commandValue);
 
-	public String getErrorMessage();
+    public String getErrorMessage ();
 
-	public void setErrorMessage(String errorMessage);
+    public void setErrorMessage (String errorMessage);
 
-	public Map<String, Double> getVariableMap();
+    public Map<String, Double> getVariableMap ();
 
-	public Map<String, ParseTreeNode<CommandInterface>> getUserCommandMap();
+    public Map<String, ParseTreeNode<CommandInterface>> getUserCommandMap ();
 }

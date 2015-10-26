@@ -2,7 +2,6 @@ package command.otherCommands;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeChildren;
@@ -13,14 +12,14 @@ import model.data.Data;
 
 public abstract class UnlimitedInputDoubleCommand extends Command {
 
-        Traverser traverser = new Traverser();
+    Traverser traverser = new Traverser();
     protected Data allData;
 
     public UnlimitedInputDoubleCommand (Data allData) {
         super(allData);
-        this.allData= allData;
+        this.allData = allData;
     }
-    
+
     public double parameterLoop (UnlimitedInputDoubleInterface inter, ParseTreeChildren arguments) {
 
         List<Double> compiledList = new ArrayList<Double>();

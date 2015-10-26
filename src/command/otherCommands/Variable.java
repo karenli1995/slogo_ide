@@ -7,7 +7,7 @@ import model.data.Data;
 
 public class Variable extends Command {
     private Data allData;
-    
+
     public Variable (Data allData) {
         super(allData);
         this.allData = allData;
@@ -18,7 +18,7 @@ public class Variable extends Command {
     @Override
     public double execute (ParseTreeChildren argument) {
         double ans = 0;
-        if(allData.getVariableMap().containsKey(this.getName())){
+        if (allData.getVariableMap().containsKey(this.getName())) {
             this.setValue(allData.getVariableMap().get(this.getName()));
         }
         return ans;

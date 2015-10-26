@@ -9,6 +9,11 @@ package command.display;
  *
  */
 public enum Display {
-	SETBG,SETPC,SETPS,SETSH,SETPALETTE,PC
+                     SETBG,
+                     SETPC,
+                     SETPS,
+                     SETSH,
+                     SETPALETTE,
+                     PC
 
 }

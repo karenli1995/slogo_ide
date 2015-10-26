@@ -2,7 +2,6 @@ package view.props;
 
 import java.util.List;
 import java.util.ResourceBundle;
-
 import controller.ModelController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,107 +14,118 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import view.scene.TurtleScene;
 
-public class PenProps extends AbstractProperties{
 
-	PenProps(TurtleScene scene, ResourceBundle resource, ModelController controller){
-		super(scene, resource, controller);
-	}
+public class PenProps extends AbstractProperties {
 
-	protected void createTab(){
-		this.setText(myResource.getString("PENPROPTITLE"));
-		VBox vb = new VBox();
-		HBox hb1 = addPenColorLabel();
-		HBox hb2 = addPenThicknessLabel();
-		HBox hb3 = addPenPosLabel();
-		HBox hb4 = addPenShapeLabel();
+    PenProps (TurtleScene scene, ResourceBundle resource, ModelController controller) {
+        super(scene, resource, controller);
+    }
 
-		setAllMargins(allElements);
+    protected void createTab () {
+        this.setText(myResource.getString("PENPROPTITLE"));
+        VBox vb = new VBox();
+        HBox hb1 = addPenColorLabel();
+        HBox hb2 = addPenThicknessLabel();
+        HBox hb3 = addPenPosLabel();
+        HBox hb4 = addPenShapeLabel();
 
-		vb.getChildren().addAll(hb1, hb2, hb3, hb4);
-		this.setContent(vb);
-	}
+        setAllMargins(allElements);
 
-	private HBox addPenColorLabel() {
-		int mySceneId = myTurtleScene.getIdOfTab();
+        vb.getChildren().addAll(hb1, hb2, hb3, hb4);
+        this.setContent(vb);
+    }
 
-		HBox hb6 = new HBox();
-		Label penColor = new Label(myResource.getString("PENC"));
-		final ComboBox<Color> cbColors = new ColorComboBox();
-		hb6.getChildren().addAll(penColor, cbColors);
-		cbColors.setOnAction((event) -> {
-			Color chosenColor = cbColors.getSelectionModel().getSelectedItem();
-			myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setColor(chosenColor);
+    private HBox addPenColorLabel () {
+        int mySceneId = myTurtleScene.getIdOfTab();
 
-		});
+        HBox hb6 = new HBox();
+        Label penColor = new Label(myResource.getString("PENC"));
+        final ComboBox<Color> cbColors = new ColorComboBox();
+        hb6.getChildren().addAll(penColor, cbColors);
+        cbColors.setOnAction( (event) -> {
+            Color chosenColor = cbColors.getSelectionModel().getSelectedItem();
+            myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+                    .setColor(chosenColor);
 
-		allElements.add(penColor);
-		allElements.add(cbColors);
+        });
 
-		return hb6;
-	}
+        allElements.add(penColor);
+        allElements.add(cbColors);
 
-	private HBox addPenThicknessLabel() {
-		int mySceneId = myTurtleScene.getIdOfTab();
+        return hb6;
+    }
 
-		HBox hb8 = new HBox();
-		Label thickLabel = new Label("Pen Thickness");
-		ObservableList<Integer> thicks = FXCollections.observableArrayList(1, 2, 3, 4, 5);
-		ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
-		thicknesses.setOnAction((e) -> {
-			Integer thick = thicknesses.getSelectionModel().getSelectedItem();
-			myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setThickness(thick);
-		});
-		hb8.getChildren().addAll(thickLabel, thicknesses);
+    private HBox addPenThicknessLabel () {
+        int mySceneId = myTurtleScene.getIdOfTab();
 
-		allElements.add(thickLabel);
-		allElements.add(thicknesses);
+        HBox hb8 = new HBox();
+        Label thickLabel = new Label("Pen Thickness");
+        ObservableList<Integer> thicks = FXCollections.observableArrayList(1, 2, 3, 4, 5);
+        ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
+        thicknesses.setOnAction( (e) -> {
+            Integer thick = thicknesses.getSelectionModel().getSelectedItem();
+            myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+                    .setThickness(thick);
+        });
+        hb8.getChildren().addAll(thickLabel, thicknesses);
 
-		return hb8;
-	}
+        allElements.add(thickLabel);
+        allElements.add(thicknesses);
 
-	private HBox addPenPosLabel() {
-		int mySceneId = myTurtleScene.getIdOfTab();
+        return hb8;
+    }
 
-		HBox hb8 = new HBox();
-		Label penPosLabel = new Label("Pen Position");
-		ObservableList<String> pos = FXCollections.observableArrayList("Up","Down");
-		ComboBox<String> positions = new ComboBox<String>(pos);
-		positions.setOnAction((e) -> {
-			String chosenPos = positions.getSelectionModel().getSelectedItem();
-			if (chosenPos == "Up") myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setPenDown(0.0);
-			if (chosenPos == "Down") myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setPenDown(1.0);
-		});
-		hb8.getChildren().addAll(penPosLabel, positions);
+    private HBox addPenPosLabel () {
+        int mySceneId = myTurtleScene.getIdOfTab();
 
-		allElements.add(penPosLabel);
-		allElements.add(positions);
+        HBox hb8 = new HBox();
+        Label penPosLabel = new Label("Pen Position");
+        ObservableList<String> pos = FXCollections.observableArrayList("Up", "Down");
+        ComboBox<String> positions = new ComboBox<String>(pos);
+        positions.setOnAction( (e) -> {
+            String chosenPos = positions.getSelectionModel().getSelectedItem();
+            if (chosenPos == "Up")
+                myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+                        .setPenDown(0.0);
+            if (chosenPos == "Down")
+                myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+                        .setPenDown(1.0);
+        });
+        hb8.getChildren().addAll(penPosLabel, positions);
 
-		return hb8;
-	}
+        allElements.add(penPosLabel);
+        allElements.add(positions);
 
-	private HBox addPenShapeLabel() {
-		HBox hb8 = new HBox();
-		int mySceneId = myTurtleScene.getIdOfTab();
-		Label penShapeLabel = new Label("Pen Shape");
-		ObservableList<String> shape = FXCollections.observableArrayList("Solid","Dashed", "Dotted");
-		ComboBox<String> shapes = new ComboBox<String>(shape);
-		shapes.setOnAction((e) -> {
-			String chosenShape = shapes.getSelectionModel().getSelectedItem();
-			if (chosenShape == "Solid"){
-				myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setDashes(1.0);
-			}
-			if (chosenShape == "Dashed"){
-				myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setDashes(5.0);
-			}
-			if (chosenShape == "Dotted"){
-				myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen().setDashes(2.0);
-			}
-		});
-		hb8.getChildren().addAll(penShapeLabel, shapes);
+        return hb8;
+    }
 
-		allElements.add(penShapeLabel);
-		allElements.add(shapes);
+    private HBox addPenShapeLabel () {
+        HBox hb8 = new HBox();
+        int mySceneId = myTurtleScene.getIdOfTab();
+        Label penShapeLabel = new Label("Pen Shape");
+        ObservableList<String> shape =
+                FXCollections.observableArrayList("Solid", "Dashed", "Dotted");
+        ComboBox<String> shapes = new ComboBox<String>(shape);
+        shapes.setOnAction( (e) -> {
+            String chosenShape = shapes.getSelectionModel().getSelectedItem();
+            if (chosenShape == "Solid") {
+                myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+                        .setDashes(1.0);
+            }
+            if (chosenShape == "Dashed") {
+                myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+                        .setDashes(5.0);
+            }
+            if (chosenShape == "Dotted") {
+                myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+                        .setDashes(2.0);
+            }
+        });
+        hb8.getChildren().addAll(penShapeLabel, shapes);
 
-		return hb8;
-	}
+        allElements.add(penShapeLabel);
+        allElements.add(shapes);
+
+        return hb8;
+    }
 }

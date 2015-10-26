@@ -7,6 +7,7 @@ import controller.ParseTreeChildren;
 import model.DataTurtleInterface;
 import model.turtleinfo.SlogoObjects;
 
+
 /**
  *
  * @author Sally Al
@@ -14,49 +15,50 @@ import model.turtleinfo.SlogoObjects;
  */
 public abstract class TurtleMovement extends TurtleCommands {
 
-	private static final long serialVersionUID = 8387538421594848834L;
+    private static final long serialVersionUID = 8387538421594848834L;
 
-	public TurtleMovement(DataTurtleInterface allData) {
-		super(allData);
+    public TurtleMovement (DataTurtleInterface allData) {
+        super(allData);
 
+    }
 
-	}
+    @Override
+    public double executeCommand (ParseTreeChildren distance) {
 
+        moveFdorBK(distance.getCommandValue(0, 0), getTurtle());
+        setValue(distance.getCommandValue(0, 0));
+        return distance.getCommandValue(0, 0);
 
+    }
 
-	@Override
-	public double executeCommand(ParseTreeChildren distance) {
+    public void moveFdorBK (double distance, SlogoObjects myTurtle) {
+        int sign = getSign();
 
-		moveFdorBK(distance.getCommandValue(0, 0), getTurtle());
-		setValue(distance.getCommandValue(0, 0));
-		return distance.getCommandValue(0, 0);
+        double degrees = myTurtle.getRotationAngle();
+        double radians = Math.toRadians(degrees);
 
-	}
+        double tempXLocation = RoundTo2Decimals(Math.sin(radians));
+        double tempYLocation = RoundTo2Decimals(Math.cos(radians));
 
-	public void moveFdorBK(double distance, SlogoObjects myTurtle) {
-		int sign = getSign();
+        tempXLocation = calcualteCoordinate(tempXLocation, getCurrX(), sign, distance);
+        tempYLocation = calcualteCoordinate(tempYLocation, getCurrY(), sign, distance);
 
-		double degrees = myTurtle.getRotationAngle();
-		double radians = Math.toRadians(degrees);
+        updateLocation(tempXLocation, tempYLocation, degrees);
 
-		double tempXLocation = RoundTo2Decimals(Math.sin(radians));
-		double tempYLocation = RoundTo2Decimals(Math.cos(radians));
+    }
 
-		tempXLocation = calcualteCoordinate(tempXLocation, getCurrX(), sign, distance);
-		tempYLocation = calcualteCoordinate(tempYLocation, getCurrY(), sign, distance);
+    private double calcualteCoordinate (double Tempcoordinate,
+                                        double previousCoordinate,
+                                        int sign,
+                                        double distance) {
+        if (Tempcoordinate == 0.0 || Tempcoordinate == -0.0) {
+            return previousCoordinate;
+        }
+        else {
 
-		updateLocation(tempXLocation, tempYLocation, degrees);
+            return (previousCoordinate + (sign * (distance / Tempcoordinate)));
+        }
+    }
 
-	}
-
-	private double calcualteCoordinate(double Tempcoordinate, double previousCoordinate, int sign, double distance) {
-		if (Tempcoordinate == 0.0 || Tempcoordinate == -0.0) {
-			return previousCoordinate;
-		} else {
-
-			return (previousCoordinate + (sign * (distance / Tempcoordinate)));
-		}
-	}
-
-	protected abstract int getSign();
+    protected abstract int getSign ();
 }

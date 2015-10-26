@@ -5,7 +5,8 @@ import controller.ParseTreeChildren;
 import controller.Traverser;
 import model.data.Data;
 
-public class If extends Command{
+
+public class If extends Command {
     private Data allData;
     Traverser traverser = new Traverser();
 
@@ -13,10 +14,11 @@ public class If extends Command{
         super(allData);
         this.allData = allData;
     }
+
     @Override
     public double execute (ParseTreeChildren distance) {
         double ans = 0;
-        if(distance.getCommandValue(0, 0) != 0){
+        if (distance.getCommandValue(0, 0) != 0) {
             ans = traverser.traverse(distance.getChildListAt(1), allData);
         }
         return ans;

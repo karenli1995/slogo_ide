@@ -5,6 +5,7 @@ import controller.ParseTreeChildren;
 import model.DataTurtleInterface;
 import model.turtleinfo.Pen;
 
+
 /**
  *
  * @author Sally Al
@@ -12,21 +13,21 @@ import model.turtleinfo.Pen;
  */
 public abstract class PenCommands extends TurtleCommands {
 
-	private static final long serialVersionUID = -7003996375537002670L;
+    private static final long serialVersionUID = -7003996375537002670L;
 
-	public PenCommands(DataTurtleInterface turtleData) {
-		super(turtleData);
-	}
+    public PenCommands (DataTurtleInterface turtleData) {
+        super(turtleData);
+    }
 
-	@Override
-	public double executeCommand(ParseTreeChildren distance) {
-		Pen currPen = getTurtle().getPen();
-		currPen.setPenDown(switchPen());
-		getTurtle().setPen(currPen);
-		this.setValue(switchPen());
-		return switchPen();
-	}
+    @Override
+    public double executeCommand (ParseTreeChildren distance) {
+        Pen currPen = getTurtle().getPen();
+        currPen.setPenDown(switchPen());
+        getTurtle().setPen(currPen);
+        this.setValue(switchPen());
+        return switchPen();
+    }
 
-	protected abstract double switchPen();
+    protected abstract double switchPen ();
 
 }

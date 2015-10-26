@@ -49,15 +49,15 @@ public class Parser {
         this.commandRegistration(allData);
         this.createCommandList(this.removeComments(input));
         nodeList = new ArrayList<ParseTreeNode<CommandInterface>>();
-        //this.printCommandList();
+        // this.printCommandList();
 
         if (this.checkInput()) {
             this.createParseTree(allData);
         }
 
         for (ParseTreeNode<CommandInterface> p : nodeList) {
-            //this.printTreeInOrder(p);
-            //System.out.println("");
+            // this.printTreeInOrder(p);
+            // System.out.println("");
 
         }
 
@@ -151,8 +151,8 @@ public class Parser {
         }
         else {
             // for debug
-             node.getCommand().setValue(index);
-            //node.getCommand().setValue(0);
+            node.getCommand().setValue(index);
+            // node.getCommand().setValue(0);
         }
 
         if (checkMatch("Variable", node) || checkMatch("UserCommand", node)) {
@@ -160,8 +160,9 @@ public class Parser {
         }
         if (checkMatch("UserCommand", node)) {
             for (int i = index; i < commandList.size(); i++) {
-                if (commandList.get(i)[1].equals("ListEnd") && commandList.get(index-1)[1].equals("MakeUserInstruction")) {
-                    
+                if (commandList.get(i)[1].equals("ListEnd") &&
+                    commandList.get(index - 1)[1].equals("MakeUserInstruction")) {
+
                     int tempInputs = (i - index) - 2;
                     commandInputMap.put(commandList.get(index)[0], tempInputs);
                     commandTimesMap.put(commandList.get(index)[0], 1);
