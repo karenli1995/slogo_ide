@@ -10,7 +10,7 @@ public class DoTimes extends Command {
 
     private static final long serialVersionUID = -1709915109882273600L;
     private Data allData;
-    Traverser traverser = new Traverser();
+  private  Traverser traverser = new Traverser();
 
     public DoTimes (Data allData) {
         super(allData);

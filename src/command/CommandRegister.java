@@ -26,6 +26,7 @@ import command.math.trig.ArcTangent;
 import command.math.trig.Cosine;
 import command.math.trig.Sine;
 import command.math.trig.Tangent;
+import command.otherCommands.Ask;
 import command.otherCommands.DoTimes;
 import command.otherCommands.MakeUserInstruction;
 import command.otherCommands.MakeVariable;
@@ -42,7 +43,6 @@ import command.turtle.turtleCommands.ClearScreen;
 import command.turtle.turtleCommands.Forward;
 import command.turtle.turtleCommands.HideTurtle;
 import command.turtle.turtleCommands.Home;
-import command.turtle.turtleCommands.ID;
 import command.turtle.turtleCommands.Left;
 import command.turtle.turtleCommands.PenDown;
 import command.turtle.turtleCommands.PenUp;
@@ -51,6 +51,7 @@ import command.turtle.turtleCommands.SetHeading;
 import command.turtle.turtleCommands.SetPosition;
 import command.turtle.turtleCommands.ShowTurtle;
 import command.turtle.turtleQueries.Heading;
+import command.turtle.turtleQueries.ID;
 import command.turtle.turtleQueries.IsPenDown;
 import command.turtle.turtleQueries.XCoordinate;
 import command.turtle.turtleQueries.YCoordinate;
@@ -139,6 +140,7 @@ public class CommandRegister {
         cf.registerCommand("SetPenColor", SetPenColor.class);
         cf.registerCommand("SetPenSize", SetPenSize.class);
         cf.registerCommand("SetShape", SetShape.class);
+        cf.registerCommand("Ask", Ask.class);
 
     }
 }

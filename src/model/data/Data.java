@@ -211,7 +211,8 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 		return myTurtles.size();
 	}
 
-	public static void setActiveTurtle(int value) {
+	@Override
+	public  void setActiveTurtle(int value) {
 		activeTurtle = value;
 	}
 
@@ -237,6 +238,14 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	@Override
 	public DisplayCommandObserver getDisplayCommandsObserver(){
 		return displayCommands;
+	}
+
+
+	@Override
+	public void removeElementActiveList(int index) {
+		activeTurtles.remove(index);
+
+
 	}
 
 }
