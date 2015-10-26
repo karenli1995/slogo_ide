@@ -19,8 +19,9 @@ public interface DataTurtleInterface {
 	public void updateVaraibleMap(String varName, Double value);
 	public List<SlogoObjects> getAllTurtles();
 	void setErrorMessage(String errorMessage);
-    int size();
-    int getValue(int index);
+	public int activeTurtleListValue(int index);
+   public int size();
+
 
 
 }
