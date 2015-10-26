@@ -12,7 +12,7 @@ public class ParseTreeChildren {
     private ParseTreeNode<CommandInterface> parent;
 
     public ParseTreeChildren (ParseTreeNode<CommandInterface> node) {
-        parent = node;
+        setParent(node);
         nodeList = new ArrayList<List<ParseTreeNode<CommandInterface>>>();
     }
 
@@ -61,4 +61,14 @@ public class ParseTreeChildren {
     public Command getCommand (int a, int b) {
         return getNode(a, b).getCommand();
     }
+
+    public ParseTreeNode<CommandInterface> getParent () {
+        return parent;
+    }
+
+    public void setParent (ParseTreeNode<CommandInterface> parent) {
+        this.parent = parent;
+    }
+    
+    
 }
