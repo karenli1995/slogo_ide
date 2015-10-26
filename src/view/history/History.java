@@ -1,14 +1,16 @@
 package view.history;
 
 import java.util.ResourceBundle;
+
 import javafx.scene.Scene;
+import view.GUIManager;
 import view.console.ConsoleUI;
 
 
 public class History extends PastCommandsAbstract {
 
-    public History (ConsoleUI console, Scene scene, ResourceBundle resource) {
-        super(console, scene, resource);
+    public History (GUIManager guiManager, Scene scene, ResourceBundle resource) {
+        super(guiManager, scene, resource);
         addLabel("HISTBAR");
     }
 

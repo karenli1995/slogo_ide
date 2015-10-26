@@ -27,7 +27,6 @@ public class Trail implements Serializable {
         Point2D starter = new Point2D(0.0, 0.0);
         myPath.add(starter);
         myPenStatus.add(1.0);
-        // myPath.put(point); //check
         myPoint = starter;
         myDPoint[0] = starter.getX();
         myDPoint[1] = starter.getY();
@@ -36,6 +35,10 @@ public class Trail implements Serializable {
         temp[1] = starter.getY();
         myDPath.add(temp);
         myDirection = direction;
+        
+        myPathColors.add("black");
+        myPathThicknesses.add(1);
+        myPathDashes.add(1.0);
     }
 
     public Trail () {

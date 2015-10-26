@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -17,6 +18,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import model.SlogoScene;
+import view.GUIManager;
+import view.console.ConsoleUI;
+import view.history.PastCommandsAbstract;
 import view.scene.TurtleScene;
 
 
@@ -37,7 +41,8 @@ public class CurrentTurtleState extends VBox implements Observer {
     private TextArea myDisplayPenPos;
     private TextArea myDisplayTurtVis;
 
-    public CurrentTurtleState (Scene scene, ResourceBundle resource, TurtleScene turtScene) {
+    public CurrentTurtleState (GUIManager guiManager, Scene scene, ResourceBundle resource, TurtleScene turtScene) {
+//    	super(guiManager, scene, resource);
         myTurtScene = turtScene;
         myResource = resource;
         allElements = new ArrayList<Node>();

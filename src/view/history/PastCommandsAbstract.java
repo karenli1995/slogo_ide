@@ -3,6 +3,7 @@ package view.history;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -16,23 +17,24 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import view.GUIManager;
 import view.console.ConsoleUI;
 
 
 public abstract class PastCommandsAbstract extends VBox implements PastCommandsInterface {
 
     private Scene myScene;
-    private ConsoleUI myConsole;
+    private GUIManager myGuiManager;
     private ResourceBundle myResource;
     private ScrollPane myScroller = new ScrollPane();
     private List<Button> myAllButtons = new ArrayList<Button>();
     private List<String> myButtonStrings = new ArrayList<String>();
     private VBox myVbox = new VBox();
 
-    PastCommandsAbstract (ConsoleUI console, Scene scene, ResourceBundle resource) {
+    protected PastCommandsAbstract (GUIManager guiManager, Scene scene, ResourceBundle resource) {
         myScene = scene;
         myResource = resource;
-        myConsole = console;
+        myGuiManager = guiManager;
         myScroller.setPrefHeight(scene.getHeight() * 4 / 5);
         myScroller.setContent(myVbox);
         myScroller.setVbarPolicy(ScrollBarPolicy.ALWAYS);
@@ -72,8 +74,8 @@ public abstract class PastCommandsAbstract extends VBox implements PastCommandsI
             @Override
             public void handle (MouseEvent event) {
                 String buttonText = b.getText();
-                String currConsoleText = myConsole.getTextFromConsole();
-                myConsole.setConsoleText(currConsoleText + buttonText);
+                String currConsoleText = myGuiManager.getMyConsole().getTextFromConsole();
+                myGuiManager.getMyConsole().setConsoleText(currConsoleText + buttonText);
             }
 
         });

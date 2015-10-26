@@ -198,14 +198,7 @@ public class TurtleScene extends TabPane implements Observer {
 
         int tabId = getIdOfTab();
         TurtleSceneTab tab = getCurrTab();
-        // tab.setTurtleAndTrail(this);
-        // when setClear() changes
-        /*
-         * if(otherSlogoObj.getTurtleData(tabId).getTurtle(0).getClearTrail() == true){
-         * List<Object> currLines = tab.getShape().getAllShapes();
-         * for (Object line : currLines) this.removeChildren((Node) line);
-         * }
-         */
+         
 
         // check if pen down or up
         // when pendown() changes
@@ -246,6 +239,14 @@ public class TurtleScene extends TabPane implements Observer {
                          currSlogoImage.getY());
             tab.setSlogoImage(i, currSlogoImage);
         }
+        
+        
+        // when setClear() changes
+        if(otherSlogoObj.getTurtleData(tabId).getTurtle(0).getClearTrail() == true){
+        	List<Object> currLines = tab.getShape().getAllShapes();
+        	for (Object line : currLines) this.removeChildren((Node) line);
+        }
+        
 
         // when setScene() changes
         Color newColor = otherSlogoObj.ColorData(tabId).getMyColor();

@@ -52,7 +52,6 @@ public abstract class AbstractPen implements Serializable {
     }
 
     public void recreate () {
-        System.out.println(mySColor);
         myColor = Color.web(mySColor);
     }
 
