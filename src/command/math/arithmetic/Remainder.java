@@ -3,6 +3,7 @@
  */
 package command.math.arithmetic;
 
+import command.otherCommands.UnlimitedInputCommand;
 import controller.ParseTreeChildren;
 import model.data.Data;
 
