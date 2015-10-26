@@ -16,13 +16,15 @@ public abstract class SlogoObjects implements Serializable {
 	private double myRotationAngle;
 	private boolean clearTrails;
 	private boolean isActive;
-
+	private static int SlogoObjectID = 0;
+	private int turtleID;
 
 	public SlogoObjects() {
+		turtleID = SlogoObjectID;
+		SlogoObjectID++;
 		Point2D startPoint = new Point2D(0, 0);
 		setTrail(new Trail(startPoint, 0));
 		setPen(new Pen());
-
 		setIsShowing(true);
 		setClearTrail(false);
 		setIsActive(false);
@@ -77,6 +79,8 @@ public abstract class SlogoObjects implements Serializable {
 		return isActive;
 	}
 
-
+	public int getTurtleID() {
+		return turtleID;
+	}
 
 }

@@ -37,15 +37,14 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 	private String myColorHex;
 	private double myCommandValue;
 	private ActiveTurtles activeTurtles;
+	private static int turtleID=0;
+	private static int activeTurtle=0;
 
 	public Data() {
 		myTurtles = new ArrayList<SlogoObjects>();
 		myTrails = new ArrayList<Trail>();
 
-		Turtle defaultTurtle = new Turtle();
-		myTurtles.add(defaultTurtle);
-		setTurtle(0, defaultTurtle); // check
-		myTrails.add(defaultTurtle.getTrail());
+		createTurtle();
 
 
 		activeTurtles = new ActiveTurtles();
@@ -62,6 +61,14 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 		setMyColor(Color.ALICEBLUE);
 
 	}
+	@Override
+	public void createTurtle() {
+		Turtle defaultTurtle = new Turtle();
+		myTurtles.add(defaultTurtle);
+		setTurtle(turtleID, defaultTurtle); // check
+		myTrails.add(defaultTurtle.getTrail());
+		turtleID++;
+	}
 
 	@Override
 	public void setTurtle(int turtleId, SlogoObjects turtle) {
@@ -75,7 +82,6 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 	}
 
 	@Override
-
 	public List<SlogoObjects> getAllTurtles() {
 		return myTurtles;
 	}
@@ -153,6 +159,11 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 	}
 
 	@Override
+	public void addToActiveList(int value) {
+		activeTurtles.update(value);
+		 setActiveTurtle(value);
+	}
+	@Override
 	public String getErrorMessage() {
 		String temp = myErrorMessage;
 		myErrorMessage = null;
@@ -204,6 +215,19 @@ public class Data implements Observer, DataTurtleInterface, ForObserverInterface
 		turtle.setRotationAngle(observedClass.getCoordinates().get("Angle"));
 		this.setTurtle(index, turtle);
 
+	}
+
+
+	@Override
+	public int turtleListSize() {
+
+		return myTurtles.size();
+	}
+	public static int getActiveTurtle() {
+		return activeTurtle;
+	}
+	public static void setActiveTurtle(int value) {
+		activeTurtle = value;
 	}
 
 }

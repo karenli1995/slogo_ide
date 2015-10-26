@@ -20,6 +20,9 @@ public interface DataTurtleInterface {
 	public List<SlogoObjects> getAllTurtles();
 	void setErrorMessage(String errorMessage);
 	public int activeTurtleListSize();
-	public int activeTurtleListValue(int index);
+	public int turtleListSize();
+	int activeTurtleListValue(int index);
+	public void createTurtle();
+	public void addToActiveList(int value);
 
 }
