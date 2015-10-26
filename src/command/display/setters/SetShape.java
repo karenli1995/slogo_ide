@@ -2,6 +2,7 @@
 package command.display.setters;
 
 import command.display.Display;
+import model.data.DisplayDataInterface;
 
 
 /**
@@ -11,10 +12,15 @@ import command.display.Display;
  */
 public class SetShape extends SetDisplayCommands {
 
-    private static final long serialVersionUID = 5765949474471118329L;
+
+	public SetShape(DisplayDataInterface displayData) {
+		super(displayData);
+	}
+
+	private static final long serialVersionUID = 5765949474471118329L;
 
     @Override
-    protected Display getEnum () {
+    public Display getEnum () {
         return Display.SETSH;
     }
 

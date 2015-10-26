@@ -3,6 +3,7 @@ package model.data;
 
 import java.util.List;
 
+import command.commandsObservers.TurtleCommandsObserver;
 import model.turtleinfo.SlogoObjects;
 
 /**
@@ -23,5 +24,6 @@ public interface DataTurtleInterface {
 	public void createTurtle();
 	public void addToActiveList(int value);
 	int getActiveTurtleID();
+	public TurtleCommandsObserver getTurtleCommandsObserver();
 
 }

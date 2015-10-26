@@ -15,6 +15,7 @@ public class SetHeading extends TurtleCommands {
 	private DataTurtleInterface turtleData;
 
 	public SetHeading(DataTurtleInterface turtleDate) {
+		super(turtleDate);
 		turtleData = turtleDate;
 	}
 

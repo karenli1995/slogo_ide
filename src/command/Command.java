@@ -9,6 +9,7 @@ import java.util.Observable;
 import controller.ParseTreeChildren;
 import model.data.Data;
 import model.data.DataTurtleInterface;
+import model.data.DisplayDataInterface;
 
 
 /**
@@ -24,6 +25,8 @@ public abstract class Command extends Observable implements CommandInterface, Se
     }
 
     public Command (DataTurtleInterface allData) {
+    }
+    public Command (DisplayDataInterface allData) {
     }
 
     public Command (Data allData) {

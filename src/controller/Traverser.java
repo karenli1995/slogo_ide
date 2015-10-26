@@ -69,7 +69,7 @@ public class Traverser {
         Double commandValue = null;
         while (!commandQueue.isEmpty()) {
             ParseTreeNode<CommandInterface> tempNode = commandQueue.poll();
-            tempNode.getCommand().addObserver(data);
+          // tempNode.getCommand().addObserver(data);
             if (!checkListStartEnd(tempNode)) {
                 commandValue = tempNode.getCommand().execute(tempNode.getChildren());
             }
