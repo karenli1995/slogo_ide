@@ -1,6 +1,4 @@
-/**
- *
- */
+
 package command.turtle.turtleCommands;
 
 import controller.ParseTreeChildren;
@@ -12,15 +10,11 @@ import model.DataTurtleInterface;
  *
  */
 public abstract class TurtleDirection extends TurtleCommands {
-	/**
-	 *
-	 */
+
 	private static final long serialVersionUID = 4365978061345276670L;
-	private DataTurtleInterface turtleData;
 
 	public TurtleDirection(DataTurtleInterface data) {
 		super(data);
-		turtleData = data;
 	}
 
 	protected abstract int sign();
@@ -33,7 +27,5 @@ public abstract class TurtleDirection extends TurtleCommands {
 		updateLocation(getCurrX(), getCurrY(), newHeadAngle);
 		return angleValue;
 	}
-
-
 
 }
