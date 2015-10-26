@@ -4,35 +4,40 @@
 package command.math.arithmetic;
 
 import command.Command;
+import command.otherCommands.UnlimitedInputCommand;
 import controller.ParseTreeChildren;
+import model.data.Data;
+
 
 /**
  *
  * @author Sally Al
  *
  */
-public class Quotient extends Command{
-/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5543181629851201807L;
+public class Quotient extends UnlimitedInputCommand {
+    /**
+    	 * 
+    	 */
+    private static final long serialVersionUID = -5543181629851201807L;
 
-public Quotient(){super();}
+    public Quotient (Data allData) {
+        super(allData);
+    }
 
-	@Override
-	public double execute(ParseTreeChildren argument) {
+    @Override
+    public double execute (ParseTreeChildren argument) {
 
-		double quotient = 0;
+        double ans = 0;
 
-		try {
-			quotient = argument.getCommandValue(0,0) / argument.getCommandValue(1,0);
-
-		} catch (ArithmeticException e) {
-			System.out.println("Division by zero is not allowed.");
-		}
-
-		this.setValue(quotient);
-		return quotient;
-	}
+        try {
+            ans = parameterLoop( (list) -> list.stream().reduce( (x, y) -> x / y).get(), argument);
+        }
+        catch (ArithmeticException e) {
+            // TODO Auto-generated catch block
+            System.out.println("cannot divide by 0");
+        }
+        this.setValue(ans);
+        return ans;
+    }
 
 }

@@ -2,7 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import command.Command;
 import command.CommandInterface;
 
 public class ParseTreeChildren {
@@ -55,5 +55,9 @@ public class ParseTreeChildren {
 	
 	public String getCommandName(int a, int b){
 		return getNode(a, b).getCommandName();
+	}
+	
+	public Command getCommand(int a, int b){
+	    return getNode(a, b).getCommand();
 	}
 }
