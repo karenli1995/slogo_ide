@@ -36,43 +36,65 @@ public abstract class AbstractShape implements ShapeInterface {
                                                List<Integer> penThicks,
                                                List<Double> penDash);
 
-    protected Point2D translateForScreen (Point2D point) {
-        new ArrayList<Point2D>();
+    protected List<Point2D> translateForScreen (Point2D point) {
+        List<Point2D> allPoints = new ArrayList<Point2D>();
 
-        double canvasWidth = myTurtScene.getCurrTab().getMyCanvasWidth();
-        double canvasHeight = myTurtScene.getCurrTab().getMyCanvasHeight();
+        long canvasWidth = (long) myTurtScene.getCurrTab().getMyCanvasWidth();
+        long canvasHeight = (long) myTurtScene.getCurrTab().getMyCanvasHeight();
 
-        double canvasX1 = myTurtScene.getCanvasX();
-        double canvasY1 = myTurtScene.getCanvasY();
+        long canvasX1 = (long) myTurtScene.getCanvasX();
+        long canvasX2 = canvasX1 + canvasWidth;
+        long canvasY1 = (long) myTurtScene.getCanvasY();
+        long canvasY2 = canvasY1 + canvasHeight;
 
         // double X = Math.floorMod( (long) (point.getX() + myTurtScene.getX() + canvasWidth/2) ,
         // (long) canvasWidth);
         // double Y = Math.floorMod( (long) (myTurtScene.getY() + canvasHeight/2 - point.getY()),
         // (long) canvasHeight);
 
-        double X = point.getX() + myTurtScene.getX() + canvasWidth / 2;
-        double Y = myTurtScene.getY() + canvasHeight / 2 - point.getY();
-        Math.floorMod((long) X, (long) canvasWidth);
-        Math.floorMod((long) Y, (long) canvasHeight);
+        long X = (long) (point.getX() + myTurtScene.getX() + canvasWidth / 2);
+        long Y = (long) (myTurtScene.getY() + canvasHeight / 2 - point.getY());
+        long modX = Math.floorMod(X, canvasWidth);
+        long modY = Math.floorMod(Y, canvasHeight);
 
-        // if(X != modX && Y == modY) { //if only X needs to be mod
-        // Point2D firstPoint = new Point2D(canvasWidth, Y);
-        //
-        // Point2D secPoint = new Point2D(canvasX1, Y);
-        // Point2D thirdPoint = new Point2D( modX, Y);
-        // allPoints.add(firstPoint);
-        // allPoints.add(secPoint);
-        // allPoints.add(thirdPoint);
-        // } else if(X == modX && Y != modY) {
-        // Point2D firstPoint = new Point2D(X, canvasHeight);
-        // Point2D secPoint = new Point2D(X, modY);
-        // allPoints.add(firstPoint);
-        // allPoints.add(secPoint);
-        // } else if(X != modX && Y != modY) {
-        // Point2D =
-        // }
+        if(X != modX && Y == modY) { //if only X needs to be mod
+        	
+        	if(modX - canvasX1 < canvasX2 - modX){
+        		Point2D firstPoint = new Point2D(canvasX2, Y);
+        		Point2D secPoint = new Point2D(canvasX1, Y);
+        		allPoints.add(firstPoint);
+            	allPoints.add(secPoint);
+        	}else{
+        		Point2D firstPoint = new Point2D(canvasX1, Y);
+        		Point2D secPoint = new Point2D(canvasX2, Y);
+        		allPoints.add(firstPoint);
+            	allPoints.add(secPoint);
+        	}
 
-        return new Point2D(X, Y);
+        	Point2D thirdPoint = new Point2D( modX, Y);
+        	allPoints.add(thirdPoint);
+        } else if(X == modX && Y != modY) {
+        	if(modY - canvasY1 < canvasY2 - modY){
+        		Point2D firstPoint = new Point2D(X, canvasY2);
+        		Point2D secPoint = new Point2D(X, canvasY1);
+        		allPoints.add(firstPoint);
+            	allPoints.add(secPoint);
+        	}else{
+        		Point2D firstPoint = new Point2D(X, canvasY1);
+        		Point2D secPoint = new Point2D(X, canvasY2);
+        		allPoints.add(firstPoint);
+            	allPoints.add(secPoint);
+        	}
+
+        	Point2D thirdPoint = new Point2D(X, modY);
+        	allPoints.add(thirdPoint);
+        } else if(X != modX && Y != modY) {
+        	allPoints.add(new Point2D(modX, modY)); //wrong
+        } else {
+        	allPoints.add(new Point2D(modX, modY));
+        }
+
+        return allPoints;
     }
 
     protected boolean checkBounds (double x, double y) {
