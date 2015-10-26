@@ -194,7 +194,7 @@ public class TurtleScene extends TabPane implements Observer {
 
     @Override
     public void update (Observable o, Object arg) {
-        SlogoScene otherSlogoObj = (SlogoScene) o;
+    	SlogoScene otherSlogoObj = (SlogoScene) o;
 
         int tabId = getIdOfTab();
         TurtleSceneTab tab = getCurrTab();
@@ -230,7 +230,15 @@ public class TurtleScene extends TabPane implements Observer {
             double newRotAngle = slogoObject.getRotationAngle();
             double newLocX = slogoObject.getTrail().getX();
             double newLocY = slogoObject.getTrail().getY();
-            SlogoImage currSlogoImage = tab.getSlogoImage(i);
+
+            SlogoImage currSlogoImage;
+            try{
+            	currSlogoImage = tab.getSlogoImage(i);
+            }catch(Exception e){
+            	currSlogoImage = new SlogoImage(this);
+            	tab.getAllSlogoImages().add(currSlogoImage);
+            	this.addChildren(currSlogoImage.getMyImage());
+            }
             currSlogoImage.setX(newLocX);
             currSlogoImage.setY(newLocY);
             currSlogoImage.setRotation(newRotAngle);
@@ -254,6 +262,5 @@ public class TurtleScene extends TabPane implements Observer {
         gc.fillRect(0, 0, tab.getCanvas().getWidth(), tab.getCanvas().getHeight());
 
         updateMyTabs(tabId, tab);
-
     }
 }
