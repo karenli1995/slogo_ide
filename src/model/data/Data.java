@@ -69,8 +69,9 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	public void createTurtle() {
 		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
+		setTurtle(0, defaultTurtle);
 		myTrails.add(defaultTurtle.getTrail());
-		turtleID++;
+//		turtleID++;
 	}
 
 	@Override
@@ -193,8 +194,10 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	}
 
 	public void recreate() {
-		myTrails.get(0).recreate();
-		myTurtles.get(0).getPen().recreate();
+		for(int i = 0; i<myTrails.size();i++){
+		myTrails.get(i).recreate();
+		myTurtles.get(i).getPen().recreate();
+		}
 		myColor = Color.web(myColorHex);
 	}
 

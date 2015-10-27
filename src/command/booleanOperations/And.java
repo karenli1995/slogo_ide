@@ -3,8 +3,10 @@
  */
 package command.booleanOperations;
 
-import command.Command;
+import java.util.List;
+import command.otherCommands.UnlimitedInputDoubleCommand;
 import controller.ParseTreeChildren;
+import model.data.Data;
 
 
 /**
@@ -12,27 +14,34 @@ import controller.ParseTreeChildren;
  * @author Sally Al
  *
  */
-public class And extends Command {
+public class And extends UnlimitedInputDoubleCommand {
     /**
      *
      */
     private static final long serialVersionUID = 6933861121473227309L;
 
-    public And () {
-        super();
+    public And (Data allData) {
+        super(allData);
     }
 
     @Override
     public double execute (ParseTreeChildren argument) {
 
-        if ((argument.getCommandValue(0, 0) != 0 && argument.getCommandValue(1, 0) != 0)) {
-            setValue(1.0);
-            return 1.0;
+        double value =
+                parameterLoop( (list) -> logic(list), argument);
+        setValue(value);
+        return value;
+
+    }
+
+    public double logic (List<Double> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == 0) {
+                return 0;
+            }
         }
-        else {
-            setValue(0);
-            return 0;
-        }
+        return 1;
+
     }
 
 }

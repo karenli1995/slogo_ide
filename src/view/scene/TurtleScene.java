@@ -150,8 +150,10 @@ public class TurtleScene extends TabPane implements Observer {
     }
     
     public void setActiveTurtleID(int ID){
-    	myController.getMyScene().getAllData().get(getIdOfTab()).setActiveTurtle(ID);
-    	System.out.println("ACTIVE ID IS " + ID);
+    	myController.getMyScene().getAllData().get(getIdOfTab()).clearActiveList();
+    	myController.getMyScene().getAllData().get(getIdOfTab()).addToActiveList(ID);
+    	//myController.getMyScene().getAllData().get(getIdOfTab()).setActiveTurtle(ID);
+		System.out.println("ACTIVE ID IS " + ID);
     }
 
     public void addListener () {
@@ -213,22 +215,29 @@ public class TurtleScene extends TabPane implements Observer {
             Line temp = (Line) i;
             removeChildren(temp);
         }
+        ArrayList<ArrayList<Line>> allLines = new ArrayList<ArrayList<Line>>();
+        for(int i = 0; i<otherSlogoObj.getTurtleData(tabId).getAllTurtles().size();i++){
+        SlogoObjects turt = otherSlogoObj.getTurtleData(tabId).getAllTurtles().get(i);
         ArrayList<Point2D> currTrailList =
-                otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPathCoordinates();
+                turt.getTrail().getPathCoordinates();
         ArrayList<Double> penStatusList =
-                otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPenPath();
+                turt.getTrail().getPenPath();
         ArrayList<String> penColors =
-                otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getColorPath();
+                turt.getTrail().getColorPath();
         ArrayList<Integer> penThicks =
-                otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getThicknessPath();
+                turt.getTrail().getThicknessPath();
         ArrayList<Double> penDashes =
-                otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getDashPath();
+                turt.getTrail().getDashPath();
         ArrayList<Line> currLine =
                 tab.getShape().drawShape(currTrailList, penStatusList, penColors, penThicks,
                                          penDashes);
-        for (Line j : currLine) {
-            tab.getShape().addShape(j);
+        allLines.add(currLine);
+        }
+        for (ArrayList<Line> i : allLines) {
+            for(Line j:i){
+        	tab.getShape().addShape(j);
             addChildren(j);
+            }
         }
         
         // when setRotationAngle() changes and setTrail() changes
@@ -239,16 +248,15 @@ public class TurtleScene extends TabPane implements Observer {
             double newLocX = slogoObject.getTrail().getX();
             double newLocY = slogoObject.getTrail().getY();
 
-            SlogoImage currSlogoImage = tab.getSlogoImage(i);
-//            SlogoImage currSlogoImage;
-//            try{
-//            	currSlogoImage = tab.getSlogoImage(i);
-//            }catch(Exception e){
-//            	currSlogoImage = new SlogoImage(this);
-//            	tab.getAllSlogoImages().add(currSlogoImage);
-//            	this.addChildren(currSlogoImage.getMyImage());
-//            }
-//            tab.addHandlers();
+            
+            SlogoImage currSlogoImage;
+            try{
+            	currSlogoImage = tab.getSlogoImage(i);
+            }catch(Exception e){
+            	currSlogoImage = new SlogoImage(this,tab.getAllSlogoImages().size());
+            	tab.getAllSlogoImages().add(currSlogoImage);
+            	this.addChildren(currSlogoImage.getMyImage());
+            }
             currSlogoImage.setX(newLocX);
             currSlogoImage.setY(newLocY);
             currSlogoImage.setRotation(newRotAngle);
