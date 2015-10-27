@@ -3,6 +3,8 @@ package command.otherCommands;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
+
 import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeChildren;
@@ -12,10 +14,10 @@ import model.data.Data;
 
 
 public class UserCommand extends Command {
-  /**
-  * 
-  */
+
   private static final long serialVersionUID = -8672243465517450294L;
+  private ResourceBundle errorResources;
+  private final String ERROR_RESOURCES = "resources/error";
   private Data allData;
   Traverser traverser = new Traverser();
   Map<String, Double> localMap;
@@ -24,6 +26,7 @@ public class UserCommand extends Command {
   public UserCommand(Data allData) {
     super(allData);
     this.allData = allData;
+    errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
   }
 
   @Override
@@ -45,7 +48,7 @@ public class UserCommand extends Command {
       allData.setVariableMap(tempMap);
     } else if (!distance.getParent().getParent()
         .getCommand().getClass().getSimpleName().equals("MakeUserInstruction")) {
-      allData.setErrorMessage("command not found");
+      allData.setErrorMessage(getName()+": " +errorResources.getString("notFound"));
     }
 
     return ans;
