@@ -7,9 +7,7 @@ import javafx.geometry.Point2D;
 
 public abstract class SlogoObjects implements Serializable {
 
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 2429059406459972387L;
     private Trail myTrail;
     private AbstractPen myPen;

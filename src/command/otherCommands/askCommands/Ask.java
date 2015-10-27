@@ -1,10 +1,9 @@
 
-package command.otherCommands;
+package command.otherCommands.askCommands;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeChildren;
 import controller.ParseTreeNode;
@@ -16,7 +15,7 @@ import model.data.Data;
  * @author Sally Al
  *
  */
-public class Ask extends Command {
+public class Ask extends MultiCommands {
 
 	private Data turtleData;
 	private Traverser traverser = new Traverser();
@@ -30,25 +29,16 @@ public class Ask extends Command {
 
 	@Override
 	public double execute(ParseTreeChildren input) {
+		List<Integer> newActiveList = new ArrayList<Integer>();
 
-		int originalID = turtleData.getActiveTurtleID();
-		List<Integer> originalActiveList = new ArrayList<Integer>();
-
-		for (int i = 0; i < turtleData.activeTurtleListSize(); i++) {
-			originalActiveList.add(turtleData.activeTurtleListValue(i));
-		}
+		this.backUpActive();
 		turtleData.clearActiveList();
-
-		List<ParseTreeNode<CommandInterface>> turtles = input.getChildListAt(0);
-		// indices of turtles should be affected
-		List<Integer> turtleList = new ArrayList<Integer>();
-		for (int i = 1; i < turtles.size() - 1; i++) {
-			turtleList.add((int) turtles.get(i).getCommandValue());
-		}
+		List<ParseTreeNode<CommandInterface>> inputTurtleList = input.getChildListAt(0);
+		createTempActivleList(inputTurtleList,newActiveList );
 
 		int range = 0;
-		for (int j = 0; j < turtleList.size(); j++) {
-			range = turtleList.get(j).intValue();
+		for (int j = 0; j < newActiveList.size(); j++) {
+			range = newActiveList.get(j).intValue();
 			int size = turtleData.turtleListSize();
 			if (range > size) {
 				int diff = range - size;
@@ -62,8 +52,11 @@ public class Ask extends Command {
 
 		}
 
-		for (int i = 0; i < turtleList.size(); i++) {
-			turtleData.addToActiveList(turtleList.get(i) - 1);
+
+
+			for (int i = 0; i < newActiveList.size(); i++) {
+				turtleData.addToActiveList(newActiveList.get(i)-1 );
+
 		}
 
 		Double answer = 0.0;
@@ -74,10 +67,7 @@ public class Ask extends Command {
 		}
 		turtleData.setActiveTurtle(originalID);
 		turtleData.clearActiveList();
-
-		for (int i = 0; i < originalActiveList.size(); i++) {
-			turtleData.addToActiveList(originalActiveList.get(i));
-		}
+		resetActiveList();
 		return answer;
 	}
 
