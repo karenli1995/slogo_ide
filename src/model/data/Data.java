@@ -34,10 +34,9 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	private String myColorHex;
 	private double myCommandValue;
 	private ActiveTurtles activeTurtles;
-	private static int turtleID = 0;
 	private static int activeTurtle = 0;
-	private static DisplayCommandObserver displayCommands;
-	private static TurtleCommandsObserver turtleCommands;
+	private DisplayCommandObserver displayCommands;
+	private TurtleCommandsObserver turtleCommands;
 
 	public Data() {
 		myTurtles = new ArrayList<SlogoObjects>();
@@ -71,7 +70,6 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 		myTurtles.add(defaultTurtle);
 		setTurtle(0, defaultTurtle);
 		myTrails.add(defaultTurtle.getTrail());
-//		turtleID++;
 	}
 
 	@Override
@@ -222,9 +220,7 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 
 	@Override
 	public int getActiveTurtleID() {
-
 		return activeTurtle + 1;
-
 	}
 
 	public Map<String, List<String>> getMyCommandVariableMap() {
@@ -248,8 +244,6 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	@Override
 	public void removeElementActiveList(int index) {
 		activeTurtles.remove(index);
-
-
 	}
 
     public Map<String, Double> getMyUserCommandInputMap () {
