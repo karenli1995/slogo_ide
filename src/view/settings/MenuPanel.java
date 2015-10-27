@@ -72,7 +72,7 @@ public class MenuPanel extends MenuBar {
             }
         });
         
-        MenuItem colorArray = new MenuItem("Color Values");
+        MenuItem colorArray = new MenuItem(myResource.getString("COLVAL"));
         colorArray.setOnAction(e->showColorArray());
 
         MenuItem help = new MenuItem(myResource.getString("HELP"));
