@@ -166,13 +166,16 @@ public class TurtleScene extends TabPane implements Observer {
 
             private void newTab (Number newValue) {
                 int tabId = (int) newValue;
+
                 TurtleSceneTab newTab = myTabs.get(tabId);
 
                 List<SlogoImage> newTurts = newTab.getAllSlogoImages();
-                for (SlogoImage slogoImage : newTurts) {
+                for(int j=0; j<newTurts.size(); j++) {
+                	SlogoImage slogoImage = newTurts.get(j);
                     ImageView image = slogoImage.getMyImage();
                     newTab.getTurtScene().addChildren(image);
                     newTab.getTurtScene().setScreenLoc(image, image.getX(), image.getY());
+                    newTab.setSlogoImage(j, slogoImage);
                 }
 
                 newTab.getTurtScene().updateMyTabs((int) newValue, newTab);
@@ -180,7 +183,6 @@ public class TurtleScene extends TabPane implements Observer {
 
             private void oldTab (Number oldValue) {
                 int tabId = (int) oldValue;
-
                 TurtleSceneTab oldTab = myTabs.get(tabId);
 
                 List<Object> oldLines = oldTab.getShape().getAllShapes();
@@ -202,6 +204,7 @@ public class TurtleScene extends TabPane implements Observer {
     	SlogoScene otherSlogoObj = (SlogoScene) o;
 
         int tabId = getIdOfTab();
+        System.out.println("kerrn " + tabId);
         TurtleSceneTab tab = getCurrTab();         
 
         // check if pen down or up
@@ -227,6 +230,7 @@ public class TurtleScene extends TabPane implements Observer {
             tab.getShape().addShape(j);
             addChildren(j);
         }
+        
         // when setRotationAngle() changes and setTrail() changes
         List<SlogoObjects> turts = otherSlogoObj.getTurtleData(tabId).getAllTurtles();
         for (int i = 0; i < turts.size(); i++) {
@@ -235,15 +239,16 @@ public class TurtleScene extends TabPane implements Observer {
             double newLocX = slogoObject.getTrail().getX();
             double newLocY = slogoObject.getTrail().getY();
 
-            SlogoImage currSlogoImage;
-            try{
-            	currSlogoImage = tab.getSlogoImage(i);
-            }catch(Exception e){
-            	currSlogoImage = new SlogoImage(this);
-            	tab.getAllSlogoImages().add(currSlogoImage);
-            	this.addChildren(currSlogoImage.getMyImage());
-            }
-            tab.addHandlers();
+            SlogoImage currSlogoImage = tab.getSlogoImage(i);
+//            SlogoImage currSlogoImage;
+//            try{
+//            	currSlogoImage = tab.getSlogoImage(i);
+//            }catch(Exception e){
+//            	currSlogoImage = new SlogoImage(this);
+//            	tab.getAllSlogoImages().add(currSlogoImage);
+//            	this.addChildren(currSlogoImage.getMyImage());
+//            }
+//            tab.addHandlers();
             currSlogoImage.setX(newLocX);
             currSlogoImage.setY(newLocY);
             currSlogoImage.setRotation(newRotAngle);
