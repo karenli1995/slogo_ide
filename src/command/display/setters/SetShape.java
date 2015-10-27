@@ -12,16 +12,15 @@ import model.data.DisplayDataInterface;
  */
 public class SetShape extends SetDisplayCommands {
 
+  public SetShape(DisplayDataInterface displayData) {
+    super(displayData);
+  }
 
-	public SetShape(DisplayDataInterface displayData) {
-		super(displayData);
-	}
+  private static final long serialVersionUID = 5765949474471118329L;
 
-	private static final long serialVersionUID = 5765949474471118329L;
-
-    @Override
-    public Display getEnum () {
-        return Display.SETSH;
-    }
+  @Override
+  public Display getEnum() {
+    return Display.SETSH;
+  }
 
 }

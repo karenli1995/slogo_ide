@@ -7,29 +7,28 @@ import model.data.Data;
 
 
 public class IfElse extends Command {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = -1491608247002727538L;
-	private Data allData;
-    Traverser traverser = new Traverser();
+  /**
+  *
+  */
+  private static final long serialVersionUID = -1491608247002727538L;
+  private Data allData;
+  Traverser traverser = new Traverser();
 
-    public IfElse (Data allData) {
-        super(allData);
-        this.allData = allData;
+  public IfElse(Data allData) {
+    super(allData);
+    this.allData = allData;
+  }
+
+  @Override
+  public double execute(ParseTreeChildren distance) {
+    double ans = 0;
+    if (distance.getCommandValue(0, 0) != 0) {
+      ans = traverser.traverse(distance.getChildListAt(1), allData);
+    } else {
+      ans = traverser.traverse(distance.getChildListAt(2), allData);
+
     }
-
-    @Override
-    public double execute (ParseTreeChildren distance) {
-        double ans = 0;
-        if (distance.getCommandValue(0, 0) != 0) {
-            ans = traverser.traverse(distance.getChildListAt(1), allData);
-        }
-        else {
-            ans = traverser.traverse(distance.getChildListAt(2), allData);
-
-        }
-        return ans;
-    }
+    return ans;
+  }
 
 }

@@ -3,6 +3,7 @@ package model.data;
 
 import command.commandsObservers.DisplayCommandObserver;
 
+
 /**
  *
  * @author Sally Al
@@ -10,7 +11,6 @@ import command.commandsObservers.DisplayCommandObserver;
  */
 public interface DisplayDataInterface {
 
-	DisplayCommandObserver getDisplayCommandsObserver();
-
+  DisplayCommandObserver getDisplayCommandsObserver();
 
 }

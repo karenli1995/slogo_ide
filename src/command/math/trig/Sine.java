@@ -14,18 +14,17 @@ import controller.ParseTreeChildren;
  */
 public class Sine extends Command {
 
-    private static final long serialVersionUID = 6705493355876350144L;
+  private static final long serialVersionUID = 6705493355876350144L;
 
-    public Sine () {
-    }
+  public Sine() {
+  }
 
-
-   @Override
-    public double execute(ParseTreeChildren argument) {
-        double sine = Math.sin(Math.toRadians(argument.getCommandValue(0, 0)));
-        sine = RoundTo2Decimals(sine);
-        setValue(sine);
-        return sine;
-    }
+  @Override
+  public double execute(ParseTreeChildren argument) {
+    double sine = Math.sin(Math.toRadians(argument.getCommandValue(0, 0)));
+    sine = RoundTo2Decimals(sine);
+    setValue(sine);
+    return sine;
+  }
 
 }

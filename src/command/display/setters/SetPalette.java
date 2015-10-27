@@ -12,16 +12,15 @@ import model.data.DisplayDataInterface;
  */
 public class SetPalette extends SetDisplayCommands {
 
+  public SetPalette(DisplayDataInterface displayData) {
+    super(displayData);
+  }
 
-	public SetPalette(DisplayDataInterface displayData) {
-		super(displayData);
-	}
+  private static final long serialVersionUID = 7026916684777044850L;
 
-	private static final long serialVersionUID = 7026916684777044850L;
-
-    @Override
-    public Display getEnum () {
-        return Display.SETPALETTE;
-    }
+  @Override
+  public Display getEnum() {
+    return Display.SETPALETTE;
+  }
 
 }

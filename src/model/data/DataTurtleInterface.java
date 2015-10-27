@@ -2,9 +2,9 @@
 package model.data;
 
 import java.util.List;
-
 import command.commandsObservers.TurtleCommandsObserver;
 import model.turtleinfo.SlogoObjects;
+
 
 /**
  *
@@ -13,33 +13,34 @@ import model.turtleinfo.SlogoObjects;
  */
 public interface DataTurtleInterface {
 
-	public SlogoObjects getTurtle(int turtleId);
+  public SlogoObjects getTurtle(int turtleId);
 
-	public void setTurtle(int turtleId, SlogoObjects turtle);
+  public void setTurtle(int turtleId, SlogoObjects turtle);
 
-	public void updateVariableMap(String varName, Double value);
+  public void updateVariableMap(String varName, Double value);
 
-	public List<SlogoObjects> getAllTurtles();
+  public List<SlogoObjects> getAllTurtles();
 
-	void setErrorMessage(String errorMessage);
+  void setErrorMessage(String errorMessage);
 
-	public int activeTurtleListSize();
+  public int activeTurtleListSize();
 
-	public int turtleListSize();
+  public int turtleListSize();
 
-	int activeTurtleListValue(int index);
+  int activeTurtleListValue(int index);
 
-	public void createTurtle();
+  public void createTurtle();
 
-	public void addToActiveList(int value);
+  public void addToActiveList(int value);
 
-	int getActiveTurtleID();
+  int getActiveTurtleID();
 
-	public TurtleCommandsObserver getTurtleCommandsObserver();
+  public TurtleCommandsObserver getTurtleCommandsObserver();
 
-	void setActiveTurtle(int value);
-	void removeElementActiveList(int index);
-	void clearActiveList();
+  void setActiveTurtle(int value);
 
+  void removeElementActiveList(int index);
+
+  void clearActiveList();
 
 }

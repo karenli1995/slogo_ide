@@ -4,6 +4,7 @@ package command.turtle.turtleCommands;
 import controller.ParseTreeChildren;
 import model.data.DataTurtleInterface;
 
+
 /**
  *
  * @author Sally Al
@@ -11,21 +12,21 @@ import model.data.DataTurtleInterface;
  */// goto x y
 public class SetPosition extends TurtleAbsolutePosition {
 
-	private static final long serialVersionUID = 8951107742111791983L;
+  private static final long serialVersionUID = 8951107742111791983L;
 
-	public SetPosition(DataTurtleInterface turtleData) {
-		super(turtleData);
+  public SetPosition(DataTurtleInterface turtleData) {
+    super(turtleData);
 
-	}
+  }
 
-	@Override
-	public double executeCommand(ParseTreeChildren newLocation) {
-		double distance = calculateDistanceBetweenTwoPoints(newLocation.getCommandValue(0, 0),
-				newLocation.getCommandValue(1, 0));
-		setValue(distance);
-		updateLocation(newLocation.getCommandValue(0, 0), newLocation.getCommandValue(1, 0),
-				getTurtle().getRotationAngle());
-		return distance;
-	}
+  @Override
+  public double executeCommand(ParseTreeChildren newLocation) {
+    double distance = calculateDistanceBetweenTwoPoints(newLocation.getCommandValue(0, 0),
+                                                        newLocation.getCommandValue(1, 0));
+    setValue(distance);
+    updateLocation(newLocation.getCommandValue(0, 0), newLocation.getCommandValue(1, 0),
+                   getTurtle().getRotationAngle());
+    return distance;
+  }
 
 }

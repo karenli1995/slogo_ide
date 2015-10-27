@@ -12,16 +12,15 @@ import model.data.DisplayDataInterface;
  */
 public class SetBackground extends SetDisplayCommands {
 
+  public SetBackground(DisplayDataInterface displayData) {
+    super(displayData);
+  }
 
-	public SetBackground(DisplayDataInterface displayData) {
-		super(displayData);
-	}
+  private static final long serialVersionUID = -2648763549594643733L;
 
-	private static final long serialVersionUID = -2648763549594643733L;
-
-    @Override
-    public Display getEnum () {
-        return Display.SETBG;
-    }
+  @Override
+  public Display getEnum() {
+    return Display.SETBG;
+  }
 
 }

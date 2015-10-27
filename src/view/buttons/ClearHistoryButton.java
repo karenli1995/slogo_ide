@@ -8,17 +8,17 @@ import view.console.ConsoleUI;
 
 public class ClearHistoryButton extends AbstractButton {
 
-    ClearHistoryButton (ConsoleUI console,
-                        ModelController controller,
-                        GUIManager guimanager,
-                        ResourceBundle resource,
-                        String buttonName) {
-        super(console, controller, guimanager, resource, buttonName);
-    }
+  ClearHistoryButton(ConsoleUI console,
+                     ModelController controller,
+                     GUIManager guimanager,
+                     ResourceBundle resource,
+                     String buttonName) {
+    super(console, controller, guimanager, resource, buttonName);
+  }
 
-    @Override
-    protected void action () {
-        myGUIManager.getMyHistory().clear();
-    }
+  @Override
+  protected void action() {
+    myGUIManager.getMyHistory().clear();
+  }
 
 }
