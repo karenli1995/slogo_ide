@@ -3,12 +3,10 @@ package view.scene;
 import java.util.ArrayList;
 import java.util.List;
 import controller.ModelController;
-import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import model.turtleinfo.Turtle;
 import view.settings.SlogoProperties;
@@ -44,7 +42,7 @@ public class TurtleSceneTab extends Tab {
 	}
 
 	public void setTurtleAndTrail(TurtleScene turtScene) {
-		SlogoImage slogoImage = new SlogoImage(turtScene);
+		SlogoImage slogoImage = new SlogoImage(turtScene,myAllSlogoImages.size());
 		myAllSlogoImages.add(slogoImage);
 		System.out.println("kern " + myAllSlogoImages.size());
 	}
@@ -100,13 +98,6 @@ public class TurtleSceneTab extends Tab {
 
 	public TurtleScene getTurtScene() {
 		return myTurtScene;
-	}
-	
-	public void addHandlers(){
-		for(int i = 0; i<myAllSlogoImages.size();i++){
-			myTempID = i;
-			myAllSlogoImages.get(i).getMyImage().setOnMouseClicked(e->myTurtScene.setActiveTurtleID(myTempID));
-		}
 	}
 
 }

@@ -16,12 +16,15 @@ public class SlogoImage {
 
     private double myX;
     private double myY;
+    private int myID;
 
-    public SlogoImage (TurtleScene turtlescene) {
+    public SlogoImage (TurtleScene turtlescene, int ID) {
         myTurtScene = turtlescene;
         setMyImage(myImageView);
         myX = 0;
         myY = 0;
+        myID = ID;
+        addHandler();
     }
     
     public double setX (double x) {
@@ -37,7 +40,10 @@ public class SlogoImage {
         myY = y;
         return myY;
     }
-
+    
+    public void addHandler(){
+    	this.getMyImage().setOnMouseClicked(e->myTurtScene.setActiveTurtleID(myID));
+    }
     public double getY () {
         return myY;
     }
