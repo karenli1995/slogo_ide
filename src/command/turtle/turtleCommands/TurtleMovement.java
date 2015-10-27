@@ -49,7 +49,7 @@ public abstract class TurtleMovement extends TurtleCommands {
 			return previousCoordinate;
 		} else {
 
-			return (previousCoordinate + (sign * (distance / Tempcoordinate)));
+			return (previousCoordinate + (sign * (distance * Tempcoordinate)));
 		}
 	}
 
