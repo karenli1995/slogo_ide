@@ -67,8 +67,6 @@ public class PenProps extends AbstractProperties {
             Integer thick = thicknesses.getSelectionModel().getSelectedItem();
             myController.getMyScene().getTurtleData(mySceneId).getAllTurtles().get(turt).getPen()
                     .setThickness(thick);
-            System.out.println("AGGH" + turt);
-
             }});
         
         hb8.getChildren().addAll(thickLabel, thicknesses);

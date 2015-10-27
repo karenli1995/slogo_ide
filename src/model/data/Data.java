@@ -34,9 +34,10 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	private String myColorHex;
 	private double myCommandValue;
 	private ActiveTurtles activeTurtles;
-	private static int activeTurtle = 0;
+	private int activeTurtle = 0;
 	private DisplayCommandObserver displayCommands;
 	private TurtleCommandsObserver turtleCommands;
+	private int turtleID = 0;
 
 	public Data() {
 		myTurtles = new ArrayList<SlogoObjects>();
@@ -69,14 +70,14 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	public void createTurtle() {
 		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
-		setTurtle(0, defaultTurtle);
+		setTurtle(turtleID, defaultTurtle);
 		myTrails.add(defaultTurtle.getTrail());
+		turtleID++;
 	}
 
 	@Override
 	public void setTurtle(int turtleId, SlogoObjects turtle) {
 		myTurtles.set(turtleId, turtle);
-
 	}
 
 	@Override
@@ -102,6 +103,10 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	public int activeTurtleListValue(int index) {
 		return activeTurtles.getvalue(index);
 	}
+	
+	public List<Integer> getActiveTurtles(){
+		return activeTurtles.getActives();
+	}
 
 	@Override
 	public void addToActiveList(int value) {
@@ -109,7 +114,6 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 		setActiveTurtle(value);
 	}
 
-	//////
 	public boolean isError() {
 		return myError;
 	}
@@ -157,15 +161,9 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 		myColorHex = color.toString();
 	}
 	
-	public void setMyColor(Double value){
-		
-	}
-
 	@Override
 	public double getCommandValue() {
-
 		return myCommandValue;
-
 	}
 
 	@Override
@@ -258,7 +256,6 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
     public void setMyUserCommandInputMap (Map<String, Double> myUserCommandInputMap) {
         this.myUserCommandInputMap = myUserCommandInputMap;
     }
-
 
 	@Override
 	public void clearActiveList() {

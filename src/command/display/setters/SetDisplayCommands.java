@@ -29,10 +29,12 @@ public abstract class SetDisplayCommands extends DisplayCommands {
 
     @Override
     public double execute (ParseTreeChildren input) {
+        List<Double> list = new ArrayList<Double>();
         double value = input.getCommandValue(0, 0);
         setValue(value);
-        List<Double> list = new ArrayList<Double>();
-        list.add(value);
+    	for(int i = 0; i<input.getSize(); i++){
+        list.add(input.getCommandValue(i, 0));
+        }
         putAndNotify(getEnum(), list);
         return value;
 

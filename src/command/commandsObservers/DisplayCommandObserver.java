@@ -58,9 +58,10 @@ public class DisplayCommandObserver implements Observer,Serializable {
 				data.getAllTurtles().get(turt).getPen().setDashes(map.get(Display.SETPS).get(0));
 			}
 		}
-		/*if(map.get(Display.SETPALETTE)!=null){
-			SlogoProperties.addColor()
-		}*/
+		if(map.get(Display.SETPALETTE)!=null){
+			String added = Color.rgb(map.get(Display.SETPALETTE).get(1).intValue(), map.get(Display.SETPALETTE).get(2).intValue(), map.get(Display.SETPALETTE).get(3).intValue()).toString();
+			SlogoProperties.addColor(map.get(Display.SETPALETTE).get(0).intValue(),added);
+		}
 
 		}
 

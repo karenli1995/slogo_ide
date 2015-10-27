@@ -38,10 +38,11 @@ public class TurtleProps extends AbstractProperties {
         HBox hb1 = addNumTurtLabel();
         HBox hb4 = addTurtShapeLabel();
         HBox hb5 = addTurtVisibleLable();
+        HBox hb6 = activeTurtVisibleLabel();
 
         setAllMargins(allElements);
 
-        vb.getChildren().addAll(hb1, hb4, hb5);
+        vb.getChildren().addAll(hb1, hb4, hb5, hb6);
 
         setContent(vb);
     }
@@ -118,6 +119,21 @@ public class TurtleProps extends AbstractProperties {
         allElements.add(cbTurtVisible);
 
         return hb5;
+    }
+    
+    private HBox activeTurtVisibleLabel () {
+        HBox hb6 = new HBox();
+        Label turtVisible = new Label(myResource.getString("ACTVIS"));
+        ObservableList<String> visibleOptions =
+                FXCollections.observableArrayList("Yes", "No");
+        final ComboBox cbTurtVisible = new ComboBox(visibleOptions);
+        cbTurtVisible.setOnAction(e->myTurtleScene.setActiveVisibility((String)cbTurtVisible.getSelectionModel().getSelectedItem()));
+        hb6.getChildren().addAll(turtVisible, cbTurtVisible);
+
+        allElements.add(turtVisible);
+        allElements.add(cbTurtVisible);
+
+        return hb6;
     }
 
     private File getDataDirectory () {

@@ -7,7 +7,7 @@ import command.booleanOperations.LessThan;
 import command.booleanOperations.Not;
 import command.booleanOperations.NotEqual;
 import command.booleanOperations.Or;
-import command.display.setters.Palette;
+import command.display.setters.SetPalette;
 import command.display.setters.SetBackground;
 import command.display.setters.SetPenColor;
 import command.display.setters.SetPenSize;
@@ -134,7 +134,7 @@ public class CommandRegister {
         cf.registerCommand("Turtles", Turtles.class);
         cf.registerCommand("Tell", Tell.class);
 
-        cf.registerCommand("Palette", Palette.class);
+        cf.registerCommand("SetPalette", SetPalette.class);
         cf.registerCommand("SetBackground", SetBackground.class);
         cf.registerCommand("SetPenColor", SetPenColor.class);
         cf.registerCommand("SetPenSize", SetPenSize.class);

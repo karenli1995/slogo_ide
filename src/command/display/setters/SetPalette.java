@@ -10,10 +10,10 @@ import model.data.DisplayDataInterface;
  * @author Sally Al
  *
  */
-public class Palette extends SetDisplayCommands {
+public class SetPalette extends SetDisplayCommands {
 
 
-	public Palette(DisplayDataInterface displayData) {
+	public SetPalette(DisplayDataInterface displayData) {
 		super(displayData);
 	}
 
