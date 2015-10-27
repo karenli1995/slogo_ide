@@ -18,6 +18,7 @@ public class AskWith extends MultiCommands {
 	private static final long serialVersionUID = 4138964378710412366L;
 	private Data data;
 	private Traverser traverser = new Traverser();
+	private static final double ERROR_SIGNAL = -1000000.0;
 
 	public AskWith(Data turtleData) {
 		super(turtleData);
@@ -30,11 +31,13 @@ public class AskWith extends MultiCommands {
 		List<Integer> activeToBe = new ArrayList<Integer>();
 
 		for (int i = 0; i < data.turtleListSize(); i++) {
-			data.updateVariableMap(input.getCommandName(0, 1), (double) i);
-			double answer = traverser.traverse(input.getChildListAt(0), data);
-			if (answer == 1.0) {
+			try {data.updateVariableMap(input.getCommandName(0, 1), (double) i);
+			double check = traverser.traverse(input.getChildListAt(0), data);
+			if (check == 1.0) {
 				activeToBe.add(i);
 
+			}}catch (Exception e){
+				return ERROR_SIGNAL;
 			}
 		}
 
@@ -67,7 +70,10 @@ public class AskWith extends MultiCommands {
 			turtleData.setActiveTurtle(i);
 			// turtleData.updateVariableMap(input.getCommandName(0, 1), (double)
 			// i);
-			answer = traverser.traverse(input.getChildListAt(1), turtleData);
+			try{answer = traverser.traverse(input.getChildListAt(1), turtleData);}
+			catch(Exception e){
+				answer = ERROR_SIGNAL;
+			}
 		}
 		turtleData.setActiveTurtle(originalID);
 		turtleData.clearActiveList();
