@@ -37,9 +37,7 @@ public class Ask extends Command {
 		for (int i = 0; i < turtleData.activeTurtleListSize(); i++) {
 			originalActiveList.add(turtleData.activeTurtleListValue(i));
 		}
-		for (int i = 0; i < turtleData.activeTurtleListSize(); i++) {
-			turtleData.removeElementActiveList(i);
-		}
+		turtleData.clearActiveList();
 
 		List<ParseTreeNode<CommandInterface>> turtles = input.getChildListAt(0);
 		// indices of turtles should be affected
@@ -75,9 +73,7 @@ public class Ask extends Command {
 			answer = traverser.traverse(input.getChildListAt(1), turtleData);
 		}
 		turtleData.setActiveTurtle(originalID);
-		for (int i = 0; i < turtleData.activeTurtleListSize(); i++) {
-			turtleData.removeElementActiveList(i);
-		}
+		turtleData.clearActiveList();
 
 		for (int i = 0; i < originalActiveList.size(); i++) {
 			turtleData.addToActiveList(originalActiveList.get(i));
