@@ -5,6 +5,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+
 import model.data.Data;
 import model.data.DataTurtleInterface;
 import model.data.DisplayDataInterface;
@@ -42,7 +43,7 @@ public class CommandFactory {
 
     public Command createCommand (String commandName) {
         Class<?> commandClass = createClass(commandName);
-        
+
         Constructor<?> commandConstructor = createConstructor(commandClass);
 
         return createClassInstance(commandClass, commandConstructor);

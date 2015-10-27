@@ -19,21 +19,13 @@ public class Sine extends Command {
     public Sine () {
     }
 
-	/* (non-Javadoc)
-	 * @see command.Command#execute(controller.ParseTreeChildren)
-	 */
-	@Override
-	public double execute(ParseTreeChildren distance) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
- /*   @Override
-    public double executeCommand (ParseTreeChildren argument) {
+   @Override
+    public double execute(ParseTreeChildren argument) {
         double sine = Math.sin(Math.toRadians(argument.getCommandValue(0, 0)));
         sine = RoundTo2Decimals(sine);
         setValue(sine);
         return sine;
-    }*/
+    }
 
 }

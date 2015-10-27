@@ -3,6 +3,7 @@ package command.commandsObservers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
@@ -19,9 +20,9 @@ import view.settings.SlogoProperties;
  *
  */
 public class DisplayCommandObserver implements Observer,Serializable {
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 3904275080077140560L;
 	Data data;
@@ -33,13 +34,33 @@ public class DisplayCommandObserver implements Observer,Serializable {
 	public void update(Observable o, Object arg) {
 
 		DisplayCommands observedClass = (DisplayCommands) o;
-		Map<Display, Double> map=observedClass.getMap();
+		Map<Display, List<Double>> map=observedClass.getMap();
 		if(map.get(Display.SETBG)!=null){
 			//put the method/variable here
 			//map key is enum and value is double
-			data.setMyColor(Color.web(myColors.get(map.get(Display.SETBG).intValue())));
+			data.setMyColor(Color.web(myColors.get(map.get(Display.SETBG).get(0).intValue())));
 		}
-
+		if(map.get(Display.SETPC)!=null){
+			for(int i = 0; i<data.activeTurtleListSize();i++){
+				int turt = data.activeTurtleListValue(i);
+				data.getAllTurtles().get(turt).getPen().setColor(Color.web(myColors.get(map.get(Display.SETPC).intValue())));
+			}
+		}
+		if(map.get(Display.SETPS)!=null){
+			for(int i = 0; i<data.activeTurtleListSize();i++){
+				int turt = data.activeTurtleListValue(i);
+				data.getAllTurtles().get(turt).getPen().setThickness(map.get(Display.SETPS).intValue());
+			}
+		}
+		if(map.get(Display.SETSH)!=null){
+			for(int i = 0; i<data.activeTurtleListSize();i++){
+				int turt = data.activeTurtleListValue(i);
+				data.getAllTurtles().get(turt).getPen().setDashes(map.get(Display.SETPS));
+			}
+		}
+		/*if(map.get(Display.SETPALETTE)!=null){
+			SlogoProperties.addColor()
+		}*/
 
 		}
 

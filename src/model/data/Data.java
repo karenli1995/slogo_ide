@@ -45,6 +45,7 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 		createTurtle();
 
 		activeTurtles = new ActiveTurtles();
+		addToActiveList(0);
 		setUserHistory(new ArrayList<String>());
 		setVariableMap(new HashMap<String, Double>());
 		setUserCommandMap(new HashMap<String, List<ParseTreeNode<CommandInterface>>>());
@@ -254,6 +255,12 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	public void clearActiveList() {
 		activeTurtles.clear();
 	}
+	public Boolean contains(int value){
+
+
+		return (myTurtles.contains(value));
+	}
+
 
 
 }

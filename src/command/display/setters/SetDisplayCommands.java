@@ -1,6 +1,9 @@
 
 package command.display.setters;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import command.display.Display;
 import command.display.DisplayCommands;
 import controller.ParseTreeChildren;
@@ -28,14 +31,16 @@ public abstract class SetDisplayCommands extends DisplayCommands {
     public double execute (ParseTreeChildren input) {
         double value = input.getCommandValue(0, 0);
         setValue(value);
-        putAndNotify(getEnum(), value);
+        List<Double> list = new ArrayList<Double>();
+        list.add(value);
+        putAndNotify(getEnum(), list);
         return value;
 
     }
 
 
 
-    protected void putAndNotify (Display name, double value) {
+    protected void putAndNotify (Display name, List<Double> value) {
         getMap().put(name, value);
         setChanged();
         notifyObservers();
