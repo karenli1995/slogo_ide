@@ -18,7 +18,9 @@ public class CommandFactory {
     private Map<String, Class<?>> reflectionMap = new HashMap<String, Class<?>>();
     private Map<String, String> reflectionMapString = new HashMap<String, String>();
     private final String CLASS_PROPERTIES = "resources/class";
+    private final String ERROR_RESOURCES = "resources/error";
     private ResourceBundle resource;
+    private ResourceBundle errorResources;
 
     public CommandFactory (Data data) {
         turtleData = data;
@@ -26,6 +28,7 @@ public class CommandFactory {
         displayData = data;
 
         resource = ResourceBundle.getBundle(CLASS_PROPERTIES);
+        errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
         Enumeration<String> tempList = resource.getKeys();
         while (tempList.hasMoreElements()) {
             String tempString = tempList.nextElement();
@@ -69,7 +72,7 @@ public class CommandFactory {
 
         }
         catch (Exception e) {
-            allData.setErrorMessage("command not found");
+            allData.setErrorMessage("notFound");
         }
         return commandConstructor;
     }
