@@ -4,7 +4,7 @@ import command.Command;
 import controller.ParseTreeChildren;
 
 
-public class ListStart extends Command {
+public class ListStart extends Bracket {
     /**
      *
      */
@@ -12,13 +12,6 @@ public class ListStart extends Command {
 
     public ListStart () {
 
-    }
-
-    @Override
-    public double execute (ParseTreeChildren distance) {
-        System.out.println("this happened");
-
-        return 0;
     }
 
 }

@@ -4,7 +4,6 @@
 package command.booleanOperations;
 
 import java.util.List;
-import command.Command;
 import command.otherCommands.UnlimitedInputDoubleCommand;
 import controller.ParseTreeChildren;
 import model.data.Data;

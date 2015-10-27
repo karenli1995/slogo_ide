@@ -106,9 +106,7 @@ public class Parser {
                 return index;
             }
             if (commandList.get(index)[1].equals("ListStart")) {
-                ParseTreeNode<CommandInterface> listStart = createNewNode(index, head);
-                tempNodeList.add(listStart);
-                index++;
+                index = bracket(index, head, tempNodeList);
                 while (true) {
                     if (!commandList.get(index)[1].equals("ListEnd")) {
                         ParseTreeNode<CommandInterface> newNode = createNewNode(index, head);
@@ -117,9 +115,7 @@ public class Parser {
                         tempNodeList.add(newNode);
                     }
                     else {
-                        ParseTreeNode<CommandInterface> listEnd = createNewNode(index, head);
-                        tempNodeList.add(listEnd);
-                        index++;
+                        index = bracket(index, head, tempNodeList);
 
                         break;
                     }
@@ -134,6 +130,15 @@ public class Parser {
             head.addChild(tempNodeList);
         }
 
+        return index;
+    }
+
+    private int bracket (int index,
+                         ParseTreeNode<CommandInterface> head,
+                         List<ParseTreeNode<CommandInterface>> tempNodeList) {
+        ParseTreeNode<CommandInterface> listStart = createNewNode(index, head);
+        tempNodeList.add(listStart);
+        index++;
         return index;
     }
 
