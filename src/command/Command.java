@@ -4,6 +4,7 @@
 package command;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.Observable;
 
 import controller.ParseTreeChildren;
@@ -60,4 +61,8 @@ public abstract class Command extends Observable implements CommandInterface, Se
         value = d;
     }
 
+    protected double RoundTo2Decimals(double val) {
+		DecimalFormat df2 = new DecimalFormat("###.##");
+		return Double.valueOf(df2.format(val));
+	}
 }
