@@ -3,6 +3,7 @@ package command.otherCommands;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeChildren;
@@ -12,7 +13,11 @@ import model.data.Data;
 
 
 public class UserCommand extends Command {
-    private Data allData;
+
+	private static final long serialVersionUID = -8672243465517450294L;
+	private Data allData;
+	private final String INPUT_RESOURCES = "resources/input";
+    private final String ERROR_RESOURCES = "resources/error";
     Traverser traverser = new Traverser();
     Map<String, Double> localMap;
     Map<String, Double> tempMap;
@@ -39,6 +44,9 @@ public class UserCommand extends Command {
             allData.setVariableMap(localMap);
             ans = traverser.traverse(temp, allData);
             allData.setVariableMap(tempMap);
+        }else if(!distance.getParent().getParent()
+                .getCommand().getClass().getSimpleName().equals("MakeUserInstruction")){
+        	allData.setErrorMessage("notFound");
         }
 
         return ans;

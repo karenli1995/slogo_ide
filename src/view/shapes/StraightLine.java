@@ -65,9 +65,9 @@ public class StraightLine extends AbstractShape {
                 if (distance < SlogoProperties.getSceneHeight() - myTurtScene.getMyCanvasHeight()) {
                 	Line recentLine =
                             new Line(point1.getX(), point1.getY(), point2.getX(), point2.getY());
-                    recentLine.setStroke(Color.web(allPenColors.get(i)));
-                    recentLine.setStrokeWidth(allPenThicks.get(i));
-                    recentLine.getStrokeDashArray().add(0, allPenDash.get(i));
+                    recentLine.setStroke(Color.web(allPenColors.get(i+1)));
+                    recentLine.setStrokeWidth(allPenThicks.get(i+1));
+                    recentLine.getStrokeDashArray().add(0, allPenDash.get(i+1));
                     myAllShapes.add(recentLine);
                     ret.add(recentLine);
                 }

@@ -52,6 +52,7 @@ public class Tell extends Command {
 				add(range);
 			}
 		}
+		
 		return range;
 	}
 

@@ -71,6 +71,9 @@ public class MenuPanel extends MenuBar {
                 e1.printStackTrace();
             }
         });
+        
+        MenuItem colorArray = new MenuItem("Color Values");
+        colorArray.setOnAction(e->showColorArray());
 
         MenuItem help = new MenuItem(myResource.getString("HELP"));
         help.setAccelerator(KeyCombination.keyCombination("Ctrl+H"));
@@ -84,7 +87,7 @@ public class MenuPanel extends MenuBar {
             System.exit(0);
         });
 
-        menu.getItems().addAll(newfile, open, save, help, new SeparatorMenuItem(), exit);
+        menu.getItems().addAll(newfile, open, save,colorArray, help, new SeparatorMenuItem(), exit);
 
         return menu;
     }
@@ -156,6 +159,11 @@ public class MenuPanel extends MenuBar {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+    
+    public void showColorArray(){
+    	ColorAlert array = new ColorAlert();
+    	array.showAndWait();
     }
 
     private File getDataDirectory () {

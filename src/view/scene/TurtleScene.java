@@ -148,6 +148,13 @@ public class TurtleScene extends TabPane implements Observer {
             return true;
         }
     }
+    
+    public void setActiveTurtleID(int ID){
+    	myController.getMyScene().getAllData().get(getIdOfTab()).clearActiveList();
+    	myController.getMyScene().getAllData().get(getIdOfTab()).addToActiveList(ID);
+    	//myController.getMyScene().getAllData().get(getIdOfTab()).setActiveTurtle(ID);
+		System.out.println("ACTIVE ID IS " + ID);
+    }
 
     public void addListener () {
         getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
@@ -161,13 +168,16 @@ public class TurtleScene extends TabPane implements Observer {
 
             private void newTab (Number newValue) {
                 int tabId = (int) newValue;
+
                 TurtleSceneTab newTab = myTabs.get(tabId);
 
                 List<SlogoImage> newTurts = newTab.getAllSlogoImages();
-                for (SlogoImage slogoImage : newTurts) {
+                for(int j=0; j<newTurts.size(); j++) {
+                	SlogoImage slogoImage = newTurts.get(j);
                     ImageView image = slogoImage.getMyImage();
                     newTab.getTurtScene().addChildren(image);
                     newTab.getTurtScene().setScreenLoc(image, image.getX(), image.getY());
+                    newTab.setSlogoImage(j, slogoImage);
                 }
 
                 newTab.getTurtScene().updateMyTabs((int) newValue, newTab);
@@ -175,7 +185,6 @@ public class TurtleScene extends TabPane implements Observer {
 
             private void oldTab (Number oldValue) {
                 int tabId = (int) oldValue;
-
                 TurtleSceneTab oldTab = myTabs.get(tabId);
 
                 List<Object> oldLines = oldTab.getShape().getAllShapes();
@@ -197,8 +206,8 @@ public class TurtleScene extends TabPane implements Observer {
     	SlogoScene otherSlogoObj = (SlogoScene) o;
 
         int tabId = getIdOfTab();
-        TurtleSceneTab tab = getCurrTab();
-         
+        System.out.println("kerrn " + tabId);
+        TurtleSceneTab tab = getCurrTab();         
 
         // check if pen down or up
         // when pendown() changes
@@ -206,23 +215,31 @@ public class TurtleScene extends TabPane implements Observer {
             Line temp = (Line) i;
             removeChildren(temp);
         }
+        ArrayList<ArrayList<Line>> allLines = new ArrayList<ArrayList<Line>>();
+        for(int i = 0; i<otherSlogoObj.getTurtleData(tabId).getAllTurtles().size();i++){
+        SlogoObjects turt = otherSlogoObj.getTurtleData(tabId).getAllTurtles().get(i);
         ArrayList<Point2D> currTrailList =
-                otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPathCoordinates();
+                turt.getTrail().getPathCoordinates();
         ArrayList<Double> penStatusList =
-                otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getPenPath();
+                turt.getTrail().getPenPath();
         ArrayList<String> penColors =
-                otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getColorPath();
+                turt.getTrail().getColorPath();
         ArrayList<Integer> penThicks =
-                otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getThicknessPath();
+                turt.getTrail().getThicknessPath();
         ArrayList<Double> penDashes =
-                otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getDashPath();
+                turt.getTrail().getDashPath();
         ArrayList<Line> currLine =
                 tab.getShape().drawShape(currTrailList, penStatusList, penColors, penThicks,
                                          penDashes);
-        for (Line j : currLine) {
-            tab.getShape().addShape(j);
-            addChildren(j);
+        allLines.add(currLine);
         }
+        for (ArrayList<Line> i : allLines) {
+            for(Line j:i){
+        	tab.getShape().addShape(j);
+            addChildren(j);
+            }
+        }
+        
         // when setRotationAngle() changes and setTrail() changes
         List<SlogoObjects> turts = otherSlogoObj.getTurtleData(tabId).getAllTurtles();
         for (int i = 0; i < turts.size(); i++) {
@@ -231,11 +248,12 @@ public class TurtleScene extends TabPane implements Observer {
             double newLocX = slogoObject.getTrail().getX();
             double newLocY = slogoObject.getTrail().getY();
 
+            
             SlogoImage currSlogoImage;
             try{
             	currSlogoImage = tab.getSlogoImage(i);
             }catch(Exception e){
-            	currSlogoImage = new SlogoImage(this);
+            	currSlogoImage = new SlogoImage(this,tab.getAllSlogoImages().size());
             	tab.getAllSlogoImages().add(currSlogoImage);
             	this.addChildren(currSlogoImage.getMyImage());
             }
