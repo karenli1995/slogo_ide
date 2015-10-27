@@ -51,6 +51,7 @@ public class Parser {
         createCommandList(removeComments(input));
         nodeList = new ArrayList<ParseTreeNode<CommandInterface>>();
         commandInputMap = allData.getMyUserCommandInputMap();
+        
         // this.printCommandList();
 
         if (checkInput()) {
@@ -202,7 +203,7 @@ public class Parser {
                 (double) Integer.parseInt(resources.getString(node.getCommand().getClass().getSimpleName()));
         if (node.getCommand() != null) {
             if (checkMatch("UserCommand", node)) {
-                if (!commandTimesMap.containsKey(node.getCommand().getName())) {
+                if (!commandTimesMap.containsKey(node.getCommand().getName()) && commandInputMap.containsKey(node.getCommand().getName())) {
                     try {
                         numInputs = commandInputMap.get(node.getCommand().getName());
                     }
