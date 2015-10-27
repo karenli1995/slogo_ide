@@ -156,6 +156,10 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 		myColor = color;
 		myColorHex = color.toString();
 	}
+	
+	public void setMyColor(Double value){
+		
+	}
 
 	@Override
 	public double getCommandValue() {
