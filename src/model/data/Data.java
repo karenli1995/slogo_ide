@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import command.CommandInterface;
 import command.commandsObservers.DisplayCommandObserver;
 import command.commandsObservers.TurtleCommandsObserver;
@@ -18,255 +17,255 @@ import model.turtleinfo.SlogoObjects;
 import model.turtleinfo.Trail;
 import model.turtleinfo.Turtle;
 
-public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserverInterface, ColorDataInterface, Serializable {
 
-	private static final long serialVersionUID = 2437173979976418913L;
-	private List<SlogoObjects> myTurtles;
-	private List<Trail> myTrails;
-	private boolean myError;
-	private String myErrorMessage;
-	private List<String> myUserHistory;
-	private Map<String, Double> myVariableMap;
-	private Map<String, List<ParseTreeNode<CommandInterface>>> myUserCommandMap;
-	private Map<String, List<String>> myCommandVariableMap;
-	private Map<String, Double> myUserCommandInputMap;
-	private transient Color myColor;
-	private String myColorHex;
-	private double myCommandValue;
-	private ActiveTurtles activeTurtles;
-	private int activeTurtle = 0;
-	private DisplayCommandObserver displayCommands;
-	private TurtleCommandsObserver turtleCommands;
-	private int turtleID = 0;
+public class Data implements DisplayDataInterface, DataTurtleInterface, ForObserverInterface,
+    ColorDataInterface, Serializable {
 
-	public Data() {
-		myTurtles = new ArrayList<SlogoObjects>();
-		myTrails = new ArrayList<Trail>();
+  private static final long serialVersionUID = 2437173979976418913L;
+  private List<SlogoObjects> myTurtles;
+  private List<Trail> myTrails;
+  private boolean myError;
+  private String myErrorMessage;
+  private List<String> myUserHistory;
+  private Map<String, Double> myVariableMap;
+  private Map<String, List<ParseTreeNode<CommandInterface>>> myUserCommandMap;
+  private Map<String, List<String>> myCommandVariableMap;
+  private Map<String, Double> myUserCommandInputMap;
+  private transient Color myColor;
+  private String myColorHex;
+  private double myCommandValue;
+  private ActiveTurtles activeTurtles;
+  private int activeTurtle = 0;
+  private DisplayCommandObserver displayCommands;
+  private TurtleCommandsObserver turtleCommands;
+  private int turtleID = 0;
 
-		createTurtle();
+  public Data() {
+    myTurtles = new ArrayList<SlogoObjects>();
+    myTrails = new ArrayList<Trail>();
 
-		activeTurtles = new ActiveTurtles();
-		addToActiveList(0);
-		setUserHistory(new ArrayList<String>());
-		setVariableMap(new HashMap<String, Double>());
-		setUserCommandMap(new HashMap<String, List<ParseTreeNode<CommandInterface>>>());
-		setMyCommandVariableMap(new HashMap<String, List<String>>());
-		setMyUserCommandInputMap(new HashMap<String, Double>());
+    createTurtle();
 
-		setError(false);
+    activeTurtles = new ActiveTurtles();
+    addToActiveList(0);
+    setUserHistory(new ArrayList<String>());
+    setVariableMap(new HashMap<String, Double>());
+    setUserCommandMap(new HashMap<String, List<ParseTreeNode<CommandInterface>>>());
+    setMyCommandVariableMap(new HashMap<String, List<String>>());
+    setMyUserCommandInputMap(new HashMap<String, Double>());
 
-		myUserHistory = new ArrayList<String>();
-		myVariableMap = new HashMap<String, Double>();
-		myUserCommandMap = new HashMap<String, List<ParseTreeNode<CommandInterface>>>();
+    setError(false);
 
-		setMyColor(Color.ALICEBLUE);
+    myUserHistory = new ArrayList<String>();
+    myVariableMap = new HashMap<String, Double>();
+    myUserCommandMap = new HashMap<String, List<ParseTreeNode<CommandInterface>>>();
 
-		displayCommands = new DisplayCommandObserver(this);
-		turtleCommands = new TurtleCommandsObserver(this);
+    setMyColor(Color.ALICEBLUE);
 
-	}
+    displayCommands = new DisplayCommandObserver(this);
+    turtleCommands = new TurtleCommandsObserver(this);
 
-	@Override
-	public void createTurtle() {
-		Turtle defaultTurtle = new Turtle();
-		myTurtles.add(defaultTurtle);
-		setTurtle(turtleID, defaultTurtle);
-		myTrails.add(defaultTurtle.getTrail());
-		turtleID++;
-	}
+  }
 
-	@Override
-	public void setTurtle(int turtleId, SlogoObjects turtle) {
-		myTurtles.set(turtleId, turtle);
-	}
+  @Override
+  public void createTurtle() {
+    Turtle defaultTurtle = new Turtle();
+    myTurtles.add(defaultTurtle);
+    setTurtle(turtleID, defaultTurtle);
+    myTrails.add(defaultTurtle.getTrail());
+    turtleID++;
+  }
 
-	@Override
-	public SlogoObjects getTurtle(int turtleId) {
-		return myTurtles.get(turtleId);
-	}
+  @Override
+  public void setTurtle(int turtleId, SlogoObjects turtle) {
+    myTurtles.set(turtleId, turtle);
+  }
 
-	@Override
-	public List<SlogoObjects> getAllTurtles() {
-		return myTurtles;
-	}
+  @Override
+  public SlogoObjects getTurtle(int turtleId) {
+    return myTurtles.get(turtleId);
+  }
 
-	public Trail getTrail(int turtleId) {
-		return myTrails.get(turtleId);
-	}
+  @Override
+  public List<SlogoObjects> getAllTurtles() {
+    return myTurtles;
+  }
 
-	@Override
-	public int activeTurtleListSize() {
-		return activeTurtles.size();
-	}
+  public Trail getTrail(int turtleId) {
+    return myTrails.get(turtleId);
+  }
 
-	@Override
-	public int activeTurtleListValue(int index) {
-		return activeTurtles.getvalue(index);
-	}
+  @Override
+  public int activeTurtleListSize() {
+    return activeTurtles.size();
+  }
 
-	public List<Integer> getActiveTurtles(){
-		return activeTurtles.getActives();
-	}
+  @Override
+  public int activeTurtleListValue(int index) {
+    return activeTurtles.getvalue(index);
+  }
 
-	@Override
-	public void addToActiveList(int value) {
-		activeTurtles.update(value);
-		setActiveTurtle(value);
-	}
+  public List<Integer> getActiveTurtles() {
+    return activeTurtles.getActives();
+  }
 
-	public boolean isError() {
-		return myError;
-	}
+  @Override
+  public void addToActiveList(int value) {
+    activeTurtles.update(value);
+    setActiveTurtle(value);
+  }
 
-	public void setError(boolean error) {
-		myError = error;
-	}
+  public boolean isError() {
+    return myError;
+  }
 
-	public void setVariableMap(Map<String, Double> variableMap) {
-		myVariableMap = variableMap;
-	}
+  public void setError(boolean error) {
+    myError = error;
+  }
 
-	@Override
-	public void updateVariableMap(String varName, Double value) {
-		myVariableMap.put(varName, value);
-	}
+  public void setVariableMap(Map<String, Double> variableMap) {
+    myVariableMap = variableMap;
+  }
 
-	public void setUserCommandMap(Map<String, List<ParseTreeNode<CommandInterface>>> userCommandMap) {
-		myUserCommandMap = userCommandMap;
+  @Override
+  public void updateVariableMap(String varName, Double value) {
+    myVariableMap.put(varName, value);
+  }
 
-	}
-	///
+  public void setUserCommandMap(Map<String, List<ParseTreeNode<CommandInterface>>> userCommandMap) {
+    myUserCommandMap = userCommandMap;
 
-	public List<String> getUserHistory() {
-		return myUserHistory;
-	}
+  }
+  ///
 
-	public void setUserHistory(List<String> userHistory) {
-		myUserHistory = userHistory;
-	}
+  public List<String> getUserHistory() {
+    return myUserHistory;
+  }
 
-	public void addCommandToHistory(String s) {
-		myUserHistory.add(s);
-	}
+  public void setUserHistory(List<String> userHistory) {
+    myUserHistory = userHistory;
+  }
 
-	@Override
-	public Color getMyColor() {
-		return myColor;
+  public void addCommandToHistory(String s) {
+    myUserHistory.add(s);
+  }
 
-	}
+  @Override
+  public Color getMyColor() {
+    return myColor;
 
-	@Override
-	public void setMyColor(Color color) {
-		myColor = color;
-		myColorHex = color.toString();
-	}
+  }
 
-	@Override
-	public double getCommandValue() {
-		return myCommandValue;
-	}
+  @Override
+  public void setMyColor(Color color) {
+    myColor = color;
+    myColorHex = color.toString();
+  }
 
-	@Override
-	public void setCommandValue(double commandValue) {
-		myCommandValue = commandValue;
-	}
+  @Override
+  public double getCommandValue() {
+    return myCommandValue;
+  }
 
-	@Override
-	public String getErrorMessage() {
-		String temp = myErrorMessage;
-		myErrorMessage = null;
-		return temp;
-	}
+  @Override
+  public void setCommandValue(double commandValue) {
+    myCommandValue = commandValue;
+  }
 
-	@Override
-	public void setErrorMessage(String errorMessage) {
-		myErrorMessage = errorMessage;
+  @Override
+  public String getErrorMessage() {
+    String temp = myErrorMessage;
+    myErrorMessage = null;
+    return temp;
+  }
 
-	}
+  @Override
+  public void setErrorMessage(String errorMessage) {
+    myErrorMessage = errorMessage;
 
-	@Override
-	public Map<String, Double> getVariableMap() {
-		return myVariableMap;
-	}
+  }
 
-	@Override
-	public Map<String, List<ParseTreeNode<CommandInterface>>> getUserCommandMap() {
-		return myUserCommandMap;
-	}
+  @Override
+  public Map<String, Double> getVariableMap() {
+    return myVariableMap;
+  }
 
-	public void recreate() {
-		for(int i = 0; i<myTrails.size();i++){
-		myTrails.get(i).recreate();
-		myTurtles.get(i).getPen().recreate();
-		}
-		myColor = Color.web(myColorHex);
-	}
+  @Override
+  public Map<String, List<ParseTreeNode<CommandInterface>>> getUserCommandMap() {
+    return myUserCommandMap;
+  }
 
-	public void writeObject(ObjectOutputStream o) throws IOException {
-		o.defaultWriteObject();
-	}
-
-	public void readObject(ObjectInputStream i) throws ClassNotFoundException, IOException {
-		i.defaultReadObject();
-	}
-
-	@Override
-	public int turtleListSize() {
-
-		return myTurtles.size();
-	}
-
-	@Override
-	public  void setActiveTurtle(int value) {
-		activeTurtle = value;
-	}
-
-	@Override
-	public int getActiveTurtleID() {
-		return activeTurtle + 1;
-	}
-
-	public Map<String, List<String>> getMyCommandVariableMap() {
-		return myCommandVariableMap;
-	}
-
-	public void setMyCommandVariableMap(Map<String, List<String>> myCommandVariableMap) {
-		this.myCommandVariableMap = myCommandVariableMap;
-	}
-
-	@Override
-	public TurtleCommandsObserver getTurtleCommandsObserver() {
-		return turtleCommands;
-	}
-	@Override
-	public DisplayCommandObserver getDisplayCommandsObserver(){
-		return displayCommands;
-	}
-
-
-	@Override
-	public void removeElementActiveList(int index) {
-		activeTurtles.remove(index);
-	}
-
-    public Map<String, Double> getMyUserCommandInputMap () {
-        return myUserCommandInputMap;
+  public void recreate() {
+    for (int i = 0; i < myTrails.size(); i++) {
+      myTrails.get(i).recreate();
+      myTurtles.get(i).getPen().recreate();
     }
+    myColor = Color.web(myColorHex);
+  }
 
-    public void setMyUserCommandInputMap (Map<String, Double> myUserCommandInputMap) {
-        this.myUserCommandInputMap = myUserCommandInputMap;
-    }
+  public void writeObject(ObjectOutputStream o) throws IOException {
+    o.defaultWriteObject();
+  }
 
-	@Override
-	public void clearActiveList() {
-		activeTurtles.clear();
-	}
-	public Boolean contains(int value){
+  public void readObject(ObjectInputStream i) throws ClassNotFoundException, IOException {
+    i.defaultReadObject();
+  }
 
+  @Override
+  public int turtleListSize() {
 
-		return (myTurtles.contains(value));
-	}
+    return myTurtles.size();
+  }
 
+  @Override
+  public void setActiveTurtle(int value) {
+    activeTurtle = value;
+  }
 
+  @Override
+  public int getActiveTurtleID() {
+    return activeTurtle + 1;
+  }
+
+  public Map<String, List<String>> getMyCommandVariableMap() {
+    return myCommandVariableMap;
+  }
+
+  public void setMyCommandVariableMap(Map<String, List<String>> myCommandVariableMap) {
+    this.myCommandVariableMap = myCommandVariableMap;
+  }
+
+  @Override
+  public TurtleCommandsObserver getTurtleCommandsObserver() {
+    return turtleCommands;
+  }
+
+  @Override
+  public DisplayCommandObserver getDisplayCommandsObserver() {
+    return displayCommands;
+  }
+
+  @Override
+  public void removeElementActiveList(int index) {
+    activeTurtles.remove(index);
+  }
+
+  public Map<String, Double> getMyUserCommandInputMap() {
+    return myUserCommandInputMap;
+  }
+
+  public void setMyUserCommandInputMap(Map<String, Double> myUserCommandInputMap) {
+    this.myUserCommandInputMap = myUserCommandInputMap;
+  }
+
+  @Override
+  public void clearActiveList() {
+    activeTurtles.clear();
+  }
+
+  public Boolean contains(int value) {
+
+    return (myTurtles.contains(value));
+  }
 
 }

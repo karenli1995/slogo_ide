@@ -12,36 +12,36 @@ import model.data.Data;
 
 public abstract class UnlimitedInputDoubleCommand extends Command {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = -2278163311708568906L;
-	Traverser traverser = new Traverser();
-    protected Data allData;
+  /**
+  *
+  */
+  private static final long serialVersionUID = -2278163311708568906L;
+  Traverser traverser = new Traverser();
+  protected Data allData;
 
-    public UnlimitedInputDoubleCommand (Data allData) {
-        super(allData);
-        this.allData = allData;
-    }
+  public UnlimitedInputDoubleCommand(Data allData) {
+    super(allData);
+    this.allData = allData;
+  }
 
-    public double parameterLoop (UnlimitedInputDoubleInterface inter, ParseTreeChildren arguments) {
+  public double parameterLoop(UnlimitedInputDoubleInterface inter, ParseTreeChildren arguments) {
 
-        List<Double> compiledList = new ArrayList<Double>();
-        for (int i = 0; i < arguments.getNodeList().size(); i++) {
-            List<ParseTreeNode<CommandInterface>> tempList = arguments.getChildListAt(i);
-            traverser.traverse(tempList, allData);
-            for (int j = 0; j < tempList.size(); j++) {
-                if (!(arguments.getCommand(i, j).getClass().getSimpleName().equals("ListEnd") ||
-                      (arguments.getCommand(i, j).getClass().getSimpleName()
-                              .equals("ListStart")))) {
-                    compiledList.add(arguments.getCommandValue(i, j));
-                }
-            }
-
+    List<Double> compiledList = new ArrayList<Double>();
+    for (int i = 0; i < arguments.getNodeList().size(); i++) {
+      List<ParseTreeNode<CommandInterface>> tempList = arguments.getChildListAt(i);
+      traverser.traverse(tempList, allData);
+      for (int j = 0; j < tempList.size(); j++) {
+        if (!(arguments.getCommand(i, j).getClass().getSimpleName().equals("ListEnd") ||
+              (arguments.getCommand(i, j).getClass().getSimpleName()
+                  .equals("ListStart")))) {
+          compiledList.add(arguments.getCommandValue(i, j));
         }
-        double ans = 0;
-        ans = inter.doFunction(compiledList);
-        return ans;
+      }
 
     }
+    double ans = 0;
+    ans = inter.doFunction(compiledList);
+    return ans;
+
+  }
 }

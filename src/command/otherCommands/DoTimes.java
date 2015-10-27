@@ -8,24 +8,24 @@ import model.data.Data;
 
 public class DoTimes extends Command {
 
-    private static final long serialVersionUID = -1709915109882273600L;
-    private Data allData;
-  private  Traverser traverser = new Traverser();
+  private static final long serialVersionUID = -1709915109882273600L;
+  private Data allData;
+  private Traverser traverser = new Traverser();
 
-    public DoTimes (Data allData) {
-        super(allData);
-        this.allData = allData;
-    }
+  public DoTimes(Data allData) {
+    super(allData);
+    this.allData = allData;
+  }
 
-    @Override
-    public double execute (ParseTreeChildren list) {
-        int range = (int) list.getCommandValue(0, 2);
-        double answer = 0;
-        for (double i = 1; i < range + 1; i++) {
-            allData.updateVariableMap(list.getCommandName(0, 1), i);
-            answer = traverser.traverse(list.getChildListAt(1), allData);
-        }
-        return answer;
+  @Override
+  public double execute(ParseTreeChildren list) {
+    int range = (int) list.getCommandValue(0, 2);
+    double answer = 0;
+    for (double i = 1; i < range + 1; i++) {
+      allData.updateVariableMap(list.getCommandName(0, 1), i);
+      answer = traverser.traverse(list.getChildListAt(1), allData);
     }
+    return answer;
+  }
 
 }

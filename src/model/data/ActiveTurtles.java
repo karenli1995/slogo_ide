@@ -12,47 +12,47 @@ import java.util.List;
  */
 public class ActiveTurtles implements Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1920533774790920840L;
-	private List<Integer> activeTurtles;
+  /**
+  *
+  */
+  private static final long serialVersionUID = 1920533774790920840L;
+  private List<Integer> activeTurtles;
 
-    protected ActiveTurtles () {
-        activeTurtles = new ArrayList<Integer>();
-        activeTurtles.add(0);
+  protected ActiveTurtles() {
+    activeTurtles = new ArrayList<Integer>();
+    activeTurtles.add(0);
+
+  }
+
+  public void update(int activeTobe) {
+
+    if (activeTurtles.contains(activeTobe) == false) {
+      activeTurtles.add(activeTobe);
 
     }
+  }
 
-    public void update (int activeTobe) {
+  public int size() {
+    return activeTurtles.size();
+  }
 
-        if (activeTurtles.contains(activeTobe) == false) {
-            activeTurtles.add(activeTobe);
+  public void remove(int index) {
+    activeTurtles.remove(index);
+  }
 
-        }
-    }
+  public void clear() {
+    activeTurtles.clear();
+  }
 
-    public int size () {
-        return activeTurtles.size();
+  public int getvalue(int index) {
+    if (index < activeTurtles.size()) {
+      return activeTurtles.get(index);
+    } else {
+      return 0;
     }
+  }
 
-    public void remove(int index){
-    	activeTurtles.remove(index);
-    }
-    public void clear(){
-    	activeTurtles.clear();
-    }
-
-    public int getvalue (int index) {
-        if (index < activeTurtles.size()) {
-            return activeTurtles.get(index);
-        }
-        else {
-            return 0;
-        }
-    }
-    
-    public List<Integer> getActives(){
-    	return activeTurtles;
-    }
+  public List<Integer> getActives() {
+    return activeTurtles;
+  }
 }

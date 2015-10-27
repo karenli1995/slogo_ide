@@ -4,10 +4,10 @@ import error.ErrorResources;
 
 
 public abstract class ControlFunctions {
-    protected ErrorResources error;
+  protected ErrorResources error;
 
-    public ControlFunctions () {
-        error = new ErrorResources();
-    }
+  public ControlFunctions() {
+    error = new ErrorResources();
+  }
 
 }

@@ -10,14 +10,14 @@ package command.math.trig;
  */
 public class Tangent extends Trig {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 878811280886142326L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 878811280886142326L;
 
-    @Override
-    protected double evaluateAngle (double angle) {
-        return (Math.tan(angle));
-    }
+  @Override
+  protected double evaluateAngle(double angle) {
+    return (Math.tan(angle));
+  }
 
 }

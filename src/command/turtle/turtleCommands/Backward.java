@@ -3,6 +3,7 @@ package command.turtle.turtleCommands;
 
 import model.data.DataTurtleInterface;
 
+
 /**
  *
  * @author Sally Al
@@ -10,18 +11,18 @@ import model.data.DataTurtleInterface;
  */
 public class Backward extends TurtleMovement {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 6054146528991269604L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 6054146528991269604L;
 
-    public Backward (DataTurtleInterface data) {
-        super(data);
-    }
+  public Backward(DataTurtleInterface data) {
+    super(data);
+  }
 
-    @Override
-    protected int getSign () {
-        return -1;
-    }
+  @Override
+  protected int getSign() {
+    return -1;
+  }
 
 }

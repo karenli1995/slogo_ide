@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
 import command.Command;
 import command.CommandInterface;
 import controller.ParseTreeChildren;
@@ -48,7 +47,7 @@ public class UserCommand extends Command {
       allData.setVariableMap(tempMap);
     } else if (!distance.getParent().getParent()
         .getCommand().getClass().getSimpleName().equals("MakeUserInstruction")) {
-      allData.setErrorMessage(getName()+": " +errorResources.getString("notFound"));
+      allData.setErrorMessage(getName() + ": " + errorResources.getString("notFound"));
     }
 
     return ans;

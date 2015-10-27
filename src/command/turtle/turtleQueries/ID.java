@@ -5,6 +5,7 @@ import command.turtle.turtleCommands.TurtleCommands;
 import controller.ParseTreeChildren;
 import model.data.DataTurtleInterface;
 
+
 /**
  *
  * @author Sally Al
@@ -12,18 +13,18 @@ import model.data.DataTurtleInterface;
  */
 public class ID extends TurtleCommands {
 
-    private static final long serialVersionUID = 3565943439758546699L;
-    DataTurtleInterface turtleData;
+  private static final long serialVersionUID = 3565943439758546699L;
+  DataTurtleInterface turtleData;
 
-    public ID (DataTurtleInterface turtleData) {
-        super(turtleData);
-        this.turtleData = turtleData;
-    }
+  public ID(DataTurtleInterface turtleData) {
+    super(turtleData);
+    this.turtleData = turtleData;
+  }
 
-    @Override
-    public double executeCommand (ParseTreeChildren distance) {
-    	this.setValue(turtleData.getActiveTurtleID());
-        return turtleData.getActiveTurtleID();
-    }
+  @Override
+  public double executeCommand(ParseTreeChildren distance) {
+    setValue(turtleData.getActiveTurtleID());
+    return turtleData.getActiveTurtleID();
+  }
 
 }
