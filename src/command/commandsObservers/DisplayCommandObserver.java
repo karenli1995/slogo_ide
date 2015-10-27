@@ -43,24 +43,25 @@ public class DisplayCommandObserver implements Observer,Serializable {
 		if(map.get(Display.SETPC)!=null){
 			for(int i = 0; i<data.activeTurtleListSize();i++){
 				int turt = data.activeTurtleListValue(i);
-				data.getAllTurtles().get(turt).getPen().setColor(Color.web(myColors.get(map.get(Display.SETPC).intValue())));
+				data.getAllTurtles().get(turt).getPen().setColor(Color.web(myColors.get(map.get(Display.SETPC).get(0).intValue())));
 			}
 		}
 		if(map.get(Display.SETPS)!=null){
 			for(int i = 0; i<data.activeTurtleListSize();i++){
 				int turt = data.activeTurtleListValue(i);
-				data.getAllTurtles().get(turt).getPen().setThickness(map.get(Display.SETPS).intValue());
+				data.getAllTurtles().get(turt).getPen().setThickness(map.get(Display.SETPS).get(0).intValue());
 			}
 		}
 		if(map.get(Display.SETSH)!=null){
 			for(int i = 0; i<data.activeTurtleListSize();i++){
 				int turt = data.activeTurtleListValue(i);
-				data.getAllTurtles().get(turt).getPen().setDashes(map.get(Display.SETPS));
+				data.getAllTurtles().get(turt).getPen().setDashes(map.get(Display.SETPS).get(0));
 			}
 		}
-		/*if(map.get(Display.SETPALETTE)!=null){
-			SlogoProperties.addColor()
-		}*/
+		if(map.get(Display.SETPALETTE)!=null){
+			String added = Color.rgb(map.get(Display.SETPALETTE).get(1).intValue(), map.get(Display.SETPALETTE).get(2).intValue(), map.get(Display.SETPALETTE).get(3).intValue()).toString();
+			SlogoProperties.addColor(map.get(Display.SETPALETTE).get(0).intValue(),added);
+		}
 
 		}
 
