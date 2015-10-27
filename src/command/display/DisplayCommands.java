@@ -2,6 +2,7 @@
 package command.display;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import command.Command;
@@ -14,7 +15,7 @@ import model.data.DisplayDataInterface;
  */
 public abstract class DisplayCommands extends Command {
 
-    private static Map<Display, Double> map = new HashMap<Display, Double>();
+    private static Map<Display, List<Double>> map = new HashMap<Display, List<Double>>();
 
 	public DisplayCommands( DisplayDataInterface displayData) {
 		this.addObserver(displayData.getDisplayCommandsObserver());
@@ -24,11 +25,11 @@ public abstract class DisplayCommands extends Command {
 
 	public abstract Display getEnum();
 
-	public static Map<Display, Double> getMap() {
+	public static Map<Display, List<Double>> getMap() {
 		return map;
 	}
 
-	public static void setMap(Map<Display, Double> map) {
+	public static void setMap(Map<Display, List<Double>> map) {
 		DisplayCommands.map = map;
 	}
 
