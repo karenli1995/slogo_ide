@@ -39,7 +39,27 @@ public class DisplayCommandObserver implements Observer,Serializable {
 			//map key is enum and value is double
 			data.setMyColor(Color.web(myColors.get(map.get(Display.SETBG).intValue())));
 		}
-
+		if(map.get(Display.SETPC)!=null){
+			for(int i = 0; i<data.activeTurtleListSize();i++){
+				int turt = data.activeTurtleListValue(i);
+				data.getAllTurtles().get(turt).getPen().setColor(Color.web(myColors.get(map.get(Display.SETPC).intValue())));
+			}
+		}
+		if(map.get(Display.SETPS)!=null){
+			for(int i = 0; i<data.activeTurtleListSize();i++){
+				int turt = data.activeTurtleListValue(i);
+				data.getAllTurtles().get(turt).getPen().setThickness(map.get(Display.SETPS).intValue());
+			}
+		}
+		if(map.get(Display.SETSH)!=null){
+			for(int i = 0; i<data.activeTurtleListSize();i++){
+				int turt = data.activeTurtleListValue(i);
+				data.getAllTurtles().get(turt).getPen().setDashes(map.get(Display.SETPS));
+			}
+		}
+		/*if(map.get(Display.SETPALETTE)!=null){
+			SlogoProperties.addColor()
+		}*/
 
 		}
 

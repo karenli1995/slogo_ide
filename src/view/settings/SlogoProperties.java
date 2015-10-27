@@ -31,4 +31,8 @@ public class SlogoProperties {
     public static ArrayList<String> getColorArray(){
     	return myColors;
     }
+    
+    public static void addColor(int index, String color){
+    	myColors.add(index, color);
+    }
 }
