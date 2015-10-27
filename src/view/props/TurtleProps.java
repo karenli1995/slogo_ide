@@ -63,7 +63,7 @@ public class TurtleProps extends AbstractProperties {
     private HBox addTurtShapeLabel () {
         HBox hb4 = new HBox();
         Label turtleShape = new Label(myResource.getString("TURTSHAPE"));
-        Button chooseShape = new Button("Choose Shape");
+        Button chooseShape = new Button(myResource.getString("CHOOSESH"));
         chooseShape.setOnAction( (e) -> {
             openImage();
         });

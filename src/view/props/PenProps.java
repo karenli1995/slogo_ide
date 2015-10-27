@@ -58,7 +58,7 @@ public class PenProps extends AbstractProperties {
         int mySceneId = myTurtleScene.getIdOfTab();
 
         HBox hb8 = new HBox();
-        Label thickLabel = new Label("Pen Thickness");
+        Label thickLabel = new Label(myResource.getString("THICK"));
         ObservableList<Integer> thicks = FXCollections.observableArrayList(1, 2, 3, 4, 5);
         ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
         thicknesses.setOnAction( (e) -> {
@@ -81,7 +81,7 @@ public class PenProps extends AbstractProperties {
         int mySceneId = myTurtleScene.getIdOfTab();
 
         HBox hb8 = new HBox();
-        Label penPosLabel = new Label("Pen Position");
+        Label penPosLabel = new Label(myResource.getString("PENPOS"));
         ObservableList<String> pos = FXCollections.observableArrayList("Up", "Down");
         ComboBox<String> positions = new ComboBox<String>(pos);
         positions.setOnAction( (e) -> {
@@ -109,7 +109,7 @@ public class PenProps extends AbstractProperties {
     private HBox addPenShapeLabel () {
         HBox hb8 = new HBox();
         int mySceneId = myTurtleScene.getIdOfTab();
-        Label penShapeLabel = new Label("Pen Shape");
+        Label penShapeLabel = new Label(myResource.getString("PENSH"));
         ObservableList<String> shape =
                 FXCollections.observableArrayList("Solid", "Dashed", "Dotted");
         ComboBox<String> shapes = new ComboBox<String>(shape);
