@@ -74,7 +74,7 @@ public abstract class PastCommandsAbstract extends VBox implements PastCommandsI
             public void handle (MouseEvent event) {
                 String buttonText = b.getText();
                 String currConsoleText = myGuiManager.getMyConsole().getTextFromConsole();
-                myGuiManager.getMyConsole().setConsoleText(currConsoleText + buttonText);
+                myGuiManager.getMyConsole().setConsoleText(buttonText);
             }
 
         });
