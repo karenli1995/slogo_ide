@@ -259,4 +259,10 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
     }
 
 
+	@Override
+	public void clearActiveList() {
+		activeTurtles.clear();
+	}
+
+
 }

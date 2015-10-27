@@ -35,6 +35,9 @@ public class ActiveTurtles implements Serializable {
     public void remove(int index){
     	activeTurtles.remove(index);
     }
+    public void clear(){
+    	activeTurtles.clear();
+    }
 
     public int getvalue (int index) {
         if (index < activeTurtles.size()) {
