@@ -12,16 +12,15 @@ import model.data.DisplayDataInterface;
  */
 public class SetPenColor extends SetDisplayCommands {
 
+  public SetPenColor(DisplayDataInterface displayData) {
+    super(displayData);
+  }
 
-	public SetPenColor(DisplayDataInterface displayData) {
-		super(displayData);
-	}
+  private static final long serialVersionUID = 5673442278693959109L;
 
-	private static final long serialVersionUID = 5673442278693959109L;
-
-    @Override
-    public Display getEnum () {
-        return Display.SETPC;
-    }
+  @Override
+  public Display getEnum() {
+    return Display.SETPC;
+  }
 
 }

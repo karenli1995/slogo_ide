@@ -5,7 +5,7 @@ import java.util.List;
 
 @FunctionalInterface
 public interface UnlimitedInputDoubleInterface {
-    public double doFunction (List<Double> compiledList);
+  public double doFunction(List<Double> compiledList);
 }
 
 /*

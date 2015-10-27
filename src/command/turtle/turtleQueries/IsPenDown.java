@@ -5,6 +5,7 @@ import command.turtle.turtleCommands.TurtleCommands;
 import controller.ParseTreeChildren;
 import model.data.DataTurtleInterface;
 
+
 /**
  *
  * @author Sally Al
@@ -12,18 +13,18 @@ import model.data.DataTurtleInterface;
  */
 public class IsPenDown extends TurtleCommands {
 
-	private static final long serialVersionUID = 7464805867540834237L;
+  private static final long serialVersionUID = 7464805867540834237L;
 
-	public IsPenDown(DataTurtleInterface data) {
-		super(data);
+  public IsPenDown(DataTurtleInterface data) {
+    super(data);
 
-	}
+  }
 
-	@Override
-	public double executeCommand(ParseTreeChildren distance) {
-		double flag = getTurtle().getPen().isDown();
-		setValue(flag);
-		return flag;
-	}
+  @Override
+  public double executeCommand(ParseTreeChildren distance) {
+    double flag = getTurtle().getPen().isDown();
+    setValue(flag);
+    return flag;
+  }
 
 }

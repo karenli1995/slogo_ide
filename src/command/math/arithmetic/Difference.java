@@ -12,18 +12,18 @@ import model.data.Data;
  *
  */
 public class Difference extends UnlimitedInputDoubleCommand {
-    public Difference (Data allData) {
-        super(allData);
-    }
+  public Difference(Data allData) {
+    super(allData);
+  }
 
-    private static final long serialVersionUID = -7357237139931369565L;
+  private static final long serialVersionUID = -7357237139931369565L;
 
-    @Override
-    public double execute (ParseTreeChildren argument) {
-        double ans =
-                parameterLoop( (list) -> list.stream().reduce( (x, y) -> x - y).get(), argument);
-        setValue(ans);
-        return ans;
-    }
+  @Override
+  public double execute(ParseTreeChildren argument) {
+    double ans =
+        parameterLoop((list) -> list.stream().reduce((x, y) -> x - y).get(), argument);
+    setValue(ans);
+    return ans;
+  }
 
 }

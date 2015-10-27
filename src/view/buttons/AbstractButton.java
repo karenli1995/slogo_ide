@@ -13,41 +13,41 @@ import view.console.ConsoleUI;
 
 
 public abstract class AbstractButton extends Button {
-    protected static final int OFFSET_SPACE = 10;
-    protected Insets myInset = new Insets(OFFSET_SPACE);
+  protected static final int OFFSET_SPACE = 10;
+  protected Insets myInset = new Insets(OFFSET_SPACE);
 
-    protected ResourceBundle myResources;
-    protected GUIManager myGUIManager;
-    protected ConsoleUI myConsole;
-    protected ModelController myController;
+  protected ResourceBundle myResources;
+  protected GUIManager myGUIManager;
+  protected ConsoleUI myConsole;
+  protected ModelController myController;
 
-    protected EventHandler<ActionEvent>[] myEvents = new EventHandler[1];
+  protected EventHandler<ActionEvent>[] myEvents = new EventHandler[1];
 
-    AbstractButton (ConsoleUI console,
-                    ModelController controller,
-                    GUIManager guimanager,
-                    ResourceBundle resource,
-                    String buttonName) {
-        myGUIManager = guimanager;
-        myConsole = console;
-        myController = controller;
-        myResources = resource;
-        myEvents[0] = (e) -> action();
-        createButton(buttonName);
-    }
+  AbstractButton(ConsoleUI console,
+                 ModelController controller,
+                 GUIManager guimanager,
+                 ResourceBundle resource,
+                 String buttonName) {
+    myGUIManager = guimanager;
+    myConsole = console;
+    myController = controller;
+    myResources = resource;
+    myEvents[0] = (e) -> action();
+    createButton(buttonName);
+  }
 
-    protected void createButton (String name) {
-        setText(myResources.getString(name));
+  protected void createButton(String name) {
+    setText(myResources.getString(name));
 
-        applyCss();
-        setOnAction(myEvents[0]);
+    applyCss();
+    setOnAction(myEvents[0]);
 
-        setAllMargins(this);
-    }
+    setAllMargins(this);
+  }
 
-    protected abstract void action ();
+  protected abstract void action();
 
-    private void setAllMargins (Node n) {
-        HBox.setMargin(n, myInset);
-    }
+  private void setAllMargins(Node n) {
+    HBox.setMargin(n, myInset);
+  }
 }

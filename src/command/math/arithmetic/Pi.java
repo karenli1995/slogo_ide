@@ -13,21 +13,21 @@ import controller.ParseTreeChildren;
  *
  */
 public class Pi extends Command {
-    /**
-     *
-     */
-    private static final long serialVersionUID = -7294696481342781769L;
-    public static final double PI = 3.1416;
+  /**
+   *
+   */
+  private static final long serialVersionUID = -7294696481342781769L;
+  public static final double PI = 3.1416;
 
-    public Pi () {
-        super();
-    }
+  public Pi() {
+    super();
+  }
 
-    @Override
-    public double execute (ParseTreeChildren argument) {
+  @Override
+  public double execute(ParseTreeChildren argument) {
 
-        setValue(PI);
-        return PI;
-    }
+    setValue(PI);
+    return PI;
+  }
 
 }

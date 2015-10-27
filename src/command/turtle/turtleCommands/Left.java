@@ -3,6 +3,7 @@ package command.turtle.turtleCommands;
 
 import model.data.DataTurtleInterface;
 
+
 /**
  *
  * @author Sally Al
@@ -10,16 +11,15 @@ import model.data.DataTurtleInterface;
  */
 public class Left extends TurtleDirection {
 
+  private static final long serialVersionUID = 4725890321281815700L;
 
-    private static final long serialVersionUID = 4725890321281815700L;
+  public Left(DataTurtleInterface turtleData) {
+    super(turtleData);
+  }
 
-    public Left (DataTurtleInterface turtleData) {
-        super(turtleData);
-    }
-
-    @Override
-    protected int sign () {
-        return -1;
-    }
+  @Override
+  protected int sign() {
+    return -1;
+  }
 
 }
