@@ -140,20 +140,13 @@ public class TurtleScene extends TabPane implements Observer {
     private boolean checkBounds (double x, double y) {
         TurtleSceneTab currTab = getCurrTab();
 
-        if (x < getX() || x > getX() + currTab.getMyCanvasWidth() || y < getY() ||
-            y > getY() + currTab.getMyCanvasHeight()) {
-            return false;
-        }
-        else {
-            return true;
-        }
+        return (getX() + currTab.getMyCanvasWidth() > x  && x > getX()  &&
+        		getY() + currTab.getMyCanvasHeight() > y && y > getY() );
     }
     
     public void setActiveTurtleID(int ID){
     	myController.getMyScene().getAllData().get(getIdOfTab()).clearActiveList();
     	myController.getMyScene().getAllData().get(getIdOfTab()).addToActiveList(ID);
-    	//myController.getMyScene().getAllData().get(getIdOfTab()).setActiveTurtle(ID);
-		System.out.println("ACTIVE ID IS " + ID);
     }
 
     public void addListener () {
@@ -206,7 +199,6 @@ public class TurtleScene extends TabPane implements Observer {
     	SlogoScene otherSlogoObj = (SlogoScene) o;
 
         int tabId = getIdOfTab();
-        System.out.println("kerrn " + tabId);
         TurtleSceneTab tab = getCurrTab();         
 
         // check if pen down or up

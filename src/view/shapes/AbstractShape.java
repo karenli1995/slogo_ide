@@ -94,14 +94,8 @@ public abstract class AbstractShape implements ShapeInterface {
 
     protected boolean checkBounds (double x, double y) {
         TurtleSceneTab currTab = myTurtScene.getCurrTab();
-
-        if (x < myTurtScene.getX() || x > myTurtScene.getX() + currTab.getMyCanvasWidth() ||
-            y < myTurtScene.getY() || y > myTurtScene.getY() + currTab.getMyCanvasHeight()) {
-            return false;
-        }
-        else {
-            return true;
-        }
+        return (myTurtScene.getX() + currTab.getMyCanvasWidth() > x  && x > myTurtScene.getX()  &&
+        		myTurtScene.getY() + currTab.getMyCanvasHeight() > y && y > myTurtScene.getY() );
     }
 
 }
