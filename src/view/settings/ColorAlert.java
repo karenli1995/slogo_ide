@@ -1,7 +1,6 @@
 package view.settings;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -20,11 +19,17 @@ public class ColorAlert extends Dialog {
 	public ColorAlert() {
 		super();
 		this.setHeaderText("Color Array");
-		for(int i = 0; i<myColors.size();i++){
+		for(int i = 0; i<20;i++){
 			myGridPane.add(new Label(new Integer(i).toString()),1,i);
 			Rectangle rect = new Rectangle(20,20);
 			rect.setFill(Color.web(myColors.get(i)));
 			myGridPane.add(rect, 2, i);
+		}
+		for(int j = 20; j<myColors.size(); j++){
+			myGridPane.add(new Label(new Integer(j).toString()),3,j-20);
+			Rectangle rect = new Rectangle(20,20);
+			rect.setFill(Color.web(myColors.get(j)));
+			myGridPane.add(rect, 4, j-20);
 		}
 		this.getDialogPane().setContent(myGridPane);
 		addOk();
