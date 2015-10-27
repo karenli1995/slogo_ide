@@ -22,6 +22,7 @@ public class ID extends TurtleCommands {
 
     @Override
     public double executeCommand (ParseTreeChildren distance) {
+    	this.setValue(turtleData.getActiveTurtleID());
         return turtleData.getActiveTurtleID();
     }
 

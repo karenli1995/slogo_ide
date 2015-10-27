@@ -2,7 +2,7 @@ package command;
 
 import command.booleanOperations.And;
 import command.booleanOperations.Equal;
-import command.booleanOperations.Greater;
+import command.booleanOperations.GreaterThan;
 import command.booleanOperations.LessThan;
 import command.booleanOperations.Not;
 import command.booleanOperations.NotEqual;
@@ -26,13 +26,14 @@ import command.math.trig.ArcTangent;
 import command.math.trig.Cosine;
 import command.math.trig.Sine;
 import command.math.trig.Tangent;
-import command.otherCommands.Ask;
 import command.otherCommands.DoTimes;
 import command.otherCommands.MakeUserInstruction;
 import command.otherCommands.MakeVariable;
 import command.otherCommands.Repeat;
 import command.otherCommands.UserCommand;
 import command.otherCommands.Variable;
+import command.otherCommands.askCommands.Ask;
+import command.otherCommands.askCommands.AskWith;
 import command.syntax.Constant;
 import command.syntax.ListEnd;
 import command.syntax.ListStart;
@@ -124,7 +125,7 @@ public class CommandRegister {
         // logic commands
         cf.registerCommand("And", And.class);
         cf.registerCommand("Or", Or.class);
-        cf.registerCommand("GreaterThan", Greater.class);
+        cf.registerCommand("GreaterThan", GreaterThan.class);
         cf.registerCommand("Equal", Equal.class);
         cf.registerCommand("NotEqual", NotEqual.class);
         cf.registerCommand("LessThan", LessThan.class);
@@ -141,6 +142,7 @@ public class CommandRegister {
         cf.registerCommand("SetPenSize", SetPenSize.class);
         cf.registerCommand("SetShape", SetShape.class);
         cf.registerCommand("Ask", Ask.class);
+        cf.registerCommand("AskWith", AskWith.class);
 
     }
 }
