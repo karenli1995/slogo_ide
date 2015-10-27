@@ -37,6 +37,7 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	private int activeTurtle = 0;
 	private DisplayCommandObserver displayCommands;
 	private TurtleCommandsObserver turtleCommands;
+	private int turtleID = 0;
 
 	public Data() {
 		myTurtles = new ArrayList<SlogoObjects>();
@@ -69,8 +70,9 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	public void createTurtle() {
 		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
-		setTurtle(0, defaultTurtle);
+		setTurtle(turtleID, defaultTurtle);
 		myTrails.add(defaultTurtle.getTrail());
+		turtleID++;
 	}
 
 	@Override
