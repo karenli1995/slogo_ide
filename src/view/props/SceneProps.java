@@ -45,8 +45,8 @@ public class SceneProps extends AbstractProperties {
             TurtleSceneTab currTab = myTurtleScene.getCurrTab();
             int mySceneId = myTurtleScene.getIdOfTab();
 
-            currTab.setBackgroundColor(currCanvas.getGraphicsContext2D(), currCanvas, chosenColor);
             myController.getMyScene().ColorData(mySceneId).setMyColor(chosenColor);
+            currTab.setBackgroundColor(currCanvas.getGraphicsContext2D(), currCanvas, myController.getMyScene().ColorData(mySceneId).getMyColor());
             System.out.println("ComboBox Action (selected: " +
                                chosenColor.toString().toUpperCase() + ")");
 
