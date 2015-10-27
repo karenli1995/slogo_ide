@@ -39,5 +39,7 @@ public interface DataTurtleInterface {
 
 	void setActiveTurtle(int value);
 	void removeElementActiveList(int index);
+	void clearActiveList();
+
 
 }
