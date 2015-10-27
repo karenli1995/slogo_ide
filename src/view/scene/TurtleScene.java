@@ -28,6 +28,7 @@ public class TurtleScene extends TabPane implements Observer {
 
     private double myCanvasWidth = SlogoProperties.getSceneWidth() * 3 / 7;
     private double myCanvasHeight = SlogoProperties.getSceneHeight() * 5 / 7;
+    private boolean activeVis = true;
 
     public TurtleScene (ModelController controller, ResourceBundle resource) {
         myResource = resource;
@@ -46,7 +47,15 @@ public class TurtleScene extends TabPane implements Observer {
 
         addListener();
     }
-
+    
+    public void setActiveVisibility(String chosen){
+    	if(chosen.equals("Yes")){
+    		activeVis = true;
+    	}
+    	else{
+    		activeVis = false;
+    	}
+    }
     public void addTab (TurtleSceneTab tab) {
         myTabs.add(tab);
     }
@@ -147,6 +156,14 @@ public class TurtleScene extends TabPane implements Observer {
     public void setActiveTurtleID(int ID){
     	myController.getMyScene().getAllData().get(getIdOfTab()).clearActiveList();
     	myController.getMyScene().getAllData().get(getIdOfTab()).addToActiveList(ID);
+        for(int i = 0; i<getCurrTab().getAllSlogoImages().size();i++){
+        	if((!myController.getMyScene().getAllData().get(getIdOfTab()).getActiveTurtles().contains(i)) && activeVis){
+        		getCurrTab().getAllSlogoImages().get(i).makeInactive();
+        	}
+        	else{
+        		getCurrTab().getAllSlogoImages().get(i).makeActive();
+        	}
+        }
     }
 
     public void addListener () {
@@ -200,7 +217,6 @@ public class TurtleScene extends TabPane implements Observer {
 
         int tabId = getIdOfTab();
         TurtleSceneTab tab = getCurrTab();         
-
         // check if pen down or up
         // when pendown() changes
         for (Object i : tab.getShape().getAllShapes()) {
@@ -256,7 +272,15 @@ public class TurtleScene extends TabPane implements Observer {
                          currSlogoImage.getY());
             tab.setSlogoImage(i, currSlogoImage);
         }
-        
+
+        for(int i = 0; i<getCurrTab().getAllSlogoImages().size();i++){
+        	if((!myController.getMyScene().getAllData().get(getIdOfTab()).getActiveTurtles().contains(i)) && activeVis){
+        		getCurrTab().getAllSlogoImages().get(i).makeInactive();
+        	}
+        	else{
+        		getCurrTab().getAllSlogoImages().get(i).makeActive();
+        	}
+        }
         
         // when setClear() changes
         if(otherSlogoObj.getTurtleData(tabId).getTurtle(0).getClearTrail() == true){
