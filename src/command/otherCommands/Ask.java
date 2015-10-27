@@ -63,7 +63,7 @@ public class Ask extends Command {
 		}
 
 		for (int i = 0; i < turtleList.size(); i++) {
-			turtleData.addToActiveList(turtleList.get(i)-1);
+			turtleData.addToActiveList(turtleList.get(i) - 1);
 		}
 
 		Double answer = 0.0;
