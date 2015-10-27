@@ -135,16 +135,16 @@ public class CurrentTurtleState extends VBox implements Observer {
         int tabId = myTurtScene.getIdOfTab();
         // Data_Turtle_Interface otherSlogoObj = (Data_Turtle_Interface) o;
 
-        double currPosX = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getX();
-        double currPosY = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getTrail().getY();
+        double currPosX = otherSlogoObj.getTurtleData(tabId).getTurtle(otherSlogoObj.getTurtleData(tabId).getActiveTurtleID()-1).getTrail().getX();
+        double currPosY = otherSlogoObj.getTurtleData(tabId).getTurtle(otherSlogoObj.getTurtleData(tabId).getActiveTurtleID()-1).getTrail().getY();
         myDisplayPos.setText(currPosX + ", " + currPosY);
 
         double currRotAngle =
-                otherSlogoObj.getTurtleData(tabId).getTurtle(0).getRotationAngle() % 360;
+                otherSlogoObj.getTurtleData(tabId).getTurtle(otherSlogoObj.getTurtleData(tabId).getActiveTurtleID()-1).getRotationAngle() % 360;
         myDisplayHeading.setText(currRotAngle + "");
 
         String penPos = "Down";
-        double currPenPos = otherSlogoObj.getTurtleData(tabId).getTurtle(0).getPen().isDown();
+        double currPenPos = otherSlogoObj.getTurtleData(tabId).getTurtle(otherSlogoObj.getTurtleData(tabId).getActiveTurtleID()-1).getPen().isDown();
         if (currPenPos == 1.0) {
             penPos = "Down";
         }
@@ -154,10 +154,10 @@ public class CurrentTurtleState extends VBox implements Observer {
         myDisplayPenPos.setText(penPos);
 
         String turtVis = "Visible";
-        if (otherSlogoObj.getTurtleData(tabId).getTurtle(0).getIsShowing() == true) {
+        if (otherSlogoObj.getTurtleData(tabId).getTurtle(otherSlogoObj.getTurtleData(tabId).getActiveTurtleID()-1).getIsShowing() == true) {
             turtVis = "Visible";
         }
-        if (otherSlogoObj.getTurtleData(tabId).getTurtle(0).getIsShowing() == false) {
+        if (otherSlogoObj.getTurtleData(tabId).getTurtle(otherSlogoObj.getTurtleData(tabId).getActiveTurtleID()-1).getIsShowing() == false) {
             turtVis = "Invisible";
         }
         myDisplayTurtVis.setText(turtVis);

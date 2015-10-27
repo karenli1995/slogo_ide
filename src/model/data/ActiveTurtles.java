@@ -16,7 +16,7 @@ public class ActiveTurtles implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1920533774790920840L;
-	private static List<Integer> activeTurtles;
+	private List<Integer> activeTurtles;
 
     protected ActiveTurtles () {
         activeTurtles = new ArrayList<Integer>();
@@ -50,5 +50,9 @@ public class ActiveTurtles implements Serializable {
         else {
             return 0;
         }
+    }
+    
+    public List<Integer> getActives(){
+    	return activeTurtles;
     }
 }

@@ -81,4 +81,12 @@ public class SlogoImage {
     public void hideSlogoObject () {
         getMyImage().setVisible(false);
     }
+    
+    public void makeInactive(){
+    	getMyImage().setOpacity(0.5);
+    }
+    
+    public void makeActive(){
+    	getMyImage().setOpacity(1);
+    }
 }
