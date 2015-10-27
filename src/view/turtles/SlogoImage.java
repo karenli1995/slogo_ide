@@ -1,5 +1,7 @@
 package view.turtles;
 
+
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import view.scene.TurtleScene;
@@ -21,7 +23,7 @@ public class SlogoImage {
         myX = 0;
         myY = 0;
     }
-
+    
     public double setX (double x) {
         myX = x;
         return myX;
@@ -58,7 +60,7 @@ public class SlogoImage {
         myTurtScene.addChildren(image);
     }
 
-    public Image getImage () {
+    public Image getImage() {
         return myImage;
     }
 

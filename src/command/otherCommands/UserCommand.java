@@ -12,7 +12,11 @@ import model.data.Data;
 
 
 public class UserCommand extends Command {
-    private Data allData;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8672243465517450294L;
+	private Data allData;
     Traverser traverser = new Traverser();
     Map<String, Double> localMap;
     Map<String, Double> tempMap;

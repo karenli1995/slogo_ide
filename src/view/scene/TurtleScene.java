@@ -148,6 +148,11 @@ public class TurtleScene extends TabPane implements Observer {
             return true;
         }
     }
+    
+    public void setActiveTurtleID(int ID){
+    	myController.getMyScene().getAllData().get(getIdOfTab()).setActiveTurtle(ID);
+    	System.out.println("ACTIVE ID IS " + ID);
+    }
 
     public void addListener () {
         getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
@@ -197,8 +202,7 @@ public class TurtleScene extends TabPane implements Observer {
     	SlogoScene otherSlogoObj = (SlogoScene) o;
 
         int tabId = getIdOfTab();
-        TurtleSceneTab tab = getCurrTab();
-         
+        TurtleSceneTab tab = getCurrTab();         
 
         // check if pen down or up
         // when pendown() changes
@@ -239,6 +243,7 @@ public class TurtleScene extends TabPane implements Observer {
             	tab.getAllSlogoImages().add(currSlogoImage);
             	this.addChildren(currSlogoImage.getMyImage());
             }
+            tab.addHandlers();
             currSlogoImage.setX(newLocX);
             currSlogoImage.setY(newLocY);
             currSlogoImage.setRotation(newRotAngle);
