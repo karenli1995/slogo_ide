@@ -225,21 +225,21 @@ public class TurtleScene extends TabPane implements Observer {
         }
         ArrayList<ArrayList<Line>> allLines = new ArrayList<ArrayList<Line>>();
         for(int i = 0; i<otherSlogoObj.getTurtleData(tabId).getAllTurtles().size();i++){
-        SlogoObjects turt = otherSlogoObj.getTurtleData(tabId).getAllTurtles().get(i);
-        ArrayList<Point2D> currTrailList =
-                turt.getTrail().getPathCoordinates();
-        ArrayList<Double> penStatusList =
-                turt.getTrail().getPenPath();
-        ArrayList<String> penColors =
-                turt.getTrail().getColorPath();
-        ArrayList<Integer> penThicks =
-                turt.getTrail().getThicknessPath();
-        ArrayList<Double> penDashes =
-                turt.getTrail().getDashPath();
-        ArrayList<Line> currLine =
-                tab.getShape().drawShape(currTrailList, penStatusList, penColors, penThicks,
-                                         penDashes);
-        allLines.add(currLine);
+        	SlogoObjects turt = otherSlogoObj.getTurtleData(tabId).getAllTurtles().get(i);
+        	ArrayList<Point2D> currTrailList =
+        			turt.getTrail().getPathCoordinates();
+        	ArrayList<Double> penStatusList =
+        			turt.getTrail().getPenPath();
+        	ArrayList<String> penColors =
+        			turt.getTrail().getColorPath();
+        	ArrayList<Integer> penThicks =
+        			turt.getTrail().getThicknessPath();
+        	ArrayList<Double> penDashes =
+        			turt.getTrail().getDashPath();
+        	ArrayList<Line> currLine =
+        			tab.getShape().drawShape(currTrailList, penStatusList, penColors, penThicks,
+        					penDashes);
+        	allLines.add(currLine);
         }
         for (ArrayList<Line> i : allLines) {
             for(Line j:i){
