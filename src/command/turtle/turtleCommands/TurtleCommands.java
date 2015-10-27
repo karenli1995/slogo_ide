@@ -3,7 +3,6 @@
  */
 package command.turtle.turtleCommands;
 
-import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,10 +37,7 @@ public abstract class TurtleCommands extends Command {
 	}
 
 
-	protected double RoundTo2Decimals(double val) {
-		DecimalFormat df2 = new DecimalFormat("###.##");
-		return Double.valueOf(df2.format(val));
-	}
+
 
 	protected void updateLocation(Double x, Double y, double angle) {
 
