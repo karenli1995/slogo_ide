@@ -1,7 +1,7 @@
 ## Slogo Team 8##
 A development environment that helps users write SLogo programs.
 
-Kevin Wang, Alex Rice, Sally Merza, Karen Li
+Karen Li, Alex Rice, Sally Merza, Kevin Wang 
 
 **Date Started:** 10/05
 
