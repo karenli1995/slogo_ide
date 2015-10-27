@@ -69,7 +69,6 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	public void createTurtle() {
 		Turtle defaultTurtle = new Turtle();
 		myTurtles.add(defaultTurtle);
-		setTurtle(turtleID, defaultTurtle); // check
 		myTrails.add(defaultTurtle.getTrail());
 		turtleID++;
 	}

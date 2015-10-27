@@ -47,11 +47,6 @@ public abstract class AbstractShape implements ShapeInterface {
         long canvasY1 = (long) myTurtScene.getCanvasY();
         long canvasY2 = canvasY1 + canvasHeight;
 
-        // double X = Math.floorMod( (long) (point.getX() + myTurtScene.getX() + canvasWidth/2) ,
-        // (long) canvasWidth);
-        // double Y = Math.floorMod( (long) (myTurtScene.getY() + canvasHeight/2 - point.getY()),
-        // (long) canvasHeight);
-
         long X = (long) (point.getX() + myTurtScene.getX() + canvasWidth / 2);
         long Y = (long) (myTurtScene.getY() + canvasHeight / 2 - point.getY());
         long modX = Math.floorMod(X, canvasWidth);
