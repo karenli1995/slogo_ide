@@ -12,7 +12,11 @@ import java.util.List;
  */
 public class ActiveTurtles implements Serializable {
 
-    private static List<Integer> activeTurtles;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1920533774790920840L;
+	private static List<Integer> activeTurtles;
 
     protected ActiveTurtles () {
         activeTurtles = new ArrayList<Integer>();
