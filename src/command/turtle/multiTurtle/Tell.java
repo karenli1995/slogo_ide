@@ -24,36 +24,45 @@ public class Tell extends Command {
 	}
 
 	private static final long serialVersionUID = -477042076707708488L;
+	private static final double ERROR_SIGNAL = -1000000.0;
 
 	@Override
 	public double execute(ParseTreeChildren distance) {
 
 		List<ParseTreeNode<CommandInterface>> tempList = distance.getChildListAt(0);
 		List<Double> turtlesToWorkOn = new ArrayList<Double>();
-		for (int i = 1; i < tempList.size() - 1; i++) {
-			turtlesToWorkOn.add(tempList.get(i).getCommandValue());
-		}
-		turtleData.clearActiveList();
-
-		int range = 0;
-		for (int j = 0; j < turtlesToWorkOn.size(); j++) {
-			range = turtlesToWorkOn.get(j).intValue();
-			int size = turtleData.turtleListSize();
-			if (range > size) {
-				int diff = range - size;
-				int max = size + diff;
-				for (int i = size; i < max; i++) {
-					turtleData.createTurtle();
-
-				}
-				add(range);
-
-			} else {
-				add(range);
+		try {
+			for (int i = 1; i < tempList.size() - 1; i++) {
+				turtlesToWorkOn.add(tempList.get(i).getCommandValue());
 			}
+
+	turtleData.clearActiveList();
+	} catch (Exception e) {
+		return ERROR_SIGNAL;
+	}
+
+	int range = 0;for(
+	int j = 0;j<turtlesToWorkOn.size();j++)
+
+	{
+		range = turtlesToWorkOn.get(j).intValue();
+		int size = turtleData.turtleListSize();
+		if (range > size) {
+			int diff = range - size;
+			int max = size + diff;
+			for (int i = size; i < max; i++) {
+				turtleData.createTurtle();
+
+			}
+			add(range);
+
+		} else {
+			add(range);
 		}
-		
-		return range;
+	}
+
+	return range;
+
 	}
 
 	private void add(int range) {
