@@ -41,12 +41,13 @@ public class PenProps extends AbstractProperties {
         final ComboBox<Color> cbColors = new ColorComboBox();
         hb6.getChildren().addAll(penColor, cbColors);
         cbColors.setOnAction( (event) -> {
+            for(int i = 0; i<myController.getMyScene().getTurtleData(mySceneId).activeTurtleListSize();i++){
+                int turt = myController.getMyScene().getTurtleData(mySceneId).activeTurtleListValue(i);
             Color chosenColor = cbColors.getSelectionModel().getSelectedItem();
-            myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+            myController.getMyScene().getTurtleData(mySceneId).getAllTurtles().get(turt).getPen()
                     .setColor(chosenColor);
 
-        });
-
+            }});
         allElements.add(penColor);
         allElements.add(cbColors);
 
@@ -61,10 +62,15 @@ public class PenProps extends AbstractProperties {
         ObservableList<Integer> thicks = FXCollections.observableArrayList(1, 2, 3, 4, 5);
         ComboBox<Integer> thicknesses = new ComboBox<Integer>(thicks);
         thicknesses.setOnAction( (e) -> {
+            for(int i = 0; i<myController.getMyScene().getTurtleData(mySceneId).activeTurtleListSize();i++){
+                int turt = myController.getMyScene().getTurtleData(mySceneId).activeTurtleListValue(i);
             Integer thick = thicknesses.getSelectionModel().getSelectedItem();
-            myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+            myController.getMyScene().getTurtleData(mySceneId).getAllTurtles().get(turt).getPen()
                     .setThickness(thick);
-        });
+            System.out.println("AGGH" + turt);
+
+            }});
+        
         hb8.getChildren().addAll(thickLabel, thicknesses);
 
         allElements.add(thickLabel);
@@ -81,16 +87,19 @@ public class PenProps extends AbstractProperties {
         ObservableList<String> pos = FXCollections.observableArrayList("Up", "Down");
         ComboBox<String> positions = new ComboBox<String>(pos);
         positions.setOnAction( (e) -> {
+            for(int i = 0; i<myController.getMyScene().getTurtleData(mySceneId).activeTurtleListSize();i++){
+                int turt = myController.getMyScene().getTurtleData(mySceneId).activeTurtleListValue(i);
             String chosenPos = positions.getSelectionModel().getSelectedItem();
             if (chosenPos == "Up") {
-                myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+                myController.getMyScene().getTurtleData(mySceneId).getAllTurtles().get(turt).getPen()
                         .setPenDown(0.0);
             }
             if (chosenPos == "Down") {
-                myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+                myController.getMyScene().getTurtleData(mySceneId).getAllTurtles().get(turt).getPen()
                         .setPenDown(1.0);
             }
-        });
+           }});
+        
         hb8.getChildren().addAll(penPosLabel, positions);
 
         allElements.add(penPosLabel);
@@ -107,20 +116,23 @@ public class PenProps extends AbstractProperties {
                 FXCollections.observableArrayList("Solid", "Dashed", "Dotted");
         ComboBox<String> shapes = new ComboBox<String>(shape);
         shapes.setOnAction( (e) -> {
+            for(int i = 0; i<myController.getMyScene().getTurtleData(mySceneId).activeTurtleListSize();i++){
+                int turt = myController.getMyScene().getTurtleData(mySceneId).activeTurtleListValue(i);
             String chosenShape = shapes.getSelectionModel().getSelectedItem();
             if (chosenShape == "Solid") {
-                myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+                myController.getMyScene().getTurtleData(mySceneId).getAllTurtles().get(turt).getPen()
                         .setDashes(1.0);
             }
             if (chosenShape == "Dashed") {
-                myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+                myController.getMyScene().getTurtleData(mySceneId).getAllTurtles().get(turt).getPen()
                         .setDashes(5.0);
             }
             if (chosenShape == "Dotted") {
-                myController.getMyScene().getTurtleData(mySceneId).getTurtle(0).getPen()
+                myController.getMyScene().getTurtleData(mySceneId).getAllTurtles().get(turt).getPen()
                         .setDashes(2.0);
             }
-        });
+            }});
+        
         hb8.getChildren().addAll(penShapeLabel, shapes);
 
         allElements.add(penShapeLabel);
