@@ -44,11 +44,11 @@ public class UserCommand extends Command {
       ans = traverser.traverse(temp, allData);
       allData.setVariableMap(tempMap);
     } else if (!distance.getParent().getParent()
-        .getCommand().getClass().getSimpleName().equals("MakeUserInstruction")){
+        .getCommand().getClass().getSimpleName().equals("MakeUserInstruction")) {
       allData.setErrorMessage("command not found");
     }
 
-      return ans;
+    return ans;
   }
 
 }
