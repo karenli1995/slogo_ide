@@ -7,7 +7,11 @@ import model.data.Data;
 
 
 public class IfElse extends Command {
-    private Data allData;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1491608247002727538L;
+	private Data allData;
     Traverser traverser = new Traverser();
 
     public IfElse (Data allData) {

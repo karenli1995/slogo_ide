@@ -1,6 +1,7 @@
 
 package command.commandsObservers;
 
+import java.io.Serializable;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,7 +15,11 @@ import model.turtleinfo.SlogoObjects;
  * @author Sally Al
  *
  */
-public class TurtleCommandsObserver implements Observer {
+public class TurtleCommandsObserver implements Observer,Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8077018140841818623L;
 	private Data data;
 
 	public TurtleCommandsObserver(Data data) {

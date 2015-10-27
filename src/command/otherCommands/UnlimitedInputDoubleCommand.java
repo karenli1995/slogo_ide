@@ -12,7 +12,11 @@ import model.data.Data;
 
 public abstract class UnlimitedInputDoubleCommand extends Command {
 
-    Traverser traverser = new Traverser();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2278163311708568906L;
+	Traverser traverser = new Traverser();
     protected Data allData;
 
     public UnlimitedInputDoubleCommand (Data allData) {
