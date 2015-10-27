@@ -37,7 +37,9 @@ public class ParseTreeChildren {
 	}
 
 	public List<ParseTreeNode<CommandInterface>> getChildListAt(int index) {
+		if(nodeList.size()>0)
 		return nodeList.get(index);
+		else return null;
 	}
 
 	public List<List<ParseTreeNode<CommandInterface>>> getNodeList() {

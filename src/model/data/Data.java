@@ -103,7 +103,7 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 	public int activeTurtleListValue(int index) {
 		return activeTurtles.getvalue(index);
 	}
-	
+
 	public List<Integer> getActiveTurtles(){
 		return activeTurtles.getActives();
 	}
@@ -160,7 +160,7 @@ public class Data implements DisplayDataInterface,DataTurtleInterface, ForObserv
 		myColor = color;
 		myColorHex = color.toString();
 	}
-	
+
 	@Override
 	public double getCommandValue() {
 		return myCommandValue;

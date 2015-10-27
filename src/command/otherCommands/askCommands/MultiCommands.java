@@ -3,6 +3,7 @@ package command.otherCommands.askCommands;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import command.Command;
 import command.CommandInterface;
@@ -19,6 +20,8 @@ public abstract class MultiCommands extends Command {
 	private static final long serialVersionUID = 456274188677983060L;
 	Data turtleData;
 	protected int originalID;
+	 private ResourceBundle errorResources;
+	    private final String ERROR_RESOURCES = "resources/error";
 	protected List<Integer> originalActiveList;
 
 
@@ -26,6 +29,7 @@ public abstract class MultiCommands extends Command {
 		this.turtleData = turtleData;
 		originalID = turtleData.getActiveTurtleID();
 		originalActiveList = new ArrayList<Integer>();
+		errorResources = ResourceBundle.getBundle(ERROR_RESOURCES);
 
 
 	}
@@ -37,8 +41,11 @@ public abstract class MultiCommands extends Command {
 	}
 
 	protected void createTempActivleList(List<ParseTreeNode<CommandInterface>> turtles, List<Integer> newActiveList) {
-		for (int i = 1; i < turtles.size() - 1; i++) {
+		try{for (int i = 1; i < turtles.size() - 1; i++) {
 			newActiveList.add((int) turtles.get(i).getCommandValue());
+		}}
+		catch(Exception e){
+			  turtleData.setErrorMessage(this.getClass().getSimpleName()+": " +errorResources.getString("noArgument"));
 		}
 	}
 

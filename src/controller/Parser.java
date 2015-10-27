@@ -97,13 +97,13 @@ public class Parser {
 		for (int i = 0; i < numInputs; i++) {
 			List<ParseTreeNode<CommandInterface>> tempNodeList = new ArrayList<ParseTreeNode<CommandInterface>>();
 			if (index >= commandList.size()) {
-				allData.setErrorMessage(": " + errorResources.getString("noArgument"));
+				allData.setErrorMessage(head.getCommand().getClass().getSimpleName()+": " + errorResources.getString("noArgument"));
 				error = true;
 				return index;
 			}
 			if (commandList.get(index)[1].equals("ListStart")) {
 				index = bracket(index, head, tempNodeList);
-				while (true) {
+				while (true && index < commandList.size()) {
 					if (!commandList.get(index)[1].equals("ListEnd")) {
 						ParseTreeNode<CommandInterface> newNode = createNewNode(index, head);
 
@@ -196,7 +196,7 @@ public class Parser {
 					try {
 						numInputs = commandInputMap.get(node.getCommand().getName());
 					} catch (Exception e) {
-						allData.setErrorMessage(errorResources.getString("notFound"));
+						allData.setErrorMessage(node.getCommandName()+" " +errorResources.getString("notFound"));
 					}
 				} else {
 

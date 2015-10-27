@@ -61,7 +61,7 @@ public class SlogoScene extends Observable {
 			myTraverser.traverse(myTree, myCurrData);
 
 		}
-		System.out.println(id);
+
 		setData(id, myCurrData);
 		return myCurrData;
 	}

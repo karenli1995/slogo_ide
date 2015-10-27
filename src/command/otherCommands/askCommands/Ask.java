@@ -63,7 +63,10 @@ public class Ask extends MultiCommands {
 		for (int i = 0; i < turtleData.activeTurtleListSize(); i++) {
 			turtleData.setActiveTurtle(turtleData.activeTurtleListValue(i));
 			turtleData.updateVariableMap(input.getCommandName(0, 1), (double) i);
-			answer = traverser.traverse(input.getChildListAt(1), turtleData);
+		try{	answer = traverser.traverse(input.getChildListAt(1), turtleData);}
+		catch(Exception e){
+			answer = -1000000.0;
+		}
 		}
 		turtleData.setActiveTurtle(originalID);
 		turtleData.clearActiveList();
